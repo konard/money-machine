@@ -3,14 +3,14 @@
  */
 
 export class StrategyManager {
-  constructor(config = {}, logger = null, complianceEngine = null) {
+  constructor(_config = {}, logger = null, complianceEngine = null) {
     this.logger = logger;
     this.complianceEngine = complianceEngine;
     this.strategies = new Map();
     this.activeStrategies = new Set();
   }
 
-  async loadStrategy(strategyModule) {
+  loadStrategy(strategyModule) {
     const strategy = strategyModule;
     this.strategies.set(strategy.name, strategy);
 
@@ -47,7 +47,7 @@ export class StrategyManager {
     }
   }
 
-  async pauseStrategy(strategyId, reason = '') {
+  pauseStrategy(strategyId, reason = '') {
     const strategy = this.strategies.get(strategyId);
     if (strategy) {
       strategy.status = 'paused';

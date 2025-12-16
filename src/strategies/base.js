@@ -31,23 +31,23 @@ export class StrategyModule {
     return 0.5;
   }
 
-  async initialize(context) {
+  initialize(_context) {
     this.status = 'ready';
   }
 
-  async execute(context) {
+  async execute(_context) {
     throw new Error('Strategy must implement execute method');
   }
 
-  async validate(context) {
+  validate(_context) {
     return { valid: true, errors: [] };
   }
 
-  async shutdown() {
+  shutdown() {
     this.status = 'stopped';
   }
 
-  async getStatus() {
+  getStatus() {
     return {
       name: this.name,
       status: this.status,
@@ -57,7 +57,7 @@ export class StrategyModule {
     };
   }
 
-  async getMetrics() {
+  getMetrics() {
     return {
       totalEarnings: this.earnings,
       totalActions: this.actions,

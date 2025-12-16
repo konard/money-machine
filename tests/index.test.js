@@ -2,7 +2,7 @@
  * Tests for Money Machine
  */
 
-import { describe, it, before } from 'node:test';
+import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import { createMoneyMachine } from '../src/index.js';
 import { DemoResearchStrategy } from '../src/strategies/demo-research.js';

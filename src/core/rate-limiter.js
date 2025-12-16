@@ -106,9 +106,9 @@ export class RateLimiter {
    * Acquire token for a platform action
    * @param {string} platform - Platform name
    * @param {string} actionType - Optional action type for logging
-   * @returns {Promise<boolean>} True if token acquired
+   * @returns {boolean} True if token acquired
    */
-  async acquireToken(platform, actionType = 'request') {
+  acquireToken(platform, actionType = 'request') {
     const state = this.getPlatformState(platform);
     this.refillTokens(state);
 

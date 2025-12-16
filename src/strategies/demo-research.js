@@ -30,7 +30,7 @@ export class DemoResearchStrategy extends StrategyModule {
     return 1.0;
   }
 
-  async initialize(context) {
+  initialize(context) {
     this.logger = context.logger;
     this.complianceEngine = context.complianceEngine;
     this.status = 'ready';
@@ -40,7 +40,7 @@ export class DemoResearchStrategy extends StrategyModule {
     }
   }
 
-  async execute(context) {
+  async execute(_context) {
     if (this.logger) {
       this.logger.info('Executing demo research strategy');
     }
@@ -92,7 +92,7 @@ export class DemoResearchStrategy extends StrategyModule {
     }
   }
 
-  async validate(context) {
+  validate(context) {
     // Check if compliance engine is available
     if (!context.complianceEngine) {
       return {
@@ -108,7 +108,7 @@ export class DemoResearchStrategy extends StrategyModule {
    * Simulate finding opportunities
    * @private
    */
-  async findOpportunities() {
+  findOpportunities() {
     // In a real implementation, this would:
     // - Search bug bounty platforms
     // - Check open source bounties
@@ -129,7 +129,7 @@ export class DemoResearchStrategy extends StrategyModule {
    * Simulate analyzing an opportunity
    * @private
    */
-  async analyzeOpportunity(opportunity) {
+  analyzeOpportunity(opportunity) {
     return {
       opportunity: opportunity.id,
       feasible: true,
@@ -139,7 +139,7 @@ export class DemoResearchStrategy extends StrategyModule {
     };
   }
 
-  async shutdown() {
+  shutdown() {
     this.status = 'stopped';
     if (this.logger) {
       this.logger.info('Demo research strategy shut down');
