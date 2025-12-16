@@ -43,7 +43,7 @@ export class MoneyMachine {
   /**
    * Initialize the money machine
    */
-  async initialize() {
+  initialize() {
     if (this.initialized) {
       this.logger.warn('Money machine already initialized');
       return;
@@ -133,7 +133,7 @@ export class MoneyMachine {
    * Start running strategies
    * @param {Array<string>} strategyIds - Optional list of strategy IDs to run
    */
-  async start(strategyIds = null) {
+  start(strategyIds = null) {
     this.ensureInitialized();
 
     if (this.running) {

@@ -48,7 +48,9 @@ export class Logger {
    * @private
    */
   write(level, message, context) {
-    if (!this.shouldLog(level)) return;
+    if (!this.shouldLog(level)) {
+      return;
+    }
 
     const entry = this.formatEntry(level, message, context);
     this.logs.push(entry);
@@ -123,7 +125,9 @@ export class Logger {
    * @param {object} context - Additional context
    */
   audit(action, result, context = {}) {
-    if (!this.enableAudit) return;
+    if (!this.enableAudit) {
+      return;
+    }
 
     const entry = {
       timestamp: new Date().toISOString(),
@@ -143,7 +147,9 @@ export class Logger {
    * @param {object} tags - Optional tags
    */
   metric(metricName, value, tags = {}) {
-    if (!this.enableMetrics) return;
+    if (!this.enableMetrics) {
+      return;
+    }
 
     if (!this.metrics.has(metricName)) {
       this.metrics.set(metricName, []);

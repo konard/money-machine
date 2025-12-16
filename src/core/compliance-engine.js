@@ -248,7 +248,7 @@ export class ComplianceEngine {
    * @param {object} result - Action result
    * @param {object} context - Context
    */
-  async logAction(action, result, context = {}) {
+  logAction(action, result, context = {}) {
     if (this.logger) {
       this.logger.audit(action.type, result, {
         platform: context.platform,
