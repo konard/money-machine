@@ -212,7 +212,7 @@ export class RateLimiter {
       }
 
       // Wait before checking again
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => globalThis.setTimeout(resolve, 1000));
     }
 
     this.log('Wait for token timeout', { platform, maxWaitMs });
