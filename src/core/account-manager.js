@@ -6,7 +6,7 @@
  */
 
 export class AccountManager {
-  constructor(config = {}, logger = null) {
+  constructor(_config = {}, logger = null) {
     this.logger = logger;
     this.accounts = new Map();
     this.sessionCache = new Map();
@@ -24,9 +24,8 @@ export class AccountManager {
    * Add account for a platform
    * @param {string} platform - Platform name
    * @param {object} credentials - Account credentials (will be encrypted in production)
-   * @returns {Promise<void>}
    */
-  async addAccount(platform, credentials) {
+  addAccount(platform, credentials) {
     // WARNING: In production, encrypt credentials before storing
     // For MVP/demo, storing in memory only
 
@@ -68,9 +67,9 @@ export class AccountManager {
   /**
    * Get account for platform
    * @param {string} platform - Platform name
-   * @returns {Promise<object|null>} Account credentials
+   * @returns {object|null} Account credentials
    */
-  async getAccount(platform) {
+  getAccount(platform) {
     const account = this.accounts.get(platform);
 
     if (!account) {
@@ -95,7 +94,7 @@ export class AccountManager {
    * @param {string} platform - Platform name
    * @param {object} newCredentials - New credentials
    */
-  async rotateCredentials(platform, newCredentials) {
+  rotateCredentials(platform, newCredentials) {
     const account = this.accounts.get(platform);
 
     if (!account) {
@@ -111,9 +110,9 @@ export class AccountManager {
   /**
    * Check account health
    * @param {string} platform - Platform name
-   * @returns {Promise<object>} Health status
+   * @returns {object} Health status
    */
-  async checkAccountHealth(platform) {
+  checkAccountHealth(platform) {
     const account = this.accounts.get(platform);
 
     if (!account) {
@@ -146,9 +145,9 @@ export class AccountManager {
 
   /**
    * List all accounts
-   * @returns {Promise<Array>} Account list (without credentials)
+   * @returns {Array} Account list (without credentials)
    */
-  async listAccounts() {
+  listAccounts() {
     const accounts = [];
 
     for (const [platform, account] of this.accounts.entries()) {
@@ -168,7 +167,7 @@ export class AccountManager {
    * Remove account
    * @param {string} platform - Platform name
    */
-  async removeAccount(platform) {
+  removeAccount(platform) {
     if (this.accounts.delete(platform)) {
       this.log('Account removed', { platform });
       return true;
@@ -181,7 +180,7 @@ export class AccountManager {
    * @param {string} platform - Platform name
    * @param {string} reason - Reason for disabling
    */
-  async disableAccount(platform, reason = '') {
+  disableAccount(platform, reason = '') {
     const account = this.accounts.get(platform);
 
     if (account) {
@@ -196,7 +195,7 @@ export class AccountManager {
    * Enable account
    * @param {string} platform - Platform name
    */
-  async enableAccount(platform) {
+  enableAccount(platform) {
     const account = this.accounts.get(platform);
 
     if (account) {

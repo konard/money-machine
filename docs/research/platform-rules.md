@@ -14,9 +14,11 @@ This document serves as a reference for major platform rules that the money-mach
 ## Major Platforms
 
 ### GitHub
+
 **URL**: https://docs.github.com/en/site-policy/github-terms/github-terms-of-service
 
 **Key Rules**:
+
 - Bots must identify themselves in user agent strings
 - Must not abuse API rate limits (5000 requests/hour for authenticated)
 - Must not create accounts via automated means without permission
@@ -24,19 +26,23 @@ This document serves as a reference for major platform rules that the money-mach
 - Bug bounty hunting allowed only on authorized programs
 
 **Rate Limits**:
+
 - REST API: 5,000 requests/hour (authenticated)
 - GraphQL API: 5,000 points/hour
 - Search API: 30 requests/minute
 
 **Best Practices for Bots**:
+
 - Use `User-Agent: money-machine-bot (github.com/username/money-machine)`
 - Implement exponential backoff for rate limit errors
 - Cache responses when possible
 
 ### Fiverr
+
 **URL**: https://www.fiverr.com/terms_of_service
 
 **Key Rules**:
+
 - One account per person
 - Must deliver services as described
 - No automation of communication (must respond personally)
@@ -45,14 +51,17 @@ This document serves as a reference for major platform rules that the money-mach
 - Gig fulfillment can be automated if quality maintained
 
 **Automation Considerations**:
+
 - Can automate: service delivery, file processing, analysis
 - Cannot automate: customer communication, account creation
 - Must monitor for disputes and respond personally
 
 ### Upwork
+
 **URL**: https://www.upwork.com/legal
 
 **Key Rules**:
+
 - Freelancers must be real individuals
 - Must personally perform work or clearly indicate subcontracting
 - All communication must be genuine
@@ -60,14 +69,17 @@ This document serves as a reference for major platform rules that the money-mach
 - Can use tools to perform work
 
 **Automation Considerations**:
+
 - Can automate: actual work delivery, reporting
 - Cannot automate: proposals, client communication
 - Hybrid approach: human oversight + automated execution
 
 ### YouTube
+
 **URL**: https://www.youtube.com/t/terms
 
 **Key Rules**:
+
 - Must own rights to all content
 - No misleading metadata
 - Must follow Community Guidelines
@@ -75,21 +87,25 @@ This document serves as a reference for major platform rules that the money-mach
 - Must disclose paid promotions
 
 **Content Requirements**:
+
 - No spam, scams, or deceptive practices
 - Must add value (not just automated compilations)
 - Follow copyright law strictly
 - Monetization requires: 1000 subscribers + 4000 watch hours
 
 **Automation Best Practices**:
+
 - Use royalty-free content or create original
 - Quality over quantity
 - Clear attribution for sources
 - Genuine commentary/transformation
 
 ### Medium
+
 **URL**: https://policy.medium.com/medium-terms-of-service-9db0094a1e0f
 
 **Key Rules**:
+
 - No spam or manipulation
 - Must be original or properly attributed content
 - No automated posting for spam
@@ -97,15 +113,18 @@ This document serves as a reference for major platform rules that the money-mach
 - Can use AI but must disclose
 
 **Automation Considerations**:
+
 - AI-generated content allowed with disclosure
 - Must provide unique value
 - No bulk automated posting
 - Quality standards for monetization
 
 ### Twitter/X
+
 **URL**: https://twitter.com/en/tos
 
 **Key Rules**:
+
 - Must identify bots
 - No aggressive automation
 - Rate limits strictly enforced
@@ -113,19 +132,23 @@ This document serves as a reference for major platform rules that the money-mach
 - API usage must follow developer terms
 
 **Rate Limits (Free Tier)**:
+
 - Very limited for free accounts
 - Paid API required for meaningful automation
 
 **Automation Best Practices**:
+
 - Use official API only
 - Clearly mark bot accounts
 - Don't auto-follow, auto-DM, or spam
 - Provide genuine value in automated posts
 
 ### Reddit
+
 **URL**: https://www.redditinc.com/policies/user-agreement
 
 **Key Rules**:
+
 - Bots must be approved by subreddit moderators
 - Must follow reddiquette
 - No spam or manipulation
@@ -133,15 +156,18 @@ This document serves as a reference for major platform rules that the money-mach
 - Must respect subreddit-specific rules
 
 **API Rules**:
+
 - Must include descriptive user agent
 - Rate limit: 60 requests per minute
 - Must handle errors gracefully
 - Cache aggressively
 
 ### Amazon Associates (Affiliate)
+
 **URL**: https://affiliate-program.amazon.com/help/operating/agreement
 
 **Key Rules**:
+
 - Must clearly disclose affiliate relationship
 - No misleading practices
 - Links must be in appropriate context
@@ -149,36 +175,43 @@ This document serves as a reference for major platform rules that the money-mach
 - Must maintain website/app with content
 
 **Compliance Requirements**:
+
 - Disclosure statement on every page with links
 - Links must be contextually relevant
 - No automated bulk posting
 - Quality content required
 
 ### PayPal
+
 **URL**: https://www.paypal.com/us/legalhub/useragreement-full
 
 **Key Rules**:
+
 - Acceptable Use Policy strictly enforced
 - No selling of services violating laws
 - Must maintain accurate business information
 - Chargebacks can freeze accounts
 
 **Best Practices**:
+
 - Deliver services promptly
 - Maintain clear documentation
 - Respond to disputes quickly
 - Build transaction history gradually
 
 ### Stripe
+
 **URL**: https://stripe.com/legal/ssa
 
 **Key Rules**:
+
 - Must follow Acceptable Use Policy
 - Clear service descriptions required
 - No prohibited businesses
 - Must handle refunds appropriately
 
 **Risk Management**:
+
 - Start with smaller transactions
 - Build history gradually
 - Maintain detailed records
@@ -187,14 +220,18 @@ This document serves as a reference for major platform rules that the money-mach
 ## Email Service Providers
 
 ### Gmail
+
 **Key Rules**:
+
 - Follow CAN-SPAM Act
 - No mass automated sending without consent
 - Can use for automated transactional emails
 - Bulk sending requires proper infrastructure
 
 ### SendGrid/Mailgun (Free Tiers)
+
 **Key Rules**:
+
 - Must verify domain
 - Follow anti-spam policies
 - Maintain low bounce rates
@@ -203,7 +240,9 @@ This document serves as a reference for major platform rules that the money-mach
 ## Legal Frameworks
 
 ### CAN-SPAM Act (US)
+
 **Requirements**:
+
 - Accurate "From" information
 - Clear subject lines
 - Identify message as ad
@@ -212,7 +251,9 @@ This document serves as a reference for major platform rules that the money-mach
 - Monitor what others do on your behalf
 
 ### GDPR (EU)
+
 **Requirements**:
+
 - Lawful basis for processing data
 - Right to access, correct, delete data
 - Data minimization
@@ -220,6 +261,7 @@ This document serves as a reference for major platform rules that the money-mach
 - Privacy by design
 
 ### General Compliance
+
 - No services requiring licenses (financial advice, legal services)
 - Tax obligations apply (report income)
 - Consumer protection laws apply
@@ -257,6 +299,7 @@ const PLATFORM_LIMITS = {
 ## Monitoring and Compliance
 
 The money-machine should:
+
 1. Log all platform interactions
 2. Track rate limit usage
 3. Monitor for ToS violations
@@ -266,6 +309,7 @@ The money-machine should:
 ## Updates Required
 
 This document should be reviewed and updated:
+
 - Monthly: Check for ToS updates
 - When adding new platforms
 - After any platform changes

@@ -67,15 +67,15 @@ describe('Money Machine', () => {
 
       assert.strictEqual(
         await rateLimiter.acquireToken('limited-platform'),
-        true,
+        true
       );
       assert.strictEqual(
         await rateLimiter.acquireToken('limited-platform'),
-        true,
+        true
       );
       assert.strictEqual(
         await rateLimiter.acquireToken('limited-platform'),
-        false,
+        false
       );
     });
   });
@@ -116,18 +116,18 @@ describe('Money Machine', () => {
       const compliance = new ComplianceEngine(
         { strictMode: false },
         logger,
-        rateLimiter,
+        rateLimiter
       );
 
       const result1 = await compliance.checkAction(
         { type: 'api-call' },
-        { platform: 'test' },
+        { platform: 'test' }
       );
       assert.strictEqual(result1.passed, true);
 
       const result2 = await compliance.checkAction(
         { type: 'api-call' },
-        { platform: 'test' },
+        { platform: 'test' }
       );
       assert.strictEqual(result2.passed, false);
     });

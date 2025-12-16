@@ -52,7 +52,7 @@ export class DemoResearchStrategy extends StrategyModule {
           type: 'research',
           description: 'Analyze public data for insights',
         },
-        { platform: 'general' },
+        { platform: 'general' }
       );
 
       // Simulate finding research opportunities

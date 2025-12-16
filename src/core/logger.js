@@ -65,7 +65,7 @@ export class Logger {
 
     console.log(
       `${prefix} ${entry.timestamp} ${message}`,
-      Object.keys(context).length > 0 ? context : '',
+      Object.keys(context).length > 0 ? context : ''
     );
   }
 

@@ -44,7 +44,7 @@ export class ComplianceEngine {
   constructor(
     config?: ComplianceConfig,
     logger?: Logger,
-    rateLimiter?: RateLimiter,
+    rateLimiter?: RateLimiter
   );
   checkAction(action: Action, context?: any): Promise<ComplianceResult>;
   logAction(action: Action, result: any, context?: any): Promise<void>;
@@ -68,7 +68,7 @@ export class StrategyManager {
   constructor(
     config?: any,
     logger?: Logger,
-    complianceEngine?: ComplianceEngine,
+    complianceEngine?: ComplianceEngine
   );
   loadStrategy(strategyModule: StrategyModule): Promise<string>;
   executeStrategy(strategyId: string, context?: any): Promise<StrategyResult>;
@@ -103,7 +103,7 @@ export abstract class StrategyModule {
 }
 
 export function createMoneyMachine(
-  config?: MoneyMachineConfig,
+  config?: MoneyMachineConfig
 ): Promise<MoneyMachine>;
 
 // Type Definitions

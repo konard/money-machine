@@ -26,13 +26,13 @@ export class MoneyMachine {
     this.complianceEngine = new ComplianceEngine(
       { strictMode: this.config.strictCompliance },
       this.logger,
-      this.rateLimiter,
+      this.rateLimiter
     );
     this.accountManager = new AccountManager({}, this.logger);
     this.strategyManager = new StrategyManager(
       {},
       this.logger,
-      this.complianceEngine,
+      this.complianceEngine
     );
     this.scheduler = new Scheduler({}, this.logger);
 
@@ -110,7 +110,7 @@ export class MoneyMachine {
     for (const required of requiredAccounts) {
       if (!availablePlatforms.includes(required)) {
         throw new Error(
-          `Strategy ${strategy.name} requires account for ${required}`,
+          `Strategy ${strategy.name} requires account for ${required}`
         );
       }
     }
@@ -158,7 +158,7 @@ export class MoneyMachine {
             });
           },
         },
-        { intervalMs: 60000 },
+        { intervalMs: 60000 }
       );
     }
   }
@@ -217,7 +217,7 @@ export class MoneyMachine {
   ensureInitialized() {
     if (!this.initialized) {
       throw new Error(
-        'Money machine not initialized. Call initialize() first.',
+        'Money machine not initialized. Call initialize() first.'
       );
     }
   }

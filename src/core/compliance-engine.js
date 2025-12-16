@@ -77,7 +77,7 @@ export class ComplianceEngine {
     if (context.platform && this.rateLimiter) {
       const rateLimitCheck = await this.checkRateLimit(
         context.platform,
-        action.type,
+        action.type
       );
       checks.push(rateLimitCheck);
     }
@@ -156,7 +156,7 @@ export class ComplianceEngine {
     if (rules.noAutomatedCommunication && action.type === 'send-message') {
       if (!action.personalResponse) {
         violations.push(
-          `${platform} requires personal communication, not automated`,
+          `${platform} requires personal communication, not automated`
         );
       }
     }
@@ -190,7 +190,7 @@ export class ComplianceEngine {
 
     const canProceed = await this.rateLimiter.acquireToken(
       platform,
-      actionType,
+      actionType
     );
 
     if (!canProceed) {
@@ -230,7 +230,9 @@ export class ComplianceEngine {
     const violations = [];
 
     if (this.requiresDisclosure(action) && !action.hasDisclosure) {
-      violations.push('Required disclosure missing for affiliate/sponsored content');
+      violations.push(
+        'Required disclosure missing for affiliate/sponsored content'
+      );
     }
 
     return {

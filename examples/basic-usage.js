@@ -42,8 +42,12 @@ async function main() {
   // 5. Get earnings report (will be $0 for demo)
   console.log('5. Earnings Report:');
   const report = await machine.getEarningsReport();
-  console.log('   - Total Earnings: $' + report.totalEarnings.toFixed(2));
-  console.log('   - Strategies:', Object.keys(report.byStrategy).join(', '), '\n');
+  console.log(`   - Total Earnings: $${report.totalEarnings.toFixed(2)}`);
+  console.log(
+    '   - Strategies:',
+    Object.keys(report.byStrategy).join(', '),
+    '\n'
+  );
 
   // 6. Show compliance status
   console.log('6. Compliance Status:');
@@ -57,7 +61,9 @@ async function main() {
   console.log('- Add real strategy modules in src/strategies/');
   console.log('- Configure accounts for platforms');
   console.log('- Start the machine with machine.start()');
-  console.log('- Monitor with machine.getStatus() and machine.getEarningsReport()');
+  console.log(
+    '- Monitor with machine.getStatus() and machine.getEarningsReport()'
+  );
 }
 
 main().catch((error) => {

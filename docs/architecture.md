@@ -15,15 +15,18 @@ This document describes the technical architecture of the money-machine system d
 ## Technology Stack
 
 ### Runtime
+
 - **Bun.sh**: Primary runtime for performance and low resource usage
 - **Node.js**: Fallback compatibility
 
 ### Key Libraries
+
 - Minimal dependencies to reduce resource usage
 - Native Bun APIs where possible
 - Standard fetch API for HTTP requests
 
 ### Storage
+
 - **SQLite**: Lightweight database for configuration and state
 - **JSON files**: For configuration backups
 - **No cloud dependencies**: Everything runs locally
@@ -67,9 +70,11 @@ This document describes the technical architecture of the money-machine system d
 ## Core Components
 
 ### 1. Strategy Manager
+
 **Responsibility**: Coordinate multiple money-making strategies
 
 **Features**:
+
 - Load and initialize strategy modules
 - Schedule strategy execution
 - Monitor strategy performance
@@ -77,6 +82,7 @@ This document describes the technical architecture of the money-machine system d
 - Pause/resume strategies based on conditions
 
 **API**:
+
 ```javascript
 class StrategyManager {
   async loadStrategy(strategyModule);
@@ -88,9 +94,11 @@ class StrategyManager {
 ```
 
 ### 2. Compliance Engine
+
 **Responsibility**: Ensure all actions comply with laws and platform rules
 
 **Features**:
+
 - Pre-action compliance checks
 - Platform ToS validation
 - Rate limit enforcement
@@ -99,6 +107,7 @@ class StrategyManager {
 - Audit logging
 
 **API**:
+
 ```javascript
 class ComplianceEngine {
   async checkAction(action, context);
@@ -110,9 +119,11 @@ class ComplianceEngine {
 ```
 
 ### 3. Account Manager
+
 **Responsibility**: Manage accounts across platforms
 
 **Features**:
+
 - Secure credential storage
 - Email-based account management
 - Session management
@@ -120,6 +131,7 @@ class ComplianceEngine {
 - Account health monitoring
 
 **API**:
+
 ```javascript
 class AccountManager {
   async addAccount(platform, credentials);
@@ -131,9 +143,11 @@ class AccountManager {
 ```
 
 ### 4. Rate Limiter
+
 **Responsibility**: Prevent exceeding platform rate limits
 
 **Features**:
+
 - Per-platform rate tracking
 - Global rate limiting
 - Token bucket algorithm
@@ -141,6 +155,7 @@ class AccountManager {
 - Request queuing
 
 **API**:
+
 ```javascript
 class RateLimiter {
   async acquireToken(platform, actionType);
@@ -151,9 +166,11 @@ class RateLimiter {
 ```
 
 ### 5. Logger
+
 **Responsibility**: Comprehensive activity logging
 
 **Features**:
+
 - Structured logging
 - Multiple log levels
 - Audit trail
@@ -161,6 +178,7 @@ class RateLimiter {
 - Error tracking
 
 **API**:
+
 ```javascript
 class Logger {
   info(message, context);
@@ -172,9 +190,11 @@ class Logger {
 ```
 
 ### 6. Scheduler
+
 **Responsibility**: Schedule and execute tasks
 
 **Features**:
+
 - Cron-like scheduling
 - Priority queuing
 - Retry logic
@@ -182,6 +202,7 @@ class Logger {
 - Timezone handling
 
 **API**:
+
 ```javascript
 class Scheduler {
   scheduleTask(task, schedule);
@@ -198,11 +219,21 @@ All strategy modules must implement this interface:
 ```javascript
 class StrategyModule {
   // Metadata
-  get name() { return 'strategy-name'; }
-  get description() { return 'What this strategy does'; }
-  get requiredAccounts() { return ['platform1', 'platform2']; }
-  get estimatedTimeToFirstDollar() { return 'days to months'; }
-  get automationLevel() { return 0.95; } // 0-1 scale
+  get name() {
+    return 'strategy-name';
+  }
+  get description() {
+    return 'What this strategy does';
+  }
+  get requiredAccounts() {
+    return ['platform1', 'platform2'];
+  }
+  get estimatedTimeToFirstDollar() {
+    return 'days to months';
+  }
+  get automationLevel() {
+    return 0.95;
+  } // 0-1 scale
 
   // Lifecycle
   async initialize(config) {
@@ -237,6 +268,7 @@ class StrategyModule {
 ## Data Models
 
 ### Configuration
+
 ```javascript
 {
   user: {
@@ -266,6 +298,7 @@ class StrategyModule {
 ```
 
 ### Activity Log
+
 ```javascript
 {
   id: 'unique-id',
@@ -282,6 +315,7 @@ class StrategyModule {
 ```
 
 ### Strategy State
+
 ```javascript
 {
   strategyId: 'strategy-name',
@@ -299,6 +333,7 @@ class StrategyModule {
 ## Implementation Phases
 
 ### Phase 1: Foundation (MVP)
+
 1. Core framework
 2. Compliance engine
 3. Account manager
@@ -306,6 +341,7 @@ class StrategyModule {
 5. One simple strategy (micro-tasks)
 
 ### Phase 2: Growth
+
 1. Additional strategies (3-5 total)
 2. Advanced scheduling
 3. Performance optimization
@@ -313,6 +349,7 @@ class StrategyModule {
 5. Web dashboard
 
 ### Phase 3: Scale
+
 1. Multi-user support
 2. Strategy marketplace
 3. Advanced analytics
@@ -322,18 +359,21 @@ class StrategyModule {
 ## Security Considerations
 
 ### Credential Storage
+
 - Encrypt all credentials at rest
 - Use environment variables for sensitive config
 - No credentials in logs
 - Secure credential rotation
 
 ### API Keys
+
 - Never commit API keys
 - Use `.env` files (gitignored)
 - Rotate keys regularly
 - Monitor for unauthorized use
 
 ### Data Protection
+
 - Minimal data collection
 - Encrypt sensitive data
 - Regular security audits
@@ -342,23 +382,27 @@ class StrategyModule {
 ## Resource Management
 
 ### CPU Usage
+
 - Rate limiting prevents CPU spikes
 - Async operations throughout
 - Efficient scheduling
 
 ### Memory
+
 - Stream large data
 - Clean up resources
 - Monitor memory usage
 - Kill strategies if memory threshold exceeded
 
 ### Network
+
 - Connection pooling
 - Request batching
 - Respect rate limits
 - Retry with exponential backoff
 
 ### Disk
+
 - Log rotation
 - Database cleanup
 - Archive old data
@@ -367,6 +411,7 @@ class StrategyModule {
 ## Monitoring and Observability
 
 ### Key Metrics
+
 - Total earnings by strategy
 - Actions per strategy per day
 - Success rate by strategy
@@ -375,6 +420,7 @@ class StrategyModule {
 - Compliance violations (should be 0)
 
 ### Alerts
+
 - Strategy failures
 - Compliance violations
 - Rate limit warnings
@@ -382,6 +428,7 @@ class StrategyModule {
 - Resource exhaustion
 
 ### Dashboards
+
 - Real-time earnings
 - Strategy performance
 - System health
@@ -390,6 +437,7 @@ class StrategyModule {
 ## Error Handling
 
 ### Error Categories
+
 1. **Transient**: Retry with backoff
 2. **Rate Limit**: Queue and retry after reset
 3. **Auth**: Refresh credentials
@@ -397,6 +445,7 @@ class StrategyModule {
 5. **Fatal**: Shutdown strategy
 
 ### Recovery Strategies
+
 - Automatic retry (transient errors)
 - Circuit breaker pattern
 - Graceful degradation
@@ -405,6 +454,7 @@ class StrategyModule {
 ## Configuration
 
 ### Environment Variables
+
 ```bash
 MONEY_MACHINE_ENV=production
 MONEY_MACHINE_LOG_LEVEL=info
@@ -413,6 +463,7 @@ MONEY_MACHINE_MAX_CONCURRENT=3
 ```
 
 ### Config File
+
 ```json
 {
   "strategies": {
@@ -433,21 +484,25 @@ MONEY_MACHINE_MAX_CONCURRENT=3
 ## Testing Strategy
 
 ### Unit Tests
+
 - Each component in isolation
 - Mock external dependencies
 - 80%+ code coverage
 
 ### Integration Tests
+
 - Component interactions
 - Database operations
 - API calls (with test accounts)
 
 ### Compliance Tests
+
 - Verify all rules enforced
 - Test rate limiting
 - Validate audit logs
 
 ### End-to-End Tests
+
 - Full strategy execution
 - Multi-strategy coordination
 - Error scenarios
@@ -455,18 +510,21 @@ MONEY_MACHINE_MAX_CONCURRENT=3
 ## Deployment
 
 ### Local Development
+
 ```bash
 bun install
 bun run dev
 ```
 
 ### Production
+
 ```bash
 bun install --production
 bun run start
 ```
 
 ### As Service
+
 ```bash
 # systemd, docker, or process manager
 pm2 start money-machine.js --interpreter bun

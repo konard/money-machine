@@ -39,8 +39,7 @@ export class RateLimiter {
    */
   getPlatformState(platform) {
     if (!this.platforms.has(platform)) {
-      const limits =
-        this.platformLimits[platform] || { ...this.defaultLimits };
+      const limits = this.platformLimits[platform] || { ...this.defaultLimits };
 
       this.platforms.set(platform, {
         limits,
@@ -70,11 +69,11 @@ export class RateLimiter {
     const minutesSince = (now - state.lastRefill.minute) / 60000;
     if (minutesSince >= 1) {
       const refillAmount = Math.floor(
-        minutesSince * state.limits.requestsPerMinute,
+        minutesSince * state.limits.requestsPerMinute
       );
       state.tokens.minute = Math.min(
         state.limits.requestsPerMinute,
-        state.tokens.minute + refillAmount,
+        state.tokens.minute + refillAmount
       );
       state.lastRefill.minute = now;
     }
@@ -83,11 +82,11 @@ export class RateLimiter {
     const hoursSince = (now - state.lastRefill.hour) / 3600000;
     if (hoursSince >= 1) {
       const refillAmount = Math.floor(
-        hoursSince * state.limits.requestsPerHour,
+        hoursSince * state.limits.requestsPerHour
       );
       state.tokens.hour = Math.min(
         state.limits.requestsPerHour,
-        state.tokens.hour + refillAmount,
+        state.tokens.hour + refillAmount
       );
       state.lastRefill.hour = now;
     }
@@ -98,7 +97,7 @@ export class RateLimiter {
       const burstRefill = minutesSince * burstRefillRate;
       state.tokens.burst = Math.min(
         state.limits.burstLimit,
-        state.tokens.burst + burstRefill,
+        state.tokens.burst + burstRefill
       );
     }
   }
@@ -152,15 +151,15 @@ export class RateLimiter {
 
     state.tokens.minute = Math.min(
       state.limits.requestsPerMinute,
-      state.tokens.minute + 1,
+      state.tokens.minute + 1
     );
     state.tokens.hour = Math.min(
       state.limits.requestsPerHour,
-      state.tokens.hour + 1,
+      state.tokens.hour + 1
     );
     state.tokens.burst = Math.min(
       state.limits.burstLimit,
-      state.tokens.burst + 1,
+      state.tokens.burst + 1
     );
 
     this.log('Token released', { platform, actionType });
@@ -190,10 +189,10 @@ export class RateLimiter {
       minute: new Date(state.lastRefill.minute + 60000),
       hour: new Date(state.lastRefill.hour + 3600000),
       minutesUntilMinuteReset: Math.ceil(
-        (state.lastRefill.minute + 60000 - now) / 60000,
+        (state.lastRefill.minute + 60000 - now) / 60000
       ),
       minutesUntilHourReset: Math.ceil(
-        (state.lastRefill.hour + 3600000 - now) / 60000,
+        (state.lastRefill.hour + 3600000 - now) / 60000
       ),
     };
   }
