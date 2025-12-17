@@ -58,7 +58,10 @@ async function main() {
   console.log('Demo completed successfully!');
   console.log('\nNext Steps:');
   console.log('- Review docs/research/ for implementation strategies');
-  console.log('- Add real strategy modules in src/strategies/');
+  console.log('- Try the GitHub Sponsors strategy with:');
+  console.log(
+    '    GITHUB_TOKEN=your_token node experiments/test-github-sponsors.js username'
+  );
   console.log('- Configure accounts for platforms');
   console.log('- Start the machine with machine.start()');
   console.log(
