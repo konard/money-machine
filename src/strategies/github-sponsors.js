@@ -115,6 +115,25 @@ query($login: String!) {
 }
 `;
 
+/**
+ * Safely get environment variable (Deno-compatible)
+ * @param {string} name - Environment variable name
+ * @returns {string|undefined} The value or undefined
+ */
+function safeGetEnv(name) {
+  try {
+    // Check if we're in Deno
+    if (typeof Deno !== 'undefined' && Deno.env) {
+      return Deno.env.get(name);
+    }
+    // Node.js / Bun
+    return process.env[name];
+  } catch {
+    // Permission denied or not available
+    return undefined;
+  }
+}
+
 export class GitHubSponsorsStrategy extends StrategyModule {
   get name() {
     return 'github-sponsors';
@@ -144,8 +163,8 @@ export class GitHubSponsorsStrategy extends StrategyModule {
     this.logger = context.logger;
     this.complianceEngine = context.complianceEngine;
     this.config = {
-      githubToken: context.config?.githubToken || process.env.GITHUB_TOKEN,
-      login: context.config?.login || process.env.GITHUB_REPOSITORY_OWNER,
+      githubToken: context.config?.githubToken || safeGetEnv('GITHUB_TOKEN'),
+      login: context.config?.login || safeGetEnv('GITHUB_REPOSITORY_OWNER'),
       isOrganization: context.config?.isOrganization || false,
       apiUrl: context.config?.apiUrl || 'https://api.github.com/graphql',
       ...context.config,
@@ -354,7 +373,7 @@ export class GitHubSponsorsStrategy extends StrategyModule {
     const errors = [];
 
     // Check for token
-    const token = context?.config?.githubToken || process.env.GITHUB_TOKEN;
+    const token = context?.config?.githubToken || safeGetEnv('GITHUB_TOKEN');
     if (!token) {
       errors.push(
         'GITHUB_TOKEN environment variable or config.githubToken is required'
@@ -362,7 +381,8 @@ export class GitHubSponsorsStrategy extends StrategyModule {
     }
 
     // Check for login
-    const login = context?.config?.login || process.env.GITHUB_REPOSITORY_OWNER;
+    const login =
+      context?.config?.login || safeGetEnv('GITHUB_REPOSITORY_OWNER');
     if (!login) {
       errors.push(
         'GitHub login required via config.login or GITHUB_REPOSITORY_OWNER environment variable'

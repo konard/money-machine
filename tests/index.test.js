@@ -239,26 +239,18 @@ describe('Money Machine', () => {
     it('should validate missing token', () => {
       const strategy = new GitHubSponsorsStrategy();
 
-      // Clear environment variables for test
-      const originalToken = process.env.GITHUB_TOKEN;
-      const originalOwner = process.env.GITHUB_REPOSITORY_OWNER;
-      delete process.env.GITHUB_TOKEN;
-      delete process.env.GITHUB_REPOSITORY_OWNER;
+      // Test validation with empty config (no token or login provided)
+      // The strategy uses safeGetEnv which won't throw in Deno even without permission
+      const result = strategy.validate({
+        config: {
+          githubToken: null,
+          login: null,
+        },
+      });
 
-      try {
-        const result = strategy.validate({});
-        assert.strictEqual(result.valid, false);
-        assert.ok(result.errors.length > 0);
-        assert.ok(result.errors.some((e) => e.includes('GITHUB_TOKEN')));
-      } finally {
-        // Restore environment variables
-        if (originalToken) {
-          process.env.GITHUB_TOKEN = originalToken;
-        }
-        if (originalOwner) {
-          process.env.GITHUB_REPOSITORY_OWNER = originalOwner;
-        }
-      }
+      assert.strictEqual(result.valid, false);
+      assert.ok(result.errors.length > 0);
+      assert.ok(result.errors.some((e) => e.includes('GITHUB_TOKEN')));
     });
 
     it('should validate with config', () => {
