@@ -13,8 +13,9 @@ export { RateLimiter } from './core/rate-limiter.js';
 export { Logger } from './core/logger.js';
 export { Scheduler } from './core/scheduler.js';
 
-// Re-export strategy base class
+// Re-export strategy base class and strategies
 export { StrategyModule } from './strategies/base.js';
+export { GitHubSponsorsStrategy } from './strategies/github-sponsors.js';
 
 /**
  * Quick start helper

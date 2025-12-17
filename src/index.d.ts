@@ -102,6 +102,20 @@ export abstract class StrategyModule {
   getMetrics(): Promise<StrategyMetrics>;
 }
 
+export class GitHubSponsorsStrategy extends StrategyModule {
+  constructor(config?: GitHubSponsorsConfig);
+  readonly name: 'github-sponsors';
+  readonly description: string;
+  readonly requiredAccounts: string[];
+  readonly estimatedTimeToFirstDollar: string;
+  readonly automationLevel: number;
+  initialize(context: StrategyContext): void;
+  execute(context: StrategyContext): Promise<GitHubSponsorsResult>;
+  validate(context: StrategyContext): ValidationResult;
+  shutdown(): void;
+  getStatus(): GitHubSponsorsStatus;
+}
+
 export function createMoneyMachine(
   config?: MoneyMachineConfig
 ): Promise<MoneyMachine>;
@@ -265,4 +279,50 @@ export interface EarningsReport {
   totalEarnings: number;
   byStrategy: Record<string, StrategyMetrics>;
   generatedAt: string;
+}
+
+// GitHub Sponsors Strategy Types
+
+export interface GitHubSponsorsConfig {
+  githubToken?: string;
+  login?: string;
+  isOrganization?: boolean;
+  apiUrl?: string;
+}
+
+export interface GitHubSponsorsResult {
+  success: boolean;
+  earnings?: number;
+  earningsCents?: number;
+  currency?: string;
+  sponsorCount?: number;
+  activeSponsorships?: number;
+  hasSponsorsListing?: boolean;
+  recurringMonthlyIncome?: number;
+  goal?: SponsorsGoal | null;
+  timestamp?: string;
+  message?: string;
+  verificationData?: {
+    login: string;
+    apiResponse: any;
+    fetchedAt: string;
+  };
+  error?: string;
+  errorCode?: string;
+  hint?: string;
+}
+
+export interface SponsorsGoal {
+  title: string;
+  percentComplete: number;
+  targetValue: number;
+}
+
+export interface GitHubSponsorsStatus extends StrategyStatus {
+  lastFetchedData: any;
+  config: {
+    login?: string;
+    isOrganization?: boolean;
+    hasToken: boolean;
+  };
 }
