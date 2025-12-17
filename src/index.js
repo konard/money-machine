@@ -1,28 +1,29 @@
 /**
- * Example module entry point
- * Replace this with your actual implementation
+ * Money-Machine: A legal, automated system for generating income with zero capital
+ *
+ * This system coordinates multiple money-making strategies while ensuring
+ * full compliance with laws and platform rules.
  */
 
-/**
- * Example function that adds two numbers
- * @param {number} a - First number
- * @param {number} b - Second number
- * @returns {number} Sum of a and b
- */
-export const add = (a, b) => a + b;
+export { MoneyMachine } from './core/money-machine.js';
+export { ComplianceEngine } from './core/compliance-engine.js';
+export { AccountManager } from './core/account-manager.js';
+export { StrategyManager } from './core/strategy-manager.js';
+export { RateLimiter } from './core/rate-limiter.js';
+export { Logger } from './core/logger.js';
+export { Scheduler } from './core/scheduler.js';
+
+// Re-export strategy base class
+export { StrategyModule } from './strategies/base.js';
 
 /**
- * Example function that multiplies two numbers
- * @param {number} a - First number
- * @param {number} b - Second number
- * @returns {number} Product of a and b
+ * Quick start helper
+ * @param {object} config - Configuration object
+ * @returns {Promise<MoneyMachine>} Initialized money machine instance
  */
-export const multiply = (a, b) => a * b;
-
-/**
- * Example async function
- * @param {number} ms - Milliseconds to wait
- * @returns {Promise<void>}
- */
-export const delay = (ms) =>
-  new Promise((resolve) => globalThis.setTimeout(resolve, ms));
+export async function createMoneyMachine(config = {}) {
+  const { MoneyMachine } = await import('./core/money-machine.js');
+  const machine = new MoneyMachine(config);
+  await machine.initialize();
+  return machine;
+}
