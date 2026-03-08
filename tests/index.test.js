@@ -6,6 +6,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import { createMoneyMachine } from '../src/index.js';
 import { DemoResearchStrategy } from '../src/strategies/demo-research.js';
+import { GitHubSponsorsStrategy } from '../src/strategies/github-sponsors.js';
 import { Logger } from '../src/core/logger.js';
 import { RateLimiter } from '../src/core/rate-limiter.js';
 import { ComplianceEngine } from '../src/core/compliance-engine.js';
@@ -198,6 +199,181 @@ describe('Money Machine', () => {
       const report = await machine.getEarningsReport();
       assert.strictEqual(typeof report.totalEarnings, 'number');
       assert.ok(report.byStrategy);
+    });
+  });
+
+  describe('GitHub Sponsors Strategy', () => {
+    it('should create strategy instance with correct properties', () => {
+      const strategy = new GitHubSponsorsStrategy();
+
+      assert.strictEqual(strategy.name, 'github-sponsors');
+      assert.strictEqual(typeof strategy.description, 'string');
+      assert.ok(strategy.description.length > 0);
+      assert.ok(Array.isArray(strategy.requiredAccounts));
+      assert.strictEqual(strategy.requiredAccounts.length, 0);
+      assert.strictEqual(typeof strategy.automationLevel, 'number');
+      assert.ok(strategy.automationLevel >= 0 && strategy.automationLevel <= 1);
+    });
+
+    it('should initialize with context', () => {
+      const logger = new Logger({ level: 'error' });
+      const rateLimiter = new RateLimiter();
+      const complianceEngine = new ComplianceEngine({}, logger, rateLimiter);
+
+      const strategy = new GitHubSponsorsStrategy();
+      strategy.initialize({
+        logger,
+        complianceEngine,
+        config: {
+          githubToken: 'test-token',
+          login: 'test-user',
+        },
+      });
+
+      assert.strictEqual(strategy.status, 'ready');
+      const status = strategy.getStatus();
+      assert.strictEqual(status.config.login, 'test-user');
+      assert.strictEqual(status.config.hasToken, true);
+    });
+
+    it('should validate missing token', () => {
+      const strategy = new GitHubSponsorsStrategy();
+
+      // Test validation with empty config (no token or login provided)
+      // The strategy uses safeGetEnv which won't throw in Deno even without permission
+      const result = strategy.validate({
+        config: {
+          githubToken: null,
+          login: null,
+        },
+      });
+
+      assert.strictEqual(result.valid, false);
+      assert.ok(result.errors.length > 0);
+      assert.ok(result.errors.some((e) => e.includes('GITHUB_TOKEN')));
+    });
+
+    it('should validate with config', () => {
+      const strategy = new GitHubSponsorsStrategy();
+
+      const result = strategy.validate({
+        config: {
+          githubToken: 'test-token',
+          login: 'test-user',
+        },
+      });
+
+      assert.strictEqual(result.valid, true);
+      assert.strictEqual(result.errors.length, 0);
+    });
+
+    it('should return error when executed without token', async () => {
+      const logger = new Logger({ level: 'error' });
+      const rateLimiter = new RateLimiter();
+      const complianceEngine = new ComplianceEngine({}, logger, rateLimiter);
+
+      const strategy = new GitHubSponsorsStrategy();
+      strategy.initialize({
+        logger,
+        complianceEngine,
+        config: {
+          githubToken: null,
+          login: 'test-user',
+        },
+      });
+
+      const result = await strategy.execute({});
+      assert.strictEqual(result.success, false);
+      assert.ok(result.error);
+      assert.ok(result.error.includes('GITHUB_TOKEN'));
+    });
+
+    it('should shutdown cleanly', () => {
+      const logger = new Logger({ level: 'error' });
+      const strategy = new GitHubSponsorsStrategy();
+      strategy.initialize({
+        logger,
+        complianceEngine: new ComplianceEngine({}, logger),
+        config: {
+          githubToken: 'test-token',
+          login: 'test-user',
+        },
+      });
+
+      strategy.shutdown();
+      assert.strictEqual(strategy.status, 'stopped');
+      const status = strategy.getStatus();
+      assert.strictEqual(status.lastFetchedData, null);
+    });
+
+    it('should get metrics', () => {
+      const strategy = new GitHubSponsorsStrategy();
+
+      const metrics = strategy.getMetrics();
+      assert.strictEqual(typeof metrics.totalEarnings, 'number');
+      assert.strictEqual(typeof metrics.totalActions, 'number');
+      assert.strictEqual(typeof metrics.successRate, 'number');
+      assert.ok(Array.isArray(metrics.errors));
+    });
+
+    it('should provide a full-cycle execution guide', () => {
+      const guide = GitHubSponsorsStrategy.getExecutionGuide();
+
+      // Guide must exist and cover the full cycle
+      assert.ok(guide, 'Execution guide must be defined');
+      assert.strictEqual(
+        guide.fullCycle,
+        true,
+        'Strategy must cover full cycle'
+      );
+
+      // Must have ordered steps
+      assert.ok(Array.isArray(guide.steps), 'Steps must be an array');
+      assert.ok(guide.steps.length > 0, 'Must have at least one step');
+
+      // Every step must have required fields
+      for (const step of guide.steps) {
+        assert.ok(step.id, `Step must have an id`);
+        assert.ok(step.title, `Step ${step.id} must have a title`);
+        assert.ok(step.description, `Step ${step.id} must have a description`);
+        assert.ok(
+          step.type === 'manual' || step.type === 'automated',
+          `Step ${step.id} type must be 'manual' or 'automated'`
+        );
+        assert.ok(step.verification, `Step ${step.id} must have verification`);
+
+        // Manual steps must have a URL and action
+        if (step.type === 'manual') {
+          assert.ok(step.url, `Manual step ${step.id} must have a URL`);
+          assert.ok(step.action, `Manual step ${step.id} must have an action`);
+        }
+
+        // Automated steps must have a trigger
+        if (step.type === 'automated') {
+          assert.ok(
+            step.triggerCommand || step.triggerGitHubAction,
+            `Automated step ${step.id} must have a trigger`
+          );
+        }
+      }
+
+      // Must document payout path
+      assert.ok(guide.payoutPath, 'Must document payout path');
+      assert.ok(guide.payoutPath.platform, 'Payout path must specify platform');
+      assert.ok(
+        guide.payoutPath.minimumPayout,
+        'Payout path must specify minimum payout'
+      );
+      assert.ok(
+        guide.payoutPath.bankConnectionUrl,
+        'Payout path must include bank connection URL'
+      );
+
+      // Must list required secrets
+      assert.ok(
+        Array.isArray(guide.requiredSecrets),
+        'Must list required secrets'
+      );
     });
   });
 });
