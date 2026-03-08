@@ -143,6 +143,157 @@ export class GitHubSponsorsStrategy extends StrategyModule {
     return 'Track and report GitHub Sponsors income with verification';
   }
 
+  /**
+   * Full step-by-step execution guide covering the complete money cycle:
+   * setup → earn → receive money in a real bank account.
+   *
+   * Steps are ordered, atomic, and simple enough for anyone to follow.
+   * Each step is marked as 'manual' or 'automated'.
+   *
+   * @returns {object} Complete execution guide
+   */
+  static getExecutionGuide() {
+    return {
+      name: 'GitHub Sponsors Strategy',
+      fullCycle: true,
+      summary:
+        'Earn money by accepting sponsorships on GitHub. ' +
+        'Sponsors pay you monthly via credit card. ' +
+        'GitHub transfers funds to your bank account via Stripe.',
+      steps: [
+        {
+          id: 1,
+          title: 'Create a GitHub account (if you do not have one)',
+          description:
+            'Go to github.com and sign up for a free account. ' +
+            'You need this to enable GitHub Sponsors.',
+          type: 'manual',
+          url: 'https://github.com/signup',
+          action: 'Click "Sign up", fill in username, email, and password',
+          verification: 'You receive a confirmation email and can log in',
+          automationHint: 'Requires human identity verification (CAPTCHA)',
+        },
+        {
+          id: 2,
+          title: 'Enable GitHub Sponsors for your account',
+          description:
+            'Apply to join GitHub Sponsors. GitHub reviews your application ' +
+            'and approves it (usually within a few days).',
+          type: 'manual',
+          url: 'https://github.com/sponsors',
+          action:
+            'Click "Get sponsored", fill in your profile, ' +
+            'agree to the terms, and submit the application',
+          verification:
+            'You see "Your application is under review" on the sponsors page',
+          automationHint:
+            'Requires human identity verification and agreement to terms',
+        },
+        {
+          id: 3,
+          title: 'Connect a Stripe account for payouts',
+          description:
+            'GitHub uses Stripe to transfer your earnings to a bank account. ' +
+            'You connect Stripe during the GitHub Sponsors setup or from your ' +
+            'sponsors dashboard.',
+          type: 'manual',
+          url: 'https://github.com/sponsors/dashboard',
+          action:
+            'In the Sponsors dashboard, click "Connect with Stripe", ' +
+            'then follow the Stripe onboarding to enter your bank account details',
+          verification:
+            'Stripe dashboard shows your bank account as verified and connected',
+          automationHint:
+            'Requires human identity verification (Stripe KYC/AML checks)',
+        },
+        {
+          id: 4,
+          title: 'Create sponsor tiers',
+          description:
+            'Set up one or more monthly sponsorship tiers so sponsors know ' +
+            'what they get for each amount (e.g., $5/month, $25/month).',
+          type: 'manual',
+          url: 'https://github.com/sponsors/dashboard',
+          action:
+            'Click "Tiers", then "Add tier", set a price and description, ' +
+            'and click "Save tier"',
+          verification: 'Your sponsor profile shows at least one active tier',
+          automationHint:
+            'Could be automated via GitHub GraphQL API mutations, ' +
+            'but initial creation requires dashboard access for review',
+        },
+        {
+          id: 5,
+          title: 'Add the GITHUB_TOKEN secret to your repository',
+          description:
+            'The strategy needs a GitHub token with read:user scope to ' +
+            'fetch your sponsorship data via the API.',
+          type: 'manual',
+          url: 'https://github.com/settings/tokens',
+          action:
+            'Click "Generate new token (classic)", select "read:user" scope, ' +
+            'copy the token. Then go to your repository Settings → Secrets → Actions, ' +
+            'click "New repository secret", name it GITHUB_TOKEN_SPONSORS, paste the token',
+          verification:
+            'The secret appears in your repository Actions secrets list',
+          automationHint:
+            'Token generation requires human authorization for security reasons',
+        },
+        {
+          id: 6,
+          title: 'Run the GitHub Sponsors strategy to check your earnings',
+          description:
+            'Execute the strategy to fetch your current sponsorship data ' +
+            'and verify your monthly income.',
+          type: 'automated',
+          triggerCommand:
+            'GITHUB_TOKEN=your_token GITHUB_REPOSITORY_OWNER=your_login node experiments/test-github-sponsors.js your_login',
+          triggerGitHubAction:
+            'Go to Actions tab → "Execute Strategy" workflow → "Run workflow" button',
+          verification:
+            'Output shows your monthly income, sponsor count, and sponsorship tiers',
+          automationHint: 'Fully automated — runs on a schedule or on demand',
+        },
+        {
+          id: 7,
+          title: 'Receive your payout',
+          description:
+            'GitHub processes payouts monthly. ' +
+            'Funds are transferred to the bank account you connected in Step 3.',
+          type: 'manual',
+          url: 'https://github.com/sponsors/dashboard',
+          action:
+            'No action required — payouts happen automatically each month ' +
+            'once you have a positive balance above the minimum threshold ($100 USD). ' +
+            'Check your Stripe dashboard to confirm the transfer.',
+          verification: 'Your bank account shows a deposit from Stripe/GitHub',
+          automationHint:
+            'Payouts are processed automatically by GitHub and Stripe',
+        },
+      ],
+      payoutPath: {
+        platform: 'GitHub Sponsors via Stripe',
+        minimumPayout: '$100 USD',
+        payoutTime: 'Monthly (approximately 30 days after month end)',
+        bankConnectionUrl: 'https://github.com/sponsors/dashboard',
+        instructions:
+          'During GitHub Sponsors setup (Step 3), click "Connect with Stripe". ' +
+          'Follow Stripe onboarding to verify your identity and enter your bank account ' +
+          'routing number and account number. ' +
+          'Once approved, all sponsor payments flow through Stripe to your bank automatically.',
+      },
+      requiredSecrets: [
+        {
+          name: 'GITHUB_TOKEN',
+          description: 'GitHub personal access token with read:user scope',
+          howToObtain:
+            'https://github.com/settings/tokens → Generate new token (classic) → select read:user',
+          minimumPermissions: 'read:user',
+        },
+      ],
+    };
+  }
+
   get requiredAccounts() {
     return []; // Uses GITHUB_TOKEN from environment
   }

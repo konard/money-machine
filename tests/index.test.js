@@ -315,5 +315,65 @@ describe('Money Machine', () => {
       assert.strictEqual(typeof metrics.successRate, 'number');
       assert.ok(Array.isArray(metrics.errors));
     });
+
+    it('should provide a full-cycle execution guide', () => {
+      const guide = GitHubSponsorsStrategy.getExecutionGuide();
+
+      // Guide must exist and cover the full cycle
+      assert.ok(guide, 'Execution guide must be defined');
+      assert.strictEqual(
+        guide.fullCycle,
+        true,
+        'Strategy must cover full cycle'
+      );
+
+      // Must have ordered steps
+      assert.ok(Array.isArray(guide.steps), 'Steps must be an array');
+      assert.ok(guide.steps.length > 0, 'Must have at least one step');
+
+      // Every step must have required fields
+      for (const step of guide.steps) {
+        assert.ok(step.id, `Step must have an id`);
+        assert.ok(step.title, `Step ${step.id} must have a title`);
+        assert.ok(step.description, `Step ${step.id} must have a description`);
+        assert.ok(
+          step.type === 'manual' || step.type === 'automated',
+          `Step ${step.id} type must be 'manual' or 'automated'`
+        );
+        assert.ok(step.verification, `Step ${step.id} must have verification`);
+
+        // Manual steps must have a URL and action
+        if (step.type === 'manual') {
+          assert.ok(step.url, `Manual step ${step.id} must have a URL`);
+          assert.ok(step.action, `Manual step ${step.id} must have an action`);
+        }
+
+        // Automated steps must have a trigger
+        if (step.type === 'automated') {
+          assert.ok(
+            step.triggerCommand || step.triggerGitHubAction,
+            `Automated step ${step.id} must have a trigger`
+          );
+        }
+      }
+
+      // Must document payout path
+      assert.ok(guide.payoutPath, 'Must document payout path');
+      assert.ok(guide.payoutPath.platform, 'Payout path must specify platform');
+      assert.ok(
+        guide.payoutPath.minimumPayout,
+        'Payout path must specify minimum payout'
+      );
+      assert.ok(
+        guide.payoutPath.bankConnectionUrl,
+        'Payout path must include bank connection URL'
+      );
+
+      // Must list required secrets
+      assert.ok(
+        Array.isArray(guide.requiredSecrets),
+        'Must list required secrets'
+      );
+    });
   });
 });
