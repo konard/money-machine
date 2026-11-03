@@ -663,6 +663,11 @@ function parseFragment(c, ctx) {
   // in a phrase without a verb, "contracts" is a noun
   const np = parseNP(c, { fragment: true });
   if (!np) {
+    // "on demand after clearance": phrases without a head noun
+    const only = has(c.peek, 'prep') && parseTail(c, 'fragment', ctx);
+    if (only?.mods?.length && !only.objects?.length && !only.complement) {
+      return { type: 'fragment', mods: [...leading, ...only.mods] };
+    }
     c.i = start;
     return null;
   }

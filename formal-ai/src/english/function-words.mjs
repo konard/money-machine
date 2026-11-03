@@ -43,6 +43,18 @@ export const INDEFINITES = {
   everybody: 'pro.everyone',
 };
 
+/** Quantifiers that also stand alone as a pronoun: "both agree". */
+export const STANDALONE_DETERMINERS = {
+  'det.all': 'pro.everyone',
+  'det.many': 'pro.many',
+  'det.most': 'pro.most',
+  'det.few': 'pro.few',
+  'det.several': 'pro.several',
+  'det.some': 'pro.some',
+  'det.both': 'pro.both',
+  'det.each': 'pro.each',
+};
+
 /** Possessive determiners, keyed to the owner pronoun. */
 export const POSSESSIVES = {
   my: { person: 1, number: 'sg' },

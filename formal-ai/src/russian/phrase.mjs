@@ -73,7 +73,18 @@ export function features(e, ctx) {
     return { person: 3, number: 'pl', gender: 'pl' };
   }
   if (e.indefinite || e.concept === 'pro.everything') {
-    return { person: 3, number: 'sg', gender: 'n' };
+    // все/многие/оба agree in the plural; большинство is a neuter noun;
+    // кто-то, никто and каждый are masculine
+    if (
+      (e.number === 'plural' && e.concept !== 'pro.most') ||
+      e.concept === 'pro.everyone'
+    ) {
+      return { person: 3, number: 'pl', gender: 'pl' };
+    }
+    const person = /^pro\.(?:(?:some|any|no)(?:one|body)|each)$/.test(
+      e.concept
+    );
+    return { person: 3, number: 'sg', gender: person ? 'm' : 'n' };
   }
   if (e.relativePronoun) {
     return e.antecedent

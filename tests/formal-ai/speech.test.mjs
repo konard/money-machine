@@ -118,3 +118,12 @@ test('a statement opening with "when" is a clause link, not a question', () => {
     /^Когда студенты \S+ книги, мы работаем\.$/
   );
 });
+
+test('a quantifier standing alone is a pronoun with plural agreement', () => {
+  assert.equal(ru('Both work.'), 'Оба работают.');
+  assert.equal(ru('Everyone works.'), 'Все работают.');
+});
+
+test('a fragment may be prepositional phrases only', () => {
+  assert.equal(ru('In the morning.'), 'Утром.');
+});

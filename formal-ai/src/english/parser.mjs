@@ -22,11 +22,13 @@ import {
   personLike,
 } from './token-readings.mjs';
 import { Cursor } from './cursor.mjs';
+import { STANDALONE_DETERMINERS } from './function-words.mjs';
 import { parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
 import { attachIngRelative } from './ing-relative.mjs';
+import { attachParticiple } from './participle-relative.mjs';
 import { clauseAhead, commaList, parallelVerb } from './lists.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
 
@@ -99,6 +101,20 @@ export function parseNP(c, options = {}) {
     np.det = r.features.det || null;
     np.detNumber = r.features.number || null;
     c.next();
+    // "both work": a plural quantifier takes no singular noun, so a word
+    // that may also be a verb is the verb
+    const n = c.peek;
+    if (
+      STANDALONE_DETERMINERS[np.det] &&
+      np.detNumber === 'pl' &&
+      has(n, 'verb') &&
+      n.readings.every(
+        (x) => x.pos !== 'noun' || x.features?.number === 'sg'
+      ) &&
+      !nounAhead(c, 1)
+    ) {
+      return standalone(c, np, options);
+    }
   } else if (has(t, 'poss')) {
     const r = reading(t, 'poss');
     np.possessor = {
@@ -221,6 +237,14 @@ export function parseNP(c, options = {}) {
       np.demonstrative = np.det === 'det.this' ? 'this' : 'that';
       np.number = np.detNumber || 'sg';
       return np;
+    }
+    // "both reject", "many of them": a quantifier standing alone
+    if (
+      STANDALONE_DETERMINERS[np.det] &&
+      !adjectives.length &&
+      np.quantity === undefined
+    ) {
+      return standalone(c, np, options);
     }
     if (np.quantity !== undefined && !np.det && !np.possessor) {
       np.numeral = true;
@@ -429,48 +453,6 @@ export function parseNP(c, options = {}) {
     c.i = clitic;
   }
   return attachOf(c, np, options);
-}
-
-/** A reduced passive relative: "an account entered at withdrawal time". */
-function attachParticiple(c, np, options) {
-  const r = participleReading(c.peek);
-  if (
-    !r ||
-    np.pronoun ||
-    np.participles ||
-    (options.stopAt !== undefined && c.i >= options.stopAt)
-  ) {
-    return;
-  }
-  // "Mary said (that) she…": a verb of saying or knowing before a clause
-  if (
-    options.clauseStart &&
-    ((has(c.at(1), 'subord') && !has(c.at(1), 'prep')) ||
-      reading(c.at(1), 'pron')?.features?.case === 'nom') &&
-    c.peek.readings.some((x) => x.pos === 'verb' && x.features.form === 'past')
-  ) {
-    return;
-  }
-  // A subject's ordinary past-tense predicate must remain finite.
-  if (
-    options.clauseStart &&
-    c.peek.readings.some(
-      (x) => x.pos === 'verb' && /base|past|3sg/.test(x.features.form || '')
-    ) &&
-    !c.tokens
-      .slice(c.i + 1)
-      .some(
-        (t) =>
-          has(t, 'be') ||
-          has(t, 'modal') ||
-          t.readings.some((x) => x.pos === 'verb' && x.features.form === '3sg')
-      )
-  ) {
-    return;
-  }
-  const v = c.next();
-  const tail = parseTail(c, 'event', { ...options, nonfinite: true });
-  np.participles = [{ verb: head(v, r), ...tail }];
 }
 
 /**
@@ -976,3 +958,14 @@ export function parseTail(c, frame, options = {}) {
 
 export { timeAhead };
 export { Cursor, has, reading, isPunct, startsNP, head, mergeMultiwords };
+
+/** A quantifier as the whole noun phrase: "both", "many of them". */
+function standalone(c, np, options) {
+  const d = c.tokens[c.i - 1];
+  const concept = STANDALONE_DETERMINERS[np.det];
+  np.head = head(d, { pos: 'indef', lemma: d.lower, concepts: [concept] });
+  np.number = np.det === 'det.each' ? 'sg' : 'pl';
+  np.det = null;
+  np.indefinite = true;
+  return attachOf(c, np, options);
+}
