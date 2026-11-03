@@ -177,6 +177,16 @@ function englishFrame(text, sense) {
     if (Object.keys(markerGovernment).length) {
       result.markerGovernment = markerGovernment;
     }
+    // A linked English prepositional verb names the argument marker itself:
+    // [[wait for]] is a predicate, not a freely translated adjunct.
+    for (const m of chosen
+      .split('\n')[0]
+      .matchAll(/\[\[([a-z]+) (for|with|to|on|at|from|about)(?:\||\]\])/g)) {
+      if (sense.lemma === m[1] || sense.lemma === `${m[1]} ${m[2]}`) {
+        result.markerGovernment ||= {};
+        result.markerGovernment[m[2]] = result.government;
+      }
+    }
   }
   // A dative object alone does not imply inversion (help/please). Require
   // the dictionary's explicit cross-language subject mapping and its label.

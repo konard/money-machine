@@ -145,6 +145,9 @@ function entity(np, lexicon) {
   if (np.of) {
     e.of = entity(np.of, lexicon);
   }
+  if (np.pps) {
+    e.relations = np.pps.map((m) => modifier(m, lexicon));
+  }
   if (np.label) {
     e.label = np.label;
   }
@@ -204,6 +207,9 @@ function modifierCore(m, lexicon) {
     return { kind: 'conj', conj: m.conj };
   }
   const out = { kind: 'relation', relation: m.relation };
+  if (m.postposition) {
+    out.postposition = true;
+  }
   if (m.np) {
     out.entity = entity(m.np, lexicon);
   }

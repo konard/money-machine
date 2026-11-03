@@ -372,6 +372,27 @@ test('completeForms fills pastPassive from a rendered participle and skips compl
   assert.equal(await completeForms('sent', options), 1);
   assert.equal(verb.pastPassive, 'отправленный');
   assert.equal(await completeForms('sent', options), 0);
-  assert.equal(await completeForms('send', options), 0);
+  assert.equal(await completeForms('we send', options), 0);
   api.done();
+});
+
+test('completeForms fills the imperative of a verb opening a sentence', async () => {
+  const lexicon = loadLexicon({ fresh: true });
+  lexicon.get('send').ru.imperative = 'отправляй';
+  const verb = lexicon.get('send').ru.perfective;
+  delete verb.imperative;
+  const api = stub([
+    pageRequest(
+      'отправить',
+      '==Russian==\n===Verb===\n{{ru-verb|отпра́вить|pf}}\n====Conjugation====\n{{ru-conj|pf|4a|отпра́вить}}'
+    ),
+    renderRequest(
+      'отправить',
+      '{{ru-verb|отпра́вить|pf}}\n\n{{ru-conj|pf|4a|отпра́вить}}',
+      '<table><tr><td><span class="Cyrl form-of lang-ru 2|s|imp-form-of">отпра́вь</span></td></tr></table>'
+    ),
+  ]);
+  const options = { lexicon, fetchImpl: api.fetchImpl, cache: false };
+  await completeForms('Send it.', options);
+  assert.equal(verb.imperative, 'отправь');
 });

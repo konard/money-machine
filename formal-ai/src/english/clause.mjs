@@ -8,6 +8,8 @@
  */
 
 import { clause } from './clause-node.mjs';
+import { earlierVerb, subjectPhrases } from './subject-phrases.mjs';
+import { leadingPhraseAhead, parseLeading } from './leading.mjs';
 import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
@@ -18,7 +20,6 @@ import {
   reading,
   isPunct,
   startsNP,
-  timeAhead,
   head,
   parseNP,
   parseVerbGroup,
@@ -533,15 +534,20 @@ function parseDeclarative(c, ctx) {
   const third = subject.pronoun
     ? subject.pronoun.person === 3 && subject.number === 'sg'
     : subject.number !== 'pl' && !subject.coord;
-  const vg = parseVerbGroup(c, third ? 'third' : null);
+  let vg = parseVerbGroup(c, third ? 'third' : null);
+  if (!vg && has(c.peek, 'prep')) {
+    const phrases = subjectPhrases(c, third ? 'third' : null);
+    if (phrases) {
+      subject.pps = phrases.pps;
+      vg = phrases.vg;
+    }
+  }
   if (!vg) {
     // "the aggregator forwards royalties": the compound took the verb
     // "Tom's car needs fuel": any noun of the compound may be the verb
     // "Mary said that she…": a participle of the subject may be the verb
-    if (
-      !ctx.retried &&
-      (subject.modifiers?.length || subject.participles?.length)
-    ) {
+    // "The price of the book covers…": a noun inside the subject's phrase
+    if (!ctx.retried && c.i - start > 1) {
       const end = c.i;
       for (let k = end - 1; k > start; k -= 1) {
         if (
@@ -583,11 +589,19 @@ function parseDeclarative(c, ctx) {
     };
   }
   const tail = parseTail(c, vg.frame, tailOptions(ctx, vg));
-  return clause('declarative', vg, {
+  const result = clause('declarative', vg, {
     subject,
     ...tail,
     mods: [...leading, ...tail.mods],
   });
+  const better =
+    !ctx.retried &&
+    vg.verb &&
+    earlierVerb(c, start, vg.verb.token, (stopAt) => {
+      c.i = start;
+      return parseDeclarative(c, { ...ctx, retried: true, stopAt });
+    });
+  return better || result;
 }
 
 /** A noun phrase with its prepositional phrases: "direct deposit to bank". */
@@ -613,14 +627,6 @@ function parseFragment(c, ctx) {
     mods: [...leading, ...tail.mods],
     mood: 'declarative',
   };
-}
-
-/** Would `parseLeading` take a prepositional phrase here? */
-function leadingPhraseAhead(c) {
-  const save = c.i;
-  const mods = parseLeading(c);
-  c.i = save;
-  return mods.length > 0;
 }
 
 /**
@@ -650,7 +656,14 @@ function ellipsis(c, ctx, previous) {
     return null;
   }
   const save = c.i;
-  const vg = parseVerbGroup(c, third ? 'third' : null);
+  let vg = parseVerbGroup(c, third ? 'third' : null);
+  if (!vg && has(c.peek, 'prep')) {
+    const phrases = subjectPhrases(c, third ? 'third' : null);
+    if (phrases) {
+      subject.pps = phrases.pps;
+      vg = phrases.vg;
+    }
+  }
   if (!vg) {
     c.i = save;
     return null;
@@ -665,80 +678,6 @@ function ellipsis(c, ctx, previous) {
     subject: { ...subject, implicit: true },
     ...tail,
   });
-}
-
-/** A subject comes next (after an optional comma). */
-function subjectAhead(c) {
-  const t = c.peek?.text === ',' ? c.at(1) : c.peek;
-  if (!t) {
-    return false;
-  }
-  return (
-    ['pron', 'det', 'poss', 'name', 'propn', 'num'].some((p) => has(t, p)) ||
-    (has(t, 'noun') && !has(t, 'verb'))
-  );
-}
-
-/**
- * Fronted adverbials before the subject: "On Tuesday we…", "Next Friday
- * I…", "Yesterday, they…". Each is marked `fronted` so the Russian keeps it
- * first.
- */
-function parseLeading(c) {
-  const mods = [];
-  const done = (mod) => {
-    mods.push({ ...mod, fronted: true });
-    if (c.peek?.text === ',') {
-      c.next();
-    }
-  };
-  for (let guard = 0; guard < 4 && c.peek; guard += 1) {
-    const t = c.peek;
-    const save = c.i;
-    if (has(t, 'prep')) {
-      c.next();
-      const np = parseNP(c, { relative: false });
-      if (np && subjectAhead(c)) {
-        done({
-          type: 'pp',
-          relation: reading(t, 'prep').concepts[0],
-          prep: t.lower,
-          np,
-          token: t.index,
-        });
-        continue;
-      }
-      c.i = save;
-      break;
-    }
-    if (
-      ['every', 'each', 'last', 'next', 'this'].includes(t.lower) &&
-      timeAhead(c)
-    ) {
-      const np = parseNP(c, { relative: false });
-      if (np && subjectAhead(c)) {
-        done({ type: 'time', np });
-        continue;
-      }
-      c.i = save;
-      break;
-    }
-    if (
-      has(t, 'adv') &&
-      !has(t, 'wh') &&
-      !has(t, 'verb') &&
-      (!has(t, 'noun') || has(c.at(1), 'pron') || c.at(1)?.text === ',')
-    ) {
-      c.next();
-      if (subjectAhead(c)) {
-        done({ type: 'adv', ...head(t, reading(t, 'adv')) });
-        continue;
-      }
-      c.i = save;
-    }
-    break;
-  }
-  return mods;
 }
 
 function tailOptions(ctx, vg) {

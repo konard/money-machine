@@ -377,7 +377,11 @@ function renderNoun(e, entry, kase, ctx) {
     nounCase = 'gen';
     adjCase = 'gen';
   }
-  const g = adjNumber === 'pl' ? { number: 'pl' } : { gender: entry.gender };
+  // «установленные расходы»: a plurale tantum takes plural adjectives
+  const g =
+    adjNumber === 'pl' || (entry.pluraliaTantum && e.quantity === undefined)
+      ? { number: 'pl' }
+      : { gender: entry.gender };
   const agree = { ...g, case: adjCase, animate: animate && adjCase === 'acc' };
   const words = [];
   if (quantifierWord) {
@@ -463,6 +467,12 @@ function renderNoun(e, entry, kase, ctx) {
   if (e.of) {
     words.push(
       renderEntity(e.of, 'gen', { ...ctx, afterPrep: false, locative: false })
+    );
+  }
+  // "деньги от продаж": a noun's own prepositional phrases
+  for (const m of e.relations || []) {
+    words.push(
+      renderRelation(m, { ...ctx, afterPrep: false, locative: false })
     );
   }
   return words.join(' ');
@@ -557,6 +567,11 @@ export function renderRelation(m, ctx) {
     const adv = conceptOf(ctx, m.adverb)?.ru;
     return adv?.lemma || `[${m.adverb}]`;
   }
+  if (m.postposition) {
+    // "two days ago" → «два дня назад»: the measure stays in the accusative
+    const word = conceptOf(ctx, m.relation)?.ru?.lemma;
+    return `${renderEntity(e, 'acc', ctx)} ${word || `[${m.relation}]`}`;
+  }
   const concept = conceptOf(ctx, e?.concept);
   const entry = nounEntry(e, ctx);
   const rel = m.relation;
@@ -575,6 +590,7 @@ export function renderRelation(m, ctx) {
   if (
     entry?.when &&
     ['rel.in', 'rel.at', 'rel.on', 'rel.during'].includes(rel) &&
+    e.number !== 'plural' &&
     !e.properties &&
     e.quantity === undefined &&
     !e.determiner
@@ -582,6 +598,18 @@ export function renderRelation(m, ctx) {
     return entry.when;
   }
   const isTime = concept?.classes.some((c) => TIME_CLASSES.has(c));
+  // "on Sundays", "in the mornings": a repeated time is по + dative plural
+  if (
+    e?.number === 'plural' &&
+    ['rel.in', 'rel.at', 'rel.on'].includes(rel) &&
+    (isTime || entry?.when || concept?.classes.includes('weekday')) &&
+    !e.properties &&
+    !e.determiner &&
+    !e.possessor &&
+    e.quantity === undefined
+  ) {
+    return `по ${renderEntity(e, 'dat', { ...ctx, afterPrep: true })}`;
+  }
   if (isTime && e.quantity !== undefined) {
     if (rel === 'rel.in') {
       return `через ${renderEntity(e, 'acc', ctx)}`;
@@ -597,6 +625,20 @@ export function renderRelation(m, ctx) {
     rel === 'rel.in'
   ) {
     return `в ${e.quantity} году`;
+  }
+  // from Monday to Friday → с понедельника по пятницу (a calendar range)
+  const calendarDay = ['weekday', 'month'].some((k) =>
+    concept?.classes.includes(k)
+  );
+  if (
+    calendarDay &&
+    ['rel.from', 'rel.to'].includes(rel) &&
+    !e.determiner &&
+    e.quantity === undefined
+  ) {
+    const kase = rel === 'rel.from' ? 'gen' : 'acc';
+    const np = renderEntity(e, kase, { ...ctx, afterPrep: true });
+    return rel === 'rel.from' ? `${euphony('с', np)} ${np}` : `по ${np}`;
   }
   // on Monday → в понедельник; in May → в мае
   const calendar =

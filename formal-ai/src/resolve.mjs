@@ -17,8 +17,11 @@ import {
 import { russianIndeclinables } from './sources/indeclinable.mjs';
 import { russianFrequencies } from './sources/frequency.mjs';
 import { contextFrequencies } from './sources/context-frequency.mjs';
+import { learnTimeAdverbs } from './sources/time-adverbs.mjs';
 import {
   borrowGenus,
+  collocationSenses,
+  linkReflexiveSenses,
   genus,
   senseClasses,
   usagePenalty,
@@ -44,7 +47,9 @@ import {
   unstress,
 } from './sources/wiktionary.mjs';
 
+// an English postposition ("two days ago") is a Russian adverb (назад)
 const POS_RU = { noun: 'noun', verb: 'verb', adj: 'adj', adv: 'adv' };
+POS_RU.postp = 'adv';
 const FEATURE = {
   plural: 'plural',
   past: 'past',
@@ -566,7 +571,8 @@ export async function resolveText(
       ...(variant.get(key) || []).map((x) => ({ ...x, variant: true })),
     ].filter((x) => !seen.has(x.gloss) && seen.add(x.gloss));
     if (senses.length) {
-      plans.push({ lemma: rest.join(':'), pos, senses: borrowGenus(senses) });
+      const expanded = collocationSenses(borrowGenus(senses));
+      plans.push({ lemma: rest.join(':'), pos, senses: expanded });
     }
   }
 
@@ -820,6 +826,7 @@ export async function resolveText(
         id,
         gloss: s.gloss,
         frames: s.frames,
+        objectLemma: s.objectLemma,
         frameOnly: s.frameOnly,
         related: s.side || undefined,
         grounding: null,
@@ -873,6 +880,7 @@ export async function resolveText(
       resolved.push(id);
     });
   }
+  linkReflexiveSenses(plans, lexicon);
   // how common each candidate translation is, where a word has several
   const ambiguous = resolved
     .map((id) => lexicon.get(id))
@@ -973,6 +981,7 @@ export async function resolveText(
   }
   if (!only) {
     await contextFrequencies(text, lexicon, options);
+    await learnTimeAdverbs(text, lexicon, options);
   }
   log(`resolved ${resolved.length} senses; still unknown: ${missing.length}`);
   return { words: words.length, resolved, missing };

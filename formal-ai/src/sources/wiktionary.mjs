@@ -87,6 +87,7 @@ const POS = {
   Adverb: 'adv',
   'Proper noun': 'propn',
   Preposition: 'prep',
+  Postposition: 'postp',
   Pronoun: 'pron',
   Numeral: 'num',
   Interjection: 'intj',
@@ -208,7 +209,7 @@ function inflectionKind(tags) {
 
 /** Russian candidates of a translation line. */
 function russianCandidates(line) {
-  return templates(line, 'tt?\\+?')
+  const candidates = templates(line, 'tt?\\+?')
     .filter((t) => t.positional[0] === 'ru' && t.positional[1])
     .map((t) => {
       const word = unstress(plain(t.positional[1]));
@@ -227,6 +228,26 @@ function russianCandidates(line) {
       };
     })
     .filter((c) => c.word && /^[а-яё -]+$/i.test(c.word));
+  const qualifier = /\{\{(?:qualifier|q)\|\+ \{\{(?:l|m)\|ru\|([^|}]+)/.exec(
+    line
+  );
+  if (qualifier) {
+    const before = russianCandidates(line.slice(0, qualifier.index));
+    const last = before.at(-1);
+    const pair = before.at(-2);
+    for (const candidate of candidates) {
+      if (
+        candidate.word === last?.word ||
+        (last?.aspect &&
+          pair?.aspect &&
+          last.aspect !== pair.aspect &&
+          candidate.word === pair.word)
+      ) {
+        candidate.objectLemma = unstress(qualifier[1]);
+      }
+    }
+  }
+  return candidates;
 }
 
 /**

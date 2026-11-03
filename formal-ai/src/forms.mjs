@@ -16,15 +16,42 @@ import {
   unstress,
 } from './sources/wiktionary.mjs';
 
-/** Russian verb entries of English participles in the text. */
-function participleVerbs(text, lexicon, adverbial = false) {
-  const out = new Set();
-  for (const t of tokenize(text).filter((x) => x.kind === 'word')) {
+// the conjugation table cell each missing form is read from
+const SLOTS = {
+  pastPassive: 'past|pass|part',
+  converb: 'pres|adv|part',
+  imperative: '2|s|imp',
+};
+
+/**
+ * Russian verb entries missing a form the text needs: participles
+ * ("sent", "using") and imperatives (a base form opening a sentence:
+ * "Answer the question." needs ответь).
+ */
+function missingForms(text, lexicon) {
+  const out = [];
+  const seen = new Set();
+  const tokens = tokenize(text);
+  tokens.forEach((t, i) => {
+    if (t.kind !== 'word') {
+      return;
+    }
+    const previous = tokens[i - 1];
+    const opening =
+      !previous || (previous.kind !== 'word' && /[.!?:;]/.test(previous.text));
     for (const r of readings(t, lexicon)) {
-      if (
-        r.pos !== 'verb' ||
-        !(adverbial ? /ing/ : /pp|past/).test(r.features?.form || '')
-      ) {
+      const form = r.features?.form || '';
+      const slot =
+        r.pos !== 'verb'
+          ? null
+          : /pp|past/.test(form)
+            ? 'pastPassive'
+            : /ing/.test(form)
+              ? 'converb'
+              : form === 'base' && opening
+                ? 'imperative'
+                : null;
+      if (!slot) {
         continue;
       }
       for (const id of r.concepts || []) {
@@ -32,23 +59,27 @@ function participleVerbs(text, lexicon, adverbial = false) {
         if (ru?.pos !== 'verb') {
           continue;
         }
-        const entries = adverbial
-          ? [ru, ru.transitive]
-          : [ru.perfective || ru, ru.transitive?.perfective];
+        const entries =
+          slot === 'converb'
+            ? [ru, ru.transitive]
+            : slot === 'imperative'
+              ? [ru, ru.perfective]
+              : [ru.perfective || ru, ru.transitive?.perfective];
         for (const e of entries) {
-          if (e?.lemma && !e[adverbial ? 'converb' : 'pastPassive']) {
-            out.add(e);
+          if (e?.lemma && !e[slot] && !seen.has(e)) {
+            seen.add(e);
+            out.push({ verb: e, slot });
           }
         }
       }
     }
-  }
-  return [...out];
+  });
+  return out;
 }
 
 /**
- * Fill `pastPassive` for the text's participles, preferring the perfective
- * partner and also supporting verbs without an aspect partner.
+ * Fill the forms the text needs (`pastPassive`, `converb`, `imperative`)
+ * from the verbs' Wiktionary conjugation tables.
  * @returns {Promise<number>} how many entries were completed
  */
 export async function completeForms(
@@ -57,12 +88,7 @@ export async function completeForms(
 ) {
   const options = { fetchImpl, cache };
   await completeDegrees(text, { lexicon, fetchImpl, cache, log });
-  const verbs = [false, true].flatMap((adverbial) =>
-    participleVerbs(text, lexicon, adverbial).map((verb) => ({
-      verb,
-      adverbial,
-    }))
-  );
+  const verbs = missingForms(text, lexicon);
   if (!verbs.length) {
     return 0;
   }
@@ -71,7 +97,7 @@ export async function completeForms(
     options
   );
   let done = 0;
-  for (const { verb, adverbial } of verbs) {
+  for (const { verb, slot } of verbs) {
     const page = pages.get(verb.lemma);
     const entry = page
       ? russianTemplates(page).find((e) => e.pos === 'verb' && e.headword)
@@ -81,11 +107,9 @@ export async function completeForms(
     }
     try {
       const { forms } = await renderRussian(verb.lemma, entry, options);
-      const form = forms.get(adverbial ? 'pres|adv|part' : 'past|pass|part');
+      const form = forms.get(SLOTS[slot]);
       if (form) {
-        verb[adverbial ? 'converb' : 'pastPassive'] = unstress(
-          form.split(',')[0]
-        ).trim();
+        verb[slot] = unstress(form.split(',')[0]).trim();
         done += 1;
       }
     } catch (error) {

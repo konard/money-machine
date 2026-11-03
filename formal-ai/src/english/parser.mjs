@@ -24,6 +24,7 @@ import {
 import { Cursor } from './cursor.mjs';
 import { parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
+import { isTimeNP, timeAhead } from './time-phrase.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
 
 /**
@@ -153,8 +154,13 @@ export function parseNP(c, options = {}) {
       adjectives.push({ degree: head(t2, reading(t2, 'adv')) });
       continue;
     }
-    // an adjective followed by nothing nominal ends the phrase: "is big"
-    if (!nounAhead(c, 1) && !has(c.at(1), 'adj')) {
+    // an adjective followed by nothing nominal ends the phrase: "is big";
+    // a limit right after a word that may be a noun ends it too
+    const limited =
+      options.stopAt !== undefined &&
+      c.i + 1 >= options.stopAt &&
+      (has(t2, 'noun') || has(t2, 'name'));
+    if (limited || (!nounAhead(c, 1) && !has(c.at(1), 'adj'))) {
       if (has(t2, 'noun') || has(t2, 'name')) {
         break;
       }
@@ -409,11 +415,23 @@ function isDegree(id) {
 /** Does a noun follow within the next `k` tokens (adjectives skipped)? */
 function nounAhead(c, k) {
   let j = k;
+  const nominal = (t) => has(t, 'noun') || has(t, 'name') || has(t, 'propn');
   while (
     has(c.at(j), 'adj') ||
     has(c.at(j), 'num') ||
     participleReading(c.at(j))
   ) {
+    // "the high cost": a word that may be a noun ends the phrase when
+    // nothing nominal follows it ("cost" is also a participle)
+    const next = c.at(j + 1);
+    if (
+      nominal(c.at(j)) &&
+      !nominal(next) &&
+      !has(next, 'adj') &&
+      !participleReading(next)
+    ) {
+      return true;
+    }
     j += 1;
   }
   const t = c.at(j);
@@ -495,7 +513,7 @@ function attachOf(c, np, options = {}) {
   while (c.peek?.lower === 'of' && startsNP(c.at(1))) {
     const save = c.i;
     c.next();
-    const of = parseNP(c);
+    const of = parseNP(c, { stopAt: options.stopAt });
     if (!of) {
       c.i = save;
       break;
@@ -511,6 +529,7 @@ function attachOf(c, np, options = {}) {
   if (
     relativeParser &&
     options.relative !== false &&
+    !(options.stopAt !== undefined && c.i >= options.stopAt) &&
     (RELATIVES.has(c.peek?.lower) || startsNP(c.peek)) &&
     !np.pronoun &&
     !np.relative
@@ -538,7 +557,7 @@ function attachOf(c, np, options = {}) {
   ) {
     const save = c.i;
     c.next();
-    const other = parseNP(c);
+    const other = parseNP(c, { stopAt: options.stopAt });
     if (other) {
       return {
         type: 'np',
@@ -941,7 +960,16 @@ export function parseTail(c, frame, options = {}) {
       if (!np) {
         break;
       }
-      if (frame === 'copula' && !out.complement) {
+      if (has(c.peek, 'postp')) {
+        // "two days ago": a postposition after its noun phrase
+        const p = c.next();
+        out.mods.push({
+          type: 'pp',
+          relation: reading(p, 'postp').concepts[0],
+          postposition: true,
+          np,
+        });
+      } else if (frame === 'copula' && !out.complement) {
         out.complement = { type: 'np', np };
       } else if (isTimeNP(np)) {
         out.mods.push({ type: 'time', np });
@@ -955,29 +983,5 @@ export function parseTail(c, frame, options = {}) {
   return out;
 }
 
-const TIME_NOUNS =
-  /^(day|week|month|year|morning|evening|night|summer|winter|autumn|spring\.season|time|hour|minute|weekend|monday|tuesday|wednesday|thursday|friday|saturday|sunday|january|february|march|april|may|june|july|august|september|october|november|december)$/;
-
-// a time noun by its English word: hand-written ids ("day") and learned
-// ones ("wikt:day:noun:1") alike
-const timeNoun = (lemma, ids = []) =>
-  TIME_NOUNS.test(String(lemma || '').toLowerCase()) ||
-  ids.some((id) => TIME_NOUNS.test(id) || TIME_NOUNS.test(id.split(':')[1]));
-
-export function timeAhead(c) {
-  const t = c.at(1);
-  const r = t && reading(t, 'noun');
-  return Boolean(r && timeNoun(r.lemma, r.concepts));
-}
-
-function isTimeNP(np) {
-  return Boolean(
-    np.head &&
-    (np.det === 'det.every' ||
-      np.det === 'det.each' ||
-      np.adjs?.some((a) => a.lemma === 'last' || a.lemma === 'next')) &&
-    timeNoun(np.head.lemma, np.head.candidates)
-  );
-}
-
+export { timeAhead };
 export { Cursor, has, reading, isPunct, startsNP, head, mergeMultiwords };

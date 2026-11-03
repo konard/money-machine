@@ -195,6 +195,18 @@ function matchesCue(words, cue) {
   if (words.has(cue)) {
     return true;
   }
+  // Productive participial spelling: final -e is lost before -ing/-en,
+  // and a final consonant can be doubled (written, driven, taking).
+  const participle =
+    cue.length > 5 && /(?:ing|en)$/.test(cue)
+      ? cue.replace(/(?:ing|en)$/, '').replace(/([^aeiou])\1$/, '$1')
+      : null;
+  if (
+    participle &&
+    [...words].some((w) => w.replace(/e$/, '') === participle)
+  ) {
+    return true;
+  }
   const base = cue.match(/^(.{3,}?)(?:ment|ments|er|ers|ance|ence|al)$/)?.[1];
   return Boolean(base && words.has(base));
 }
@@ -553,6 +565,9 @@ function valencyFit(node, clause, concept, next) {
   if (owner.passive && frames.includes('transitive')) {
     return { score: 0.8, reason: 'valency transitive passive (+0.80)' };
   }
+  if (hasObject && frames.includes('transitive') && concept.core) {
+    return { score: 0.3, reason: 'dictionary transitive core frame (+0.30)' };
+  }
   if (!concept.gloss || concept.objectClasses?.length) {
     return { score: 0 };
   }
@@ -573,7 +588,10 @@ function valencyFit(node, clause, concept, next) {
 
 /** Verb ↔ object class agreement (`object-class`). */
 function selectionalFit(node, clause, concept, lexicon) {
-  if (node.pos !== 'verb' || !concept?.objectClasses?.length) {
+  if (
+    node.pos !== 'verb' ||
+    !(concept?.objectClasses?.length || concept?.objectLemma)
+  ) {
     return { score: 0 };
   }
   const owner = findVerbOwner(clause, node);
@@ -581,6 +599,15 @@ function selectionalFit(node, clause, concept, lexicon) {
     ? owner.subject || owner.labelSubject
     : owner?.objects?.[0];
   const objectHead = object?.head;
+  if (concept.objectLemma) {
+    const lemma = lexicon.get(objectHead?.concept)?.ru?.lemma;
+    return lemma === concept.objectLemma
+      ? { score: 5, reason: 'dictionary verb–object collocation (+5)' }
+      : {
+          score: -5,
+          reason: 'dictionary collocation requires a different object (-5)',
+        };
+  }
   if (!objectHead) {
     return { score: -0.5, reason: 'expects an object but has none (-0.50)' };
   }

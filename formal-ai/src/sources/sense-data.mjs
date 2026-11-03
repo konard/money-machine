@@ -212,3 +212,44 @@ export function compoundFits(plan, text) {
     glossWords(s.gloss).some((w) => !own.has(w) && context.has(w))
   );
 }
+
+/** Separate object-qualified translations from unrestricted synonyms. */
+export function collocationSenses(senses) {
+  return senses.flatMap((s) => {
+    const ordinary = s.russian.filter((c) => !c.objectLemma);
+    const objects = [
+      ...new Set(s.russian.map((c) => c.objectLemma).filter(Boolean)),
+    ];
+    return [
+      ...(ordinary.length
+        ? [{ ...s, russian: ordinary }]
+        : objects.length
+          ? []
+          : [s]),
+      ...objects.map((objectLemma) => ({
+        ...s,
+        objectLemma,
+        russian: s.russian.filter((c) => c.objectLemma === objectLemma),
+      })),
+    ];
+  });
+}
+
+/** Link only reflexive counterparts attested for this English predicate. */
+export function linkReflexiveSenses(plans, lexicon) {
+  // Reflexive counterparts must be attested in this English verb's own
+  // translation tables; never manufacture a Russian lemma by suffix alone.
+  for (const plan of plans.filter((p) => p.pos === 'verb')) {
+    const concepts = lexicon
+      .lookup('verb', plan.lemma)
+      .map((id) => lexicon.get(id));
+    for (const c of concepts) {
+      const reflexive = concepts.find(
+        (other) => other.ru?.lemma === `${c.ru?.lemma}ся`
+      );
+      if (reflexive) {
+        c.ru.intransitive = reflexive.ru;
+      }
+    }
+  }
+}

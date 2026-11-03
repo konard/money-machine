@@ -431,7 +431,9 @@ function governmentFor(entry, o, fallback, ctx) {
   const classes = ctx
     ? [
         ...(o?.concept ? lexEntry(ctx, o.concept)?.classes || [] : []),
-        ...(isPerson(o, ctx) ? ['person'] : []),
+        ...(isPerson(o, ctx) || ctx.lexicon.givenNames?.has(o?.name)
+          ? ['person']
+          : []),
       ]
     : [];
   const byClass = classes.find((c) => entry?.classGovernment?.[c]);
@@ -525,6 +527,14 @@ export function renderModifiers(mods, ctx, entry) {
         after.push(renderEntity(e, 'acc', ctx));
       }
     } else if (m.kind === 'relation') {
+      const marker = m.relation?.replace(/^rel\./, '');
+      if (
+        entry?.markerGovernment?.[marker] &&
+        !lexEntry(ctx, m.entity?.concept)?.classes?.includes('time')
+      ) {
+        after.push(governed(m.entity, entry.markerGovernment[marker], ctx));
+        continue;
+      }
       if (
         m.relation === 'rel.to' &&
         entry?.recipient &&
@@ -553,6 +563,14 @@ function renderEvent(s, ctx) {
   ctx.motion = entry.motion;
   ctx.hasObject = (s.objects || []).length > 0;
   ctx.passive = s.voice === 'passive';
+  if (
+    entry.intransitive &&
+    !ctx.hasObject &&
+    !s.complementClause &&
+    !ctx.passive
+  ) {
+    entry = entry.intransitive;
+  }
   // "like to read" → любить читать
   if (entry.transitive && (s.objects || []).length) {
     entry = entry.transitive;

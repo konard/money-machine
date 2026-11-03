@@ -291,7 +291,7 @@ function contentReadings(token, lexicon, add) {
   if (names.length && capitalized) {
     add('name', w, { number: 'sg' }, names);
   }
-  for (const pos of ['noun', 'verb', 'adj', 'adv']) {
+  for (const pos of ['noun', 'verb', 'adj', 'adv', 'postp']) {
     const direct = lexicon.lookup(pos, w);
     if (direct.length) {
       const features =
