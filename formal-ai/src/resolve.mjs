@@ -2,6 +2,9 @@
 
 import { learnPrepositions } from './sources/prepositions.mjs';
 import { nameCandidates } from './name-candidates.mjs';
+import { translatedCompound } from './sources/translation-morphology.mjs';
+import { completeDefinitions } from './sources/definition-translations.mjs';
+import { translationSenses } from './sources/translation-senses.mjs';
 import { supplementTerms } from './sources/terms.mjs';
 import { entityContext } from './sources/entity-context.mjs';
 import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
@@ -26,7 +29,7 @@ import {
   borrowGenus,
   collocationSenses,
   linkReflexiveSenses,
-  genus,
+  hypernym,
   senseClasses,
   usagePenalty,
   publicSenses,
@@ -586,6 +589,7 @@ export async function resolveText(
     );
   }
 
+  await completeDefinitions(plans, options);
   // Russian words: fetch pages, keep candidates whose entry has the same POS
   const russianWords = new Set();
   for (const plan of plans) {
@@ -720,7 +724,7 @@ export async function resolveText(
   const indeclinables = await russianIndeclinables(uncertainNouns, options);
   const russian = (word, pos, candidate, renderedOnly) => {
     if (pos === 'noun' && word.includes(' ')) {
-      return compoundNoun(word, (w) => russian(w, 'noun', { word: w }));
+      return translatedCompound(word, russian, lemmaOf);
     }
     if (pos === 'noun' && indeclinables.has(word)) {
       return indeclinables.get(word);
@@ -788,7 +792,7 @@ export async function resolveText(
         .filter((s) => !s.variant && !s.side)
         .map((s) => s.languages || 0)
     );
-    plan.senses.forEach((s, i) => {
+    translationSenses(plan, ruPages).forEach((s, i) => {
       const sense = { ...s, lemma: plan.lemma };
       const ru = choose(s.russian, POS_RU[plan.pos], sense);
       if (!ru) {
@@ -822,6 +826,8 @@ export async function resolveText(
       lexicon.add({
         id,
         gloss: s.gloss,
+        labels: s.labels,
+        synonymAlternative: s.synonymAlternative,
         frames: s.frames,
         objectLemma: s.objectLemma,
         frameOnly: s.frameOnly,
@@ -830,7 +836,9 @@ export async function resolveText(
         excludedGroundings: [],
         classes: plan.pos === 'noun' ? senseClasses(s) : [],
         genus:
-          s.borrowed && plan.pos === 'noun' ? genus(s.definition) : undefined,
+          plan.pos === 'noun'
+            ? hypernym(s.reverseDefinition || s.definition || s.gloss)
+            : undefined,
         cues: glossWords(
           `${s.gloss} ${s.definition || ''} ${s.context || ''} ${(s.labels || []).join(' ')}`,
           plan.lemma
@@ -873,7 +881,7 @@ export async function resolveText(
         ru,
         source: s.source || 'wiktionary',
       });
-      rank += 1;
+      rank += s.synonymAlternative ? 0 : 1;
       resolved.push(id);
     });
   }

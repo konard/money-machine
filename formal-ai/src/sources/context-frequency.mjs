@@ -1,6 +1,7 @@
 /** Public corpus evidence for a verb and its grammatical object. */
 import { parseSentence } from '../english/clause.mjs';
 import { getJson, pool } from './fetch.mjs';
+import { translationHead } from './translation-morphology.mjs';
 
 export async function contextFrequencies(text, lexicon, options = {}) {
   const pairs = new Map();
@@ -10,16 +11,20 @@ export async function contextFrequencies(text, lexicon, options = {}) {
     if (verb?.candidates?.length > 1 && object?.head && !object.name) {
       const nouns = object.head.candidates
         .map((id) => lexicon.get(id))
-        .filter((c) => c?.ru?.pos === 'noun' && /^[а-яё-]+$/i.test(c.ru.lemma));
+        .filter(
+          (c) =>
+            c?.ru?.pos === 'noun' && /^[а-яё-]+$/i.test(translationHead(c.ru))
+        );
       for (const id of verb.candidates) {
         const c = lexicon.get(id);
         if (!c?.ru || !/^[а-яё-]+$/i.test(c.ru.lemma)) {
           continue;
         }
         for (const noun of nouns.slice(0, 2)) {
-          const query = `"${c.ru.lemma}" "${noun.ru.lemma}"`;
+          const head = translationHead(noun.ru);
+          const query = `"${c.ru.lemma}" "${head}"`;
           const targets = pairs.get(query) || [];
-          targets.push({ c, noun: noun.ru.lemma });
+          targets.push({ c, noun: head });
           pairs.set(query, targets);
         }
       }
@@ -28,7 +33,7 @@ export async function contextFrequencies(text, lexicon, options = {}) {
       visit(clause.xcomp);
     }
   }
-  for (const sentence of text.split(/\n+|(?<=[.!?])\s+/)) {
+  for (const sentence of text.split(/[;\n]+|(?<=[.!?])\s+/)) {
     const parsed = parseSentence(sentence, lexicon);
     if (!parsed.leftover.length && !parsed.unknown.length) {
       parsed.clauses.forEach(visit);

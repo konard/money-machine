@@ -11,6 +11,7 @@
  */
 
 import { prepositionCase } from './case-notes.mjs';
+import { synonymReferences } from './synonyms.mjs';
 import { chunks, getJson, pool } from './fetch.mjs';
 import {
   definitionBlocks,
@@ -174,7 +175,7 @@ export function plain(text) {
     )
     .replace(/\{\{(?:q|qualifier|i|gloss|lb|lbl|label|sense)\|[^{}]*\}\}/g, '')
     .replace(/\{\{[^{}]*\}\}/g, '')
-    .replace(/\[\[(?:[^|\]]*\|)?([^\]]*)\]\]/g, '$1')
+    .replace(/\[\[(?:[^|\]]*\|)?([^\]#]*)(?:#[^\]]*)?\]\]/g, '$1')
     .replace(/'''?|<[^>]+>/g, '')
     .replace(/\s+/g, ' ')
     .trim();
@@ -266,6 +267,14 @@ function russianCandidates(line) {
 const RARE =
   /^(obsolete|archaic|rare|dated|dialectal|dialect|historical|nonstandard|obsolete outside dialects)$/;
 
+/** Usage labels of an exactly attested definition. */
+export function definitionUsage(raw) {
+  const labels = templates(raw.split('\n')[0], 'lb|label|lbl').flatMap((t) =>
+    t.positional.slice(1).filter((x) => !/^[_&]$|^(?:and|or)$/.test(x))
+  );
+  return { labels, rare: labels.some((x) => RARE.test(x)) };
+}
+
 export function englishEntries(wikitext) {
   const section = languageSection(wikitext, 'English');
   return posChunks(section).map(({ pos, text }) => {
@@ -294,18 +303,21 @@ export function englishEntries(wikitext) {
         return [
           {
             kind: inflectionKind(infl.positional.slice(3).join('|')),
-            lemma: plain(infl.positional[1]),
+            lemma: plain(infl.positional[1]).split('#')[0],
           },
         ];
       }
       const variant = templates(d, VARIANTS)[0];
       if (variant && variant.positional[0] === 'en' && variant.positional[1]) {
         return [
-          { kind: 'alternative form', lemma: plain(variant.positional[1]) },
+          {
+            kind: 'alternative form',
+            lemma: plain(variant.positional[1]).split('#')[0],
+          },
         ];
       }
       const m = FORM_OF.exec(d);
-      return m ? [{ kind: m[1], lemma: plain(m[2]) }] : [];
+      return m ? [{ kind: m[1], lemma: plain(m[2]).split('#')[0] }] : [];
     });
     const senses = [];
     const see = [];
@@ -343,6 +355,7 @@ export function englishEntries(wikitext) {
         }))
       );
     }
+    see.push(...synonymReferences(text, senses));
     // an entry whose every sense is obsolete or rare ("earn" the eagle)
     // must not compete with the living word
     const rare =
@@ -391,7 +404,12 @@ const contentWords = (text) =>
       .toLowerCase()
       .split(/[^a-z]+/)
       .filter((w) => w.length > 2 && !SMALL.has(w))
-      .map((w) => w.replace(/(?:es|s)$/, ''))
+      .map((w) =>
+        w
+          .replace(/ies$/, 'y')
+          .replace(/(?:ches|shes|sses|xes|zes)$/, (s) => s.slice(0, -2))
+          .replace(/s$/, '')
+      )
   );
 
 /**
@@ -435,12 +453,17 @@ export function matchingDefinition(gloss, definitions) {
   // period beginning at sunrise", labelled meteorology) is no ground for
   // carrying the definition's field or usage labels over to the sense,
   // nor is one shared word ("animal" ~ an obsolete "…animal…" sense)
-  const labels =
-    bestScore < 0.75 || bestShared < 2
-      ? []
-      : templates(best.raw.split('\n')[0], 'lb|label|lbl').flatMap((t) =>
-          t.positional.slice(1).filter((x) => !/^[_&]$|^(?:and|or)$/.test(x))
-        );
+  const labels = templates(best.raw.split('\n')[0], 'lb|label|lbl').flatMap(
+    (t) =>
+      t.positional
+        .slice(1)
+        .filter(
+          (x) =>
+            !/^[_&]$|^(?:and|or)$/.test(x) &&
+            ((bestScore >= 0.75 && bestShared >= 2) ||
+              (want.size >= 2 && /^(?:un)?countable$/.test(x)))
+        )
+  );
   const frames = senseFrames(best.raw.split(/\n#+\s/)[0]);
   const parent = definitions.find(
     (raw) =>

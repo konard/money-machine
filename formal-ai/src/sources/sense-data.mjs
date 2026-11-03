@@ -1,5 +1,6 @@
 /** Dictionary-derived evidence shared by the resolver and sense scorer. */
 import { matchingDefinition } from './wiktionary.mjs';
+import { PREPOSITIONS } from '../english/function-words.mjs';
 
 export function publicSenses(entries, title, pos) {
   const own = entries.get(title) || [];
@@ -30,19 +31,66 @@ export function publicSenses(entries, title, pos) {
       ...(e.capital && lower ? { side: true } : {}),
       capital: e.capital,
     })),
-    ...e.see.flatMap((s) =>
-      (entries.get(s.page) || [])
+    ...e.see.flatMap((s) => {
+      const senses = (entries.get(s.page) || [])
         .filter((x) => x.pos === pos)
         .flatMap((x) =>
-          x.senses.map((sense) => ({
-            ...sense,
-            gloss: `${s.gloss}: ${sense.gloss}`,
-            seeAlso: true,
-            side: e.senses.length > 0,
-          }))
-        )
-    ),
+          x.senses
+            .filter(
+              (sense) =>
+                !s.synonym ||
+                (s.thesaurus
+                  ? sense ===
+                    [...x.senses].sort(
+                      (a, b) => (b.languages || 0) - (a.languages || 0)
+                    )[0]
+                  : referenceFits(s.gloss, sense))
+            )
+            .map((sense) => ({
+              ...sense,
+              ...(s.synonym
+                ? {
+                    languages:
+                      e.senses.find((own) => own.gloss === s.gloss)
+                        ?.languages || 0,
+                  }
+                : {}),
+              ...(s.synonym ||
+              x.senses.length === 1 ||
+              referenceFits(s.gloss, sense)
+                ? matchingDefinition(s.gloss, mainDefinitions)
+                : {}),
+              gloss: `${s.gloss}: ${sense.gloss}`,
+              seeAlso: true,
+              side: !s.synonym && e.senses.length > 0,
+              referenceMatch:
+                s.synonym ||
+                x.senses.length === 1 ||
+                referenceFits(s.gloss, sense),
+            }))
+        );
+      return senses.some((sense) => sense.referenceMatch)
+        ? senses
+        : [
+            ...senses,
+            {
+              gloss: s.gloss,
+              russian: [],
+              ...matchingDefinition(s.gloss, mainDefinitions),
+            },
+          ];
+    }),
   ]);
+}
+
+/** A translation pointer names a meaning, not every homonym of its target. */
+export function referenceFits(gloss, sense) {
+  const want = glossWords(gloss);
+  const have = new Set(glossWords(`${sense.gloss} ${sense.definition || ''}`));
+  return (
+    want.length > 0 &&
+    want.filter((w) => have.has(w)).length / want.length >= 0.75
+  );
 }
 
 export function genus(definition = '') {
@@ -56,14 +104,14 @@ export function borrowGenus(senses) {
     if (s.russian.length || !s.definition) {
       return s;
     }
-    const head = genus(s.definition);
+    const head = hypernym(s.definition);
     const sibling = senses.find(
       (x) =>
         x !== s &&
         x.russian.length &&
         !x.variant &&
         head &&
-        genus(x.definition) === head
+        hypernym(x.definition) === head
     );
     return sibling ? { ...s, russian: sibling.russian, borrowed: true } : s;
   });
@@ -161,24 +209,27 @@ const STOP = new Set(
     ' '
   )
 );
+Object.keys(PREPOSITIONS).forEach((word) => STOP.add(word));
 
 /** Labels that say how a word is used, not what field it belongs to. */
 const USAGE_LABEL =
-  /^(?:transitive|intransitive|ditransitive|catenative|ambitransitive|ergative|reflexive|countable|uncountable|informal|colloquial|slang|figurative(?:ly)?|formal|literal(?:ly)?|idiomatic|attributive|plural|singular|in the plural|by extension|now|often|usually|especially|also|chiefly|mainly|sometimes|rare|obsolete|archaic|dated|US|UK|British|American|Canada|Australia|Ireland|NZ|India|Scotland|with|of|_|and|or)$/i;
+  /^(?:transitive|intransitive|ditransitive|catenative|ambitransitive|ergative|reflexive|countable|uncountable|euphemism|euphemistic|vulgar|offensive|derogatory|pejorative|humorous|jocular|sarcastic|ironic|dialectal|nonstandard|proscribed|endearing|literary|poetic|informal|colloquial|slang|figurative(?:ly)?|formal|literal(?:ly)?|idiomatic|attributive|plural|singular|in the plural|by extension|now|often|usually|especially|also|chiefly|mainly|sometimes|rare|obsolete|archaic|dated|US|UK|British|American|Canada|Australia|Ireland|NZ|India|Scotland|with|of|_|and|or)$/i;
 /**
  * Field of a sense: a field label of its definition (finance, computing)
  * or the field prefix of its translation gloss ("law: demand for…").
  */
 export function senseDomain(sense) {
   const label = (sense.labels || []).find(
-    (l) => /^[a-z][a-z -]{2,24}$/i.test(l) && !USAGE_LABEL.test(l)
+    (l) =>
+      /^[a-z][a-z -]{2,24}$/i.test(l) &&
+      !USAGE_LABEL.test(l) &&
+      !/^(?:of|with|in|usually|often|chiefly)\b/i.test(l)
   );
   if (label) {
     return label.toLowerCase();
   }
-  return sense.seeAlso
-    ? null
-    : /^([a-z][a-z ]{2,20}): /.exec(sense.gloss)?.[1] || null;
+  const prefix = /^([a-z][a-z ]{2,20}): /.exec(sense.gloss)?.[1];
+  return !sense.seeAlso && prefix && !USAGE_LABEL.test(prefix) ? prefix : null;
 }
 /** Content words of a gloss, used as context cues. */
 export function glossWords(gloss, headword = '') {

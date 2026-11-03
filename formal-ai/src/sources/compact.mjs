@@ -25,12 +25,12 @@ const CLAIMS = new Set([
   'P1552',
 ]);
 
-/** Only government.mjs consumes the wiktionary-ru bucket. Keep its case notes,
- * homonym boundaries and highlighted recipient examples in original order. */
+/** Keep case notes, definition-based argument markers, homonym boundaries
+ * and highlighted recipient examples in their original order. */
 function compactGovernment(text) {
   return [
     ...text.matchAll(
-      /^={3,5}\s*Управление\s*={3,5}\s*\n[\s\S]*?(?=^=|$(?![\s\S]))|^=+[^\n]*|\{\{помета\|[^{}]+\}\}|\{\{пример\|[^\n]*/gm
+      /^={3,5}\s*Управление\s*={3,5}\s*\n[\s\S]*?(?=^=|$(?![\s\S]))|^=+[^\n]*|^#[^#*:][^\n]*|\{\{помета\|[^{}]+\}\}|\{\{пример\|[^\n]*/gm
     ),
   ]
     .map((m) => m[0])

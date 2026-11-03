@@ -5,6 +5,22 @@ export function senseFrames(text = '') {
     .replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1')
     .replace(/'''?/g, '');
   const object = '(?:someone|somebody|something|a person|an? object)';
+  for (const label of text.matchAll(
+    /\{\{(?:lb|label|lbl|q|qualifier)\|((?:[^{}]|\{\{[^{}]*\}\})*)\}\}/g
+  )) {
+    const note = label[1].replace(
+      /\{\{(?:m|l)\|en\|([^|}]+)(?:[^}]*)\}\}/g,
+      '$1'
+    );
+    for (const marker of note.matchAll(
+      /\b(?:with|followed by)\s+["']?(in|on|at|to|from|for|with|by|about)\b/g
+    )) {
+      frames.add(`prep:${marker[1]}`);
+    }
+    if (/\bmembers? of (?:a|the) group\b/.test(note)) {
+      frames.add('prep:by');
+    }
+  }
   if (
     new RegExp(`\\b${object}\\s+to\\s+\\w+`, 'i').test(clean) ||
     /object[^.\n]{0,20}to-infinitive/i.test(clean)

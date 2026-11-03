@@ -2,6 +2,7 @@ import { compoundCandidates } from '../compounds.mjs';
 import { compoundFits } from './sense-data.mjs';
 /** Exact public concept labels supplement missing dictionary translations. */
 import { chunks, getJson, pool } from './fetch.mjs';
+import { plain } from './wiktionary.mjs';
 
 const API = 'https://www.wikidata.org/w/api.php';
 
@@ -106,8 +107,28 @@ export async function supplementTerms(
     )
     .map(([title]) => title);
   const compounds = compoundCandidates(text, lexicon).filter(
-    (title) => !plans.some((p) => p.lemma === title)
+    (title) =>
+      !plans.some(
+        (p) => p.lemma === title && p.senses.some((s) => s.russian.length)
+      )
   );
   const terms = await termSenses([...missingTerms, ...compounds], options);
-  return terms.filter((p) => !p.lemma.includes(' ') || compoundFits(p, text));
+  for (const plan of terms) {
+    const definitions = (entries.get(plan.lemma) || [])
+      .filter((e) => e.pos === 'noun')
+      .flatMap((e) => e.rawDefinitions);
+    if (definitions.length === 1) {
+      plan.senses.forEach((s) => {
+        s.definition = plain(definitions[0].split('\n')[0]);
+      });
+    }
+  }
+  return terms.filter(
+    (p) =>
+      !p.lemma.includes(' ') ||
+      entries
+        .get(p.lemma)
+        ?.some((e) => e.pos === 'noun' && e.rawDefinitions.length) ||
+      compoundFits(p, text)
+  );
 }

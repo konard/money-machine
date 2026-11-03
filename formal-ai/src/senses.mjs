@@ -13,6 +13,9 @@
  * - document memory: cue words from earlier sentences, decayed per sentence.
  */
 
+import { dictionaryContext } from './sense-context.mjs';
+import { translationHead } from './sources/translation-morphology.mjs';
+
 /** Words seen in earlier sentences, with decaying weights. */
 export class DocumentMemory {
   constructor(decay = 0.6) {
@@ -216,7 +219,9 @@ function stem(word) {
   return word
     .replace(/ies$/, 'y')
     .replace(/(?:ches|shes|sses|xes|zes)$/, (ending) => ending.slice(0, -2))
-    .replace(/(?:s|ed|ing|ly)$/, '')
+    .replace(/(?:s|ed|ing|ly)$/, (suffix, at) =>
+      at >= (suffix === 's' ? 3 : 4) ? '' : suffix
+    )
     .replace(/^(.{4,})al$/, '$1');
 }
 
@@ -294,9 +299,34 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
   const decisions = [];
   for (const clause of parsed.clauses) {
     const heads = collectHeads(clause);
+    const localPositions = heads
+      .map(({ node }) => positions.get(node.token))
+      .filter(Number.isFinite);
+    const localWords =
+      parsed.clauses.length > 1 &&
+      clause.type !== 'fragment' &&
+      localPositions.length
+        ? words.filter(
+            (w) =>
+              w.pos >= Math.min(...localPositions) &&
+              w.pos <= Math.max(...localPositions)
+          )
+        : words;
+    const local = new Set(localWords.map((w) => w.pos));
     // verbs last, so their objects are resolved first
     heads.sort((a, b) => (a.node.pos === 'verb') - (b.node.pos === 'verb'));
-    for (const { node } of heads) {
+    for (const { node, parent, role } of heads) {
+      // An independently attested adjective has its own lexical meaning;
+      // a productive participle is only the fallback for an attributive form.
+      if (node.participle === 'past-passive') {
+        const token = tokens.find((t) => t.index === node.token);
+        const adjectives = lexicon.lookup('adj', token?.lower);
+        if (adjectives.length) {
+          node.candidates = adjectives;
+          node.pos = 'adj';
+          delete node.participle;
+        }
+      }
       if (node.candidates.length < 2) {
         node.concept = node.candidates[0];
         continue;
@@ -309,6 +339,41 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         const concept = lexicon.get(id);
         let score = 0;
         const why = [];
+        if (concept?.synonymAlternative) {
+          const owner = node.pos === 'verb' && findVerbOwner(clause, node);
+          const object = owner?.passive ? owner.subject : owner?.objects?.[0];
+          const compound = lexicon.get(object?.head?.concept)?.ru?.compound;
+          const penalty = compound ? 0.1 : 0.25;
+          score -= penalty;
+          why.push(
+            `alternative synonym requires context (-${penalty.toFixed(2)})`
+          );
+          if (
+            node.pos === 'noun' &&
+            role === 'head' &&
+            (parent?.number === 'pl' || parent?.quantity !== undefined)
+          ) {
+            score += 0.3;
+            why.push(
+              'exact reverse noun attestation in a counted phrase (+0.30)'
+            );
+          }
+        }
+        const semantic = dictionaryContext(node, concept, heads, lexicon);
+        if (semantic) {
+          score += semantic;
+          why.push(`dictionary meanings in context (+${semantic.toFixed(2)})`);
+        }
+        if (
+          node.pos === 'noun' &&
+          role === 'head' &&
+          concept?.labels?.includes('uncountable') &&
+          !concept.labels.includes('countable') &&
+          (parent?.quantity !== undefined || parent?.number === 'pl')
+        ) {
+          score -= 1;
+          why.push('uncountable sense in a counted phrase (-1)');
+        }
         const token = tokens.find((t) => t.index === node.token);
         if (concept?.capital && token?.text === token?.lower) {
           score -= 3;
@@ -320,10 +385,10 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
               continue;
             }
             const distance = Math.abs(w.pos - at);
-            const weight = 1 + 2 / distance;
+            const weight = (1 + 2 / distance) * (local.has(w.pos) ? 1 : 0.1);
             score += weight;
             why.push(
-              `cue "${cue}" at distance ${distance} (+${weight.toFixed(2)})`
+              `${local.has(w.pos) ? 'cue' : 'other clause cue'} "${cue}" at distance ${distance} (+${weight.toFixed(2)})`
             );
           }
           const remembered = memory.weight(cue);
@@ -360,7 +425,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           score += field;
           why.push(`document field (+${field.toFixed(2)})`);
         }
-        if (concept?.genus) {
+        if (concept?.genus && stem(concept.genus) !== stem(word || '')) {
           const weight = memory.familyWeight(concept.genus) * 0.2;
           score += weight;
           if (weight) {
@@ -387,15 +452,39 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         if (
           node.pos === 'verb' &&
           concept?.objectFrequency &&
-          !parsed.leftover?.length &&
-          !parsed.unknown?.length
+          (parsed.clauses.length > 1 ||
+            (!parsed.leftover?.length && !parsed.unknown?.length))
         ) {
           const owner = findVerbOwner(clause, node);
           const object = owner?.passive ? owner.subject : owner?.objects?.[0];
-          const lemma = lexicon.get(object?.head?.concept)?.ru?.lemma;
+          const ru = lexicon.get(object?.head?.concept)?.ru;
+          const lemma = translationHead(ru);
           const count = concept.objectFrequency[lemma];
           if (Number.isFinite(count)) {
-            const weight = Math.min(0.3, Math.log10(1 + count) * 0.08);
+            const synonyms = node.candidates
+              .map((other) => lexicon.get(other))
+              .filter((other) => other?.gloss === concept.gloss);
+            const comparable =
+              ru?.compound &&
+              synonyms.some((other) => other.synonymAlternative) &&
+              synonyms.every(
+                (other) =>
+                  Number.isFinite(other.ruFrequency) &&
+                  Number.isFinite(other.objectFrequency?.[lemma])
+              );
+            const supported = Math.max(0, count - Math.sqrt(count));
+            const weight =
+              comparable && Number.isFinite(concept.ruFrequency)
+                ? Math.min(
+                    1.2,
+                    0.6 *
+                      Math.log10(
+                        1 +
+                          (1000 * supported) /
+                            Math.max(1, count, concept.ruFrequency)
+                      )
+                  )
+                : Math.min(0.3, Math.log10(1 + count) * 0.08);
             score += weight;
             why.push(
               `Russian verb–object corpus (${count}, +${weight.toFixed(2)})`
@@ -418,11 +507,11 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           );
         }
         if (Number.isFinite(concept?.ruFrequency)) {
-          // an encyclopedia overcounts some words (орден), so commonness
-          // earns little and rarity costs more
+          // Russian frequency supplies only a small default preference;
+          // rarity costs more, while English context decides the meaning.
           const common = Math.max(
             -0.25,
-            Math.min(0.1, 0.1 * (Math.log10(concept.ruFrequency + 1) - 3))
+            Math.min(0.03, 0.1 * (Math.log10(concept.ruFrequency + 1) - 3))
           );
           score += common;
           why.push(
@@ -446,6 +535,8 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
             ? node.candidates.filter(
                 (other) =>
                   other !== id &&
+                  !lexicon.get(other)?.synonymAlternative &&
+                  lexicon.get(other)?.gloss !== concept.gloss &&
                   !domainOf(lexicon.get(other)) &&
                   !lexicon.get(other)?.variant &&
                   !lexicon.get(other)?.related &&
@@ -457,6 +548,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         const domain = domainOf(concept);
         if (
           domain &&
+          !semantic &&
           !concept.core &&
           !memory.mentions(domain) &&
           !(memory.familyWeight(domain) >= 0.4)
@@ -464,9 +556,21 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           score -= 0.2;
           why.push(`specialist sense (${domain}) (-0.20)`);
         }
-        if (domain && memory.mentions(domain)) {
-          score += 0.3;
-          why.push(`dictionary field ${domain} in document (+0.30)`);
+        if (
+          domain &&
+          memory.mentions(domain) &&
+          !(
+            (concept.cues || []).includes(domain) &&
+            memory.topicWeight(domain, word)
+          )
+        ) {
+          // A field label already counted as a topical cue is one piece of
+          // evidence, not a second independent vote for this meaning.
+          const weight = 0.3;
+          score += weight;
+          why.push(
+            `dictionary field ${domain} in document (+${weight.toFixed(2)})`
+          );
         }
         if (shared) {
           const bonus = Math.min(0.1, 0.05 * shared);
@@ -517,7 +621,7 @@ function valencyFit(node, clause, concept, next) {
   if (!owner) {
     return { score: 0 };
   }
-  const hasObject = (owner.objects || []).length > 0;
+  const hasObject = (owner.objects || []).some((o) => !o.marker);
   const frames = concept.frames || [];
   const observed =
     owner.xcomp && !owner.xcomp.purpose
@@ -547,6 +651,18 @@ function valencyFit(node, clause, concept, next) {
       reason: 'valency supplement without matching frame (-3)',
     };
   }
+  const markers = [
+    ...(owner.mods || []).map((m) => m.prep),
+    ...(owner.objects || []).map((o) => o.marker),
+  ];
+  const governed = markers.find(
+    (marker) =>
+      frames.includes(`prep:${marker}`) &&
+      concept.ru?.markerGovernment?.[marker]
+  );
+  if (governed) {
+    return { score: 0.8, reason: `attested ${governed} argument (+0.80)` };
+  }
   if (
     observed &&
     frames.some((f) =>
@@ -567,6 +683,9 @@ function valencyFit(node, clause, concept, next) {
   }
   if (hasObject && frames.includes('transitive') && concept.core) {
     return { score: 0.3, reason: 'dictionary transitive core frame (+0.30)' };
+  }
+  if (!hasObject && frames.includes('intransitive')) {
+    return { score: 0.3, reason: 'dictionary intransitive frame (+0.30)' };
   }
   if (!concept.gloss || concept.objectClasses?.length) {
     return { score: 0 };

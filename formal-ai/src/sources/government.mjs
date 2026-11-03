@@ -380,6 +380,15 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
     Object.assign(ru, frame);
     ru.government ||= { preposition: null, case: 'acc' };
     ru.markerGovernment ||= {};
+    // Comparing members of a group: English "by category" distributes
+    // the comparison, while Russian uses по + dative for that grouping.
+    if (
+      sense.labels?.some((label) =>
+        /\bmembers? of (?:a|the) group\b/.test(label)
+      )
+    ) {
+      ru.markerGovernment.by = gov('dat', 'по');
+    }
     ru.classGovernment ||= {};
     ru.recipient ||= 'dat';
     if (ru.perfective) {
