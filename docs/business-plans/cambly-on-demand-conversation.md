@@ -111,7 +111,7 @@ _Business-plan sources:_
 2. Get approved
 3. Go online / accept bookings
 4. Talk with learners
-5. Weekly payout to PayPal/Payoneer -> bank
+5. Weekly payout by direct deposit to bank
 
 ## What can be automated
 

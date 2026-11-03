@@ -140,7 +140,7 @@ Legal everywhere in the set.
 
 ## Evidence that people get paid
 
-Medium help center documents $10 minimum and Stripe payouts; many writers publish monthly earnings reports.
+Medium's help center has documented the $10 minimum and Stripe payouts (not re-verified in 2026: it blocks automated fetching); many writers publish monthly earnings reports.
 
 ## Sources
 

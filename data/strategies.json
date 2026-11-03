@@ -1960,7 +1960,7 @@
       "id": "used-goods-reselling",
       "name": "Selling used goods online (eBay, Vinted, Mercari, local classifieds)",
       "category": "marketplaces",
-      "summary": "Sell items you own or source cheaply (thrift, garage sales) on second-hand marketplaces.",
+      "summary": "Sell items you own or source cheaply (thrift, garage sales) on second-hand marketplaces such as eBay, Vinted, Mercari or Facebook Marketplace.",
       "howItWorks": "Start by decluttering your own items for immediate cash, then optionally source underpriced goods from thrift stores, estate sales or free listings. AI can write titles/descriptions and price from sold comps. Buyers pay through the platform; you ship (or meet locally) and the platform releases funds after delivery. Vinted charges the buyer a protection fee so sellers keep the item price; eBay US charges 13.6% + $0.30-0.40 per order in most categories (250 free listings/month); Mercari US fees have changed repeatedly, so check its current fee page.",
       "platforms": [
         "eBay",
@@ -3665,7 +3665,7 @@
       "id": "study-notes-stuvia",
       "name": "Sell study notes and exam prep on Stuvia / Docsity",
       "category": "education",
-      "summary": "Upload your own original lecture notes, summaries and practice questions; earn per download.",
+      "summary": "Upload your own original lecture notes, summaries and practice questions to Stuvia or Docsity; earn per download, withdrawable from EUR/USD/GBP 10.",
       "howItWorks": "Students and professionals upload original study notes, summaries and exam-prep guides. Buyers searching for a course or exam pay per document; Stuvia takes a per-sale commission (shown when you set the price; reviews put it near 30%) and lets you withdraw once your wallet reaches EUR/USD/GBP 10. Docsity uses a points system convertible to cash. Only sell notes you wrote; reproducing textbooks, professors' slides or exam papers violates copyright and university rules.",
       "platforms": [
         "Stuvia",
@@ -3997,7 +3997,7 @@
       "id": "stock-media-contributor",
       "name": "Stock photos, vectors and footage (Adobe Stock AI-labeled; Shutterstock/Pond5 human-made)",
       "category": "content",
-      "summary": "License images, illustrations and video clips through stock agencies for per-download royalties.",
+      "summary": "License images, illustrations and video clips through stock agencies (Adobe Stock, Shutterstock, Pond5) for per-download royalties.",
       "howItWorks": "You upload keyworded media; agencies sell licenses to marketers and designers and pay you a royalty (Adobe Stock ~33% images/35% video). Adobe Stock accepts generative-AI content if labeled 'Created using generative AI tools', with releases for any real people and tool licenses allowing commercial use. Shutterstock and Pond5 do NOT accept AI-generated submissions, so only your own photos/footage go there. Volume of high-demand, well-keyworded assets drives income.",
       "platforms": [
         "Adobe Stock",
@@ -5875,10 +5875,10 @@
           "Upwork -> local bank/ACH/Payoneer",
           "Fiverr -> PayPal/Payoneer -> bank"
         ],
-        "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+        "minimumPayout": "Fiverr: $1 PayPal / $20 bank transfer via Payoneer / $10 Payoneer account; Upwork: per withdrawal method",
         "frequency": "on demand after clearance",
         "typicalDelayDays": 16,
-        "notes": "Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page. Re-checked Nov 2026: fiverr.com and help.fiverr.com still return 403, the Wayback Machine is unreachable, and Fiverr's FY2025 Form 20-F gives only a blended 27.7% take rate. Unconfirmed: Fiverr's 20% seller fee, 14-day (7-day Top Rated) clearance, and the $1 PayPal / $20 Payoneer bank withdrawal minimums."
+        "notes": "Upwork help center (Learn about the Freelancer Service Fee, checked in a browser Nov 2026): the fee ranges from 0% to 15% per contract, is shown on the offer/proposal and is fixed once the contract starts; Enterprise clients typically 10%, Any Hire contracts 0%. Fiverr help center (checked in a browser Nov 2026): freelancers earn 80% of the purchase amount including extras and tips (20% fee); earnings become withdrawable 14 days after the order completes (shorter for Top Rated, Seller Plus and Pro; Early Payout skips clearance for a 1% fee). Fiverr withdrawal minimums/fees: PayPal $1 (no fee, ~24 h), bank transfer via Payoneer $20 ($1 fee, 1-7 business days), Payoneer account $10 ($3 fee); max $5,000 per withdrawal."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -5940,14 +5940,16 @@
       "sources": [
         "https://help.fiverr.com/hc/en-us/articles/360010530058",
         "https://contra.com/pricing",
-        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65",
+        "https://help.fiverr.com/hc/en-us/articles/9234443621137-Your-earnings-page",
+        "https://help.fiverr.com/hc/en-us/articles/34069565843985-How-Fiverr-works-for-freelancers",
+        "https://support.upwork.com/hc/en-us/articles/211062538-Learn-about-the-Freelancer-Service-Fee"
       ],
       "tags": [
         "freelance",
         "creators",
         "video",
-        "recurring",
-        "needs-verification"
+        "recurring"
       ],
       "businessPlan": {
         "startupResources": {
@@ -5987,7 +5989,7 @@
           "platformFeePercent": 10,
           "grossMarginPercent": 87,
           "hoursPerUnit": 20,
-          "notes": "Estimate from editing retainers on Upwork/Contra ($400-$2,500/month) with entry packages ~$150; fee ~10% blended Upwork/Contra/direct. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+          "notes": "Estimate from editing retainers on Upwork/Contra ($400-$2,500/month) with entry packages ~$150; fee ~10% blended Upwork/Contra/direct. Fiverr's 20% fee and Upwork's 0-15% per-contract fee are confirmed on their help centers (Nov 2026); the 10% blend is an estimate."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 35,
@@ -6024,7 +6026,7 @@
       },
       "sourceFile": "b2b-services.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 35,
       "profitLikelihoodPercent": 42,
@@ -7333,7 +7335,7 @@
           "recurringMonthlyUsd": 15,
           "tools": [
             "domain ($20/yr)",
-            "Vercel/Cloudflare free hosting",
+            "Cloudflare Pages free hosting (Vercel's free Hobby tier forbids ads)",
             "LLM API (~$15/mo floor)",
             "AdSense",
             "Stripe"
@@ -7414,7 +7416,7 @@
       "id": "seo-blog-display-ads",
       "name": "Niche blog / programmatic SEO site with display ads (AdSense -> Ezoic/Journey/Raptive)",
       "category": "content",
-      "summary": "Publish genuinely useful pages that rank in search, monetized with display ads paid per impression.",
+      "summary": "Publish genuinely useful pages that rank in search, monetized with display ads via AdSense, then Ezoic, Mediavine or Raptive as traffic grows.",
       "howItWorks": "You build a site on a cheap domain/host, generating templated-but-valuable pages from real datasets (programmatic SEO) and editorial articles with AI assistance. Visitors from Google/Bing see ads; AdSense pays from day one of approval, and at scale you move to premium networks (Ezoic: no pageview minimum; Journey by Mediavine: 1,000 Tier-1 sessions in 30 days; full Mediavine: $5,000+ annual ad revenue; Raptive: 25k monthly pageviews with 50%+ tier-1 traffic below 100k). Google's scaled-content-abuse policy penalizes mass low-value AI pages, so each page needs unique data or utility.",
       "platforms": [
         "Google AdSense",
@@ -8452,7 +8454,7 @@
       "name": "Amazon KDP ebooks, paperbacks and low-content books",
       "category": "content",
       "summary": "Self-publish ebooks and print-on-demand books (incl. journals, planners, puzzle books) on Amazon for royalties.",
-      "howItWorks": "You write or compile books (nonfiction guides, fiction, workbooks, puzzle/activity books) and upload to KDP; Amazon prints on demand and pays 35-70% ebook royalties, ~60% minus print cost on paperbacks, plus Kindle Unlimited page reads. Amazon requires you to disclose AI-generated text, images or translations (AI-assisted editing need not be disclosed) and caps new titles at 3 per day per account. Low-content books have little moat, so niche research and quality covers matter.",
+      "howItWorks": "You write or compile books (nonfiction guides, fiction, workbooks, puzzle/activity books) and upload to KDP; Amazon prints on demand and pays 35-70% ebook royalties, ~60% minus print cost on paperbacks listed at $9.99+ (50% below that), plus Kindle Unlimited page reads. Amazon requires you to disclose AI-generated text, images or translations (AI-assisted editing need not be disclosed) and caps new titles at 3 per day per account. Low-content books have little moat, so niche research and quality covers matter.",
       "platforms": [
         "Amazon KDP",
         "Kindle Unlimited"
@@ -9227,7 +9229,7 @@
         "Last-click attribution disputes",
         "Thin margins"
       ],
-      "evidence": "Skimlinks official docs confirm monthly payouts above threshold; coupon sites remain a major affiliate channel, but 2024-25 Google enforcement removed many coupon directories.",
+      "evidence": "Skimlinks' payment-schedule help page describes monthly payouts above a threshold (not re-verified: it blocks automated access); coupon sites remain a major affiliate channel, but 2024-25 Google enforcement removed many coupon directories.",
       "sources": [
         "https://support.skimlinks.com/hc/en-us/articles/223835448-Payment-Schedule-When-will-I-get-paid",
         "https://www.seroundtable.com/google-white-label-coupon-sites-site-reputation-abuse-37515.html",
@@ -9275,7 +9277,7 @@
           "platformFeePercent": 0,
           "grossMarginPercent": 88,
           "hoursPerUnit": 1,
-          "notes": "Estimate: deal traffic converts well but sub-networks keep ~25% of commission and merchants cut coupon-site rates; variable cost is feed/AI spend."
+          "notes": "Estimate: deal traffic converts well but sub-networks keep ~25% of commission (the RPM is already net of that cut, hence fee 0) and merchants cut coupon-site rates; variable cost is feed/AI spend."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 10,
@@ -17177,10 +17179,10 @@
           "Upwork -> local bank/ACH/Payoneer",
           "Fiverr -> PayPal/Payoneer -> bank"
         ],
-        "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+        "minimumPayout": "Fiverr: $1 PayPal / $20 bank transfer via Payoneer / $10 Payoneer account; Upwork: per withdrawal method",
         "frequency": "on demand after clearance",
         "typicalDelayDays": 16,
-        "notes": "Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page. Re-checked Nov 2026: fiverr.com and help.fiverr.com still return 403, the Wayback Machine is unreachable, and Fiverr's FY2025 Form 20-F gives only a blended 27.7% take rate. Unconfirmed: Fiverr's 20% seller fee, 14-day (7-day Top Rated) clearance, and the $1 PayPal / $20 Payoneer bank withdrawal minimums."
+        "notes": "Upwork help center (Learn about the Freelancer Service Fee, checked in a browser Nov 2026): the fee ranges from 0% to 15% per contract, is shown on the offer/proposal and is fixed once the contract starts; Enterprise clients typically 10%, Any Hire contracts 0%. Fiverr help center (checked in a browser Nov 2026): freelancers earn 80% of the purchase amount including extras and tips (20% fee); earnings become withdrawable 14 days after the order completes (shorter for Top Rated, Seller Plus and Pro; Early Payout skips clearance for a 1% fee). Fiverr withdrawal minimums/fees: PayPal $1 (no fee, ~24 h), bank transfer via Payoneer $20 ($1 fee, 1-7 business days), Payoneer account $10 ($3 fee); max $5,000 per withdrawal."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -17242,14 +17244,16 @@
       "sources": [
         "https://help.fiverr.com/hc/en-us/articles/360010530058",
         "https://www.grants.gov/",
-        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65",
+        "https://help.fiverr.com/hc/en-us/articles/9234443621137-Your-earnings-page",
+        "https://help.fiverr.com/hc/en-us/articles/34069565843985-How-Fiverr-works-for-freelancers",
+        "https://support.upwork.com/hc/en-us/articles/211062538-Learn-about-the-Freelancer-Service-Fee"
       ],
       "tags": [
         "freelance",
         "b2b",
         "nonprofit",
-        "writing",
-        "needs-verification"
+        "writing"
       ],
       "businessPlan": {
         "startupResources": {
@@ -17287,7 +17291,7 @@
           "platformFeePercent": 10,
           "grossMarginPercent": 90,
           "hoursPerUnit": 20,
-          "notes": "Estimate: freelance grant writers commonly charge $50-$100/h or $1,000-$5,000 per full application; fee ~10% Upwork blended with direct invoices. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+          "notes": "Estimate: freelance grant writers commonly charge $50-$100/h or $1,000-$5,000 per full application; fee ~10% Upwork blended with direct invoices. Fiverr's 20% fee and Upwork's 0-15% per-contract fee are confirmed on their help centers (Nov 2026); the 10% blend is an estimate."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 20,
@@ -17324,7 +17328,7 @@
       },
       "sourceFile": "b2b-services.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 20,
       "profitLikelihoodPercent": 28,
@@ -17845,7 +17849,7 @@
       "id": "photo-presets-luts",
       "name": "Lightroom presets and video LUTs",
       "category": "digital-products",
-      "summary": "Sell photo-editing presets and color-grading LUTs to photographers and video creators.",
+      "summary": "Sell Lightroom presets and video color-grading LUTs to photographers and video creators on Etsy, Gumroad, Payhip or Creative Market.",
       "howItWorks": "You build Lightroom presets (.xmp) or video LUTs (.cube) for specific looks (film, wedding, travel) and sell packs on Etsy, Gumroad, Payhip or Creative Market. Buyers pay to save editing time and match a style. Before/after previews are the main selling tool. The niche is saturated, so a specific niche or bundling with your own photo/video audience helps.",
       "platforms": [
         "Etsy",
@@ -18184,7 +18188,7 @@
       "id": "digital-downloads-gumroad-payhip",
       "name": "Sell digital downloads via Gumroad / Payhip / Lemon Squeezy",
       "category": "digital-products",
-      "summary": "Sell ebooks, guides, checklists, code snippets or asset packs from a self-hosted storefront that handles checkout and VAT.",
+      "summary": "Sell ebooks, guides, checklists, code snippets or asset packs from a hosted storefront (Gumroad, Payhip, Lemon Squeezy) that handles checkout and VAT.",
       "howItWorks": "You create a downloadable product (PDF guide, template pack, code kit) and list it on Gumroad, Payhip or Lemon Squeezy. They handle checkout and VAT (Gumroad and Lemon Squeezy as merchant of record). Buyers are your own audience (X, Reddit, newsletter, SEO blog). Fees: Gumroad 10% + $0.50 on direct sales (30% via Discover); Payhip Free plan 5% (Plus $29/mo 2%, Pro $99/mo 0%) plus PayPal/Stripe fees; Lemon Squeezy 5% + $0.50.",
       "platforms": [
         "Gumroad",
@@ -19348,7 +19352,7 @@
       "name": "Security questionnaires, policies and authorized phishing-awareness programs for SMBs",
       "category": "services",
       "summary": "Answer vendor security questionnaires (SIG/CAIQ-style), draft security policies and run authorized phishing simulations and awareness training for small companies.",
-      "howItWorks": "SMBs selling to larger firms face long security questionnaires and need written policies. An LLM drafts answers from the client's verified control inventory. You also run phishing-awareness simulations on commercial platforms, only under signed authorization for the client's own staff and domains. Packages renew yearly.",
+      "howItWorks": "SMBs selling to larger firms face long security questionnaires and need written policies. An LLM drafts answers from the client's verified control inventory. You also run phishing-awareness simulations with Gophish (free, open-source) or a commercial platform, only under signed authorization for the client's own staff and domains. Packages renew yearly.",
       "platforms": [
         "Upwork",
         "direct",
@@ -19687,7 +19691,7 @@
       "id": "ai-prompts-promptbase",
       "name": "Sell AI prompts on PromptBase",
       "category": "marketplaces",
-      "summary": "Sell tested prompts for image and text models on a dedicated prompt marketplace.",
+      "summary": "Sell tested prompts for image and text models on PromptBase, which takes 20% of marketplace sales and pays via Stripe or USDC.",
       "howItWorks": "You craft prompts that reliably produce a specific output (e.g. a sticker style, a product-photo look, an SEO workflow), test them, and list on PromptBase with example outputs. Buyers pay a few dollars to skip trial-and-error. PromptBase takes a 20% fee on marketplace sales (0% on sales via your own referral link) and pays via Stripe or Zoneless (USDC). Demand has declined as models improved and prompting became easier, so income is usually small.",
       "platforms": [
         "PromptBase"
@@ -19800,7 +19804,7 @@
           "platformFeePercent": 20,
           "grossMarginPercent": 75,
           "hoursPerUnit": 0,
-          "notes": "Most PromptBase prompts sell at $2.99-5.99; 20% marketplace fee; ~$0.20 of model credits per prompt for test outputs (estimate). The 20% fee is estimated (PromptBase payout page bot-blocked)."
+          "notes": "Most PromptBase prompts sell at $2.99-5.99; 20% marketplace fee; ~$0.20 of model credits per prompt for test outputs (estimate). The 20% fee is from PromptBase's payouts knowledge base and changelog (see evidence); the payout page was bot-blocked at the last check, so it was not re-confirmed."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -20691,8 +20695,8 @@
       "id": "paid-webinars-workshops",
       "name": "Paid one-off webinars and live workshops (Luma/Zoom + Stripe)",
       "category": "education",
-      "summary": "Sell tickets to 60-180 minute live workshops on a practical topic, then sell the recording.",
-      "howItWorks": "You pick a narrowly useful topic (e.g. 'Automate your invoicing with n8n', 'Résumé review for junior devs'), create a ticketed event on Luma, Eventbrite or a Stripe payment link, and run it on Zoom/Google Meet. Attendees pay $10-$100 per seat. Luma's free plan takes 5% plus Stripe fees (0% on Luma Plus). Recordings are later sold as an on-demand product.",
+      "summary": "Sell tickets to 60-180 minute live workshops on a practical topic via Luma, Eventbrite or a Stripe payment link, then sell the recording.",
+      "howItWorks": "You pick a narrowly useful topic (e.g. 'Automate your invoicing with n8n', 'Résumé review for junior devs'), create a ticketed event on Luma, Eventbrite or a Stripe payment link, and run it on Zoom/Google Meet. Attendees pay $20-$100 per seat (premium workshops up to ~$300). Luma's free plan takes 5% plus Stripe fees (0% on Luma Plus). Recordings are later sold as an on-demand product.",
       "platforms": [
         "Luma",
         "Eventbrite",
@@ -21710,7 +21714,7 @@
         "minimumPayout": "Whop: $10 minimum withdrawal; Stripe-based tools: Stripe default",
         "frequency": "Whop instant/daily/weekly; Stripe rolling",
         "typicalDelayDays": 7,
-        "notes": "Whop processing 2.7% + $0.30 (+1.5% intl cards, +1% FX); payout fees: next-day ACH $2.50, wire $23, instant 4% + $2.50 (Whop's separate platform fee, ~3%, not re-confirmed). LaunchPass Premium $29/mo + 3.5% + Stripe (free tier $0/mo). Skool Hobby $9/mo + 10% or Pro $99/mo + 2.9%."
+        "notes": "Whop processing 2.7% + $0.30 (+1.5% intl cards, +1% FX); payout fees: next-day ACH $2.50, wire $23, instant 4% + $2.50 (Whop's fees page lists no separate platform fee, as modelled in the unit economics; the ~3% fee in older guides is not applied). LaunchPass Premium $29/mo + 3.5% + Stripe (free tier $0/mo). Skool Hobby $9/mo + 10% or Pro $99/mo + 2.9%."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -22326,7 +22330,7 @@
           "platformFeePercent": 15,
           "grossMarginPercent": 45,
           "hoursPerUnit": 0.05,
-          "notes": "Premium bot subscriptions typically cost $3-$10/month per server or user; Discord's 15% share is estimated (payout help page bot-blocked; developer docs do not state it); cost = LLM usage plus processing (estimate)."
+          "notes": "Premium bot subscriptions typically cost $3-$10/month per server or user; Discord's 15% share (30% above $1M cumulative sales) is per its Premium Apps Payout article, as in payout notes; cost = LLM usage plus processing (estimate)."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 15,
@@ -23444,7 +23448,7 @@
         "Policy enforcement against AI-written text",
         "Pool-based pay fluctuates"
       ],
-      "evidence": "Medium help center documents $10 minimum and Stripe payouts; many writers publish monthly earnings reports.",
+      "evidence": "Medium's help center has documented the $10 minimum and Stripe payouts (not re-verified in 2026: it blocks automated fetching); many writers publish monthly earnings reports.",
       "sources": [
         "https://help.medium.com/hc/en-us/articles/25267297935895",
         "https://help.medium.com/hc/en-us/articles/39121627791639-Medium-Partner-Program-eligibility",
@@ -24370,7 +24374,7 @@
       "id": "paid-newsletter-subscriptions",
       "name": "Paid newsletter subscriptions (Substack / beehiiv / Ghost)",
       "category": "content",
-      "summary": "Readers pay a monthly/annual subscription for a niche newsletter.",
+      "summary": "Readers pay a monthly/annual subscription for a niche newsletter on Substack (10% cut) or beehiiv/Ghost (0% cut), billed through Stripe.",
       "howItWorks": "You publish a free newsletter to build a list, then gate premium issues (deep dives, data, research digests) behind a paid tier. Readers pay by card via Stripe; Substack keeps 10% plus Stripe fees, beehiiv and Ghost take 0% platform cut on paid subs (you pay the plan). AI can help aggregate sources, summarize and draft, but paying readers expect a distinct editorial voice and accuracy.",
       "platforms": [
         "Substack",
@@ -26065,7 +26069,7 @@
       "name": "Print-on-demand via Printful/Printify connected to Etsy or Shopify",
       "category": "marketplaces",
       "summary": "Sell your designs on apparel/mugs/posters in your own Etsy or Shopify store; Printful/Printify print and ship each order, zero inventory.",
-      "howItWorks": "You upload designs to Printful or Printify, which sync products to your Etsy or Shopify store. When a customer buys, the POD provider charges your card the base cost and prints/ships directly (PHYSICAL STEP handled by the provider, not you). You keep retail minus base cost and marketplace fees; a $28 tee typically nets ~$5-8.",
+      "howItWorks": "You upload designs to Printful or Printify, which sync products to your Etsy or Shopify store. When a customer buys, the POD provider charges your card the base cost and prints/ships directly (PHYSICAL STEP handled by the provider, not you). You keep retail minus base cost and marketplace fees; a $28 tee nets roughly $11 on Etsy with a standard provider and no ads (less with premium providers or ad spend).",
       "platforms": [
         "Printful",
         "Printify",
@@ -26572,7 +26576,7 @@
       "id": "newsletter-ad-network-boosts",
       "name": "Newsletter ad network + Boosts (beehiiv Ad Network)",
       "category": "content",
-      "summary": "Monetize a free newsletter with platform-sourced sponsors (pay per verified click) and paid subscriber referrals.",
+      "summary": "Monetize a free newsletter with platform-sourced sponsors (paid per unique open or click, as each advertiser sets) and paid subscriber referrals.",
       "howItWorks": "On a paid beehiiv plan (Lite from $49/mo billed annually, $59 monthly; Ad Network 'not in trial; not in all regions') you are offered sponsor campaigns each billing cycle; you place the ad and get paid per unique open (CPM) or unique click (CPC), as set by each advertiser. Boosts pay you a fee per subscriber you recommend to other newsletters. Payers are advertisers and other publishers, distinct from reader subscriptions. Content can be AI-assisted curation, but advertisers drop low-engagement lists.",
       "platforms": [
         "beehiiv Ad Network",
@@ -30458,7 +30462,7 @@
       "id": "gated-membership-site",
       "name": "Membership site with gated content (Ghost, Memberful)",
       "category": "community",
-      "summary": "Own-domain site where paying members unlock articles, videos, downloads and a members-only area.",
+      "summary": "Own-domain Ghost or WordPress + Memberful site where paying members unlock articles, videos, downloads and a members-only area, billed via Stripe.",
       "howItWorks": "Run an own-domain site on Ghost or WordPress + Memberful where premium posts, archives, templates or videos require a paid Stripe membership. You own the domain and email list. Ghost takes 0% of revenue (Ghost(Pro) Publisher $29/mo billed yearly, or self-host on a cheap VPS); Memberful Standard charges $49/mo plus 4.9%.",
       "platforms": [
         "Ghost",
@@ -30860,7 +30864,7 @@
         "Get approved",
         "Go online / accept bookings",
         "Talk with learners",
-        "Weekly payout to PayPal/Payoneer -> bank"
+        "Weekly payout by direct deposit to bank"
       ],
       "risks": [
         "Low fixed pay",
@@ -31623,7 +31627,7 @@
       "id": "podcast-monetization",
       "name": "Podcast monetization (Spotify Partner Program, memberships, host-read sponsorships)",
       "category": "content",
-      "summary": "Earn from ads and sponsorships on an audio/video podcast.",
+      "summary": "Earn from ads and sponsorships on an audio/video podcast via the Spotify Partner Program, Spotify's host-read sponsorship tool and direct sponsor deals.",
       "howItWorks": "You publish a niche show (interviews, news recaps, explainers) on Spotify for Creators. The Spotify Partner Program pays ad revenue and Premium-engagement payouts once you have 3+ episodes, 1,000 unique listeners and 2,000 consumption hours in 30 days (lowered Jan 2026). Spotify added a host-read sponsorship tool (2026) and fan Memberships (Oct 2026); direct sponsor deals also pay. Podcorn, the former sponsorship marketplace, now redirects to a \"sunset\" notice. AI can handle research, editing, show notes and clips; synthetic hosts must be disclosed.",
       "platforms": [
         "Spotify for Creators",
@@ -31741,7 +31745,7 @@
           "platformFeePercent": 0,
           "grossMarginPercent": 100,
           "hoursPerUnit": 5,
-          "notes": "Industry host-read CPMs are commonly quoted at $15-$50 per 1,000 downloads for direct deals; marketplaces and Spotify's ad share take 30-50% (estimate). Small shows spend several production hours per 1,000 downloads."
+          "notes": "Industry host-read CPMs are commonly quoted at $15-$50 per 1,000 downloads for direct deals; marketplaces and Spotify's ad share take 30-50% (estimate), so fee 0 applies to direct deals only. Small shows spend several production hours per 1,000 downloads."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -33646,7 +33650,7 @@
       "id": "per-minute-expert-calls",
       "name": "Per-minute expert phone calls on Clarity.fm",
       "category": "education",
-      "summary": "Founders and professionals book short paid calls with you at a per-minute rate you set.",
+      "summary": "Founders and professionals book short paid calls with you on Clarity.fm at a per-minute rate you set; Clarity keeps 15% and pays via PayPal.",
       "howItWorks": "You list your expertise (marketing, fundraising, SaaS, engineering) on Clarity.fm and set an hourly rate that is displayed per minute. Callers are billed per minute; Clarity keeps 15%. Bookings come from Clarity search and, more often, from links you place on your site or social profiles.",
       "platforms": [
         "Clarity.fm"
@@ -33844,7 +33848,7 @@
         ]
       },
       "availability": {
-        "notes": "Payouts require Stripe Connect support for your country (~45% of reference countries)."
+        "notes": "Payouts likely require Stripe Connect support for your country (~45% of reference countries): Stripe paid the predecessor program, and the new program's processor is unconfirmed."
       },
       "automationPlan": [
         "LLM drafting of threads/articles from your research",
@@ -34963,7 +34967,7 @@
         "minimumPayout": "per placement (no stated minimum)",
         "frequency": "per placement: Paraform in thirds at 30/60/90 days after start; BountyJobs after employer pays + 60 days",
         "typicalDelayDays": 60,
-        "notes": "Paraform Recruiting Agreement: reward is fixed or % of first-year salary; paid 1/3 at 30, 60 and 90 days after the candidate's start date via Stripe; 90-day guarantee with repayment/clawback if no replacement search. BountyJobs FAQ: earnings pending until the employer pays and 60 days of employment elapse; 60-day guarantee (fixed fees or <20% of salary) or 90-day (>=20%). Unconfirmed (BountyJobs FAQ re-checked Nov 2026): the payout method BountyJobs uses to pay agencies and any platform fee it deducts are not published."
+        "notes": "Paraform Recruiting Agreement: reward is fixed or % of first-year salary; paid 1/3 at 30, 60 and 90 days after the candidate's start date via Stripe; 90-day guarantee with repayment/clawback if no replacement search. BountyJobs FAQ (re-checked in a browser Nov 2026): earnings stay pending until the employer pays and 60 days of employment elapse; 60-day guarantee (fixed fees or <20% of salary) or 90-day (>=20%). BountyJobs Terms of Use (employer agreement): employers pay BountyJobs a subscription fee plus the Bounty Award, invoiced within 30 days of the start date. Unconfirmed: the method BountyJobs uses to pay agencies and whether it deducts any share of the Bounty Award (neither the recruiter FAQ nor the terms state it)."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -35030,7 +35034,8 @@
         "https://www.paraform.com/recruiters",
         "https://www.paraform.com/recruiting-agreement",
         "https://www.paraform.com/terms",
-        "https://www.bountyjobs.com/recruiter-faq"
+        "https://www.bountyjobs.com/recruiter-faq",
+        "https://www.bountyjobs.com/terms-of-use"
       ],
       "tags": [
         "b2b",
@@ -35309,7 +35314,7 @@
         "minimumPayout": "Not stated in Epic's Fortnite developer docs (unverified; Epic's separate Support-A-Creator program uses a $100 threshold)",
         "frequency": "monthly",
         "typicalDelayDays": 60,
-        "notes": "Paid starting 30 days after month end; in-island sales are paid with the same payout. Payouts pause while an island is unpublished. Payee setup is a Tax Identity tax interview (W-9/W-8), then a Hyperwallet account invite. Unconfirmed: the minimum payout threshold (not stated in Epic's engagement-payout, Hyperwallet-setup or developer-program docs, re-checked Nov 2026)."
+        "notes": "Paid starting 30 days after month end; in-island sales are paid with the same payout. Payouts pause while an island is unpublished. Payee setup is a Tax Identity tax interview (W-9/W-8), then a Hyperwallet account invite. Unconfirmed: the minimum payout threshold (not stated in Epic's engagement-payout, Hyperwallet-setup, developer-program or developer-program FAQ pages, read in a browser Nov 2026; the FAQ mentions only the $600 US 1099-NEC reporting line)."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -35371,7 +35376,8 @@
         "https://dev.epicgames.com/documentation/fortnite/engagement-payout-in-fortnite-creative",
         "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-overview-in-fortnite",
         "https://dev.epicgames.com/documentation/en-us/fortnite/fortnite-developer-program",
-        "https://dev.epicgames.com/documentation/fortnite/hyperwallet-setup-in-fortnite-creative"
+        "https://dev.epicgames.com/documentation/fortnite/hyperwallet-setup-in-fortnite-creative",
+        "https://dev.epicgames.com/documentation/fortnite/fortnite-developer-program-faqs-in-fortnite"
       ],
       "tags": [
         "games",
@@ -35979,7 +35985,7 @@
       "name": "Building and selling micro-SaaS products and apps (Acquire.com)",
       "category": "marketplaces",
       "summary": "Build a small SaaS, browser extension or mobile app to modest recurring revenue, then sell it to an acquirer.",
-      "howItWorks": "Acquire.com (formerly MicroAcquire) and Flippa connect founders with buyers of small software businesses, typically valued at 2-5x annual profit/ARR. With AI coding agents you build a focused tool, get to a few hundred dollars MRR, and sell when the buyer pool values it. Distinct from content-site flipping because buyers price recurring software revenue, churn and code quality. Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.",
+      "howItWorks": "Acquire.com (formerly MicroAcquire) and Flippa connect founders with buyers of small software businesses, typically valued at 2-4x annual profit/ARR. With AI coding agents you build a focused tool, get to a few hundred dollars MRR, and sell when the buyer pool values it. Distinct from content-site flipping because buyers price recurring software revenue, churn and code quality. Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.",
       "platforms": [
         "Acquire.com",
         "Flippa",
@@ -36984,7 +36990,7 @@
       "name": "YouTube/podcast sponsorship marketplaces",
       "category": "affiliate",
       "summary": "List your channel or podcast on sponsorship marketplaces so brands pay for integrated reads or segments.",
-      "howItWorks": "Once a YouTube channel or podcast has a consistent niche audience, list it on YouTube Creator Partnerships (formerly BrandConnect, requires YPP in eligible countries) and third-party marketplaces (ThoughtLeaders, Podcorn, Passionfroot). Brands pay flat fees or CPM for integrations, with briefs and reporting handled in-platform. This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.",
+      "howItWorks": "Once a YouTube channel or podcast has a consistent niche audience, list it on YouTube Creator Partnerships (formerly BrandConnect, requires YPP in eligible countries) and third-party marketplaces (ThoughtLeaders, Passionfroot; Podcorn has been sunset). Brands pay flat fees or CPM for integrations, with briefs and reporting handled in-platform. This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.",
       "platforms": [
         "YouTube Creator Partnerships",
         "ThoughtLeaders",
@@ -37073,7 +37079,7 @@
           "recurringMonthlyUsd": 0,
           "tools": [
             "YouTube Creator Partnerships (in YPP)",
-            "ThoughtLeaders/Podcorn/Passionfroot profiles (free)",
+            "ThoughtLeaders/Passionfroot profiles (free)",
             "media kit (Canva free)"
           ],
           "skills": [
@@ -37494,7 +37500,7 @@
       "id": "crowdfunding-creative-projects",
       "name": "Crowdfunding a creative/digital project (Kickstarter, Indiegogo)",
       "category": "community",
-      "summary": "Pre-sell a digital game, book, tool or course to backers who pledge for digital rewards.",
+      "summary": "Pre-sell a digital game, book, tool or course to backers on Kickstarter or Indiegogo; Kickstarter pays out only if the goal is met, minus 5% plus processing.",
       "howItWorks": "You build a campaign page with a video, reward tiers (digital copies, early access, credits) and a funding goal. Backers pledge; on Kickstarter you only collect if the goal is met (5% platform fee + 3-5% processing). Indiegogo allows flexible funding. Digital rewards avoid shipping costs.",
       "platforms": [
         "Kickstarter",
@@ -37659,7 +37665,7 @@
       "id": "domain-flipping-parking",
       "name": "Domain name investing (flipping) and parking",
       "category": "marketplaces",
-      "summary": "Register or buy brandable/keyword domains and resell them to businesses via domain marketplaces.",
+      "summary": "Register or buy brandable/keyword domains and resell them to businesses through Buy-Now listings on Afternic and Sedo.",
       "howItWorks": "You register available domains (~$10/year) or buy expiring ones, list them with Buy-Now prices on Afternic (GoDaddy network; Dan.com is being folded into it) and Sedo, and wait for an end user to buy. Annual sell-through for typical portfolios is ~0.5-2%, so you need hundreds of names and years of renewals; a single sale can be $500-$5,000. Parking revenue has collapsed (Google changed AdSense-for-domains defaults), so treat parking as negligible.",
       "platforms": [
         "Afternic",
@@ -38922,7 +38928,7 @@
           "platformFeePercent": 0,
           "grossMarginPercent": 100,
           "hoursPerUnit": 1,
-          "notes": "Estimated (Amazon publishes onsite rates only inside Associates Central): creator-reported libraries average roughly $0.5-5 per video per month at 0.5-4% onsite rates; median assumes ~$10/video/year. Products already owned cost $0."
+          "notes": "Estimated (Amazon's help pages publish the onsite rate tables, but not per-video sales): creator-reported libraries average roughly $0.5-5 per video per month at 0.5-4% onsite rates; median assumes ~$10/video/year. Products already owned cost $0."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,

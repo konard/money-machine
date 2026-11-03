@@ -1054,7 +1054,7 @@
     "id": "used-goods-reselling",
     "name": "Selling used goods online (eBay, Vinted, Mercari, local classifieds)",
     "category": "marketplaces",
-    "summary": "Sell items you own or source cheaply (thrift, garage sales) on second-hand marketplaces.",
+    "summary": "Sell items you own or source cheaply (thrift, garage sales) on second-hand marketplaces such as eBay, Vinted, Mercari or Facebook Marketplace.",
     "howItWorks": "Start by decluttering your own items for immediate cash, then optionally source underpriced goods from thrift stores, estate sales or free listings. AI can write titles/descriptions and price from sold comps. Buyers pay through the platform; you ship (or meet locally) and the platform releases funds after delivery. Vinted charges the buyer a protection fee so sellers keep the item price; eBay US charges 13.6% + $0.30-0.40 per order in most categories (250 free listings/month); Mercari US fees have changed repeatedly, so check its current fee page.",
     "platforms": [
       "eBay",
@@ -1363,7 +1363,7 @@
     "id": "domain-flipping-parking",
     "name": "Domain name investing (flipping) and parking",
     "category": "marketplaces",
-    "summary": "Register or buy brandable/keyword domains and resell them to businesses via domain marketplaces.",
+    "summary": "Register or buy brandable/keyword domains and resell them to businesses through Buy-Now listings on Afternic and Sedo.",
     "howItWorks": "You register available domains (~$10/year) or buy expiring ones, list them with Buy-Now prices on Afternic (GoDaddy network; Dan.com is being folded into it) and Sedo, and wait for an end user to buy. Annual sell-through for typical portfolios is ~0.5-2%, so you need hundreds of names and years of renewals; a single sale can be $500-$5,000. Parking revenue has collapsed (Google changed AdSense-for-domains defaults), so treat parking as negligible.",
     "platforms": [
       "Afternic",
@@ -1670,7 +1670,7 @@
     "name": "Building and selling micro-SaaS products and apps (Acquire.com)",
     "category": "marketplaces",
     "summary": "Build a small SaaS, browser extension or mobile app to modest recurring revenue, then sell it to an acquirer.",
-    "howItWorks": "Acquire.com (formerly MicroAcquire) and Flippa connect founders with buyers of small software businesses, typically valued at 2-5x annual profit/ARR. With AI coding agents you build a focused tool, get to a few hundred dollars MRR, and sell when the buyer pool values it. Distinct from content-site flipping because buyers price recurring software revenue, churn and code quality. Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.",
+    "howItWorks": "Acquire.com (formerly MicroAcquire) and Flippa connect founders with buyers of small software businesses, typically valued at 2-4x annual profit/ARR. With AI coding agents you build a focused tool, get to a few hundred dollars MRR, and sell when the buyer pool values it. Distinct from content-site flipping because buyers price recurring software revenue, churn and code quality. Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.",
     "platforms": ["Acquire.com", "Flippa", "Tiny Acquisitions", "Escrow.com"],
     "payout": {
       "methods": ["Escrow.com -> bank wire"],

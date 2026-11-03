@@ -2,7 +2,7 @@
 
 **Rank #105 · Tier B · Priority score 53/100 · Category: Digital products**
 
-Sell photo-editing presets and color-grading LUTs to photographers and video creators.
+Sell Lightroom presets and video color-grading LUTs to photographers and video creators on Etsy, Gumroad, Payhip or Creative Market.
 
 ## Scores
 

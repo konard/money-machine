@@ -2,7 +2,7 @@
 
 **Rank #199 · Tier C · Priority score 43/100 · Category: Education & tutoring**
 
-Founders and professionals book short paid calls with you at a per-minute rate you set.
+Founders and professionals book short paid calls with you on Clarity.fm at a per-minute rate you set; Clarity keeps 15% and pays via PayPal.
 
 ## Scores
 

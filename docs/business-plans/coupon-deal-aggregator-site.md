@@ -55,7 +55,7 @@ Build a niche deal site (e.g. developer tools, outdoor gear, a specific country'
 | Gross margin (median case) | 88% |
 | Human hours per unit after automation | 1 |
 
-Estimate: deal traffic converts well but sub-networks keep ~25% of commission and merchants cut coupon-site rates; variable cost is feed/AI spend.
+Estimate: deal traffic converts well but sub-networks keep ~25% of commission (the RPM is already net of that cut, hence fee 0) and merchants cut coupon-site rates; variable cost is feed/AI spend.
 
 ### Break-even
 
@@ -143,7 +143,7 @@ Legal; never publish fake or leaked codes (consumer-protection law). UK ASA/CAP 
 
 ## Evidence that people get paid
 
-Skimlinks official docs confirm monthly payouts above threshold; coupon sites remain a major affiliate channel, but 2024-25 Google enforcement removed many coupon directories.
+Skimlinks' payment-schedule help page describes monthly payouts above a threshold (not re-verified: it blocks automated access); coupon sites remain a major affiliate channel, but 2024-25 Google enforcement removed many coupon directories.
 
 ## Sources
 

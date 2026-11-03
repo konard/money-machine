@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$400 per month** in the first year; 
 
 ## How it works
 
-SMBs selling to larger firms face long security questionnaires and need written policies. An LLM drafts answers from the client's verified control inventory. You also run phishing-awareness simulations on commercial platforms, only under signed authorization for the client's own staff and domains. Packages renew yearly.
+SMBs selling to larger firms face long security questionnaires and need written policies. An LLM drafts answers from the client's verified control inventory. You also run phishing-awareness simulations with Gophish (free, open-source) or a commercial platform, only under signed authorization for the client's own staff and domains. Packages renew yearly.
 
 **Platforms:** Upwork, direct, Gophish (free open-source phishing-simulation framework), commercial phishing-simulation platforms (partner programs for MSPs/consultants, e.g. KnowBe4)
 

@@ -39,7 +39,7 @@ Each tool page targets a search query with real utility (not thin content). LLM 
 | Time to launch | 60 hours |
 | One-time cash | $20 |
 | Recurring fixed cost | $15 / month |
-| Tools | domain ($20/yr); Vercel/Cloudflare free hosting; LLM API (~$15/mo floor); AdSense; Stripe |
+| Tools | domain ($20/yr); Cloudflare Pages free hosting (Vercel's free Hobby tier forbids ads); LLM API (~$15/mo floor); AdSense; Stripe |
 | Skills | web development (AI-assisted); SEO and keyword research; abuse/rate limiting |
 | Equipment | laptop or desktop; stable internet |
 | Accounts | AdSense account; Stripe or MoR account; Google Search Console |

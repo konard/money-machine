@@ -3,7 +3,7 @@
     "id": "digital-downloads-gumroad-payhip",
     "name": "Sell digital downloads via Gumroad / Payhip / Lemon Squeezy",
     "category": "digital-products",
-    "summary": "Sell ebooks, guides, checklists, code snippets or asset packs from a self-hosted storefront that handles checkout and VAT.",
+    "summary": "Sell ebooks, guides, checklists, code snippets or asset packs from a hosted storefront (Gumroad, Payhip, Lemon Squeezy) that handles checkout and VAT.",
     "howItWorks": "You create a downloadable product (PDF guide, template pack, code kit) and list it on Gumroad, Payhip or Lemon Squeezy. They handle checkout and VAT (Gumroad and Lemon Squeezy as merchant of record). Buyers are your own audience (X, Reddit, newsletter, SEO blog). Fees: Gumroad 10% + $0.50 on direct sales (30% via Discover); Payhip Free plan 5% (Plus $29/mo 2%, Pro $99/mo 0%) plus PayPal/Stripe fees; Lemon Squeezy 5% + $0.50.",
     "platforms": ["Gumroad", "Payhip", "Lemon Squeezy"],
     "payout": {
@@ -302,7 +302,7 @@
     "name": "Print-on-demand via Printful/Printify connected to Etsy or Shopify",
     "category": "marketplaces",
     "summary": "Sell your designs on apparel/mugs/posters in your own Etsy or Shopify store; Printful/Printify print and ship each order, zero inventory.",
-    "howItWorks": "You upload designs to Printful or Printify, which sync products to your Etsy or Shopify store. When a customer buys, the POD provider charges your card the base cost and prints/ships directly (PHYSICAL STEP handled by the provider, not you). You keep retail minus base cost and marketplace fees; a $28 tee typically nets ~$5-8.",
+    "howItWorks": "You upload designs to Printful or Printify, which sync products to your Etsy or Shopify store. When a customer buys, the POD provider charges your card the base cost and prints/ships directly (PHYSICAL STEP handled by the provider, not you). You keep retail minus base cost and marketplace fees; a $28 tee nets roughly $11 on Etsy with a standard provider and no ads (less with premium providers or ad spend).",
     "platforms": ["Printful", "Printify", "Etsy", "Shopify"],
     "payout": {
       "methods": [
@@ -1324,7 +1324,7 @@
     "id": "photo-presets-luts",
     "name": "Lightroom presets and video LUTs",
     "category": "digital-products",
-    "summary": "Sell photo-editing presets and color-grading LUTs to photographers and video creators.",
+    "summary": "Sell Lightroom presets and video color-grading LUTs to photographers and video creators on Etsy, Gumroad, Payhip or Creative Market.",
     "howItWorks": "You build Lightroom presets (.xmp) or video LUTs (.cube) for specific looks (film, wedding, travel) and sell packs on Etsy, Gumroad, Payhip or Creative Market. Buyers pay to save editing time and match a style. Before/after previews are the main selling tool. The niche is saturated, so a specific niche or bundling with your own photo/video audience helps.",
     "platforms": ["Etsy", "Gumroad", "Payhip", "Creative Market"],
     "payout": {
@@ -2041,7 +2041,7 @@
     "id": "ai-prompts-promptbase",
     "name": "Sell AI prompts on PromptBase",
     "category": "marketplaces",
-    "summary": "Sell tested prompts for image and text models on a dedicated prompt marketplace.",
+    "summary": "Sell tested prompts for image and text models on PromptBase, which takes 20% of marketplace sales and pays via Stripe or USDC.",
     "howItWorks": "You craft prompts that reliably produce a specific output (e.g. a sticker style, a product-photo look, an SEO workflow), test them, and list on PromptBase with example outputs. Buyers pay a few dollars to skip trial-and-error. PromptBase takes a 20% fee on marketplace sales (0% on sales via your own referral link) and pays via Stripe or Zoneless (USDC). Demand has declined as models improved and prompting became easier, so income is usually small.",
     "platforms": ["PromptBase"],
     "payout": {
@@ -2146,7 +2146,7 @@
         "platformFeePercent": 20,
         "grossMarginPercent": 75,
         "hoursPerUnit": 0,
-        "notes": "Most PromptBase prompts sell at $2.99-5.99; 20% marketplace fee; ~$0.20 of model credits per prompt for test outputs (estimate). The 20% fee is estimated (PromptBase payout page bot-blocked)."
+        "notes": "Most PromptBase prompts sell at $2.99-5.99; 20% marketplace fee; ~$0.20 of model credits per prompt for test outputs (estimate). The 20% fee is from PromptBase's payouts knowledge base and changelog (see evidence); the payout page was bot-blocked at the last check, so it was not re-confirmed."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,

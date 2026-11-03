@@ -131,7 +131,7 @@ _Business-plan sources:_
 Legal across the set; X is blocked in a few countries outside/at the edge of the list, which is availability not illegality.
 
 - **Compliance requirements:** Premium subscription (~$8/mo); Stripe KYC; Must not use automation for engagement; posting via API must follow X automation rules
-- **Platform availability:** Payouts require Stripe Connect support for your country (~45% of reference countries).
+- **Platform availability:** Payouts likely require Stripe Connect support for your country (~45% of reference countries): Stripe paid the predecessor program, and the new program's processor is unconfirmed.
 
 ## Risks
 

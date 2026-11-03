@@ -2,7 +2,7 @@
 
 **Rank #144 · Tier C · Priority score 49/100 · Category: Content & media**
 
-Readers pay a monthly/annual subscription for a niche newsletter.
+Readers pay a monthly/annual subscription for a niche newsletter on Substack (10% cut) or beehiiv/Ghost (0% cut), billed through Stripe.
 
 ## Scores
 

@@ -2,7 +2,7 @@
 
 **Rank #12 · Tier A · Priority score 67/100 · Category: Marketplaces & e-commerce**
 
-Sell items you own or source cheaply (thrift, garage sales) on second-hand marketplaces.
+Sell items you own or source cheaply (thrift, garage sales) on second-hand marketplaces such as eBay, Vinted, Mercari or Facebook Marketplace.
 
 ## Scores
 

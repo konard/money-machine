@@ -286,7 +286,7 @@
       "minimumPayout": "Whop: $10 minimum withdrawal; Stripe-based tools: Stripe default",
       "frequency": "Whop instant/daily/weekly; Stripe rolling",
       "typicalDelayDays": 7,
-      "notes": "Whop processing 2.7% + $0.30 (+1.5% intl cards, +1% FX); payout fees: next-day ACH $2.50, wire $23, instant 4% + $2.50 (Whop's separate platform fee, ~3%, not re-confirmed). LaunchPass Premium $29/mo + 3.5% + Stripe (free tier $0/mo). Skool Hobby $9/mo + 10% or Pro $99/mo + 2.9%."
+      "notes": "Whop processing 2.7% + $0.30 (+1.5% intl cards, +1% FX); payout fees: next-day ACH $2.50, wire $23, instant 4% + $2.50 (Whop's fees page lists no separate platform fee, as modelled in the unit economics; the ~3% fee in older guides is not applied). LaunchPass Premium $29/mo + 3.5% + Stripe (free tier $0/mo). Skool Hobby $9/mo + 10% or Pro $99/mo + 2.9%."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -421,7 +421,7 @@
     "id": "gated-membership-site",
     "name": "Membership site with gated content (Ghost, Memberful)",
     "category": "community",
-    "summary": "Own-domain site where paying members unlock articles, videos, downloads and a members-only area.",
+    "summary": "Own-domain Ghost or WordPress + Memberful site where paying members unlock articles, videos, downloads and a members-only area, billed via Stripe.",
     "howItWorks": "Run an own-domain site on Ghost or WordPress + Memberful where premium posts, archives, templates or videos require a paid Stripe membership. You own the domain and email list. Ghost takes 0% of revenue (Ghost(Pro) Publisher $29/mo billed yearly, or self-host on a cheap VPS); Memberful Standard charges $49/mo plus 4.9%.",
     "platforms": ["Ghost", "Memberful", "Stripe"],
     "payout": {
@@ -755,7 +755,7 @@
       "Get approved",
       "Go online / accept bookings",
       "Talk with learners",
-      "Weekly payout to PayPal/Payoneer -> bank"
+      "Weekly payout by direct deposit to bank"
     ],
     "risks": [
       "Low fixed pay",
@@ -968,8 +968,8 @@
     "id": "paid-webinars-workshops",
     "name": "Paid one-off webinars and live workshops (Luma/Zoom + Stripe)",
     "category": "education",
-    "summary": "Sell tickets to 60-180 minute live workshops on a practical topic, then sell the recording.",
-    "howItWorks": "You pick a narrowly useful topic (e.g. 'Automate your invoicing with n8n', 'Résumé review for junior devs'), create a ticketed event on Luma, Eventbrite or a Stripe payment link, and run it on Zoom/Google Meet. Attendees pay $10-$100 per seat. Luma's free plan takes 5% plus Stripe fees (0% on Luma Plus). Recordings are later sold as an on-demand product.",
+    "summary": "Sell tickets to 60-180 minute live workshops on a practical topic via Luma, Eventbrite or a Stripe payment link, then sell the recording.",
+    "howItWorks": "You pick a narrowly useful topic (e.g. 'Automate your invoicing with n8n', 'Résumé review for junior devs'), create a ticketed event on Luma, Eventbrite or a Stripe payment link, and run it on Zoom/Google Meet. Attendees pay $20-$100 per seat (premium workshops up to ~$300). Luma's free plan takes 5% plus Stripe fees (0% on Luma Plus). Recordings are later sold as an on-demand product.",
     "platforms": ["Luma", "Eventbrite", "Zoom", "Stripe Payment Links"],
     "payout": {
       "methods": ["Stripe -> bank"],
@@ -1240,7 +1240,7 @@
     "id": "per-minute-expert-calls",
     "name": "Per-minute expert phone calls on Clarity.fm",
     "category": "education",
-    "summary": "Founders and professionals book short paid calls with you at a per-minute rate you set.",
+    "summary": "Founders and professionals book short paid calls with you on Clarity.fm at a per-minute rate you set; Clarity keeps 15% and pays via PayPal.",
     "howItWorks": "You list your expertise (marketing, fundraising, SaaS, engineering) on Clarity.fm and set an hourly rate that is displayed per minute. Callers are billed per minute; Clarity keeps 15%. Bookings come from Clarity search and, more often, from links you place on your site or social profiles.",
     "platforms": ["Clarity.fm"],
     "payout": {
@@ -1362,7 +1362,7 @@
     "id": "study-notes-stuvia",
     "name": "Sell study notes and exam prep on Stuvia / Docsity",
     "category": "education",
-    "summary": "Upload your own original lecture notes, summaries and practice questions; earn per download.",
+    "summary": "Upload your own original lecture notes, summaries and practice questions to Stuvia or Docsity; earn per download, withdrawable from EUR/USD/GBP 10.",
     "howItWorks": "Students and professionals upload original study notes, summaries and exam-prep guides. Buyers searching for a course or exam pay per document; Stuvia takes a per-sale commission (shown when you set the price; reviews put it near 30%) and lets you withdraw once your wallet reaches EUR/USD/GBP 10. Docsity uses a points system convertible to cash. Only sell notes you wrote; reproducing textbooks, professors' slides or exam papers violates copyright and university rules.",
     "platforms": ["Stuvia", "Docsity"],
     "payout": {
@@ -1493,7 +1493,7 @@
     "id": "crowdfunding-creative-projects",
     "name": "Crowdfunding a creative/digital project (Kickstarter, Indiegogo)",
     "category": "community",
-    "summary": "Pre-sell a digital game, book, tool or course to backers who pledge for digital rewards.",
+    "summary": "Pre-sell a digital game, book, tool or course to backers on Kickstarter or Indiegogo; Kickstarter pays out only if the goal is met, minus 5% plus processing.",
     "howItWorks": "You build a campaign page with a video, reward tiers (digital copies, early access, credits) and a funding goal. Backers pledge; on Kickstarter you only collect if the goal is met (5% platform fee + 3-5% processing). Indiegogo allows flexible funding. Digital rewards avoid shipping costs.",
     "platforms": ["Kickstarter", "Indiegogo"],
     "payout": {

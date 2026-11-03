@@ -2,7 +2,7 @@
 
 **Rank #116 · Tier B · Priority score 52/100 · Category: Marketplaces & e-commerce**
 
-Sell tested prompts for image and text models on a dedicated prompt marketplace.
+Sell tested prompts for image and text models on PromptBase, which takes 20% of marketplace sales and pays via Stripe or USDC.
 
 ## Scores
 
@@ -55,7 +55,7 @@ You craft prompts that reliably produce a specific output (e.g. a sticker style,
 | Gross margin (median case) | 75% |
 | Human hours per unit after automation | 0 |
 
-Most PromptBase prompts sell at $2.99-5.99; 20% marketplace fee; ~$0.20 of model credits per prompt for test outputs (estimate). The 20% fee is estimated (PromptBase payout page bot-blocked).
+Most PromptBase prompts sell at $2.99-5.99; 20% marketplace fee; ~$0.20 of model credits per prompt for test outputs (estimate). The 20% fee is from PromptBase's payouts knowledge base and changelog (see evidence); the payout page was bot-blocked at the last check, so it was not re-confirmed.
 
 ### Break-even
 

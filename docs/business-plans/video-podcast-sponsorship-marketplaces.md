@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$0 per month** in the first year; th
 
 ## How it works
 
-Once a YouTube channel or podcast has a consistent niche audience, list it on YouTube Creator Partnerships (formerly BrandConnect, requires YPP in eligible countries) and third-party marketplaces (ThoughtLeaders, Podcorn, Passionfroot). Brands pay flat fees or CPM for integrations, with briefs and reporting handled in-platform. This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.
+Once a YouTube channel or podcast has a consistent niche audience, list it on YouTube Creator Partnerships (formerly BrandConnect, requires YPP in eligible countries) and third-party marketplaces (ThoughtLeaders, Passionfroot; Podcorn has been sunset). Brands pay flat fees or CPM for integrations, with briefs and reporting handled in-platform. This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.
 
 **Platforms:** YouTube Creator Partnerships, ThoughtLeaders, Podcorn, Passionfroot
 
@@ -39,7 +39,7 @@ Once a YouTube channel or podcast has a consistent niche audience, list it on Yo
 | Time to launch | 10 hours |
 | One-time cash | $0 |
 | Recurring fixed cost | $0 / month |
-| Tools | YouTube Creator Partnerships (in YPP); ThoughtLeaders/Podcorn/Passionfroot profiles (free); media kit (Canva free) |
+| Tools | YouTube Creator Partnerships (in YPP); ThoughtLeaders/Passionfroot profiles (free); media kit (Canva free) |
 | Skills | growing a niche channel or podcast; scripting natural ad reads; brand negotiation |
 | Equipment | laptop; microphone (often already owned) |
 | Accounts | YouTube Partner Program membership (for Creator Partnerships); marketplace accounts + Stripe/PayPal |

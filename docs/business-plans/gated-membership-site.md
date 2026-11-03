@@ -2,7 +2,7 @@
 
 **Rank #180 · Tier C · Priority score 46/100 · Category: Community & memberships**
 
-Own-domain site where paying members unlock articles, videos, downloads and a members-only area.
+Own-domain Ghost or WordPress + Memberful site where paying members unlock articles, videos, downloads and a members-only area, billed via Stripe.
 
 ## Scores
 

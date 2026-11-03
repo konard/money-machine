@@ -2,7 +2,7 @@
 
 **Rank #222 · Tier C · Priority score 35/100 · Category: Community & memberships**
 
-Pre-sell a digital game, book, tool or course to backers who pledge for digital rewards.
+Pre-sell a digital game, book, tool or course to backers on Kickstarter or Indiegogo; Kickstarter pays out only if the goal is met, minus 5% plus processing.
 
 ## Scores
 

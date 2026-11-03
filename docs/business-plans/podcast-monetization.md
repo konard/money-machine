@@ -2,7 +2,7 @@
 
 **Rank #187 · Tier C · Priority score 45/100 · Category: Content & media**
 
-Earn from ads and sponsorships on an audio/video podcast.
+Earn from ads and sponsorships on an audio/video podcast via the Spotify Partner Program, Spotify's host-read sponsorship tool and direct sponsor deals.
 
 ## Scores
 
@@ -55,7 +55,7 @@ You publish a niche show (interviews, news recaps, explainers) on Spotify for Cr
 | Gross margin (median case) | 100% |
 | Human hours per unit after automation | 5 |
 
-Industry host-read CPMs are commonly quoted at $15-$50 per 1,000 downloads for direct deals; marketplaces and Spotify's ad share take 30-50% (estimate). Small shows spend several production hours per 1,000 downloads.
+Industry host-read CPMs are commonly quoted at $15-$50 per 1,000 downloads for direct deals; marketplaces and Spotify's ad share take 30-50% (estimate), so fee 0 applies to direct deals only. Small shows spend several production hours per 1,000 downloads.
 
 ### Break-even
 

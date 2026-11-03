@@ -2,7 +2,7 @@
 
 **Rank #44 · Tier B · Priority score 59/100 · Category: Content & media**
 
-Publish genuinely useful pages that rank in search, monetized with display ads paid per impression.
+Publish genuinely useful pages that rank in search, monetized with display ads via AdSense, then Ezoic, Mediavine or Raptive as traffic grows.
 
 ## Scores
 

@@ -55,7 +55,7 @@ After acceptance (social account review) and onsite approval of test videos, you
 | Gross margin (median case) | 100% |
 | Human hours per unit after automation | 1 |
 
-Estimated (Amazon publishes onsite rates only inside Associates Central): creator-reported libraries average roughly $0.5-5 per video per month at 0.5-4% onsite rates; median assumes ~$10/video/year. Products already owned cost $0.
+Estimated (Amazon's help pages publish the onsite rate tables, but not per-video sales): creator-reported libraries average roughly $0.5-5 per video per month at 0.5-4% onsite rates; median assumes ~$10/video/year. Products already owned cost $0.
 
 ### Break-even
 

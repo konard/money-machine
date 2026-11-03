@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$80 per month** in the first year; t
 
 ## How it works
 
-You upload designs to Printful or Printify, which sync products to your Etsy or Shopify store. When a customer buys, the POD provider charges your card the base cost and prints/ships directly (PHYSICAL STEP handled by the provider, not you). You keep retail minus base cost and marketplace fees; a $28 tee typically nets ~$5-8.
+You upload designs to Printful or Printify, which sync products to your Etsy or Shopify store. When a customer buys, the POD provider charges your card the base cost and prints/ships directly (PHYSICAL STEP handled by the provider, not you). You keep retail minus base cost and marketplace fees; a $28 tee nets roughly $11 on Etsy with a standard provider and no ads (less with premium providers or ad spend).
 
 **Platforms:** Printful, Printify, Etsy, Shopify
 

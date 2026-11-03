@@ -481,7 +481,7 @@
       ]
     },
     "availability": {
-      "notes": "Payouts require Stripe Connect support for your country (~45% of reference countries)."
+      "notes": "Payouts likely require Stripe Connect support for your country (~45% of reference countries): Stripe paid the predecessor program, and the new program's processor is unconfirmed."
     },
     "automationPlan": [
       "LLM drafting of threads/articles from your research",
@@ -649,7 +649,7 @@
       "Policy enforcement against AI-written text",
       "Pool-based pay fluctuates"
     ],
-    "evidence": "Medium help center documents $10 minimum and Stripe payouts; many writers publish monthly earnings reports.",
+    "evidence": "Medium's help center has documented the $10 minimum and Stripe payouts (not re-verified in 2026: it blocks automated fetching); many writers publish monthly earnings reports.",
     "sources": [
       "https://help.medium.com/hc/en-us/articles/25267297935895",
       "https://help.medium.com/hc/en-us/articles/39121627791639-Medium-Partner-Program-eligibility",
@@ -727,7 +727,7 @@
     "id": "paid-newsletter-subscriptions",
     "name": "Paid newsletter subscriptions (Substack / beehiiv / Ghost)",
     "category": "content",
-    "summary": "Readers pay a monthly/annual subscription for a niche newsletter.",
+    "summary": "Readers pay a monthly/annual subscription for a niche newsletter on Substack (10% cut) or beehiiv/Ghost (0% cut), billed through Stripe.",
     "howItWorks": "You publish a free newsletter to build a list, then gate premium issues (deep dives, data, research digests) behind a paid tier. Readers pay by card via Stripe; Substack keeps 10% plus Stripe fees, beehiiv and Ghost take 0% platform cut on paid subs (you pay the plan). AI can help aggregate sources, summarize and draft, but paying readers expect a distinct editorial voice and accuracy.",
     "platforms": ["Substack", "beehiiv", "Ghost"],
     "payout": {
@@ -870,7 +870,7 @@
     "id": "newsletter-ad-network-boosts",
     "name": "Newsletter ad network + Boosts (beehiiv Ad Network)",
     "category": "content",
-    "summary": "Monetize a free newsletter with platform-sourced sponsors (pay per verified click) and paid subscriber referrals.",
+    "summary": "Monetize a free newsletter with platform-sourced sponsors (paid per unique open or click, as each advertiser sets) and paid subscriber referrals.",
     "howItWorks": "On a paid beehiiv plan (Lite from $49/mo billed annually, $59 monthly; Ad Network 'not in trial; not in all regions') you are offered sponsor campaigns each billing cycle; you place the ad and get paid per unique open (CPM) or unique click (CPC), as set by each advertiser. Boosts pay you a fee per subscriber you recommend to other newsletters. Payers are advertisers and other publishers, distinct from reader subscriptions. Content can be AI-assisted curation, but advertisers drop low-engagement lists.",
     "platforms": ["beehiiv Ad Network", "beehiiv Boosts"],
     "payout": {
@@ -1015,7 +1015,7 @@
     "id": "seo-blog-display-ads",
     "name": "Niche blog / programmatic SEO site with display ads (AdSense -> Ezoic/Journey/Raptive)",
     "category": "content",
-    "summary": "Publish genuinely useful pages that rank in search, monetized with display ads paid per impression.",
+    "summary": "Publish genuinely useful pages that rank in search, monetized with display ads via AdSense, then Ezoic, Mediavine or Raptive as traffic grows.",
     "howItWorks": "You build a site on a cheap domain/host, generating templated-but-valuable pages from real datasets (programmatic SEO) and editorial articles with AI assistance. Visitors from Google/Bing see ads; AdSense pays from day one of approval, and at scale you move to premium networks (Ezoic: no pageview minimum; Journey by Mediavine: 1,000 Tier-1 sessions in 30 days; full Mediavine: $5,000+ annual ad revenue; Raptive: 25k monthly pageviews with 50%+ tier-1 traffic below 100k). Google's scaled-content-abuse policy penalizes mass low-value AI pages, so each page needs unique data or utility.",
     "platforms": ["Google AdSense", "Ezoic", "Mediavine Journey", "Raptive"],
     "payout": {
@@ -1170,7 +1170,7 @@
     "name": "Amazon KDP ebooks, paperbacks and low-content books",
     "category": "content",
     "summary": "Self-publish ebooks and print-on-demand books (incl. journals, planners, puzzle books) on Amazon for royalties.",
-    "howItWorks": "You write or compile books (nonfiction guides, fiction, workbooks, puzzle/activity books) and upload to KDP; Amazon prints on demand and pays 35-70% ebook royalties, ~60% minus print cost on paperbacks, plus Kindle Unlimited page reads. Amazon requires you to disclose AI-generated text, images or translations (AI-assisted editing need not be disclosed) and caps new titles at 3 per day per account. Low-content books have little moat, so niche research and quality covers matter.",
+    "howItWorks": "You write or compile books (nonfiction guides, fiction, workbooks, puzzle/activity books) and upload to KDP; Amazon prints on demand and pays 35-70% ebook royalties, ~60% minus print cost on paperbacks listed at $9.99+ (50% below that), plus Kindle Unlimited page reads. Amazon requires you to disclose AI-generated text, images or translations (AI-assisted editing need not be disclosed) and caps new titles at 3 per day per account. Low-content books have little moat, so niche research and quality covers matter.",
     "platforms": ["Amazon KDP", "Kindle Unlimited"],
     "payout": {
       "methods": ["EFT direct deposit", "wire", "check"],
@@ -1468,7 +1468,7 @@
     "id": "podcast-monetization",
     "name": "Podcast monetization (Spotify Partner Program, memberships, host-read sponsorships)",
     "category": "content",
-    "summary": "Earn from ads and sponsorships on an audio/video podcast.",
+    "summary": "Earn from ads and sponsorships on an audio/video podcast via the Spotify Partner Program, Spotify's host-read sponsorship tool and direct sponsor deals.",
     "howItWorks": "You publish a niche show (interviews, news recaps, explainers) on Spotify for Creators. The Spotify Partner Program pays ad revenue and Premium-engagement payouts once you have 3+ episodes, 1,000 unique listeners and 2,000 consumption hours in 30 days (lowered Jan 2026). Spotify added a host-read sponsorship tool (2026) and fan Memberships (Oct 2026); direct sponsor deals also pay. Podcorn, the former sponsorship marketplace, now redirects to a \"sunset\" notice. AI can handle research, editing, show notes and clips; synthetic hosts must be disclosed.",
     "platforms": ["Spotify for Creators", "Direct sponsors"],
     "payout": {
@@ -1573,7 +1573,7 @@
         "platformFeePercent": 0,
         "grossMarginPercent": 100,
         "hoursPerUnit": 5,
-        "notes": "Industry host-read CPMs are commonly quoted at $15-$50 per 1,000 downloads for direct deals; marketplaces and Spotify's ad share take 30-50% (estimate). Small shows spend several production hours per 1,000 downloads."
+        "notes": "Industry host-read CPMs are commonly quoted at $15-$50 per 1,000 downloads for direct deals; marketplaces and Spotify's ad share take 30-50% (estimate), so fee 0 applies to direct deals only. Small shows spend several production hours per 1,000 downloads."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -1756,7 +1756,7 @@
     "id": "stock-media-contributor",
     "name": "Stock photos, vectors and footage (Adobe Stock AI-labeled; Shutterstock/Pond5 human-made)",
     "category": "content",
-    "summary": "License images, illustrations and video clips through stock agencies for per-download royalties.",
+    "summary": "License images, illustrations and video clips through stock agencies (Adobe Stock, Shutterstock, Pond5) for per-download royalties.",
     "howItWorks": "You upload keyworded media; agencies sell licenses to marketers and designers and pay you a royalty (Adobe Stock ~33% images/35% video). Adobe Stock accepts generative-AI content if labeled 'Created using generative AI tools', with releases for any real people and tool licenses allowing commercial use. Shutterstock and Pond5 do NOT accept AI-generated submissions, so only your own photos/footage go there. Volume of high-demand, well-keyworded assets drives income.",
     "platforms": ["Adobe Stock", "Shutterstock", "Pond5"],
     "payout": {

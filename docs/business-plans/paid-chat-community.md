@@ -104,7 +104,7 @@ _Business-plan sources:_
 - **Minimum payout:** Whop: $10 minimum withdrawal; Stripe-based tools: Stripe default
 - **Frequency:** Whop instant/daily/weekly; Stripe rolling
 - **Typical delay:** 7 days
-- **Notes:** Whop processing 2.7% + $0.30 (+1.5% intl cards, +1% FX); payout fees: next-day ACH $2.50, wire $23, instant 4% + $2.50 (Whop's separate platform fee, ~3%, not re-confirmed). LaunchPass Premium $29/mo + 3.5% + Stripe (free tier $0/mo). Skool Hobby $9/mo + 10% or Pro $99/mo + 2.9%.
+- **Notes:** Whop processing 2.7% + $0.30 (+1.5% intl cards, +1% FX); payout fees: next-day ACH $2.50, wire $23, instant 4% + $2.50 (Whop's fees page lists no separate platform fee, as modelled in the unit economics; the ~3% fee in older guides is not applied). LaunchPass Premium $29/mo + 3.5% + Stripe (free tier $0/mo). Skool Hobby $9/mo + 10% or Pro $99/mo + 2.9%.
 
 ## Full cycle (setup → earn → bank account)
 

@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$30 per month** in the first year; t
 
 ## How it works
 
-You write or compile books (nonfiction guides, fiction, workbooks, puzzle/activity books) and upload to KDP; Amazon prints on demand and pays 35-70% ebook royalties, ~60% minus print cost on paperbacks, plus Kindle Unlimited page reads. Amazon requires you to disclose AI-generated text, images or translations (AI-assisted editing need not be disclosed) and caps new titles at 3 per day per account. Low-content books have little moat, so niche research and quality covers matter.
+You write or compile books (nonfiction guides, fiction, workbooks, puzzle/activity books) and upload to KDP; Amazon prints on demand and pays 35-70% ebook royalties, ~60% minus print cost on paperbacks listed at $9.99+ (50% below that), plus Kindle Unlimited page reads. Amazon requires you to disclose AI-generated text, images or translations (AI-assisted editing need not be disclosed) and caps new titles at 3 per day per account. Low-content books have little moat, so niche research and quality covers matter.
 
 **Platforms:** Amazon KDP, Kindle Unlimited
 

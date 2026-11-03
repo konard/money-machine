@@ -20,8 +20,6 @@ Research matching grants and draft applications (narratives, budgets justificati
 | Time to first dollar | 14–120 d |
 | Typical monthly income (low / median / high) | $0 / $400 / $6,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$400 per month** in the first year; the high figure of $6,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **4/10**. Expect the first payment after 14–120 d.
@@ -57,7 +55,7 @@ Nonprofits, labs and startups pay because applications are long and deadline-dri
 | Gross margin (median case) | 90% |
 | Human hours per unit after automation | 20 |
 
-Estimate: freelance grant writers commonly charge $50-$100/h or $1,000-$5,000 per full application; fee ~10% Upwork blended with direct invoices. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026.
+Estimate: freelance grant writers commonly charge $50-$100/h or $1,000-$5,000 per full application; fee ~10% Upwork blended with direct invoices. Fiverr's 20% fee and Upwork's 0-15% per-contract fee are confirmed on their help centers (Nov 2026); the 10% blend is an estimate.
 
 ### Break-even
 
@@ -103,10 +101,10 @@ _Business-plan sources:_
 ## Payout path
 
 - **Methods:** Upwork -> local bank/ACH/Payoneer, Fiverr -> PayPal/Payoneer -> bank
-- **Minimum payout:** Fiverr $1 PayPal / $20 Payoneer bank
+- **Minimum payout:** Fiverr: $1 PayPal / $20 bank transfer via Payoneer / $10 Payoneer account; Upwork: per withdrawal method
 - **Frequency:** on demand after clearance
 - **Typical delay:** 16 days
-- **Notes:** Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page. Re-checked Nov 2026: fiverr.com and help.fiverr.com still return 403, the Wayback Machine is unreachable, and Fiverr's FY2025 Form 20-F gives only a blended 27.7% take rate. Unconfirmed: Fiverr's 20% seller fee, 14-day (7-day Top Rated) clearance, and the $1 PayPal / $20 Payoneer bank withdrawal minimums.
+- **Notes:** Upwork help center (Learn about the Freelancer Service Fee, checked in a browser Nov 2026): the fee ranges from 0% to 15% per contract, is shown on the offer/proposal and is fixed once the contract starts; Enterprise clients typically 10%, Any Hire contracts 0%. Fiverr help center (checked in a browser Nov 2026): freelancers earn 80% of the purchase amount including extras and tips (20% fee); earnings become withdrawable 14 days after the order completes (shorter for Top Rated, Seller Plus and Pro; Early Payout skips clearance for a 1% fee). Fiverr withdrawal minimums/fees: PayPal $1 (no fee, ~24 h), bank transfer via Payoneer $20 ($1 fee, 1-7 business days), Payoneer account $10 ($3 fee); max $5,000 per withdrawal.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -150,8 +148,11 @@ Grant writing is a standing Upwork/Fiverr category; rates and success rates not 
 - <https://help.fiverr.com/hc/en-us/articles/360010530058>
 - <https://www.grants.gov/>
 - <https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65>
+- <https://help.fiverr.com/hc/en-us/articles/9234443621137-Your-earnings-page>
+- <https://help.fiverr.com/hc/en-us/articles/34069565843985-How-Fiverr-works-for-freelancers>
+- <https://support.upwork.com/hc/en-us/articles/211062538-Learn-about-the-Freelancer-Service-Fee>
 
-_Tags: freelance, b2b, nonprofit, writing, needs-verification_
+_Tags: freelance, b2b, nonprofit, writing_
 
 ---
 

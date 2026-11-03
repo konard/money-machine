@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$0 per month** in the first year; th
 
 ## How it works
 
-Acquire.com (formerly MicroAcquire) and Flippa connect founders with buyers of small software businesses, typically valued at 2-5x annual profit/ARR. With AI coding agents you build a focused tool, get to a few hundred dollars MRR, and sell when the buyer pool values it. Distinct from content-site flipping because buyers price recurring software revenue, churn and code quality. Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.
+Acquire.com (formerly MicroAcquire) and Flippa connect founders with buyers of small software businesses, typically valued at 2-4x annual profit/ARR. With AI coding agents you build a focused tool, get to a few hundred dollars MRR, and sell when the buyer pool values it. Distinct from content-site flipping because buyers price recurring software revenue, churn and code quality. Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.
 
 **Platforms:** Acquire.com, Flippa, Tiny Acquisitions, Escrow.com
 

@@ -105,7 +105,7 @@ _Business-plan sources:_
 - **Minimum payout:** Not stated in Epic's Fortnite developer docs (unverified; Epic's separate Support-A-Creator program uses a $100 threshold)
 - **Frequency:** monthly
 - **Typical delay:** 60 days
-- **Notes:** Paid starting 30 days after month end; in-island sales are paid with the same payout. Payouts pause while an island is unpublished. Payee setup is a Tax Identity tax interview (W-9/W-8), then a Hyperwallet account invite. Unconfirmed: the minimum payout threshold (not stated in Epic's engagement-payout, Hyperwallet-setup or developer-program docs, re-checked Nov 2026).
+- **Notes:** Paid starting 30 days after month end; in-island sales are paid with the same payout. Payouts pause while an island is unpublished. Payee setup is a Tax Identity tax interview (W-9/W-8), then a Hyperwallet account invite. Unconfirmed: the minimum payout threshold (not stated in Epic's engagement-payout, Hyperwallet-setup, developer-program or developer-program FAQ pages, read in a browser Nov 2026; the FAQ mentions only the $600 US 1099-NEC reporting line).
 
 ## Full cycle (setup → earn → bank account)
 
@@ -150,6 +150,7 @@ Epic's official Engagement Payout and In-Island Transactions docs (fetched 2026-
 - <https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-overview-in-fortnite>
 - <https://dev.epicgames.com/documentation/en-us/fortnite/fortnite-developer-program>
 - <https://dev.epicgames.com/documentation/fortnite/hyperwallet-setup-in-fortnite-creative>
+- <https://dev.epicgames.com/documentation/fortnite/fortnite-developer-program-faqs-in-fortnite>
 
 _Tags: games, ugc-platform, revenue-share, power-law, needs-verification_
 

@@ -2,7 +2,7 @@
 
 **Rank #24 · Tier A · Priority score 62/100 · Category: Content & media**
 
-License images, illustrations and video clips through stock agencies for per-download royalties.
+License images, illustrations and video clips through stock agencies (Adobe Stock, Shutterstock, Pond5) for per-download royalties.
 
 ## Scores
 

@@ -106,7 +106,7 @@ _Business-plan sources:_
 - **Minimum payout:** per placement (no stated minimum)
 - **Frequency:** per placement: Paraform in thirds at 30/60/90 days after start; BountyJobs after employer pays + 60 days
 - **Typical delay:** 60 days
-- **Notes:** Paraform Recruiting Agreement: reward is fixed or % of first-year salary; paid 1/3 at 30, 60 and 90 days after the candidate's start date via Stripe; 90-day guarantee with repayment/clawback if no replacement search. BountyJobs FAQ: earnings pending until the employer pays and 60 days of employment elapse; 60-day guarantee (fixed fees or <20% of salary) or 90-day (>=20%). Unconfirmed (BountyJobs FAQ re-checked Nov 2026): the payout method BountyJobs uses to pay agencies and any platform fee it deducts are not published.
+- **Notes:** Paraform Recruiting Agreement: reward is fixed or % of first-year salary; paid 1/3 at 30, 60 and 90 days after the candidate's start date via Stripe; 90-day guarantee with repayment/clawback if no replacement search. BountyJobs FAQ (re-checked in a browser Nov 2026): earnings stay pending until the employer pays and 60 days of employment elapse; 60-day guarantee (fixed fees or <20% of salary) or 90-day (>=20%). BountyJobs Terms of Use (employer agreement): employers pay BountyJobs a subscription fee plus the Bounty Award, invoiced within 30 days of the start date. Unconfirmed: the method BountyJobs uses to pay agencies and whether it deducts any share of the Bounty Award (neither the recruiter FAQ nor the terms state it).
 
 ## Full cycle (setup → earn → bank account)
 
@@ -152,6 +152,7 @@ BountyJobs FAQ documents bounty payouts, 60/90-day guarantees and agency vetting
 - <https://www.paraform.com/recruiting-agreement>
 - <https://www.paraform.com/terms>
 - <https://www.bountyjobs.com/recruiter-faq>
+- <https://www.bountyjobs.com/terms-of-use>
 
 _Tags: b2b, recruiting, high-ticket, lumpy, needs-verification_
 

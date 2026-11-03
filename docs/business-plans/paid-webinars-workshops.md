@@ -2,7 +2,7 @@
 
 **Rank #122 · Tier B · Priority score 51/100 · Category: Education & tutoring**
 
-Sell tickets to 60-180 minute live workshops on a practical topic, then sell the recording.
+Sell tickets to 60-180 minute live workshops on a practical topic via Luma, Eventbrite or a Stripe payment link, then sell the recording.
 
 ## Scores
 
@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$200 per month** in the first year; 
 
 ## How it works
 
-You pick a narrowly useful topic (e.g. 'Automate your invoicing with n8n', 'Résumé review for junior devs'), create a ticketed event on Luma, Eventbrite or a Stripe payment link, and run it on Zoom/Google Meet. Attendees pay $10-$100 per seat. Luma's free plan takes 5% plus Stripe fees (0% on Luma Plus). Recordings are later sold as an on-demand product.
+You pick a narrowly useful topic (e.g. 'Automate your invoicing with n8n', 'Résumé review for junior devs'), create a ticketed event on Luma, Eventbrite or a Stripe payment link, and run it on Zoom/Google Meet. Attendees pay $20-$100 per seat (premium workshops up to ~$300). Luma's free plan takes 5% plus Stripe fees (0% on Luma Plus). Recordings are later sold as an on-demand product.
 
 **Platforms:** Luma, Eventbrite, Zoom, Stripe Payment Links
 

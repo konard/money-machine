@@ -2,7 +2,7 @@
 
 **Rank #107 · Tier B · Priority score 53/100 · Category: Digital products**
 
-Sell ebooks, guides, checklists, code snippets or asset packs from a self-hosted storefront that handles checkout and VAT.
+Sell ebooks, guides, checklists, code snippets or asset packs from a hosted storefront (Gumroad, Payhip, Lemon Squeezy) that handles checkout and VAT.
 
 ## Scores
 

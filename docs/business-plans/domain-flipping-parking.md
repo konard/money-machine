@@ -2,7 +2,7 @@
 
 **Rank #223 · Tier C · Priority score 35/100 · Category: Marketplaces & e-commerce**
 
-Register or buy brandable/keyword domains and resell them to businesses via domain marketplaces.
+Register or buy brandable/keyword domains and resell them to businesses through Buy-Now listings on Afternic and Sedo.
 
 ## Scores
 

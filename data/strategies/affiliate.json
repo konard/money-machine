@@ -579,7 +579,7 @@
         "platformFeePercent": 0,
         "grossMarginPercent": 100,
         "hoursPerUnit": 1,
-        "notes": "Estimated (Amazon publishes onsite rates only inside Associates Central): creator-reported libraries average roughly $0.5-5 per video per month at 0.5-4% onsite rates; median assumes ~$10/video/year. Products already owned cost $0."
+        "notes": "Estimated (Amazon's help pages publish the onsite rate tables, but not per-video sales): creator-reported libraries average roughly $0.5-5 per video per month at 0.5-4% onsite rates; median assumes ~$10/video/year. Products already owned cost $0."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -690,7 +690,7 @@
       "Last-click attribution disputes",
       "Thin margins"
     ],
-    "evidence": "Skimlinks official docs confirm monthly payouts above threshold; coupon sites remain a major affiliate channel, but 2024-25 Google enforcement removed many coupon directories.",
+    "evidence": "Skimlinks' payment-schedule help page describes monthly payouts above a threshold (not re-verified: it blocks automated access); coupon sites remain a major affiliate channel, but 2024-25 Google enforcement removed many coupon directories.",
     "sources": [
       "https://support.skimlinks.com/hc/en-us/articles/223835448-Payment-Schedule-When-will-I-get-paid",
       "https://www.seroundtable.com/google-white-label-coupon-sites-site-reputation-abuse-37515.html",
@@ -732,7 +732,7 @@
         "platformFeePercent": 0,
         "grossMarginPercent": 88,
         "hoursPerUnit": 1,
-        "notes": "Estimate: deal traffic converts well but sub-networks keep ~25% of commission and merchants cut coupon-site rates; variable cost is feed/AI spend."
+        "notes": "Estimate: deal traffic converts well but sub-networks keep ~25% of commission (the RPM is already net of that cut, hence fee 0) and merchants cut coupon-site rates; variable cost is feed/AI spend."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 10,
@@ -1674,7 +1674,7 @@
     "name": "YouTube/podcast sponsorship marketplaces",
     "category": "affiliate",
     "summary": "List your channel or podcast on sponsorship marketplaces so brands pay for integrated reads or segments.",
-    "howItWorks": "Once a YouTube channel or podcast has a consistent niche audience, list it on YouTube Creator Partnerships (formerly BrandConnect, requires YPP in eligible countries) and third-party marketplaces (ThoughtLeaders, Podcorn, Passionfroot). Brands pay flat fees or CPM for integrations, with briefs and reporting handled in-platform. This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.",
+    "howItWorks": "Once a YouTube channel or podcast has a consistent niche audience, list it on YouTube Creator Partnerships (formerly BrandConnect, requires YPP in eligible countries) and third-party marketplaces (ThoughtLeaders, Passionfroot; Podcorn has been sunset). Brands pay flat fees or CPM for integrations, with briefs and reporting handled in-platform. This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.",
     "platforms": [
       "YouTube Creator Partnerships",
       "ThoughtLeaders",
@@ -1756,7 +1756,7 @@
         "recurringMonthlyUsd": 0,
         "tools": [
           "YouTube Creator Partnerships (in YPP)",
-          "ThoughtLeaders/Podcorn/Passionfroot profiles (free)",
+          "ThoughtLeaders/Passionfroot profiles (free)",
           "media kit (Canva free)"
         ],
         "skills": [

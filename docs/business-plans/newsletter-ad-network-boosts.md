@@ -2,7 +2,7 @@
 
 **Rank #157 · Tier C · Priority score 47/100 · Category: Content & media**
 
-Monetize a free newsletter with platform-sourced sponsors (pay per verified click) and paid subscriber referrals.
+Monetize a free newsletter with platform-sourced sponsors (paid per unique open or click, as each advertiser sets) and paid subscriber referrals.
 
 ## Scores
 

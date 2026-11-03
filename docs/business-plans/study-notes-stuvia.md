@@ -2,7 +2,7 @@
 
 **Rank #22 · Tier A · Priority score 63/100 · Category: Education & tutoring**
 
-Upload your own original lecture notes, summaries and practice questions; earn per download.
+Upload your own original lecture notes, summaries and practice questions to Stuvia or Docsity; earn per download, withdrawable from EUR/USD/GBP 10.
 
 ## Scores
 

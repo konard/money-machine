@@ -55,7 +55,7 @@ Discord lets verified apps sell subscriptions and one-time SKUs inside Discord. 
 | Gross margin (median case) | 45% |
 | Human hours per unit after automation | 0.05 |
 
-Premium bot subscriptions typically cost $3-$10/month per server or user; Discord's 15% share is estimated (payout help page bot-blocked; developer docs do not state it); cost = LLM usage plus processing (estimate).
+Premium bot subscriptions typically cost $3-$10/month per server or user; Discord's 15% share (30% above $1M cumulative sales) is per its Premium Apps Payout article, as in payout notes; cost = LLM usage plus processing (estimate).
 
 ### Break-even
 
