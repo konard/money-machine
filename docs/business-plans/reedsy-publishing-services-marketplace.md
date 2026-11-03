@@ -20,8 +20,6 @@ Sell vetted publishing services (developmental editing, copyediting, cover desig
 | Time to first dollar | 30–180 d |
 | Typical monthly income (low / median / high) | $0 / $500 / $8,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$500 per month** in the first year; the high figure of $8,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **3/10**. Expect the first payment after 30–180 d.
@@ -44,7 +42,7 @@ You apply to Reedsy with a portfolio of published credits. Accepted professional
 | Tools | Reedsy marketplace; Word/Google Docs track changes; PerfectIt or similar optional; LLM for consistency checks (disclose to clients) |
 | Skills | professional editing, cover design or ghostwriting with published credits; quoting fixed-price projects; client communication |
 | Equipment | laptop |
-| Accounts | Reedsy professional profile (selective approval); Stripe/PayPal for payouts (unverified) |
+| Accounts | Reedsy professional profile (selective approval); Stripe for payouts |
 
 ### How the money is made (unit economics)
 
@@ -57,7 +55,7 @@ You apply to Reedsy with a portfolio of published credits. Accepted professional
 | Gross margin (median case) | 90% |
 | Human hours per unit after automation | 30 |
 
-Copyedits of 60-90k words commonly quote $800-$2,500; covers $300-$1,000. Reedsy's freelancer commission is believed to be ~10% (estimated; Reedsy's terms pages require sign-in and could not be verified).
+Copyedits of 60-90k words commonly quote $800-$2,500; covers $300-$1,000. Reedsy's freelancer commission is 10% (confirmed on reedsy.com/faq/common-questions/fees; falls to 7% on large repeat clients).
 
 ### Break-even
 
@@ -100,11 +98,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** Reedsy payout (Stripe/PayPal; unverified)
-- **Minimum payout:** unverified
+- **Methods:** Stripe -> bank (automatic once client payments clear)
+- **Minimum payout:** None stated (Stripe moves funds to your bank automatically once payments clear)
 - **Frequency:** per milestone
 - **Typical delay:** 14 days
-- **Notes:** Fees, payout rails and acceptance rate unverified: reedsy.com refused connections.
+- **Notes:** Reedsy's freelancer FAQ (checked Nov 2026) confirms Stripe as the payment processor, with funds moved to your bank automatically once payments clear; no minimum payout is stated. Commission is 20% per collaboration, split 10% professional / 10% client, falling to 9%, 8% and 7% per side above $5,000, $10,000 and $15,000 billed with the same client. Acceptance rate is not published.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -146,8 +144,10 @@ Reedsy is a well-known marketplace for self-published authors; terms unverified 
 ## Sources
 
 - <https://reedsy.com/>
+- <https://reedsy.com/faq/freelancers/how-do-i-get-paid>
+- <https://reedsy.com/faq/common-questions/fees>
 
-_Tags: freelance, publishing, needs-verification_
+_Tags: freelance, publishing_
 
 ---
 

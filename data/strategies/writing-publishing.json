@@ -162,10 +162,10 @@
     "platforms": ["Royal Road", "Patreon", "Amazon KDP Select (Kindle+)"],
     "payout": {
       "methods": ["Patreon -> bank/PayPal/Payoneer", "KDP EFT/wire to bank"],
-      "minimumPayout": "KDP: $10 EFT (varies by marketplace); Patreon: payout fees vary",
+      "minimumPayout": "KDP: none for direct deposit; 100 USD (or 100 local currency, 10,000 JPY, 1,000 MXN) for wire/check; Patreon: payout fees vary",
       "frequency": "monthly",
       "typicalDelayDays": 60,
-      "notes": "KENP earnings for a month become available the following month when the KDP Select Global Fund is announced, and are paid on the same schedule/method as other KDP sales (~60 days after month end). KDP per-marketplace minimums not rechecked. Royal Road's own author-pay and AI-labelling rules still unverified: royalroad.com returned 403 to our fetches again."
+      "notes": "KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Still unconfirmed: Royal Road's own author-pay and AI-labelling rules (royalroad.com and its blog return 403)."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -226,7 +226,9 @@
     "evidence": "KDP reports $69.3M total KDP Select author earnings for September 2026; Royal Road-to-KU is a widely used path for LitRPG authors (anecdotal).",
     "sources": [
       "https://kdp.amazon.com/en_US/help/topic/G201541130",
-      "https://www.royalroad.com/"
+      "https://www.royalroad.com/",
+      "https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ",
+      "https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46"
     ],
     "tags": ["recurring", "fiction", "serial", "needs-verification"],
     "businessPlan": {
@@ -957,11 +959,11 @@
     "howItWorks": "You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a commission. Acceptance is selective, so real publishing experience is needed.",
     "platforms": ["Reedsy Marketplace"],
     "payout": {
-      "methods": ["Reedsy payout (Stripe/PayPal; unverified)"],
-      "minimumPayout": "unverified",
+      "methods": ["Stripe -> bank (automatic once client payments clear)"],
+      "minimumPayout": "None stated (Stripe moves funds to your bank automatically once payments clear)",
       "frequency": "per milestone",
       "typicalDelayDays": 14,
-      "notes": "Fees, payout rails and acceptance rate unverified: reedsy.com refused connections."
+      "notes": "Reedsy's freelancer FAQ (checked Nov 2026) confirms Stripe as the payment processor, with funds moved to your bank automatically once payments clear; no minimum payout is stated. Commission is 20% per collaboration, split 10% professional / 10% client, falling to 9%, 8% and 7% per side above $5,000, $10,000 and $15,000 billed with the same client. Acceptance rate is not published."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -1017,8 +1019,12 @@
       "AI pressure on editing rates"
     ],
     "evidence": "Reedsy is a well-known marketplace for self-published authors; terms unverified here.",
-    "sources": ["https://reedsy.com/"],
-    "tags": ["freelance", "publishing", "needs-verification"],
+    "sources": [
+      "https://reedsy.com/",
+      "https://reedsy.com/faq/freelancers/how-do-i-get-paid",
+      "https://reedsy.com/faq/common-questions/fees"
+    ],
+    "tags": ["freelance", "publishing"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 15,
@@ -1038,7 +1044,7 @@
         "equipment": ["laptop"],
         "accounts": [
           "Reedsy professional profile (selective approval)",
-          "Stripe/PayPal for payouts (unverified)"
+          "Stripe for payouts"
         ]
       },
       "unitEconomics": {
@@ -1052,7 +1058,7 @@
         "platformFeePercent": 10,
         "grossMarginPercent": 90,
         "hoursPerUnit": 30,
-        "notes": "Copyedits of 60-90k words commonly quote $800-$2,500; covers $300-$1,000. Reedsy's freelancer commission is believed to be ~10% (estimated; Reedsy's terms pages require sign-in and could not be verified)."
+        "notes": "Copyedits of 60-90k words commonly quote $800-$2,500; covers $300-$1,000. Reedsy's freelancer commission is 10% (confirmed on reedsy.com/faq/common-questions/fees; falls to 7% on large repeat clients)."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,

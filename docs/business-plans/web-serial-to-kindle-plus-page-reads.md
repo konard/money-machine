@@ -103,10 +103,10 @@ _Business-plan sources:_
 ## Payout path
 
 - **Methods:** Patreon -> bank/PayPal/Payoneer, KDP EFT/wire to bank
-- **Minimum payout:** KDP: $10 EFT (varies by marketplace); Patreon: payout fees vary
+- **Minimum payout:** KDP: none for direct deposit; 100 USD (or 100 local currency, 10,000 JPY, 1,000 MXN) for wire/check; Patreon: payout fees vary
 - **Frequency:** monthly
 - **Typical delay:** 60 days
-- **Notes:** KENP earnings for a month become available the following month when the KDP Select Global Fund is announced, and are paid on the same schedule/method as other KDP sales (~60 days after month end). KDP per-marketplace minimums not rechecked. Royal Road's own author-pay and AI-labelling rules still unverified: royalroad.com returned 403 to our fetches again.
+- **Notes:** KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Still unconfirmed: Royal Road's own author-pay and AI-labelling rules (royalroad.com and its blog return 403).
 
 ## Full cycle (setup → earn → bank account)
 
@@ -151,6 +151,8 @@ KDP reports $69.3M total KDP Select author earnings for September 2026; Royal Ro
 
 - <https://kdp.amazon.com/en_US/help/topic/G201541130>
 - <https://www.royalroad.com/>
+- <https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ>
+- <https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46>
 
 _Tags: recurring, fiction, serial, needs-verification_
 
