@@ -336,6 +336,11 @@ export function parseNP(c, options = {}) {
       break;
     }
   }
+  if (!nouns.length) {
+    // a stop before the first noun leaves no noun phrase
+    c.i = start;
+    return null;
+  }
   const last = nouns[nouns.length - 1];
   np.head = head(last.t, last.r);
   if (last.r.pos === 'propn') {
@@ -367,13 +372,16 @@ export function parseNP(c, options = {}) {
   }
   // possessive clitic: "John's book"
   if (has(c.peek, 'poss-clitic') && possessiveClitic(c)) {
+    const clitic = c.i;
     c.next();
-    const owned = parseNP(c);
+    const owned = parseNP(c, { stopAt: options.stopAt });
     if (owned) {
       owned.possessor = np;
       owned.def = 'def';
       return attachOf(c, owned, options);
     }
+    // "Tom's happy": no owned noun, the clitic is "is"
+    c.i = clitic;
   }
   return attachOf(c, np, options);
 }
@@ -480,8 +488,12 @@ function possessiveClitic(c) {
     return true;
   }
   const after = c.at(1);
+  // "Audiomack's free route": an adjective (even one that is also a
+  // verb) before a noun still starts the owned noun phrase
   return Boolean(
-    after && (has(after, 'noun') || has(after, 'adj')) && !has(after, 'verb')
+    after &&
+    (has(after, 'noun') || has(after, 'adj')) &&
+    (!has(after, 'verb') || (has(after, 'adj') && nounAhead(c, 2)))
   );
 }
 
@@ -688,11 +700,56 @@ const ADVERB_NOUNS = new Set(['home']);
  * Parse adverbials and objects after the verb.
  * @returns {{objects: object[], mods: object[], complement: object|null}}
  */
+/**
+ * After a prepositional phrase, "and"/"or" followed by another one,
+ * perhaps across an adverb set off by commas ("and, more often, from").
+ * @returns {{comma: number}|null} position of the closing comma, or -1
+ */
+function coordinatedPP(c) {
+  if (!['and', 'or'].includes(c.peek.lower)) {
+    return null;
+  }
+  if (has(c.at(1), 'prep') && startsNP(c.at(2))) {
+    return { comma: -1 };
+  }
+  if (c.at(1)?.text !== ',') {
+    return null;
+  }
+  let k = 2;
+  while (c.at(k) && (has(c.at(k), 'adv') || quantityDegree(c.at(k)))) {
+    k += 1;
+  }
+  return k > 2 && c.at(k)?.text === ',' && has(c.at(k + 1), 'prep')
+    ? { comma: c.i + k }
+    : null;
+}
+
 export function parseTail(c, frame, options = {}) {
   const takes = options.takes || [];
   const out = { objects: [], mods: [], complement: null, xcomp: null };
-  for (let guard = 0; guard < 20 && c.peek && !isPunct(c.peek); guard += 1) {
+  let closingComma = -1;
+  for (
+    let guard = 0;
+    guard < 20 && c.peek && (!isPunct(c.peek) || c.i === closingComma);
+    guard += 1
+  ) {
     const t = c.peek;
+    if (c.i === closingComma) {
+      c.next();
+      continue;
+    }
+    // "from search and, more often, from links": coordinated phrases
+    const ahead =
+      has(t, 'coord') && out.mods.at(-1)?.type === 'pp' && coordinatedPP(c);
+    if (ahead) {
+      c.next();
+      if (ahead.comma >= 0) {
+        c.next();
+        closingComma = ahead.comma;
+      }
+      out.mods.push({ type: 'conj', conj: t.lower });
+      continue;
+    }
     if (!options.nonfinite && options.finiteComplementAhead) {
       const link = options.finiteComplementAhead(c);
       if (link) {

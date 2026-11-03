@@ -7,6 +7,7 @@
  * linking by coordinators and subordinators.
  */
 
+import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
 import { finiteComplementAhead } from './complements.mjs';
@@ -62,7 +63,24 @@ setRelativeParser((c, np) => {
       subject.number === 'pl' || subject.pronoun ? null : 'third'
     );
   if (vg) {
-    const tail = parseTail(c, vg.frame, tailOptions(currentCtx, vg));
+    const tailStart = c.i;
+    let tail = parseTail(c, vg.frame, tailOptions(currentCtx, vg));
+    // "the money we earn goes to the bank": the object the tail found is
+    // the verb of the outer clause; the relative ends before it
+    if (tail.objects.length && !tail.stranded && !explicit) {
+      const end = outerVerbAt(c.tokens, tailStart, c.i, np);
+      if (end >= tailStart) {
+        const tokens = c.tokens;
+        c.tokens = tokens.slice(0, end);
+        c.i = tailStart;
+        const shorter = parseTail(c, vg.frame, tailOptions(currentCtx, vg));
+        c.tokens = tokens;
+        if (shorter.objects.length || c.i !== end) {
+          return null;
+        }
+        tail = shorter;
+      }
+    }
     // An occupied direct-object slot cannot also be the relative gap.
     if (tail.objects.length && !tail.stranded) {
       return null;
@@ -517,17 +535,30 @@ function parseDeclarative(c, ctx) {
   const vg = parseVerbGroup(c, third ? 'third' : null);
   if (!vg) {
     // "the aggregator forwards royalties": the compound took the verb
-    const last = c.tokens[c.i - 1];
-    if (!ctx.retried && has(last, 'verb') && subject.modifiers?.length) {
+    // "Tom's car needs fuel": any noun of the compound may be the verb
+    if (!ctx.retried && subject.modifiers?.length) {
       const end = c.i;
-      c.i = start;
-      const retry = parseDeclarative(c, {
-        ...ctx,
-        retried: true,
-        stopAt: end - 1,
-      });
-      if (retry?.type === 'clause' && c.i > end) {
-        return retry;
+      for (let k = end - 1; k > start; k -= 1) {
+        if (
+          !c.tokens[k].readings.some(
+            (r) => r.pos === 'verb' && /3sg|past/.test(r.features.form || '')
+          ) &&
+          !(k === end - 1 && has(c.tokens[k], 'verb'))
+        ) {
+          continue;
+        }
+        c.i = start;
+        const retry = parseDeclarative(c, {
+          ...ctx,
+          retried: true,
+          stopAt: k,
+        });
+        if (
+          retry?.type === 'clause' &&
+          (c.i > end || (c.i === end && k < end - 1))
+        ) {
+          return retry;
+        }
       }
       c.i = end;
     }
@@ -592,20 +623,35 @@ function leadingPhraseAhead(c) {
 function ellipsis(c, ctx, previous) {
   const t = c.peek;
   const r = reading(t, 'verb');
-  const finite = r && ['past', 'past|pp', '3sg'].includes(r.features.form);
+  const subject = previous.subject;
+  const third = subject.pronoun
+    ? subject.pronoun.person === 3 && subject.number === 'sg'
+    : subject.number !== 'pl' && !subject.coord;
+  // "we live in London and work in Paris": a base verb shares a plural
+  // or first/second-person subject of a present clause
+  const finite =
+    r &&
+    (['past', 'past|pp', '3sg'].includes(r.features.form) ||
+      (r.features.form === 'base' &&
+        previous.mood === 'declarative' &&
+        // "they will come and help": the base shares the future too
+        (previous.modal ||
+          previous.tense === 'future' ||
+          (!third && previous.tense === 'present'))));
   const auxiliary = AUX.some((p) => has(t, p)) && !has(c.at(1), 'pron');
   if (!finite && !auxiliary) {
     return null;
   }
   const save = c.i;
-  const subject = previous.subject;
-  const third = subject.pronoun
-    ? subject.pronoun.person === 3 && subject.number === 'sg'
-    : subject.number !== 'pl' && !subject.coord;
   const vg = parseVerbGroup(c, third ? 'third' : null);
   if (!vg) {
     c.i = save;
     return null;
+  }
+  if (r?.features.form === 'base' && !auxiliary) {
+    vg.tense = previous.tense;
+    vg.modal = previous.modal;
+    vg.sharedModal = Boolean(previous.modal);
   }
   const tail = parseTail(c, vg.frame, tailOptions(ctx, vg));
   return clause('declarative', vg, {
@@ -932,6 +978,7 @@ function clause(mood, vg, parts) {
     aspect: vg.aspect,
     polarity: vg.polarity,
     modal: vg.modal,
+    ...(vg.sharedModal ? { sharedModal: true } : {}),
     passive: Boolean(vg.passive),
     generic: parts.generic || false,
     labelPredicate: parts.labelPredicate || false,

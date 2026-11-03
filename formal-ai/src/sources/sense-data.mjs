@@ -1,4 +1,50 @@
 /** Dictionary-derived evidence shared by the resolver and sense scorer. */
+import { matchingDefinition } from './wiktionary.mjs';
+
+export function publicSenses(entries, title, pos) {
+  const own = entries.get(title) || [];
+  const sub = (entries.get(`${title}/translations`) || []).filter(
+    (e) => e.pos === pos
+  );
+  // a translation subpage has no definitions: match the main page's
+  const mainDefinitions = own
+    .filter((e) => e.pos === pos)
+    .flatMap((e) => e.rawDefinitions || []);
+  const subSenses = sub.map((e) => ({
+    ...e,
+    senses: e.senses.map((x) =>
+      x.definition
+        ? x
+        : { ...x, ...matchingDefinition(x.gloss, mainDefinitions) }
+    ),
+  }));
+  const chunks = [...own.filter((e) => e.pos === pos), ...subSenses];
+  // "march" the walk before "March" the month; "january" has only that
+  const lower = own.some((e) => !e.capital && e.senses.length);
+  // "phone" (the device): its entry's only translations are those of
+  // "telephone" — the word's own meaning; "pen" (the feather) with
+  // tables of its own and a pointer to "wing" — a side meaning
+  return chunks.flatMap((e) => [
+    ...e.senses.map((x) => ({
+      ...x,
+      ...(e.capital && lower ? { side: true } : {}),
+      capital: e.capital,
+    })),
+    ...e.see.flatMap((s) =>
+      (entries.get(s.page) || [])
+        .filter((x) => x.pos === pos)
+        .flatMap((x) =>
+          x.senses.map((sense) => ({
+            ...sense,
+            gloss: `${s.gloss}: ${sense.gloss}`,
+            seeAlso: true,
+            side: e.senses.length > 0,
+          }))
+        )
+    ),
+  ]);
+}
+
 export function genus(definition = '') {
   const words = definition.toLowerCase().match(/[a-z]+/g) || [];
   return words.find((w) => !/^(the|a|an|any|one|some|of|to)$/.test(w));
@@ -108,4 +154,61 @@ export function senseClasses(sense) {
     classes.push('season');
   }
   return [...new Set(classes)];
+}
+
+const STOP = new Set(
+  'the a an of to in on for and or by with from at as is are be that which who someone something one ones its it their used being made having into out up over than such any some other e g etc especially usually typically'.split(
+    ' '
+  )
+);
+
+/** Labels that say how a word is used, not what field it belongs to. */
+const USAGE_LABEL =
+  /^(?:transitive|intransitive|ditransitive|catenative|ambitransitive|ergative|reflexive|countable|uncountable|informal|colloquial|slang|figurative(?:ly)?|formal|literal(?:ly)?|idiomatic|attributive|plural|singular|in the plural|by extension|now|often|usually|especially|also|chiefly|mainly|sometimes|rare|obsolete|archaic|dated|US|UK|British|American|Canada|Australia|Ireland|NZ|India|Scotland|with|of|_|and|or)$/i;
+/**
+ * Field of a sense: a field label of its definition (finance, computing)
+ * or the field prefix of its translation gloss ("law: demand for…").
+ */
+export function senseDomain(sense) {
+  const label = (sense.labels || []).find(
+    (l) => /^[a-z][a-z -]{2,24}$/i.test(l) && !USAGE_LABEL.test(l)
+  );
+  if (label) {
+    return label.toLowerCase();
+  }
+  return sense.seeAlso
+    ? null
+    : /^([a-z][a-z ]{2,20}): /.exec(sense.gloss)?.[1] || null;
+}
+/** Content words of a gloss, used as context cues. */
+export function glossWords(gloss, headword = '') {
+  return [
+    ...new Set(
+      gloss
+        .toLowerCase()
+        // "… See grammatical person.": a cross-reference, no context
+        .replace(/(?:^|[.;(]\s*)see(?: also)? [^.;)]*/g, ' ')
+        .split(/[^a-z]+/)
+        .filter((w) => w.length > 2 && !STOP.has(w) && w !== headword)
+    ),
+  ];
+}
+
+/** A conceptual alias is not automatically a fixed phrase in this sentence. */
+export function compoundFits(plan, text) {
+  const own = new Set(plan.lemma.split(' '));
+  const first = plan.lemma.split(' ')[0];
+  const local = text
+    .split(/[.!?\n]+/)
+    .filter((s) =>
+      s
+        .toLowerCase()
+        .split(/[^a-z]+/)
+        .includes(first)
+    )
+    .join(' ');
+  const context = new Set(glossWords(local));
+  return plan.senses.some((s) =>
+    glossWords(s.gloss).some((w) => !own.has(w) && context.has(w))
+  );
 }

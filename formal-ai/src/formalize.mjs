@@ -200,6 +200,9 @@ function modifierCore(m, lexicon) {
   if (m.type === 'time') {
     return { kind: 'time', entity: entity(m.np, lexicon) };
   }
+  if (m.type === 'conj') {
+    return { kind: 'conj', conj: m.conj };
+  }
   const out = { kind: 'relation', relation: m.relation };
   if (m.np) {
     out.entity = entity(m.np, lexicon);
@@ -273,6 +276,10 @@ export function statement(clause, lexicon) {
   }
   if (clause.modal) {
     s.modality = clause.modal;
+    if (clause.sharedModal) {
+      // "can sign up and earn": the modal is said once
+      s.sharedModality = true;
+    }
   }
   if (clause.labelSubject) {
     s.labelSubject = entity(clause.labelSubject, lexicon);

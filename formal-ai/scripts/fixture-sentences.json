@@ -1,0 +1,122 @@
+[
+  {
+    "text": "Buyers come from Etsy search.",
+    "source": "strategies.json#etsy-digital-printables-svg"
+  },
+  {
+    "text": "Researchers post studies with a set reward.",
+    "source": "strategies.json#academic-research-studies"
+  },
+  {
+    "text": "Advertisers pay to reach developers without tracking.",
+    "source": "strategies.json#direct-ad-space-dev-sites"
+  },
+  {
+    "text": "Money that would otherwise go unclaimed flows to you.",
+    "source": "strategies.json#songwriter-publishing-royalties"
+  },
+  {
+    "text": "Direct Stripe billing avoids the marketplace cut.",
+    "source": "strategies.json#licensed-data-api-feeds"
+  },
+  {
+    "text": "Patrons are existing followers of your free work who pay to support you.",
+    "source": "strategies.json#patreon-memberships"
+  },
+  {
+    "text": "Cambly connects English learners to tutors for on-demand or scheduled conversation calls.",
+    "source": "strategies.json#cambly-on-demand-conversation"
+  },
+  {
+    "text": "Unlike Etsy you pay no listing fees and the marketplace brings its own traffic.",
+    "source": "strategies.json#craft-design-subscription-marketplaces"
+  },
+  {
+    "text": "Small businesses pay because the work is tedious.",
+    "source": "strategies.json#data-cleaning-conversion-gigs"
+  },
+  {
+    "text": "Fiscal host handles some compliance.",
+    "source": "strategies.json#oss-funding-opencollective-polar-thanksdev"
+  },
+  {
+    "text": "Income comes from a growing video library without needing your own traffic.",
+    "source": "strategies.json#amazon-influencer-shoppable-videos"
+  },
+  {
+    "text": "Billing runs through Shopify, which pays partners twice monthly via Hyperwallet.",
+    "source": "strategies.json#shopify-apps"
+  },
+  {
+    "text": "You don't market yourself or set prices.",
+    "source": "strategies.json#agency-assigned-tutoring-contractor"
+  },
+  {
+    "text": "LinkedIn Learning's instructor page says only 'earn extra income'.",
+    "source": "strategies.json#curated-publisher-video-courses"
+  },
+  {
+    "text": "No spam messaging.",
+    "source": "strategies.json#earnkaro-india-deal-sharing"
+  },
+  {
+    "text": "Long development times mean many writers see no income in the first year.",
+    "source": "docs/business-plans/interactive-fiction-choice-of-games.md"
+  },
+  {
+    "text": "Physical merch adds shipping.",
+    "source": "docs/business-plans/bandcamp-direct-sales.md"
+  },
+  {
+    "text": "Payoneer and Wise withdrawals to local nostro accounts are possible.",
+    "source": "docs/legal/incorporation-costs.md"
+  },
+  {
+    "text": "Requires sharing location history for many surveys.",
+    "source": "docs/business-plans/google-opinion-rewards.md"
+  },
+  {
+    "text": "Never pay to join, and treat any 'deposit this cheque' request as a scam.",
+    "source": "docs/business-plans/online-mystery-shopping.md"
+  },
+  {
+    "text": "Months include ramp-up to the first order.",
+    "source": "docs/business-plans/video-repurposing-thumbnail-agency.md"
+  },
+  {
+    "text": "Income tracks adoption, so it is slow and concentrated in popular maintainers.",
+    "source": "docs/business-plans/github-sponsors.md"
+  },
+  {
+    "text": "That's different from self-publishing on Udemy or Skillshare.",
+    "source": "docs/business-plans/curated-publisher-video-courses.md"
+  },
+  {
+    "text": "Neither homepage names the payout method, so confirm it in your contract.",
+    "source": "docs/business-plans/expert-ai-training.md"
+  },
+  {
+    "text": "Do not resell personal data.",
+    "source": "docs/business-plans/sell-datasets.md"
+  },
+  {
+    "text": "Some sites also exclude people working in law or insurance.",
+    "source": "docs/business-plans/paid-online-juror.md"
+  },
+  {
+    "text": "Must check the isBitsEnabled flag and follow Twitch Extension guidelines and review.",
+    "source": "docs/business-plans/twitch-extensions-bits.md"
+  },
+  {
+    "text": "First dividend arrives at next quarterly distribution.",
+    "source": "docs/business-plans/robo-advisor-index-dividends.md"
+  },
+  {
+    "text": "Firms pay per sheet and repeat.",
+    "source": "docs/business-plans/patent-technical-illustration.md"
+  },
+  {
+    "text": "Each project limits which countries it accepts.",
+    "source": "docs/business-plans/generalist-rlhf-ai-training.md"
+  }
+]

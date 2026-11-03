@@ -1,3 +1,4 @@
+import { attestRussian } from './russian-fixture.mjs';
 /** Offline checks of how public Wiktionary data becomes lexicon senses. */
 import './setup.mjs';
 import { test } from 'node:test';
@@ -13,6 +14,7 @@ const english = (body) => `==English==\n${body}\n----\n`;
 
 /** A MediaWiki API stand-in serving the given pages; all else is missing. */
 function wiki(pages) {
+  attestRussian(pages);
   return (url, options) => {
     const p =
       options?.method === 'POST'
@@ -116,4 +118,27 @@ test('public senses: capitalized titles, translation breadth, untranslated bases
   assert.equal(top('noun', 'monday'), 'понедельник');
   assert.equal(top('noun', 'quill'), 'ручка');
   assert.equal(top('verb', 'sprint'), 'бежать');
+});
+
+test('a capitalized plural ("on Sundays") is learned through its base', async () => {
+  const pages = {
+    Sundays: english(
+      `===Noun===\n{{head|en|noun form}}\n\n# {{plural of|en|Sunday}}`
+    ),
+    Sunday: english(
+      `===Noun===\n{{en-noun}}\n\n# The day of the week after Saturday.\n\n====Translations====\n{{trans-top|day of the week}}\n* Russian: {{t|ru|воскресе́нье|n}}\n{{trans-bottom}}`
+    ),
+  };
+  const lexicon = loadLexicon({ fresh: true });
+  await resolveText('We rest on Sundays.', {
+    lexicon,
+    fetchImpl: wiki(pages),
+    cache: false,
+  });
+  assert.deepEqual(lexicon.irregular('sundays'), [
+    { pos: 'noun', lemma: 'sunday', feature: 'plural' },
+  ]);
+  const [id] = lexicon.lookup('noun', 'sunday');
+  assert.equal(lexicon.get(id).ru.lemma, 'воскресенье');
+  assert.ok(lexicon.get(id).classes.includes('weekday'));
 });

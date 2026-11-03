@@ -12,7 +12,12 @@ export function parseVerbGroup(c, subject) {
   const vg = verbGroup(c, subject);
   const t = vg?.verb && c.tokens.find((x) => x.index === vg.verb.token);
   const form = t && reading(t, 'verb')?.features.form;
-  if (form && /3sg|past/.test(form)) {
+  if (
+    form &&
+    (/3sg|past/.test(form) ||
+      // "we live in London and work in Paris": base is finite here
+      (form === 'base' && subject !== 'third' && !vg.modal))
+  ) {
     // remembered so "lives in London and works for Google" can be
     // read as two clauses rather than "London and works"
     c.finite = form;
@@ -98,6 +103,33 @@ function verbGroup(c, subject) {
     if (has(t, 'have') && (expect === 'finite' || expect === 'base')) {
       const r = reading(t, 'have');
       const after = nextNonAdverb(c, 1);
+      // "he's got a car" is "he has a car"
+      const gotAt = after?.lower === 'got' ? c.tokens.indexOf(after) : -1;
+      const owned = gotAt >= 0 && c.tokens[gotAt + 1];
+      if (
+        owned &&
+        startsNP(owned) &&
+        // "you have got paid" is a passive
+        !owned.readings.some(
+          (x) => x.pos === 'verb' && /pp/.test(x.features.form || '')
+        )
+      ) {
+        if (expect === 'finite') {
+          vg.tense = r.features.tense || vg.tense;
+          vg.agree = r.features;
+        }
+        c.i = gotAt + 1;
+        vg.verb = {
+          token: t.index,
+          text: t.text,
+          lemma: 'have',
+          pos: 'verb',
+          candidates: ['have'],
+          concept: 'have',
+        };
+        vg.frame = 'possession';
+        return vg;
+      }
       if (
         has(after, 'verb') &&
         after.readings.some(

@@ -292,7 +292,17 @@ export function governmentFit(entry, sense) {
 export function governmentResolver({ russian, ruPages, government, lexicon }) {
   // Aspect partners share the selected meaning's argument frame.
   const finish = (ru, sense) => {
-    const partner = ru.partner ? russian(ru.partner, 'verb') : null;
+    // Explicit aspect alternatives in this translation table belong to this
+    // meaning; a lemma's generic partner can belong to another sense.
+    const explicit =
+      ru.aspect === 'perf'
+        ? sense.russian?.find((c) => c.aspect === 'impf' && c.word !== ru.lemma)
+        : null;
+    const partner = explicit
+      ? russian(explicit.word, 'verb')
+      : ru.partner
+        ? russian(ru.partner, 'verb')
+        : null;
     const frame = {
       ...(partner
         ? verbGovernment(
@@ -371,7 +381,9 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
         .map((c) => candidate(c, renderedOnly))
         .filter(Boolean)
         .sort((a, b) => b.score - a.score)[0]?.entry;
-    return best(true) || best(false);
+    // Every surviving candidate is attested. A missing rendered table is
+    // not evidence that a later synonym translates this sense better.
+    return best(false);
   };
   return { choose, finish };
 }

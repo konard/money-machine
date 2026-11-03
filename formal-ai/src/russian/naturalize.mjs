@@ -282,10 +282,7 @@ function chooseAspect(entry, s, ctx, role) {
       (m) =>
         m.kind === 'adverb' && ['home.adv', 'there', 'here'].includes(m.concept)
     );
-  const duration = mods.some(
-    (m) =>
-      m.kind === 'relation' && ['rel.for', 'rel.since'].includes(m.relation)
-  );
+  const duration = lasting(s);
   const pick = (variant, why) => {
     if (variant !== entry && why) {
       ctx.notes.add(`${variant.lemma}: ${why}`);
@@ -373,10 +370,24 @@ function chooseAspect(entry, s, ctx, role) {
   return pick(entry.perfective, why);
 }
 
+/** "for ten years", "since May": a state that still lasts. */
+function lasting(s) {
+  return (s.modifiers || []).some(
+    (m) =>
+      m.kind === 'relation' && ['rel.for', 'rel.since'].includes(m.relation)
+  );
+}
+
 /** Conjugate the predicate verb (handles future of imperfectives). */
 function finiteVerb(variant, s, f, _ctx) {
+  // "I have sent" is a completed action: Russian says it in the past;
+  // "we have lived here for ten years" still lasts: живём
   const tense =
-    s.tense === 'future' ? 'future' : s.tense === 'past' ? 'past' : 'present';
+    s.tense === 'future'
+      ? 'future'
+      : s.tense === 'past' || (s.aspect === 'perfect' && !lasting(s))
+        ? 'past'
+        : 'present';
   return conjugate(variant, {
     tense,
     person: f.person,
@@ -524,6 +535,8 @@ export function renderModifiers(mods, ctx, entry) {
         continue;
       }
       after.push(renderRelation(m, ctx));
+    } else if (m.kind === 'conj') {
+      after.push({ and: 'и', or: 'или' }[m.conj]);
     }
   }
   return { before, after, negative };
@@ -723,7 +736,7 @@ function verbGroup(entry, s, f, ctx) {
   }
   if (s.modality) {
     const inf = variant.lemma;
-    return `${modalWord(s, f, ctx)} ${inf}`;
+    return s.sharedModality ? inf : `${modalWord(s, f, ctx)} ${inf}`;
   }
   return finiteVerb(variant, s, f, ctx);
 }

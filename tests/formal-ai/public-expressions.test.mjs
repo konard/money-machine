@@ -1,3 +1,4 @@
+import { attestRussian } from './russian-fixture.mjs';
 /** Offline public-data fixtures; no hand-written production vocabulary. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -15,6 +16,7 @@ const entry = (pos, ru, definition = 'A fixture.') =>
   `==English==\n===${pos}===\n# ${definition}\n${table(ru)}`;
 
 function wiki(pages, entities = {}) {
+  attestRussian(pages);
   const requests = [];
   return {
     requests,

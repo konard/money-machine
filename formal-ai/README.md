@@ -189,3 +189,33 @@ Known gaps:
 - document structure;
 - the model server, including a read → write tool loop over HTTP;
 - Wikidata filters, with a stubbed API.
+
+### Recorded production data
+
+`node --test --test-timeout=60000 tests/formal-ai/production.test.mjs` checks
+70 fixed sentences against `fixtures/public-expected.json` using production
+`data/overrides`, recorded public API responses, offline mode and an empty
+temporary cache. The child process isolates the production lexicon from the
+hand vocabulary used by other tests. These snapshots preserve current output,
+including known translation gaps; they are regression references, not reviewed
+gold translations.
+
+Run `npm run formal-ai:record` from the repository root to re-record. It uses
+`~/.cache/formal-ai` (or `FORMAL_AI_CACHE`), records missing fixtures even on
+warm-cache hits, verifies every live translation against an empty-cache offline
+replay, then writes compact expected JSON and reports fixture size. Existing
+fixtures are never overwritten. To refresh upstream data, remove
+`tests/formal-ai/fixtures/public` and use an empty `FORMAL_AI_CACHE` before running
+again; review changes to the expected Russian. Network requests use the generic
+translator User-Agent.
+
+The corpus has 40 basic sentences in `scripts/record-fixtures.mjs` and 30 fixed
+website sentences with source paths in `scripts/fixture-sentences.json`. The
+website sample was selected by sorting eligible sentences (3–14 words, ending
+in punctuation, starting with a capitalized word, without Markdown, digits,
+acronyms, email addresses or field delimiters) by SHA-256 of
+`public-fixtures-v1:<source>:<text>`, taking 15 strategy sentences and 15 distinct
+Markdown sentences. Keeping the chosen text in the repository prevents website
+edits from silently changing the regression corpus. Compaction retains the
+public evidence each reader consumes; tests cover dictionary senses and frames,
+Russian forms and government, Wikidata entities, RNC ranks and Wikipedia counts.

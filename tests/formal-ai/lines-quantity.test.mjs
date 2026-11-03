@@ -1,3 +1,4 @@
+import { attestRussian } from './russian-fixture.mjs';
 /** Offline dictionary forms exercise fragments and degree through the pipeline. */
 import './setup.mjs';
 import { test } from 'node:test';
@@ -44,6 +45,7 @@ pages.list = pages.list.replace(
   '}}\n* Russian:',
   '}}{{multitrans|data=\n* Russian:'
 );
+attestRussian(pages);
 const fetchImpl = (url, options) => {
   assert.equal(options.headers['user-agent'], USER_AGENT);
   const p = options.body

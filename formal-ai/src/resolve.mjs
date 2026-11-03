@@ -1,5 +1,6 @@
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
 
+import { supplementTerms } from './sources/terms.mjs';
 import { entityContext } from './sources/entity-context.mjs';
 import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
 import { readings, tokenize } from './english/analyze.mjs';
@@ -21,6 +22,9 @@ import {
   genus,
   senseClasses,
   usagePenalty,
+  publicSenses,
+  senseDomain,
+  glossWords,
 } from './sources/sense-data.mjs';
 import {
   russianCorpusRanks,
@@ -34,23 +38,19 @@ import { chunks, getJson, pool } from './sources/fetch.mjs';
 import { governmentPages, governmentResolver } from './sources/government.mjs';
 import {
   fetchPages,
-  matchingDefinition,
+  languageSection,
   renderRussian,
   russianTemplates,
   unstress,
 } from './sources/wiktionary.mjs';
 
-const STOP = new Set(
-  'the a an of to in on for and or by with from at as is are be that which who someone something one ones its it their used being made having into out up over than such any some other e g etc especially usually typically'.split(
-    ' '
-  )
-);
 const POS_RU = { noun: 'noun', verb: 'verb', adj: 'adj', adv: 'adv' };
 const FEATURE = {
   plural: 'plural',
   past: 'past',
   'simple past': 'past',
   'past participle': 'participle',
+  'ed-form': 'past',
 };
 /** Words of a text that the lexicon has no reading for. */
 export function unknownWords(text, lexicon = loadLexicon()) {
@@ -192,6 +192,10 @@ export async function resolveNames(
       verified.set(name, new Set(exact.map((h) => h.id)));
     }
   });
+  // Network completion order must not change entity/declension request batches.
+  const orderedHits = [...hits].sort(([a], [b]) => a.localeCompare(b));
+  hits.clear();
+  orderedHits.forEach(([name, ids]) => hits.set(name, ids));
   // Fetch descriptions and instance claims before ranking exact aliases.
   const entities = {};
   for (const batch of chunks([...new Set([...hits.values()].flat())], 50)) {
@@ -230,8 +234,8 @@ export async function resolveNames(
     const id = [...ids].sort(
       (a, b) =>
         Number(isGivenName(entities[b])) - Number(isGivenName(entities[a])) ||
-        overlap(b, name) - overlap(a, name) ||
         labelled(b) - labelled(a) ||
+        overlap(b, name) - overlap(a, name) ||
         links(b) - links(a)
     )[0];
     hits.set(name, id);
@@ -328,36 +332,6 @@ export function phrasalCandidates(text, lexicon = loadLexicon()) {
   });
   return [...out];
 }
-/** Labels that say how a word is used, not what field it belongs to. */
-const USAGE_LABEL =
-  /^(?:transitive|intransitive|ditransitive|catenative|ambitransitive|ergative|reflexive|countable|uncountable|informal|colloquial|slang|figurative(?:ly)?|formal|literal(?:ly)?|idiomatic|attributive|plural|singular|in the plural|by extension|now|often|usually|especially|also|chiefly|mainly|sometimes|rare|obsolete|archaic|dated|US|UK|British|American|Canada|Australia|Ireland|NZ|India|Scotland|with|of|_|and|or)$/i;
-/**
- * Field of a sense: a field label of its definition (finance, computing)
- * or the field prefix of its translation gloss ("law: demand for…").
- */
-function senseDomain(sense) {
-  const label = (sense.labels || []).find(
-    (l) => /^[a-z][a-z -]{2,24}$/i.test(l) && !USAGE_LABEL.test(l)
-  );
-  if (label) {
-    return label.toLowerCase();
-  }
-  return sense.seeAlso
-    ? null
-    : /^([a-z][a-z ]{2,20}): /.exec(sense.gloss)?.[1] || null;
-}
-/** Content words of a gloss, used as context cues. */
-function glossWords(gloss, headword = '') {
-  return [
-    ...new Set(
-      gloss
-        .toLowerCase()
-        .split(/[^a-z]+/)
-        .filter((w) => w.length > 2 && !STOP.has(w) && w !== headword)
-    ),
-  ];
-}
-
 /**
  * Resolve every unknown word of `text` into the lexicon.
  * @returns {Promise<{words: number, resolved: string[], missing: string[]}>}
@@ -460,13 +434,22 @@ export async function resolveText(
         };
         for (const f of e.formOf) {
           promote(f.lemma);
-          forms.push({ form: key, lemma: f.lemma, kind: f.kind, pos: e.pos });
+          // "Sundays" → "Sunday": a capital page's base is learned under
+          // the lowercase word too
+          const lemma =
+            key !== title && /^\p{Lu}\p{Ll}+$/u.test(f.lemma)
+              ? f.lemma.toLowerCase()
+              : f.lemma;
+          if (lemma !== f.lemma) {
+            capitalOf.set(f.lemma, lemma);
+          }
+          forms.push({ form: key, lemma, kind: f.kind, pos: e.pos });
           // a variant ("doc" ← "document") borrows the target's senses,
           // so the target page is needed even when the lexicon knows it
           const variantOf = /alternative|spelling/.test(f.kind);
           if (
             !done.has(f.lemma) &&
-            (variantOf || !lexicon.lookup(e.pos, f.lemma).length)
+            (variantOf || !lexicon.lookup(e.pos, lemma).length)
           ) {
             next.add(f.lemma);
           }
@@ -491,47 +474,7 @@ export async function resolveText(
 
   // English sense → Russian candidates
   const plans = [];
-  const sensesOf = (title, pos) => {
-    const own = entries.get(title) || [];
-    const sub = (entries.get(`${title}/translations`) || []).filter(
-      (e) => e.pos === pos
-    );
-    // a translation subpage has no definitions: match the main page's
-    const mainDefinitions = own
-      .filter((e) => e.pos === pos)
-      .flatMap((e) => e.rawDefinitions || []);
-    const subSenses = sub.map((e) => ({
-      ...e,
-      senses: e.senses.map((x) =>
-        x.definition
-          ? x
-          : { ...x, ...matchingDefinition(x.gloss, mainDefinitions) }
-      ),
-    }));
-    const chunks = [...own.filter((e) => e.pos === pos), ...subSenses];
-    // "march" the walk before "March" the month; "january" has only that
-    const lower = chunks.some((e) => !e.capital && e.senses.length);
-    // "phone" (the device): its entry's only translations are those of
-    // "telephone" — the word's own meaning; "pen" (the feather) with
-    // tables of its own and a pointer to "wing" — a side meaning
-    return chunks.flatMap((e) => [
-      ...(e.capital && lower
-        ? e.senses.map((x) => ({ ...x, side: true }))
-        : e.senses),
-      ...e.see.flatMap((s) =>
-        (entries.get(s.page) || [])
-          .filter((x) => x.pos === pos)
-          .flatMap((x) =>
-            x.senses.map((sense) => ({
-              ...sense,
-              gloss: `${s.gloss}: ${sense.gloss}`,
-              seeAlso: true,
-              side: e.senses.length > 0,
-            }))
-          )
-      ),
-    ]);
-  };
+  const sensesOf = (title, pos) => publicSenses(entries, title, pos);
   // one plan per (lemma, pos): the word's own senses first, then those of
   // words it is a variant of ("fee" the payment before "fee" ← "fief")
   const own = new Map();
@@ -617,14 +560,27 @@ export async function resolveText(
     }
   }
 
+  if (!only) {
+    plans.push(
+      ...(await supplementTerms(text, {
+        entries,
+        plans,
+        lexicon,
+        words,
+        forms,
+        options,
+      }))
+    );
+  }
+
   // Russian words: fetch pages, keep candidates whose entry has the same POS
   const russianWords = new Set();
   for (const plan of plans) {
     for (const s of plan.senses) {
-      s.russian.slice(0, 3).forEach((c) => {
+      s.russian.forEach((c) => {
         russianWords.add(c.word);
         // the words of «домашняя страница» decline one by one
-        if (plan.pos === 'noun' && c.word.includes(' ')) {
+        if (['noun', 'adv'].includes(plan.pos) && c.word.includes(' ')) {
           c.word.split(' ').forEach((w) => russianWords.add(w));
         }
       });
@@ -686,10 +642,13 @@ export async function resolveText(
   const government = await governmentPages(
     plans
       .filter((p) => p.pos === 'verb')
-      .flatMap((p) =>
-        p.senses.flatMap((s) => s.russian.slice(0, 3).map((c) => c.word))
-      )
-      .concat([...partners]),
+      .flatMap((p) => p.senses.flatMap((s) => s.russian.map((c) => c.word)))
+      .concat(
+        [...partners],
+        [...russianWords].filter(
+          (w) => !languageSection(ruPages.get(w) || '', 'Russian')
+        )
+      ),
     options
   );
 
@@ -697,13 +656,11 @@ export async function resolveText(
   const want = [];
   for (const plan of plans) {
     for (const s of plan.senses) {
-      const words = s.russian
-        .slice(0, 3)
-        .flatMap((c) =>
-          plan.pos === 'noun' && c.word.includes(' ')
-            ? c.word.split(' ').map((word) => ({ word }))
-            : [c]
-        );
+      const words = s.russian.flatMap((c) =>
+        plan.pos === 'noun' && c.word.includes(' ')
+          ? c.word.split(' ').map((word) => ({ word }))
+          : [c]
+      );
       for (const c of words) {
         const e = ruEntry(c.word, POS_RU[plan.pos]);
         if (e) {
@@ -739,7 +696,7 @@ export async function resolveText(
   });
   const uncertainNouns = plans
     .filter((p) => p.pos === 'noun')
-    .flatMap((p) => p.senses.flatMap((s) => s.russian.slice(0, 3)))
+    .flatMap((p) => p.senses.flatMap((s) => s.russian))
     .map((c) => c.word)
     .filter(
       (w) =>
@@ -774,9 +731,27 @@ export async function resolveText(
       }
       return entry;
     }
-    // no page of its own: keep the word only when its ending shows the
-    // part of speech, so regular morphology can inflect it
-    return candidate && !renderedOnly && !ruPages.has(word)
+    if (
+      pos === 'adv' &&
+      word
+        .split(' ')
+        .every(
+          (w) =>
+            languageSection(ruPages.get(w) || '', 'Russian') ||
+            /=\s*\{\{-ru-\}\}\s*=/.test(government.get(w) || '')
+        )
+    ) {
+      return { pos: 'adv', lemma: word, regular: true };
+    }
+    // Regular morphology needs lexical attestation, not merely a plausible
+    // Cyrillic ending. A verified Russian concept label is evidence too.
+    return candidate &&
+      !renderedOnly &&
+      (candidate.attested ||
+        /=\s*\{\{-ru-\}\}\s*=/.test(government.get(word) || '') ||
+        russianTemplates(ruPages.get(word) || '').some(
+          (e) => e.pos === POS_RU[pos]
+        ))
       ? regularEntry(pos, candidate)
       : null;
   };
@@ -842,13 +817,22 @@ export async function resolveText(
         classes: plan.pos === 'noun' ? senseClasses(s) : [],
         genus:
           s.borrowed && plan.pos === 'noun' ? genus(s.definition) : undefined,
-        cues: glossWords(`${s.gloss} ${s.definition || ''}`, plan.lemma),
+        cues: glossWords(
+          `${s.gloss} ${s.definition || ''} ${s.context || ''} ${(s.labels || []).join(' ')}`,
+          plan.lemma
+        ),
+        capital: s.capital || undefined,
         usagePenalty: usagePenalty(s),
         // the most widely translated sense is the word's core meaning even
         // under a field label ("telephone", labelled telephony)
-        domain: most && (s.languages || 0) >= most ? null : senseDomain(s),
+        domain: senseDomain(s),
+        core: Boolean(most && (s.languages || 0) >= most),
         objectClasses: [],
-        syntax: null,
+        syntax:
+          plan.pos === 'adv' &&
+          /(?:form|forming|mark).*comparative/i.test(s.gloss)
+            ? 'degree'
+            : null,
         takes: [],
         // translation tables follow the definitions, which are ordered by
         // history more than by frequency: a gentle preference only
@@ -873,7 +857,7 @@ export async function resolveText(
           },
         ],
         ru,
-        source: 'wiktionary',
+        source: s.source || 'wiktionary',
       });
       rank += 1;
       resolved.push(id);
@@ -907,6 +891,13 @@ export async function resolveText(
     const feature = FEATURE[f.kind];
     if (feature && lexicon.lookup(f.pos, f.lemma).length) {
       lexicon.addForm(f.form, { pos: f.pos, lemma: f.lemma, feature });
+      if (f.kind === 'ed-form') {
+        lexicon.addForm(f.form, {
+          pos: f.pos,
+          lemma: f.lemma,
+          feature: 'participle',
+        });
+      }
     }
   }
   lexicon.markAsked([...words, ...done]);
@@ -928,10 +919,16 @@ export async function resolveText(
       )
   );
   const names = nameCandidates(text, lexicon);
+  const internal = new Set(
+    [...text.matchAll(/\b[a-z][a-z'-]*[,;(]?\s+([A-Z][a-z]+)\b/g)].map(
+      (m) => m[1]
+    )
+  );
   const givenOnly = new Set(
     names.filter(
       (n) =>
         !(
+          internal.has(n) ||
           n.includes(' ') ||
           /[.-]/.test(n) ||
           /^[A-Z][A-Z0-9]+s?$/.test(n) ||

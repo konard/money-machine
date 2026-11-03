@@ -10,6 +10,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
+import { compactResponse } from './compact.mjs';
 
 export const USER_AGENT =
   'formal-ai-translator/0.1 (https://github.com/konard/money-machine)';
@@ -28,14 +29,22 @@ export const cacheDir = (name) =>
 const memory = new Map();
 
 /**
- * Recorded responses: `FORMAL_AI_FIXTURES` names a directory of raw API
+ * Recorded responses: `FORMAL_AI_FIXTURES` names a directory of compact API
  * responses (read first after the cache); with `FORMAL_AI_RECORD` set, new
- * responses are written there too; with `FORMAL_AI_OFFLINE` set, a request
+ * responses are written there if missing, including on cache hits; with `FORMAL_AI_OFFLINE` set, a request
  * without a recorded response fails instead of reaching the network.
  */
 function fixtureFile(bucket, key) {
   const dir = process.env.FORMAL_AI_FIXTURES;
   return dir ? join(dir, bucket, key.slice(0, 2), `${key}.json`) : null;
+}
+
+function recordFixture(bucket, key, value) {
+  const target = process.env.FORMAL_AI_RECORD && fixtureFile(bucket, key);
+  if (target && !existsSync(target)) {
+    mkdirSync(join(target, '..'), { recursive: true });
+    writeFileSync(target, JSON.stringify(compactResponse(bucket, value)));
+  }
 }
 
 /**
@@ -49,22 +58,26 @@ export async function getJson(
 ) {
   const body = form ? new URLSearchParams(form).toString() : '';
   const key = createHash('sha1').update(`${url}\n${body}`).digest('hex');
-  if (cache && memory.has(key)) {
-    return memory.get(key);
+  const memoryKey = `${cacheDir(bucket)}\n${process.env.FORMAL_AI_FIXTURES || ''}\n${key}`;
+  if (cache && memory.has(memoryKey)) {
+    const value = memory.get(memoryKey);
+    recordFixture(bucket, key, value);
+    return value;
   }
   const file = cache
     ? join(cacheDir(bucket), key.slice(0, 2), `${key}.json`)
     : null;
   if (file && existsSync(file)) {
     const value = JSON.parse(readFileSync(file, 'utf8'));
-    memory.set(key, value);
+    recordFixture(bucket, key, value);
+    memory.set(memoryKey, value);
     return value;
   }
   // recorded public responses kept with the repository (tests replay them)
   const fixture = cache && fixtureFile(bucket, key);
   if (fixture && existsSync(fixture)) {
     const value = JSON.parse(readFileSync(fixture, 'utf8'));
-    memory.set(key, value);
+    memory.set(memoryKey, value);
     return value;
   }
   // offline, only the network is out of reach: a stand-in fetch still runs
@@ -101,14 +114,12 @@ export async function getJson(
         });
       }
       const value = await response.json();
-      for (const target of [
-        file,
-        process.env.FORMAL_AI_RECORD && fixtureFile(bucket, key),
-      ].filter(Boolean)) {
-        mkdirSync(join(target, '..'), { recursive: true });
-        writeFileSync(target, JSON.stringify(value));
+      if (file) {
+        mkdirSync(join(file, '..'), { recursive: true });
+        writeFileSync(file, JSON.stringify(value));
       }
-      memory.set(key, value);
+      recordFixture(bucket, key, value);
+      memory.set(memoryKey, value);
       return value;
     } catch (error) {
       lastError = error;

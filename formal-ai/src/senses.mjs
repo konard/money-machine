@@ -163,6 +163,15 @@ export class DocumentMemory {
     );
   }
 
+  /** Topic evidence outside this sentence, including sparse document terms. */
+  documentWeight(cue, word) {
+    if (!this.topic || stem(cue) === stem(word || '')) {
+      return 0;
+    }
+    const n = this.topic.filter((s) => s.has(stem(cue))).length;
+    return n ? Math.min(1, Math.log2(1 + n) / 3) : 0;
+  }
+
   topicWeight(cue, word) {
     if (!this.topic || !word) {
       return 0;
@@ -204,7 +213,8 @@ function stem(word) {
   return word
     .replace(/ies$/, 'y')
     .replace(/(?:ches|shes|sses|xes|zes)$/, (ending) => ending.slice(0, -2))
-    .replace(/(?:s|ed|ing|ly)$/, '');
+    .replace(/(?:s|ed|ing|ly)$/, '')
+    .replace(/^(.{4,})al$/, '$1');
 }
 
 /** Every word form and lemma of a token, for cue matching. */
@@ -296,6 +306,11 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         const concept = lexicon.get(id);
         let score = 0;
         const why = [];
+        const token = tokens.find((t) => t.index === node.token);
+        if (concept?.capital && token?.text === token?.lower) {
+          score -= 3;
+          why.push('capitalized dictionary entry for lowercase token (-3)');
+        }
         for (const cue of concept?.cues || []) {
           for (const w of words) {
             if (w.pos === at || !matchesCue(w.words, cue)) {
@@ -315,6 +330,18 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
               `document memory "${cue}" (+${(remembered * 0.8).toFixed(2)})`
             );
           }
+        }
+        const affinity =
+          ((concept?.cues || [])
+            .map((cue) => memory.documentWeight(cue, word))
+            .sort((a, b) => b - a)
+            .slice(0, 2)
+            .reduce((sum, weight) => sum + weight, 0) *
+            0.5) /
+          Math.sqrt(Math.max(1, concept?.cues?.length || 0));
+        if (affinity) {
+          score += affinity;
+          why.push(`definition fits document (+${affinity.toFixed(2)})`);
         }
         // the two most topical gloss words, so long glosses don't win
         // just by having more words
@@ -356,19 +383,11 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
             `listed sense ${concept.id.split(':').pop()} (+${concept.prior.toFixed(2)})`
           );
         }
-        if (
-          concept?.related &&
-          node.pos === 'verb' &&
-          !parsed.leftover?.length
-        ) {
+        if (concept?.related) {
           score -= 0.5;
           why.push('related translation page (-0.50)');
         }
-        if (
-          concept?.usagePenalty &&
-          node.pos === 'verb' &&
-          !parsed.leftover?.length
-        ) {
+        if (concept?.usagePenalty) {
           score -= concept.usagePenalty;
           why.push(
             `dictionary usage label (-${concept.usagePenalty.toFixed(2)})`
@@ -385,7 +404,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           const lemma = lexicon.get(object?.head?.concept)?.ru?.lemma;
           const count = concept.objectFrequency[lemma];
           if (Number.isFinite(count)) {
-            const weight = Math.min(2, Math.log10(1 + count) * 0.6);
+            const weight = Math.min(0.3, Math.log10(1 + count) * 0.08);
             score += weight;
             why.push(
               `Russian verb–object corpus (${count}, +${weight.toFixed(2)})`
@@ -447,11 +466,16 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         const domain = domainOf(concept);
         if (
           domain &&
+          !concept.core &&
           !memory.mentions(domain) &&
           !(memory.familyWeight(domain) >= 0.4)
         ) {
           score -= 0.2;
           why.push(`specialist sense (${domain}) (-0.20)`);
+        }
+        if (domain && memory.mentions(domain)) {
+          score += 0.3;
+          why.push(`dictionary field ${domain} in document (+0.30)`);
         }
         if (shared) {
           const bonus = Math.min(0.1, 0.05 * shared);

@@ -256,12 +256,27 @@ function contentReadings(token, lexicon, add) {
   const capitalized = /^\p{Lu}/u.test(token.text);
   // a capitalized word with a known name label is that name (Google,
   // Apple) — unless it names a time: "January" is a given name too
-  const timeWord = lexicon
-    .lookup('noun', w)
-    .some((id) => lexicon.get(id)?.classes?.includes('time'));
+  const timeWord = [
+    w,
+    ...lexicon
+      .irregular(w)
+      .filter((r) => r.pos === 'noun')
+      .map((r) => r.lemma),
+  ].some((lemma) =>
+    lexicon
+      .lookup('noun', lemma)
+      .some((id) => lexicon.get(id)?.classes?.includes('time'))
+  );
   if (
     capitalized &&
     !timeWord &&
+    // "Edit the JSON": a verb opening a sentence before a determiner is an
+    // order, not the given name Edit
+    !(
+      token.first &&
+      token.beforeDeterminer &&
+      lexicon.lookup('verb', w).length
+    ) &&
     ((lexicon.givenNames?.has(token.text) && lexicon.nameLabel?.(token.text)) ||
       (!token.first && lexicon.nameLabel?.(token.text)) ||
       (token.first &&
@@ -399,6 +414,9 @@ export function analyze(sentence, lexicon) {
       ...t,
       first: i === firstWord,
       shouting,
+      beforeDeterminer: Boolean(
+        tokens[i + 1] && DETERMINERS[tokens[i + 1].lower]
+      ),
       nominalStart: Boolean(
         tokens[i + 1] && lexicon.lookup('noun', tokens[i + 1].lower).length
       ),
@@ -406,18 +424,48 @@ export function analyze(sentence, lexicon) {
     token.readings = readings(token, lexicon);
     return token;
   });
-  // "what's", "it's", "there's", "that's": the clitic is "is"
   out.forEach((token, i) => {
     const previous = out[i - 1];
-    if (
-      token.lower === "'s" &&
-      previous &&
-      (['wh', 'pron', 'there'].some((p) =>
-        previous.readings.some((r) => r.pos === p)
-      ) ||
-        ['that', 'this', 'here'].includes(previous.lower))
-    ) {
-      token.readings = token.readings.filter((r) => r.pos === 'be');
+    if (token.lower === "'s") {
+      // 's is "has" only as an auxiliary: "she's done it", "he's got";
+      // "Tom's car needs fuel" is no "Tom has car-needs"
+      let j = i + 1;
+      while (
+        out[j] &&
+        out[j].readings.length &&
+        out[j].readings.every((r) => ['adv', 'neg'].includes(r.pos))
+      ) {
+        j += 1;
+      }
+      const participle =
+        ['got', 'been'].includes(out[j]?.lower) ||
+        out[j]?.readings.some(
+          (r) => r.pos === 'verb' && /pp/.test(r.features?.form || '')
+        );
+      // "what's", "it's", "there's", "that's": no possessive
+      const clause =
+        previous &&
+        (['wh', 'pron', 'there'].some((p) =>
+          previous.readings.some((r) => r.pos === p)
+        ) ||
+          ['that', 'this', 'here'].includes(previous.lower));
+      // a participle with an object after it is a perfect: "she's done it"
+      const object =
+        participle &&
+        out[j + 1]?.readings.some((r) => ['pron', 'det'].includes(r.pos));
+      token.readings = token.readings.filter(
+        (r) =>
+          (r.pos === 'have' && participle) ||
+          (r.pos === 'be' && !(object || out[j]?.lower === 'got')) ||
+          (r.pos === 'poss-clitic' && !clause)
+      );
+    }
+    // only an auxiliary takes "n't": "does" before it is no plural noun
+    const auxiliary = token.readings.filter((r) =>
+      ['be', 'do', 'modal', 'have'].includes(r.pos)
+    );
+    if (out[i + 1]?.lower === "n't" && auxiliary.length) {
+      token.readings = auxiliary;
     }
   });
   return out;

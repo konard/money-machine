@@ -1,3 +1,4 @@
+import { russianFixture } from './russian-fixture.mjs';
 import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -38,7 +39,10 @@ async function fixture() {
         const pages = (params.get('titles') || '').split('|').map((title) => {
           const e = entries[title];
           if (!e) {
-            return { title, missing: true };
+            const content = russianFixture(entries, title);
+            return content
+              ? { title, revisions: [{ slots: { main: { content } } }] }
+              : { title, missing: true };
           }
           const [pos, ru, usage = ''] = e;
           const content = `==English==\n===${pos}===\n# Fixture.\n${usage}\n{{trans-top|fixture}}\n* Russian: {{t|ru|${ru}}}\n{{trans-bottom}}`;

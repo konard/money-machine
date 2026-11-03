@@ -1,3 +1,4 @@
+import { russianFixture } from './russian-fixture.mjs';
 /* eslint-disable require-await -- Offline fetch fixtures implement the async Fetch interface. */
 /** Nonfinite grammar is tested with bundled words and offline Wiktionary replies. */
 import './setup.mjs';
@@ -46,7 +47,10 @@ async function dictionaryFetch(url) {
     .map((title) => {
       const entry = vocabulary[title];
       if (!entry) {
-        return { title, missing: true };
+        const content = russianFixture(vocabulary, title);
+        return content
+          ? { title, revisions: [{ slots: { main: { content } } }] }
+          : { title, missing: true };
       }
       const [pos, ru, gender = ''] = entry;
       const content = `==English==\n===${pos}===\n# A test sense.\n====Translations====\n{{trans-top|test sense}}\n* Russian: {{t|ru|${ru}|${gender}}}\n{{trans-bottom}}`;

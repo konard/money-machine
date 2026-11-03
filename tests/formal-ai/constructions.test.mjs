@@ -1,3 +1,4 @@
+import { russianFixture } from './russian-fixture.mjs';
 /* eslint-disable require-await -- Offline fixtures implement Fetch. */
 import './setup.mjs';
 import { rncFixture } from './rnc-fixture.mjs';
@@ -66,7 +67,10 @@ async function lexiconFixture() {
               };
             }
             if (!vocabulary[title]) {
-              return { title, missing: true };
+              const content = russianFixture(vocabulary, title);
+              return content
+                ? { title, revisions: [{ slots: { main: { content } } }] }
+                : { title, missing: true };
             }
             const [pos, ru, gender = ''] = vocabulary[title];
             const content = `==English==\n===${pos}===\n# Fixture.\n====Translations====\n{{trans-top|fixture}}\n* Russian: {{t|ru|${ru}|${gender}}}\n{{trans-bottom}}`;

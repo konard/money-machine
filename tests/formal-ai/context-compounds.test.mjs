@@ -141,6 +141,25 @@ test('hyphenated modifiers prefer whole and spaced dictionary entries before com
     forward: entry('Verb', 'пересылать'),
     forwarded: '==English==\n===Verb===\n# {{past participle of|en|forward}}',
     пересылать: '==Russian==\n===Verb===\n{{ru-verb|пересылать|impf}}',
+    // Russian entries attest candidates; endings alone are no longer enough.
+    ...Object.fromEntries(
+      [
+        ['Adjective', 'adj', 'полный бесплатный высокий платный'],
+        [
+          'Noun',
+          'noun',
+          'доход печать требование щелчок услуга выплата плата вход жетон',
+        ],
+        ['Verb', 'verb', 'взимать'],
+      ].flatMap(([pos, template, words]) =>
+        words
+          .split(' ')
+          .map((word) => [
+            word,
+            `==Russian==\n===${pos}===\n{{ru-${template}|${word}}}`,
+          ])
+      )
+    ),
     sponsorship: entry('Noun', 'спонсорство', 'n'),
     спонсорство: '==Russian==\n===Noun===\n{{ru-noun|спонсорство|n}}',
   };

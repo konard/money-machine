@@ -187,7 +187,11 @@ function inflectionKind(tags) {
   if (/part/.test(tags) && /past|ed/.test(tags)) {
     return 'past participle';
   }
-  if (/ed-form|past/.test(tags)) {
+  // "paid": `ed-form` is the simple past and the past participle at once
+  if (/ed-form/.test(tags)) {
+    return 'ed-form';
+  }
+  if (/past/.test(tags)) {
     return 'past';
   }
   if (/ing/.test(tags)) {
@@ -207,7 +211,7 @@ function russianCandidates(line) {
   return templates(line, 'tt?\\+?')
     .filter((t) => t.positional[0] === 'ru' && t.positional[1])
     .map((t) => {
-      const word = unstress(plain(t.named.alt || t.positional[1]));
+      const word = unstress(plain(t.positional[1]));
       const marks = t.positional.slice(2);
       return {
         word,
@@ -326,7 +330,7 @@ export function englishEntries(wikitext) {
     if (!senses.length && !formOf.length && !subpage) {
       for (const d of definitions) {
         const m =
-          /^(?:\{\{(?:senseid|lb|label|lbl)\|[^}]*\}\}\s*)*(?:(?:A|An|The)\s+)?\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\](?=[\s,;.]|$)/.exec(
+          /^(?:\{\{(?:senseid|lb|label|lbl)\|[^}]*\}\}\s*)*(?:(?:A|An|The)\s+)?\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\](?=[\s,;.]|$)(?!\s+\[\[)/.exec(
             d
           );
         if (m && /^[a-z][a-z -]*$/.test(m[1])) {
@@ -371,6 +375,8 @@ export function matchingDefinition(gloss, definitions) {
   let best = null;
   let bestScore = 0;
   let bestShared = 0;
+  const head = (text) => [...contentWords(text)][0];
+  const sameHead = (text) => head(text) === head(gloss);
   for (const raw of definitions) {
     const text = plain(raw.split('\n')[0]);
     const have = contentWords(text);
@@ -381,7 +387,9 @@ export function matchingDefinition(gloss, definitions) {
       (score > bestScore ||
         (score === bestScore &&
           best &&
-          (have.size < contentWords(best.text).size ||
+          (Number(sameHead(text)) > Number(sameHead(best.text)) ||
+            (sameHead(text) === sameHead(best.text) &&
+              have.size < contentWords(best.text).size) ||
             (have.size === contentWords(best.text).size &&
               /\n#+\s/.test(best.raw) &&
               !/\n#+\s/.test(raw)))))
@@ -405,8 +413,16 @@ export function matchingDefinition(gloss, definitions) {
           t.positional.slice(1).filter((x) => !/^[_&]$|^(?:and|or)$/.test(x))
         );
   const frames = senseFrames(best.raw.split(/\n#+\s/)[0]);
+  const parent = definitions.find(
+    (raw) =>
+      raw !== best.raw &&
+      raw.includes(best.raw.split('\n')[0]) &&
+      /\n#+\s/.test(raw) &&
+      head(plain(raw.split('\n')[0])) === head(best.text)
+  );
   return {
     definition: best.text,
+    ...(parent ? { context: plain(parent.split('\n')[0]) } : {}),
     ...(frames.length ? { frames } : {}),
     labels,
     rare: labels.some((x) => RARE.test(x)),
@@ -487,6 +503,10 @@ export async function renderRussian(title, entry, options = {}) {
   const titles = [...html.matchAll(/<abbr[^>]*title="([^"]+)"/g)].map(
     (m) => m[1]
   );
+  // a table without its headword names the animacy in its caption:
+  // "Declension of челове́к (anim masc-form velar-stem …)"
+  const caption =
+    /title="Appendix:Russian nouns">([^<]+)</.exec(html)?.[1] || '';
   return {
     forms,
     indeclinable:
@@ -498,11 +518,12 @@ export async function renderRussian(title, entry, options = {}) {
         : titles.includes('neuter gender')
           ? 'n'
           : undefined,
-    animate: titles.includes('animate')
-      ? true
-      : titles.includes('inanimate')
-        ? false
-        : undefined,
+    animate:
+      titles.includes('animate') || /\banim\b/.test(caption)
+        ? true
+        : titles.includes('inanimate') || /\binan\b/.test(caption)
+          ? false
+          : undefined,
     pluralOnly:
       titles.includes('plural number') &&
       !titles.includes('masculine gender') &&
