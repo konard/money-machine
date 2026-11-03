@@ -152,3 +152,15 @@ test('a Russian definition «на что-либо» gives the English marker its
   });
   assert.equal(result.markerGovernment.about, undefined);
 });
+
+test('a receiver verb ("pay someone") still takes a thing paid in the accusative', () => {
+  const russian =
+    '= {{-ru-}} =\n==== Значение ====\n# отдавать деньги {{пример|{{выдел|платить}} ему за работу}}\n';
+  const result = verbGovernment('', russian, {
+    lemma: 'pay',
+    definition: 'To give money to in exchange for goods or services.',
+  });
+  assert.equal(result.government.case, 'dat');
+  assert.equal(result.classGovernment.person.case, 'dat');
+  assert.equal(result.classGovernment.thing.case, 'acc');
+});

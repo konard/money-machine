@@ -428,12 +428,13 @@ function governmentFor(entry, o, fallback, ctx) {
   if (o?.marker && entry?.markerGovernment?.[o.marker]) {
     return entry.markerGovernment[o.marker];
   }
+  const person =
+    ctx && (isPerson(o, ctx) || ctx.lexicon.givenNames?.has(o?.name));
   const classes = ctx
     ? [
         ...(o?.concept ? lexEntry(ctx, o.concept)?.classes || [] : []),
-        ...(isPerson(o, ctx) || ctx.lexicon.givenNames?.has(o?.name)
-          ? ['person']
-          : []),
+        // "pay the fee": a common thing, not a receiver
+        ...(person ? ['person'] : o?.concept && !o.name ? ['thing'] : []),
       ]
     : [];
   const byClass = classes.find((c) => entry?.classGovernment?.[c]);
@@ -533,7 +534,9 @@ export function renderModifiers(mods, ctx, entry) {
       const marker = m.relation?.replace(/^rel\./, '');
       if (
         entry?.markerGovernment?.[marker] &&
-        !lexEntry(ctx, m.entity?.concept)?.classes?.includes('time')
+        !lexEntry(ctx, m.entity?.concept)?.classes?.includes('time') &&
+        // "assumes about $20": an amount keeps the relation's own word
+        !/^~?\p{Sc}?\d/u.test(m.entity?.name || '')
       ) {
         after.push(governed(m.entity, entry.markerGovernment[marker], ctx));
         continue;

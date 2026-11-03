@@ -91,7 +91,7 @@ export function hypernym(text = '') {
   const stop = words.findIndex(
     (w, k) =>
       k > 0 &&
-      /^(?:of|after|before|in|on|at|that|which|who|for|used|with|from|between|when|where|[,;.(])$/.test(
+      /^(?:of|after|before|in|into|on|onto|at|by|to|that|which|whose|whom|who|for|used|with|from|between|when|where|[,;.(])$/.test(
         w
       )
   );

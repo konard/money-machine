@@ -122,10 +122,19 @@ function entity(np, lexicon) {
     e.properties = props.map((a) => property(a));
   }
   if (np.modifiers?.length) {
-    e.modifiers = np.modifiers.map((m) => ({
+    const modifier = (m) => ({
       concept: m.concept || m.candidates?.[0] || null,
       name: m.concept ? undefined : m.text,
-    }));
+      ...(m.alternative ? { alternative: modifier(m.alternative) } : {}),
+      ...(m.plural ? { number: 'plural' } : {}),
+    });
+    e.modifiers = np.modifiers.map(modifier);
+  }
+  if (np.alternative) {
+    e.alternative = {
+      concept: np.alternative.concept || np.alternative.candidates?.[0] || null,
+      name: np.alternative.concept ? undefined : np.alternative.text,
+    };
   }
   if (np.amount) {
     e.amount = np.amount;

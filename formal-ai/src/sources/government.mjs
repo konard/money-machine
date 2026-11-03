@@ -312,6 +312,8 @@ export function verbGovernment(english, russian, sense) {
     // the single English object as receiver, rather than transferred theme.
     if (/\bto(?:\s+in exchange\b|[;,.]|$)/i.test(sense.definition || '')) {
       result.government = gov('dat');
+      // …a thing as the only object is still what is given: «платить налог»
+      result.classGovernment = { ...result.classGovernment, thing: gov('acc') };
     }
   }
   return result;

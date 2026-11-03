@@ -1,6 +1,7 @@
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
 
 import { learnPrepositions } from './sources/prepositions.mjs';
+import { nameCandidates } from './name-candidates.mjs';
 import { supplementTerms } from './sources/terms.mjs';
 import { entityContext } from './sources/entity-context.mjs';
 import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
@@ -13,6 +14,8 @@ import {
   learnPhrases,
   givenNameLabel,
   markGivenName,
+  givenRank,
+  noteNotGivenFirst,
   isGivenName,
 } from './public-expressions.mjs';
 import { russianIndeclinables } from './sources/indeclinable.mjs';
@@ -138,40 +141,8 @@ export function capitalizedWords(text, lexicon = loadLexicon()) {
   return [...out];
 }
 
+export { nameCandidates };
 const WIKIDATA = 'https://www.wikidata.org/w/api.php';
-/** Capitalized words and acronyms that may be names (PayPal, Google, KYC). */
-export function nameCandidates(text, lexicon = loadLexicon()) {
-  const out = new Set();
-  const clean = text
-    .replace(/```[\s\S]*?```|`[^`]*`/g, ' ')
-    .replace(/\]\([^)]*\)|https?:\/\/\S+|<[^>]+>/g, ' ');
-  const tokens = tokenize(clean);
-  const capital = (t) => t?.kind === 'word' && /^[A-Z]/.test(t.text);
-  for (let i = 0; i < tokens.length; i += 1) {
-    if (!capital(tokens[i]) || tokens[i].text === 'I') {
-      continue;
-    }
-    // Try longest spans first, including shorter spans when a sentence's
-    // first capitalized word precedes the actual name ("Visit Hong Kong").
-    let end = i + 1;
-    while (capital(tokens[end])) {
-      end += 1;
-    }
-    for (let j = end; j > i; j -= 1) {
-      const name = tokens
-        .slice(i, j)
-        .map((t) => t.text)
-        .join(' ');
-      if (
-        !lexicon.lookup('name', name.toLowerCase()).length &&
-        !lexicon.nameLabel(name)
-      ) {
-        out.add(name);
-      }
-    }
-  }
-  return [...out];
-}
 /**
  * Russian labels of names from Wikidata: the first search hit whose
  * English label or alias is exactly the name.
@@ -247,10 +218,22 @@ export async function resolveNames(
       ['en', 'mul'].some((l) => entities[id]?.labels?.[l]?.value === name)
         ? 1
         : 0;
+    const given = (id) => givenRank(lexicon, name, entities[id]);
+    // the English text names what English calls so: "EU" is an English
+    // alias of the European Union, only a Portuguese one of the US
+    const english = (id) =>
+      ['en', 'mul'].some((l) =>
+        [entities[id]?.labels?.[l], ...(entities[id]?.aliases?.[l] || [])].some(
+          (a) => a?.value === name
+        )
+      )
+        ? 1
+        : 0;
     const id = [...ids].sort(
       (a, b) =>
-        Number(isGivenName(entities[b])) - Number(isGivenName(entities[a])) ||
+        given(b) - given(a) ||
         labelled(b) - labelled(a) ||
+        english(b) - english(a) ||
         overlap(b, name) - overlap(a, name) ||
         links(b) - links(a)
     )[0];
@@ -258,12 +241,21 @@ export async function resolveNames(
     if (isGivenName(entities[id])) {
       markGivenName(lexicon, name, entities[id]);
     }
+    // an abbreviation keeps a Russian abbreviation of the same name
+    // (EU → ЕС, the initials of «Европейский союз»), not an older one
+    // (US → САСШ, a historical name)
+    const label = entities[id]?.labels?.ru?.value?.split(' / ')[0];
+    const initials = (label || '')
+      .split(/[\s-]+/)
+      .filter((w) => w.length > 2)
+      .map((w) => w[0].toUpperCase())
+      .join('');
     const ru =
       (/^[A-Z]{2,5}$/.test(name) &&
-        (entities[id]?.aliases?.ru || []).find((a) =>
-          /^[А-ЯЁ]{2,5}$/.test(a.value)
+        (entities[id]?.aliases?.ru || []).find(
+          (a) => /^[А-ЯЁ]{2,5}$/.test(a.value) && a.value === initials
         )?.value) ||
-      entities[id]?.labels?.ru?.value?.split(' / ')[0];
+      label;
     // only a Cyrillic label is a translation; a different Latin label
     // means the search hit another thing (MRR → a magazine)
     if (ru && !/\(|,/.test(ru) && /[а-яё]/i.test(ru)) {
@@ -414,6 +406,7 @@ export async function resolveText(
       const page = pages.get(title);
       const key = capitalOf.get(title) || title;
       if (page && /^[A-Z][a-z]+$/.test(title)) {
+        noteNotGivenFirst(lexicon, title, page);
         const label = givenNameLabel(page);
         if (label) {
           lexicon.setNameLabel(title, label);

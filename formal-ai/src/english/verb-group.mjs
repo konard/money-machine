@@ -255,7 +255,17 @@ function verbGroup(c, subject) {
               ?.gloss || ''
           }`
         );
-      if (participle && (vg.modal || !has(after, 'adj') || agent || repeated)) {
+      // "is rated 2/10", "is rated highly": a value or a manner after
+      // the participle is the verb's, not an adjective's
+      const valued =
+        c.at(1)?.kind === 'quantity' ||
+        (has(c.at(1), 'adv') &&
+          !has(c.at(1), 'adj') &&
+          /ly$/.test(c.at(1).lower));
+      if (
+        participle &&
+        (vg.modal || !has(after, 'adj') || agent || repeated || valued)
+      ) {
         vg.passive = true;
         const v = participle;
         c.next();

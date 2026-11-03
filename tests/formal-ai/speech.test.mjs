@@ -3,7 +3,10 @@ import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { translateDocument } from '../../formal-ai/src/document.mjs';
-import { givenNameGender } from '../../formal-ai/src/public-expressions.mjs';
+import {
+  givenNameGender,
+  primaryGivenName,
+} from '../../formal-ai/src/public-expressions.mjs';
 
 const ru = (text) => translateDocument(text).text;
 
@@ -49,4 +52,62 @@ test('a headline participle is a passive; "before doing" is «прежде че�
     ru('Read the book before paying.'),
     'Прочитайте книгу, прежде чем платить.'
   );
+});
+
+test('an -ing phrase after the subject is a relative clause', () => {
+  assert.match(
+    ru('Students selling books pay taxes.'),
+    /^Студенты, которые продают книги, платят/
+  );
+});
+
+test('a word that is first of all a place is not a given name', () => {
+  const page = (first, second) =>
+    `==English==\n===Proper noun===\n{{en-prop}}\n\n# ${first}\n# ${second}\n`;
+  assert.equal(
+    primaryGivenName(page('{{place|en|country}}', '{{given name|en|female}}')),
+    false
+  );
+  assert.equal(primaryGivenName(page('{{given name|en|female}}', 'x')), true);
+  assert.equal(primaryGivenName('==English==\n===Noun===\n# a thing\n'), null);
+});
+
+test('"per" a unit of time is «в», per anything else «за»', () => {
+  assert.equal(ru('Students pay $5 per book.'), 'Студенты платят $5 за книгу.');
+  assert.equal(ru('Students pay $5 per day.'), 'Студенты платят $5 в день.');
+});
+
+test('a fronted adverb before a request; "like" before a verb is a preposition', () => {
+  assert.equal(ru('Always read the book.'), 'Всегда прочитайте книгу.');
+  assert.match(ru('Students like Tom read books.'), /^Студенты как \S+ чита/);
+});
+
+test('a slash offers alternatives; "2/10" is one quantity', () => {
+  assert.equal(
+    ru('Students read the book/letter.'),
+    'Студенты прочитали книгу/письмо.'
+  );
+  assert.match(ru('Students read the book/letter shop.'), /книги\/письма/);
+  assert.match(ru('The book costs 2/10.'), /2\/10/);
+});
+
+test('a comma series of verbs closed by "and" shares the subject', () => {
+  assert.equal(
+    ru('We open shops, write letters, and sell books.'),
+    'Мы открываем магазины, пишем письма и продаём книги.'
+  );
+});
+
+test('words with digits and letter pairs are single tokens', async () => {
+  const { tokenize } = await import('../../formal-ai/src/english/analyze.mjs');
+  const words = (s) => tokenize(s).map((t) => t.text);
+  assert.deepEqual(words('B2B and MP3 for A/B-test'), [
+    'B2B',
+    'and',
+    'MP3',
+    'for',
+    'A/B-test',
+  ]);
+  assert.deepEqual(words('US/UK'), ['US', 'or', 'UK']);
+  assert.deepEqual(words('rated 2/10'), ['rated', '2/10']);
 });

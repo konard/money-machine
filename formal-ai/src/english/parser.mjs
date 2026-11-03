@@ -26,6 +26,7 @@ import { parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
+import { attachIngRelative } from './ing-relative.mjs';
 import { clauseAhead, commaList, parallelVerb } from './lists.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
 
@@ -137,6 +138,8 @@ export function parseNP(c, options = {}) {
   const adjectives = [];
   while (
     c.peek &&
+    // a conjunction is no adjective ("or", heraldic gold)
+    !has(c.peek, 'coord') &&
     ((quantityDegree(c.peek) && has(c.at(1), 'adj')) ||
       has(c.peek, 'adj') ||
       (participleReading(c.peek) && nounAhead(c, 1)) ||
@@ -162,7 +165,9 @@ export function parseNP(c, options = {}) {
       options.stopAt !== undefined &&
       c.i + 1 >= options.stopAt &&
       (has(t2, 'noun') || has(t2, 'name'));
-    if (limited || (!nounAhead(c, 1) && !has(c.at(1), 'adj'))) {
+    // "rated 2/10": a score or an amount takes no adjective
+    const amountAhead = c.at(1)?.kind === 'quantity';
+    if (limited || amountAhead || (!nounAhead(c, 1) && !has(c.at(1), 'adj'))) {
       if (has(t2, 'noun') || has(t2, 'name')) {
         break;
       }
@@ -220,6 +225,10 @@ export function parseNP(c, options = {}) {
   while (
     c.peek &&
     (has(c.peek, 'noun') || has(c.peek, 'name') || has(c.peek, 'propn')) &&
+    // nor a noun; a preposition before its noun phrase is a preposition
+    // ("at month 6", not the @ sign)
+    !has(c.peek, 'coord') &&
+    !(nouns.length && has(c.peek, 'prep') && startsNP(c.at(1))) &&
     // "Month 3-6": a quantity after a noun names it, it is no compound
     !(nouns.length && c.peek.kind === 'quantity') &&
     !(options.stopAt !== undefined && c.i >= options.stopAt)
@@ -258,7 +267,16 @@ export function parseNP(c, options = {}) {
       has(t3, 'verb') &&
       !has(c.at(1), 'noun') &&
       nouns.length >= 1 &&
-      verbLikely(c)
+      verbLikely(c) &&
+      // "keyboard testing.", "with B2B targets.": an -ing word, or any
+      // word inside a phrase after the verb, ending the phrase is a noun
+      !(
+        (options.inPhrase ||
+          t3.readings.every(
+            (x) => x.pos !== 'verb' || x.features.form === 'ing'
+          )) &&
+        (!c.at(1) || isPunct(c.at(1)) || has(c.at(1), 'coord'))
+      )
     ) {
       break;
     }
@@ -270,6 +288,7 @@ export function parseNP(c, options = {}) {
     if (
       r.pos === 'propn' &&
       previous?.r.pos === 'propn' &&
+      !previous.alternative &&
       !r.features.opaque &&
       !previous.r.features.opaque
     ) {
@@ -280,10 +299,45 @@ export function parseNP(c, options = {}) {
     } else {
       nouns.push({ t: t3, r });
     }
+    // "tax/payment setup": alternative modifiers written with a slash
+    // or of the head: "the tax/fee"
+    if (
+      c.peek?.slash &&
+      ['noun', 'name', 'propn'].some((p) => has(c.at(1), p)) &&
+      !(options.stopAt !== undefined && c.i + 1 >= options.stopAt)
+    ) {
+      c.next();
+      const t4 = c.next();
+      nouns[nouns.length - 1].alternative = head(
+        t4,
+        reading(t4, r.pos) ||
+          reading(t4, 'noun') ||
+          reading(t4, 'name') ||
+          reading(t4, 'propn')
+      );
+      if (['noun', 'name', 'propn'].some((p) => has(c.peek, p))) {
+        continue;
+      }
+    }
     if (has(c.peek, 'poss-clitic') && possessiveClitic(c)) {
       break;
     }
-    if (r.features.number === 'pl') {
+    // "with sales teams.": inside a phrase a plural before a final noun
+    // is that noun's modifier
+    // …and so is it before a noun and a plain verb: "Sales teams earn"
+    const pluralModifier =
+      has(c.peek, 'noun') &&
+      ((options.inPhrase &&
+        (!c.at(1) || isPunct(c.at(1)) || has(c.at(1), 'coord'))) ||
+        (options.clauseStart &&
+          !has(c.at(1), 'noun') &&
+          ['be', 'modal', 'verb'].some((p) => has(c.at(1), p)) &&
+          c
+            .at(1)
+            .readings.every(
+              (x) => x.pos !== 'verb' || /base|past/.test(x.features.form)
+            )));
+    if (r.features.number === 'pl' && !pluralModifier) {
       break;
     }
     // "Stripe direct deposit": a name or noun modifying an adjective + noun
@@ -311,6 +365,9 @@ export function parseNP(c, options = {}) {
   }
   const last = nouns[nouns.length - 1];
   np.head = head(last.t, last.r);
+  if (last.alternative) {
+    np.alternative = last.alternative;
+  }
   if (last.r.pos === 'propn') {
     np.name = last.t.text;
   }
@@ -324,7 +381,12 @@ export function parseNP(c, options = {}) {
     np.number = 'pl';
   }
   if (nouns.length > 1) {
-    np.modifiers = nouns.slice(0, -1).map((n) => head(n.t, n.r));
+    np.modifiers = nouns.slice(0, -1).map((n) => ({
+      ...head(n.t, n.r),
+      ...(n.alternative ? { alternative: n.alternative } : {}),
+      // "sales teams" → команды продаж
+      ...(n.r.features?.number === 'pl' ? { plural: true } : {}),
+    }));
   }
   // "Month 3-6", "Tier 2", "page 5": a number naming the item
   if (
@@ -531,6 +593,7 @@ function attachOf(c, np, options = {}) {
     }
   }
   attachParticiple(c, np, options);
+  attachIngRelative(c, np, options);
   attachParenthesis(c, np);
   // "people who try this", "programmes that tolerate links"
   if (
@@ -557,20 +620,25 @@ function attachOf(c, np, options = {}) {
     return list;
   }
   if (
-    c.peek?.lower === 'and' &&
+    ['and', 'or'].includes(c.peek?.lower) &&
+    !c.peek.slash &&
     startsNP(c.at(1)) &&
     !clauseAhead(c, 1) &&
     !parallelVerb(c, 1)
   ) {
     const save = c.i;
-    c.next();
-    const other = parseNP(c, { stopAt: options.stopAt });
+    const coord = c.next().lower === 'or' ? 'conj.or' : 'conj.and';
+    const other = parseNP(c, {
+      stopAt: options.stopAt,
+      inPhrase: options.inPhrase,
+    });
     if (other) {
       return {
         type: 'np',
-        coord: 'conj.and',
-        items: [np, ...(other.coord === 'conj.and' ? other.items : [other])],
-        number: 'pl',
+        coord,
+        items: [np, ...(other.coord === coord ? other.items : [other])],
+        // "a card or a bank": one of them
+        number: coord === 'conj.or' ? np.number : 'pl',
       };
     }
     c.i = save;
@@ -800,12 +868,15 @@ export function parseTail(c, frame, options = {}) {
         });
         continue;
       }
-      const np = parseNP(c);
+      const np = parseNP(c, { inPhrase: true });
       if (!np) {
         c.i = save;
         break;
       }
-      if (takes.includes(t.lower) && out.objects.length === 0) {
+      // "assumes about $20": an amount is approximated, not an object
+      const amount =
+        np.head?.pos === 'propn' && /^~?\p{Sc}?\d/u.test(np.name || '');
+      if (takes.includes(t.lower) && out.objects.length === 0 && !amount) {
         np.marker = t.lower;
         out.objects.push(np);
       } else if (frame === 'copula' && !out.complement) {

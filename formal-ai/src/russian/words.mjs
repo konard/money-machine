@@ -253,7 +253,8 @@ export const RELATIONS = {
   'rel.among': { place: ['среди', 'gen'] },
   'rel.since': { place: ['с', 'gen'] },
   'rel.until': { place: ['до', 'gen'] },
-  'rel.per': { place: ['в', 'acc'] },
+  // "per hour" → в час, "per review" → за отзыв
+  'rel.per': { place: ['за', 'acc'], time: ['в', 'acc'] },
   'rel.within': { place: ['в пределах', 'gen'] },
   'rel.including': { place: ['включая', 'acc'] },
   'rel.plus': { place: ['плюс', 'nom'] },

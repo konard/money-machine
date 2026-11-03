@@ -348,10 +348,17 @@ function parseClauses(tokens, ctx) {
       c.i = before;
     }
     const previous = result.list[result.list.length - 1];
+    // "you add tests, write the report, and fix code": a comma series of
+    // verbs closed by "and" shares the first clause's subject
+    const series =
+      link?.separator === ',' &&
+      !link.concept &&
+      has(t, 'verb') &&
+      c.tokens.slice(c.i + 1).some((x) => has(x, 'coord'));
     const clause =
-      (link?.concept &&
+      ((link?.concept || series) &&
         previous?.subject &&
-        !previous.subject.implicit &&
+        (!previous.subject.implicit || previous.elided) &&
         ellipsis(c, ctx, previous)) ||
       parseClause(
         c,
@@ -457,6 +464,31 @@ function parseClause(c, ctx, initial) {
       ...tail,
     });
   }
+  // "Elsewhere use PayPal": a fronted adverb before a request ("please"
+  // is the request's own politeness)
+  if (
+    has(t, 'adv') &&
+    t.lower !== 'please' &&
+    !['verb', 'noun', 'wh', 'neg', 'det', 'pron'].some((p) => has(t, p))
+  ) {
+    const save = c.i;
+    c.next();
+    if (c.peek?.text === ',') {
+      c.next();
+    }
+    if (c.peek && isImperativeStart(c)) {
+      const request = parseImperative(c, ctx);
+      if (request) {
+        const adv = head(t, reading(t, 'adv'));
+        request.mods = [
+          { type: 'adv', ...adv, fronted: true },
+          ...request.mods,
+        ];
+        return request;
+      }
+    }
+    c.i = save;
+  }
   // imperative
   const imperativeStart = isImperativeStart(c);
   const ambiguous =
@@ -479,10 +511,16 @@ function parseClause(c, ctx, initial) {
     const reached = c.i;
     // an English singular count noun needs a determiner: "Ship the
     // orders fast" has no subject "ship"
+    // …unless the request stops short where the statement goes on to a
+    // finite verb: "Pay per review depends on star rating"
+    const stopsShort =
+      reached > end &&
+      !c.tokens.slice(end).every((x) => x.kind === 'punct') &&
+      declarative?.verb?.token >= end;
     const sentence =
       declarative &&
       declarative.type !== 'fragment' &&
-      !bareSingular(declarative.subject);
+      (!bareSingular(declarative.subject) || stopsShort);
     if (sentence && reached > end) {
       return declarative;
     }
@@ -535,7 +573,21 @@ function parseDeclarative(c, ctx) {
   const third = subject.pronoun
     ? subject.pronoun.person === 3 && subject.number === 'sg'
     : subject.number !== 'pl' && !subject.coord;
+  const afterSubject = c.i;
   let vg = parseVerbGroup(c, third ? 'third' : null);
+  // "Marketplaces like Etsy charge fees": a verb that is also a
+  // preposition opens a phrase of the subject when a verb follows it
+  if (vg && has(c.tokens[afterSubject], 'prep') && !subject.pronoun) {
+    const verbEnd = c.i;
+    c.i = afterSubject;
+    const phrases = subjectPhrases(c, third ? 'third' : null);
+    if (phrases) {
+      subject.pps = phrases.pps;
+      vg = phrases.vg;
+    } else {
+      c.i = verbEnd;
+    }
+  }
   if (!vg && has(c.peek, 'prep')) {
     const phrases = subjectPhrases(c, third ? 'third' : null);
     if (phrases) {
@@ -675,10 +727,13 @@ function ellipsis(c, ctx, previous) {
     vg.sharedModal = Boolean(previous.modal);
   }
   const tail = parseTail(c, vg.frame, tailOptions(ctx, vg));
-  return clause('declarative', vg, {
-    subject: { ...subject, implicit: true },
-    ...tail,
-  });
+  return {
+    ...clause('declarative', vg, {
+      subject: { ...subject, implicit: true },
+      ...tail,
+    }),
+    elided: true,
+  };
 }
 
 function tailOptions(ctx, vg) {

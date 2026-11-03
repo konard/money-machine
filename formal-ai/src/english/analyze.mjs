@@ -32,7 +32,7 @@ const QUANTITY = new RegExp(
   'u'
 );
 const WORD = new RegExp(
-  `${AMOUNT}(?:[–-]${AMOUNT})?|\\p{L}+(?:[.-]\\p{L}+)*|\\d+(?:[.,]\\d+)*|'[a-z]+|[^\\s\\p{L}\\d]`,
+  `${AMOUNT}(?:[–-]${AMOUNT})?|\\p{Lu}/\\p{Lu}(?:-\\p{L}+)?(?![\\p{L}\\d])|\\p{L}+(?:\\d+\\p{L}*)*(?:[.-]\\p{L}+(?:\\d+\\p{L}*)*)*|\\d+(?:[.,]\\d+)*|'[a-z]+|[^\\s\\p{L}\\d]`,
   'gu'
 );
 
@@ -87,6 +87,29 @@ export function tokenize(sentence) {
         const text = `${out[i - 1].text}/${out[i + 1].text}`;
         out.splice(i - 1, 3, { text, lower: text, kind: 'quantity' });
       }
+    } else if (
+      // "tax/payment setup": alternatives written with a slash
+      out[i].text === '/' &&
+      out[i - 1].kind === 'word' &&
+      out[i + 1].kind === 'word' &&
+      // both common words or both names: "tax/payment", "US/UK"
+      ((/^\p{Ll}[\p{Ll}-]+$/u.test(out[i - 1].text) &&
+        /^\p{Ll}[\p{Ll}-]+$/u.test(out[i + 1].text)) ||
+        (/^\p{Lu}/u.test(out[i - 1].text) &&
+          /^\p{Lu}[\p{L}\d]+$/u.test(out[i + 1].text))) &&
+      ![out[i - 1].lower, out[i + 1].lower].some((w) =>
+        ['and', 'or'].includes(w)
+      )
+    ) {
+      out[i] = { text: 'or', lower: 'or', kind: 'word', slash: true };
+    } else if (
+      // "2/10", "24/7": a score or a ratio is one quantity
+      out[i].text === '/' &&
+      out[i - 1].kind === 'number' &&
+      out[i + 1].kind === 'number'
+    ) {
+      const text = `${out[i - 1].text}/${out[i + 1].text}`;
+      out.splice(i - 1, 3, { text, lower: text, kind: 'quantity' });
     }
   }
   return out.map((t, index) => ({ ...t, index }));

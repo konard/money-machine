@@ -174,6 +174,12 @@ export function renderEntity(e, kase, ctx) {
   if (!e) {
     return '';
   }
+  // "the tax/fee" → налог/плату
+  if (e.alternative) {
+    const { alternative, ...rest } = e;
+    const other = renderEntity({ ...alternative, number: e.number }, kase, ctx);
+    return `${renderEntity(rest, kase, ctx)}/${other}`;
+  }
   if (e.emphatic && e.name && !e.concept) {
     const f = features(e, ctx);
     const word = emphaticWord({ ...f, number: f.number, case: kase });
@@ -455,12 +461,21 @@ function renderNoun(e, entry, kase, ctx) {
     words.push(localizeQuantity(e.label));
   }
   for (const m of e.modifiers || []) {
+    // "tax/payment setup" → установка налога/платежа
     words.push(
-      renderEntity(
-        { concept: m.concept, name: m.name, number: 'singular' },
-        'gen',
-        { ...ctx, afterPrep: false }
-      )
+      [m, ...(m.alternative ? [m.alternative] : [])]
+        .map((x) =>
+          renderEntity(
+            {
+              concept: x.concept,
+              name: x.name,
+              number: m.number || 'singular',
+            },
+            'gen',
+            { ...ctx, afterPrep: false }
+          )
+        )
+        .join('/')
     );
   }
   if (e.possessor && !e.possessor.pronoun) {
@@ -694,6 +709,8 @@ export function renderRelation(m, ctx) {
   ) {
     // "by the window": a definite thing next to an action is where
     variant = spec.location;
+  } else if (spec.time && concept?.classes.includes('time')) {
+    variant = spec.time;
   } else if (ctx.motion && spec.goal) {
     variant = spec.goal;
   }

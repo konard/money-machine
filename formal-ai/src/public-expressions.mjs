@@ -1,6 +1,10 @@
 /** Fixed expressions and given-name evidence from public dictionary entries. */
 import { tokenize } from './english/analyze.mjs';
-import { englishEntries, matchingDefinition } from './sources/wiktionary.mjs';
+import {
+  englishEntries,
+  languageSection,
+  matchingDefinition,
+} from './sources/wiktionary.mjs';
 
 const CLITICS = {
   "'re": 'are',
@@ -149,8 +153,37 @@ export function givenNameEntries(page) {
   );
 }
 
+/**
+ * Is the page's first English proper-noun definition a given name? "Kenya"
+ * is first of all the country (false); "Mary" is a name (true); null when
+ * the page has no proper noun.
+ */
+export function primaryGivenName(page) {
+  const english = languageSection(page || '', 'English');
+  const first = /===\s*Proper noun\s*===[\s\S]*?^#\s+(.*)$/m.exec(english);
+  return first ? /\{\{given name\|en(?:\||\}\})/.test(first[1]) : null;
+}
+
+/** Remember a word whose page puts another sense before the given name. */
+export function noteNotGivenFirst(lexicon, title, page) {
+  if (primaryGivenName(page) === false) {
+    (lexicon.notGivenFirst ||= new Set()).add(title);
+  }
+}
+
+/**
+ * A given-name entity outranks namesakes (people called so), unless the
+ * word is first of all something else (Kenya the country).
+ */
+export function givenRank(lexicon, name, entity) {
+  return lexicon.notGivenFirst?.has(name) ? 0 : Number(isGivenName(entity));
+}
+
 /** Prefer a marked transliteration over a historical cognate of a name. */
 export function givenNameLabel(page) {
+  if (primaryGivenName(page) === false) {
+    return null;
+  }
   const senses = givenNameEntries(page)
     .flatMap((e) => e.senses)
     .filter((s) => s.russian?.length)
