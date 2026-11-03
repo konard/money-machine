@@ -7,7 +7,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { startServer } from '../../formal-ai/src/server/server.mjs';
 import {
   parseRequest,
@@ -22,22 +22,23 @@ import {
 import { clientCommand } from '../../formal-ai/src/with.mjs';
 
 /**
- * Sockets and temp files need permissions that `deno test --allow-read`
- * does not grant; those tests are skipped there and run under node and bun.
+ * Sockets, temp files and the environment need permissions that
+ * `deno test --allow-read` does not grant; those tests skip there and run
+ * under node and bun (and deno with --allow-all).
  */
-async function probe() {
-  try {
-    const server = await startServer({ port: 0, log: '' });
-    await server.close();
-    rmSync(mkdtempSync(join(tmpdir(), 'formal-ai-probe-')), {
-      recursive: true,
-    });
+function missingPermissions() {
+  const permissions = globalThis.Deno?.permissions;
+  if (!permissions) {
     return false;
-  } catch (error) {
-    return `needs network and temp-file access (${error.name})`;
   }
+  const missing = ['net', 'write', 'env'].filter(
+    (name) => permissions.querySync({ name }).state !== 'granted'
+  );
+  return missing.length
+    ? `needs deno --allow-${missing.join(' --allow-')}`
+    : false;
 }
-const skip = await probe();
+const skip = missingPermissions();
 
 const READ = {
   name: 'Read',
@@ -86,8 +87,8 @@ test('requests name a file, a part of it and an output', () => {
     'Translate the second paragraph of notes.md into out.md',
     '/work'
   );
-  assert.equal(r.input, '/work/notes.md');
-  assert.equal(r.output, '/work/out.md');
+  assert.equal(r.input, resolve('/work', 'notes.md'));
+  assert.equal(r.output, resolve('/work', 'out.md'));
   assert.deepEqual(parseSelector('translate sentence 3 of a.md'), {
     unit: 'sentence',
     index: 3,
@@ -96,7 +97,7 @@ test('requests name a file, a part of it and an output', () => {
     unit: 'paragraph',
     index: 2,
   });
-  assert.equal(defaultOutput('/work/notes.md'), '/work/notes.ru.md');
+  assert.equal(defaultOutput('/work/notes.md'), join('/work', 'notes.ru.md'));
 });
 
 test('parts of a document are selected without counting headings', () => {
