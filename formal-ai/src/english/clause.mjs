@@ -7,6 +7,7 @@
  * linking by coordinators and subordinators.
  */
 
+import { clause } from './clause-node.mjs';
 import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
@@ -536,7 +537,11 @@ function parseDeclarative(c, ctx) {
   if (!vg) {
     // "the aggregator forwards royalties": the compound took the verb
     // "Tom's car needs fuel": any noun of the compound may be the verb
-    if (!ctx.retried && subject.modifiers?.length) {
+    // "Mary said that she…": a participle of the subject may be the verb
+    if (
+      !ctx.retried &&
+      (subject.modifiers?.length || subject.participles?.length)
+    ) {
       const end = c.i;
       for (let k = end - 1; k > start; k -= 1) {
         if (
@@ -555,7 +560,9 @@ function parseDeclarative(c, ctx) {
         });
         if (
           retry?.type === 'clause' &&
-          (c.i > end || (c.i === end && k < end - 1))
+          (c.i > end ||
+            (c.i === end && k < end - 1) ||
+            (c.i < end && has(c.peek, 'subord') && !has(c.peek, 'wh')))
         ) {
           return retry;
         }
@@ -859,6 +866,25 @@ function parseInverted(c, ctx, wh) {
   while (has(c.peek, 'neg')) {
     aux.push(c.next());
   }
+  // "Is there a bank here?": an existential question
+  if (has(aux[0], 'be') && has(c.peek, 'there') && !wh) {
+    c.next();
+    const reordered = new Cursor([...aux, ...c.tokens.slice(c.i)]);
+    reordered.grammar = ctx;
+    const vg = parseVerbGroup(reordered);
+    const theme = vg && parseNP(reordered);
+    if (theme) {
+      const tail = parseTail(reordered, 'event', ctx);
+      c.i += reordered.i - aux.length;
+      return clause('question', vg, {
+        frame: 'existence',
+        subject: theme,
+        ...tail,
+      });
+    }
+    c.i = auxStart;
+    return null;
+  }
   const subject = parseNP(c);
   if (!subject) {
     c.i = auxStart;
@@ -967,36 +993,6 @@ function fillWh(cl, wh) {
   } else {
     wh.slot = 'object';
   }
-}
-
-function clause(mood, vg, parts) {
-  return {
-    type: 'clause',
-    mood,
-    frame: parts.frame || vg.frame,
-    tense: vg.tense,
-    aspect: vg.aspect,
-    polarity: vg.polarity,
-    modal: vg.modal,
-    ...(vg.sharedModal ? { sharedModal: true } : {}),
-    passive: Boolean(vg.passive),
-    generic: parts.generic || false,
-    labelPredicate: parts.labelPredicate || false,
-    verb: vg.verb,
-    subject: parts.subject || null,
-    objects: parts.objects || [],
-    complement: parts.complement || null,
-    mods: [
-      ...(vg.adverbs || []).map((a) => ({ type: 'adv', ...a })),
-      ...(parts.mods || []),
-    ],
-    xcomp: parts.xcomp || null,
-    wh: parts.wh || null,
-    stranded: parts.stranded || null,
-    polite: parts.polite || false,
-    inclusive: parts.inclusive || false,
-    finiteLink: parts.finiteLink || null,
-  };
 }
 
 export { isPunct };

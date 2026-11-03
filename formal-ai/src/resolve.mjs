@@ -85,11 +85,21 @@ export function unknownWords(text, lexicon = loadLexicon()) {
     // public sources were already asked about it (the built-in lexicon
     // may know "deposit" as a verb only)
     const found = readings({ ...token, text: w, first: true }, lexicon);
-    // a preposition may be a content word too ("like", "near", "past"):
+    // a preposition may be a content word too ("like", "near", "past"),
+    // and so may "there" ("went there"):
     // only other grammatical words are never looked up
     const closed = found.some(
       (r) =>
-        !['propn', 'noun', 'verb', 'adj', 'adv', 'name', 'prep'].includes(r.pos)
+        ![
+          'propn',
+          'noun',
+          'verb',
+          'adj',
+          'adv',
+          'name',
+          'prep',
+          'there',
+        ].includes(r.pos)
     );
     if (!closed && !lexicon.asked?.(w)) {
       out.add(w);
@@ -240,7 +250,7 @@ export async function resolveNames(
     )[0];
     hits.set(name, id);
     if (isGivenName(entities[id])) {
-      markGivenName(lexicon, name);
+      markGivenName(lexicon, name, entities[id]);
     }
     const ru =
       (/^[A-Z]{2,5}$/.test(name) &&
@@ -398,7 +408,7 @@ export async function resolveText(
         const label = givenNameLabel(page);
         if (label) {
           lexicon.setNameLabel(title, label);
-          markGivenName(lexicon, title);
+          markGivenName(lexicon, title, page);
           dictionaryNames.set(title, null);
         }
       }

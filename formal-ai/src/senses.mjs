@@ -163,15 +163,6 @@ export class DocumentMemory {
     );
   }
 
-  /** Topic evidence outside this sentence, including sparse document terms. */
-  documentWeight(cue, word) {
-    if (!this.topic || stem(cue) === stem(word || '')) {
-      return 0;
-    }
-    const n = this.topic.filter((s) => s.has(stem(cue))).length;
-    return n ? Math.min(1, Math.log2(1 + n) / 3) : 0;
-  }
-
   topicWeight(cue, word) {
     if (!this.topic || !word) {
       return 0;
@@ -330,18 +321,6 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
               `document memory "${cue}" (+${(remembered * 0.8).toFixed(2)})`
             );
           }
-        }
-        const affinity =
-          ((concept?.cues || [])
-            .map((cue) => memory.documentWeight(cue, word))
-            .sort((a, b) => b - a)
-            .slice(0, 2)
-            .reduce((sum, weight) => sum + weight, 0) *
-            0.5) /
-          Math.sqrt(Math.max(1, concept?.cues?.length || 0));
-        if (affinity) {
-          score += affinity;
-          why.push(`definition fits document (+${affinity.toFixed(2)})`);
         }
         // the two most topical gloss words, so long glosses don't win
         // just by having more words

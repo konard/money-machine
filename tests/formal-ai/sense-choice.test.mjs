@@ -141,9 +141,6 @@ test('document definitions and field labels can override a generic first sense',
   );
   assert.equal(head.concept, 'digital');
   assert.ok(
-    decision.evidence.some((e) => e.startsWith('definition fits document'))
-  );
-  assert.ok(
     decision.evidence.some((e) => e.includes('dictionary field computing'))
   );
 });

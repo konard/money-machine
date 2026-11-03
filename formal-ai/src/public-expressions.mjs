@@ -170,9 +170,41 @@ export function givenNameLabel(page) {
   return senses[0].russian[0].word;
 }
 
-export function markGivenName(lexicon, name) {
+/**
+ * Remember a given name and, when its source tells, its sex: a Wikidata
+ * item that is a "female given name", or a Wiktionary page whose only
+ * given-name definitions say {{given name|en|female}}.
+ * @param {object} lexicon
+ * @param {string} name
+ * @param {object|string} [source] - Wikidata entity or Wiktionary page
+ */
+export function markGivenName(lexicon, name, source) {
   lexicon.givenNames ||= new Set();
   lexicon.givenNames.add(name);
+  const gender = givenNameGender(source);
+  if (gender) {
+    lexicon.nameGenders ||= new Map();
+    lexicon.nameGenders.set(name, gender);
+  }
+}
+
+const SEXES = { Q12308941: 'm', Q11879590: 'f' };
+
+/** 'm' or 'f' when the source names one sex only, else null. */
+export function givenNameGender(source) {
+  let found = [];
+  if (typeof source === 'string') {
+    found = givenNameEntries(source)
+      .flatMap((e) => e.rawDefinitions)
+      .map((d) => /\{\{given name\|en\|(male|female)\b/.exec(d)?.[1])
+      .filter(Boolean)
+      .map((sex) => (sex === 'female' ? 'f' : 'm'));
+  } else if (source?.claims) {
+    found = (source.claims.P31 || [])
+      .map((claim) => SEXES[claim.mainsnak?.datavalue?.value?.id])
+      .filter(Boolean);
+  }
+  return new Set(found).size === 1 ? found[0] : null;
 }
 
 export function isGivenName(entity) {

@@ -11,60 +11,20 @@
  * `clause.leftover` and reported by the translator.
  */
 
+import {
+  has,
+  reading,
+  isPunct,
+  head,
+  startsNP,
+  gerundReading,
+  participleReading,
+  personLike,
+} from './token-readings.mjs';
+import { Cursor } from './cursor.mjs';
 import { parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
-
-const has = (token, pos) => token?.readings.some((r) => r.pos === pos);
-const reading = (token, pos) => token?.readings.find((r) => r.pos === pos);
-const isPunct = (token) => token?.kind === 'punct';
-
-/** Cursor over a token array. */
-class Cursor {
-  constructor(tokens) {
-    this.tokens = tokens;
-    this.i = 0;
-  }
-  get peek() {
-    return this.tokens[this.i];
-  }
-  at(k) {
-    return this.tokens[this.i + k];
-  }
-  next() {
-    return this.tokens[this.i++];
-  }
-  get done() {
-    return this.i >= this.tokens.length;
-  }
-}
-
-const head = (token, r) => ({
-  token: token.index,
-  text: token.text,
-  lemma: r.lemma,
-  pos: r.pos,
-  candidates: r.concepts,
-  concept: r.concepts.length === 1 ? r.concepts[0] : null,
-});
-
-/** Can this token start a noun phrase? */
-function startsNP(token) {
-  return (
-    [
-      'det',
-      'poss',
-      'num',
-      'pron',
-      'noun',
-      'name',
-      'propn',
-      'adj',
-      'indef',
-    ].some((p) => has(token, p)) ||
-    Boolean(gerundReading(token) || participleReading(token))
-  );
-}
 
 /**
  * Parse a noun phrase starting at the cursor.
@@ -386,40 +346,24 @@ export function parseNP(c, options = {}) {
   return attachOf(c, np, options);
 }
 
-/** Morphology, rather than a list of verbs, identifies nonfinite heads. */
-function gerundReading(token) {
-  return token?.readings.find(
-    (r) => r.pos === 'verb' && r.features.form === 'ing'
-  );
-}
-function participleReading(token) {
-  return token?.readings.find(
-    (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
-  );
-}
-
-/** Is a noun phrase a person (who can be asked or helped to do things)? */
-function personLike(np, lexicon) {
-  if (np.pronoun) {
-    return !(np.pronoun.person === 3 && np.pronoun.gender === 'n');
-  }
-  // a name is more often a company or a product than a person here
-  if (np.coord) {
-    return np.items?.some((x) => personLike(x, lexicon));
-  }
-  const concept = lexicon?.get(np.head?.concept || np.head?.candidates?.[0]);
-  return Boolean(
-    concept &&
-    (concept.classes?.some((c) => /person|human|animate/.test(c)) ||
-      concept.ru?.animate ||
-      /\b(person|people|someone|who|one that)\b/.test(concept.gloss || ''))
-  );
-}
-
 /** A reduced passive relative: "an account entered at withdrawal time". */
 function attachParticiple(c, np, options) {
   const r = participleReading(c.peek);
-  if (!r || np.pronoun || np.participles) {
+  if (
+    !r ||
+    np.pronoun ||
+    np.participles ||
+    (options.stopAt !== undefined && c.i >= options.stopAt)
+  ) {
+    return;
+  }
+  // "Mary said (that) she…": a verb of saying or knowing before a clause
+  if (
+    options.clauseStart &&
+    ((has(c.at(1), 'subord') && !has(c.at(1), 'prep')) ||
+      reading(c.at(1), 'pron')?.features?.case === 'nom') &&
+    c.peek.readings.some((x) => x.pos === 'verb' && x.features.form === 'past')
+  ) {
     return;
   }
   // A subject's ordinary past-tense predicate must remain finite.
@@ -442,6 +386,20 @@ function attachParticiple(c, np, options) {
   const v = c.next();
   const tail = parseTail(c, 'event', { ...options, nonfinite: true });
   np.participles = [{ verb: head(v, r), ...tail }];
+}
+
+/**
+ * "is here": an adjective whose every sense is borrowed from another word
+ * (Wiktionary's "here: [[alive]]") gives way to the word's own adverb.
+ */
+function borrowedAdjective(t, lexicon) {
+  const own = (pos) =>
+    (reading(t, pos)?.concepts || []).filter(
+      (id) => !lexicon?.get(id)?.variant
+    );
+  return Boolean(
+    lexicon && has(t, 'adv') && !own('adj').length && own('adv').length
+  );
 }
 
 function isDegree(id) {
@@ -819,7 +777,11 @@ export function parseTail(c, frame, options = {}) {
       break;
     }
     if (frame === 'copula' && !out.complement) {
-      if (has(t, 'adj') && !nounAhead(c, 1)) {
+      if (
+        has(t, 'adj') &&
+        !nounAhead(c, 1) &&
+        !borrowedAdjective(t, options.lexicon)
+      ) {
         c.next();
         out.complement = {
           type: 'adj',
@@ -956,7 +918,11 @@ export function parseTail(c, frame, options = {}) {
     if (
       has(t, 'adv') &&
       (!has(t, 'noun') || bareAdverb || finalAdverb) &&
-      !(has(t, 'adj') && frame === 'copula')
+      !(
+        has(t, 'adj') &&
+        frame === 'copula' &&
+        !borrowedAdjective(t, options.lexicon)
+      )
     ) {
       c.next();
       out.mods.push({ type: 'adv', ...head(t, reading(t, 'adv')) });

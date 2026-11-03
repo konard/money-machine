@@ -99,6 +99,14 @@ export function features(e, ctx) {
   if ((e.question === 'q.what' && !e.concept) || e.demonstrative) {
     return { person: 3, number: 'sg', gender: 'n' };
   }
+  if (e.name && !e.concept) {
+    // a person's name agrees with the person's sex: «Мэри пришла»
+    const gender =
+      ctx.lexicon.nameGenders?.get(e.name) ||
+      ctx.lexicon.nameEntry?.(e.name)?.gender ||
+      'm';
+    return { person: 3, number: 'sg', gender, animate: true };
+  }
   const entry = nounEntry(e, ctx);
   const plural = e.number === 'plural' || entry?.pluraliaTantum;
   if (
