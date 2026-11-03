@@ -1,0 +1,155 @@
+#!/usr/bin/env node
+/**
+ * Random samples of the website's own text for manual quality review.
+ *
+ *   node formal-ai/scripts/sample.mjs [sentence|paragraph|page] [count] [seed]
+ *
+ * Sources: every prose field of website/strategies.json and the markdown
+ * under docs/ that the site pages are built from. The same seed gives the
+ * same sample, so a reviewed sample can be re-run after a fix.
+ */
+
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { splitSentences, translateDocument } from '../src/document.mjs';
+import { resolveText } from '../src/resolve.mjs';
+
+const ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..');
+
+function markdownFiles(dir) {
+  return readdirSync(dir).flatMap((name) => {
+    const path = join(dir, name);
+    return statSync(path).isDirectory()
+      ? markdownFiles(path)
+      : name.endsWith('.md')
+        ? [path]
+        : [];
+  });
+}
+
+/** Prose strings of a strategy (skips ids, numbers, urls and names). */
+function prose(value, out = []) {
+  if (typeof value === 'string') {
+    if (/\s/.test(value) && /[a-z]/.test(value) && !/^https?:/.test(value)) {
+      out.push(value);
+    }
+  } else if (Array.isArray(value)) {
+    value.forEach((v) => prose(v, out));
+  } else if (value && typeof value === 'object') {
+    Object.entries(value)
+      .filter(
+        ([k]) =>
+          ![
+            'id',
+            'sourceFile',
+            'sources',
+            'tags',
+            'platforms',
+            'businessPlan',
+          ].includes(k)
+      )
+      .forEach(([, v]) => prose(v, out));
+  }
+  return out;
+}
+
+/** Pages: one per strategy and one per markdown file. */
+export function pages() {
+  const data = JSON.parse(
+    readFileSync(join(ROOT, 'website', 'strategies.json'), 'utf8')
+  );
+  const strategies = Array.isArray(data) ? data : data.strategies;
+  return [
+    ...strategies.map((s) => ({
+      source: `strategies.json#${s.id}`,
+      text: prose(s).join('\n\n'),
+    })),
+    ...markdownFiles(join(ROOT, 'docs')).map((path) => ({
+      source: relative(ROOT, path),
+      text: readFileSync(path, 'utf8'),
+    })),
+  ].map((p) => ({ ...p, page: p.text }));
+}
+
+/** Prose paragraphs of a page (no tables, code, headings-only or link lists). */
+export function paragraphs(page) {
+  return page.text
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(
+      (p) =>
+        p &&
+        !/^(\||```|#|<|---|- \[|\[)/.test(p) &&
+        /[a-z]{3,} [a-z]{3,}/.test(p)
+    )
+    .map((text) => ({ source: page.source, page: page.text, text }));
+}
+
+export function sentences(paragraph) {
+  // lines and bold labels are separate units, as in translateDocument
+  const plain = paragraph.text.replace(/^\s*(?:[-*+] |\d+\. )/gm, '');
+  const wrapped = !/^\s*(?:[-*+] |\d+\. |\|)/m.test(paragraph.text);
+  return (wrapped ? [plain.replace(/\n/g, ' ')] : plain.split('\n'))
+    .flatMap((line) => line.split(/\*\*[^*]+?:\*\*/))
+    .flatMap((line) => splitSentences(line.trim()))
+    .map((s) => s.trim())
+    .filter((s) => s.split(' ').length >= 3)
+    .map((text) => ({ source: paragraph.source, page: paragraph.page, text }));
+}
+
+/** Deterministic shuffle (mulberry32). */
+function sample(items, count, seed) {
+  let a = seed >>> 0;
+  const random = () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, count);
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const [unit = 'sentence', count = '25', seed = String(Date.now() % 100000)] =
+    process.argv.slice(2);
+  const all = pages();
+  const field = all.map((p) => p.text).join('\n\n');
+  const units =
+    unit === 'page'
+      ? all
+      : unit === 'paragraph'
+        ? all.flatMap(paragraphs)
+        : all.flatMap(paragraphs).flatMap(sentences);
+  let complete = 0;
+  const picked = sample(units, Number(count), Number(seed));
+  const lookup = await resolveText(picked.map((u) => u.text).join('\n\n'));
+  console.log(
+    `resolved ${lookup.resolved.length} senses from public sources; unknown: ${lookup.missing.join(', ') || 'none'}`
+  );
+  picked.forEach((u, i) => {
+    let text;
+    let ok;
+    try {
+      const r = translateDocument(u.text, { topic: u.page, field });
+      text = r.text;
+      ok = r.stats.complete === r.stats.sentences;
+    } catch (error) {
+      text = `CRASH: ${error.message}`;
+      ok = false;
+    }
+    complete += ok ? 1 : 0;
+    console.log(
+      `\n[${i + 1}] ${ok ? 'ok' : '!!'} ${u.source}\nEN: ${u.text}\nRU: ${text}`
+    );
+  });
+  console.log(
+    `\nseed ${seed}: ${complete}/${picked.length} ${unit}s complete (of ${units.length} in the site)`
+  );
+}

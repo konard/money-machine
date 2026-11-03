@@ -1,11 +1,13 @@
-/**
- * Naturalization: meta-language statements → Russian sentence.
- *
- * Every decision that English leaves open (aspect, ты/вы, speaker gender,
- * referent of "it") is made here by explicit rules and reported in
- * `notes`, so a reviewer can see why a sentence came out as it did.
- */
+/** Naturalize meta-language statements into Russian, recording decisions. */
 
+import { degreeForm, quantityWord } from './degree.mjs';
+import { frontRelative } from './relative.mjs';
+import {
+  renderAction,
+  renderParticiple,
+  purposeClause,
+  infinitiveClause,
+} from './nonfinite.mjs';
 import { conjugate } from './morphology.mjs';
 import {
   CONJUNCTIONS,
@@ -29,29 +31,25 @@ import {
 } from './copula.mjs';
 
 /** Adverbs placed before the verb in Russian. */
-const PREVERBAL = new Set([
-  'often',
-  'always',
-  'never',
-  'sometimes',
-  'usually',
-  'already',
-  'also',
-  'still',
-  'really',
-  'only',
-  'soon',
-  'again',
-]);
+const PREVERBAL = new Set(
+  'often always never sometimes usually already also still really only soon again'.split(
+    ' '
+  )
+);
 /** Adverbs and determiners that make an action habitual (imperfective). */
-const HABITUAL = new Set([
-  'often',
-  'always',
-  'never',
-  'sometimes',
-  'usually',
-  'again',
-]);
+const HABITUAL = new Set(
+  'often always never sometimes usually again'.split(' ')
+);
+/** "often", or an adverb whose gloss repeats ("monthly": every month). */
+function habitualAdverb(concept, ctx) {
+  return (
+    HABITUAL.has(concept) ||
+    /\b(?:every|each|regularly|repeatedly|once an?)\b/.test(
+      ctx.lexicon.get(concept)?.gloss || ''
+    )
+  );
+}
+
 export const BYT_PAST = { m: 'был', f: 'была', n: 'было', pl: 'были' };
 
 export const lexEntry = (ctx, id) => ctx.lexicon.get(id);
@@ -78,13 +76,39 @@ export function naturalizeRussian(
   );
   const pieces = [];
   statements.forEach((s, i) => {
-    const ctx = { lexicon, options: opts, notes, discourse };
+    const ctx = {
+      lexicon,
+      options: opts,
+      notes,
+      discourse,
+      renderStatement,
+      renderAction,
+      renderParticiple,
+    };
     let text;
     if (s.type === 'phrase') {
       text = lexEntry(ctx, s.concept)?.ru?.text || `[${s.concept}]`;
     } else if (s.type === 'fragment') {
-      text = renderEntity(s.entity, 'nom', ctx);
-      notes.add('fragment without a verb was translated word by word');
+      // a heading or list item: the noun phrase and its modifiers
+      const mods = renderModifiers(s.modifiers || [], ctx, null);
+      const absent = s.entity?.determiner === 'det.no';
+      const property = s.property && lexEntry(ctx, s.property.concept)?.ru;
+      const entity = absent ? { ...s.entity, determiner: undefined } : s.entity;
+      text = [
+        ...mods.before,
+        s.negative ? 'не' : '',
+        property
+          ? s.negative
+            ? shortFrom(property, { gender: 'n' })
+            : property.lemma
+          : '',
+        absent
+          ? `без ${renderEntity(entity, 'gen', ctx)}`
+          : renderEntity(entity, 'nom', ctx),
+        ...mods.after,
+      ]
+        .filter(Boolean)
+        .join(' ');
     } else {
       const adjusted = { ...s };
       if (
@@ -124,16 +148,23 @@ export function naturalizeRussian(
       text = renderStatement(adjusted, ctx);
       remember(s, ctx);
     }
-    if (s.link && CONJUNCTIONS[s.link]) {
+    if (s.separator && i > 0) {
+      pieces.push(s.separator);
+    }
+    if (s.link === 'conj.whether') {
+      if (i > 0 && !s.separator) {
+        pieces.push(',');
+      }
+    } else if (s.link && CONJUNCTIONS[s.link]) {
       const conj = CONJUNCTIONS[s.link];
       text = `${conj.text} ${text}`;
       // "откройте файл и прочитайте": no comma between predicates sharing a subject
       const sharedSubject =
         conj.text === 'и' && (s.mood === 'imperative' || s.subject?.implicit);
-      if (i > 0 && conj.comma && !sharedSubject) {
+      if (i > 0 && conj.comma && !sharedSubject && !s.separator) {
         pieces.push(',');
       }
-    } else if (i > 0 && statements[i - 1].trailing !== ',') {
+    } else if (i > 0 && !s.separator && statements[i - 1].trailing !== ',') {
       pieces.push(',');
     }
     if (statements[i].type === 'phrase' && i < statements.length - 1) {
@@ -145,11 +176,15 @@ export function naturalizeRussian(
   });
   let text = pieces
     .join(' ')
-    .replace(/\s+,/g, ',')
+    .replace(/,?\s+([,;:])/g, '$1')
     .replace(/,\s*,/g, ',')
     .replace(/\s+/g, ' ')
-    .trim();
-  text = text.charAt(0).toUpperCase() + text.slice(1);
+    .trim()
+    .replace(/,$/, '');
+  // "eBay", "iPhone" keep their own capitalization
+  if (!/^[a-z]+[A-Z]/.test(text)) {
+    text = text.charAt(0).toUpperCase() + text.slice(1);
+  }
   if (formal.leftover?.length) {
     text = `${text}${text ? ' ' : ''}[${formal.leftover.join(' ')}]`;
     notes.add(`untranslated: "${formal.leftover.join(' ')}"`);
@@ -177,6 +212,10 @@ function remember(s, ctx) {
 }
 
 function renderStatement(s, ctx) {
+  if (ctx.relativeGaps?.length) {
+    return frontRelative(s, ctx, renderObjects);
+  }
+
   const front = (s.modifiers || []).filter((m) => m.position === 'front');
   if (!front.length) {
     return renderFrame(s, ctx);
@@ -222,7 +261,7 @@ function chooseAspect(entry, s, ctx, role) {
   const mods = s.modifiers || [];
   const habitual = mods.some(
     (m) =>
-      (m.kind === 'adverb' && HABITUAL.has(m.concept)) ||
+      (m.kind === 'adverb' && habitualAdverb(m.concept, ctx)) ||
       (m.kind === 'time' && m.entity?.determiner === 'det.every')
   );
   const objects = s.objects || [];
@@ -347,11 +386,11 @@ function finiteVerb(variant, s, f, _ctx) {
 }
 
 /** Object case(s) of a verb entry. */
-function renderObjects(objects, entry, ctx, skip = new Set()) {
+export function renderObjects(objects, entry, ctx, skip = new Set()) {
   const out = [];
   const gov = entry?.government || { preposition: null, case: 'acc' };
   objects.forEach((o, i) => {
-    if (skip.has(o)) {
+    if (skip.has(o) || (ctx.suppressRelative && o.relativePronoun)) {
       return;
     }
     const concept = lexEntry(ctx, o.concept);
@@ -378,8 +417,12 @@ function governmentFor(entry, o, fallback, ctx) {
   if (o?.marker && entry?.markerGovernment?.[o.marker]) {
     return entry.markerGovernment[o.marker];
   }
-  const classes =
-    ctx && o?.concept ? lexEntry(ctx, o.concept)?.classes || [] : [];
+  const classes = ctx
+    ? [
+        ...(o?.concept ? lexEntry(ctx, o.concept)?.classes || [] : []),
+        ...(isPerson(o, ctx) ? ['person'] : []),
+      ]
+    : [];
   const byClass = classes.find((c) => entry?.classGovernment?.[c]);
   return byClass ? entry.classGovernment[byClass] : fallback;
 }
@@ -439,11 +482,15 @@ export function renderModifiers(mods, ctx, entry) {
       if (adv.negative) {
         negative = true;
       }
-      let word = adv.lemma;
+      let word = m.comparison ? degreeForm(adv, m.comparison, {}) : adv.lemma;
       if (ctx.motion && adv.direction) {
         word = adv.direction;
       }
       (PREVERBAL.has(m.concept) ? before : after).push(word);
+    } else if (m.kind === 'quantity') {
+      after.push(quantityWord(m.comparison));
+    } else if (m.kind === 'comparison') {
+      after.push(`, чем ${renderEntity(m.entity, 'nom', ctx)}`);
     } else if (m.kind === 'time') {
       const e = m.entity;
       const head = lexEntry(ctx, e.concept)?.ru;
@@ -492,7 +539,11 @@ function renderEvent(s, ctx) {
   ctx.predicate = s.predicate;
   ctx.motion = entry.motion;
   ctx.hasObject = (s.objects || []).length > 0;
+  ctx.passive = s.voice === 'passive';
   // "like to read" → любить читать
+  if (entry.transitive && (s.objects || []).length) {
+    entry = entry.transitive;
+  }
   if (entry.experiencer && s.complementClause) {
     entry = lexEntry(ctx, 'love').ru;
     ctx.notes.add('"like to" + verb rendered with любить');
@@ -575,7 +626,34 @@ function renderEvent(s, ctx) {
     words.push(...renderObjects(objects, entry, ctx), ...mods.after);
     return words.filter(Boolean).join(' ');
   }
-  agreement = features(s.subject, ctx);
+  const passiveGovernment = governmentFor(
+    entry,
+    s.subject,
+    entry.government || { case: 'acc' },
+    ctx
+  );
+  const hasParticiple = entry.pastPassive || entry.perfective?.pastPassive;
+  if (
+    s.voice === 'passive' &&
+    isPerson(s.subject, ctx) &&
+    (passiveGovernment.case === 'dat' || !hasParticiple) &&
+    !(s.modifiers || []).some((m) => m.relation === 'rel.by')
+  ) {
+    // A recipient passive is an indefinite personal clause: "вам платят".
+    const active = { ...s, voice: undefined };
+    return [
+      ...words,
+      governed(s.subject, passiveGovernment, ctx),
+      ...mods.before,
+      negative ? 'не' : '',
+      verbGroup(entry, active, { person: 3, number: 'pl' }, ctx),
+      ...renderObjects(objects, entry, ctx),
+      ...mods.after,
+    ]
+      .filter(Boolean)
+      .join(' ');
+  }
+  agreement = features(s.labelSubject || s.subject, ctx);
   if (s.question?.slot !== 'subject' || !whWord) {
     subjectText = s.subject?.implicit
       ? ''
@@ -584,7 +662,10 @@ function renderEvent(s, ctx) {
   if (s.question?.slot === 'subject' && whWord) {
     agreement = { person: 3, number: 'sg', gender: 'm' };
   }
-  words.push(subjectText);
+  const embeddedQuestion = s.link === 'conj.whether';
+  if (!embeddedQuestion) {
+    words.push(subjectText);
+  }
   words.push(...mods.before);
   if (negative) {
     words.push('не');
@@ -593,14 +674,27 @@ function renderEvent(s, ctx) {
     s.question && ['object'].includes(s.question.slot)
       ? objects.find((o) => o.question && !o.concept)
       : null;
-  words.push(verbGroup(entry, s, agreement, ctx));
-  if (s.complementClause) {
+  const finite = verbGroup(entry, s, agreement, ctx);
+  words.push(embeddedQuestion ? finite.replace(/^(\S+)/, '$1 ли') : finite);
+  if (embeddedQuestion) {
+    words.push(subjectText);
+  }
+  const purpose = s.complementClause?.purpose;
+  // "ask them to wait": the person asked comes before what they do
+  const controlled = !purpose && objects.length > 0;
+  if (s.complementClause && !purpose && !controlled) {
     words.push(...infinitiveClause(s.complementClause, s, ctx));
   }
   words.push(
     ...renderObjects(objects, entry, ctx, new Set(whObject ? [whObject] : []))
   );
+  if (s.complementClause && controlled) {
+    words.push(...infinitiveClause(s.complementClause, s, ctx));
+  }
   words.push(...mods.after);
+  if (purpose) {
+    words.push(...purposeClause(s.complementClause, s, ctx));
+  }
   return words.filter(Boolean).join(' ');
 }
 
@@ -621,11 +715,66 @@ function verbGroup(entry, s, f, ctx) {
   ) {
     variant = { ...variant, lemma: `${variant.lemma}ся` };
   }
+  if (s.voice === 'passive') {
+    const passive = passiveGroup(entry, s, f, ctx);
+    if (passive) {
+      return passive;
+    }
+  }
   if (s.modality) {
     const inf = variant.lemma;
     return `${modalWord(s, f, ctx)} ${inf}`;
   }
   return finiteVerb(variant, s, f, ctx);
+}
+
+/** Short form of a past passive participle: опубликованный → опубликована. */
+export function shortParticiple(long, f) {
+  const base = long.replace(/ый$/, '').replace(/нн$/, 'н');
+  if (base === long) {
+    return null;
+  }
+  if (f.number === 'pl') {
+    return `${base.replace(/ё(?=[^ё]*$)/, 'е')}ы`;
+  }
+  const ending = { m: '', f: 'а', n: 'о' }[f.gender || 'm'];
+  return ending ? `${base.replace(/ё(?=[^ё]*$)/, 'е')}${ending}` : base;
+}
+
+/** Passive results use short participles; ongoing processes use reflexives. */
+function passiveGroup(entry, s, f, ctx) {
+  const perfective = entry.aspect === 'perf' ? entry : entry.perfective;
+  // an agent or a repetition makes it a process: оплачивается покупателем
+  const ongoing =
+    (s.generic && s.tense === 'present') ||
+    /progressive/.test(s.aspect || '') ||
+    (s.tense === 'present' &&
+      (s.modifiers || []).some(
+        (m) =>
+          (m.kind === 'adverb' && habitualAdverb(m.concept, ctx)) ||
+          (m.kind === 'relation' && m.relation === 'rel.by')
+      ));
+  const participle =
+    !ongoing && perfective?.pastPassive
+      ? shortParticiple(perfective.pastPassive, f)
+      : null;
+  if (participle) {
+    if (s.modality) {
+      return `${modalWord(s, f, ctx)} быть ${participle}`;
+    }
+    return [copulaWord(s, f), participle].filter(Boolean).join(' ');
+  }
+  const imperfective = entry.aspect === 'perf' ? null : entry;
+  if (!imperfective || /с[яь]$/.test(imperfective.lemma)) {
+    return null;
+  }
+  const form = s.modality
+    ? `${modalWord(s, f, ctx)} ${imperfective.lemma}`
+    : finiteVerb(imperfective, { ...s, tense: s.tense }, f, ctx);
+  return form.replace(
+    /(\S+)$/,
+    (w) => w + (/[аеёиоуыэюя]$/.test(w) ? 'сь' : 'ся')
+  );
 }
 
 /** мочь / должен / бы. */
@@ -666,59 +815,6 @@ function modalWord(s, f, ctx) {
     default:
       return '';
   }
-}
-
-/** "want to read the book" → прочитать книгу. */
-function infinitiveClause(x, parent, ctx) {
-  const concept = lexEntry(ctx, x.predicate);
-  const entry = concept?.ru;
-  if (!entry || entry.pos !== 'verb') {
-    ctx.notes.add(`no Russian verb for ${x.predicate}`);
-    return [`[${x.predicate}]`];
-  }
-  const parentEntry = lexEntry(ctx, parent.predicate)?.ru;
-  const aspectual = lexEntry(ctx, parent.predicate)?.classes.includes(
-    'aspectual'
-  );
-  const pseudo = {
-    ...x,
-    polarity: parent.polarity,
-    tense: 'future',
-    aspect: 'simple',
-    modifiers: x.modifiers,
-  };
-  const savedPredicate = ctx.predicate;
-  ctx.predicate = x.predicate;
-  const variant = aspectual
-    ? entry
-    : chooseVerb(entry, pseudo, ctx, 'infinitive');
-  const saved = {
-    predicate: savedPredicate,
-    motion: ctx.motion,
-    hasObject: ctx.hasObject,
-  };
-  ctx.predicate = x.predicate;
-  ctx.motion = entry.motion;
-  ctx.hasObject = (x.objects || []).length > 0;
-  const mods = renderModifiers(x.modifiers, ctx, entry);
-  const out = [
-    ...mods.before,
-    variant.lemma,
-    ...renderObjects(x.objects || [], entry, ctx),
-    ...mods.after,
-  ];
-  if (x.complementClause) {
-    out.push(
-      ...infinitiveClause(
-        x.complementClause,
-        { ...parent, predicate: x.predicate },
-        ctx
-      )
-    );
-  }
-  Object.assign(ctx, saved);
-  void parentEntry;
-  return out;
 }
 
 /** The fronted question word of a wh-question, already in its case. */
@@ -779,6 +875,7 @@ function renderImperative(s, ctx) {
   ctx.predicate = s.predicate;
   ctx.motion = entry.motion;
   ctx.hasObject = (s.objects || []).length > 0;
+  ctx.passive = s.voice === 'passive';
   const mods = renderModifiers(s.modifiers, ctx, entry);
   const words = [];
   if (s.politeness === 'polite') {
@@ -809,9 +906,18 @@ function renderImperative(s, ctx) {
     ctx.notes.add(`imperative addressed with ${plural ? 'вы' : 'ты'}`);
   }
   words.push(...mods.before);
-  if (s.complementClause) {
+  const purpose = s.complementClause?.purpose;
+  const controlled = !purpose && (s.objects || []).length > 0;
+  if (s.complementClause && !purpose && !controlled) {
     words.push(...infinitiveClause(s.complementClause, s, ctx));
   }
-  words.push(...renderObjects(s.objects || [], entry, ctx), ...mods.after);
+  words.push(...renderObjects(s.objects || [], entry, ctx));
+  if (s.complementClause && controlled) {
+    words.push(...infinitiveClause(s.complementClause, s, ctx));
+  }
+  words.push(...mods.after);
+  if (purpose) {
+    words.push(...purposeClause(s.complementClause, s, ctx));
+  }
   return words.filter(Boolean).join(' ').replace(/,$/, '');
 }

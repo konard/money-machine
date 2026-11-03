@@ -29,7 +29,29 @@ function entity(np, lexicon) {
       number: 'plural',
     };
   }
+  if (np.relativeSubject) {
+    return {
+      relativePronoun: true,
+      number: NUMBER[np.number] || 'singular',
+      marker: np.marker,
+    };
+  }
   const e = {};
+  if (np.action) {
+    e.action = predicateClause(np.action, lexicon);
+    if (np.nominalization) {
+      e.nominalization = entity(np.nominalization, lexicon);
+    }
+  }
+  if (np.participles) {
+    e.participles = np.participles.map((x) => ({
+      ...predicateClause(x, lexicon),
+      voice: 'passive',
+    }));
+  }
+  if (np.relative) {
+    e.relative = statement(np.relative, lexicon);
+  }
   if (np.pronoun) {
     const p = np.pronoun;
     e.pronoun = { person: p.person, number: NUMBER[p.number] };
@@ -85,6 +107,9 @@ function entity(np, lexicon) {
     if (/^\d/.test(String(np.quantityText || ''))) {
       e.digits = true;
     }
+    if (/\d/.test(np.quantityText || '') && !/^\d+$/.test(np.quantityText)) {
+      e.quantityText = np.quantityText;
+    }
   }
   if (np.digits) {
     e.digits = true;
@@ -102,8 +127,29 @@ function entity(np, lexicon) {
       name: m.concept ? undefined : m.text,
     }));
   }
+  if (np.amount) {
+    e.amount = np.amount;
+  }
+  if (np.quantifier) {
+    e.quantifier = np.quantifier;
+  }
+  if (np.bound) {
+    e.bound = np.bound;
+  }
+  if (np.rangeFrom !== undefined) {
+    e.rangeFrom = np.rangeFrom;
+  }
+  if (np.partitive) {
+    e.partitive = true;
+  }
   if (np.of) {
     e.of = entity(np.of, lexicon);
+  }
+  if (np.label) {
+    e.label = np.label;
+  }
+  if (np.parenthetical) {
+    e.parenthetical = np.parenthetical.map((x) => statement(x, lexicon));
   }
   if (np.marker) {
     e.marker = np.marker;
@@ -113,8 +159,17 @@ function entity(np, lexicon) {
 
 function property(a) {
   const p = { concept: a.concept || a.candidates?.[0] || null };
+  if (a.participle) {
+    p.participle = a.participle;
+  }
   if (a.degree) {
     p.degree = a.degree.concept || a.degree.candidates?.[0];
+  }
+  if (a.superlative) {
+    p.superlative = true;
+  }
+  if (a.comparison) {
+    p.comparison = a.comparison;
   }
   if (a.comparative) {
     p.comparative = true;
@@ -129,7 +184,18 @@ function modifier(m, lexicon) {
 
 function modifierCore(m, lexicon) {
   if (m.type === 'adv') {
-    return { kind: 'adverb', concept: m.concept || m.candidates?.[0] };
+    return {
+      kind: 'adverb',
+      concept: m.concept || m.candidates?.[0],
+      comparison: m.comparison,
+    };
+  }
+  if (m.type === 'quantity' || m.type === 'comparison') {
+    return {
+      kind: m.type,
+      comparison: m.comparison,
+      entity: m.np ? entity(m.np, lexicon) : undefined,
+    };
   }
   if (m.type === 'time') {
     return { kind: 'time', entity: entity(m.np, lexicon) };
@@ -153,6 +219,9 @@ function complement(c, lexicon) {
     if (c.degree) {
       p.degree = c.degree.concept || c.degree.candidates?.[0];
     }
+    if (c.comparison || c.superlative) {
+      p.comparison = c.comparison || 'greatest';
+    }
     if (c.comparative) {
       p.comparative = true;
     }
@@ -170,6 +239,7 @@ function predicateClause(x, lexicon) {
     objects: x.objects.map((o) => entity(o, lexicon)),
     modifiers: x.mods.map((m) => modifier(m, lexicon)),
     complementClause: x.xcomp ? predicateClause(x.xcomp, lexicon) : undefined,
+    purpose: x.purpose || undefined,
   };
 }
 
@@ -182,19 +252,30 @@ export function statement(clause, lexicon) {
     return {
       type: 'fragment',
       entity: entity(clause.np, lexicon),
+      property: clause.property ? property(clause.property) : undefined,
+      negative: clause.negative || undefined,
+      modifiers: (clause.mods || []).map((m) => modifier(m, lexicon)),
       link: clause.link?.concept,
+      separator: clause.link?.separator,
     };
   }
   const s = {
     type: 'statement',
+    separator: clause.link?.separator,
     mood: clause.mood,
     frame: clause.frame,
     tense: clause.tense.replace('|', ' '),
     aspect: clause.aspect,
     polarity: clause.polarity,
   };
+  if (clause.generic) {
+    s.generic = true;
+  }
   if (clause.modal) {
     s.modality = clause.modal;
+  }
+  if (clause.labelSubject) {
+    s.labelSubject = entity(clause.labelSubject, lexicon);
   }
   if (clause.passive) {
     s.voice = 'passive';
@@ -210,8 +291,20 @@ export function statement(clause, lexicon) {
   }
   s.predicate = clause.verb.concept || clause.verb.candidates?.[0];
   s.subject = entity(clause.subject, lexicon);
+  if (s.subject?.determiner === 'det.no') {
+    s.polarity = 'negative';
+    s.generic = true;
+    s.subject.determiner = undefined;
+  }
   if (clause.objects.length) {
     s.objects = clause.objects.map((o) => entity(o, lexicon));
+    // "need no platform": Russian negates the verb («не нужна никакая»)
+    if (
+      s.objects.some((o) => o?.determiner === 'det.no') &&
+      s.polarity === 'positive'
+    ) {
+      s.polarity = 'negative';
+    }
   }
   const comp = complement(clause.complement, lexicon);
   if (comp) {
@@ -232,6 +325,41 @@ export function statement(clause, lexicon) {
   return s;
 }
 
+const TIME_LINKS = new Set([
+  'conj.before',
+  'conj.after',
+  'conj.when',
+  'conj.if',
+  'conj.until',
+  'conj.once',
+]);
+
+/**
+ * English uses the present in time and condition clauses for a future
+ * event ("before you publish it" next to a request or a future). The meta
+ * language states the meaning, so such a clause is in the future.
+ */
+function futureInTimeClauses(statements) {
+  const prospective = statements.some(
+    (s) =>
+      s.type === 'statement' &&
+      !TIME_LINKS.has(s.link) &&
+      (s.mood === 'imperative' || s.tense === 'future' || s.modality)
+  );
+  if (!prospective) {
+    return statements;
+  }
+  return statements.map((s) =>
+    s.type === 'statement' &&
+    TIME_LINKS.has(s.link) &&
+    s.tense === 'present' &&
+    s.aspect === 'simple' &&
+    s.mood !== 'imperative'
+      ? { ...s, tense: 'future' }
+      : s
+  );
+}
+
 /**
  * Formalize one English sentence.
  * @param {string} sentence
@@ -244,7 +372,9 @@ export function formalize(sentence, lexicon, memory = new DocumentMemory()) {
   const parsed = parseSentence(sentence, lexicon);
   const senses = resolveSenses(parsed, lexicon, memory);
   memory.remember(sentenceWords(parsed));
-  const statements = parsed.clauses.map((c) => statement(c, lexicon));
+  const statements = futureInTimeClauses(
+    parsed.clauses.map((c) => statement(c, lexicon))
+  );
   return {
     sentence,
     statements,

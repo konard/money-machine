@@ -258,6 +258,46 @@ export class Lexicon {
     return this.concepts.get(id);
   }
 
+  /** Russian label of a proper name (from Wikidata), if known. */
+  nameLabel(name) {
+    return this.names?.get(name);
+  }
+
+  /** Words already looked up in public sources (found or not). */
+  asked(word) {
+    return this.askedWords?.has(word) || false;
+  }
+
+  markAsked(words) {
+    this.askedWords ||= new Set();
+    words.forEach((w) => this.askedWords.add(w));
+  }
+
+  /** Names of the document being translated (see `documentNames`). */
+  setDocumentNames(names) {
+    this.documentNames = names;
+  }
+
+  /** Russian noun entry of a name label, for its case forms. */
+  nameEntry(name) {
+    return this.nameEntries?.get(name);
+  }
+
+  setNameEntry(name, entry) {
+    this.nameEntries ??= new Map();
+    this.nameEntries.set(name, entry);
+  }
+
+  setNameLabel(name, label) {
+    this.names ??= new Map();
+    this.names.set(name, label);
+  }
+
+  /** Register an inflected form learned from a source (paid → pay, past). */
+  addForm(form, reading) {
+    push(this.byForm, form.toLowerCase(), reading);
+  }
+
   /** Irregular readings of an English surface form. */
   irregular(form) {
     return this.byForm.get(form.toLowerCase()) || [];

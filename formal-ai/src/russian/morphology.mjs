@@ -81,13 +81,13 @@ export function nounParadigm(entry) {
       }
     });
   };
-  if (entry.indeclinable) {
+  if (entry.indeclinable || /[A-Za-z]/.test(lemma)) {
     for (const n of ['sg', 'pl']) {
       for (const c of CASES) {
         out[`${n}.${c}`] = lemma;
       }
     }
-    return applyOverrides(out, entry);
+    return out;
   }
   const end = last(lemma);
   let pluralStem = entry.pluralStem || null;
@@ -231,6 +231,24 @@ function applyOverrides(out, entry) {
  * @returns {string}
  */
 export function declineNoun(entry, kase = 'nom', number = 'sg') {
+  if (entry.compound) {
+    // «домашняя страница»: adjectives agree with the head, a genitive tail
+    // («страница товара») stays as it is
+    const { adjectives, head, tail } = entry.compound;
+    const f = {
+      gender: entry.gender,
+      number: entry.pluraliaTantum ? 'pl' : number,
+      case: kase,
+      animate: entry.animate,
+    };
+    return [
+      ...adjectives.map((a) => declineAdjective(a, f)),
+      declineNoun({ ...entry, compound: undefined, lemma: head }, kase, number),
+      tail,
+    ]
+      .filter(Boolean)
+      .join(' ');
+  }
   if (entry.pluraliaTantum) {
     number = 'pl';
     // the lemma of a plurale tantum is already its nominative plural
@@ -264,6 +282,26 @@ const ADJ_SOFT = {
  * @returns {string}
  */
 export function declineAdjective(lemma, f = {}) {
+  // Fixed prepositional modifiers keep their own case; participial heads agree.
+  if (lemma.includes(' ')) {
+    if (/^(?:без|только для|с|со) /.test(lemma)) {
+      return lemma;
+    }
+    let agreed = false;
+    return lemma
+      .split(' ')
+      .map((word) => {
+        if (!agreed && /(?:ый|ий|ой)(?:ся)?$/.test(word)) {
+          agreed = true;
+          return declineAdjective(word, f);
+        }
+        return word;
+      })
+      .join(' ');
+  }
+  if (!/(?:ый|ий|ой)(?:ся)?$/.test(lemma)) {
+    return lemma;
+  }
   const kase = f.case || 'nom';
   const slot = f.number === 'pl' ? 'pl' : f.gender || 'm';
   let reflexive = '';

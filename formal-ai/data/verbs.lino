@@ -311,7 +311,7 @@ concept pay
   class commerce
   en verb pay paid paid
   en takes for
-  ru verb платить perf:заплатить pres:плачу,платишь gov:за+acc
+  ru verb платить perf:заплатить pres:плачу,платишь gov.for:за+acc gov@person:dat
 
 concept book.reserve
   gloss "arrange to have a seat or room"

@@ -7,6 +7,7 @@
  * prose is translated. Sentence boundaries ignore common abbreviations.
  */
 
+import { parseSentence } from './english/clause.mjs';
 import { translateSentence, TranslationContext } from './translate.mjs';
 
 const ABBREVIATIONS =
@@ -117,7 +118,29 @@ function translateLine(line, context, report) {
   return prefix + translateProse(body, context, report);
 }
 
+// "**Minimum payout:** $1" — a bold label is a unit of its own
+const LABEL = /(\*\*[^*]+?:\*\*|__[^_]+?:__)/;
+const EMPHASIS = /\*\*|__|(?<![\w*])[*_](?=\S)|(?<=\S)[*_](?![\w*])/g;
+
 function translateProse(text, context, report) {
+  if (LABEL.test(text)) {
+    return text
+      .split(LABEL)
+      .map((piece) => {
+        const label = /^(\*\*|__)(.+?):\1$/.exec(piece);
+        if (label) {
+          const ru = translateProse(label[2], context, report).replace(
+            /[.!]$/,
+            ''
+          );
+          return `${label[1]}${ru}:${label[1]}`;
+        }
+        return piece.trim() ? translateProse(piece, context, report) : piece;
+      })
+      .join('');
+  }
+  // inline emphasis is dropped: its span rarely maps onto Russian words
+  text = text.replace(EMPHASIS, '');
   // protected spans become opaque name-like tokens so the sentence around
   // them is parsed as one sentence, then they are put back unchanged
   const spans = [];
@@ -162,9 +185,40 @@ function fromLetters(code) {
 }
 
 function translateOne(sentence, context, report) {
-  const r = translateSentence(sentence, context);
+  let r;
+  try {
+    r = translateSentence(sentence, context);
+  } catch (error) {
+    // one broken sentence must not abort the document: keep the source
+    r = {
+      source: sentence,
+      text: `[${sentence}]`,
+      complete: false,
+      notes: [`internal error: ${error.message}`],
+      unknown: [],
+      leftover: [],
+      senses: [],
+    };
+  }
   report.sentences.push(r);
   return r.text;
+}
+
+/**
+ * Words the document writes capitalized inside sentences and never in
+ * lowercase: its names ("Stripe pays…" is the company, as "via Stripe"
+ * elsewhere shows), even where a sentence starts with them.
+ */
+export function documentNames(text) {
+  const plain = text.replace(/```[\s\S]*?```|`[^`]*`|\]\([^)]*\)/g, ' ');
+  const lower = new Set(plain.match(/\b[a-z][a-z-]+\b/g) || []);
+  const names = new Set();
+  for (const m of plain.matchAll(/[a-z,;] +([A-Z][a-zA-Z-]+)/g)) {
+    if (!lower.has(m[1].toLowerCase())) {
+      names.add(m[1]);
+    }
+  }
+  return names;
 }
 
 /**
@@ -175,6 +229,13 @@ function translateOne(sentence, context, report) {
  */
 export function translateDocument(text, options = {}) {
   const context = options.context || new TranslationContext(options);
+  if (options.field && !context.memory.families) {
+    context.memory.setField(options.field);
+  }
+  if (!context.memory.topic) {
+    context.memory.setTopic(options.topic || text);
+    context.lexicon.setDocumentNames?.(documentNames(options.topic || text));
+  }
   const report = { sentences: [] };
   const out = splitBlocks(text).map((block) => {
     if (block.kind !== 'prose') {
@@ -185,7 +246,17 @@ export function translateDocument(text, options = {}) {
     const structured = lines.some(
       (l) => LINE_PREFIX.exec(l)[1].trim() || /^\s*\|/.test(l)
     );
-    if (!structured) {
+    const fragmentLines =
+      lines.length > 1 &&
+      lines.every((line) => {
+        const parsed = parseSentence(line, context.lexicon);
+        return (
+          !parsed.leftover.length &&
+          parsed.clauses.length &&
+          parsed.clauses.every((c) => c.type === 'fragment')
+        );
+      });
+    if (!structured && !fragmentLines) {
       return translateProse(lines.join(' '), context, report);
     }
     return lines.map((l) => translateLine(l, context, report)).join('\n');

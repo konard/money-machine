@@ -7,6 +7,24 @@ import { formalize } from './formalize.mjs';
 import { naturalizeRussian } from './russian/naturalize.mjs';
 import { DocumentMemory } from './senses.mjs';
 
+/** Resolve vocabulary before translating; offline mode skips all lookups. */
+export async function resolveForTranslation(text, options = {}) {
+  if (options.offline) {
+    return;
+  }
+  const log = (message) => process.stderr.write(`formal-ai: ${message}\n`);
+  try {
+    const { resolveText } = await import('./resolve.mjs');
+    await resolveText(text, {
+      lexicon: options.lexicon,
+      topic: options.topic || text,
+      log,
+    });
+  } catch (error) {
+    log(`vocabulary lookup failed: ${error.message}; continuing translation`);
+  }
+}
+
 /** Translation state shared by the sentences of one document. */
 export class TranslationContext {
   constructor(options = {}) {

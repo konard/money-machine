@@ -25,7 +25,16 @@ import {
   INDEFINITES,
 } from './function-words.mjs';
 
-const WORD = /[A-Za-z]+(?:-[A-Za-z]+)*|\d+(?:[.,]\d+)*|'[a-z]+|[^\sA-Za-z\d]/g;
+// "$1k–$20k", "~$50", "10-15%", "£6": one quantity, kept as written
+const AMOUNT = '~?\\p{Sc}?\\d+(?:[.,]\\d+)*(?:[kKmMbB](?![a-z]))?%?';
+const QUANTITY = new RegExp(
+  `^(?:~|\\p{Sc}\\d|\\d+(?:[.,]\\d+)*(?:%|[kKmMbB](?![a-z])|[–-]\\d))`,
+  'u'
+);
+const WORD = new RegExp(
+  `${AMOUNT}(?:[–-]${AMOUNT})?|\\p{L}+(?:[.-]\\p{L}+)*|\\d+(?:[.,]\\d+)*|'[a-z]+|[^\\s\\p{L}\\d]`,
+  'gu'
+);
 
 /**
  * Split a sentence into tokens, expanding contractions.
@@ -59,12 +68,25 @@ export function tokenize(sentence) {
     for (const piece of raw.match(WORD) || []) {
       push(
         piece,
-        /^\d/.test(piece)
-          ? 'number'
-          : /^[A-Za-z']/.test(piece)
-            ? 'word'
-            : 'punct'
+        QUANTITY.test(piece) && !/^\d+(?:,\d{3})*$/.test(piece)
+          ? 'quantity'
+          : /^\d/.test(piece)
+            ? 'number'
+            : /^[\p{L}']/u.test(piece)
+              ? 'word'
+              : 'punct'
       );
+    }
+  }
+  // "$150-400/month" → "$150-400 per month"; "£6/$6" stays one quantity
+  for (let i = out.length - 2; i > 0; i -= 1) {
+    if (out[i].text === '/' && out[i - 1].kind === 'quantity') {
+      if (out[i + 1].kind === 'word') {
+        out[i] = { text: 'per', lower: 'per', kind: 'word' };
+      } else if (/quantity|number/.test(out[i + 1].kind)) {
+        const text = `${out[i - 1].text}/${out[i + 1].text}`;
+        out.splice(i - 1, 3, { text, lower: text, kind: 'quantity' });
+      }
     }
   }
   return out.map((t, index) => ({ ...t, index }));
@@ -139,8 +161,17 @@ export function readings(token, lexicon) {
     add('punct', token.text);
     return out;
   }
+  if (token.kind === 'quantity') {
+    add('propn', token.text, { number: 'sg', opaque: true, quantity: true });
+    return out;
+  }
   if (token.kind === 'number') {
     add('num', w, { value: Number(w.replace(/,/g, '')) });
+    return out;
+  }
+  // "US", "KYC", "MRR": an acronym is a name, never the pronoun "us"
+  if (/^[A-Z][A-Z0-9]+s?$/.test(token.text) && !token.shouting) {
+    add('propn', token.text, { number: 'sg', acronym: true });
     return out;
   }
   if (w === "n't" || NEGATORS.has(w)) {
@@ -166,7 +197,7 @@ export function readings(token, lexicon) {
     add('pron', w, PRONOUNS[w]);
   }
   if (INDEFINITES[w]) {
-    add('indef', w, {}, [INDEFINITES[w]]);
+    add('indef', w, { number: w === 'others' ? 'pl' : 'sg' }, [INDEFINITES[w]]);
   }
   if (POSSESSIVES[w]) {
     add('poss', w, POSSESSIVES[w]);
@@ -201,7 +232,10 @@ export function readings(token, lexicon) {
   if (MODALS[w]) {
     add('modal', w, MODALS[w]);
   }
-  contentReadings(token, lexicon, add);
+  // Capitalization never turns a grammatical negator into a name.
+  if (!out.some((r) => r.pos === 'neg')) {
+    contentReadings(token, lexicon, add);
+  }
   return out;
 }
 
@@ -214,7 +248,19 @@ function contentReadings(token, lexicon, add) {
     add('propn', token.text, { number: 'sg', opaque: true });
     return;
   }
-  const capitalized = /^[A-Z]/.test(token.text);
+  const capitalized = /^\p{Lu}/u.test(token.text);
+  // a capitalized word with a known name label is that name (Google, Apple)
+  if (
+    capitalized &&
+    ((!token.first && lexicon.nameLabel?.(token.text)) ||
+      (token.first &&
+        lexicon.documentNames?.has(token.text) &&
+        !(token.nominalStart && lexicon.lookup('adj', w).length) &&
+        !lexicon.lookup('name', w).length))
+  ) {
+    add('propn', token.text, { number: 'sg' });
+    return;
+  }
   const names = lexicon.lookup('name', w);
   if (names.length && capitalized) {
     add('name', w, { number: 'sg' }, names);
@@ -271,9 +317,40 @@ function contentReadings(token, lexicon, add) {
       }
     }
   }
-  if (capitalized && !token.first && !names.length && w !== 'i') {
+  // a capitalized word that is nothing else is a name, even first
+  // in the sentence ("PayPal, Payoneer…")
+  // "eBay", "iOS", "pre-May": mixed case marks a name
+  if (!capitalized && /[A-Z]/.test(token.text) && !contentFound(lexicon, w)) {
     add('propn', token.text, { number: 'sg' });
+    return;
   }
+  if (
+    capitalized &&
+    !names.length &&
+    w !== 'i' &&
+    (!token.first || !contentFound(lexicon, w))
+  ) {
+    add('propn', token.text, { number: 'sg' });
+    return;
+  }
+  // a word in letters English does not use ("társaság", "honorários") is
+  // foreign: it is kept as written, like a name
+  if (/[^a-z'-]/.test(w) && !contentFound(lexicon, w)) {
+    add('propn', token.text, { number: 'sg', foreign: true });
+  }
+}
+
+/** Has the lexicon any content reading of this word (or its stems)? */
+function contentFound(lexicon, w) {
+  return (
+    ['noun', 'verb', 'adj', 'adv'].some(
+      (pos) => lexicon.lookup(pos, w).length
+    ) ||
+    lexicon.irregular(w).length > 0 ||
+    stems(w).some(({ lemma }) =>
+      ['noun', 'verb', 'adj'].some((pos) => lexicon.lookup(pos, lemma).length)
+    )
+  );
 }
 
 function hasIrregularPlural(lexicon, ids, lemma) {
@@ -300,8 +377,21 @@ function hasIrregularPast(lexicon, ids, lemma) {
 export function analyze(sentence, lexicon) {
   const tokens = tokenize(sentence);
   const firstWord = tokens.findIndex((t) => t.kind !== 'punct');
+  // a sentence in capitals is not a row of acronyms
+  const letters = tokens.filter(
+    (t) => t.kind === 'word' && /[A-Za-z]{2}/.test(t.text)
+  );
+  const shouting =
+    letters.length > 1 && letters.every((t) => t.text === t.text.toUpperCase());
   const out = tokens.map((t, i) => {
-    const token = { ...t, first: i === firstWord };
+    const token = {
+      ...t,
+      first: i === firstWord,
+      shouting,
+      nominalStart: Boolean(
+        tokens[i + 1] && lexicon.lookup('noun', tokens[i + 1].lower).length
+      ),
+    };
     token.readings = readings(token, lexicon);
     return token;
   });

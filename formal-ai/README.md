@@ -37,6 +37,21 @@ node formal-ai/bin/formal-ai.mjs ground           # re-verify grounded-in ids
 
 `npm run formal-ai -- <command>` does the same.
 
+Translation entry points first resolve vocabulary from Wiktionary/Wikidata
+(cached in `~/.cache/formal-ai`). Lookup progress and failures go to stderr;
+translation continues if a lookup fails. Add `--offline` to `translate`,
+`formalize`, `explain`, `serve`, or `with` to skip these lookups:
+
+```sh
+formal-ai translate --offline "I read a book."
+formal-ai serve --offline --port 8765
+formal-ai with codex --offline "Translate docs/guide.md"
+```
+
+Programmatic callers can use `startServer({ offline: true })` or
+`runWith(client, prompt, { offline: true })`. A `/translate` request can
+also set `options.offline: true`; a server started offline always stays offline.
+
 The `translate` command takes these options:
 
 - `--you ty|vy`: informal or polite "you"; the default is polite.

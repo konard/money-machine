@@ -18,6 +18,7 @@ import { appendFileSync } from 'node:fs';
 import { anthropic, chat, responses, sse, textOf } from './protocols.mjs';
 import { respond, cleanUserText } from './agent.mjs';
 import { translateDocument } from '../document.mjs';
+import { resolveForTranslation } from '../translate.mjs';
 
 const MODELS = ['formal-ai', 'formal-ai-en-ru'];
 
@@ -76,15 +77,20 @@ function send(res, status, body) {
 
 /**
  * Start the server.
- * @param {{port?: number, host?: string, options?: object, log?: string}} settings
+ * @param {{port?: number, host?: string, offline?: boolean, options?: object, log?: string}} settings
  * @returns {Promise<{url: string, port: number, close: () => Promise<void>}>}
  */
 export function startServer({
   port = 8765,
   host = '127.0.0.1',
   options = {},
+  offline = false,
   log = process.env.FORMAL_AI_LOG,
 } = {}) {
+  const translationOptions = {
+    ...options,
+    offline: offline || options.offline,
+  };
   const protocols = {
     '/v1/messages': anthropic,
     '/v1/chat/completions': chat,
@@ -127,14 +133,15 @@ export function startServer({
         );
       }
       if (path === '/translate') {
-        return send(
-          res,
-          200,
-          translateDocument(String(body.text || ''), {
-            ...options,
-            ...(body.options || {}),
-          })
-        );
+        const text = String(body.text || '');
+        const requestOptions = {
+          ...translationOptions,
+          ...(body.options || {}),
+          offline: Boolean(translationOptions.offline || body.options?.offline),
+          topic: text,
+        };
+        await resolveForTranslation(text, requestOptions);
+        return send(res, 200, translateDocument(text, requestOptions));
       }
       if (path === '/v1/messages/count_tokens') {
         return send(res, 200, { input_tokens: Math.ceil(raw.length / 4) });
@@ -147,7 +154,8 @@ export function startServer({
       }
       const conversation = protocol.normalize(body);
       const reply =
-        auxiliaryReply(conversation) || respond(conversation, options);
+        auxiliaryReply(conversation) ||
+        (await respond(conversation, translationOptions));
       const rendered = protocol.render(reply, {
         model: conversation.model,
         stream: conversation.stream,

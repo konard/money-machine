@@ -4,6 +4,7 @@
  */
 
 import { test } from 'node:test';
+import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -20,6 +21,7 @@ import {
   respond,
 } from '../../formal-ai/src/server/agent.mjs';
 import { clientCommand } from '../../formal-ai/src/with.mjs';
+import { resolveForTranslation } from '../../formal-ai/src/translate.mjs';
 
 /**
  * Sockets, temp files and the environment need permissions that
@@ -56,7 +58,7 @@ const WRITE = {
 };
 
 async function withServer(fn) {
-  const server = await startServer({ port: 0, log: '' });
+  const server = await startServer({ port: 0, log: '', offline: true });
   try {
     return await fn(server.url);
   } finally {
@@ -161,15 +163,141 @@ test('tool plans adapt to Read/Write, read/write and shell-only clients', () => 
   );
 });
 
-test('plain text is translated without tools', () => {
-  const reply = respond({
-    messages: [
-      { role: 'user', content: [{ type: 'text', text: 'I read a book.' }] },
-    ],
-    tools: [],
-  });
+test('plain text is translated without tools', async () => {
+  const reply = await respond(
+    {
+      messages: [
+        { role: 'user', content: [{ type: 'text', text: 'I read a book.' }] },
+      ],
+      tools: [],
+    },
+    { offline: true }
+  );
   assert.equal(reply.text, 'Я прочитал книгу.');
 });
+
+test('offline vocabulary preparation does not inspect the lexicon', async () => {
+  await resolveForTranslation('unknown vocabulary', {
+    offline: true,
+    get lexicon() {
+      return assert.fail('offline preparation must skip vocabulary resolution');
+    },
+  });
+});
+
+test('a selected passage uses the whole file as its topic', async () => {
+  const reply = await respond(
+    {
+      messages: [
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: 'Translate the second paragraph of notes.md',
+            },
+          ],
+        },
+        {
+          role: 'assistant',
+          content: [{ type: 'tool_call', id: 'read', name: 'Read', input: {} }],
+        },
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'tool_result',
+              id: 'read',
+              text: 'The river flows.\n\nWe sat on the bank.',
+            },
+          ],
+        },
+      ],
+      tools: [{ name: 'Read', schema: READ.input_schema }],
+    },
+    { offline: true }
+  );
+  assert.equal(reply.text, 'Мы сидели на берегу.');
+});
+
+test('CLI offline flag works before positional text', { skip }, () => {
+  const result = spawnSync(
+    process.execPath,
+    [
+      new URL('../../formal-ai/bin/formal-ai.mjs', import.meta.url).pathname,
+      'translate',
+      '--offline',
+      'I read a book.',
+      '--json',
+    ],
+    { encoding: 'utf8' }
+  );
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stderr, '');
+  assert.equal(JSON.parse(result.stdout).text, 'Я прочитал книгу.');
+});
+
+test(
+  'lookup failures log to stderr and still return a translation',
+  { skip },
+  async (t) => {
+    const dir = mkdtempSync(join(tmpdir(), 'formal-ai-cache-'));
+    const previousCache = process.env.FORMAL_AI_CACHE;
+    process.env.FORMAL_AI_CACHE = dir;
+    const nativeFetch = globalThis.fetch;
+    const lookups = [];
+    const diagnostics = [];
+    t.mock.method(globalThis, 'fetch', (url, init) => {
+      if (String(url).startsWith('http://127.0.0.1:')) {
+        return nativeFetch(url, init);
+      }
+      lookups.push(String(url));
+      // A fatal HTTP response avoids retries, cache writes and real network I/O.
+      return Promise.resolve({ ok: false, status: 403 });
+    });
+    t.mock.method(process.stderr, 'write', (message) => {
+      diagnostics.push(message);
+      return true;
+    });
+    const server = await startServer({ port: 0, log: '' });
+    try {
+      const response = await post(`${server.url}/translate`, {
+        text: 'I read a book.',
+      });
+      assert.equal(response.status, 200);
+      assert.equal((await response.json()).text, 'Я прочитал книгу.');
+      assert.ok(lookups.length > 0);
+      assert.match(
+        diagnostics.join(''),
+        /vocabulary lookup failed: HTTP 403.*continuing translation/
+      );
+    } finally {
+      await server.close();
+      t.mock.restoreAll();
+      if (previousCache === undefined) {
+        delete process.env.FORMAL_AI_CACHE;
+      } else {
+        process.env.FORMAL_AI_CACHE = previousCache;
+      }
+      rmSync(dir, { recursive: true, force: true });
+    }
+  }
+);
+
+test(
+  'offline server cannot be switched online by a request',
+  { skip },
+  async () => {
+    await withServer(async (url) => {
+      const response = await post(`${url}/translate`, {
+        text: 'I read a book.',
+        options: { offline: false },
+      });
+      assert.equal(response.status, 200);
+      assert.equal((await response.json()).text, 'Я прочитал книгу.');
+    });
+  }
+);
 
 test('anthropic messages: JSON and streamed replies', { skip }, async () => {
   await withServer(async (url) => {

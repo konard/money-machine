@@ -28,6 +28,7 @@ import {
   splitBlocks,
   splitSentences,
 } from '../document.mjs';
+import { resolveForTranslation } from '../translate.mjs';
 
 const ORDINALS = {
   first: 1,
@@ -320,9 +321,9 @@ function summary(result) {
  *   normalized conversation: content items are `{type:'text', text}`,
  *   `{type:'tool_call', id, name, input}`, `{type:'tool_result', id, text}`
  * @param {object} options - translation options
- * @returns {{text?: string, toolCall?: {name: string, input: object}}}
+ * @returns {Promise<{text?: string, toolCall?: {name: string, input: object}}>}
  */
-export function respond(conversation, options = {}) {
+export async function respond(conversation, options = {}) {
   const messages = conversation.messages;
   const lastUserIndex = findLastIndex(
     messages,
@@ -354,7 +355,9 @@ export function respond(conversation, options = {}) {
     };
   }
   if (!request.input) {
-    const result = translateDocument(request.inline || userText, options);
+    const text = request.inline || userText;
+    await resolveForTranslation(text, options);
+    const result = translateDocument(text, { ...options, topic: text });
     return {
       text: result.stats.incomplete
         ? `${result.text}\n\n---\n${summary(result)}`
@@ -381,10 +384,11 @@ export function respond(conversation, options = {}) {
       : existsSync(request.input)
         ? readFileSync(request.input, 'utf8')
         : '';
-    const result = translateDocument(
-      selectPart(source, request.selector),
-      options
-    );
+    await resolveForTranslation(source, options);
+    const result = translateDocument(selectPart(source, request.selector), {
+      ...options,
+      topic: source,
+    });
     return {
       text: `Translated ${request.input} → ${output}.\n${summary(result)}`,
     };
@@ -428,14 +432,15 @@ export function respond(conversation, options = {}) {
   };
 }
 
-function finish(source, request, output, plan, options) {
+async function finish(source, request, output, plan, options) {
   const part = selectPart(source, request.selector);
   if (!part.trim()) {
     return {
       text: `Nothing selected in ${request.input} for ${JSON.stringify(request.selector)}.`,
     };
   }
-  const result = translateDocument(part, options);
+  await resolveForTranslation(source, options);
+  const result = translateDocument(part, { ...options, topic: source });
   if (!output || !plan.write) {
     const note =
       output && !plan.write

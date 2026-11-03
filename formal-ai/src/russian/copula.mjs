@@ -3,6 +3,7 @@
  * "there is X". Split from naturalize.mjs to keep files small.
  */
 
+import { degreeForm } from './degree.mjs';
 import { shortAdjective, declineAdjective } from './morphology.mjs';
 import { QUESTION_ADVERBS, PRONOUN_WORDS } from './words.mjs';
 import {
@@ -75,8 +76,8 @@ export function renderCopula(s, ctx) {
   }
   // impersonal "it is cold"
   if (
-    subj?.pronoun?.gender === 'neuter' &&
-    subj.pronoun.person === 3 &&
+    ((subj?.action && !subj.nominalization) ||
+      (subj?.pronoun?.gender === 'neuter' && subj.pronoun.person === 3)) &&
     c?.kind === 'property' &&
     (WEATHER.has(c.concept) || !ctx.discourse.referents.length)
   ) {
@@ -85,6 +86,7 @@ export function renderCopula(s, ctx) {
     const be =
       s.tense === 'past' ? 'было' : s.tense === 'future' ? 'будет' : '';
     return [
+      subj?.action ? renderEntity(subj, 'nom', ctx) : '',
       ...mods.before,
       ...mods.after,
       negative ? 'не' : '',
@@ -108,12 +110,16 @@ export function renderCopula(s, ctx) {
     subjectText === 'это' && c?.kind === 'entity' && !c.entity?.question;
   const f = presentational ? features(c.entity, ctx) : features(subj, ctx);
   const be = copulaWord(s, f);
-  const words = [whWord, subjectText, ...mods.before];
+  const embedded = s.link === 'conj.whether';
+  const words = [whWord, embedded ? '' : subjectText, ...mods.before];
   if (negative) {
     words.push('не');
   }
   if (be) {
     words.push(be);
+    if (embedded) {
+      words.push('ли', subjectText);
+    }
   }
   if (
     !c ||
@@ -130,7 +136,11 @@ export function renderCopula(s, ctx) {
     } else {
       words.push(degreeWord(c, ctx));
       const agree = f.number === 'pl' ? { number: 'pl' } : { gender: f.gender };
-      if (adj.predicateShort || adj.short) {
+      if (c.comparison || c.comparative) {
+        words.push(
+          degreeForm(adj, c.comparison || 'greater', { ...agree, case: 'nom' })
+        );
+      } else if (adj.predicateShort || adj.short) {
         words.push(
           f.number !== 'pl' && f.gender === 'm' && adj.short
             ? adj.short
@@ -143,7 +153,7 @@ export function renderCopula(s, ctx) {
   } else if (c.kind === 'entity') {
     const nominalSubject =
       subj && !subj.pronoun && !subj.demonstrative && !subj.question;
-    if (!be && !negative && nominalSubject && !s.question) {
+    if (!be && !negative && nominalSubject && !s.question && !embedded) {
       words.push('—');
     }
     words.push(
@@ -152,11 +162,21 @@ export function renderCopula(s, ctx) {
   } else if (c.kind === 'relation') {
     words.push(renderRelation(c, ctx));
   }
+  if (embedded && !be) {
+    words.push('ли', subjectText);
+  }
   words.push(...mods.after);
   return words.filter(Boolean).join(' ');
 }
 
 export function shortFrom(adj, agree) {
+  // all four short forms from the source: редок, редка, редко, редки
+  if (adj.shortForms) {
+    const key = agree.number === 'pl' ? 'p' : agree.gender || 'm';
+    if (adj.shortForms[key]) {
+      return adj.shortForms[key];
+    }
+  }
   if (adj.short && agree.gender === 'm') {
     return adj.short;
   }

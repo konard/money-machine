@@ -123,6 +123,7 @@ export const PRONOUN_WORDS = {
   ),
   'pro.nobody': table('никто никого никому никого никем ком'),
   'pro.everyone': table('все всех всем всех всеми всех'),
+  'pro.others': table('другие других другим других другими других'),
   this: table('это этого этому это этим этом'),
 };
 
@@ -205,6 +206,7 @@ export const RELATIONS = {
   'rel.on': { place: ['на', 'prep'], goal: ['на', 'acc'] },
   'rel.onto': { place: ['на', 'acc'], goal: ['на', 'acc'] },
   'rel.at': {
+    amount: ['по', 'dat'],
     place: ['в', 'prep', 'on'],
     goal: ['в', 'acc', 'on'],
     person: ['у', 'gen'],
@@ -216,6 +218,7 @@ export const RELATIONS = {
   },
   'rel.towards': { place: ['к', 'dat'], goal: ['к', 'dat'] },
   'rel.from': {
+    amount: ['от', 'gen'],
     place: ['из', 'gen', 'on:с'],
     goal: ['из', 'gen', 'on:с'],
     person: ['от', 'gen'],
@@ -223,13 +226,19 @@ export const RELATIONS = {
   'rel.out-of': { place: ['из', 'gen'], goal: ['из', 'gen'] },
   'rel.with': { place: ['с', 'ins'] },
   'rel.without': { place: ['без', 'gen'] },
-  'rel.for': { place: ['для', 'gen'] },
-  'rel.about': { place: ['о', 'prep'] },
-  'rel.by': { place: ['у', 'gen'], person: ['', 'ins'] },
+  'rel.for': { amount: ['за', 'acc'], place: ['для', 'gen'] },
+  'rel.about': { amount: ['около', 'gen'], place: ['о', 'prep'] },
+  // "by card", "by the buyer": means and agent are the instrumental;
+  // "by the window" (a place) is у + genitive
+  'rel.by': { place: ['', 'ins'], location: ['у', 'gen'] },
   'rel.near': { place: ['рядом с', 'ins'] },
   'rel.next-to': { place: ['рядом с', 'ins'] },
-  'rel.under': { place: ['под', 'ins'], goal: ['под', 'acc'] },
-  'rel.over': { place: ['над', 'ins'] },
+  'rel.under': {
+    amount: ['менее', 'gen'],
+    place: ['под', 'ins'],
+    goal: ['под', 'acc'],
+  },
+  'rel.over': { amount: ['более', 'gen'], place: ['над', 'ins'] },
   'rel.behind': { place: ['за', 'ins'], goal: ['за', 'acc'] },
   'rel.in-front-of': { place: ['перед', 'ins'] },
   'rel.between': { place: ['между', 'ins'] },
@@ -239,11 +248,25 @@ export const RELATIONS = {
   'rel.through': { place: ['через', 'acc'] },
   'rel.across': { place: ['через', 'acc'] },
   'rel.along': { place: ['по', 'dat'] },
-  'rel.around': { place: ['вокруг', 'gen'] },
+  'rel.around': { amount: ['около', 'gen'], place: ['вокруг', 'gen'] },
   'rel.against': { place: ['против', 'gen'] },
   'rel.among': { place: ['среди', 'gen'] },
   'rel.since': { place: ['с', 'gen'] },
   'rel.until': { place: ['до', 'gen'] },
+  'rel.per': { place: ['в', 'acc'] },
+  'rel.within': { place: ['в пределах', 'gen'] },
+  'rel.including': { place: ['включая', 'acc'] },
+  'rel.plus': { place: ['плюс', 'nom'] },
+  'rel.versus': { place: ['против', 'gen'] },
+  'rel.despite': { place: ['несмотря на', 'acc'] },
+  'rel.beyond': { place: ['за пределами', 'gen'] },
+  'rel.except': { place: ['кроме', 'gen'] },
+  'rel.because-of': { place: ['из-за', 'gen'] },
+  'rel.according-to': { place: ['согласно', 'dat'] },
+  'rel.instead-of': { place: ['вместо', 'gen'] },
+  'rel.rather-than': { place: ['вместо', 'gen'] },
+  'rel.due-to': { place: ['из-за', 'gen'] },
+  'rel.up-to': { place: ['до', 'gen'] },
   'rel.like': { place: ['как', 'nom'] },
   'rel.of': { place: ['', 'gen'] },
 };
@@ -282,6 +305,7 @@ export function euphony(prep, next) {
 export const CONJUNCTIONS = {
   'conj.and': { text: 'и', comma: true },
   'conj.but': { text: 'но', comma: true },
+  'conj.not': { text: 'а не', comma: true },
   'conj.or': { text: 'или', comma: false },
   'conj.because': { text: 'потому что', comma: true },
   'conj.if': { text: 'если', comma: true },
@@ -300,6 +324,7 @@ export const CONJUNCTIONS = {
 /** Quantifying determiners that take a genitive noun. */
 export const QUANTIFIERS = {
   'det.many': { pl: 'много', sg: 'много' },
+  'det.most': { pl: 'большинство', sg: 'большая часть' },
   'det.much': { sg: 'много', pl: 'много' },
   'det.few': { pl: 'мало', sg: 'мало' },
   'det.several': { pl: 'несколько', sg: 'несколько' },

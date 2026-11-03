@@ -7,6 +7,7 @@
  * linking by coordinators and subordinators.
  */
 
+import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
 import {
   Cursor,
@@ -20,9 +21,80 @@ import {
   parseVerbGroup,
   parseTail,
   mergeMultiwords,
+  setRelativeParser,
+  setParentheticalParser,
 } from './parser.mjs';
 
 const AUX = ['be', 'do', 'have', 'modal'];
+
+let currentCtx = null;
+
+setParentheticalParser((tokens) => {
+  if (!currentCtx) {
+    return null;
+  }
+  const outer = currentCtx;
+  // a parenthesis usually holds a phrase: prefer that reading on a tie
+  const fragments = parseClauses(tokens, { ...outer, fragments: true });
+  const inner = fragments.leftover.length
+    ? parseClauses(tokens, outer)
+    : fragments;
+  currentCtx = outer;
+  return inner.leftover.length < fragments.leftover.length ? inner : fragments;
+});
+
+// Relatives with an overt subject have an object gap; otherwise a subject gap.
+setRelativeParser((c, np) => {
+  if (!currentCtx) {
+    return null;
+  }
+  const explicit = ['who', 'which', 'that'].includes(c.peek?.lower);
+  if (explicit) {
+    c.next();
+  }
+  const start = c.i;
+  const subject = parseNP(c, { clauseStart: true });
+  const vg =
+    subject &&
+    parseVerbGroup(
+      c,
+      subject.number === 'pl' || subject.pronoun ? null : 'third'
+    );
+  if (vg) {
+    const tail = parseTail(c, vg.frame, tailOptions(currentCtx, vg));
+    // An occupied direct-object slot cannot also be the relative gap.
+    if (tail.objects.length && !tail.stranded) {
+      return null;
+    }
+    tail.objects.push({
+      type: 'np',
+      relativeSubject: true,
+      number: np.number,
+      ...(tail.stranded ? { marker: tail.stranded } : {}),
+    });
+    return clause('declarative', vg, { subject, ...tail });
+  }
+  c.i = start;
+  if (!explicit) {
+    return null;
+  }
+  const subjectVerb = parseVerbGroup(
+    c,
+    np.number === 'pl' || np.coord ? null : 'third'
+  );
+  if (!subjectVerb) {
+    return null;
+  }
+  const tail = parseTail(
+    c,
+    subjectVerb.frame,
+    tailOptions(currentCtx, subjectVerb)
+  );
+  return clause('declarative', subjectVerb, {
+    subject: { type: 'np', relativeSubject: true, number: np.number },
+    ...tail,
+  });
+});
 
 /** Union of `en takes` prepositions across a verb reading's concepts. */
 function takesOf(lexicon) {
@@ -79,12 +151,16 @@ function leadingPhrase(tokens, lexicon) {
  * @returns {{tokens: object[], clauses: object[], punctuation: string, unknown: string[], leftover: string[]}}
  */
 export function parseSentence(sentence, lexicon) {
-  const analyzed = mergeMultiwords(analyze(sentence, lexicon), lexicon);
+  const analyzed = mergeMultiwords(
+    superlatives(analyze(sentence, lexicon), lexicon),
+    lexicon
+  );
   analyzed.forEach((t, i) => {
     t.position = i;
   });
   const last = analyzed[analyzed.length - 1];
-  const punctuation = isPunct(last) && /[.!?]/.test(last.text) ? last.text : '';
+  const punctuation =
+    isPunct(last) && /[.!?;:]/.test(last.text) ? last.text : '';
   const body = punctuation ? analyzed.slice(0, -1) : analyzed;
   const unknown = body
     .filter((t) => t.kind === 'word' && t.readings.length === 0)
@@ -117,18 +193,77 @@ export function parseSentence(sentence, lexicon) {
     infinitiveOf: infinitiveOf(lexicon),
     question: punctuation === '?',
   };
+  const clauses = parseClauses(tokens, ctx);
+  // headings, labels and list items are often noun phrases without a verb:
+  // read them as fragments when that leaves fewer words unparsed
+  if (
+    clauses.leftover.length > 0 ||
+    !clauses.list.length ||
+    !punctuation ||
+    tokens.some((t) => t.text === ',')
+  ) {
+    const fragments = parseClauses(tokens, { ...ctx, fragments: true });
+    if (
+      fragments.leftover.length < clauses.leftover.length ||
+      (fragments.leftover.length === clauses.leftover.length &&
+        fragments.list.length > 1 &&
+        fragments.list.every(
+          (x, i) => x.np?.adjs?.length && (!i || x.link?.separator === ',')
+        )) ||
+      (!punctuation &&
+        fragments.leftover.length === clauses.leftover.length &&
+        fragments.list.some((x) => x.np?.participles))
+    ) {
+      Object.assign(clauses, fragments);
+    }
+  }
+  for (const [i, item] of clauses.list.entries()) {
+    if (!item.labelPredicate || clauses.list[i + 1]?.link?.separator !== ':') {
+      continue;
+    }
+    const values = [];
+    for (const value of clauses.list.slice(i + 1)) {
+      if (
+        value.type !== 'fragment' ||
+        !value.np ||
+        value.link?.separator === ';'
+      ) {
+        break;
+      }
+      values.push(value.np);
+    }
+    if (values.length) {
+      item.labelSubject =
+        values.length === 1
+          ? values[0]
+          : { coord: 'and', items: values, number: 'pl' };
+    }
+  }
+  result.clauses.push(...clauses.list);
+  result.leftover.push(...clauses.leftover);
+  return result;
+}
+
+/** Clauses of a token run, with the words no clause could take. */
+function parseClauses(tokens, ctx) {
+  const result = { list: [], leftover: [] };
+  currentCtx = ctx;
   const c = new Cursor(tokens);
+  c.grammar = ctx;
   let link = null;
   while (!c.done) {
     const t = c.peek;
     if (isPunct(t)) {
+      if ([';', ':', ','].includes(t.text) && result.list.length) {
+        link = { ...(link || {}), separator: t.text };
+      }
       c.next();
       continue;
     }
     // "That is a good idea": demonstrative subject, not the conjunction
     const demonstrativeThat =
       t.lower === 'that' &&
-      result.clauses.length === 0 &&
+      result.list.length === 0 &&
       ['be', 'modal', 'aux'].some((p) => has(c.at(1), p));
     // "After dinner we…" is a fronted phrase, "After we ate…" a clause link
     const frontedPhrase =
@@ -139,30 +274,63 @@ export function parseSentence(sentence, lexicon) {
       ((has(t, 'subord') && !has(t, 'wh')) ||
         (has(t, 'subord') &&
           has(t, 'wh') &&
-          result.clauses.length > 0 &&
+          result.list.length > 0 &&
           !ctx.question))
     ) {
+      const previous = result.list.at(-1);
+      const candidates = previous?.verb?.candidates || [];
+      const asksQuestion = candidates.some((id) => {
+        const concept = ctx.lexicon.get(id);
+        return (
+          concept?.frames?.includes('question') ||
+          /\b(?:question|inquire|ascertain)\b/.test(concept?.gloss || '')
+        );
+      });
       link = {
         ...(link || {}),
-        concept: reading(t, 'subord').concepts[0],
+        concept:
+          t.lower === 'if' && previous && !link?.separator && asksQuestion
+            ? 'conj.whether'
+            : reading(t, 'subord').concepts[0],
         text: t.text,
       };
       c.next();
       continue;
     }
-    if (has(t, 'coord') && result.clauses.length > 0) {
+    // "a ceiling, not a typical outcome": contrast with the phrase before
+    if (
+      has(t, 'neg') &&
+      result.list.length > 0 &&
+      isPunct(c.at(-1)) &&
+      startsNP(c.at(1)) &&
+      !AUX.some((p) => has(c.at(1), p))
+    ) {
+      link = { concept: 'conj.not', text: t.text };
+      c.next();
+      continue;
+    }
+    if (has(t, 'coord') && result.list.length > 0) {
       link = { concept: reading(t, 'coord').concepts[0], text: t.text };
       c.next();
       continue;
     }
     const before = c.i;
-    const previous = result.clauses[result.clauses.length - 1];
+    // "(cost $0)", "(e.g. Fiverr)": a parenthesis usually holds a phrase
+    if (isPunct(c.at(-1)) && c.at(-1).text === '(' && !ctx.fragments) {
+      const fragment = parseFragment(c, ctx);
+      if (fragment && (c.done || c.peek.text === ')')) {
+        result.list.push(fragment);
+        continue;
+      }
+      c.i = before;
+    }
+    const previous = result.list[result.list.length - 1];
     const clause =
-      (link &&
+      (link?.concept &&
         previous?.subject &&
         !previous.subject.implicit &&
         ellipsis(c, ctx, previous)) ||
-      parseClause(c, ctx, result.clauses.length === 0);
+      parseClause(c, ctx, result.list.length === 0);
     if (!clause || c.i === before) {
       result.leftover.push(c.next().text);
       continue;
@@ -171,7 +339,7 @@ export function parseSentence(sentence, lexicon) {
       clause.link = link;
       link = null;
     }
-    result.clauses.push(clause);
+    result.list.push(clause);
     while (
       !c.done &&
       !isPunct(c.peek) &&
@@ -187,6 +355,51 @@ export function parseSentence(sentence, lexicon) {
 /** Parse one clause at the cursor. */
 function parseClause(c, ctx, initial) {
   const t = c.peek;
+  const property = has(t, 'neg') ? c.at(1) : t;
+  const afterProperty = c.at(has(t, 'neg') ? 2 : 1);
+  if (
+    has(property, 'adj') &&
+    !property.readings.some(
+      (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
+    ) &&
+    (!afterProperty || [':', ';'].includes(afterProperty.text))
+  ) {
+    const negative = has(t, 'neg');
+    c.i += negative ? 2 : 1;
+    return {
+      type: 'fragment',
+      property: head(property, reading(property, 'adj')),
+      negative,
+    };
+  }
+  if (ctx.fragments) {
+    return parseFragment(c, ctx);
+  }
+  // A whole NP before a colon is a label, even with a verbal head reading.
+  const labelStart = c.i;
+  const label = parseFragment(c, ctx);
+  if (label && c.peek?.text === ':') {
+    return label;
+  }
+  c.i = labelStart;
+  // Labels allow adverbs and subjectless negative passive predicates.
+  if (has(t, 'adv') && (!c.at(1) || [':', ';'].includes(c.at(1)?.text))) {
+    c.next();
+    return {
+      type: 'fragment',
+      mods: [{ type: 'adv', ...head(t, reading(t, 'adv')) }],
+    };
+  }
+  if (has(t, 'neg')) {
+    const save = c.i;
+    const vg = parseVerbGroup(c);
+    if (vg && (c.peek?.text === ':' || c.done)) {
+      vg.passive = true;
+      vg.tense = 'present';
+      return clause('declarative', vg, { labelPredicate: true });
+    }
+    c.i = save;
+  }
   // wh-question
   if (has(t, 'wh') && (ctx.question || initial)) {
     return parseWhQuestion(c, ctx);
@@ -211,12 +424,76 @@ function parseClause(c, ctx, initial) {
     });
   }
   // imperative
-  if (isImperativeStart(c)) {
+  const imperativeStart = isImperativeStart(c);
+  const ambiguous =
+    (has(t, 'noun') || has(t, 'adj')) &&
+    has(t, 'verb') &&
+    reading(t, 'verb').features?.form === 'base' &&
+    !has(t, 'pron') &&
+    !has(t, 'det');
+  if (imperativeStart && !ambiguous) {
     return parseImperative(c, ctx);
   }
+  if (ambiguous) {
+    // "Track orders and payouts" vs "Direct sponsorships need…": the
+    // reading that covers more of the sentence wins
+    const start = c.i;
+    const imperative = parseImperative(c, ctx);
+    const end = c.i;
+    c.i = start;
+    const declarative = parseDeclarative(c, ctx);
+    const reached = c.i;
+    // an English singular count noun needs a determiner: "Ship the
+    // orders fast" has no subject "ship"
+    const sentence =
+      declarative &&
+      declarative.type !== 'fragment' &&
+      !bareSingular(declarative.subject);
+    if (sentence && reached > end) {
+      return declarative;
+    }
+    // on a tie the subject must start with an adjective ("Direct
+    // sponsorships need…"); "Ship orders fast" is a request, and an English
+    // singular count noun needs a determiner
+    if (
+      sentence &&
+      reached === end &&
+      !imperativeStart &&
+      has(t, 'adj') &&
+      declarative.subject?.adjs?.length &&
+      !bareSingular(declarative.subject)
+    ) {
+      return declarative;
+    }
+    if (imperative && (imperativeStart || reached <= end || !sentence)) {
+      c.i = end;
+      return imperative;
+    }
+    c.i = reached;
+    return declarative;
+  }
+  return parseDeclarative(c, ctx);
+}
+
+function bareSingular(np) {
+  return Boolean(
+    np &&
+    np.number === 'sg' &&
+    !np.det &&
+    !np.def &&
+    !np.possessor &&
+    !np.pronoun &&
+    !np.name &&
+    np.quantity === undefined &&
+    !np.coord
+  );
+}
+
+/** Subject, verb group and tail: "Fees are low." */
+function parseDeclarative(c, ctx) {
   const start = c.i;
   const leading = parseLeading(c);
-  const subject = parseNP(c, { clauseStart: true });
+  const subject = parseNP(c, { clauseStart: true, stopAt: ctx.stopAt });
   if (!subject) {
     c.i = start;
     return null;
@@ -226,7 +503,33 @@ function parseClause(c, ctx, initial) {
     : subject.number !== 'pl' && !subject.coord;
   const vg = parseVerbGroup(c, third ? 'third' : null);
   if (!vg) {
-    return { type: 'fragment', np: subject, mood: 'declarative' };
+    // "the aggregator forwards royalties": the compound took the verb
+    const last = c.tokens[c.i - 1];
+    if (!ctx.retried && has(last, 'verb') && subject.modifiers?.length) {
+      const end = c.i;
+      c.i = start;
+      const retry = parseDeclarative(c, {
+        ...ctx,
+        retried: true,
+        stopAt: end - 1,
+      });
+      if (retry?.type === 'clause' && c.i > end) {
+        return retry;
+      }
+      c.i = end;
+    }
+    const afterNP = c.i;
+    const tail = parseTail(c, 'fragment', ctx);
+    if (tail.objects.length || tail.complement || tail.xcomp) {
+      c.i = afterNP;
+      tail.mods = [];
+    }
+    return {
+      type: 'fragment',
+      np: subject,
+      mods: tail.mods,
+      mood: 'declarative',
+    };
   }
   const tail = parseTail(c, vg.frame, tailOptions(ctx, vg));
   return clause('declarative', vg, {
@@ -234,6 +537,31 @@ function parseClause(c, ctx, initial) {
     ...tail,
     mods: [...leading, ...tail.mods],
   });
+}
+
+/** A noun phrase with its prepositional phrases: "direct deposit to bank". */
+function parseFragment(c, ctx) {
+  const start = c.i;
+  const leading = parseLeading(c);
+  // in a phrase without a verb, "contracts" is a noun
+  const np = parseNP(c, { fragment: true });
+  if (!np) {
+    c.i = start;
+    return null;
+  }
+  const afterNP = c.i;
+  const tail = parseTail(c, 'fragment', { ...ctx, takes: [] });
+  if (tail.objects.length || tail.complement || tail.xcomp) {
+    // a fragment has no objects: leave those words for the next phrase
+    c.i = afterNP;
+    tail.mods = [];
+  }
+  return {
+    type: 'fragment',
+    np,
+    mods: [...leading, ...tail.mods],
+    mood: 'declarative',
+  };
 }
 
 /** Would `parseLeading` take a prepositional phrase here? */
@@ -303,7 +631,7 @@ function parseLeading(c) {
     const save = c.i;
     if (has(t, 'prep')) {
       c.next();
-      const np = parseNP(c);
+      const np = parseNP(c, { relative: false });
       if (np && subjectAhead(c)) {
         done({
           type: 'pp',
@@ -321,7 +649,7 @@ function parseLeading(c) {
       ['every', 'each', 'last', 'next', 'this'].includes(t.lower) &&
       timeAhead(c)
     ) {
-      const np = parseNP(c);
+      const np = parseNP(c, { relative: false });
       if (np && subjectAhead(c)) {
         done({ type: 'time', np });
         continue;
@@ -354,6 +682,7 @@ function tailOptions(ctx, vg) {
     infinitive: r ? ctx.infinitiveOf(r) : false,
     takesOf: ctx.takesOf,
     infinitiveOf: ctx.infinitiveOf,
+    lexicon: ctx.lexicon,
   };
 }
 
@@ -375,6 +704,11 @@ function isImperativeStart(c) {
   if (r.features.form !== 'base') {
     return false;
   }
+  // "Direct sponsorships need no platform": a modifier, a noun and a verb
+  // that agrees with that noun make a subject, not an imperative
+  if ((has(t, 'adj') || has(t, 'noun')) && agreeingSubjectAhead(c)) {
+    return false;
+  }
   // "Book a table" vs "Books are…": a noun reading wins only before a verb
   if (
     has(t, 'noun') &&
@@ -383,6 +717,25 @@ function isImperativeStart(c) {
     return false;
   }
   return true;
+}
+
+/** "sponsorships need", "fee applies": a noun then a verb agreeing with it. */
+function agreeingSubjectAhead(c) {
+  const noun = c.at(1);
+  const verb = c.at(2);
+  if (!has(noun, 'noun') || !verb || has(verb, 'det') || has(verb, 'prep')) {
+    return false;
+  }
+  const plural = reading(noun, 'noun').features?.number === 'pl';
+  if (has(verb, 'modal') || has(verb, 'be')) {
+    return true;
+  }
+  return (verb.readings || []).some(
+    (r) =>
+      r.pos === 'verb' &&
+      (r.features?.form === 'past' ||
+        r.features?.form === (plural ? 'base' : '3sg'))
+  );
 }
 
 function parseImperative(c, ctx) {
@@ -452,6 +805,7 @@ function parseInverted(c, ctx, wh) {
   }
   const rest = c.tokens.slice(c.i);
   const reordered = new Cursor([...aux, ...rest]);
+  reordered.grammar = ctx;
   const vg = parseVerbGroup(reordered, 'question');
   if (!vg) {
     return null;
@@ -551,6 +905,8 @@ function clause(mood, vg, parts) {
     polarity: vg.polarity,
     modal: vg.modal,
     passive: Boolean(vg.passive),
+    generic: parts.generic || false,
+    labelPredicate: parts.labelPredicate || false,
     verb: vg.verb,
     subject: parts.subject || null,
     objects: parts.objects || [],

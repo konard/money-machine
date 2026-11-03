@@ -11,74 +11,13 @@
  * `clause.leftover` and reported by the translator.
  */
 
-import { COMPLEX_PREPOSITIONS } from './function-words.mjs';
+import { parseQuantity, quantityDegree } from './quantity.mjs';
+import { mergeMultiwords } from './multiword.mjs';
+export { parseVerbGroup } from './verb-group.mjs';
 
 const has = (token, pos) => token?.readings.some((r) => r.pos === pos);
 const reading = (token, pos) => token?.readings.find((r) => r.pos === pos);
 const isPunct = (token) => token?.kind === 'punct';
-
-/** Merge multi-word lexicon entries and complex prepositions. */
-export function mergeMultiwords(tokens, lexicon) {
-  const out = [];
-  for (let i = 0; i < tokens.length; i += 1) {
-    const t = tokens[i];
-    let merged = false;
-    for (const words of COMPLEX_PREPOSITIONS) {
-      if (words.every((w, k) => tokens[i + k]?.lower === w)) {
-        const lemma = words.join(' ');
-        out.push({
-          ...t,
-          text: tokens
-            .slice(i, i + words.length)
-            .map((x) => x.text)
-            .join(' '),
-          lower: lemma,
-          readings: [
-            {
-              pos: 'prep',
-              lemma,
-              features: {},
-              concepts: [`rel.${words.join('-')}`],
-            },
-          ],
-        });
-        i += words.length - 1;
-        merged = true;
-        break;
-      }
-    }
-    if (merged) {
-      continue;
-    }
-    for (const entry of lexicon.multiword.get(t.lower) || []) {
-      if (entry.words.every((w, k) => tokens[i + k]?.lower === w)) {
-        out.push({
-          ...t,
-          text: tokens
-            .slice(i, i + entry.words.length)
-            .map((x) => x.text)
-            .join(' '),
-          lower: entry.lemma,
-          readings: [
-            {
-              pos: entry.pos,
-              lemma: entry.lemma,
-              features: entry.pos === 'noun' ? { number: 'sg' } : {},
-              concepts: lexicon.lookup(entry.pos, entry.lemma),
-            },
-          ],
-        });
-        i += entry.words.length - 1;
-        merged = true;
-        break;
-      }
-    }
-    if (!merged) {
-      out.push(t);
-    }
-  }
-  return out;
-}
 
 /** Cursor over a token array. */
 class Cursor {
@@ -111,17 +50,20 @@ const head = (token, r) => ({
 
 /** Can this token start a noun phrase? */
 function startsNP(token) {
-  return [
-    'det',
-    'poss',
-    'num',
-    'pron',
-    'noun',
-    'name',
-    'propn',
-    'adj',
-    'indef',
-  ].some((p) => has(token, p));
+  return (
+    [
+      'det',
+      'poss',
+      'num',
+      'pron',
+      'noun',
+      'name',
+      'propn',
+      'adj',
+      'indef',
+    ].some((p) => has(token, p)) ||
+    Boolean(gerundReading(token) || participleReading(token))
+  );
 }
 
 /**
@@ -129,11 +71,40 @@ function startsNP(token) {
  * @returns {object|null}
  */
 export function parseNP(c, options = {}) {
+  options = { ...c.grammar, ...options };
   const start = c.i;
+  if (!options.quantityInner) {
+    const quantity = parseQuantity(c, options, parseNP);
+    if (quantity) {
+      return quantity;
+    }
+  }
   const np = { type: 'np', adjs: [], number: null, def: null };
   let t = c.peek;
   if (!t) {
     return null;
+  }
+  if (gerundReading(t) && !options.nominal) {
+    const r = gerundReading(c.next());
+    const tail = parseTail(c, 'event', {
+      ...options,
+      nonfinite: true,
+      takes: options.takesOf?.(r) || [],
+      infinitive: options.infinitiveOf?.(r),
+    });
+    return attachOf(
+      c,
+      {
+        type: 'np',
+        number: 'sg',
+        action: { verb: head(t, r), ...tail },
+        nominalization:
+          has(t, 'noun') && !tail.objects.length && !tail.mods.length
+            ? { type: 'np', head: head(t, reading(t, 'noun')), number: 'sg' }
+            : null,
+      },
+      options
+    );
   }
   if (has(t, 'pron') && !(t.lower === 'her' && nounAhead(c, 1))) {
     const r = reading(t, 'pron');
@@ -148,7 +119,8 @@ export function parseNP(c, options = {}) {
     np.head = head(t, r);
     np.number = 'sg';
     np.indefinite = true;
-    return np;
+    np.number = r.features.number || 'sg';
+    return attachOf(c, np, options);
   }
   if (
     has(t, 'det') &&
@@ -173,19 +145,48 @@ export function parseNP(c, options = {}) {
     np.def = 'def';
     c.next();
   }
-  if (has(c.peek, 'num') && !has(c.peek, 'det')) {
+  if (
+    c.peek?.kind === 'quantity' &&
+    /\p{Sc}/u.test(c.peek.text) &&
+    nounAhead(c, 1)
+  ) {
+    np.amount = c.next().text;
+  } else if (has(c.peek, 'num') && !has(c.peek, 'det')) {
     const r = reading(c.peek, 'num');
     np.quantity = r.features.value;
+    np.quantityText = c.peek.text;
     c.next();
+  } else if (
+    c.peek?.kind === 'quantity' &&
+    !/[\p{Sc}%]/u.test(c.peek.text) &&
+    nounAhead(c, 1)
+  ) {
+    // "~190 markets", "50K plays", "1-2 students": a count before a noun
+    const n = Number(/\d+(?:\.\d+)?/.exec(c.peek.text.replace(/,/g, ''))[0]);
+    const scale = /k/i.test(c.peek.text)
+      ? 1000
+      : /m/i.test(c.peek.text)
+        ? 1e6
+        : 1;
+    np.quantity = /[–-]/.test(c.peek.text) ? 5 : n * scale;
+    np.quantityText = c.next().text;
   }
   const adjectives = [];
   while (
     c.peek &&
-    (has(c.peek, 'adj') ||
+    ((quantityDegree(c.peek) && has(c.at(1), 'adj')) ||
+      has(c.peek, 'adj') ||
+      (participleReading(c.peek) && nounAhead(c, 1)) ||
       (has(c.peek, 'adv') &&
         reading(c.peek, 'adv').concepts.some(isDegree) &&
         has(c.at(1), 'adj')))
   ) {
+    const degree = quantityDegree(c.peek);
+    if (degree && has(c.at(1), 'adj')) {
+      c.next();
+      adjectives.push({ comparison: degree });
+      continue;
+    }
     const t2 = c.peek;
     if (has(t2, 'adv') && !has(t2, 'adj')) {
       c.next();
@@ -203,14 +204,23 @@ export function parseNP(c, options = {}) {
       break;
     }
     c.next();
-    const r = reading(t2, 'adj');
+    const r = participleReading(t2) || reading(t2, 'adj');
     const last = adjectives[adjectives.length - 1];
     const a = head(t2, r);
+    if (r.pos === 'verb') {
+      a.participle = 'past-passive';
+    }
+    if (last?.comparison) {
+      a.comparison = last.comparison;
+      adjectives.pop();
+    }
     if (last?.degree && !last.lemma) {
       a.degree = last.degree;
       adjectives.pop();
     }
-    if (r.features.degree) {
+    if (r.features.degree === 'superlative') {
+      a.superlative = true;
+    } else if (r.features.degree) {
       a.comparative = true;
     }
     adjectives.push(a);
@@ -231,20 +241,38 @@ export function parseNP(c, options = {}) {
     }
     if (np.quantity !== undefined && !np.det && !np.possessor) {
       np.numeral = true;
-      return np;
+      return attachOf(c, np, options);
     }
     c.i = start;
     return null;
   }
   // compound nouns: "bank account" → modifier + head
   const nouns = [];
+  let afterAdjective = false;
   while (
     c.peek &&
-    (has(c.peek, 'noun') || has(c.peek, 'name') || has(c.peek, 'propn'))
+    (has(c.peek, 'noun') || has(c.peek, 'name') || has(c.peek, 'propn')) &&
+    // "Month 3-6": a quantity after a noun names it, it is no compound
+    !(nouns.length && c.peek.kind === 'quantity') &&
+    !(options.stopAt !== undefined && c.i >= options.stopAt)
   ) {
     const t3 = c.peek;
+    // "payment links": a bare singular noun is no subject, so a following
+    // plural noun continues the compound
+    const bareCompound =
+      nouns.length === 1 &&
+      !np.def &&
+      !np.possessor &&
+      np.quantity === undefined &&
+      nouns[0].r.pos === 'noun' &&
+      nouns[0].r.features.number !== 'pl' &&
+      t3.readings.some((x) => x.pos === 'noun' && x.features.number === 'pl');
     if (
       nouns.length &&
+      !options.fragment &&
+      !afterAdjective &&
+      !bareCompound &&
+      !baseAfterSingular(t3, nouns[nouns.length - 1].r) &&
       has(t3, 'verb') &&
       !has(c.at(1), 'noun') &&
       nouns.length >= 1 &&
@@ -253,13 +281,44 @@ export function parseNP(c, options = {}) {
       break;
     }
     c.next();
+    afterAdjective = false;
     const r =
       reading(t3, 'name') || reading(t3, 'noun') || reading(t3, 'propn');
-    nouns.push({ t: t3, r });
+    const previous = nouns[nouns.length - 1];
+    if (
+      r.pos === 'propn' &&
+      previous?.r.pos === 'propn' &&
+      !r.features.opaque &&
+      !previous.r.features.opaque
+    ) {
+      // "Mercari US", "Gray Swan Arena": one multi-word name
+      const text = `${previous.t.text} ${t3.text}`;
+      previous.t = { ...previous.t, text, lower: text.toLowerCase() };
+      previous.r = { ...r, lemma: text };
+    } else {
+      nouns.push({ t: t3, r });
+    }
     if (has(c.peek, 'poss-clitic') && possessiveClitic(c)) {
       break;
     }
-    if (r.pos !== 'noun' || r.features.number === 'pl') {
+    if (r.features.number === 'pl') {
+      break;
+    }
+    // "Stripe direct deposit": a name or noun modifying an adjective + noun
+    if (
+      has(c.peek, 'adj') &&
+      !has(c.peek, 'prep') &&
+      nounAhead(c, 1) &&
+      !(has(c.peek, 'verb') && verbLikely(c) && !baseAfterSingular(c.peek, r))
+    ) {
+      while (has(c.peek, 'adj') && nounAhead(c, 1)) {
+        const a = c.next();
+        adjectives.push(head(a, reading(a, 'adj')));
+      }
+      afterAdjective = true;
+      continue;
+    }
+    if (r.pos !== 'noun' && !has(c.peek, 'noun') && !has(c.peek, 'propn')) {
       break;
     }
   }
@@ -280,6 +339,18 @@ export function parseNP(c, options = {}) {
   if (nouns.length > 1) {
     np.modifiers = nouns.slice(0, -1).map((n) => head(n.t, n.r));
   }
+  // "Month 3-6", "Tier 2", "page 5": a number naming the item
+  if (
+    last.r.pos === 'noun' &&
+    /quantity|number/.test(c.peek?.kind) &&
+    np.quantity === undefined &&
+    (!c.at(1) ||
+      isPunct(c.at(1)) ||
+      has(c.at(1), 'prep') ||
+      has(c.at(1), 'coord'))
+  ) {
+    np.label = c.next().text;
+  }
   // possessive clitic: "John's book"
   if (has(c.peek, 'poss-clitic') && possessiveClitic(c)) {
     c.next();
@@ -287,10 +358,68 @@ export function parseNP(c, options = {}) {
     if (owned) {
       owned.possessor = np;
       owned.def = 'def';
-      return attachOf(c, owned);
+      return attachOf(c, owned, options);
     }
   }
-  return attachOf(c, np);
+  return attachOf(c, np, options);
+}
+
+/** Morphology, rather than a list of verbs, identifies nonfinite heads. */
+function gerundReading(token) {
+  return token?.readings.find(
+    (r) => r.pos === 'verb' && r.features.form === 'ing'
+  );
+}
+function participleReading(token) {
+  return token?.readings.find(
+    (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
+  );
+}
+
+/** Is a noun phrase a person (who can be asked or helped to do things)? */
+function personLike(np, lexicon) {
+  if (np.pronoun) {
+    return !(np.pronoun.person === 3 && np.pronoun.gender === 'n');
+  }
+  // a name is more often a company or a product than a person here
+  if (np.coord) {
+    return np.items?.some((x) => personLike(x, lexicon));
+  }
+  const concept = lexicon?.get(np.head?.concept || np.head?.candidates?.[0]);
+  return Boolean(
+    concept &&
+    (concept.classes?.some((c) => /person|human|animate/.test(c)) ||
+      concept.ru?.animate ||
+      /\b(person|people|someone|who|one that)\b/.test(concept.gloss || ''))
+  );
+}
+
+/** A reduced passive relative: "an account entered at withdrawal time". */
+function attachParticiple(c, np, options) {
+  const r = participleReading(c.peek);
+  if (!r || np.pronoun || np.participles) {
+    return;
+  }
+  // A subject's ordinary past-tense predicate must remain finite.
+  if (
+    options.clauseStart &&
+    c.peek.readings.some(
+      (x) => x.pos === 'verb' && /base|past|3sg/.test(x.features.form || '')
+    ) &&
+    !c.tokens
+      .slice(c.i + 1)
+      .some(
+        (t) =>
+          has(t, 'be') ||
+          has(t, 'modal') ||
+          t.readings.some((x) => x.pos === 'verb' && x.features.form === '3sg')
+      )
+  ) {
+    return;
+  }
+  const v = c.next();
+  const tail = parseTail(c, 'event', { ...options, nonfinite: true });
+  np.participles = [{ verb: head(v, r), ...tail }];
 }
 
 function isDegree(id) {
@@ -300,17 +429,35 @@ function isDegree(id) {
 /** Does a noun follow within the next `k` tokens (adjectives skipped)? */
 function nounAhead(c, k) {
   let j = k;
-  while (has(c.at(j), 'adj') || has(c.at(j), 'num')) {
+  while (
+    has(c.at(j), 'adj') ||
+    has(c.at(j), 'num') ||
+    participleReading(c.at(j))
+  ) {
     j += 1;
   }
   const t = c.at(j);
   return Boolean(t && (has(t, 'noun') || has(t, 'name') || has(t, 'propn')));
 }
 
+/** "Stripe direct …": a bare base form cannot be the verb of a singular noun. */
+function baseAfterSingular(t, r) {
+  return (
+    r.features.number !== 'pl' &&
+    t.readings.every((x) => x.pos !== 'verb' || x.features.form === 'base')
+  );
+}
+
 /** Is the noun-or-verb token at the cursor more likely a finite verb? */
 function verbLikely(c) {
   const after = c.at(1);
-  return !after || startsNP(after) || isPunct(after) || has(after, 'prep');
+  return (
+    !after ||
+    startsNP(after) ||
+    isPunct(after) ||
+    has(after, 'prep') ||
+    has(after, 'adv')
+  );
 }
 
 /** `'s` after a noun is possessive when a noun phrase follows. */
@@ -324,8 +471,43 @@ function possessiveClitic(c) {
   );
 }
 
+const RELATIVES = new Set(['who', 'which', 'that']);
+let relativeParser = null;
+
+/** The clause parser registers how to read "who/which/that …". */
+export function setRelativeParser(fn) {
+  relativeParser = fn;
+}
+
+let parentheticalParser = null;
+
+/** The clause parser registers how to read the inside of "( … )". */
+export function setParentheticalParser(fn) {
+  parentheticalParser = fn;
+}
+
+/** "Upwork (pre-May contracts 10%)": the parenthesis belongs to the noun. */
+function attachParenthesis(c, np) {
+  if (!parentheticalParser || c.peek?.text !== '(') {
+    return;
+  }
+  let depth = 0;
+  for (let j = c.i; j < c.tokens.length; j += 1) {
+    depth += c.tokens[j].text === '(' ? 1 : c.tokens[j].text === ')' ? -1 : 0;
+    if (depth === 0) {
+      const inside = c.tokens.slice(c.i + 1, j);
+      const parsed = inside.length ? parentheticalParser(inside) : null;
+      if (parsed && !parsed.leftover.length) {
+        np.parenthetical = parsed.list;
+        c.i = j + 1;
+      }
+      return;
+    }
+  }
+}
+
 /** "the price of the book" → genitive modifier. */
-function attachOf(c, np) {
+function attachOf(c, np, options = {}) {
   while (c.peek?.lower === 'of' && startsNP(c.at(1))) {
     const save = c.i;
     c.next();
@@ -335,8 +517,41 @@ function attachOf(c, np) {
       break;
     }
     np.of = of;
+    if (np.quantity !== undefined) {
+      np.partitive = true;
+    }
   }
-  if (c.peek?.lower === 'and' && startsNP(c.at(1)) && !clauseAhead(c, 1)) {
+  attachParticiple(c, np, options);
+  attachParenthesis(c, np);
+  // "people who try this", "programmes that tolerate links"
+  if (
+    relativeParser &&
+    options.relative !== false &&
+    (RELATIVES.has(c.peek?.lower) || startsNP(c.peek)) &&
+    !np.pronoun &&
+    !np.relative
+  ) {
+    const save = c.i;
+    const relative = relativeParser(c, np);
+    if (relative) {
+      np.relative = relative;
+    } else {
+      c.i = save;
+    }
+  }
+  if (options.item) {
+    return np;
+  }
+  const list = commaList(c, np);
+  if (list) {
+    return list;
+  }
+  if (
+    c.peek?.lower === 'and' &&
+    startsNP(c.at(1)) &&
+    !clauseAhead(c, 1) &&
+    !parallelVerb(c, 1)
+  ) {
     const save = c.i;
     c.next();
     const other = parseNP(c);
@@ -351,6 +566,82 @@ function attachOf(c, np) {
     c.i = save;
   }
   return np;
+}
+
+/**
+ * "Kenya, Nigeria and Ghana", "A, B, or C": a comma list is one
+ * coordination only when it ends in "and"/"or" + a noun phrase.
+ */
+function commaList(c, first) {
+  if (c.peek?.text !== ',' || !startsNP(c.at(1)) || clauseAhead(c, 1)) {
+    return null;
+  }
+  const save = c.i;
+  const items = [first];
+  while (c.peek?.text === ',') {
+    c.next();
+    const word = c.peek?.lower;
+    if ((word === 'and' || word === 'or') && startsNP(c.at(1))) {
+      break;
+    }
+    if (!startsNP(c.peek) || clauseAhead(c, 0)) {
+      c.i = save;
+      return null;
+    }
+    const item = parseItem(c);
+    if (!item) {
+      c.i = save;
+      return null;
+    }
+    items.push(item);
+  }
+  const word = c.peek?.lower;
+  if ((word !== 'and' && word !== 'or') || !startsNP(c.at(1))) {
+    c.i = save;
+    return null;
+  }
+  c.next();
+  const last = parseItem(c);
+  if (!last) {
+    c.i = save;
+    return null;
+  }
+  items.push(last);
+  return {
+    type: 'np',
+    coord: word === 'or' ? 'conj.or' : 'conj.and',
+    items,
+    number: word === 'or' ? first.number : 'pl',
+  };
+}
+
+/** One item of a list: a noun phrase without its own coordination. */
+function parseItem(c) {
+  const np = parseNP(c, { item: true });
+  return np?.coord ? null : np;
+}
+
+/**
+ * After "and", a word in the same finite form as the clause's verb that
+ * takes a complement is a second predicate ("lives … and works for").
+ */
+function parallelVerb(c, k) {
+  const r = reading(c.at(k), 'verb');
+  const form = r?.features.form;
+  if (
+    !c.finite ||
+    !form ||
+    !(
+      form === c.finite ||
+      form.split('|').some((f) => c.finite.split('|').includes(f))
+    )
+  ) {
+    return false;
+  }
+  const after = c.at(k + 1);
+  return ['prep', 'det', 'pron', 'poss', 'to', 'adv', 'num'].some((p) =>
+    has(after, p)
+  );
 }
 
 /** Is a finite verb coming after an NP at offset k (so "and" joins clauses)? */
@@ -373,243 +664,7 @@ function clauseAhead(c, k) {
   );
 }
 
-/**
- * Parse the verb group at the cursor: auxiliaries, negation, main verb.
- * @returns {object|null} `{tense, aspect, polarity, modal, verb, passive, frame}`
- */
-export function parseVerbGroup(c, subject) {
-  const vg = {
-    tense: 'present',
-    aspect: 'simple',
-    polarity: 'positive',
-    modal: null,
-    verb: null,
-    adverbs: [],
-  };
-  let expect = 'finite';
-  const skipAdverbs = () => {
-    while (
-      c.peek &&
-      has(c.peek, 'adv') &&
-      !has(c.peek, 'verb') &&
-      !has(c.peek, 'adj') &&
-      !has(c.peek, 'noun') &&
-      !(
-        reading(c.peek, 'adv').concepts.some(isDegree) &&
-        (has(c.at(1), 'adj') || has(c.at(1), 'adv'))
-      )
-    ) {
-      vg.adverbs.push(head(c.peek, reading(c.peek, 'adv')));
-      c.next();
-    }
-    while (has(c.peek, 'neg')) {
-      vg.polarity = 'negative';
-      if (reading(c.peek, 'neg').lemma === 'never') {
-        vg.adverbs.push({
-          token: c.peek.index,
-          text: c.peek.text,
-          lemma: 'never',
-          pos: 'adv',
-          candidates: ['never'],
-          concept: 'never',
-        });
-      }
-      c.next();
-    }
-  };
-  skipAdverbs();
-  for (let guard = 0; guard < 6 && c.peek; guard += 1) {
-    const t = c.peek;
-    if (expect === 'finite' && has(t, 'modal')) {
-      const r = reading(t, 'modal');
-      vg.modal = r.features.modal;
-      vg.tense = r.features.tense;
-      c.next();
-      expect = 'base';
-      skipAdverbs();
-      continue;
-    }
-    if (
-      has(t, 'do') &&
-      expect === 'finite' &&
-      (has(c.at(1), 'neg') ||
-        has(c.at(1), 'verb') ||
-        subject === 'question' ||
-        has(c.at(1), 'pron'))
-    ) {
-      const r = reading(t, 'do');
-      if (
-        has(c.at(1), 'neg') ||
-        subject === 'question' ||
-        (has(c.at(1), 'verb') && !startsNP(c.at(1)))
-      ) {
-        vg.tense = r.features.tense;
-        vg.agree = r.features;
-        c.next();
-        expect = 'base';
-        skipAdverbs();
-        continue;
-      }
-    }
-    if (has(t, 'have') && (expect === 'finite' || expect === 'base')) {
-      const r = reading(t, 'have');
-      const after = nextNonAdverb(c, 1);
-      if (
-        has(after, 'verb') &&
-        reading(after, 'verb').features.form?.includes('pp') &&
-        !(
-          has(after, 'noun') &&
-          !reading(after, 'verb').features.form.includes('past')
-        )
-      ) {
-        if (expect === 'finite') {
-          vg.tense = r.features.tense || vg.tense;
-          vg.agree = r.features;
-        }
-        vg.aspect = 'perfect';
-        c.next();
-        expect = 'pp';
-        skipAdverbs();
-        continue;
-      }
-      if (has(after, 'be') && reading(after, 'be').features.form === 'pp') {
-        if (expect === 'finite') {
-          vg.tense = r.features.tense || vg.tense;
-        }
-        vg.aspect = 'perfect';
-        c.next();
-        expect = 'pp';
-        skipAdverbs();
-        continue;
-      }
-      if (c.at(1)?.lower === 'to' && has(c.at(2), 'verb')) {
-        if (expect === 'finite') {
-          vg.tense = r.features.tense || vg.tense;
-          vg.agree = r.features;
-        }
-        vg.modal = 'modal.must';
-        c.next();
-        c.next();
-        expect = 'base';
-        continue;
-      }
-      if (expect === 'finite') {
-        vg.tense = r.features.tense || vg.tense;
-        vg.agree = r.features;
-      }
-      c.next();
-      vg.verb = {
-        token: t.index,
-        text: t.text,
-        lemma: 'have',
-        pos: 'verb',
-        candidates: ['have'],
-        concept: 'have',
-      };
-      vg.frame = 'possession';
-      return vg;
-    }
-    if (has(t, 'be')) {
-      const r = reading(t, 'be');
-      if (expect === 'finite') {
-        vg.tense = r.features.tense || vg.tense;
-        vg.agree = r.features;
-      }
-      c.next();
-      skipAdverbs();
-      const after = c.peek;
-      if (
-        has(after, 'verb') &&
-        reading(after, 'verb').features.form === 'ing'
-      ) {
-        vg.aspect =
-          vg.aspect === 'perfect' ? 'perfect-progressive' : 'progressive';
-        expect = 'ing';
-        continue;
-      }
-      if (
-        after?.lower === 'going' &&
-        c.at(1)?.lower === 'to' &&
-        has(c.at(2), 'verb')
-      ) {
-        vg.tense = 'future';
-        c.next();
-        c.next();
-        expect = 'base';
-        continue;
-      }
-      if (
-        has(after, 'verb') &&
-        /pp/.test(reading(after, 'verb').features.form || '') &&
-        !has(after, 'adj')
-      ) {
-        vg.passive = true;
-        const v = reading(after, 'verb');
-        c.next();
-        vg.verb = head(after, v);
-        vg.frame = 'event';
-        return vg;
-      }
-      vg.verb = {
-        token: t.index,
-        text: t.text,
-        lemma: 'be',
-        pos: 'verb',
-        candidates: ['be'],
-        concept: 'be',
-      };
-      vg.frame = 'copula';
-      return vg;
-    }
-    if (has(t, 'verb')) {
-      const r = reading(t, 'verb');
-      const form = r.features.form;
-      if (
-        expect === 'finite' &&
-        form === 'base' &&
-        subject === 'third-singular'
-      ) {
-        // "the bank closes" handled by 3sg reading; a bare base form after a
-        // singular subject is still accepted (headlines, subjunctive)
-      }
-      if (expect === 'finite') {
-        if (/past/.test(form)) {
-          vg.tense = 'past';
-        } else if (form === 'ing' || form === 'pp') {
-          return null;
-        } else if (
-          form === 'base' &&
-          t.readings.some(
-            (x) => x.pos === 'verb' && x.features.form === 'past'
-          ) &&
-          subject !== 'third'
-        ) {
-          // "I put", "we read": English does not say whether this is now or before
-          vg.tense = 'present|past';
-        }
-      }
-      c.next();
-      vg.verb = head(t, r);
-      vg.frame = 'event';
-      return vg;
-    }
-    break;
-  }
-  return vg.verb ? vg : null;
-}
-
 const ADVERB_NOUNS = new Set(['home']);
-
-function nextNonAdverb(c, k) {
-  let j = k;
-  while (
-    (has(c.at(j), 'adv') && !has(c.at(j), 'verb')) ||
-    has(c.at(j), 'neg')
-  ) {
-    j += 1;
-  }
-  return c.at(j);
-}
 
 /**
  * Parse adverbials and objects after the verb.
@@ -620,10 +675,65 @@ export function parseTail(c, frame, options = {}) {
   const out = { objects: [], mods: [], complement: null, xcomp: null };
   for (let guard = 0; guard < 20 && c.peek && !isPunct(c.peek); guard += 1) {
     const t = c.peek;
+    if (
+      options.nonfinite &&
+      (has(t, 'be') ||
+        has(t, 'modal') ||
+        (has(t, 'verb') &&
+          !has(t, 'noun') &&
+          !gerundReading(t) &&
+          !participleReading(t)))
+    ) {
+      break;
+    }
     if (has(t, 'coord') || (has(t, 'subord') && !has(t, 'prep'))) {
       break;
     }
+    // "before you publish it": a clause link, not a preposition
+    if (has(t, 'subord') && clauseAhead(c, 1)) {
+      break;
+    }
     if (has(t, 'wh') && out.objects.length + out.mods.length > 0) {
+      break;
+    }
+    const degree = quantityDegree(t);
+    if (degree) {
+      const next = c.at(1);
+      const pos =
+        frame === 'copula' && !out.complement && has(next, 'adj')
+          ? 'adj'
+          : has(next, 'adv') && !has(next, 'noun')
+            ? 'adv'
+            : null;
+      if (pos) {
+        c.next();
+        c.next();
+        const item = { ...head(next, reading(next, pos)), comparison: degree };
+        if (pos === 'adj') {
+          out.complement = { type: 'adj', ...item };
+        } else {
+          out.mods.push({ type: 'adv', ...item });
+        }
+        continue;
+      }
+      const np = parseQuantity(c, options, parseNP);
+      if (np) {
+        out.objects.push(np);
+        continue;
+      }
+      c.next();
+      out.mods.push({ type: 'quantity', comparison: degree });
+      continue;
+    }
+    if (t.lower === 'than') {
+      const save = c.i;
+      c.next();
+      const np = parseNP(c);
+      if (np) {
+        out.mods.push({ type: 'comparison', np });
+        continue;
+      }
+      c.i = save;
       break;
     }
     if (frame === 'copula' && !out.complement) {
@@ -632,7 +742,8 @@ export function parseTail(c, frame, options = {}) {
         out.complement = {
           type: 'adj',
           ...head(t, reading(t, 'adj')),
-          comparative: Boolean(reading(t, 'adj').features.degree),
+          comparative: reading(t, 'adj').features.degree === 'comparative',
+          superlative: reading(t, 'adj').features.degree === 'superlative',
         };
         continue;
       }
@@ -652,7 +763,20 @@ export function parseTail(c, frame, options = {}) {
       t.lower === 'to' &&
       has(c.at(1), 'verb') &&
       reading(c.at(1), 'verb').features.form === 'base';
-    if (toVerb && (options.infinitive || !has(c.at(1), 'noun')) && !out.xcomp) {
+    // "to wait", "to track sales": a word that is mostly a verb, or one
+    // followed by its own object, is an infinitive after a verb's object
+    const mostlyVerb =
+      toVerb &&
+      has(c.at(1), 'noun') &&
+      out.objects.length > 0 &&
+      (reading(c.at(1), 'verb').concepts.length >=
+        reading(c.at(1), 'noun').concepts.length ||
+        startsNP(c.at(2)));
+    if (
+      toVerb &&
+      (options.infinitive || !has(c.at(1), 'noun') || mostlyVerb) &&
+      !out.xcomp
+    ) {
       c.next();
       const v = c.next();
       const r = reading(v, 'verb');
@@ -662,6 +786,21 @@ export function parseTail(c, frame, options = {}) {
         infinitive: options.infinitiveOf?.(r),
       });
       out.xcomp = { verb: head(v, r), ...sub };
+      // "build ratings to get offers": after a thing, "to" states a goal;
+      // after a person ("ask them to wait") it is what the person does
+      const object = out.objects[out.objects.length - 1];
+      if (object && !personLike(object, options.lexicon)) {
+        out.xcomp.purpose = true;
+      }
+      continue;
+    }
+    const bounded = parseQuantity(c, options, parseNP);
+    if (bounded) {
+      if (frame === 'copula' && !out.complement) {
+        out.complement = { type: 'np', np: bounded };
+      } else {
+        out.objects.push(bounded);
+      }
       continue;
     }
     if (has(t, 'prep') && (!c.at(1) || isPunct(c.at(1)))) {
@@ -722,9 +861,19 @@ export function parseTail(c, frame, options = {}) {
       ADVERB_NOUNS.has(t.lower) &&
       !has(c.at(1), 'noun') &&
       c.at(1)?.lower !== "'s";
+    // "ship orders fast", "track sales weekly": a bare word that ends the
+    // clause is the adverb, not an object noun
+    const next = c.at(1);
+    const finalAdverb =
+      has(t, 'adv') &&
+      (!next ||
+        isPunct(next) ||
+        has(next, 'coord') ||
+        has(next, 'subord') ||
+        (has(next, 'prep') && !has(next, 'noun')));
     if (
       has(t, 'adv') &&
-      (!has(t, 'noun') || bareAdverb) &&
+      (!has(t, 'noun') || bareAdverb || finalAdverb) &&
       !(has(t, 'adj') && frame === 'copula')
     ) {
       c.next();
@@ -778,4 +927,4 @@ function isTimeNP(np) {
   );
 }
 
-export { Cursor, has, reading, isPunct, startsNP, head };
+export { Cursor, has, reading, isPunct, startsNP, head, mergeMultiwords };

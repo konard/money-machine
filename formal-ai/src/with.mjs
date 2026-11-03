@@ -118,7 +118,7 @@ export function clientCommand(
  * Run a client against a fresh local server.
  * @param {string} client
  * @param {string} prompt
- * @param {{cwd?: string, model?: string, log?: string, port?: string|number, options?: object, 'dry-run'?: boolean}} args
+ * @param {{cwd?: string, model?: string, log?: string, port?: string|number, offline?: boolean, options?: object, 'dry-run'?: boolean}} args
  * @returns {Promise<number>} exit code
  */
 export async function runWith(client, prompt, args = {}) {
@@ -130,7 +130,10 @@ export async function runWith(client, prompt, args = {}) {
   const cwd = resolve(args.cwd || process.cwd());
   const server = await startServer({
     port: Number(args.port || 0),
-    options: args.options || {},
+    options: {
+      ...args.options,
+      offline: Boolean(args.offline || args.options?.offline),
+    },
     log: args.log,
   });
   const home = mkdtempSync(join(tmpdir(), 'formal-ai-with-'));

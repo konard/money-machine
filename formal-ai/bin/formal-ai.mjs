@@ -10,6 +10,7 @@
  *   formal-ai with claude|codex|agent "…"         run a coding agent on it
  *   formal-ai learn <english-noun>                fetch a noun from Wikidata
  *   formal-ai ground                              verify concept groundings
+ *   --offline                                    skip translation lookups
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -17,6 +18,7 @@ import { translateDocument, splitSentences } from '../src/document.mjs';
 import { formalize, toLino } from '../src/formalize.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
 import { DocumentMemory } from '../src/senses.mjs';
+import { resolveForTranslation } from '../src/translate.mjs';
 
 function parseArgs(argv) {
   const args = { _: [] };
@@ -26,6 +28,8 @@ function parseArgs(argv) {
       const [key, inline] = a.slice(2).split('=');
       if (inline !== undefined) {
         args[key] = inline;
+      } else if (key === 'offline') {
+        args[key] = true;
       } else if (argv[i + 1] && !argv[i + 1].startsWith('--')) {
         args[key] = argv[i + 1];
         i += 1;
@@ -54,6 +58,7 @@ async function readInput(args) {
 }
 
 const options = (args) => ({
+  offline: Boolean(args.offline),
   you: args.you === 'ty' ? 'ty' : 'vy',
   speakerGender: args['speaker-gender'] === 'f' ? 'f' : 'm',
   addresseeGender: args['addressee-gender'] === 'f' ? 'f' : 'm',
@@ -71,7 +76,8 @@ async function main() {
   switch (command) {
     case 'translate': {
       const text = await readInput(args);
-      const result = translateDocument(text, options(args));
+      await resolveForTranslation(text, options(args));
+      const result = translateDocument(text, { ...options(args), topic: text });
       if (args.json) {
         process.stdout.write(
           `${JSON.stringify({ text: result.text, stats: result.stats, sentences: result.sentences.map(summary) }, null, 2)}\n`
@@ -92,6 +98,7 @@ async function main() {
     case 'formalize':
     case 'explain': {
       const text = await readInput(args);
+      await resolveForTranslation(text, options(args));
       const lexicon = loadLexicon();
       const memory = new DocumentMemory();
       for (const sentence of splitSentences(text.replace(/\s+/g, ' '))) {

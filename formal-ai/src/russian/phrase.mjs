@@ -4,6 +4,8 @@
  * with the head noun, case government, animacy, locative-2, euphony.
  */
 
+import { degreeForm, quantityWord } from './degree.mjs';
+import { bindRelative } from './relative.mjs';
 import {
   declineNoun,
   declineAdjective,
@@ -17,24 +19,66 @@ import {
   POSSESSIVE_3,
   DEMONSTRATIVE,
   PRONOUN_WORDS,
+  QUESTION_ADVERBS,
   RELATIONS,
   euphony,
   cardinal,
   QUANTIFIERS,
-  transliterate,
 } from './words.mjs';
 
 const CASE_INDEX = Object.fromEntries(CASES.map((c, i) => [c, i]));
 const GENDER = { masculine: 'm', feminine: 'f', neuter: 'n' };
 const TIME_CLASSES = new Set(['time', 'season']);
 
+const SCALE = {
+  k: 'тыс.',
+  K: 'тыс.',
+  m: 'млн',
+  M: 'млн',
+  b: 'млрд',
+  B: 'млрд',
+};
+
+/**
+ * Russian notation of a quantity: "$1k–$20k" → "$1 тыс.–$20 тыс.",
+ * "2,000.5" → "2 000,5", "~$50" → "≈$50".
+ */
+export function localizeQuantity(text) {
+  return text
+    .replace(/^~/, '≈')
+    .replace(/([\dkKmMbB%])-(?=[\p{Sc}~]?\d)/gu, '$1–')
+    .replace(/\d+(?:,\d{2,3})+(?:\.\d+)?|\d+\.\d+/g, (n) =>
+      n
+        .replace(/,/g, '')
+        .split('.')
+        .map((part, i) =>
+          i ? part : part.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')
+        )
+        .join(',')
+    )
+    .replace(/(\d)([kKmMbB])(?![a-z])/g, (_, d, s) => `${d}\u00a0${SCALE[s]}`);
+}
+
 /** Grammatical features of an entity for agreement. */
 export function features(e, ctx) {
   if (!e) {
     return { person: 3, number: 'sg', gender: 'n' };
   }
+  if (e.action) {
+    return e.nominalization
+      ? features(e.nominalization, ctx)
+      : { person: 3, number: 'sg', gender: 'n' };
+  }
   if (e.coordination) {
     return { person: 3, number: 'pl', gender: 'pl' };
+  }
+  if (e.indefinite || e.concept === 'pro.everything') {
+    return { person: 3, number: 'sg', gender: 'n' };
+  }
+  if (e.relativePronoun) {
+    return e.antecedent
+      ? { ...features(e.antecedent, ctx), person: 3 }
+      : { person: 3, number: 'sg', gender: 'm' };
   }
   if (e.pronoun) {
     const key = pronounKey(e.pronoun, ctx);
@@ -122,13 +166,90 @@ export function renderEntity(e, kase, ctx) {
   if (!e) {
     return '';
   }
+  if (e.bound) {
+    const { bound, rangeFrom, ...rest } = e;
+    const upper = renderEntity(rest, 'gen', ctx);
+    if (bound === 'range') {
+      const lower = cardinal(
+        rangeFrom,
+        'gen',
+        nounEntry(rest, ctx)?.gender,
+        rest.digits
+      );
+      return `от ${lower} до ${upper}`;
+    }
+    return `${{ upper: 'до', lower: 'не менее', above: 'более', below: 'менее' }[bound]} ${upper}`;
+  }
+  if (e.amount) {
+    const { amount, ...rest } = e;
+    return `${localizeQuantity(amount)} ${renderEntity(rest, 'gen', ctx)}`;
+  }
+  if (e.quantifier) {
+    const { quantifier, ...rest } = e;
+    return `${quantityWord(quantifier)} ${renderEntity(rest, 'gen', ctx)}`;
+  }
+  if (e.partitive) {
+    const { of, partitive: _partitive, ...rest } = e;
+    return `${renderEntity(rest, kase, { ...ctx, numeralGender: nounEntry(of, ctx)?.gender })} из ${renderEntity(of, 'gen', ctx)}`;
+  }
+  if (e.action && ctx.renderAction) {
+    return ctx.renderAction(e, kase, ctx);
+  }
+  if (e.participles && ctx.renderParticiple) {
+    const { participles, ...rest } = e;
+    const agree = { ...features(e, ctx), case: kase };
+    return `${renderEntity(rest, kase, ctx)}, ${participles.map((p) => ctx.renderParticiple(p, agree, ctx)).join(', ')},`;
+  }
+  if (e.relativePronoun) {
+    if (ctx.suppressRelative) {
+      return '';
+    }
+    if (e.antecedent?.concept === 'pro.everything') {
+      return PRONOUN_WORDS['q.what'][CASE_INDEX[kase]];
+    }
+    // который agrees with its noun in gender and number, takes its own case
+    const f = features(e, ctx);
+    return declineAdjective('который', {
+      case: kase,
+      number: f.number,
+      gender: f.gender,
+      animate: f.animate,
+    });
+  }
+  if (e.parenthetical && ctx.renderStatement) {
+    const { parenthetical, ...rest } = e;
+    const inside = parenthetical
+      .map((st) =>
+        st.type === 'fragment'
+          ? renderEntity(st.entity, 'nom', { ...ctx, afterPrep: false })
+          : ctx.renderStatement(st, { ...ctx, afterPrep: false })
+      )
+      .join(', ');
+    return `${renderEntity(rest, kase, ctx)} (${inside})`;
+  }
+  if (e.relative && ctx.renderStatement) {
+    const { relative, ...antecedent } = e;
+    const head = renderEntity(antecedent, kase, ctx);
+    const bound = bindRelative(relative, antecedent);
+    const gaps = (bound.objects || []).filter((o) => o.relativePronoun);
+    // Russian puts the relative phrase first, including governed prepositions.
+    const text = ctx.renderStatement(bound, {
+      ...ctx,
+      afterPrep: false,
+      relativeGaps: gaps,
+    });
+    // the closing comma is dropped before sentence punctuation later
+    return `${head}, ${text},`;
+  }
   if (e.coordination) {
     const items = e.items.map((item, i) =>
       renderEntity(item, kase, { ...ctx, afterPrep: ctx.afterPrep && i === 0 })
     );
-    return e.coordination === 'conj.or'
-      ? items.join(' или ')
-      : items.join(' и ');
+    // "A, B и C": commas between all but the last two
+    const word = e.coordination === 'conj.or' ? 'или' : 'и';
+    return items.length > 2
+      ? `${items.slice(0, -1).join(', ')} ${word} ${items.at(-1)}`
+      : items.join(` ${word} `);
   }
   if (e.pronoun) {
     const key = pronounKey(e.pronoun, ctx);
@@ -144,7 +265,12 @@ export function renderEntity(e, kase, ctx) {
     return PRONOUN_WORDS.this[CASE_INDEX[kase]];
   }
   if (e.question && !e.concept) {
-    return PRONOUN_WORDS[e.question][CASE_INDEX[kase]];
+    // "when"/"how" used as a noun phrase: the adverb does not decline
+    return (
+      PRONOUN_WORDS[e.question]?.[CASE_INDEX[kase]] ??
+      QUESTION_ADVERBS[e.question]?.at ??
+      PRONOUN_WORDS['q.what'][CASE_INDEX[kase]]
+    );
   }
   if (e.concept?.startsWith('pro.')) {
     return PRONOUN_WORDS[e.concept][CASE_INDEX[kase]];
@@ -161,13 +287,21 @@ export function renderEntity(e, kase, ctx) {
           ' '
         );
       }
-      ctx.notes.add(
-        `unknown name "${e.name}" transliterated as ${transliterate(e.name)}`
-      );
-      return transliterate(e.name);
+      if (/^~?\p{Sc}?\d/u.test(e.name)) {
+        return localizeQuantity(e.name);
+      }
+      // a name keeps its Russian label from Wikidata; without one it stays
+      // in Latin script, as brands do in Russian text (PayPal, Shopify)
+      const label = ctx.lexicon.nameLabel?.(e.name);
+      if (label) {
+        ctx.notes.add(`name "${e.name}" → ${label} (Wikidata label)`);
+        const entry = ctx.lexicon.nameEntry?.(e.name);
+        return entry ? declineNoun(entry, kase, 'sg') : label;
+      }
+      return e.name;
     }
     if (e.numeral) {
-      return String(e.quantity);
+      return cardinal(e.quantity, kase, ctx.numeralGender || 'm', e.digits);
     }
     const label = e.concept || '?';
     ctx.notes.add(`no Russian noun for concept ${label}`);
@@ -190,8 +324,13 @@ function renderNoun(e, entry, kase, ctx) {
       const gov = numeralGovernment(e.quantity);
       nounCase = gov.case;
       number = gov.number;
-      adjNumber = 'pl';
-      adjCase = gov.number === 'sg' && entry.gender === 'f' ? 'nom' : 'gen';
+      adjNumber = gov.case === 'nom' ? 'sg' : 'pl';
+      adjCase =
+        gov.case === 'nom'
+          ? kase
+          : gov.number === 'sg' && entry.gender === 'f'
+            ? 'nom'
+            : 'gen';
       numeral = cardinal(
         e.quantity,
         kase === 'acc' ? 'acc' : 'nom',
@@ -199,8 +338,8 @@ function renderNoun(e, entry, kase, ctx) {
         e.digits
       );
     } else {
-      number = 'pl';
-      adjNumber = 'pl';
+      number = e.quantity % 10 === 1 && e.quantity % 100 !== 11 ? 'sg' : 'pl';
+      adjNumber = number;
       numeral = cardinal(
         e.quantity,
         kase === 'acc' ? 'gen' : kase,
@@ -214,6 +353,10 @@ function renderNoun(e, entry, kase, ctx) {
     }
   } else if (e.quantity === 1) {
     numeral = cardinal(1, kase, entry.gender, e.digits);
+  }
+  // "~190 markets", "50K plays": the amount as written, Russian style
+  if (e.quantityText && numeral) {
+    numeral = localizeQuantity(e.quantityText);
   }
   const quantifier = QUANTIFIERS[e.determiner];
   let quantifierWord = '';
@@ -242,7 +385,12 @@ function renderNoun(e, entry, kase, ctx) {
   if (numeral) {
     words.push(numeral);
   }
+  const postproperties = [];
   for (const p of e.properties || []) {
+    if (p.participle && ctx.renderParticiple) {
+      words.push(ctx.renderParticiple(p, agree, ctx));
+      continue;
+    }
     if (p.degree) {
       const d = conceptOf(ctx, p.degree)?.ru;
       if (d) {
@@ -254,7 +402,21 @@ function renderNoun(e, entry, kase, ctx) {
       ctx.notes.add(`no Russian adjective for ${p.concept}`);
       continue;
     }
-    words.push(declineAdjective(adj.lemma, agree));
+    if (p.comparison || p.comparative) {
+      words.push(
+        degreeForm(adj, p.comparison || 'greater', {
+          ...agree,
+          attributive: true,
+        })
+      );
+      continue;
+    }
+    if (p.superlative) {
+      words.push(declineAdjective('самый', agree));
+    }
+    (adj.postpositive ? postproperties : words).push(
+      declineAdjective(adj.lemma, agree)
+    );
   }
   if (entry.adjective) {
     words.push(declineAdjective(entry.adjective, agree));
@@ -268,7 +430,10 @@ function renderNoun(e, entry, kase, ctx) {
   ) {
     head = entry.locative;
   }
-  words.push(head);
+  words.push(head, ...postproperties);
+  if (e.label) {
+    words.push(localizeQuantity(e.label));
+  }
   for (const m of e.modifiers || []) {
     words.push(
       renderEntity(
@@ -387,6 +552,9 @@ export function renderRelation(m, ctx) {
   const concept = conceptOf(ctx, e?.concept);
   const entry = nounEntry(e, ctx);
   const rel = m.relation;
+  if (rel === 'rel.by' && e?.action && ctx.renderAction) {
+    return `, ${ctx.renderAction(e, 'ins', { ...ctx, adverbialAction: true })}`;
+  }
   // at home / to home
   if (
     (e?.concept === 'home' || e?.concept === 'home.adv') &&
@@ -445,8 +613,19 @@ export function renderRelation(m, ctx) {
     return renderEntity(e, 'gen', ctx);
   }
   let variant = spec.place;
-  if (isPerson(e, ctx) && spec.person) {
+  const amount = /^~?\p{Sc}?\d/u.test(e.name || '') || (e.numeral && !concept);
+  if (amount && spec.amount) {
+    // "around $600" → около $600, "for $20" → за $20
+    variant = spec.amount;
+  } else if (isPerson(e, ctx) && spec.person) {
     variant = spec.person;
+  } else if (
+    spec.location &&
+    (concept?.classes.includes('place') ||
+      (!ctx.passive && e.definiteness === 'definite' && concept))
+  ) {
+    // "by the window": a definite thing next to an action is where
+    variant = spec.location;
   } else if (ctx.motion && spec.goal) {
     variant = spec.goal;
   }

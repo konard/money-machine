@@ -28,6 +28,7 @@ export const PRONOUNS = {
 
 /** Indefinite pronouns that head a noun phrase on their own. */
 export const INDEFINITES = {
+  others: 'pro.others',
   something: 'pro.something',
   anything: 'pro.anything',
   nothing: 'pro.nothing',
@@ -69,6 +70,7 @@ export const DETERMINERS = {
   each: { def: 'def', det: 'det.each', number: 'sg' },
   all: { def: 'def', det: 'det.all', number: 'pl' },
   many: { def: 'indef', det: 'det.many', number: 'pl' },
+  most: { def: 'indef', det: 'det.most', number: 'pl' },
   much: { def: 'indef', det: 'det.much', number: 'sg' },
   few: { def: 'indef', det: 'det.few', number: 'pl' },
   several: { def: 'indef', det: 'det.several', number: 'pl' },
@@ -151,19 +153,42 @@ export const PREPOSITIONS = {
   out_of: 'rel.out-of',
   in_front_of: 'rel.in-front-of',
   next_to: 'rel.next-to',
+  per: 'rel.per',
+  via: 'rel.through',
+  within: 'rel.within',
+  including: 'rel.including',
+  plus: 'rel.plus',
+  versus: 'rel.versus',
+  vs: 'rel.versus',
+  despite: 'rel.despite',
+  beyond: 'rel.beyond',
+  except: 'rel.except',
+  up_to: 'rel.until',
+  due_to: 'rel.because-of',
+  because_of: 'rel.because-of',
+  according_to: 'rel.according-to',
+  instead_of: 'rel.instead-of',
+  rather_than: 'rel.instead-of',
 };
 
 /** Multi-word prepositions, longest first. */
 export const COMPLEX_PREPOSITIONS = [
   ['in', 'front', 'of'],
+  ['according', 'to'],
+  ['because', 'of'],
+  ['instead', 'of'],
+  ['rather', 'than'],
   ['next', 'to'],
   ['out', 'of'],
+  ['up', 'to'],
+  ['due', 'to'],
 ];
 
 /** Clause-linking conjunctions. */
 export const SUBORDINATORS = {
   because: 'conj.because',
   if: 'conj.if',
+  whether: 'conj.whether',
   when: 'conj.when',
   while: 'conj.while',
   although: 'conj.although',
