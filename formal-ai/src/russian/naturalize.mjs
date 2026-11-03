@@ -547,7 +547,12 @@ export function renderModifiers(mods, ctx, entry) {
         after.push(renderEntity(m.entity, entry.recipient, ctx));
         continue;
       }
-      after.push(renderRelation(m, ctx));
+      const learned = lexEntry(ctx, m.relation)?.ru;
+      after.push(
+        learned?.pos === 'prep'
+          ? renderRelationWith(learned.lemma, learned.case, m.entity, ctx)
+          : renderRelation(m, ctx)
+      );
     } else if (m.kind === 'conj') {
       after.push({ and: 'и', or: 'или' }[m.conj]);
     }
@@ -659,6 +664,28 @@ function renderEvent(s, ctx) {
     objects = objects.slice(1);
     words.push(...renderObjects(objects, entry, ctx), ...mods.after);
     return words.filter(Boolean).join(' ');
+  }
+  const agent = (s.modifiers || []).find((m) => m.relation === 'rel.by');
+  if (s.voice === 'passive' && s.modality && agent?.entity) {
+    // A named agent can be the subject of a Russian modal active clause.
+    const active = { ...s, voice: undefined };
+    const rest = renderModifiers(
+      s.modifiers.filter((m) => m !== agent),
+      ctx,
+      entry
+    );
+    return [
+      ...words,
+      renderEntity(s.subject, 'acc', ctx),
+      ...rest.before,
+      negative ? 'не' : '',
+      verbGroup(entry, active, features(agent.entity, ctx), ctx),
+      renderEntity(agent.entity, 'nom', { ...ctx, isSubject: true }),
+      ...renderObjects(objects, entry, ctx),
+      ...rest.after,
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
   const passiveGovernment = governmentFor(
     entry,

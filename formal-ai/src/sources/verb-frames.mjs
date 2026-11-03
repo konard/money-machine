@@ -45,10 +45,10 @@ export function senseFrames(text = '') {
   if (/\babout\b/.test(clean)) {
     frames.add('about');
   }
-  if (/\|transitive[|}]/.test(text)) {
+  if (/\|(?:ambi)?transitive[|}]/.test(text)) {
     frames.add('transitive');
   }
-  if (/\|intransitive[|}]/.test(text)) {
+  if (/\|(?:intransitive|ambitransitive)[|}]/.test(text)) {
     frames.add('intransitive');
   }
   return [...frames];

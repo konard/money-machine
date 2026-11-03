@@ -10,6 +10,7 @@
  *   (`gen|p`, `1|s|pres|ind`) rather than guessed.
  */
 
+import { prepositionCase } from './case-notes.mjs';
 import { chunks, getJson, pool } from './fetch.mjs';
 import {
   definitionBlocks,
@@ -87,6 +88,7 @@ const POS = {
   Adverb: 'adv',
   'Proper noun': 'propn',
   Preposition: 'prep',
+  'Prepositional phrase': 'prep',
   Postposition: 'postp',
   Pronoun: 'pron',
   Numeral: 'num',
@@ -150,13 +152,14 @@ export function templateArgs(body) {
 }
 
 /** Templates `{{name|…}}` (non-nested) in text. */
-function templates(text, names) {
+function templates(text, names, positions = false) {
   const re = new RegExp(
     `\\{\\{(${names})\\|((?:[^{}]|\\{\\{[^{}]*\\}\\})*)\\}\\}`,
     'g'
   );
   return [...text.matchAll(re)].map((m) => ({
     name: m[1],
+    ...(positions ? { index: m.index, end: m.index + m[0].length } : {}),
     ...templateArgs(m[2]),
   }));
 }
@@ -209,13 +212,17 @@ function inflectionKind(tags) {
 
 /** Russian candidates of a translation line. */
 function russianCandidates(line) {
-  const candidates = templates(line, 'tt?\\+?')
-    .filter((t) => t.positional[0] === 'ru' && t.positional[1])
-    .map((t) => {
+  const translated = templates(line, 'tt?\\+?', true).filter(
+    (t) => t.positional[0] === 'ru' && t.positional[1]
+  );
+  const candidates = translated
+    .map((t, i) => {
       const word = unstress(plain(t.positional[1]));
       const marks = t.positional.slice(2);
+      const kase = prepositionCase(line.slice(t.end, translated[i + 1]?.index));
       return {
         word,
+        ...(kase ? { case: kase } : {}),
         // marks combine gender, animacy and number: "f", "m-an", "f-p", "p"
         gender: marks.find((g) => /^[mfn](?:-an|-in)?(?:-p)?$/.test(g))?.[0],
         plural: marks.some((g) => /(?:^|-)p$/.test(g)),

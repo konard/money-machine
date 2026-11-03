@@ -255,7 +255,7 @@ function verbGroup(c, subject) {
               ?.gloss || ''
           }`
         );
-      if (participle && (!has(after, 'adj') || agent || repeated)) {
+      if (participle && (vg.modal || !has(after, 'adj') || agent || repeated)) {
         vg.passive = true;
         const v = participle;
         c.next();

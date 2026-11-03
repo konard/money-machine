@@ -51,7 +51,13 @@ export function mergeMultiwords(tokens, lexicon) {
       continue;
     }
 
-    for (const words of COMPLEX_PREPOSITIONS) {
+    const prepositions = [
+      ...(lexicon.multiword.get(t.lower) || [])
+        .filter((e) => e.pos === 'prep')
+        .map((e) => e.words),
+      ...COMPLEX_PREPOSITIONS,
+    ].sort((a, b) => b.length - a.length);
+    for (const words of prepositions) {
       if (words.every((w, k) => tokens[i + k]?.lower === w)) {
         const lemma = words.join(' ');
         out.push({
@@ -66,7 +72,9 @@ export function mergeMultiwords(tokens, lexicon) {
               pos: 'prep',
               lemma,
               features: {},
-              concepts: [`rel.${words.join('-')}`],
+              concepts: lexicon.lookup('prep', lemma).length
+                ? lexicon.lookup('prep', lemma)
+                : [`rel.${words.join('-')}`],
             },
           ],
         });

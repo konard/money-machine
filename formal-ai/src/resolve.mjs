@@ -1,5 +1,6 @@
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
 
+import { learnPrepositions } from './sources/prepositions.mjs';
 import { supplementTerms } from './sources/terms.mjs';
 import { entityContext } from './sources/entity-context.mjs';
 import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
@@ -363,6 +364,9 @@ export async function resolveText(
   } = {}
 ) {
   const options = { fetchImpl, cache };
+  if (!only) {
+    await learnPrepositions(text, lexicon, options);
+  }
   const words = only || unknownWords(text, lexicon);
   const done = new Set();
   const entries = new Map(); // lemma → english entries
