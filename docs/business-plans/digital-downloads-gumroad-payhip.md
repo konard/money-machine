@@ -102,7 +102,7 @@ _Business-plan sources:_
 
 - **Methods:** Gumroad: local bank deposit (~120 countries) or PayPal where bank payouts are unsupported (2% fee); no Payoneer/Wise, Payhip: paid instantly to your PayPal or Stripe account, Lemon Squeezy: bank transfer or PayPal (USD)
 - **Minimum payout:** Gumroad $100 for weekly/monthly/quarterly payouts (higher local minimums in some countries; instant payouts from $1 for eligible accounts); Payhip none (instant); Lemon Squeezy $50
-- **Frequency:** weekly by default (Gumroad, 7-day hold), instant (Payhip), twice-monthly on the 1st and 15th (Lemon Squeezy, 13-day hold)
+- **Frequency:** weekly by default (Gumroad, 7-day hold), instant (Payhip), twice-monthly (Lemon Squeezy: created on the 1st and 15th, paid on the 14th and 28th after a 13-day hold)
 - **Typical delay:** 7 days
 - **Notes:** Gumroad's help center states a $100 USD minimum balance for all scheduled payouts (not only unverified accounts); balances below roll over. Lemon Squeezy (owned by Stripe) is building a Stripe Managed Payments merchant-of-record product, currently waitlist-only; Lemon Squeezy itself still accepts sign-ups.
 

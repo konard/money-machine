@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$100 per month** in the first year; 
 
 ## How it works
 
-You build polished, documented items and submit them for Envato's quality review; buyers (freelancers, agencies, small businesses) purchase licenses. Author fee is 12.5-37.5% for exclusive authors and 55% for non-exclusive. Approval bar is high and the market is mature, so new authors need niches. Note: Envato paused new author intake and began reopening some content types from Feb 2026.
+You build polished, documented items and submit them for Envato's quality review; buyers (freelancers, agencies, small businesses) purchase licenses. Envato keeps a flat 50% author fee on the item price, and a buyer fee is added on top. Approval bar is high and the market is mature, so new authors need niches. Note: Envato paused new author intake and began reopening some content types from Feb 2026.
 
 **Platforms:** ThemeForest, CodeCanyon, Envato Market
 
@@ -51,11 +51,11 @@ You build polished, documented items and submit them for Envato's quality review
 | Unit | per sale |
 | Typical price per unit (low / median / high) | $19 / $49 / $79 |
 | Direct cost per unit | $0 |
-| Platform fee | 38% |
-| Gross margin (median case) | 62% |
+| Platform fee | 50% |
+| Gross margin (median case) | 50% |
 | Human hours per unit after automation | 0.3 |
 
-ThemeForest themes list at ~$39-$79 and CodeCanyon scripts at ~$19-$60; new exclusive authors pay a 37.5% author fee (shown as 38), non-exclusive 55%. Fee estimated: Envato's author-fee help page is bot-blocked, so 37.5%/55% could not be re-checked.
+ThemeForest themes list at ~$39-$79 and CodeCanyon scripts at ~$19-$60. Envato takes a flat 50% author fee on the item price for all authors (confirmed on the Envato Author Help Center, Nov 2026), plus a separate buyer fee added to the list price; royalty withholding tax may also apply.
 
 ### Break-even
 
@@ -103,7 +103,7 @@ _Business-plan sources:_
 - **Minimum payout:** $50 (SWIFT higher)
 - **Frequency:** monthly (15th)
 - **Typical delay:** 20 days
-- **Notes:** Payout on the 15th for balances above threshold; arrives within 1-3 business days. NOT re-confirmed in Nov 2026: Envato's author help center returns 403 to automated fetches, so the $50 minimum and the author-intake status are from the first-pass research.
+- **Notes:** Market earnings move to the Balance Dashboard on the 8th of each month and are paid on the next payout day once the balance reaches $50 (minimum confirmed on the Envato Author Help Center, Nov 2026). The 15th payout date and the author-intake status are from the first-pass research.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -142,7 +142,7 @@ Legal digital product sale.
 
 ## Evidence that people get paid
 
-Envato help center documents $50 minimum monthly payouts and author fees; the Envato forums show monthly payout threads from active authors.
+Envato Author Help Center (Introduction to Earnings) documents the flat 50% author fee, the buyer fee and the $50 minimum payout; the Envato forums show monthly payout threads from active authors.
 
 ## Sources
 

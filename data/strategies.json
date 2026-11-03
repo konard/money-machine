@@ -15329,7 +15329,7 @@
         "minimumPayout": "Lemon Squeezy $50; Paddle $100/EUR100/GBP100; Polar none published; Stripe none",
         "frequency": "twice monthly (Lemon Squeezy) / monthly (Paddle) / daily (Stripe)",
         "typicalDelayDays": 15,
-        "notes": "Lemon Squeezy: payouts on the 14th and 28th after a 13-day hold, bank (USD or local) or PayPal (USD). Paddle seller terms: paid on or before the 15th of the following month if the month's fee exceeds $100/EUR100/GBP100; bank (ACH/international, $15 per international transfer) or PayPal."
+        "notes": "Lemon Squeezy: payouts created on the 1st and 15th and paid on the 14th and 28th after a 13-day hold, bank (USD or local) or PayPal (USD). Paddle seller terms: paid on or before the 15th of the following month if the month's fee exceeds $100/EUR100/GBP100; bank (ACH/international, $15 per international transfer) or PayPal."
       },
       "capitalRequiredUsd": 20,
       "timeToFirstDollarDays": {
@@ -18207,7 +18207,7 @@
           "Lemon Squeezy: bank transfer or PayPal (USD)"
         ],
         "minimumPayout": "Gumroad $100 for weekly/monthly/quarterly payouts (higher local minimums in some countries; instant payouts from $1 for eligible accounts); Payhip none (instant); Lemon Squeezy $50",
-        "frequency": "weekly by default (Gumroad, 7-day hold), instant (Payhip), twice-monthly on the 1st and 15th (Lemon Squeezy, 13-day hold)",
+        "frequency": "weekly by default (Gumroad, 7-day hold), instant (Payhip), twice-monthly (Lemon Squeezy: created on the 1st and 15th, paid on the 14th and 28th after a 13-day hold)",
         "typicalDelayDays": 7,
         "notes": "Gumroad's help center states a $100 USD minimum balance for all scheduled payouts (not only unverified accounts); balances below roll over. Lemon Squeezy (owned by Stripe) is building a Stripe Managed Payments merchant-of-record product, currently waitlist-only; Lemon Squeezy itself still accepts sign-ups."
       },
@@ -32993,7 +32993,7 @@
       "name": "Selling themes, templates and scripts on Envato (ThemeForest/CodeCanyon)",
       "category": "software",
       "summary": "Sell WordPress themes, HTML/React templates, scripts and plugins on Envato Market for a share of each sale.",
-      "howItWorks": "You build polished, documented items and submit them for Envato's quality review; buyers (freelancers, agencies, small businesses) purchase licenses. Author fee is 12.5-37.5% for exclusive authors and 55% for non-exclusive. Approval bar is high and the market is mature, so new authors need niches. Note: Envato paused new author intake and began reopening some content types from Feb 2026.",
+      "howItWorks": "You build polished, documented items and submit them for Envato's quality review; buyers (freelancers, agencies, small businesses) purchase licenses. Envato keeps a flat 50% author fee on the item price, and a buyer fee is added on top. Approval bar is high and the market is mature, so new authors need niches. Note: Envato paused new author intake and began reopening some content types from Feb 2026.",
       "platforms": [
         "ThemeForest",
         "CodeCanyon",
@@ -33008,7 +33008,7 @@
         "minimumPayout": "$50 (SWIFT higher)",
         "frequency": "monthly (15th)",
         "typicalDelayDays": 20,
-        "notes": "Payout on the 15th for balances above threshold; arrives within 1-3 business days. NOT re-confirmed in Nov 2026: Envato's author help center returns 403 to automated fetches, so the $50 minimum and the author-intake status are from the first-pass research."
+        "notes": "Market earnings move to the Balance Dashboard on the 8th of each month and are paid on the next payout day once the balance reaches $50 (minimum confirmed on the Envato Author Help Center, Nov 2026). The 15th payout date and the author-intake status are from the first-pass research."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -33066,7 +33066,7 @@
         "Declining marketplace sales",
         "Support load"
       ],
-      "evidence": "Envato help center documents $50 minimum monthly payouts and author fees; the Envato forums show monthly payout threads from active authors.",
+      "evidence": "Envato Author Help Center (Introduction to Earnings) documents the flat 50% author fee, the buyer fee and the $50 minimum payout; the Envato forums show monthly payout threads from active authors.",
       "sources": [
         "https://help.author.envato.com/hc/en-us/articles/360000472943",
         "https://help.author.envato.com/hc/en-us/articles/360041052771-Becoming-an-Envato-Author-FAQs"
@@ -33109,10 +33109,10 @@
             "high": 79
           },
           "costPerUnitUsd": 0,
-          "platformFeePercent": 38,
-          "grossMarginPercent": 62,
+          "platformFeePercent": 50,
+          "grossMarginPercent": 50,
           "hoursPerUnit": 0.3,
-          "notes": "ThemeForest themes list at ~$39-$79 and CodeCanyon scripts at ~$19-$60; new exclusive authors pay a 37.5% author fee (shown as 38), non-exclusive 55%. Fee estimated: Envato's author-fee help page is bot-blocked, so 37.5%/55% could not be re-checked."
+          "notes": "ThemeForest themes list at ~$39-$79 and CodeCanyon scripts at ~$19-$60. Envato takes a flat 50% author fee on the item price for all authors (confirmed on the Envato Author Help Center, Nov 2026), plus a separate buyer fee added to the list price; royalty withholding tax may also apply."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 10,

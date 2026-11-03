@@ -105,7 +105,7 @@ _Business-plan sources:_
 - **Minimum payout:** Lemon Squeezy $50; Paddle $100/EUR100/GBP100; Polar none published; Stripe none
 - **Frequency:** twice monthly (Lemon Squeezy) / monthly (Paddle) / daily (Stripe)
 - **Typical delay:** 15 days
-- **Notes:** Lemon Squeezy: payouts on the 14th and 28th after a 13-day hold, bank (USD or local) or PayPal (USD). Paddle seller terms: paid on or before the 15th of the following month if the month's fee exceeds $100/EUR100/GBP100; bank (ACH/international, $15 per international transfer) or PayPal.
+- **Notes:** Lemon Squeezy: payouts created on the 1st and 15th and paid on the 14th and 28th after a 13-day hold, bank (USD or local) or PayPal (USD). Paddle seller terms: paid on or before the 15th of the following month if the month's fee exceeds $100/EUR100/GBP100; bank (ACH/international, $15 per international transfer) or PayPal.
 
 ## Full cycle (setup → earn → bank account)
 
