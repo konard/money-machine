@@ -13,23 +13,19 @@
  * Responses are cached under `~/.cache/formal-ai/wikidata`.
  */
 
-import { createHash } from 'node:crypto';
 import {
-  existsSync,
   mkdirSync,
   readFileSync,
   writeFileSync,
   appendFileSync,
   readdirSync,
 } from 'node:fs';
-import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { DATA_DIR, loadLexicon } from './lexicon.mjs';
+import { getJson } from './sources/fetch.mjs';
 import { declineNoun } from './russian/morphology.mjs';
 
 const API = 'https://www.wikidata.org/w/api.php';
-const USER_AGENT =
-  'formal-ai-translator/0.1 (https://github.com/konard/money-machine)';
 const GENDER = { Q499327: 'm', Q1775415: 'f', Q1775461: 'n' };
 const NOUN = 'Q1084';
 // instances of these are individual works, people or name lists, never the
@@ -59,13 +55,6 @@ const ORGANISM_CLASSES = new Set([
   'bird',
   'fish',
 ]);
-/** Response cache directory (resolved on first use, not at import). */
-const cacheDir = () =>
-  join(
-    process.env.XDG_CACHE_HOME || join(homedir(), '.cache'),
-    'formal-ai',
-    'wikidata'
-  );
 
 /** Comparable form of a Russian word. */
 export function normalizeRu(word) {
@@ -78,26 +67,9 @@ export function normalizeRu(word) {
     .trim();
 }
 
-async function api(params, { fetchImpl = fetch, cache = true } = {}) {
+function api(params, { fetchImpl, cache = true } = {}) {
   const query = new URLSearchParams({ format: 'json', ...params }).toString();
-  const key = createHash('sha1').update(query).digest('hex');
-  const file = cache ? join(cacheDir(), `${key}.json`) : null;
-  if (cache && existsSync(file)) {
-    return JSON.parse(readFileSync(file, 'utf8'));
-  }
-  const response = await fetchImpl(`${API}?${query}`, {
-    headers: { 'user-agent': USER_AGENT },
-    signal: AbortSignal.timeout(20000),
-  });
-  if (!response.ok) {
-    throw new Error(`Wikidata ${response.status} for ${params.action}`);
-  }
-  const body = await response.json();
-  if (cache) {
-    mkdirSync(cacheDir(), { recursive: true });
-    writeFileSync(file, JSON.stringify(body));
-  }
-  return body;
+  return getJson(`${API}?${query}`, { fetchImpl, cache, bucket: 'wikidata' });
 }
 
 /** Items whose English label or alias matches `word`. */

@@ -211,8 +211,9 @@ function russianCandidates(line) {
       const marks = t.positional.slice(2);
       return {
         word,
-        gender: marks.find((g) => /^[mfn](-an|-in)?$/.test(g))?.[0],
-        plural: marks.includes('p'),
+        // marks combine gender, animacy and number: "f", "m-an", "f-p", "p"
+        gender: marks.find((g) => /^[mfn](?:-an|-in)?(?:-p)?$/.test(g))?.[0],
+        plural: marks.some((g) => /(?:^|-)p$/.test(g)),
         aspect: marks.includes('pf')
           ? 'perf'
           : marks.includes('impf')
@@ -238,6 +239,23 @@ export function englishEntries(wikitext) {
     const blocks = definitionBlocks(text);
     const definitions = blocks.map((block) => block.split('\n')[0]);
     const formOf = definitions.flatMap((d) => {
+      // a dialectal or obsolete inflection ("book", Northern English past
+      // of "bake") is no reading of the standard language
+      const label = templates(d, 'lb|lbl|label')[0];
+      if (
+        label &&
+        /^(?:dialectal|obsolete|archaic|nonstandard|rare|dated|eye dialect|nonce|humorous)$/.test(
+          label.positional
+            .slice(1)
+            .find((x) =>
+              /dialectal|obsolete|archaic|nonstandard|rare|dated|eye dialect|nonce|humorous/.test(
+                x
+              )
+            ) || ''
+        )
+      ) {
+        return [];
+      }
       const infl = templates(d, 'infl of|inflection of')[0];
       if (infl && infl.positional[0] === 'en') {
         return [
@@ -276,6 +294,9 @@ export function englishEntries(wikitext) {
       senses.push({
         gloss,
         russian: russianCandidates(line),
+        // how many languages translate the sense: a common sense ("pen"
+        // the writing tool, 129) is translated far more than a rare one
+        languages: m[3].split('\n').filter((l) => /^\*[^:*]/.test(l)).length,
         ...matchingDefinition(gloss, blocks),
       });
     }
@@ -300,7 +321,9 @@ export function englishEntries(wikitext) {
       );
     // no translations of its own: a definition that is just another word
     // ("A [[document]], especially…") makes this a synonym of that word
-    if (!senses.length && !formOf.length) {
+    // (translations kept on a subpage, as for "dog", are translations too)
+    const subpage = /\{\{see translation subpage/.test(text);
+    if (!senses.length && !formOf.length && !subpage) {
       for (const d of definitions) {
         const m =
           /^(?:\{\{(?:senseid|lb|label|lbl)\|[^}]*\}\}\s*)*(?:(?:A|An|The)\s+)?\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\](?=[\s,;.]|$)/.exec(
@@ -319,7 +342,7 @@ export function englishEntries(wikitext) {
       formOf,
       senses,
       see,
-      subpage: /\{\{see translation subpage/.test(text),
+      subpage,
     };
   });
 }
@@ -369,9 +392,15 @@ export function matchingDefinition(gloss, definitions) {
   if (!best || bestScore < 0.5) {
     return {};
   }
-  const labels = templates(best.raw.split('\n')[0], 'lb|label|lbl').flatMap(
-    (t) => t.positional.slice(1).filter((x) => !/^[_&]$|^(?:and|or)$/.test(x))
-  );
+  // a loose match ("period between sunrise and sunset" ~ "a 24-hour
+  // period beginning at sunrise", labelled meteorology) is no ground for
+  // carrying the definition's field or usage labels over to the sense
+  const labels =
+    bestScore < 0.75
+      ? []
+      : templates(best.raw.split('\n')[0], 'lb|label|lbl').flatMap((t) =>
+          t.positional.slice(1).filter((x) => !/^[_&]$|^(?:and|or)$/.test(x))
+        );
   const frames = senseFrames(best.raw.split(/\n#+\s/)[0]);
   return {
     definition: best.text,

@@ -234,7 +234,12 @@ export function readings(token, lexicon) {
   }
   // Capitalization never turns a grammatical negator into a name.
   if (!out.some((r) => r.pos === 'neg')) {
+    const grammatical = out.length > 0;
     contentReadings(token, lexicon, add);
+    // "Do you…": a grammatical word starting a sentence is no name
+    if (grammatical && token.first) {
+      return out.filter((r) => r.pos !== 'propn');
+    }
   }
   return out;
 }

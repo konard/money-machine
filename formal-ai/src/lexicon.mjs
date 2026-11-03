@@ -13,11 +13,11 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseLino, childrenNamed, field, words } from './lino.mjs';
 
-export const DATA_DIR = join(
-  dirname(fileURLToPath(import.meta.url)),
-  '..',
-  'data'
-);
+// FORMAL_AI_DATA points at another vocabulary (e.g. an empty one, so that
+// every content word comes from public sources)
+export const DATA_DIR =
+  globalThis.process?.env?.FORMAL_AI_DATA ||
+  join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 
 const unquote = (text) => text.replace(/^"(.*)"$/s, '$1');
 

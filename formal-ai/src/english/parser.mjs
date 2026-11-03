@@ -257,6 +257,20 @@ export function parseNP(c, options = {}) {
     !(options.stopAt !== undefined && c.i >= options.stopAt)
   ) {
     const t3 = c.peek;
+    // "bought a car yesterday": a word that can be an adverb and ends the
+    // clause is no second noun of a compound
+    const after = c.at(1);
+    if (
+      nouns.length &&
+      has(t3, 'adv') &&
+      (!after ||
+        isPunct(after) ||
+        has(after, 'coord') ||
+        has(after, 'subord') ||
+        (has(after, 'prep') && !has(after, 'noun')))
+    ) {
+      break;
+    }
     // "payment links": a bare singular noun is no subject, so a following
     // plural noun continues the compound
     const bareCompound =
@@ -639,8 +653,12 @@ function parallelVerb(c, k) {
     return false;
   }
   const after = c.at(k + 1);
-  return ['prep', 'det', 'pron', 'poss', 'to', 'adv', 'num'].some((p) =>
-    has(after, p)
+  return (
+    ['prep', 'det', 'pron', 'poss', 'to', 'adv', 'num'].some((p) =>
+      has(after, p)
+    ) ||
+    // a request's second verb may take a bare object: "and deposit money"
+    (form === 'base' && has(after, 'noun') && !has(c.at(k), 'adj'))
   );
 }
 
@@ -675,6 +693,13 @@ export function parseTail(c, frame, options = {}) {
   const out = { objects: [], mods: [], complement: null, xcomp: null };
   for (let guard = 0; guard < 20 && c.peek && !isPunct(c.peek); guard += 1) {
     const t = c.peek;
+    if (!options.nonfinite && options.finiteComplementAhead) {
+      const link = options.finiteComplementAhead(c);
+      if (link) {
+        out.finiteLink = link;
+        break;
+      }
+    }
     if (
       options.nonfinite &&
       (has(t, 'be') ||
@@ -910,11 +935,16 @@ export function parseTail(c, frame, options = {}) {
 const TIME_NOUNS =
   /^(day|week|month|year|morning|evening|night|summer|winter|autumn|spring\.season|time|hour|minute|weekend|monday|tuesday|wednesday|thursday|friday|saturday|sunday|january|february|march|april|may|june|july|august|september|october|november|december)$/;
 
+// a time noun by its English word: hand-written ids ("day") and learned
+// ones ("wikt:day:noun:1") alike
+const timeNoun = (lemma, ids = []) =>
+  TIME_NOUNS.test(String(lemma || '').toLowerCase()) ||
+  ids.some((id) => TIME_NOUNS.test(id) || TIME_NOUNS.test(id.split(':')[1]));
+
 export function timeAhead(c) {
   const t = c.at(1);
-  return Boolean(
-    t && reading(t, 'noun')?.concepts.some((id) => TIME_NOUNS.test(id))
-  );
+  const r = t && reading(t, 'noun');
+  return Boolean(r && timeNoun(r.lemma, r.concepts));
 }
 
 function isTimeNP(np) {
@@ -923,7 +953,7 @@ function isTimeNP(np) {
     (np.det === 'det.every' ||
       np.det === 'det.each' ||
       np.adjs?.some((a) => a.lemma === 'last' || a.lemma === 'next')) &&
-    np.head.candidates.some((id) => TIME_NOUNS.test(id))
+    timeNoun(np.head.lemma, np.head.candidates)
   );
 }
 

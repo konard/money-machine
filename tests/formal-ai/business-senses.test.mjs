@@ -103,6 +103,19 @@ test('stubbed corpus pairs disambiguate passive subjects and infinitive objects'
   );
   assert.ok(requests.includes('"устанавливать" "цена"'));
   assert.ok(requests.includes('"отслеживать" "продажа"'));
+  let uncertainRequests = 0;
+  await contextFrequencies('Use the qxzzyy to track sales.', lexicon, {
+    cache: false,
+    fetchImpl: () => {
+      uncertainRequests += 1;
+      return Promise.resolve({ ok: true, json: () => Promise.resolve({}) });
+    },
+  });
+  assert.equal(
+    uncertainRequests,
+    0,
+    'Unknown input must not trigger corpus requests'
+  );
   assert.equal(
     translateDocument('Prices are set weekly.', { lexicon }).text,
     'Цены устанавливаются еженедельно.'

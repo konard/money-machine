@@ -432,12 +432,13 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         // a Russian word that translates several senses is the usual one
         const lemma = concept?.ru?.lemma;
         const shared =
-          lemma && !domainOf(concept)
+          lemma && !domainOf(concept) && !concept.related
             ? node.candidates.filter(
                 (other) =>
                   other !== id &&
                   !domainOf(lexicon.get(other)) &&
                   !lexicon.get(other)?.variant &&
+                  !lexicon.get(other)?.related &&
                   lexicon.get(other)?.ru?.lemma === lemma
               ).length
             : 0;

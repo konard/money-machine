@@ -28,6 +28,17 @@ export const cacheDir = (name) =>
 const memory = new Map();
 
 /**
+ * Recorded responses: `FORMAL_AI_FIXTURES` names a directory of raw API
+ * responses (read first after the cache); with `FORMAL_AI_RECORD` set, new
+ * responses are written there too; with `FORMAL_AI_OFFLINE` set, a request
+ * without a recorded response fails instead of reaching the network.
+ */
+function fixtureFile(bucket, key) {
+  const dir = process.env.FORMAL_AI_FIXTURES;
+  return dir ? join(dir, bucket, key.slice(0, 2), `${key}.json`) : null;
+}
+
+/**
  * GET (or POST with `form`) a JSON API, with an on-disk cache.
  * @param {string} url
  * @param {{form?: object, fetchImpl?: Function, cache?: boolean, bucket?: string}} options
@@ -48,6 +59,19 @@ export async function getJson(
     const value = JSON.parse(readFileSync(file, 'utf8'));
     memory.set(key, value);
     return value;
+  }
+  // recorded public responses kept with the repository (tests replay them)
+  const fixture = cache && fixtureFile(bucket, key);
+  if (fixture && existsSync(fixture)) {
+    const value = JSON.parse(readFileSync(fixture, 'utf8'));
+    memory.set(key, value);
+    return value;
+  }
+  if (cache && process.env.FORMAL_AI_OFFLINE) {
+    throw Object.assign(
+      new Error(`offline: no recorded response for ${url} ${body}`.trim()),
+      { fatal: true, offline: true }
+    );
   }
   let lastError;
   for (let attempt = 0; attempt < 6; attempt += 1) {
@@ -76,9 +100,12 @@ export async function getJson(
         });
       }
       const value = await response.json();
-      if (file) {
-        mkdirSync(join(file, '..'), { recursive: true });
-        writeFileSync(file, JSON.stringify(value));
+      for (const target of [
+        file,
+        process.env.FORMAL_AI_RECORD && fixtureFile(bucket, key),
+      ].filter(Boolean)) {
+        mkdirSync(join(target, '..'), { recursive: true });
+        writeFileSync(target, JSON.stringify(value));
       }
       memory.set(key, value);
       return value;

@@ -14,6 +14,9 @@ import {
   normalizeLemma,
 } from './sources/rnc-frequency.mjs';
 import { loadLexicon } from './lexicon.mjs';
+import { compoundNoun, regularEntry, russianEntry } from './russian-entry.mjs';
+
+export { compoundNoun, regularEntry };
 import { chunks, getJson, pool } from './sources/fetch.mjs';
 import {
   englishEntries,
@@ -69,8 +72,11 @@ export function unknownWords(text, lexicon = loadLexicon()) {
     // public sources were already asked about it (the built-in lexicon
     // may know "deposit" as a verb only)
     const found = readings({ ...token, text: w, first: true }, lexicon);
+    // a preposition may be a content word too ("like", "near", "past"):
+    // only other grammatical words are never looked up
     const closed = found.some(
-      (r) => !['propn', 'noun', 'verb', 'adj', 'adv', 'name'].includes(r.pos)
+      (r) =>
+        !['propn', 'noun', 'verb', 'adj', 'adv', 'name', 'prep'].includes(r.pos)
     );
     if (!closed && !lexicon.asked?.(w)) {
       out.add(w);
@@ -301,194 +307,6 @@ function glossWords(gloss, headword = '') {
   ];
 }
 
-const tag = (forms, ...keys) => keys.map((k) => forms.get(k)).find(Boolean);
-/** Lexicon `ru` entry from a rendered Russian word. */
-function russianEntry(pos, word, rendered, head) {
-  const { forms } = rendered;
-  const comparative = tag(forms, 'comd', 'comparative')?.split(',')[0].trim();
-  if (pos === 'noun') {
-    const cells = {};
-    for (const [tags, form] of forms) {
-      const m = /^(nom|gen|dat|acc|ins|pre|loc|par|voc)\|([sp])$/.exec(tags);
-      if (m && ['nom', 'gen', 'dat', 'acc', 'ins', 'pre'].includes(m[1])) {
-        cells[
-          `${m[2] === 's' ? 'sg' : 'pl'}.${m[1] === 'pre' ? 'prep' : m[1]}`
-        ] = form.split(',')[0].trim();
-      }
-    }
-    if (
-      !rendered.indeclinable &&
-      !Object.keys(cells).length &&
-      /[иуюо]$/.test(word)
-    ) {
-      return regularEntry('noun', { word, gender: rendered.gender });
-    }
-    const pluralOnly =
-      rendered.pluralOnly || (!cells['sg.nom'] && cells['pl.nom']);
-    return {
-      pos: 'noun',
-      lemma: pluralOnly ? cells['pl.nom'] || word : word,
-      gender: rendered.gender || 'm',
-      animate: Boolean(rendered.animate),
-      pluraliaTantum: Boolean(pluralOnly),
-      at: 'в',
-      forms: Object.keys(cells).length ? cells : undefined,
-      indeclinable: rendered.indeclinable || undefined,
-    };
-  }
-  if (pos === 'verb') {
-    const perf = head?.positional?.[1] === 'pf';
-    const kind = perf ? 'fut' : 'pres';
-    const present = ['1|s', '2|s', '3|s', '1|p', '2|p', '3|p'].map((p) =>
-      tag(forms, `${p}|${kind}|ind`)
-    );
-    return {
-      pos: 'verb',
-      lemma: word,
-      aspect: perf ? 'perf' : 'impf',
-      present: present.every(Boolean)
-        ? present.map((f) => f.split(',')[0].trim())
-        : undefined,
-      past: [tag(forms, 'm|s|past|ind'), tag(forms, 'f|s|past|ind')].every(
-        Boolean
-      )
-        ? [tag(forms, 'm|s|past|ind'), tag(forms, 'f|s|past|ind')]
-        : undefined,
-      imperative: tag(forms, '2|s|imp'),
-      converb: tag(forms, 'pres|adv|part')?.split(',')[0].trim(),
-      pastPassive:
-        unstress(tag(forms, 'past|pass|part')?.split(',')[0] || '').trim() ||
-        undefined,
-      partner:
-        unstress(
-          (head?.named?.[perf ? 'impf' : 'pf'] || '').split(',')[0]
-        ).trim() || undefined,
-    };
-  }
-  if (pos === 'adj') {
-    return {
-      pos: 'adj',
-      lemma: word,
-      comparative,
-      short: tag(forms, 'short|m|s')?.split(',')[0],
-      shortForms: Object.fromEntries(
-        [
-          ['m', 'short|m|s'],
-          ['f', 'short|f|s'],
-          ['n', 'short|n|s'],
-          ['p', 'short|p'],
-        ]
-          .map(([k, t]) => [k, tag(forms, t)?.split(',')[0].trim()])
-          .filter(([, v]) => v)
-      ),
-    };
-  }
-  return { pos: 'adv', lemma: word, comparative };
-}
-/** Lexicon `ru` entry for a word without a Wiktionary page, by its ending. */
-const ADJECTIVE_FORM = /^[а-яё-]+(?:ый|ий|ой|ая|яя|ое|ее|ые|ие)$/i;
-/** Masculine nominative of an agreeing adjective form (`домашняя`). */
-function masculine(form) {
-  const m = /^(.*?)(ая|яя|ое|ее|ые|ие)$/.exec(form);
-  if (!m) {
-    return form;
-  }
-  const soft = /^(яя|ее|ие)$/.test(m[2]) || /[кгхжшщч]$/.test(m[1]);
-  return m[1] + (soft ? 'ий' : 'ый');
-}
-/**
- * A Russian noun phrase translation (`домашняя страница`, `страница
- * товара`): leading adjectives agree with the head noun; the rest is fixed.
- * @param {string} phrase
- * @param {(word: string) => object|null} nounEntry
- */
-export function compoundNoun(phrase, nounEntry) {
-  const parts = phrase.split(' ');
-  if (parts.length > 4 || parts.some((w) => !/^[а-яё-]+$/i.test(w))) {
-    return null;
-  }
-  let i = 0;
-  while (i < parts.length - 1 && ADJECTIVE_FORM.test(parts[i])) {
-    i += 1;
-  }
-  const head = nounEntry(parts[i]);
-  if (!head || head.pos !== 'noun' || head.compound) {
-    return null;
-  }
-  return {
-    ...head,
-    lemma: phrase,
-    compound: {
-      adjectives: parts.slice(0, i).map(masculine),
-      head: head.lemma,
-      tail: parts.slice(i + 1).join(' '),
-    },
-  };
-}
-
-export function regularEntry(
-  pos,
-  { word, gender, aspect, plural, indeclinable }
-) {
-  // a fixed multiword adverb ("в основном") does not inflect
-  if (pos === 'adv' && /^[а-яё-]+(?: [а-яё-]+){1,2}$/i.test(word)) {
-    return { pos: 'adv', lemma: word, regular: true };
-  }
-  if (word.includes(' ') || !/^[а-яё-]+$/i.test(word)) {
-    return null;
-  }
-  if (pos === 'verb' && /(ть|ться|ти|чь)$/.test(word)) {
-    // -ировать verbs are usually both aspects
-    const both = /ировать(ся)?$/.test(word);
-    return {
-      pos: 'verb',
-      lemma: word,
-      aspect: aspect === 'pf' && !both ? 'perf' : 'impf',
-      regular: true,
-    };
-  }
-  if (pos === 'adj' && /(ый|ий|ой)$/.test(word)) {
-    return { pos: 'adj', lemma: word, regular: true };
-  }
-  if (pos === 'adv' && /[оеи]$/.test(word)) {
-    return { pos: 'adv', lemma: word, regular: true };
-  }
-  if (pos === 'noun') {
-    if (indeclinable) {
-      return { pos, lemma: word, gender: gender || 'n', indeclinable: true };
-    }
-    // These endings may belong to foreign stems; only public inflection
-    // data can decide whether they decline. Do not invent a paradigm.
-    // (native neuter suffixes such as -ство, -ание, -ло still decline)
-    if (/[иуюо]$/.test(word) && !/.{3}(?:ств|тв|л|к|н|ч|щ)о$/.test(word)) {
-      return null;
-    }
-    const g =
-      { m: 'm', f: 'f', n: 'n' }[gender] ||
-      (/[ая]$|ь$/.test(word)
-        ? /ь$/.test(word)
-          ? null
-          : 'f'
-        : /[ое]$/.test(word)
-          ? 'n'
-          : /[бвгджзклмнпрстфхцчшщй]$/.test(word)
-            ? 'm'
-            : null);
-    if (!g) {
-      return null;
-    }
-    return {
-      pos: 'noun',
-      lemma: word,
-      gender: g,
-      animate: false,
-      pluraliaTantum: Boolean(plural),
-      at: 'в',
-      regular: true,
-    };
-  }
-  return null;
-}
 /**
  * Resolve every unknown word of `text` into the lexicon.
  * @returns {Promise<{words: number, resolved: string[], missing: string[]}>}
@@ -509,6 +327,7 @@ export async function resolveText(
   const done = new Set();
   const entries = new Map(); // lemma → english entries
   const forms = []; // {form, lemma, kind, pos}
+  const capitalOf = new Map(); // "Monday" → "monday"
   // two-word terms are asked for too; most such titles do not exist
   let queue = [
     ...new Set([
@@ -522,14 +341,24 @@ export async function resolveText(
     const next = new Set();
     for (const title of queue) {
       const page = pages.get(title);
+      const list = page ? englishEntries(page) : [];
+      // "monday", "russian": the word's page is titled with a capital
+      const upper = title[0].toUpperCase() + title.slice(1);
+      if (!list.length && upper !== title && !done.has(upper)) {
+        capitalOf.set(upper, title);
+        next.add(upper);
+      }
       if (!page) {
         continue;
       }
-      const list = englishEntries(page);
-      entries.set(title, list);
+      const key = capitalOf.get(title) || title;
+      if (key !== title && entries.get(key)?.length) {
+        continue;
+      }
+      entries.set(key, list);
       for (const e of list) {
         for (const f of e.formOf) {
-          forms.push({ form: title, lemma: f.lemma, kind: f.kind, pos: e.pos });
+          forms.push({ form: key, lemma: f.lemma, kind: f.kind, pos: e.pos });
           // a variant ("doc" ← "document") borrows the target's senses,
           // so the target page is needed even when the lexicon knows it
           const variantOf = /alternative|spelling/.test(f.kind);
@@ -547,6 +376,9 @@ export async function resolveText(
         }
         if (e.subpage && !done.has(`${title}/translations`)) {
           next.add(`${title}/translations`);
+          if (key !== title) {
+            capitalOf.set(`${title}/translations`, `${key}/translations`);
+          }
         }
       }
     }
@@ -573,7 +405,11 @@ export async function resolveText(
           : { ...x, ...matchingDefinition(x.gloss, mainDefinitions) }
       ),
     }));
-    return [...own.filter((e) => e.pos === pos), ...subSenses].flatMap((e) => [
+    const chunks = [...own.filter((e) => e.pos === pos), ...subSenses];
+    // "phone" (the device): its entry's only translations are those of
+    // "telephone" — the word's own meaning; "pen" (the feather) with
+    // tables of its own and a pointer to "wing" — a side meaning
+    return chunks.flatMap((e) => [
       ...e.senses,
       ...e.see.flatMap((s) =>
         (entries.get(s.page) || [])
@@ -583,6 +419,7 @@ export async function resolveText(
               ...sense,
               gloss: `${s.gloss}: ${sense.gloss}`,
               seeAlso: true,
+              side: e.senses.length > 0,
             }))
           )
       ),
@@ -609,7 +446,18 @@ export async function resolveText(
       // Inflections use the base's senses rather than a lexicalized homonym.
       if (
         list.some(
-          (x) => x.pos === e.pos && x.formOf.some((f) => FEATURE[f.kind])
+          (x) =>
+            x.pos === e.pos &&
+            // "read": past of itself; its own senses still count
+            x.formOf.some(
+              (f) =>
+                FEATURE[f.kind] &&
+                f.lemma !== title &&
+                // a base nobody translates ("run" ← Scots "rin") does not
+                // displace the word's own senses
+                (lexicon.lookup(e.pos, f.lemma).length > 0 ||
+                  sensesOf(f.lemma, e.pos).some((z) => z.russian?.length))
+            )
         )
       ) {
         continue;
@@ -682,8 +530,15 @@ export async function resolveText(
   const lemmaOf = new Map();
   for (const word of russianWords) {
     const page = ruPages.get(word);
-    for (const e of page ? russianTemplates(page) : []) {
-      if (!e.headword && e.lemma) {
+    const list = page ? russianTemplates(page) : [];
+    for (const e of list) {
+      // a homograph that is also a word of its own stays itself: есть
+      // "eat" (not a form of быть), полка "shelf" (not of полок)
+      if (
+        !e.headword &&
+        e.lemma &&
+        !list.some((x) => x.pos === e.pos && x.headword)
+      ) {
         lemmaOf.set(`${e.pos}:${word}`, e.lemma);
       }
     }
@@ -771,7 +626,7 @@ export async function resolveText(
         !rendered.get(`noun:${w}`)
     );
   const indeclinables = await russianIndeclinables(uncertainNouns, options);
-  const russian = (word, pos, candidate) => {
+  const russian = (word, pos, candidate, renderedOnly) => {
     if (pos === 'noun' && word.includes(' ')) {
       return compoundNoun(word, (w) => russian(w, 'noun', { word: w }));
     }
@@ -780,14 +635,29 @@ export async function resolveText(
     }
     const r = rendered.get(`${pos}:${word}`);
     if (r) {
-      return {
+      const entry = {
         ...russianEntry(pos, word, r.result, r.entry.headword),
         ...(r.entry.government ? { government: r.entry.government } : {}),
       };
+      if (entry.pos === 'noun' && candidate) {
+        // the translation's own marks: машина|f, деньги|f-p
+        if (!r.result.gender && candidate.gender) {
+          entry.gender = candidate.gender;
+        }
+        if (
+          candidate.plural &&
+          !entry.pluraliaTantum &&
+          entry.forms?.['pl.nom']
+        ) {
+          entry.pluraliaTantum = true;
+          entry.lemma = entry.forms['pl.nom'];
+        }
+      }
+      return entry;
     }
     // no page of its own: keep the word only when its ending shows the
     // part of speech, so regular morphology can inflect it
-    return candidate && !ruPages.has(word)
+    return candidate && !renderedOnly && !ruPages.has(word)
       ? regularEntry(pos, candidate)
       : null;
   };
@@ -812,10 +682,21 @@ export async function resolveText(
   const resolved = [];
   for (const plan of plans) {
     let rank = 0;
-    const ownSenses = plan.senses.some((s) => !s.variant && s.russian.length);
+    const ownSenses = plan.senses.some(
+      (s) => !s.variant && !s.side && s.russian.length
+    );
+    // the most widely translated of the word's own senses
+    const most = Math.max(
+      0,
+      ...plan.senses
+        .filter((s) => !s.variant && !s.side)
+        .map((s) => s.languages || 0)
+    );
     plan.senses.forEach((s, i) => {
       const ru =
-        s.russian.map((c) => russian(c.word, POS_RU[plan.pos])).find(Boolean) ||
+        s.russian
+          .map((c) => russian(c.word, POS_RU[plan.pos], c, true))
+          .find(Boolean) ||
         s.russian
           .map((c) => russian(c.word, POS_RU[plan.pos], c))
           .find(Boolean);
@@ -847,7 +728,7 @@ export async function resolveText(
         gloss: s.gloss,
         frames: s.frames,
         frameOnly: s.frameOnly,
-        related: s.seeAlso || undefined,
+        related: s.side || undefined,
         grounding: null,
         excludedGroundings: [],
         classes: [],
@@ -855,7 +736,9 @@ export async function resolveText(
           s.borrowed && plan.pos === 'noun' ? genus(s.definition) : undefined,
         cues: glossWords(`${s.gloss} ${s.definition || ''}`, plan.lemma),
         usagePenalty: usagePenalty(s),
-        domain: senseDomain(s),
+        // the most widely translated sense is the word's core meaning even
+        // under a field label ("telephone", labelled telephony)
+        domain: most && (s.languages || 0) >= most ? null : senseDomain(s),
         objectClasses: [],
         syntax: null,
         takes: [],
@@ -863,9 +746,15 @@ export async function resolveText(
         // history more than by frequency: a gentle preference only
         // a variant's senses ("app" ← "appearance") are far less likely
         // than the word's own ones
+        // and how widely each sense is translated says more about how
+        // common it is ("pen": the enclosure is listed first, the
+        // writing tool is translated into 129 languages, the enclosure 47)
         prior:
-          ((s.variant ? (ownSenses ? 0.05 : 0.15) : 0.3) /
-            Math.sqrt(rank + 1)) *
+          (s.variant || s.side ? (ownSenses ? 0.05 : 0.15) : 0.3) *
+          (most
+            ? 0.4 / Math.sqrt(rank + 1) +
+              0.6 * Math.sqrt(Math.min(1, (s.languages || 0) / most))
+            : 1 / Math.sqrt(rank + 1)) *
           (s.rare ? 0.3 : 1),
         variant: s.variant || undefined,
         en: [

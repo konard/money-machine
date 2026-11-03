@@ -9,6 +9,7 @@
 
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
+import { finiteComplementAhead } from './complements.mjs';
 import {
   Cursor,
   has,
@@ -330,7 +331,11 @@ function parseClauses(tokens, ctx) {
         previous?.subject &&
         !previous.subject.implicit &&
         ellipsis(c, ctx, previous)) ||
-      parseClause(c, ctx, result.list.length === 0);
+      parseClause(
+        c,
+        { ...ctx, embedded: link?.embedded },
+        result.list.length === 0
+      );
     if (!clause || c.i === before) {
       result.leftover.push(c.next().text);
       continue;
@@ -340,6 +345,13 @@ function parseClauses(tokens, ctx) {
       link = null;
     }
     result.list.push(clause);
+    if (clause.finiteLink) {
+      link = {
+        concept: clause.finiteLink === 'that' ? 'conj.that' : null,
+        embedded: true,
+      };
+      continue;
+    }
     while (
       !c.done &&
       !isPunct(c.peek) &&
@@ -401,7 +413,7 @@ function parseClause(c, ctx, initial) {
     c.i = save;
   }
   // wh-question
-  if (has(t, 'wh') && (ctx.question || initial)) {
+  if (has(t, 'wh') && (ctx.question || initial || ctx.embedded)) {
     return parseWhQuestion(c, ctx);
   }
   // yes/no question: aux first
@@ -683,6 +695,7 @@ function tailOptions(ctx, vg) {
     takesOf: ctx.takesOf,
     infinitiveOf: ctx.infinitiveOf,
     lexicon: ctx.lexicon,
+    finiteComplementAhead: (c) => finiteComplementAhead(c, vg.verb, ctx),
   };
 }
 
@@ -770,7 +783,12 @@ function parseImperative(c, ctx) {
     frame: 'event',
     adverbs: [],
   };
+  // "Open an account and deposit money": a base verb after "and" is a
+  // second request
+  const finite = c.finite;
+  c.finite = 'base';
   const tail = parseTail(c, 'event', tailOptions(ctx, vg));
+  c.finite = finite;
   if (c.peek?.lower === 'please') {
     polite = true;
     c.next();
@@ -824,6 +842,15 @@ function parseWhQuestion(c, ctx) {
     token: t.index,
     text: t.text,
   };
+  if (ctx.embedded) {
+    const embedded = parseDeclarative(c, { ...ctx, question: false });
+    if (!embedded || embedded.type !== 'clause') {
+      return null;
+    }
+    fillWh(embedded, wh);
+    embedded.wh = wh;
+    return embedded;
+  }
   // "which book", "whose car"
   if (r.features.role === 'determiner' && startsNP(c.peek)) {
     wh.np = parseNP(c);
@@ -920,6 +947,7 @@ function clause(mood, vg, parts) {
     stranded: parts.stranded || null,
     polite: parts.polite || false,
     inclusive: parts.inclusive || false,
+    finiteLink: parts.finiteLink || null,
   };
 }
 

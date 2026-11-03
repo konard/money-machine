@@ -139,6 +139,7 @@ ${russian}`);
           gloss: 'small marsupial',
           definition: 'A small marsupial.',
           labels: [],
+          languages: 1,
           rare: false,
           russian: [
             {
