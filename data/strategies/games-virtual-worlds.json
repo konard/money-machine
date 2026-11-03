@@ -1,0 +1,1756 @@
+[
+  {
+    "id": "fortnite-uefn-island-creator",
+    "name": "Fortnite island creator (UEFN): engagement payouts + in-island transactions",
+    "category": "digital-products",
+    "summary": "Publish UEFN islands and earn monthly engagement payouts plus V-Bucks in-island sales.",
+    "howItWorks": "Join the Fortnite Developer Program (18+), build an island in UEFN and publish it. Epic puts 40% of eligible net Item Shop revenue into an Engagement Pool and splits it monthly by playtime, retention and new-player acquisition, counting only paying players. Islands can also sell items for V-Bucks: the creator gets 50% of the V-Bucks value, or 100% from 9 Jan 2026 to 31 Jan 2027. Discovery is winner-take-most.",
+    "platforms": ["Fortnite Creative / UEFN", "Epic Creator Portal"],
+    "payout": {
+      "methods": [
+        "Hyperwallet payout account (Epic's official payout provider) -> transfer method offered for your country (bank etc.)"
+      ],
+      "minimumPayout": "Not stated in Epic's Fortnite developer docs (unverified; Epic's separate Support-A-Creator program uses a $100 threshold)",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "Paid starting 30 days after month end; in-island sales are paid with the same payout. Payouts pause while an island is unpublished. Payee setup is a Tax Identity tax interview (W-9/W-8), then a Hyperwallet account invite. Unconfirmed: the minimum payout threshold (not stated in Epic's engagement-payout, Hyperwallet-setup or developer-program docs, re-checked Nov 2026)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 5,
+      "high": 20000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 3,
+      "setupEffort": 6,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal UGC development. No paid chance mechanics; follow Fortnite Developer Rules and IARC rating.",
+      "complianceRequirements": [
+        "18+",
+        "Fortnite Developer Program and payee tax forms",
+        "Fortnite Developer Rules",
+        "IARC questionnaire"
+      ]
+    },
+    "availability": {
+      "notes": "Epic's help article listing participating countries is bot-blocked (403) and could not be read; Epic says being reachable by the payout provider does not by itself make you eligible. Hyperwallet transfer-method coverage per country not verified. Estimate unverified."
+    },
+    "automationPlan": [
+      "Use AI coding agents to draft Verse scripts and game logic",
+      "Generate thumbnails/key art and description variants with image models",
+      "Pull Creator Portal analytics and A/B-test thumbnails weekly"
+    ],
+    "manualSteps": [
+      "Developer Program enrolment, ID and tax/payee setup",
+      "Level design, playtesting and balancing in UEFN",
+      "Publishing and responding to moderation"
+    ],
+    "fullCycle": [
+      "Join Fortnite Developer Program",
+      "Build island in UEFN",
+      "Publish and get island code",
+      "Grow playtime/retention",
+      "Monthly engagement + transaction payout to bank"
+    ],
+    "risks": [
+      "Power-law discovery: most islands get almost no plays",
+      "Formula and rates change at Epic's discretion; 100% transaction rate ends Jan 2027",
+      "Payouts paused/clawed back if unpublished or rules broken"
+    ],
+    "evidence": "Epic's official Engagement Payout and In-Island Transactions docs (fetched 2026-11) state the 40% pool, the 50%/100% V-Bucks share and payment 30 days after month end. Epic's Fortnite Developer Program doc names Hyperwallet as the payout provider.",
+    "sources": [
+      "https://dev.epicgames.com/documentation/fortnite/engagement-payout-in-fortnite-creative",
+      "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-overview-in-fortnite",
+      "https://dev.epicgames.com/documentation/en-us/fortnite/fortnite-developer-program",
+      "https://dev.epicgames.com/documentation/fortnite/hyperwallet-setup-in-fortnite-creative"
+    ],
+    "tags": [
+      "games",
+      "ugc-platform",
+      "revenue-share",
+      "power-law",
+      "needs-verification"
+    ],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Unreal Editor for Fortnite (free)",
+          "Epic Creator Portal analytics",
+          "Blender (free)"
+        ],
+        "skills": [
+          "UEFN level design and Verse scripting (AI assists with code)",
+          "game design for retention",
+          "thumbnail and trailer marketing"
+        ],
+        "equipment": ["gaming-capable PC (Windows)", "internet"],
+        "accounts": [
+          "Epic account in the Fortnite Developer Program (18+)",
+          "Tax Identity interview + Hyperwallet payee"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per published island per month (engagement payout)",
+        "typicalPriceUsd": {
+          "low": 0,
+          "median": 5,
+          "high": 2000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 20,
+        "notes": "Epic pays from a pool of 40% of eligible net Item Shop revenue by engagement; per-island payouts are not published, and the median island earns almost nothing (estimate). In-island V-Bucks sales pay 50% (100% until 31 Jan 2027)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; months to break even here means first payout, which most islands never meaningfully reach."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 15000
+        },
+        "notes": "Payouts concentrate in a few hundred top islands run by professional studios with marketing budgets and trend-following updates. The 2026 in-island 100% sales promotion helps creators who already have traffic. AI-assisted Verse coding speeds building, but discovery is winner-take-most. Failure mode: a published island with no players."
+      },
+      "pricingStrategy": "No direct pricing; maximise engagement payout through rapid trend-following updates, and price in-island items low (a few hundred V-Bucks) to convert paying players.",
+      "profitPath": [
+        "Month 0-2: learn UEFN and publish a small island (cost $0)",
+        "Month 2-4: iterate on retention data; payouts often $0-10",
+        "Month 4-8: join a creator team or build trend maps; first $50+ month for a minority",
+        "Month 8-12: most earn under $20/month; hits earn thousands"
+      ],
+      "sources": [
+        "https://dev.epicgames.com/documentation/fortnite/engagement-payout-in-fortnite-creative",
+        "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-overview-in-fortnite"
+      ]
+    }
+  },
+  {
+    "id": "minecraft-marketplace-partner-content",
+    "name": "Minecraft Marketplace content (partner program or contract work for partner studios)",
+    "category": "marketplaces",
+    "summary": "Make Bedrock Marketplace content as an approved partner or a paid contractor for partner studios.",
+    "howItWorks": "Only approved Partners can publish Bedrock skin packs, maps, add-ons and textures to the Marketplace, and Mojang wants a portfolio and a business-like operation. Mojang suggests starting by working with an existing partner, so for an individual the realistic path is paid contract work for a partner studio, then applying directly. Partners earn a share of Minecoin sales.",
+    "platforms": [
+      "Minecraft Marketplace (Bedrock)",
+      "Minecraft Partner Program",
+      "partner studios (e.g. Noxcrew, CrackedCubes)"
+    ],
+    "payout": {
+      "methods": [
+        "Partner: Microsoft partner payout -> bank",
+        "Contractor: studio pays via PayPal/Wise/bank"
+      ],
+      "minimumPayout": "Not published (partner terms are under NDA)",
+      "frequency": "monthly (partner) / per project (contract)",
+      "typicalDelayDays": 45,
+      "notes": "Mojang does not publish the Marketplace revenue split (unverified). Contract rates are negotiated per studio. Unconfirmed: the partner revenue split, minimum payout and payment schedule (no public Mojang/Microsoft page states them)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 3,
+      "setupEffort": 6,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal creative work. Content must be original and all-ages, and must follow Minecraft Usage Guidelines.",
+      "complianceRequirements": [
+        "Partner application and agreement (business entity often expected)",
+        "Original content only",
+        "Tax reporting as contractor/business"
+      ]
+    },
+    "availability": {
+      "notes": "Partner acceptance is selective, and the countries partners can be in are not published. Contract work for studios is available wherever the studio can pay by PayPal/Wise. Estimate unverified."
+    },
+    "automationPlan": [
+      "Generate skin variations and texture drafts with image models, then hand-finish them",
+      "Use AI to write Bedrock add-on JSON/scripts",
+      "Auto-render marketing screenshots with scripted camera paths"
+    ],
+    "manualSteps": [
+      "Build a public portfolio (free maps/packs on CurseForge/MCPEDL)",
+      "Pitch partner studios or apply to the Partner Program",
+      "Quality and art direction to pass Mojang review"
+    ],
+    "fullCycle": [
+      "Publish free portfolio content",
+      "Contract with a partner studio or apply as partner",
+      "Create Marketplace content",
+      "Pass Mojang review and release",
+      "Get paid per project or a share of revenue"
+    ],
+    "risks": [
+      "Gatekept: most applicants are not accepted",
+      "Crowded catalogue and falling per-pack sales",
+      "Revenue terms are opaque and under NDA"
+    ],
+    "evidence": "minecraft.net/partner (fetched 2026-11) sets out the criteria and names partners that grew from small portfolios (CrackedCubes: about 100 projects in 2020, 800+ now).",
+    "sources": [
+      "https://www.minecraft.net/en-us/partner",
+      "https://learn.microsoft.com/minecraft/creator/?view=minecraft-bedrock-stable"
+    ],
+    "tags": [
+      "games",
+      "minecraft",
+      "gatekept",
+      "contract-work",
+      "needs-verification"
+    ],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Blockbench (free)",
+          "Bedrock add-on tools (free)",
+          "Blender (free)"
+        ],
+        "skills": [
+          "Minecraft skin, texture, map or add-on creation",
+          "portfolio building and client communication"
+        ],
+        "equipment": ["PC", "Minecraft Bedrock copy (likely already owned)"],
+        "accounts": [
+          "portfolio site / Discord",
+          "PayPal or Upwork for contract pay",
+          "Minecraft Partner application (later)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per contract deliverable for a partner studio",
+        "typicalPriceUsd": {
+          "low": 50,
+          "median": 300,
+          "high": 2000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 15,
+        "notes": "Partner studios pay negotiated rates; $50 per skin pack to $2,000 for a map is an estimate from freelance postings. Mojang's Marketplace revenue split is unpublished. Contract rates are estimated."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; first contract usually comes after a portfolio of 3-5 pieces."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 8000
+        },
+        "notes": "Established partner studios produce most Marketplace content and hire freelancers for maps, skins and add-ons. Becoming a partner directly is hard for individuals. Failure modes: no contracts without a portfolio and low per-piece rates. Fact-check: median month-12 net lowered from $100 to $60 so it agrees with the 15% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Take small skin-pack or texture jobs at modest rates to build a portfolio, then quote per map/add-on at higher project rates once you have credited Marketplace releases.",
+      "profitPath": [
+        "Month 0-1: build 3-5 portfolio pieces (cost $0)",
+        "Month 2-3: first small studio contract, $50-300",
+        "Month 3-6: 1-2 contracts a month; $150-600/month",
+        "Month 6-12: repeat studio work or partner application; $200-1,000/month for active creators"
+      ],
+      "sources": [
+        "https://www.minecraft.net/en-us/partner",
+        "https://learn.microsoft.com/minecraft/creator/?view=minecraft-bedrock-stable"
+      ]
+    }
+  },
+  {
+    "id": "minecraft-server-tebex-store",
+    "name": "Run an EULA-compliant Minecraft community server monetized via a Tebex webstore",
+    "category": "digital-products",
+    "summary": "Run an EULA-compliant Minecraft server selling cosmetics/access through Tebex.",
+    "howItWorks": "Run a community server and sell through a Tebex store. Mojang's Usage Guidelines allow a single access price for everyone, cosmetics (not capes), non-competitive perks, donations with only server-wide rewards, and virtual currency that cannot be cashed out. Everything must be all-ages, with no gambling. Tebex is merchant of record (VAT, chargebacks) for a flat 5%.",
+    "platforms": [
+      "Tebex",
+      "Minecraft Java/Bedrock server software (Paper, Geyser)",
+      "server lists"
+    ],
+    "payout": {
+      "methods": ["Tebex -> PayPal", "Tebex -> local bank transfer", "wire"],
+      "minimumPayout": "PayPal $5; bank transfer about $20; wire about $50",
+      "frequency": "on settlement",
+      "typicalDelayDays": 16,
+      "notes": "Tebex charges a flat 5% (15% for FiveM) on its Starter (free) and Plus (GBP 12.49/mo) plans. Payments settle after 14 days by default; then PayPal takes 1-2 working days, bank transfer up to 7 days, wire 5-10 working days (GBP 12 per wire). A new payout method has a 5-day hold, the first withdrawal is capped at $1,000, and Hyperwallet compliance reviews can add 1-2 days."
+    },
+    "capitalRequiredUsd": 15,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 15000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 5,
+      "ongoingEffort": 7,
+      "incomePotential": 7,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 96,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal if Mojang's Usage Guidelines are followed: no loot boxes, gambling or pay-to-win, and in-game currency must not be cashable. Consumer-protection rules for minors apply (the EU and UK are strict).",
+      "complianceRequirements": [
+        "Minecraft Usage Guidelines (commercial/servers section)",
+        "'NOT AN OFFICIAL MINECRAFT' disclaimer",
+        "Privacy policy for player data",
+        "Tebex KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Tebex pays out by PayPal, local bank transfer or wire; wire covers 200+ countries, and Tebex's wire list includes 46 of the 50 reference countries (missing Lebanon, Zimbabwe, Libya, Iraq). Needs a small monthly server rental (from about $10-20)."
+    },
+    "automationPlan": [
+      "Infrastructure-as-code server deploys and automatic restarts/backups",
+      "AI-written plugins/configs and Discord moderation bots",
+      "Tebex packages delivered automatically by in-game commands"
+    ],
+    "manualSteps": [
+      "Community building and moderation",
+      "Designing a compliant store (no pay-to-win)",
+      "Handling player support and disputes"
+    ],
+    "fullCycle": [
+      "Rent server",
+      "Build game mode/community",
+      "Add Tebex store",
+      "Grow players via server lists/Discord",
+      "Tebex payout to bank/PayPal"
+    ],
+    "risks": [
+      "Most servers never reach a paying player base",
+      "Mojang enforcement and blocklisting for non-compliant monetization",
+      "Hosting cost before revenue; DDoS and griefing"
+    ],
+    "evidence": "Mojang's Usage Guidelines (fetched 2026-11) explicitly allow paid access, cosmetics and non-competitive perks. Tebex's official docs (fetched 2026-11) give the 5% fee, 14-day settlement and per-method withdrawal minimums.",
+    "sources": [
+      "https://www.minecraft.net/en-us/usage-guidelines",
+      "https://docs.tebex.io/creators/pricing-overview/starter-and-plus-plans",
+      "https://docs.tebex.io/creators/tebex-checkout/fund-withdrawals-and-transfers",
+      "https://docs.tebex.io/creators/tebex-checkout/fund-withdrawals-and-transfers/wire-transfer-list-of-countries-and-fees"
+    ],
+    "tags": ["games", "minecraft", "community", "recurring", "small-capital"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 15,
+        "recurringMonthlyUsd": 15,
+        "tools": [
+          "Paper/Geyser server software (free)",
+          "VPS or game host ($10-20/mo)",
+          "Tebex Starter (free, 5% fee)",
+          "Discord"
+        ],
+        "skills": [
+          "server administration and plugin configuration",
+          "community moderation",
+          "Mojang Usage Guidelines compliance"
+        ],
+        "equipment": ["PC", "internet"],
+        "accounts": [
+          "Tebex store + payout verification",
+          "hosting account",
+          "PayPal or bank"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per store purchase (rank, cosmetic, donation)",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 10,
+          "high": 50
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 0.2,
+        "notes": "Server stores typically price cosmetics and ranks at $5-50; Tebex charges a flat 5% as merchant of record."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 15,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurring $15/mo (startup cash not amortised). About 2 purchases a month cover hosting; most servers need months to build a regular player base."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -15,
+          "median": 35,
+          "high": 14000
+        },
+        "notes": "Large networks with unique game modes and creator partnerships dominate server lists; small servers struggle to retain players. EULA rules limit pay-to-win, so revenue depends on cosmetics and community. Failure modes: no players, hosting costs with no sales, and EULA violations."
+      },
+      "pricingStrategy": "Start with low-priced cosmetics ($3-5) and a supporter rank ($10), run seasonal events, and add higher tiers only when the community asks.",
+      "profitPath": [
+        "Month 0: server, plugins, Tebex store (cost $15 hosting)",
+        "Month 1-3: recruit players via server lists and Discord; $0-30/month",
+        "Month 3-6: events and cosmetics; $20-100/month",
+        "Month 6-12: most small servers stay under break-even or barely above"
+      ],
+      "sources": [
+        "https://docs.tebex.io/creators/pricing-overview/starter-and-plus-plans",
+        "https://www.minecraft.net/en-us/usage-guidelines"
+      ]
+    }
+  },
+  {
+    "id": "minecraft-mod-rewards-curseforge-modrinth",
+    "name": "Minecraft mod/modpack author rewards on CurseForge and Modrinth",
+    "category": "digital-products",
+    "summary": "Publish free Minecraft mods/modpacks and earn ad-revenue-share rewards on CurseForge and Modrinth.",
+    "howItWorks": "Publish free mods and modpacks. CurseForge hands out points from a monthly pool by project popularity once a project passes a threshold; each point is worth $0.05. Modpack authors also get 65% of a user's first month on BisectHosting servers bought through their page. Modrinth pays creators 75% of its ad revenue, split by views and downloads. Mojang's EULA bars selling mods, so ad-share is the sanctioned route.",
+    "platforms": ["CurseForge (Overwolf)", "Modrinth"],
+    "payout": {
+      "methods": [
+        "CurseForge: PayPal or Payoneer (USD); Amazon gift cards in US, CA, UK, DE, FR, IT",
+        "Modrinth: PayPal, Venmo, gift cards"
+      ],
+      "minimumPayout": "CurseForge: 100 points ($5); Modrinth: not stated (withdrawal fees apply)",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "CurseForge PayPal/Payoneer orders are processed in the first days of each month (terms allow up to 60 days after redemption), and points expire 3 years after accrual. Modrinth revenue is NET 60: it becomes available 60 days after the last day of the month in which it was earned."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 10,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 100
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal. Projects must be original or properly licensed. Botting downloads leads to a permanent ban.",
+      "complianceRequirements": [
+        "18+ for CurseForge rewards",
+        "tax reporting",
+        "PayPal/Payoneer KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Payoneer covers all 50 reference countries, and PayPal can receive in 45 of 50."
+    },
+    "automationPlan": [
+      "Use AI coding agents to port and update mods across Minecraft versions and loaders",
+      "Release and changelog automation through CI with the CurseForge/Modrinth upload APIs",
+      "Automatic issue triage on GitHub"
+    ],
+    "manualSteps": [
+      "Opt in to the CurseForge rewards program and add payout details",
+      "Design and test gameplay",
+      "Community support"
+    ],
+    "fullCycle": [
+      "Create mod/modpack",
+      "Publish on CurseForge and Modrinth",
+      "Opt in to rewards",
+      "Accumulate points/revenue",
+      "Withdraw to PayPal/Payoneer"
+    ],
+    "risks": [
+      "Projects below the popularity threshold earn nothing",
+      "Pools shrink when ad revenue falls",
+      "Version churn requires constant updates"
+    ],
+    "evidence": "CurseForge's official Rewards FAQ and terms (fetched 2026-11) give $0.05 per point, a 100-point cash minimum and 18+ eligibility. Modrinth's Rewards Program info page (fetched 2026-11) states the 75% creator share, NET 60 and PayPal/Venmo/gift-card withdrawals.",
+    "sources": [
+      "https://support.curseforge.com/en/support/solutions/articles/9000197902-reward-program-faq",
+      "https://support.curseforge.com/en/support/solutions/articles/9000197898-curseforge-rewards-program",
+      "https://modrinth.com/legal/cmp-info",
+      "https://support.curseforge.com/en/support/solutions/articles/9000240602-curseforge-server-affiliation-program-faq"
+    ],
+    "tags": ["games", "mods", "passive", "ad-revenue-share", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Java/Kotlin IDE (free)",
+          "Fabric/NeoForge toolchains",
+          "coding agent for boilerplate"
+        ],
+        "skills": [
+          "Java modding",
+          "maintaining mods across Minecraft versions"
+        ],
+        "equipment": ["PC"],
+        "accounts": [
+          "CurseForge author account",
+          "Modrinth creator account",
+          "PayPal / Payoneer"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 10,000 downloads",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 8
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "CurseForge points ($0.05 each) and Modrinth ad-share (75% to creators) do not publish per-download rates; $1-8 per 10k downloads is an estimate. Figures are already net of platform share."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; rewards need thousands of downloads and Modrinth pays NET 60."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 4500
+        },
+        "notes": "Popular library mods and big modpacks earn most rewards; a typical mod earns a few dollars a month. Coding agents make mod development faster, which raises supply. Failure modes: low downloads and maintenance burden across versions."
+      },
+      "pricingStrategy": "No pricing; focus on useful mods with broad compatibility, publish on both platforms, and add a BisectHosting partner link to modpacks.",
+      "profitPath": [
+        "Month 0-1: release first mod on both platforms (cost $0)",
+        "Month 2-4: updates and community feedback; under $5/month",
+        "Month 4-8: second mod or modpack; first payout",
+        "Month 8-12: most earn $5-30/month; a popular mod can earn hundreds"
+      ],
+      "sources": [
+        "https://support.curseforge.com/en/support/solutions/articles/9000197898-curseforge-rewards-program",
+        "https://modrinth.com/legal/cmp-info"
+      ]
+    }
+  },
+  {
+    "id": "nexus-mods-donation-points",
+    "name": "Nexus Mods Donation Points for PC game mod authors",
+    "category": "digital-products",
+    "summary": "Publish free mods for PC games (Skyrim, Cyberpunk 2077, Baldur's Gate 3, Stardew Valley etc.) and earn Donation Points from Nexus Mods' monthly pool, redeemable for cash.",
+    "howItWorks": "Upload original mods for PC games and opt each mod page into Mod Rewards. Nexus pays a monthly pool (GBP 325,000 in March 2024) to authors using an undisclosed algorithm based on user interactions, with repeat interactions from the same user counting for less. Each Donation Point is worth $0.001 (1,000 DP = $1) and can be redeemed for cash via PayPal, games or Premium.",
+    "platforms": ["Nexus Mods"],
+    "payout": {
+      "methods": [
+        "PayPal cash redemption (Nexus commits to always offering it)"
+      ],
+      "minimumPayout": "Not stated in official help articles; redemptions only in the amounts listed in the DP store",
+      "frequency": "monthly",
+      "typicalDelayDays": 105,
+      "notes": "NET 90: DP for a month is credited about three months later (January's DP arrives at the start of May). Nexus can change the cash value of a DP at any time. DP currently do not expire. Where a cash reward is blocked by national or provider restrictions, Nexus refunds the DP and offers no alternative."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 100,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 10,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal. Files must be your original work or assets cleared for commercial use. Splitting one mod into several pages to farm DP is disqualified.",
+      "complianceRequirements": [
+        "18+",
+        "opt-in per mod",
+        "asset permissions",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Cash redemption depends on PayPal, which can receive payments in about 45 of 50 reference countries; elsewhere DP are refunded (spendable only on games/Premium)."
+    },
+    "automationPlan": [
+      "Use AI coding agents to update mods after game patches",
+      "Automated packaging, FOMOD installers and changelogs",
+      "Scripted screenshot and description generation"
+    ],
+    "manualSteps": [
+      "Opt mods into rewards",
+      "Playtesting and compatibility fixes",
+      "User support in comments/bug reports"
+    ],
+    "fullCycle": [
+      "Pick a popular moddable game",
+      "Publish original mod",
+      "Opt in to Donation Points",
+      "Accrue DP monthly",
+      "Redeem DP for cash"
+    ],
+    "risks": [
+      "Undisclosed algorithm; payouts change with the business",
+      "DP value can change at Nexus's discretion",
+      "Game updates break mods"
+    ],
+    "evidence": "Nexus Mods' official help articles (fetched 2026-11) give the $0.001 DP value, PayPal redemption, NET 90 timing, the eligibility rules and the GBP 325,000 March 2024 payout.",
+    "sources": [
+      "https://help.nexusmods.com/article/112-donation-points-faq",
+      "https://help.nexusmods.com/article/138-donation-points-how-they-work",
+      "https://help.nexusmods.com/article/68-donation-points-system-terms-of-service",
+      "https://help.nexusmods.com/article/131-donation-points-update-2024-faq"
+    ],
+    "tags": ["games", "mods", "passive", "pool-payout"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "game modding tools (Creation Kit, etc.)",
+          "Blender (free)",
+          "Nexus Mods uploader"
+        ],
+        "skills": [
+          "modding a popular PC game",
+          "documentation and user support"
+        ],
+        "equipment": ["gaming PC"],
+        "accounts": ["Nexus Mods author account", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per 10,000 unique downloads",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 5,
+          "high": 15
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Nexus does not publish DP per download; $2-15 per 10k downloads is an estimate. 1,000 DP = $1, value can change."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; DP are credited about 3 months after the month earned."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 4500
+        },
+        "notes": "Authors of popular mods for big new releases and evergreen games earn most of the monthly pool. Because the pool is fixed and uploads keep rising, per-download value tends to fall. Failure modes: low downloads and DP value changes."
+      },
+      "pricingStrategy": "No pricing; release early for new popular games and keep mods updated to build long-term downloads.",
+      "profitPath": [
+        "Month 0: release first mod (cost $0)",
+        "Month 1-3: updates; first DP credited after 3 months",
+        "Month 3-6: second mod; a few dollars a month",
+        "Month 6-12: most earn under $20/month"
+      ],
+      "sources": [
+        "https://help.nexusmods.com/article/112-donation-points-faq",
+        "https://help.nexusmods.com/article/138-donation-points-how-they-work"
+      ]
+    }
+  },
+  {
+    "id": "overwolf-in-game-apps",
+    "name": "Overwolf in-game overlay apps monetized by ads and subscriptions",
+    "category": "digital-products",
+    "summary": "Build Overwolf in-game overlay apps earning ad and subscription revenue share.",
+    "howItWorks": "Build an HTML/JS app that uses Overwolf game-event APIs, such as a stats tracker or build helper. After QA it is listed in the Overwolf Appstore and Overwolf serves ads in it, and you can also sell Tebex-powered subscriptions. From 1 Nov 2026 Overwolf approves only apps using Overwolf monetization. Yield depends on tier-1 users.",
+    "platforms": ["Overwolf Appstore", "Overwolf ads", "Tebex subscriptions"],
+    "payout": {
+      "methods": ["Payoneer (USD) -> bank"],
+      "minimumPayout": "$200 net (lower amounts roll over)",
+      "frequency": "monthly",
+      "typicalDelayDays": 75,
+      "notes": "NET 60, paid in USD via Payoneer: January's revenue is paid in April. You invoice finance@overwolf.com using the monthly revenue email. The revenue share percentage is not published; docs refer only to the 'agreed revenue share' in your developer agreement."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 20000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 7,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 100
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal software publishing. The app must comply with each game's ToS and anti-cheat rules (no unfair advantage, no memory reading). Ads must respect privacy/consent rules.",
+      "complianceRequirements": [
+        "Overwolf developer terms and QA",
+        "game publisher ToS compliance",
+        "Payoneer KYC; invoices"
+      ]
+    },
+    "availability": {
+      "notes": "Payoneer pays in all 50 reference countries. The app's users can be anywhere, but ad yield is concentrated in US/UK/CA/AU/DE."
+    },
+    "automationPlan": [
+      "Use AI coding agents to build and maintain the app and game-event handling",
+      "Run data pipelines that refresh meta/build recommendations automatically",
+      "CI release pipeline and crash analytics"
+    ],
+    "manualSteps": [
+      "Developer account and DevRel onboarding",
+      "QA approval",
+      "Payoneer setup and monthly invoicing"
+    ],
+    "fullCycle": [
+      "Pick a supported game",
+      "Build app with Overwolf SDK",
+      "Pass QA and list in Appstore",
+      "Enable ads/subscriptions",
+      "Monthly Payoneer payout"
+    ],
+    "risks": [
+      "Game updates or anti-cheat changes can break the app",
+      "$200 minimum plus NET 60 delays the first dollar",
+      "Dependent on Overwolf's ad stack and policies"
+    ],
+    "evidence": "Overwolf's official monetization docs (fetched 2026-11) state NET 60 Payoneer payouts in USD, a $200 net minimum with rollover and the 2026 monetization requirement. Overwolf reported large annual creator payouts (Forbes, Dec 2024: $240M; not re-verified).",
+    "sources": [
+      "https://dev.overwolf.com/ow-native/monetization/overview",
+      "https://dev.overwolf.com/ow-native/monetization/advertising/overview",
+      "https://www.overwolf.com/creators/build-an-app/"
+    ],
+    "tags": ["games", "software", "ad-revenue-share", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 150,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Overwolf SDK (free)",
+          "HTML/JS framework",
+          "coding agent",
+          "Tebex subscriptions"
+        ],
+        "skills": [
+          "web app development",
+          "game event API integration",
+          "UX for in-game overlays"
+        ],
+        "equipment": ["Windows gaming PC"],
+        "accounts": ["Overwolf developer account", "Payoneer"]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 monthly active users per month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 80
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 2,
+        "notes": "Overwolf's revenue share is unpublished; $5-80 per 1,000 MAU per month is an estimate of developer share (higher for tier-1 users)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; QA and NET 60 Payoneer payouts make first cash 4-6 months after launch."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 4,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 18000
+        },
+        "notes": "Top Overwolf apps (stats trackers for big games) earn large sums, but most apps never reach the users needed. From 1 Nov 2026 only apps using Overwolf monetization are approved. Failure modes: game API changes, low user counts, and long development time."
+      },
+      "pricingStrategy": "No direct pricing; launch free with ads and add a $2-5/month ad-free subscription once usage grows.",
+      "profitPath": [
+        "Month 0-2: build and pass QA (cost $0)",
+        "Month 2-4: launch; first users",
+        "Month 4-8: first revenue share; most under $50/month",
+        "Month 8-12: a few apps reach thousands of users and hundreds per month"
+      ],
+      "sources": [
+        "https://dev.overwolf.com/ow-native/monetization/overview",
+        "https://www.overwolf.com/creators/build-an-app/"
+      ]
+    }
+  },
+  {
+    "id": "vrchat-avatar-assets-creator-economy",
+    "name": "VRChat avatar, outfit and world assets: VRChat Creator Economy + Jinxxy/BOOTH stores",
+    "category": "digital-products",
+    "summary": "Sell VRChat avatar/outfit/world assets in-world (Credits via Tilia) and as downloads on Jinxxy/BOOTH.",
+    "howItWorks": "Approved VRChat sellers sell avatar/world unlocks and group subscriptions for VRChat Credits, and the creator keeps about 50% of what users spend (about $0.005 per credit), paid out via Tilia. Unity packages, outfits and shaders sell as downloads on Jinxxy (5% fee plus about 3% processing, weekly payouts) or on BOOTH. Compatibility with popular avatar bases drives repeat sales.",
+    "platforms": ["VRChat Creator Economy", "Tilia", "Jinxxy", "BOOTH (pixiv)"],
+    "payout": {
+      "methods": [
+        "VRChat: Tilia -> PayPal or bank transfer",
+        "Jinxxy: weekly payouts ($1.50 fee)",
+        "BOOTH: transfer to bank (JPY)"
+      ],
+      "minimumPayout": "VRChat: 20,000 earned credits (about $100); Jinxxy/BOOTH: not stated",
+      "frequency": "on request (VRChat) / weekly (Jinxxy) / monthly (BOOTH)",
+      "typicalDelayDays": 7,
+      "notes": "Tilia approves most VRChat payouts in 1-2 business days, and PayPal charges about 1.5%. BOOTH pays monthly from the 20th with a JPY 200-300 transfer fee. Whether BOOTH pays to non-Japanese banks is unverified."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal. Do not sell ripped or IP-infringing models. Keep listings SFW to meet this catalog's rules.",
+      "complianceRequirements": [
+        "VRChat Creator Economy application and guidelines",
+        "Tilia KYC (legal name must match)",
+        "asset licensing / original work",
+        "VAT handled by marketplace"
+      ]
+    },
+    "availability": {
+      "notes": "VRChat selling is by approved application only. Tilia bank transfers are limited to supported countries and PayPal payouts are unavailable in 5 reference countries. Jinxxy says it supports 150+ countries."
+    },
+    "automationPlan": [
+      "Use AI to draft textures and concept art, then hand-finish in Blender/Substance",
+      "Scripted Unity package export and versioning per avatar base",
+      "Template listings with auto-generated preview renders"
+    ],
+    "manualSteps": [
+      "Apply for VRChat seller access and Tilia onboarding",
+      "3D modelling, rigging and fitting for popular avatar bases",
+      "Customer support for import issues"
+    ],
+    "fullCycle": [
+      "Build avatar/outfit",
+      "List on Jinxxy/BOOTH and VRChat store",
+      "Promote in VRChat communities",
+      "Earn credits/sales",
+      "Payout via Tilia/Jinxxy to bank/PayPal"
+    ],
+    "risks": [
+      "Piracy/leaks of avatar files",
+      "VRChat platform-policy and fee changes",
+      "Niche demand concentrated on a few avatar bases"
+    ],
+    "evidence": "VRChat's official creator docs (fetched 2026-11) give the 20,000-credit minimum, the roughly 50% creator share and Tilia payouts. Jinxxy's selling page states its fees and weekly payouts.",
+    "sources": [
+      "https://creators.vrchat.com/economy/payout",
+      "https://creators.vrchat.com/economy/faq",
+      "https://jinxxy.com/about/selling"
+    ],
+    "tags": ["games", "social-vr", "3d", "digital-downloads"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Blender (free)",
+          "Unity (free tier)",
+          "VRChat SDK",
+          "Jinxxy/BOOTH stores"
+        ],
+        "skills": [
+          "3D modeling and texturing",
+          "Unity avatar setup",
+          "community marketing"
+        ],
+        "equipment": ["PC", "VR headset optional"],
+        "accounts": [
+          "VRChat creator account",
+          "Tilia payout account",
+          "Jinxxy/BOOTH seller account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per asset sale",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 30,
+          "high": 80
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 92,
+        "hoursPerUnit": 0.3,
+        "notes": "Avatar outfits and assets sell for $10-80; Jinxxy fee 5% plus ~3% processing (cost $1). VRChat Creator Economy pays about 50% of credits spent. Jinxxy also charges a $1.50 fee per payout; VRChat payouts need 20,000 earned credits."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; first sale often after 2-4 releases."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 9000
+        },
+        "notes": "Creators whose assets fit popular avatar bases sell repeatedly; the creator economy continues to expand. AI texturing tools speed production. Failure modes: assets incompatible with popular bases and low visibility."
+      },
+      "pricingStrategy": "Release a free asset to build followers, price first outfits at $10-15, then raise to $20-40 for full sets.",
+      "profitPath": [
+        "Month 0-1: learn and release first asset (cost $0)",
+        "Month 2-4: 3-4 releases; $20-80/month",
+        "Month 4-8: bundles for popular bases; $50-150/month",
+        "Month 8-12: most earn under $100/month; top creators earn thousands"
+      ],
+      "sources": [
+        "https://creators.vrchat.com/economy/payout",
+        "https://jinxxy.com/about/selling"
+      ]
+    }
+  },
+  {
+    "id": "second-life-virtual-goods",
+    "name": "Second Life virtual goods creator (L$ sales cashed out via Tilia)",
+    "category": "marketplaces",
+    "summary": "Sell Second Life virtual goods for L$, convert on the LindeX and withdraw through Tilia.",
+    "howItWorks": "Make mesh fashion, furniture or scripted items in Blender/LSL and sell them in-world or on the SL Marketplace for Linden Dollars. Sell the L$ on the LindeX for a USD balance, then withdraw it with a Process Credit request through Tilia/Thunes. The economy is mature and buyers spend steadily, but sales are concentrated among top brands.",
+    "platforms": ["Second Life", "SL Marketplace", "LindeX", "Tilia (Thunes)"],
+    "payout": {
+      "methods": [
+        "Process Credit via Tilia -> PayPal or other payout account (depends on location)"
+      ],
+      "minimumPayout": "$3 plus fees per withdrawal (max $9,999 minus fees)",
+      "frequency": "on request",
+      "typicalDelayDays": 10,
+      "notes": "Most requests take 5-10 business days, some up to 30. A per-transaction fee varies by method and location. Linden Lab set the LindeX sell fee at 5% from March 2023 (official blog bot-blocked; confirmed via ModemWorld's report of the announcement). The Marketplace commission (10% since 2020) was not re-verified."
+    },
+    "capitalRequiredUsd": 10,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling virtual goods you made is legal and allowed by Linden Lab. Avoid SL's gambling-related products and IP knock-offs; keep products in General/Moderate maturity for this catalog.",
+      "complianceRequirements": [
+        "Second Life ToS",
+        "Tilia identity verification and billing info",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Withdrawal methods depend on location; Tilia country coverage not verified. Small L$ upload fees (about L$10 per mesh upload) count as near-zero capital."
+    },
+    "automationPlan": [
+      "Use AI to generate textures and colour variants, then batch-upload",
+      "Script vendor systems and automatic redelivery (LSL)",
+      "Use AI to write Marketplace listings; schedule sales"
+    ],
+    "manualSteps": [
+      "Mesh modelling and rigging for popular bodies",
+      "Tilia KYC",
+      "Store/brand building in-world"
+    ],
+    "fullCycle": [
+      "Create account and learn mesh",
+      "Upload items",
+      "Sell in-world/Marketplace for L$",
+      "Sell L$ on LindeX",
+      "Process Credit to PayPal/bank"
+    ],
+    "risks": [
+      "Ageing user base and strong competition",
+      "Fees and limits on L$ conversion",
+      "Content theft (copybot)"
+    ],
+    "evidence": "Second Life's official knowledge base (fetched 2026-11) documents Process Credit through Tilia: $3 minimum, $9,999 maximum and 5-10 business days.",
+    "sources": [
+      "https://lindenlab.freshdesk.com/support/solutions/articles/31000135224-process-credit-withdrawal-requests",
+      "https://lindenlab.freshdesk.com/support/solutions/articles/31000136358-common-lindex-issues",
+      "https://modemworld.me/2023/03/06/ll-announce-fee-changes-for-second-life-land-and-lindex/",
+      "https://secondlife.com/"
+    ],
+    "tags": ["games", "virtual-world", "3d", "marketplace"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 10,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Blender (free)", "LSL scripting", "Second Life viewer"],
+        "skills": [
+          "3D modeling and texturing",
+          "LSL scripting",
+          "SL marketplace marketing"
+        ],
+        "equipment": ["PC"],
+        "accounts": [
+          "Second Life account",
+          "SL Marketplace store",
+          "Tilia payout account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per item sale",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 2,
+          "high": 5
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 85,
+        "hoursPerUnit": 0.2,
+        "notes": "SL items sell for L$150-1,000 ($0.60-4); Marketplace 10% commission plus 5% LindeX sell fee (fee 15%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 1,
+        "notes": "No fixed monthly cost. Startup cash is L$ for uploads; a few sales recover it."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 25,
+          "high": 4500
+        },
+        "notes": "Established fashion and home brands dominate; the user base is mature and slowly declining. AI texture tools help production. Failure modes: low visibility in a crowded marketplace."
+      },
+      "pricingStrategy": "Price low (L$100-250) for first releases and offer group gifts; raise prices for full sets once you have a following.",
+      "profitPath": [
+        "Month 0: first items uploaded (cost $10)",
+        "Month 1-3: 10-20 items; $5-30/month",
+        "Month 3-6: events and group gifts; $20-80/month",
+        "Month 6-12: most earn under $100/month"
+      ],
+      "sources": [
+        "https://lindenlab.freshdesk.com/support/solutions/articles/31000135224-process-credit-withdrawal-requests",
+        "https://modemworld.me/2023/03/06/ll-announce-fee-changes-for-second-life-land-and-lindex/"
+      ]
+    }
+  },
+  {
+    "id": "twitch-extensions-bits",
+    "name": "Twitch Extensions monetized with Bits",
+    "category": "digital-products",
+    "summary": "Build interactive Twitch Extensions (polls, viewer games, overlays) where viewers spend Bits on actions; the developer gets a share of the Bits revenue.",
+    "howItWorks": "Build a panel/overlay Extension with Bits products (1-10,000 Bits), such as triggering on-stream effects or viewer mini-games. Twitch splits Bits revenue 80% to the broadcaster and 20% to the developer. You get paid after completing Twitch's monetization onboarding (tax interviews and financial details). You earn only if many streamers install it.",
+    "platforms": ["Twitch Extensions", "Twitch Bits"],
+    "payout": {
+      "methods": ["Twitch payout (bank/wire/PayPal per onboarding)"],
+      "minimumPayout": "Not stated for extension developers (unverified); Twitch's creator payout minimum is $50 ($100 for wire)",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Twitch announced the 80% broadcaster / 20% developer Bits split in 2018; current docs say only that revenue is shared and do not restate the percentages. Docs recommend choosing 'Hold My Payments' at first. Unconfirmed: the payout minimum for extension developers and the current developer share of Bits (dev.twitch.tv monetization and Bits docs and the Twitch Developer Agreement page re-checked Nov 2026)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 7,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal. No chance-based paid mechanics (loot boxes, gambling). Must check the isBitsEnabled flag and follow Twitch Extension guidelines and review.",
+      "complianceRequirements": [
+        "Twitch developer account and extension review",
+        "tax interviews and identity verification",
+        "Twitch Developer Agreement"
+      ]
+    },
+    "availability": {
+      "notes": "Bits work only on channels that can receive Bits. Developer payout countries are not listed on the docs. Estimate unverified."
+    },
+    "automationPlan": [
+      "Use AI coding agents to build the extension front end and EBS backend",
+      "Serverless hosting with automatic scaling",
+      "Automated outreach and onboarding docs for streamers"
+    ],
+    "manualSteps": [
+      "Monetization onboarding (tax, ID)",
+      "Extension review submission",
+      "Recruiting streamers to install"
+    ],
+    "fullCycle": [
+      "Build extension",
+      "Pass Twitch review",
+      "Enable Bits products",
+      "Get streamers to install",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Very low adoption for most extensions",
+      "Twitch policy and API changes",
+      "Extension reviews have been paused before"
+    ],
+    "evidence": "Official Twitch developer docs (fetched 2026-11) describe Bits in Extensions, revenue sharing with developers and the onboarding flow; Twitch's 2018 launch post gives the 20% developer share. Widely installed extensions show the model works at the top end, but most extensions earn little.",
+    "sources": [
+      "https://dev.twitch.tv/docs/extensions/monetization/",
+      "https://dev.twitch.tv/docs/extensions/bits/",
+      "https://blog.twitch.tv/en/2018/04/23/the-next-big-update-for-extensions-is-here-a036151cc309/",
+      "https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/"
+    ],
+    "tags": [
+      "games",
+      "streaming",
+      "developer",
+      "low-probability",
+      "needs-verification"
+    ],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 100,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Twitch Extensions developer rig",
+          "free-tier backend hosting",
+          "coding agent"
+        ],
+        "skills": [
+          "web development (HTML/JS)",
+          "backend service for extension",
+          "Twitch API"
+        ],
+        "equipment": ["PC"],
+        "accounts": [
+          "Twitch developer account",
+          "Twitch monetization onboarding (tax + payout)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 10,000 Bits spent in your extension",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 20,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Viewers pay about $1.40 per 100 Bits; Twitch credits $0.01 per Bit, and the 2018 split gives the developer 20% ($20 per 10k Bits); current docs do not restate the split."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 12,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; meaningful income needs many installing streamers."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 2,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 2500
+        },
+        "notes": "Very few extensions earn meaningful Bits; streamers rely on a handful of popular overlays. Failure modes: no installs and low Bits usage."
+      },
+      "pricingStrategy": "Price Bits products low (50-100 Bits) to encourage viewer use.",
+      "profitPath": [
+        "Month 0-3: build and pass review (cost $0)",
+        "Month 3-6: recruit streamers; little revenue",
+        "Month 6-12: most earn $0"
+      ],
+      "sources": [
+        "https://dev.twitch.tv/docs/extensions/monetization/",
+        "https://blog.twitch.tv/en/2018/04/23/the-next-big-update-for-extensions-is-here-a036151cc309/"
+      ]
+    }
+  },
+  {
+    "id": "esports-coaching-metafy",
+    "name": "Video-game coaching, VOD reviews and guides on Metafy",
+    "category": "marketplaces",
+    "summary": "Sell 1-to-1 game coaching sessions, asynchronous VOD reviews, written/video guides and memberships to players on Metafy's gaming-specific marketplace.",
+    "howItWorks": "List coaching sessions, async VOD reviews, guides and memberships for competitive games on Metafy, which handles discovery, scheduling and payment. On the free Core plan Metafy takes 12% plus $1.79 per transaction, capped at 30% (from 14 Aug 2026). Pro costs $99 per month and takes 0%. VOD reviews and guides scale best.",
+    "platforms": ["Metafy"],
+    "payout": {
+      "methods": [
+        "Metafy wallet -> local bank transfer/ACH",
+        "bank wire",
+        "PayPal",
+        "Venmo (US)"
+      ],
+      "minimumPayout": "$12.50",
+      "frequency": "on request",
+      "typicalDelayDays": 7,
+      "notes": "Earnings are pending for 1-4 business days, then withdrawable after Veriff KYC. Fees: local bank/ACH $2.50, wire $30, PayPal 5% + $1, Venmo (US) 5% + $1. Allow up to 10 business days end to end."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 3,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal service. No account sharing, boosting or playing on the client's account, which breaks most game ToS.",
+      "complianceRequirements": [
+        "Veriff identity verification",
+        "tax reporting",
+        "game ToS (no boosting/account sharing)"
+      ]
+    },
+    "availability": {
+      "notes": "Metafy says local bank payouts are available in 'many countries'; PayPal is an option where supported. Country list not verified. Gamer Sensei, the former alternative, now redirects to Corsair and is defunct."
+    },
+    "automationPlan": [
+      "Use AI to pre-annotate VODs/replays and draft review notes",
+      "Turn recurring advice into written/video guides and memberships",
+      "Automate scheduling and reminders on Metafy"
+    ],
+    "manualSteps": [
+      "Prove skill (rank or tournament results)",
+      "Live sessions and quality VOD feedback",
+      "Marketing on Discord/Reddit/YouTube"
+    ],
+    "fullCycle": [
+      "Create Metafy profile",
+      "List sessions/VOD reviews/guides",
+      "Get first students",
+      "Deliver and collect reviews",
+      "Withdraw to bank/PayPal"
+    ],
+    "risks": [
+      "Needs demonstrable high rank or reputation",
+      "Game meta shifts and game popularity decline",
+      "Platform fee changes"
+    ],
+    "evidence": "Metafy's official help center (fetched 2026-11) documents the fee schedule, the $12.50 minimum withdrawal and payout timelines. Its homepage features working creator-coaches.",
+    "sources": [
+      "https://metafy.gg/pro",
+      "https://help.metafy.gg/en/articles/16415457-metafy-pricing-update-august-2026",
+      "https://help.metafy.gg/en/articles/14674847-payout-timelines-and-hold-periods"
+    ],
+    "tags": ["games", "coaching", "services", "fast-first-dollar"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 6,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Metafy Core plan (free)", "OBS for VOD reviews", "Discord"],
+        "skills": [
+          "high rank in a competitive game",
+          "teaching and VOD analysis"
+        ],
+        "equipment": ["gaming PC", "microphone"],
+        "accounts": ["Metafy coach account + Veriff KYC", "bank/PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per coaching session (1 hour) or VOD review",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 30,
+          "high": 80
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 12,
+        "grossMarginPercent": 81,
+        "hoursPerUnit": 1.2,
+        "notes": "Metafy sessions run $15-80; Core plan fee 12% + $1.79 per transaction (cost $2), capped at 30%."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; first booking usually within a month for high-ranked players."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 4500
+        },
+        "notes": "Coaches with high ranks and visible content (streams, YouTube) get bookings; average players struggle. AI VOD-analysis tools reduce demand for basic reviews. Failure modes: low bookings and churn."
+      },
+      "pricingStrategy": "Offer cheap async VOD reviews ($10-15) to build reviews, then raise session prices and sell memberships.",
+      "profitPath": [
+        "Month 0: profile and offers (cost $0)",
+        "Month 1-2: first bookings, $30-100",
+        "Month 3-6: VOD reviews and guides; $100-300/month",
+        "Month 6-12: memberships; most earn under $200/month"
+      ],
+      "sources": [
+        "https://help.metafy.gg/en/articles/16415457-metafy-pricing-update-august-2026",
+        "https://metafy.gg/pro"
+      ]
+    }
+  },
+  {
+    "id": "game-server-hosting-reseller",
+    "name": "Managed game-server hosting for small communities (reseller on VPS with Pterodactyl)",
+    "category": "marketplaces",
+    "summary": "Sell managed game servers to small communities from resold VPS capacity with Pterodactyl and billing.",
+    "howItWorks": "Rent capacity from a provider that allows resale, install the open-source Pterodactyl panel and a billing system (Paymenter/WHMCS), and sell monthly managed servers per game to friend groups and communities. The payer is the server owner, not players. Margin comes from packing servers efficiently and from support. A lighter variant is hosting partner links, e.g. CurseForge's BisectHosting affiliation at 65% of the first month.",
+    "platforms": [
+      "Pterodactyl panel",
+      "Paymenter/WHMCS",
+      "Stripe/PayPal",
+      "VPS providers that allow resale (e.g. OVHcloud, Hetzner per their ToS)"
+    ],
+    "payout": {
+      "methods": ["Stripe -> bank", "PayPal -> bank"],
+      "minimumPayout": "Stripe: none; PayPal: none",
+      "frequency": "daily-weekly (Stripe/PayPal)",
+      "typicalDelayDays": 7,
+      "notes": "You hold customer funds directly; the provider bills you monthly."
+    },
+    "capitalRequiredUsd": 40,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 7,
+      "setupEffort": 6,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal hosting resale. Check the upstream provider's resale/AUP terms. Game EULAs allow hosting. GDPR and abuse handling apply.",
+      "complianceRequirements": [
+        "upstream provider resale permission",
+        "terms of service, refund and privacy policy",
+        "VAT/sales tax on digital services where applicable",
+        "Stripe/PayPal KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Stripe is supported in only about 15 of 50 reference countries. Elsewhere use PayPal (45/50) or a merchant of record such as Paddle/Lemon Squeezy. Needs about $20-60/month of server capacity upfront."
+    },
+    "automationPlan": [
+      "Infrastructure-as-code provisioning and Pterodactyl eggs per game",
+      "Automatic invoicing, suspension and backups",
+      "AI support chatbot and knowledge base for common issues"
+    ],
+    "manualSteps": [
+      "Choose a compliant upstream provider and set up the panel",
+      "DDoS protection and abuse handling",
+      "Escalated customer support"
+    ],
+    "fullCycle": [
+      "Rent capacity",
+      "Install panel + billing",
+      "List plans per game",
+      "Acquire customers (Reddit/Discord/SEO)",
+      "Collect monthly payments via Stripe/PayPal"
+    ],
+    "risks": [
+      "Price competition from large hosts",
+      "DDoS and abuse complaints",
+      "Upfront server costs before customers"
+    ],
+    "evidence": "Pterodactyl and Paymenter are widely used open-source stacks, and many small hosts run on them. CurseForge's official Server Affiliation FAQ (verified) shows the 65% first-month affiliate economics in this niche.",
+    "sources": [
+      "https://pterodactyl.io/",
+      "https://support.curseforge.com/en/support/solutions/articles/9000240602-curseforge-server-affiliation-program-faq",
+      "https://www.minecraft.net/en-us/usage-guidelines"
+    ],
+    "tags": ["games", "hosting", "recurring", "small-capital"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 40,
+        "recurringMonthlyUsd": 30,
+        "tools": [
+          "Pterodactyl panel (free)",
+          "Paymenter (free)",
+          "VPS/dedicated server (~$30/mo)",
+          "Stripe/PayPal"
+        ],
+        "skills": [
+          "Linux server administration",
+          "customer support",
+          "billing and abuse handling"
+        ],
+        "equipment": ["PC"],
+        "accounts": [
+          "VPS provider account that allows resale",
+          "Stripe/PayPal",
+          "domain"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per game-server customer per month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 12,
+          "high": 30
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 3,
+        "grossMarginPercent": 89,
+        "hoursPerUnit": 0.5,
+        "notes": "Small Minecraft/Valheim servers sell for $5-30/month; cost $1 covers backups/bandwidth (server rent is fixed cost); Stripe ~3%. Margin excludes the fixed server rent."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 30,
+        "unitsPerMonthToBreakEven": 3,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurring $30/mo (startup cash not amortised). Startup cash is first month's server and domain."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": -30,
+          "median": 50,
+          "high": 7000
+        },
+        "notes": "Large hosts (Shockbyte, Apex, BisectHosting) undercut on price; small resellers win with niche games, community support and bundled modpacks. Failure modes: few customers, support burden, and VPS ToS violations. Fact-check: median month-12 net lowered from $120 to $50 so it agrees with the 15% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Undercut big hosts slightly for niche games, offer a free trial week, then upsell backups and modpack setup.",
+      "profitPath": [
+        "Month 0: VPS, panel, billing, site (cost $40)",
+        "Month 1-2: first 3-5 customers; break even",
+        "Month 3-6: 10-20 customers; $80-200/month net",
+        "Month 6-12: second server; $100-500/month net"
+      ],
+      "sources": [
+        "https://pterodactyl.io/",
+        "https://support.curseforge.com/en/support/solutions/articles/9000240602-curseforge-server-affiliation-program-faq"
+      ]
+    }
+  },
+  {
+    "id": "fivem-redm-script-marketplace",
+    "name": "FiveM/RedM (GTA V / RDR2 roleplay) scripts and assets sold via Cfx.re/Tebex",
+    "category": "digital-products",
+    "summary": "Sell FiveM/RedM roleplay-server scripts and maps via Rockstar's Cfx.re marketplace and Tebex.",
+    "howItWorks": "GTA V/RDR2 roleplay servers on Rockstar's Cfx.re platform buy jobs, inventories, housing, maps (MLOs) and UIs. Creators sell from a Tebex store; approved Tebex Partners can also list items on the curated Cfx Marketplace at no extra commission. Rockstar's Creator Platform License lets Rockstar and the operator act as agents licensing content to server admins. The licence forbids cash-out mechanics, loot boxes, real-money currency, crypto/NFTs and reselling third-party content.",
+    "platforms": ["Cfx.re (FiveM/RedM) creator marketplace", "Tebex"],
+    "payout": {
+      "methods": ["Tebex -> PayPal, local bank transfer, wire"],
+      "minimumPayout": "PayPal $5; bank transfer about $20; wire about $50 (Tebex wallet)",
+      "frequency": "on settlement",
+      "typicalDelayDays": 16,
+      "notes": "Tebex's platform fee for FiveM is 15% (5% for other games). The Cfx Marketplace charges no extra commission but is open only to approved Tebex Partners after Cfx review. Payments settle after 14 days by default, then PayPal takes 1-2 working days, bank up to 7 days."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 15000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 96,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal when following Rockstar's Creator Platform License (updated Sept 2026). Do not sell gambling or chance mechanics, real-money currency or Rockstar assets. Original or properly licensed models only.",
+      "complianceRequirements": [
+        "Rockstar Creator Platform License Agreement",
+        "Tebex KYC",
+        "IP clearance for vehicles/brands",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Tebex pays by PayPal, local bank transfer or wire; its wire list covers 46 of 50 reference countries (missing Lebanon, Zimbabwe, Libya, Iraq)."
+    },
+    "automationPlan": [
+      "Use AI coding agents to write Lua/JS resources and framework adapters (ESX/QBCore/ox)",
+      "Automated packaging, licence-key/escrow builds and changelogs",
+      "Docs and support bot generated from code"
+    ],
+    "manualSteps": [
+      "Tebex/Cfx.re creator account setup",
+      "Testing on live servers",
+      "Discord support for buyers"
+    ],
+    "fullCycle": [
+      "Build script/asset",
+      "Package for escrow/marketplace",
+      "List on Cfx.re marketplace or Tebex store",
+      "Promote on forums/Discord",
+      "Tebex payout to bank/PayPal"
+    ],
+    "risks": [
+      "Rockstar can change or suspend commercial terms at its discretion",
+      "Leaks/piracy of resources",
+      "Framework fragmentation and support load"
+    ],
+    "evidence": "Rockstar's Creator Platform License Agreement (10 Sept 2026, via fivem.net/terms) provides a creator marketplace and lists permitted and prohibited commercial uses. Tebex's official docs (fetched 2026-11) give the 15% FiveM fee, the commission-free Cfx Marketplace and withdrawal minimums.",
+    "sources": [
+      "https://fivem.net/terms",
+      "https://docs.tebex.io/creators/pricing-overview/starter-and-plus-plans",
+      "https://docs.tebex.io/creators/growth-and-success/cfx-marketplace",
+      "https://docs.tebex.io/creators/tebex-checkout/fund-withdrawals-and-transfers"
+    ],
+    "tags": ["games", "scripts", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "FiveM local test server (free)",
+          "Lua/JS IDE",
+          "Tebex store (15% fee)",
+          "coding agent"
+        ],
+        "skills": [
+          "Lua/JS scripting for FiveM",
+          "UI design",
+          "customer support"
+        ],
+        "equipment": ["gaming PC with GTA V or RDR2"],
+        "accounts": ["Cfx.re account", "Tebex store", "PayPal/bank"]
+      },
+      "unitEconomics": {
+        "unit": "per script sale",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 30,
+          "high": 80
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 85,
+        "hoursPerUnit": 0.3,
+        "notes": "FiveM scripts sell for $10-80; Tebex FiveM fee 15%."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; first sales after releasing 2-3 scripts."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 14000
+        },
+        "notes": "Established script studios with frameworks (QBCore/ESX) and Discord communities dominate. AI-assisted Lua code adds supply and lowers prices; leaks and piracy remain a problem. Failure modes: low visibility and leaks."
+      },
+      "pricingStrategy": "Release a free script to build Discord followers, price first paid scripts at $10-20, then raise for bundles and premium UIs.",
+      "profitPath": [
+        "Month 0-1: build and release first scripts (cost $0)",
+        "Month 1-3: Discord community; $20-100/month",
+        "Month 3-6: bundles; $50-300/month",
+        "Month 6-12: most earn under $200/month; top studios earn thousands"
+      ],
+      "sources": [
+        "https://docs.tebex.io/creators/growth-and-success/cfx-marketplace",
+        "https://fivem.net/terms"
+      ]
+    }
+  }
+]

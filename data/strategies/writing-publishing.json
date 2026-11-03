@@ -1,0 +1,1592 @@
+[
+  {
+    "id": "wide-ebook-distribution-aggregator",
+    "name": "Wide ebook distribution via Draft2Digital / PublishDrive (Apple, Kobo, Everand, libraries)",
+    "category": "content",
+    "summary": "Publish the same ebook to every non-Amazon store plus subscription and library channels through one aggregator, instead of Amazon-exclusive KDP Select.",
+    "howItWorks": "You upload a finished, human-authored ebook once to an aggregator that ships it to Apple Books, Kobo (incl. Kobo Plus), Barnes & Noble, Everand, Tolino and library platforms (OverDrive, Hoopla, cloudLibrary, BorrowBox). Readers and libraries pay the stores; the aggregator forwards royalties monthly. Draft2Digital keeps about 10% of the retail price and charges new accounts a one-time $20 activation fee; PublishDrive charges a subscription instead and passes 100% of royalties (one ebook to Apple, B&N and Kobo is free). Libraries are a distinct payer (licences or pay-per-checkout).",
+    "platforms": [
+      "Draft2Digital",
+      "PublishDrive",
+      "Apple Books",
+      "Kobo Writing Life",
+      "Everand",
+      "OverDrive",
+      "Hoopla"
+    ],
+    "payout": {
+      "methods": [
+        "Direct deposit/international direct deposit",
+        "PayPal",
+        "Payoneer",
+        "check"
+      ],
+      "minimumPayout": "D2D: $10 direct deposit/PayPal, $20 international/Payoneer, $100 check",
+      "frequency": "monthly (~15th)",
+      "typicalDelayDays": 75,
+      "notes": "D2D FAQ: payments go out monthly around the 15th once the threshold is met; stores pay D2D 30-60 days after month end. D2D fees: one-time non-refundable $20 activation fee for new accounts, plus $12/year maintenance for accounts earning under $100/year in sales (waived the first year; accounts with no titles in distribution exempt). PayPal fee 2.5% (cap $25 non-US) not rechecked."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "tax interview / W-8BEN",
+        "D2D rejects fully AI-generated content and AI nonfiction from non-credentialled authors"
+      ]
+    },
+    "availability": {
+      "notes": "Payoneer and direct deposit cover all 50 reference countries; store reach varies by country."
+    },
+    "automationPlan": [
+      "Script EPUB build (Pandoc) and metadata upload",
+      "Auto-sync price promos across stores via aggregator",
+      "Pull monthly sales reports into a dashboard"
+    ],
+    "manualSteps": [
+      "Write/edit the book (human-authored)",
+      "Account + tax/payment setup",
+      "Cover and description decisions"
+    ],
+    "fullCycle": [
+      "Write book",
+      "Format EPUB",
+      "Upload to D2D/PublishDrive",
+      "Select stores + libraries",
+      "Earn royalties",
+      "Monthly payout to bank"
+    ],
+    "risks": [
+      "Amazon dominates US ebook sales; wide sales often small",
+      "Discoverability without ads is hard",
+      "AI-content rejection"
+    ],
+    "evidence": "D2D FAQ (checked Nov 2026) states ~10% commission, the $20 activation and $12 annual maintenance fees, monthly payments around the 15th and thresholds ($10 direct deposit/PayPal, $20 international/Payoneer, $100 check), and lists Apple, Kobo, Everand, OverDrive, Hoopla, BorrowBox; PublishDrive pricing page confirms the subscription model with 100% royalties and a free single-ebook option.",
+    "sources": [
+      "https://www.draft2digital.com/faq/",
+      "https://publishdrive.com/pricing.html"
+    ],
+    "tags": ["passive", "royalties", "books"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Draft2Digital (one-time $20 activation, ~10% of list) or PublishDrive (subscription)",
+          "D2D free formatter",
+          "Canva free for covers"
+        ],
+        "skills": [
+          "a finished, human-authored ebook (writing time not counted here)",
+          "metadata/keywords per store",
+          "price promotions and newsletter swaps"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Draft2Digital or PublishDrive account + tax form",
+          "bank/PayPal/Payoneer for royalties"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per ebook sale (non-Amazon stores and libraries)",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 40,
+        "grossMarginPercent": 60,
+        "hoursPerUnit": 0,
+        "notes": "Stores keep ~30% (Apple/Kobo) to ~35% (B&N) and D2D ~10% of list, so authors keep ~60%; library licences can be priced higher. Median $4.99 ebook nets ~$3."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 2,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 2,
+        "notes": "Fixed cost = $20 activation amortised to ~$2/month; one sale a month covers it. Recovery assumes ~$10-$15/month net at month 6. Writing the book itself adds 100+ hours if not already done. Verified: D2D charges a one-time $20 activation fee, ~10% of retail, and a $12/yr maintenance fee for low-sales accounts (covered by the $2/mo fixed cost). PublishDrive is subscription-based and commission-free."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 25,
+          "high": 2000
+        },
+        "notes": "Going wide pays best for authors with series and a mailing list who run price promotions across Apple, Kobo and libraries. Non-Amazon stores are smaller and slower to build, and AI-generated books crowd every store. A single standalone book rarely clears $100/month wide. Calibration: profit likelihood lowered from 15% to 10% because going wide forgoes Amazon (the dominant ebook store) and KU, so it should not beat the KDP entry (12%)."
+      },
+      "pricingStrategy": "Make book 1 of a series permafree or $0.99 and price later books at $4.99-$6.99; set library prices at 2-3x retail.",
+      "profitPath": [
+        "Month 0: format and upload to D2D (cost $20)",
+        "Month 1-2: first sales on Apple/Kobo, expected $5-$20",
+        "Month 3-6: add library pricing, Kobo promotions, newsletter swaps",
+        "Month 6-12: release series titles; typical 3-5 book author $30-$300/month wide"
+      ],
+      "sources": [
+        "https://www.draft2digital.com/faq/",
+        "https://publishdrive.com/pricing.html"
+      ]
+    }
+  },
+  {
+    "id": "web-serial-to-kindle-plus-page-reads",
+    "name": "Web serial on Royal Road funnelled to Patreon advance chapters and KDP Select page reads",
+    "category": "content",
+    "summary": "Serialize genre fiction free on Royal Road, sell early chapters on Patreon, then collect KDP Select (Kindle Unlimited / Kindle+) page-read royalties on the compiled books.",
+    "howItWorks": "You post chapters of a long genre serial (LitRPG, progression fantasy) on Royal Road on a strict schedule to build followers. Readers who want to read ahead pay a Patreon tier for advance chapters. Each finished arc becomes a book enrolled in KDP Select, where Amazon pays from a monthly Global Fund per first-time KENP page read (a mechanic distinct from per-copy sales). Exclusivity means the free web version is cut back before enrolment.",
+    "platforms": ["Royal Road", "Patreon", "Amazon KDP Select (Kindle+)"],
+    "payout": {
+      "methods": ["Patreon -> bank/PayPal/Payoneer", "KDP EFT/wire to bank"],
+      "minimumPayout": "KDP: $10 EFT (varies by marketplace); Patreon: payout fees vary",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "KENP earnings for a month become available the following month when the KDP Select Global Fund is announced, and are paid on the same schedule/method as other KDP sales (~60 days after month end). KDP per-marketplace minimums not rechecked. Royal Road's own author-pay and AI-labelling rules still unverified: royalroad.com returned 403 to our fetches again."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 7,
+      "incomePotential": 8,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "KDP Select digital exclusivity",
+        "Royal Road AI-content labelling rules (unverified)",
+        "tax forms"
+      ]
+    },
+    "availability": {
+      "notes": "KDP and Patreon pay out in nearly all reference countries."
+    },
+    "automationPlan": [
+      "Scheduled chapter posting",
+      "Auto-compile arcs to EPUB",
+      "Patreon tier unlocks via scheduled posts"
+    ],
+    "manualSteps": [
+      "Write 2-5k words/chapter several times a week",
+      "Edit arcs into books",
+      "Community engagement"
+    ],
+    "fullCycle": [
+      "Write serial",
+      "Post on Royal Road",
+      "Open Patreon advance tier",
+      "Compile book",
+      "Enroll KDP Select",
+      "Earn page reads",
+      "Payout"
+    ],
+    "risks": [
+      "Very high writing volume; burnout",
+      "KU per-page rate fluctuates",
+      "Exclusivity conflicts with free web version"
+    ],
+    "evidence": "KDP reports $69.3M total KDP Select author earnings for September 2026; Royal Road-to-KU is a widely used path for LitRPG authors (anecdotal).",
+    "sources": [
+      "https://kdp.amazon.com/en_US/help/topic/G201541130",
+      "https://www.royalroad.com/"
+    ],
+    "tags": ["recurring", "fiction", "serial", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Royal Road (free)",
+          "Patreon (10% fee for new creators + processing)",
+          "KDP Select",
+          "LLM for outlining/consistency checks (follow site AI rules)"
+        ],
+        "skills": [
+          "long-form genre fiction on a strict schedule",
+          "cliffhanger chapter structure",
+          "community engagement and shoutout swaps"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Royal Road author account",
+          "Patreon creator + payout method",
+          "KDP account + tax interview"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per Patreon patron-month (advance chapters)",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 19,
+        "grossMarginPercent": 81,
+        "hoursPerUnit": 1,
+        "notes": "Typical tiers $3-$10/month; Patreon takes 10% for new creators plus ~2.9% + $0.30 processing (~9% at $5), folded into one fee. KDP Select page reads pay roughly $4-$4.5 per 1,000 KENP pages on top. Patreon 10% platform fee verified (processing extra). The KENP per-page rate is not published on the KDP page, so the $4-$4.5 figure is estimated."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Patreon usually becomes viable after ~1,000 Royal Road followers (often 3-6 months of daily/5x-weekly posting)."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 6000
+        },
+        "notes": "Progression fantasy and LitRPG authors with large backlogs and fast release schedules dominate, and the best convert to Kindle Unlimited hits. The genre is crowded and readers punish breaks in schedule; AI-written serials face site rules and reader backlash. Most serials stall under 500 followers."
+      },
+      "pricingStrategy": "Offer one $3-$5 tier with 5-10 advance chapters and a higher tier with more; raise advance depth instead of price as the backlog grows.",
+      "profitPath": [
+        "Month 0: write a 20-chapter backlog, launch on Royal Road (cost $0)",
+        "Month 1-3: post 5x/week, do shoutout swaps, aim for Rising Stars, expected $0",
+        "Month 3-6: open Patreon; 20-50 patrons ($80-$200/month net)",
+        "Month 6-12: publish book 1 in KDP Select for page reads; successful serials $300-$3,000/month"
+      ],
+      "sources": [
+        "https://kdp.amazon.com/en_US/help/topic/G201541130",
+        "https://www.royalroad.com/",
+        "https://www.patreon.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "wattpad-paid-stories",
+    "name": "Wattpad Originals (successor to Paid Stories / Creators Program)",
+    "category": "content",
+    "summary": "Grow a following on Wattpad's free fiction app; selected or successfully pitched writers join Wattpad Originals, where some chapters are paywalled for Coins/Premium+ and writers get an undisclosed revenue share and sometimes an advance.",
+    "howItWorks": "You publish serialized original fiction free on Wattpad and build reads, votes and comments. In October 2023 Wattpad replaced Paid Stories with Wattpad Originals, a freemium model: some chapters stay free, others are unlocked with Coins or a Premium+ subscription. Originals is invite-only by editorial selection, and from September 2024 Wattpad also took pitches, with accepted pitches eligible for up to $5,000 in advances plus an ongoing revenue share. Wattpad has not published the revenue-share percentage. Wattpad Studios/Webtoon Productions may also option rights.",
+    "platforms": ["Wattpad"],
+    "payout": {
+      "methods": [
+        "Wattpad payout (method unverified; historically PayPal/bank)"
+      ],
+      "minimumPayout": "unverified",
+      "frequency": "unverified",
+      "typicalDelayDays": 60,
+      "notes": "Program status confirmed via TechCrunch (Oct 2023) and Wattpad's Sept 2024 BusinessWire release; revenue-share %, payout method, minimum and frequency still unverified because wattpad.com and support.wattpad.com fail TLS from this environment and the Wayback Machine is blocked."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 180,
+      "max": 720
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 1,
+      "automation": 3,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "Wattpad content guidelines",
+        "tax forms if selected"
+      ]
+    },
+    "availability": {
+      "notes": "App is global; Originals is invite- or pitch-only and country eligibility is unverified."
+    },
+    "automationPlan": [
+      "Scheduled chapter publishing",
+      "Analytics tracking of reads/engagement"
+    ],
+    "manualSteps": [
+      "Write chapters",
+      "Engage readers",
+      "Accept invitation/contract"
+    ],
+    "fullCycle": [
+      "Write serial",
+      "Publish on Wattpad",
+      "Build readership",
+      "Get invited",
+      "Paywall chapters",
+      "Payout"
+    ],
+    "risks": [
+      "Invite-only; most writers never selected",
+      "Program terms change often",
+      "Rights clauses in contracts"
+    ],
+    "evidence": "Wattpad says creator opportunities paid authors nearly $10M over five years (TechCrunch, Oct 2023); Originals launched with 1,600+ titles; 2024 pitch call offered advances up to $5,000. Payout terms unverified.",
+    "sources": [
+      "https://www.wattpad.com/",
+      "https://techcrunch.com/2023/10/03/wattpad-ditches-paid-content-stories-program-for-a-freemium-model/",
+      "https://www.businesswire.com/news/home/20240903263926/en/Calling-All-Authors-Wattpad%E2%80%99s-Originals-Program-is-Now-Accepting-Pitches"
+    ],
+    "tags": ["fiction", "invite-only", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Wattpad (free)", "LLM for outlining only"],
+        "skills": [
+          "serialized genre fiction (romance, fantasy, teen)",
+          "reader community building",
+          "pitch writing"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": [
+          "Wattpad account",
+          "payout details once contracted (method unverified)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per Wattpad Originals contract (advance)",
+        "typicalPriceUsd": {
+          "low": 500,
+          "median": 2000,
+          "high": 5000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 150,
+        "notes": "Wattpad states accepted pitches can receive up to $5,000 in advances plus an unpublished revenue share; low/median are estimates. Hours per unit counts the writing needed to be selected. Wattpad pages could not be fetched (TLS error), so terms are estimated."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 18,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Selection is editorial and invite/pitch-only; most writers are never contracted, so 18+ months is typical for those who are."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 2,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 1000
+        },
+        "notes": "Paid Stories ended in 2023; only a small number of Originals are selected from millions of writers, usually stories with very large read counts. There is no open monetization, so effort rarely converts to money within a year. Use Wattpad mainly as audience-building for other channels."
+      },
+      "pricingStrategy": "No pricing control; build read counts with frequent updates and tags, then pitch with traction data.",
+      "profitPath": [
+        "Month 0: publish opening chapters with strong tags (cost $0)",
+        "Month 1-6: update 2-3x/week, grow reads/comments, expected $0",
+        "Month 6-12: pitch to Originals if reads are strong; most receive no offer"
+      ],
+      "sources": [
+        "https://techcrunch.com/2023/10/03/wattpad-ditches-paid-content-stories-program-for-a-freemium-model/",
+        "https://www.businesswire.com/news/home/20240903263926/en/Calling-All-Authors-Wattpad%E2%80%99s-Originals-Program-is-Now-Accepting-Pitches"
+      ]
+    }
+  },
+  {
+    "id": "vocal-media-reads",
+    "name": "Vocal.media reads-based payouts, tips and challenges",
+    "category": "content",
+    "summary": "Publish stories and essays on Vocal and earn a small fixed rate per 1,000 reads plus reader tips; Vocal+ members can enter cash-prize challenges.",
+    "howItWorks": "You publish original stories, essays and poems on Vocal's community sites and share them. Vocal pays a fixed rate per 1,000 reads from its own revenue, readers can tip, and paying Vocal+ members can enter writing challenges with cash prizes. Earnings per story are tiny; the realistic path is challenge wins. Because challenge entry needs a paid membership, treat the free tier as the zero-capital version.",
+    "platforms": ["Vocal (vocal.media)"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank"],
+      "minimumPayout": "unverified (historically ~$20)",
+      "frequency": "on request when threshold met",
+      "typicalDelayDays": 7,
+      "notes": "Historical figures: ~$3.80 per 1,000 reads (free) and ~$6 (Vocal+); still not verified: vocal.media returned 403 to every fetch in Nov 2026 and web-search budget was exhausted."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 5,
+      "high": 300
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 2,
+      "ongoingEffort": 4,
+      "incomePotential": 2,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 30
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "Stripe KYC",
+        "AI-content disclosure rules (unverified)"
+      ]
+    },
+    "availability": {
+      "notes": "Payouts need Stripe Connect; Stripe supports ~15 of 50 reference countries directly."
+    },
+    "automationPlan": [
+      "Draft and schedule posts",
+      "Auto-share to social channels"
+    ],
+    "manualSteps": ["Write original pieces", "Stripe onboarding"],
+    "fullCycle": [
+      "Sign up",
+      "Publish stories",
+      "Share",
+      "Accumulate reads/tips",
+      "Withdraw via Stripe"
+    ],
+    "risks": [
+      "Very low per-read pay",
+      "Challenges need paid membership",
+      "Stripe country limits"
+    ],
+    "evidence": "Long-running platform with public challenge winners; per-read rates widely reported but unverified here.",
+    "sources": ["https://vocal.media/"],
+    "tags": ["low-income", "writing", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Vocal free account (Vocal+ ~$10/mo optional for challenges)",
+          "Grammarly/LanguageTool free"
+        ],
+        "skills": [
+          "short stories, essays, poetry",
+          "promoting stories on social media"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": ["Vocal account", "Stripe Connect + bank"]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 reads",
+        "typicalPriceUsd": {
+          "low": 4,
+          "median": 4,
+          "high": 6
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "Vocal historically paid ~$3.80 per 1,000 reads on the free tier and ~$6 on Vocal+ (estimated; vocal.media pages are bot-blocked so this could not be re-verified; rounded). Challenge prizes are a separate, lumpy source."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. The payout minimum (historically ~$20, unverified) equals ~5,000 reads, which takes most writers months."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 3,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 2,
+          "high": 200
+        },
+        "notes": "Most money on Vocal goes to challenge winners, who must pay for Vocal+. Read-based pay is tiny and depends on bringing your own traffic. AI-generated submissions have raised competition in challenges."
+      },
+      "pricingStrategy": "No price setting; enter only challenges you can realistically place in, and reuse stories as a portfolio.",
+      "profitPath": [
+        "Month 0: publish 5 stories (cost $0)",
+        "Month 1-6: publish weekly and share, expected $0-$5",
+        "Month 6-12: optional Vocal+ for challenges; typical result under $20/month"
+      ],
+      "sources": ["https://vocal.media/"]
+    }
+  },
+  {
+    "id": "inkitt-galatea-revenue-share",
+    "name": "Inkitt / Galatea serialized fiction revenue share",
+    "category": "content",
+    "summary": "Post novels free on Inkitt; stories that test well can be offered a contract to appear in the paid Galatea app with a revenue share.",
+    "howItWorks": "You upload complete or ongoing genre novels (romance, fantasy, werewolf) to Inkitt. Inkitt uses reader data to pick stories and offers authors contracts to publish them in Galatea, a pay-per-episode reading app, paying a revenue share or royalties. There is no open monetization; payment needs selection and a signed contract.",
+    "platforms": ["Inkitt", "Galatea"],
+    "payout": {
+      "methods": ["unverified (contracted royalties)"],
+      "minimumPayout": "unverified",
+      "frequency": "unverified",
+      "typicalDelayDays": 90,
+      "notes": "inkitt.com returned 403 again (Nov 2026) and galatea.com shows no author terms; revenue-share percentages, advances and payout rails remain unverified. Read contract rights clauses carefully."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 120,
+      "max": 720
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 1,
+      "automation": 3,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "contract review (rights grant length)",
+        "tax forms"
+      ]
+    },
+    "availability": {
+      "notes": "Online globally; contract availability by country unverified."
+    },
+    "automationPlan": [
+      "Scheduled chapter uploads",
+      "Track read-through metrics"
+    ],
+    "manualSteps": ["Write novel", "Negotiate/sign contract"],
+    "fullCycle": [
+      "Write novel",
+      "Publish on Inkitt",
+      "Get selected",
+      "Sign Galatea contract",
+      "Earn revenue share",
+      "Payout"
+    ],
+    "risks": ["Selection is rare", "Broad rights grants", "Opaque terms"],
+    "evidence": "Galatea sells many Inkitt-sourced titles; terms not publicly posted.",
+    "sources": ["https://www.galatea.com/", "https://www.inkitt.com/"],
+    "tags": ["fiction", "invite-only", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Inkitt (free)", "LLM for outlining only"],
+        "skills": [
+          "fast-paced genre fiction (romance, werewolf, fantasy)",
+          "completing long novels"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Inkitt author account",
+          "payout details once contracted (unverified)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per contracted novel-month (royalty to author)",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 100,
+          "high": 2000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 40,
+        "notes": "Inkitt/Galatea do not publish royalty rates; per-novel monthly royalties are an estimate from scattered author reports and highly uncertain. Galatea homepage publishes no author rates; Inkitt pages are bot-blocked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 15,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Payment requires Inkitt to select the book from reader data and sign a contract; most uploads are never selected."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 2,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 1500
+        },
+        "notes": "A small number of high-engagement romance/werewolf novels get Galatea contracts. Contract terms have drawn criticism (rights scope), so read them carefully. Output is effort-heavy with no guaranteed pay."
+      },
+      "pricingStrategy": "No pricing control; finish books and serialize consistently to generate reader data for selection.",
+      "profitPath": [
+        "Month 0: upload completed opening arc (cost $0)",
+        "Month 1-6: finish the novel, update regularly, expected $0",
+        "Month 6-12: if offered a contract, negotiate rights; otherwise reuse the book on KDP"
+      ],
+      "sources": ["https://www.galatea.com/", "https://www.inkitt.com/"]
+    }
+  },
+  {
+    "id": "webcomics-webtoon-canvas-tapas",
+    "name": "Webcomics on WEBTOON CANVAS and Tapas (ad share, Super Likes, Ink tips)",
+    "category": "content",
+    "summary": "Self-publish a webcomic or illustrated serial and earn ad-revenue share and reader micro-payments once subscriber thresholds are met.",
+    "howItWorks": "You publish episodes on WEBTOON CANVAS and/or Tapas. WEBTOON pays 50% of ad revenue once a series has 1,000 subscribers and 40,000 global monthly page views, and fans can send paid Super Likes once a series has 500 likes. Tapas shares about 70% of ad revenue from 100 subscribers and passes on 100% of Ink tips (after third-party fees) from 250 subscribers; creators must be 18+. Writers without drawing skill can partner with an artist; the platforms' AI-art rules should be checked first.",
+    "platforms": ["WEBTOON CANVAS", "Tapas"],
+    "payout": {
+      "methods": ["platform payout (PayPal typical; unverified)"],
+      "minimumPayout": "unverified",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Eligibility thresholds re-verified Nov 2026 on both official creator pages (WEBTOON: 50% of static and video ad revenue, 1,000 subscribers + 40,000 monthly page views; Super Likes at 500 likes. Tapas: ad program at 100 subscribers, Ink support at 250, 18+). Payout minimums, rails and supported countries are only in the help centers (webtooncanvas.zendesk.com, help.tapas.io), which returned 403."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 3,
+      "setupEffort": 6,
+      "ongoingEffort": 7,
+      "incomePotential": 6,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "18+ for Tapas programs",
+        "tax forms",
+        "AI-art rules (unverified)"
+      ]
+    },
+    "availability": {
+      "notes": "Ad revenue programs may be limited by country (unverified)."
+    },
+    "automationPlan": ["Scheduled episode uploads", "Analytics pull"],
+    "manualSteps": ["Draw/write episodes", "Apply to programs"],
+    "fullCycle": [
+      "Create series",
+      "Publish weekly",
+      "Hit thresholds",
+      "Enroll",
+      "Earn ad share/tips",
+      "Payout"
+    ],
+    "risks": ["Thresholds take months", "Labour-intensive art", "Low ad RPMs"],
+    "evidence": "Official WEBTOON and Tapas creator pages describe the programs and thresholds.",
+    "sources": [
+      "https://creators.webtoon.com/en/make-money",
+      "https://creators.tapas.io/earning-money"
+    ],
+    "tags": ["comics", "fiction", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "WEBTOON CANVAS and Tapas (free)",
+          "Krita/MediBang (free) or Clip Studio (~$5/mo optional)",
+          "check platform AI-art rules before using AI"
+        ],
+        "skills": [
+          "comic art or a partnered artist",
+          "episodic storytelling",
+          "consistent weekly updates"
+        ],
+        "equipment": ["laptop", "drawing tablet (~$50, optional but usual)"],
+        "accounts": [
+          "WEBTOON CANVAS creator",
+          "Tapas creator (18+)",
+          "PayPal for payouts (unverified)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 page views (ad revenue before platform share)",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 2,
+          "high": 6
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 50,
+        "grossMarginPercent": 50,
+        "hoursPerUnit": 2,
+        "notes": "Ad revenue per page view is unpublished; gross ~$1-$6 per 1,000 is an estimate. WEBTOON shares 50% (Tapas ~70%), and Super Likes/Ink tips add fan income. Verified: WEBTOON pays 50% of ad revenue once a series has 1,000+ subscribers and 40,000 global monthly page views; Tapas gives ~70% of ad revenue and 100% of Ink tips after third-party fees."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. WEBTOON ad share needs 1,000 subscribers + 40,000 monthly page views; Tapas ad share starts at 100 subscribers."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 4,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 1500
+        },
+        "notes": "Earners are comics with large weekly readerships that combine ad share, Super Likes, Patreon and merch. A weekly comic is labour-intensive, and readers and platforms are hostile to AI art. Most series never reach WEBTOON's ad-revenue thresholds."
+      },
+      "pricingStrategy": "Enable tips/Super Likes early; use Patreon for advance episodes at $3-$5 once there is a loyal readership.",
+      "profitPath": [
+        "Month 0: buffer of 10 episodes, launch on both platforms (cost $0)",
+        "Month 1-3: weekly updates, expected $0",
+        "Month 4-9: reach Tapas ad share and Super Likes; first $10-$50",
+        "Month 9-12: add Patreon; typical series $10-$100/month"
+      ],
+      "sources": [
+        "https://creators.webtoon.com/en/make-money",
+        "https://creators.tapas.io/earning-money"
+      ]
+    }
+  },
+  {
+    "id": "pro-rate-short-fiction-markets",
+    "name": "Sell short fiction and poetry to professional-rate magazines (Asimov's, Clarkesworld, etc.)",
+    "category": "content",
+    "summary": "Submit original short stories and poems to magazines that pay per word on acceptance or publication, with no entry fee.",
+    "howItWorks": "You write original stories and send them through free submission portals to professional genre and literary magazines. Asimov's pays 8-10 cents a word for stories up to 7,500 words and $1 a line for poetry, with replies in about five weeks. Uncanny pays $0.10 a word and $40 a poem but was closed to all submissions in Nov 2026. Rejections are normal, so you keep a submission tracker and resend rejected stories. Pro markets ban AI-written or AI-assisted work, so AI is limited to market research and tracking. Fee-charging contests are excluded.",
+    "platforms": [
+      "Asimov's Science Fiction",
+      "Clarkesworld",
+      "Uncanny Magazine",
+      "other pro-rate markets"
+    ],
+    "payout": {
+      "methods": ["PayPal", "check", "bank transfer"],
+      "minimumPayout": "per acceptance",
+      "frequency": "per accepted piece",
+      "typicalDelayDays": 60,
+      "notes": "Payment timing and method per market vary and are not stated in the Asimov's or Uncanny guidelines; Clarkesworld rate still not verified (its submissions page did not render guidelines for our fetcher). Asimov's rates and AI ban re-verified Nov 2026."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 500
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 2,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 2,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 100
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "no AI-generated text (bans enforced)",
+        "tax forms for US payers"
+      ]
+    },
+    "availability": {
+      "notes": "Submissions open worldwide; payment via PayPal or check."
+    },
+    "automationPlan": [
+      "Submission tracker (deadlines, response times)",
+      "Auto-resend queue for rejected stories"
+    ],
+    "manualSteps": ["Write every story by hand", "Revise"],
+    "fullCycle": [
+      "Write story",
+      "Submit",
+      "Wait",
+      "Accept/reject",
+      "Contract",
+      "Payment"
+    ],
+    "risks": [
+      "Acceptance rates often under 1-2%",
+      "Market closures",
+      "AI bans: lifetime ban if caught"
+    ],
+    "evidence": "Asimov's and Uncanny guidelines state rates; SFWA membership counts earnings ($100 associate, $1,000 full).",
+    "sources": [
+      "https://www.asimovs.com/contact-us/writers-guidelines/",
+      "https://www.uncannymagazine.com/submissions/",
+      "https://www.sfwa.org/about/join-us/sfwa-membership-requirements/"
+    ],
+    "tags": ["fiction", "per-piece", "human-only"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "submission trackers (Submission Grinder, free)",
+          "magazine submission portals (free)",
+          "word processor"
+        ],
+        "skills": [
+          "polished short fiction or poetry",
+          "reading markets' guidelines",
+          "resilience to rejection"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["PayPal or bank for payments", "magazine portal logins"]
+      },
+      "unitEconomics": {
+        "unit": "per accepted story",
+        "typicalPriceUsd": {
+          "low": 50,
+          "median": 400,
+          "high": 750
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 40,
+        "notes": "Asimov's pays 8-10 cents/word up to 7,500 words, so a 5,000-word story earns ~$400-$500; smaller pro/semi-pro markets pay less. Hours per unit include stories written that are rejected. Verified: Asimov's pays 8-10 cents/word up to 7,500 words; Uncanny pays $0.10/word but is currently closed to submissions."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 15,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Acceptance rates at pro markets are around 1%; many writers take 1-3 years to make a first pro sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 2,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 500
+        },
+        "notes": "A small set of skilled writers sell several stories a year; pro markets ban AI writing, and AI submission floods have forced magazines to close temporarily (Clarkesworld 2023; Uncanny closed in Nov 2026). Income is lumpy and rarely averages $100/month even for selling writers. Net high raised from $400 to $500 so a single pro-rate sale named in profitPath ($50-$500) fits within it."
+      },
+      "pricingStrategy": "Submit to highest-paying markets first and work down the list; never pay reading fees.",
+      "profitPath": [
+        "Month 0: write and polish 3 stories, set up tracker (cost $0)",
+        "Month 1-6: keep 5-10 submissions out at all times, expected $0",
+        "Month 6-12: possible first sale $50-$500; reprint sales add small amounts"
+      ],
+      "sources": [
+        "https://www.asimovs.com/contact-us/writers-guidelines/",
+        "https://www.uncannymagazine.com/submissions/"
+      ]
+    }
+  },
+  {
+    "id": "reedsy-publishing-services-marketplace",
+    "name": "Editing, cover design and ghostwriting for authors via Reedsy",
+    "category": "content",
+    "summary": "Sell vetted publishing services (developmental editing, copyediting, cover design, ghostwriting) to self-publishing authors through Reedsy's curated marketplace.",
+    "howItWorks": "You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a commission. Acceptance is selective, so real publishing experience is needed.",
+    "platforms": ["Reedsy Marketplace"],
+    "payout": {
+      "methods": ["Reedsy payout (Stripe/PayPal; unverified)"],
+      "minimumPayout": "unverified",
+      "frequency": "per milestone",
+      "typicalDelayDays": 14,
+      "notes": "Fees, payout rails and acceptance rate unverified: reedsy.com refused connections."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 3,
+      "setupEffort": 5,
+      "ongoingEffort": 7,
+      "incomePotential": 7,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "invoice/tax reporting",
+        "Disclose AI use to clients"
+      ]
+    },
+    "availability": {
+      "notes": "Marketplace is global; payout rails unverified."
+    },
+    "automationPlan": [
+      "Template quotes",
+      "AI-assisted line-edit pass with human review"
+    ],
+    "manualSteps": [
+      "Portfolio and application",
+      "Client communication",
+      "Editing work"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Get accepted",
+      "Receive requests",
+      "Quote",
+      "Deliver",
+      "Get paid"
+    ],
+    "risks": [
+      "Selective acceptance",
+      "Competitive pricing",
+      "AI pressure on editing rates"
+    ],
+    "evidence": "Reedsy is a well-known marketplace for self-published authors; terms unverified here.",
+    "sources": ["https://reedsy.com/"],
+    "tags": ["freelance", "publishing", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Reedsy marketplace",
+          "Word/Google Docs track changes",
+          "PerfectIt or similar optional",
+          "LLM for consistency checks (disclose to clients)"
+        ],
+        "skills": [
+          "professional editing, cover design or ghostwriting with published credits",
+          "quoting fixed-price projects",
+          "client communication"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Reedsy professional profile (selective approval)",
+          "Stripe/PayPal for payouts (unverified)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per client project",
+        "typicalPriceUsd": {
+          "low": 300,
+          "median": 1200,
+          "high": 5000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 30,
+        "notes": "Copyedits of 60-90k words commonly quote $800-$2,500; covers $300-$1,000. Reedsy's freelancer commission is believed to be ~10% (estimated; Reedsy's terms pages require sign-in and could not be verified)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Approval is selective; once approved, first project usually lands within 1-3 months of active quoting."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 6000
+        },
+        "notes": "Experienced editors and designers with traditional-publishing credits win most Reedsy jobs. AI tools now handle proofreading and basic line editing, compressing prices at the low end, while developmental editing and genre-expert covers hold value. Many applicants are rejected, which caps the probability for an average starter. Consistency fix: median month-12 net profit lowered from $400 to $60, since with a 25% profit likelihood most starters (many not admitted to the curated marketplace) stay under $100/month."
+      },
+      "pricingStrategy": "Quote slightly below market for first 3-5 projects to earn reviews, then price at market rates per word and raise 10-20% once booked out.",
+      "profitPath": [
+        "Month 0: assemble credits/portfolio, apply (cost $0)",
+        "Month 1-2: if accepted, quote 10+ requests, first project $500-$1,500",
+        "Month 3-6: collect reviews, 1-2 projects/month",
+        "Month 6-12: raise rates; typical active pro $400-$3,000/month"
+      ],
+      "sources": ["https://reedsy.com/"]
+    }
+  },
+  {
+    "id": "greeting-card-verse-blue-mountain",
+    "name": "Write greeting-card prose and verse for Blue Mountain Arts",
+    "category": "content",
+    "summary": "Sell short personal prose or non-rhyming poems to Blue Mountain Arts for $300 each for card and product rights.",
+    "howItWorks": "Blue Mountain Arts buys contemporary prose or poems of 50-300 words, written from personal experience, for greeting cards and gift products. You submit by email or mail by seasonal deadlines. Accepted pieces earn $300 for worldwide exclusive card and product rights, or $50 for one-time book use. Rhymed, religious, one-liner and AI-generated or AI-assisted work is refused, and pieces not selected get no reply.",
+    "platforms": ["Blue Mountain Arts (SPS Studios)"],
+    "payout": {
+      "methods": ["unverified (guidelines do not state the payment method)"],
+      "minimumPayout": "$300 per accepted piece",
+      "frequency": "per acceptance",
+      "typicalDelayDays": 60,
+      "notes": "$300 (card/product rights) and $50 (one-time book use) re-verified Nov 2026; payment method and timing are not stated ('publication procedures will be explained... prior to publishing'). Reply within 8 weeks only if selected."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 300
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 1,
+      "setupEffort": 1,
+      "ongoingEffort": 2,
+      "incomePotential": 2,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 100
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "no AI-generated/assisted text",
+        "exclusive rights grant"
+      ]
+    },
+    "availability": {
+      "notes": "Submissions accepted from outside the US by email or online form, English only."
+    },
+    "automationPlan": ["Track submissions and seasonal deadlines"],
+    "manualSteps": ["Write each piece personally", "Submit"],
+    "fullCycle": [
+      "Write",
+      "Submit by deadline",
+      "Wait for reply",
+      "Accept",
+      "Payment"
+    ],
+    "risks": ["Low acceptance", "No feedback", "Small market"],
+    "evidence": "Official guidelines state $300 per piece and seasonal deadlines.",
+    "sources": ["https://www.sps.com/greeting-card-guidelines-submissions"],
+    "tags": ["per-piece", "human-only"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["email", "word processor"],
+        "skills": [
+          "heartfelt non-rhyming prose/poetry from personal experience"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": ["email; payment method per publisher (unverified)"]
+      },
+      "unitEconomics": {
+        "unit": "per accepted piece",
+        "typicalPriceUsd": {
+          "low": 50,
+          "median": 300,
+          "high": 300
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 20,
+        "notes": "Blue Mountain Arts pays $300 for worldwide exclusive card/product rights or $50 for one-time book use. Hours per unit include unaccepted pieces. Verified on sps.com Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 12,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Unselected pieces get no reply, and acceptances are rare; one sale per year is a good outcome."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 1,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 300
+        },
+        "notes": "A tiny, single-buyer market; AI-generated or assisted work is refused. Even a successful contributor sells a handful of pieces per year, so this is a one-off payout rather than monthly income."
+      },
+      "pricingStrategy": "Fixed rate set by the publisher; submit seasonally ahead of deadlines.",
+      "profitPath": [
+        "Month 0: write and submit 5-10 pieces (cost $0)",
+        "Month 1-12: submit seasonally; possible single $300 acceptance"
+      ],
+      "sources": ["https://www.sps.com/greeting-card-guidelines-submissions"]
+    }
+  },
+  {
+    "id": "leanpub-technical-ebooks",
+    "name": "Technical ebooks and courses on Leanpub (80% royalty, in-progress publishing)",
+    "category": "digital-products",
+    "summary": "Write and sell technical books on Leanpub, which pays 80% royalties and lets you sell before the book is finished.",
+    "howItWorks": "You write a technical book (programming, DevOps, data) in Markdown, publish early, and update it as you go so buyers get every new version. Readers pay a minimum price you set, can pay more, and get a 60-day refund. Leanpub pays 80% of purchases from $7.99, or 80% minus 50 cents below that. Buyers are developers who want depth that blog posts lack, so the book needs real expertise. AI can help with code samples and editing, but the author has to check every example.",
+    "platforms": ["Leanpub"],
+    "payout": {
+      "methods": ["PayPal", "Wise"],
+      "minimumPayout": "PayPal $20; Wise $100",
+      "frequency": "monthly (~7th)",
+      "typicalDelayDays": 70,
+      "notes": "60-day royalty hold matching the refund window. No membership is required: without one you can publish up to 5 times a month and sell up to three books and one course at the same royalty rate. Optional author plans start at $8.99/month."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 6,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": ["tax forms", "refund-window holds"]
+    },
+    "availability": {
+      "notes": "PayPal works in 45 of 50 reference countries; Wise in 24."
+    },
+    "automationPlan": [
+      "Markdown-to-book build via Git",
+      "Release notes for updates",
+      "Code-sample testing CI"
+    ],
+    "manualSteps": ["Write and fact-check content", "Account setup"],
+    "fullCycle": [
+      "Pick topic",
+      "Write in Markdown",
+      "Publish in-progress",
+      "Market to devs",
+      "Earn royalties",
+      "Payout"
+    ],
+    "risks": [
+      "Niche demand",
+      "Refund risk",
+      "AI-generated low-quality competition"
+    ],
+    "evidence": "Leanpub authors page (Nov 2026) states 80% royalties, that membership is optional with the same royalty rate, and plan prices; help center gives payout minimums and the 60-day hold.",
+    "sources": [
+      "https://leanpub.com/authors",
+      "https://leanpub.com/tos",
+      "https://help.leanpub.com/en/articles/10270924-the-minimum-royalty-payout-amount-for-paypal-is-20-but-the-minimum-royalty-payout-amount-for-wise-is-100-why-is-there-a-difference"
+    ],
+    "tags": ["royalties", "developer", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Leanpub (free to publish)",
+          "Markdown editor + Git",
+          "LLM for code samples/editing (author verifies every example)"
+        ],
+        "skills": [
+          "deep technical expertise",
+          "technical writing",
+          "audience-building on dev communities"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Leanpub author account", "PayPal or Wise for royalties"]
+      },
+      "unitEconomics": {
+        "unit": "per book sale",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 20,
+          "high": 40
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 0,
+        "notes": "Leanpub pays 80% of the price from $7.99 up (80% minus $0.50 below); technical books usually sell for $15-$40 with pay-what-you-want upside. Verified on leanpub.com/authors Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Publishing in progress lets first sales come in after the first few chapters; $20 PayPal minimum."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 3000
+        },
+        "notes": "Authors with an existing following (blog, OSS project, YouTube) on a specific stack sell best. Developers increasingly ask AI assistants instead of buying books, so generic topics are weak; current, opinionated, hands-on books on new tools still sell. Most books without a platform sell a handful of copies."
+      },
+      "pricingStrategy": "Launch early at a low minimum ($10-$15) with a higher suggested price, then raise the minimum as chapters complete; add bundles with code/video.",
+      "profitPath": [
+        "Month 0: outline and publish first 3 chapters (cost $0)",
+        "Month 1-2: announce to communities, expected $50-$200",
+        "Month 3-6: finish the book, add bundles; $50-$300/month",
+        "Month 6-12: update for new versions, sell team licences; long tail $20-$500/month"
+      ],
+      "sources": [
+        "https://leanpub.com/authors",
+        "https://leanpub.com/tos",
+        "https://help.leanpub.com/en/articles/10270924-the-minimum-royalty-payout-amount-for-paypal-is-20-but-the-minimum-royalty-payout-amount-for-wise-is-100-why-is-there-a-difference"
+      ]
+    }
+  },
+  {
+    "id": "interactive-fiction-choice-of-games",
+    "name": "Interactive fiction for Choice of Games / Hosted Games",
+    "category": "content",
+    "summary": "Write branching text games in ChoiceScript, either commissioned by Choice of Games for an advance or self-written under the Hosted Games label for a 25% royalty.",
+    "howItWorks": "Choice of Games commissions interactive novels: you pitch, get an outline accepted, and receive a $10,000 advance against 25% royalties, or $15,000 against 10%, paid in milestones that start with $100 for an invited pitch. On the Hosted Games route you write a game of at least 30,000 words, run a public beta for a month, and receive 25% of revenue from app, Steam and web sales. Players pay for the game, and in-app purchases add revenue. AI-generated prose, code and art are banned.",
+    "platforms": ["Choice of Games", "Hosted Games"],
+    "payout": {
+      "methods": ["electronic deposit", "PayPal", "cheque"],
+      "minimumPayout": "milestone advances; royalties per publisher schedule",
+      "frequency": "per milestone / periodic royalties",
+      "typicalDelayDays": 90,
+      "notes": "Royalty payment frequency not stated on official pages (re-checked Nov 2026). PayPal only in supported countries."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 2,
+      "setupEffort": 7,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "publishing contract (exclusive electronic licence)",
+        "no AI content"
+      ]
+    },
+    "availability": {
+      "notes": "Contracts open to writers worldwide; paid via electronic deposit, PayPal or cheque. Authors in countries without a US tax treaty must contact Choice of Games before submitting."
+    },
+    "automationPlan": ["Automated ChoiceScript tests (randomtest/quicktest)"],
+    "manualSteps": ["Write every branch", "Public beta", "Revisions"],
+    "fullCycle": [
+      "Write/pitch",
+      "Beta",
+      "Contract",
+      "Publish",
+      "Royalties",
+      "Payout"
+    ],
+    "risks": ["Year+ timeline", "Royalty income varies widely", "AI ban"],
+    "evidence": "Official pages give advance milestones and the 25% Hosted Games royalty.",
+    "sources": [
+      "https://www.choiceofgames.com/looking-for-writers/",
+      "https://www.choiceofgames.com/looking-for-writers/write-a-hosted-game/"
+    ],
+    "tags": ["fiction", "games", "advance"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 300,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "ChoiceScript (free)",
+          "Choice of Games forum for beta",
+          "text editor"
+        ],
+        "skills": [
+          "branching narrative design",
+          "writing 30k-300k+ words of polished prose",
+          "basic scripting"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Choice of Games/Hosted Games contract",
+          "PayPal or bank for royalties"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per game sale (Hosted Games)",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 75,
+        "grossMarginPercent": 25,
+        "hoursPerUnit": 0,
+        "notes": "Hosted Games authors receive 25% of revenue from app, Steam and web sales; typical prices $3-$8. The commissioned route instead pays $10,000-$15,000 advances in milestones. Hosted Games 25% royalty verified."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 12,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. A Hosted Game needs 30,000+ words plus a month of public beta; commissioned games pay a $100 first milestone after an invited pitch."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 4,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 1000
+        },
+        "notes": "Commissioned authors with strong samples earn the advances; most Hosted Games sell modestly. AI-generated prose/code/art is banned, so production stays manual. Long development times mean many writers see no income in the first year."
+      },
+      "pricingStrategy": "Publisher sets price; aim for a longer game with replay value, since length and reviews drive sales and price tier.",
+      "profitPath": [
+        "Month 0: learn ChoiceScript, draft outline (cost $0)",
+        "Month 1-9: write 30k-100k words, public beta",
+        "Month 9-12: release; typical first-year Hosted Game royalties $20-$300/month at launch, fading"
+      ],
+      "sources": [
+        "https://www.choiceofgames.com/looking-for-writers/",
+        "https://www.choiceofgames.com/looking-for-writers/write-a-hosted-game/"
+      ]
+    }
+  },
+  {
+    "id": "crossword-puzzle-submissions",
+    "name": "Construct and sell crossword puzzles to newspapers",
+    "category": "content",
+    "summary": "Build original crosswords and submit them to newspaper puzzle editors who pay a flat fee per published puzzle.",
+    "howItWorks": "You construct themed crosswords with free or paid construction software and word lists, then submit to outlets like The New York Times, Universal and the LA Times that accept freelance puzzles. Editors buy puzzles that meet strict specs. Pay is a flat fee per puzzle. Software automates grid filling; theme ideas and clueing are the human part.",
+    "platforms": [
+      "The New York Times Crossword",
+      "Universal Crossword",
+      "LA Times Crossword"
+    ],
+    "payout": {
+      "methods": ["check", "bank transfer"],
+      "minimumPayout": "per accepted puzzle",
+      "frequency": "per acceptance",
+      "typicalDelayDays": 90,
+      "notes": "Pay rates (often quoted around $500-$750 daily, $2,000+ Sunday for NYT) still unverified: nytimes.com and xwordinfo.com block our fetcher (Nov 2026)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 4,
+      "incomePotential": 3,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 100
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+      "complianceRequirements": [
+        "tax forms for US payers",
+        "original clues only"
+      ]
+    },
+    "availability": {
+      "notes": "Submissions worldwide by email/portal."
+    },
+    "automationPlan": [
+      "Autofill grids from word lists",
+      "Database of used clues"
+    ],
+    "manualSteps": ["Theme ideas", "Clue writing", "Editor revisions"],
+    "fullCycle": [
+      "Learn construction",
+      "Build puzzle",
+      "Submit",
+      "Revise",
+      "Publish",
+      "Payment"
+    ],
+    "risks": ["Long queues", "Low acceptance", "Specs vary by outlet"],
+    "evidence": "Major papers publicly accept freelance puzzles; fee figures unverified here.",
+    "sources": [
+      "https://www.nytimes.com/article/submit-crossword-puzzles-the-new-york-times.html"
+    ],
+    "tags": ["per-piece", "puzzles", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "free constructors (Crosshare, Qxw) or paid software",
+          "word lists",
+          "submission email/portals"
+        ],
+        "skills": [
+          "crossword construction and theme ideas",
+          "clue writing",
+          "following editor specs"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "outlet submission accounts",
+          "bank/PayPal or check deposit"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per accepted puzzle",
+        "typicalPriceUsd": {
+          "low": 100,
+          "median": 500,
+          "high": 2250
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 15,
+        "notes": "NYT pays $500 for daily (Mon-Sat) and $2,250 for Sunday puzzles; other outlets pay ~$100-$400 (estimates for non-NYT). Hours per unit include rejected attempts. NYT rates not re-verified (nytimes.com blocks automated fetches)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payment received. Editors reply in weeks to months and acceptance rates are low; first sale often 6-18 months after starting."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "rising",
+        "profitLikelihoodPercent": 3,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 1000
+        },
+        "notes": "Established constructors place puzzles regularly; newcomers face long queues and low acceptance. Software automates grid fill, but editors judge themes and clues, which remain human work. Rates rose at the NYT in 2022, but the number of slots is fixed."
+      },
+      "pricingStrategy": "Outlet rates are fixed; target outlets with shorter queues first and build to NYT, and consider selling puzzles directly via a Patreon/Substack.",
+      "profitPath": [
+        "Month 0: learn construction, solve and study accepted grids (cost $0)",
+        "Month 1-6: build and submit 1-2 puzzles/month, expected $0",
+        "Month 6-12: possible first sale $100-$500"
+      ],
+      "sources": [
+        "https://www.nytimes.com/article/submit-crossword-puzzles-the-new-york-times.html"
+      ]
+    }
+  }
+]

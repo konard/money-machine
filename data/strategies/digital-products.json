@@ -1,0 +1,2181 @@
+[
+  {
+    "id": "digital-downloads-gumroad-payhip",
+    "name": "Sell digital downloads via Gumroad / Payhip / Lemon Squeezy",
+    "category": "digital-products",
+    "summary": "Sell ebooks, guides, checklists, code snippets or asset packs from a self-hosted storefront that handles checkout and VAT.",
+    "howItWorks": "You create a downloadable product (PDF guide, template pack, code kit) and list it on Gumroad, Payhip or Lemon Squeezy. They handle checkout and VAT (Gumroad and Lemon Squeezy as merchant of record). Buyers are your own audience (X, Reddit, newsletter, SEO blog). Fees: Gumroad 10% + $0.50 on direct sales (30% via Discover); Payhip Free plan 5% (Plus $29/mo 2%, Pro $99/mo 0%) plus PayPal/Stripe fees; Lemon Squeezy 5% + $0.50.",
+    "platforms": ["Gumroad", "Payhip", "Lemon Squeezy"],
+    "payout": {
+      "methods": [
+        "Gumroad: local bank deposit (~120 countries) or PayPal where bank payouts are unsupported (2% fee); no Payoneer/Wise",
+        "Payhip: paid instantly to your PayPal or Stripe account",
+        "Lemon Squeezy: bank transfer or PayPal (USD)"
+      ],
+      "minimumPayout": "Gumroad $100 for weekly/monthly/quarterly payouts (higher local minimums in some countries; instant payouts from $1 for eligible accounts); Payhip none (instant); Lemon Squeezy $50",
+      "frequency": "weekly by default (Gumroad, 7-day hold), instant (Payhip), twice-monthly on the 1st and 15th (Lemon Squeezy, 13-day hold)",
+      "typicalDelayDays": 7,
+      "notes": "Gumroad's help center states a $100 USD minimum balance for all scheduled payouts (not only unverified accounts); balances below roll over. Lemon Squeezy (owned by Stripe) is building a Stripe Managed Payments merchant-of-record product, currently waitlist-only; Lemon Squeezy itself still accepts sign-ups."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling self-made information products is legal everywhere in the reference set; platforms collect VAT as merchant of record.",
+      "complianceRequirements": [
+        "report income for tax",
+        "KYC/identity verification",
+        "respect copyright of included material"
+      ]
+    },
+    "availability": {
+      "notes": "Gumroad pays to local banks in ~120 countries (incl. most reference countries such as India, Nigeria, Kenya, Philippines, Indonesia, Mexico) and via PayPal elsewhere; Payhip pays wherever PayPal/Stripe can receive; Lemon Squeezy pays to banks or PayPal in its supported countries. Countries where PayPal cannot receive (e.g. Lebanon, Iraq, Libya) are poorly served."
+    },
+    "automationPlan": [
+      "LLM drafts product, sales page copy and FAQs",
+      "API publishing of products",
+      "Scheduled promo posts and buyer email sequences"
+    ],
+    "manualSteps": [
+      "KYC and payout account linking",
+      "Quality review of product content",
+      "Building initial audience/distribution"
+    ],
+    "fullCycle": [
+      "Sign up and verify",
+      "Create product file",
+      "Publish listing + sales page",
+      "Drive traffic",
+      "Payout to bank/PayPal"
+    ],
+    "risks": [
+      "No built-in traffic; sales depend on audience",
+      "Gumroad's $100 payout minimum delays the first payout for small sellers (use Payhip for instant payouts)",
+      "Lemon Squeezy transition toward Stripe Managed Payments",
+      "Low-quality AI products get refunds/chargebacks"
+    ],
+    "evidence": "Gumroad's help center documents the $100 minimum, ~120 bank-payout countries and PayPal fallback; Gumroad pricing page states 10% + $0.50 / 30% Discover; Payhip pricing page states 5%/2%/0% plans and instant deposits; Lemon Squeezy docs state $50 minimum and 1st/15th payouts. Gumroad has paid creators hundreds of millions cumulatively.",
+    "sources": [
+      "https://gumroad.com/help/article/13-getting-paid",
+      "https://gumroad.com/pricing",
+      "https://payhip.com/pricing",
+      "https://docs.lemonsqueezy.com/help/getting-started/getting-paid",
+      "https://www.lemonsqueezy.com/pricing",
+      "https://www.lemonsqueezy.com/blog/2026-update"
+    ],
+    "tags": ["passive", "info-product", "merchant-of-record"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Gumroad / Payhip free plan / Lemon Squeezy (no monthly fee)",
+          "Canva or Google Docs free for layout",
+          "LLM chat (free tier) for drafting"
+        ],
+        "skills": [
+          "subject-matter expertise worth paying for",
+          "copywriting a sales page",
+          "building a small audience (X, Reddit, newsletter) - AI drafts, you must distribute"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Gumroad/Payhip/Lemon Squeezy account + KYC",
+          "bank account or PayPal/Stripe"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 15,
+          "high": 49
+        },
+        "costPerUnitUsd": 0.5,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 87,
+        "hoursPerUnit": 0.05,
+        "notes": "Median $15 is a typical guide/template price on Gumroad; cost is Gumroad's $0.50 fixed fee, fee is its 10% (Payhip free plan: 5% + PayPal/Stripe processing, similar net). Gumroad 10% + $0.50 confirmed on its pricing page (Discover marketplace sales cost 30%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 2500
+        },
+        "notes": "Creators with an existing audience (newsletter, X, YouTube) take most revenue; cold-start sellers without distribution usually sell nothing. Since 2024-2025 AI has flooded storefronts with generic ebooks and buyers can ask an LLM for the same content, so only specific, expert or tool-like products hold price. Main failure mode: no traffic, not product quality. Likelihood is an estimate."
+      },
+      "pricingStrategy": "Launch at $5-9 with a free lead magnet to collect emails, then raise to $19-29 once you have testimonials; bundle related products at a higher tier.",
+      "profitPath": [
+        "Month 0: pick a niche you know, build one product and a free lead magnet with AI help (cost $0)",
+        "Month 1-2: post useful content daily in 1-2 channels; expect first 0-5 sales ($0-75)",
+        "Month 3-6: add 2-3 complementary products and an email sequence; $20-100/month if the niche responds",
+        "Month 6-12: raise prices, bundle, add affiliates; most stay under $100/month, a minority with audiences reach $500+"
+      ],
+      "sources": [
+        "https://gumroad.com/pricing",
+        "https://payhip.com/pricing",
+        "https://www.lemonsqueezy.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "etsy-digital-printables-svg",
+    "name": "Etsy digital downloads: printables, planners, SVG cut files",
+    "category": "marketplaces",
+    "summary": "Sell instant-download printables, wall art, planners and Cricut SVG files to Etsy's built-in buyer traffic.",
+    "howItWorks": "You design printable PDFs/PNGs or SVG cut files and list them as Etsy digital items; Etsy delivers the file automatically. Buyers come from Etsy search. Fees: $0.20 listing, 6.5% transaction, ~3% + $0.25 payment processing (US) (+ Offsite Ads 12-15%). AI-assisted designs are allowed if made from your own prompts/designs and disclosed per Etsy Creativity Standards.",
+    "platforms": ["Etsy"],
+    "payout": {
+      "methods": [
+        "Etsy Payments -> bank",
+        "Etsy Payments via Payoneer (required in e.g. India, Japan, Ukraine, Brazil, Argentina, Thailand, Peru, Serbia, Georgia, South Korea)"
+      ],
+      "minimumPayout": "No minimum on the default weekly schedule; daily deposits need a local minimum (e.g. USD 25, GBP 15, EUR 20)",
+      "frequency": "weekly (Monday) by default; daily, biweekly or monthly selectable",
+      "typicalDelayDays": 14,
+      "notes": "New sellers' funds are generally eligible for deposit 14 days after a sale; Etsy may apply a payment account reserve to new shops; 5-day hold after changing bank details."
+    },
+    "capitalRequiredUsd": 5,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 52
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the reference set. Etsy Payments is offered in only ~26 of the ~50 reference countries (e.g. not Armenia, Kenya, Nigeria, Colombia, Ecuador, Taiwan, Bangladesh, Sri Lanka, Ghana), which is availability, not legality.",
+      "complianceRequirements": [
+        "report income for tax",
+        "Etsy Creativity Standards ('Designed by' + AI disclosure)",
+        "no trademarked/copyrighted characters"
+      ]
+    },
+    "availability": {
+      "notes": "Etsy Payments country list (official): reference countries covered include US, UK, Canada, Australia, Germany, France, Italy, Estonia, Hungary, Japan, South Korea, India, Indonesia, Malaysia, Philippines, Singapore, Thailand, Mexico, Brazil, Argentina, Peru, Georgia, Serbia, Ukraine, South Africa, Morocco (~26/50, some via Payoneer). Not covered: Armenia, Kenya, Nigeria, Ghana, Colombia, Ecuador, Taiwan, Costa Rica, Iceland, Sri Lanka, Bangladesh and others."
+    },
+    "automationPlan": [
+      "LLM writes SEO titles/tags",
+      "AI + scripts batch-produce designs and mockups",
+      "Etsy Open API bulk listing"
+    ],
+    "manualSteps": [
+      "Shop setup, identity and bank verification",
+      "Human QA of designs for originality/IP",
+      "Answering buyer messages"
+    ],
+    "fullCycle": [
+      "Open Etsy shop",
+      "Create printables/SVGs",
+      "List with SEO",
+      "Sales auto-delivered",
+      "Deposit to bank"
+    ],
+    "risks": [
+      "Heavy saturation in printables",
+      "Listing removal or shop suspension for IP/Creativity Standards violations",
+      "Offsite Ads fees eat margin",
+      "Etsy policy changes on AI content"
+    ],
+    "evidence": "Etsy help center documents fees ($0.20 listing, 6.5% transaction), the Etsy Payments country list and deposit schedule/minimums; Creativity Standards cover AI disclosure. Digital downloads are a large established Etsy category.",
+    "sources": [
+      "https://help.etsy.com/hc/en-us/articles/115015710408",
+      "https://help.etsy.com/hc/en-us/articles/360035902374-Etsy-Fee-Basics",
+      "https://help.etsy.com/hc/en-us/articles/360046998234-How-to-Receive-Your-Etsy-Payments-Deposit",
+      "https://www.etsy.com/legal/creativity"
+    ],
+    "tags": ["passive", "marketplace-traffic", "printables"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 5,
+        "recurringMonthlyUsd": 2,
+        "tools": [
+          "Etsy ($0.20 per listing)",
+          "Canva free / Inkscape / Affinity (free)",
+          "AI image generator free tier",
+          "eRank or Alura free tier for keywords"
+        ],
+        "skills": [
+          "graphic design / layout",
+          "Etsy SEO (titles, tags, mockups)",
+          "following Etsy Creativity Standards for AI-assisted work"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Etsy shop + identity/bank verification (Payoneer in some countries)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 5,
+          "high": 15
+        },
+        "costPerUnitUsd": 0.45,
+        "platformFeePercent": 9.5,
+        "grossMarginPercent": 82,
+        "hoursPerUnit": 0,
+        "notes": "Median $5 is a common printable/SVG price; fee = 6.5% transaction + ~3% processing, cost = $0.25 processing + $0.20 auto-renew listing fee. Offsite Ads (12-15%) occasionally apply."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 2,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost ~$2/month = about 10 listing renewals/new listings; startup $5 = 25 initial listings."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": -2,
+          "median": 40,
+          "high": 2500
+        },
+        "notes": "Shops with hundreds of listings in narrow niches and strong mockups win; Etsy search favours established shops with reviews. AI-generated wall art and planners flooded Etsy in 2024-2026, pushing prices to $1-3 and raising IP-takedown risk. Most new shops get a few sales then plateau below $100/month."
+      },
+      "pricingStrategy": "Start at $2-4 with bundles to get first reviews, then raise single items to $5-8 and sell multi-item bundles at $12-20.",
+      "profitPath": [
+        "Month 0: open shop, list 25 products in one niche (cost $5)",
+        "Month 1-2: add 5-10 listings/week; first 1-10 sales ($5-40)",
+        "Month 3-6: double down on listings that get views; $20-100/month",
+        "Month 6-12: 150-300 listings, bundles, seasonal items; median ~$40/month net"
+      ],
+      "sources": [
+        "https://help.etsy.com/hc/en-us/articles/360035902374-Etsy-Fee-Basics",
+        "https://www.etsy.com/legal/fees"
+      ]
+    }
+  },
+  {
+    "id": "print-on-demand-own-shop",
+    "name": "Print-on-demand via Printful/Printify connected to Etsy or Shopify",
+    "category": "marketplaces",
+    "summary": "Sell your designs on apparel/mugs/posters in your own Etsy or Shopify store; Printful/Printify print and ship each order, zero inventory.",
+    "howItWorks": "You upload designs to Printful or Printify, which sync products to your Etsy or Shopify store. When a customer buys, the POD provider charges your card the base cost and prints/ships directly (PHYSICAL STEP handled by the provider, not you). You keep retail minus base cost and marketplace fees; a $28 tee typically nets ~$5-8.",
+    "platforms": ["Printful", "Printify", "Etsy", "Shopify"],
+    "payout": {
+      "methods": [
+        "Etsy Payments / Shopify Payments -> bank",
+        "PayPal (Shopify)"
+      ],
+      "minimumPayout": "Per sales-channel rules (Etsy: none on weekly schedule; Shopify Payments: none)",
+      "frequency": "daily to weekly",
+      "typicalDelayDays": 5,
+      "notes": "Printful/Printify charge you the base cost + shipping per order (no monthly fee); profit arrives via the sales channel. Etsy new-seller funds are held ~14 days."
+    },
+    "capitalRequiredUsd": 30,
+    "timeToFirstDollarDays": {
+      "min": 21,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 80,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; PHYSICAL fulfilment and shipping is outsourced to the POD provider. Consumer-protection/returns rules apply.",
+      "complianceRequirements": [
+        "report income for tax",
+        "no trademark/copyright infringement",
+        "consumer return obligations",
+        "sales tax/VAT handled per channel"
+      ]
+    },
+    "availability": {
+      "notes": "Printful/Printify connect to Etsy and Shopify globally. Etsy Payments covers ~26 of ~50 reference countries; Shopify Payments only 41 countries (mostly EU/OECD), though Shopify stores elsewhere can use PayPal or local gateways. Shopify also costs a monthly subscription after the trial."
+    },
+    "automationPlan": [
+      "AI generates designs and mockups",
+      "API sync creates products on Printful/Printify and pushes to store",
+      "LLM writes SEO listings",
+      "Orders route automatically to printer"
+    ],
+    "manualSteps": [
+      "Order samples to check quality",
+      "Store/payment KYC",
+      "Customer service for defects/returns"
+    ],
+    "fullCycle": [
+      "Create store",
+      "Connect Printful/Printify",
+      "Upload designs",
+      "Sale auto-fulfilled",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Thin margins; ad spend can exceed profit",
+      "IP takedowns and account suspensions",
+      "Shipping delays cause refunds",
+      "Card charged before customer funds clear"
+    ],
+    "evidence": "Printful's Etsy integration page states it is free with no monthly fee and charges only per order (example: $35 tee, $7.50 base + $4.50 shipping + $3.50 Etsy fees); Shopify help center lists Shopify Payments countries.",
+    "sources": [
+      "https://www.printful.com/integrations/etsy",
+      "https://help.etsy.com/hc/en-us/articles/115015710408",
+      "https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries"
+    ],
+    "tags": ["physical-step-outsourced", "zero-inventory", "ecommerce"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 30,
+        "recurringMonthlyUsd": 5,
+        "tools": [
+          "Printify Free (Premium $24.99/month billed yearly or $39 monthly, not assumed) or Printful (no monthly fee)",
+          "Etsy ($0.20/listing) or Shopify (from ~$39/month Basic, not assumed here)",
+          "Canva / Placeit-style mockups (free tiers)"
+        ],
+        "skills": [
+          "graphic design for apparel",
+          "niche research and Etsy SEO",
+          "customer service for print/shipping issues"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Etsy or Shopify store + KYC",
+          "credit/debit card to pay POD base costs",
+          "bank account for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale (t-shirt)",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 28,
+          "high": 40
+        },
+        "costPerUnitUsd": 13.97,
+        "platformFeePercent": 9.5,
+        "grossMarginPercent": 41,
+        "hoursPerUnit": 0.1,
+        "notes": "Median $28 tee with free shipping: $8.77 base (Printify pricing-page calculator, Unisex Jersey Short Sleeve Tee, Free plan; premium providers cost more) + ~$4.75 US shipping (estimated, not published on Printify's public pages) + $0.45 Etsy fixed fees = $13.97 cost; 9.5% Etsy transaction + processing. Net ~$11 per shirt."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 5,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost ~$5/month in Etsy listing renewals (Shopify would add ~$39/month and require ~5 extra sales). Startup $30 = sample orders + initial listings."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -5,
+          "median": 60,
+          "high": 3000
+        },
+        "notes": "Winners run many niche designs and paid ads with tight margins or have their own audience; base costs and shipping rose in 2025-2026 (tariffs, postal changes), squeezing the ~$8-11 per-shirt margin. AI designs made POD easier to start and much more crowded, and trademark takedowns remain a common shop killer."
+      },
+      "pricingStrategy": "Price at $26-30 for tees with free shipping to match the market; use limited-time sales sparingly, and raise prices on proven designs or move them to premium blanks.",
+      "profitPath": [
+        "Month 0: connect Printify to Etsy, order samples, list 20 designs (cost $30)",
+        "Month 1-2: add 10 designs/week; first sales likely by month 2 ($0-40 net)",
+        "Month 3-6: expand winners into new products/colours; $20-150/month net",
+        "Month 6-12: optional small ad tests on proven designs; median ~$60/month net"
+      ],
+      "sources": [
+        "https://printify.com/pricing/",
+        "https://www.printful.com/pricing",
+        "https://www.etsy.com/legal/fees"
+      ]
+    }
+  },
+  {
+    "id": "pod-marketplaces-redbubble-teepublic-merch",
+    "name": "Upload designs to POD marketplaces: Redbubble, TeePublic, Amazon Merch on Demand",
+    "category": "marketplaces",
+    "summary": "Upload artwork once; the marketplace handles traffic, production, shipping and customer service and pays you a royalty.",
+    "howItWorks": "Unlike own-shop POD, you never touch orders or costs: Redbubble, TeePublic and Amazon Merch on Demand list your design on products in their own storefronts. You earn a margin/royalty per sale (Redbubble: artist margin minus tier-based platform/excess-markup fees, capped at $150 per period, Pro tier exempt; Amazon Merch: third-party reports say royalties moved to traffic-based tiers on June 1, 2026, with the default tier paying ~50% of the old royalty). Amazon Merch requires application approval and has upload tiers.",
+    "platforms": ["Redbubble", "TeePublic", "Amazon Merch on Demand"],
+    "payout": {
+      "methods": [
+        "Redbubble: PayPal or bank transfer",
+        "TeePublic: PayPal or Payoneer only (Stripe used for identity verification)",
+        "Amazon Merch: bank deposit"
+      ],
+      "minimumPayout": "Redbubble $10/£10/€10 (lowered from $20 on July 1, 2026); TeePublic: no minimum stated in help center (Payoneer minimum unverified); Amazon Merch: monthly deposit",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Redbubble processes at the start of each month for orders shipped the previous month, landing by the 15th; TeePublic pays on the 15th for the previous calendar month's sales; Amazon Merch timing (~30 days after month end) not verified from an official page (Merch resources are login-only)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; all physical production/shipping handled by platform, nothing physical for the seller.",
+      "complianceRequirements": [
+        "report income for tax",
+        "tax interview (W-8BEN for non-US)",
+        "no IP infringement"
+      ]
+    },
+    "availability": {
+      "notes": "Redbubble and TeePublic pay globally via PayPal/Payoneer; Amazon Merch accepts applicants from many countries but approval is selective."
+    },
+    "automationPlan": [
+      "AI drafts designs, titles and tags",
+      "Bulk-upload tooling where ToS-permitted",
+      "Scripted trend/niche research from public data"
+    ],
+    "manualSteps": [
+      "Account applications (Merch on Demand approval)",
+      "Tax interview",
+      "Human IP check of every design"
+    ],
+    "fullCycle": [
+      "Apply/sign up",
+      "Upload designs",
+      "Platform sells and ships",
+      "Royalty accrues",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Very low conversion per design",
+      "Redbubble account fees reduce earnings",
+      "Royalty cuts (Merch tiered royalties from June 2026, not officially verified here)",
+      "Account termination for IP strikes"
+    ],
+    "evidence": "Redbubble help center confirms the $10 threshold from July 1, 2026, monthly payment by the 15th and account-fee rules; TeePublic help center confirms monthly PayPal/Payoneer payouts on the 15th. Amazon Merch royalty-tier change is reported by third-party sellers' blogs only.",
+    "sources": [
+      "https://help.redbubble.com/hc/en-us/articles/360027407652-What-is-the-Artist-Payment-Threshold",
+      "https://help.redbubble.com/hc/en-us/articles/202270389-When-do-I-get-paid",
+      "https://help.redbubble.com/hc/en-us/articles/50960130992916-What-account-fees-exist-on-Redbubble",
+      "https://teepublic.zendesk.com/hc/en-us/articles/115012518628-How-do-I-get-paid",
+      "https://merchtitans.com/blog/amazon-merch-royalty-changes-june-2026"
+    ],
+    "tags": ["passive", "royalty", "no-fulfilment"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Redbubble / TeePublic / Amazon Merch on Demand (free)",
+          "Inkscape, Krita or Affinity (free)",
+          "AI image tools for ideation"
+        ],
+        "skills": [
+          "simple graphic design and typography",
+          "keyword tagging",
+          "trademark awareness"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Redbubble, TeePublic and (by application) Amazon Merch accounts",
+          "PayPal/Payoneer or bank account",
+          "tax interview (W-8BEN for non-US)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale (buyer price of a t-shirt)",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 25,
+          "high": 45
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 86,
+        "grossMarginPercent": 14,
+        "hoursPerUnit": 0,
+        "notes": "Buyer pays ~$25; the platform keeps base cost and its margin, the artist gets ~$3-4 (Redbubble default markup, TeePublic $4 per standard tee, lower on Merch after 2026 tiering) - modelled as an ~86% platform share."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 7,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 1200
+        },
+        "notes": "Uploaders with thousands of designs or recognised niches still earn; Redbubble/TeePublic traffic has been declining and Redbubble's tiered account fees cut small-shop earnings. Amazon Merch's 2026 move to traffic-based royalty tiers roughly halved default royalties per third-party reports. AI design floods mean single designs rarely sell."
+      },
+      "pricingStrategy": "Keep platform default markups initially to stay competitive, then raise markup only on designs that sell repeatedly.",
+      "profitPath": [
+        "Month 0: open accounts and upload 30 designs (cost $0)",
+        "Month 1-3: upload 50-100 more; first sale typically month 2-4 ($3-10)",
+        "Month 3-6: reach Redbubble's $10 threshold; $5-40/month",
+        "Month 6-12: 300+ designs; median ~$20/month"
+      ],
+      "sources": [
+        "https://help.redbubble.com/hc/en-us/articles/50960130992916-What-account-fees-exist-on-Redbubble",
+        "https://teepublic.zendesk.com/hc/en-us/articles/115012518628-How-do-I-get-paid"
+      ]
+    }
+  },
+  {
+    "id": "notion-templates",
+    "name": "Sell Notion templates on the Notion Marketplace",
+    "category": "digital-products",
+    "summary": "Build productivity systems (CRMs, planners, trackers) in Notion and sell them on Notion's official Marketplace or Gumroad.",
+    "howItWorks": "You design a reusable Notion workspace template and publish it to the Notion Marketplace (direct paid sales via Stripe after joining a waitlist and being approved, which can take months) or sell the duplicate link through Gumroad/Lemon Squeezy (also allowed as an external link from a Marketplace listing). Buyers are Notion users seeking ready-made systems. Notion charges 8% + $0.40 per transaction, handles sales tax/VAT and pays biweekly. Discovery inside the Marketplace plus a free-template funnel are the main traffic sources.",
+    "platforms": ["Notion Marketplace", "Gumroad"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank"],
+      "minimumPayout": "$20",
+      "frequency": "biweekly (Thursdays)",
+      "typicalDelayDays": 14,
+      "notes": "14-day hold for refunds; non-US creators pay 1% FX fee; some countries have higher minimums (e.g. South Korea KRW 40,000)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere.",
+      "complianceRequirements": [
+        "report income for tax",
+        "Stripe KYC",
+        "Notion Marketplace approval"
+      ]
+    },
+    "availability": {
+      "notes": "Direct paid selling requires Notion approval and Stripe onboarding in an eligible country; creators elsewhere can list paid templates that link out to Gumroad/Payhip."
+    },
+    "automationPlan": [
+      "LLM designs database schemas, formulas and docs",
+      "Notion API scaffolds template pages",
+      "Auto-generate screenshots and listing copy"
+    ],
+    "manualSteps": [
+      "Waitlist/approval and Stripe onboarding",
+      "Manual QA of template UX",
+      "Customer support"
+    ],
+    "fullCycle": [
+      "Join creator program",
+      "Build template",
+      "Publish paid listing",
+      "Earn",
+      "Biweekly Stripe payout"
+    ],
+    "risks": [
+      "Crowded niche; free templates compete",
+      "Notion feature changes break templates",
+      "Refund requests within 14 days"
+    ],
+    "evidence": "Notion's official help center documents the 8% + $0.40 fee, $20 minimum, biweekly Thursday payouts and 14-day hold; numerous creators publicly report template revenue.",
+    "sources": ["https://www.notion.com/help/selling-on-marketplace"],
+    "tags": ["templates", "productivity", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Notion free plan (Plus ~$10/month optional)",
+          "Notion Marketplace or Gumroad (no monthly fee)",
+          "screen recorder for demo videos"
+        ],
+        "skills": [
+          "designing Notion databases, relations and formulas",
+          "productivity-system design",
+          "short-form marketing content"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Notion Marketplace creator profile (paid sales need approval)",
+          "Stripe or Gumroad account + KYC"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 19,
+          "high": 79
+        },
+        "costPerUnitUsd": 0.4,
+        "platformFeePercent": 8,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 0.05,
+        "notes": "Median $19 matches mid-priced Marketplace templates; Notion charges 8% + $0.40 per sale."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 4000
+        },
+        "notes": "Top earners are creators with YouTube/X audiences selling comprehensive systems; thousands of free templates compete. Notion AI and agents (2025-2026) can scaffold workspaces on request, eroding demand for simple templates, so value moves to niche, opinionated systems with tutorials."
+      },
+      "pricingStrategy": "Give away a free lite version to rank and build a list, then sell a full version at $19-39 and a bundle at $49-79.",
+      "profitPath": [
+        "Month 0: build 1 paid + 1 free template, publish (cost $0)",
+        "Month 1-2: post demos on X/TikTok/Reddit; first 0-5 sales",
+        "Month 3-6: add templates in the same niche; $20-100/month",
+        "Month 6-12: bundles and price increases; median ~$30/month"
+      ],
+      "sources": ["https://www.notion.com/help/selling-on-marketplace"]
+    }
+  },
+  {
+    "id": "canva-templates",
+    "name": "Canva templates: Canva Creators royalties + selling template links",
+    "category": "digital-products",
+    "summary": "Earn royalties from Canva Pro usage of your templates, or sell Canva template links on Etsy/Creative Market.",
+    "howItWorks": "Two payers: (1) Canva Creators program pays monthly royalties from a pool based on how often Pro users use your templates/elements (application with portfolio required; element sign-ups were on hold); (2) buyers on Etsy, Creative Market or Gumroad pay for a PDF containing a Canva template link (social posts, resumes, media kits). Canva pays through Trolley.",
+    "platforms": ["Canva Creators", "Etsy", "Creative Market"],
+    "payout": {
+      "methods": [
+        "Canva via Trolley -> bank/PayPal",
+        "Etsy/Creative Market payouts"
+      ],
+      "minimumPayout": "Canva: $10 (non-wire) / $25 (wire), after withholding tax",
+      "frequency": "monthly",
+      "typicalDelayDays": 30,
+      "notes": "Paid monthly by ~the 15th via Trolley once the threshold is reached; W-8/W-9 required. Royalty pool grows with Canva subscription revenue but its size is not public. Whether element sign-ups are still paused was not confirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 4,
+      "incomePotential": 4,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere.",
+      "complianceRequirements": [
+        "report income for tax",
+        "Canva Creator agreement",
+        "no reuse of others' assets"
+      ]
+    },
+    "availability": {
+      "notes": "Canva Creators accepts applicants worldwide but acceptance is selective; Trolley pays to most reference countries."
+    },
+    "automationPlan": [
+      "LLM generates copy and layout variants",
+      "Canva bulk-create/brand kits for variations",
+      "Scripted mockups and listings for Etsy"
+    ],
+    "manualSteps": [
+      "Portfolio application to Canva",
+      "Design QA to Canva standards",
+      "Tax form"
+    ],
+    "fullCycle": [
+      "Apply to Canva Creators",
+      "Publish templates",
+      "Royalties accrue",
+      "Monthly Trolley payout"
+    ],
+    "risks": [
+      "Application may be rejected or delayed for months",
+      "Royalty pool shares opaque and can fall",
+      "Canva licensing rules for reselling links"
+    ],
+    "evidence": "Canva's help center documents Trolley payouts with USD 10 (non-wire) / USD 25 (wire) thresholds and monthly payment; Canva has publicly earmarked large creator royalty funds.",
+    "sources": [
+      "https://www.canva.com/help/canva-creators-program/",
+      "https://www.canva.com/help/set-up-payout-details/",
+      "https://www.startupdaily.net/topic/artificial-intelligence-machine-learning/canva-earmarks-200-million-in-royalty-payments-for-new-ai-platform/"
+    ],
+    "tags": ["royalty", "templates", "design"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Canva free (Pro ~$15/month optional, not assumed)",
+          "Etsy/Gumroad/Payhip storefront",
+          "mockup generator (free tier)"
+        ],
+        "skills": [
+          "layout and typography",
+          "niche research",
+          "Canva Creators portfolio standards"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Canva Creators application + Trolley payout setup",
+          "Etsy or Payhip account + KYC"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale (template-link bundle)",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 12,
+          "high": 35
+        },
+        "costPerUnitUsd": 0.45,
+        "platformFeePercent": 9.5,
+        "grossMarginPercent": 87,
+        "hoursPerUnit": 0,
+        "notes": "Median $12 for a social-media or resume template bundle sold on Etsy; Etsy fees 9.5% + $0.45 fixed. Canva Creators royalties are a per-use pool and not modelled per unit."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 25,
+          "high": 1500
+        },
+        "notes": "Canva Creators payouts concentrate among large established contributors; acceptance has been slow and element sign-ups paused. Canva's own AI (Magic Design, Dream Lab) generates designs for users free, directly undercutting template sales. Template shops on Etsy face heavy saturation."
+      },
+      "pricingStrategy": "Sell large bundles (30-100 templates) at $9-15 to stand out against $2 singles, then add niche premium kits at $25-35.",
+      "profitPath": [
+        "Month 0: build 3 bundles, apply to Canva Creators (cost $0)",
+        "Month 1-3: list on Payhip/Etsy and post previews on Pinterest; first sales",
+        "Month 3-6: $10-60/month across channels",
+        "Month 6-12: royalties start if accepted; median ~$25/month"
+      ],
+      "sources": [
+        "https://www.canva.com/help/canva-creators-program/",
+        "https://www.etsy.com/legal/fees"
+      ]
+    }
+  },
+  {
+    "id": "design-assets-fonts-icons-ui-kits",
+    "name": "Fonts, icon sets and UI kits on Creative Market / UI8",
+    "category": "marketplaces",
+    "summary": "Sell design assets (fonts, icon packs, Figma UI kits, mockups) to designers via curated asset marketplaces.",
+    "howItWorks": "You produce a polished asset pack and list it on Creative Market (shop application with portfolio) or UI8 (curated). Designers and agencies buy commercial licenses. Creative Market's commission varies per shop/product (not published) and it pays monthly via Tipalti with a $20 minimum. Figma Community is not approving new creators to sell paid files (15% fee for existing sellers), so sell Figma kits via these marketplaces or Gumroad. Fonts need real type-design skill; icons/UI kits are faster with AI-assisted ideation.",
+    "platforms": ["Creative Market", "UI8", "Gumroad"],
+    "payout": {
+      "methods": [
+        "ACH/eCheck (free)",
+        "PayPal (free US, 1% up to $10 non-US)",
+        "Wire ($5-$7)"
+      ],
+      "minimumPayout": "$20 (Creative Market)",
+      "frequency": "monthly (request by month end or auto-payment)",
+      "typicalDelayDays": 10,
+      "notes": "Creative Market pays via Tipalti in the first five business days of the month, usually arriving by the 10th; 2.5% FX fee for local-currency payouts; not all methods in all countries."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 4,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; respect font licensing and trademark law.",
+      "complianceRequirements": [
+        "report income for tax",
+        "original work only (no derivative fonts)",
+        "license terms"
+      ]
+    },
+    "availability": {
+      "notes": "Creative Market pays globally via Tipalti (bank/PayPal/wire, country-dependent); Figma paid Community closed to new creators."
+    },
+    "automationPlan": [
+      "AI ideation and vector cleanup scripts",
+      "Automated export of formats/sizes",
+      "Script-generated previews and listing copy"
+    ],
+    "manualSteps": [
+      "Shop application approval",
+      "Manual vector/kerning QA",
+      "Support for license questions"
+    ],
+    "fullCycle": [
+      "Apply to marketplace",
+      "Create asset pack",
+      "List",
+      "Sales",
+      "Request payout"
+    ],
+    "risks": [
+      "Curated stores reject many applicants",
+      "Price competition from bundles/subscriptions",
+      "AI-generated assets may face scrutiny"
+    ],
+    "evidence": "Creative Market's support center documents the $20 minimum, Tipalti payout methods and fees; Figma help center states 'We are not approving new creators to sell paid files on Community at this time.'",
+    "sources": [
+      "https://support.creativemarket.com/hc/en-us/articles/115004015634",
+      "https://support.creativemarket.com/hc/en-us/articles/201251700-Open-a-Shop-on-Creative-Market",
+      "https://help.figma.com/hc/en-us/articles/12067637274519-About-selling-Community-resources"
+    ],
+    "tags": ["design", "assets", "licensing"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Figma free / Inkscape",
+          "FontForge (free) or Glyphs (paid, optional)",
+          "Creative Market / UI8 / Gumroad (no monthly fee)"
+        ],
+        "skills": [
+          "professional-grade icon, UI or type design",
+          "licensing terms",
+          "preview/mockup production"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Creative Market shop (application) or UI8 (curated)",
+          "Tipalti/PayPal payout account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per licence sale",
+        "typicalPriceUsd": {
+          "low": 9,
+          "median": 24,
+          "high": 79
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 40,
+        "grossMarginPercent": 60,
+        "hoursPerUnit": 0,
+        "notes": "Median $24 for an icon set/UI kit; Creative Market's commission is not published - 40% platform share is estimated (Creative Market help pages bot-blocked) (UI8 and Gumroad take less)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 3000
+        },
+        "notes": "Established shops with large catalogues and bundle deals take most sales; marketplaces like Creative Market reject many applicants. Generative AI icon/illustration tools and all-you-can-download subscriptions (Envato, Freepik) pushed per-item prices down in 2025-2026; fonts with real craft hold value better."
+      },
+      "pricingStrategy": "Launch with a discounted intro price and free sample pack, then move to standard $19-39 pricing and offer extended licences at 3-5x.",
+      "profitPath": [
+        "Month 0: build a portfolio and 2 polished packs, apply to stores (cost $0)",
+        "Month 1-3: approval; first sales",
+        "Month 3-6: release one pack per month; $20-100/month",
+        "Month 6-12: bundles and extended licences; median ~$40/month"
+      ],
+      "sources": [
+        "https://support.creativemarket.com/hc/en-us/articles/115004015634",
+        "https://ui8.net/"
+      ]
+    }
+  },
+  {
+    "id": "3d-models-game-assets",
+    "name": "3D models and game assets on Fab, Unity Asset Store, CGTrader",
+    "category": "marketplaces",
+    "summary": "Sell 3D models, environments, scripts and tools to game developers and 3D artists through engine marketplaces.",
+    "howItWorks": "You build assets (models, materials, VFX, editor tools, code systems) and list them on Fab (Epic, 88% to seller), Unity Asset Store (70% standard share) and CGTrader (tiered 55-80% based on rolling 365-day sales). Buyers are indie devs and studios saving production time. Code tools/editor extensions often outsell raw models. Fab requires the 'Created with AI' flag on products made with generative AI.",
+    "platforms": [
+      "Fab (Epic Games)",
+      "Unity Asset Store",
+      "CGTrader",
+      "Sketchfab"
+    ],
+    "payout": {
+      "methods": [
+        "Fab: third-party payment provider (bank/PayPal by region)",
+        "Unity: PayPal monthly or bank transfer quarterly (USD only)",
+        "CGTrader: regular payout method in USD"
+      ],
+      "minimumPayout": "Fab $100 (rolls over; paid regardless after 12 months); Unity per provider agreement; CGTrader none stated for sales ($10 for subscription earnings)",
+      "frequency": "monthly (Fab, Unity PayPal), weekly on Wednesdays (CGTrader)",
+      "typicalDelayDays": 30,
+      "notes": "Fab pays ~30 days after month end; CGTrader pays sales 20 days after sale (first payout no earlier than 20 days after KYC). Refunds deducted from next payout; tax forms required; Unity requires 2FA for payout profile."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 80,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere.",
+      "complianceRequirements": [
+        "report income for tax",
+        "W-8BEN/tax interview",
+        "AI-content disclosure on Fab",
+        "license compliance for third-party content"
+      ]
+    },
+    "availability": {
+      "notes": "All three marketplaces pay internationally; excluded only in sanctioned countries."
+    },
+    "automationPlan": [
+      "AI-assisted texture/mesh generation (disclosed)",
+      "Coding agents write Unity/Unreal tools and docs",
+      "Scripted packaging, LODs and screenshots"
+    ],
+    "manualSteps": [
+      "Publisher account, tax and payout setup",
+      "Manual QA of topology/compatibility",
+      "Answering buyer support"
+    ],
+    "fullCycle": [
+      "Create publisher account",
+      "Build asset",
+      "Submit for review",
+      "Sales",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Store review rejection",
+      "Flooding by AI assets lowers prices",
+      "Engine version churn requires updates",
+      "Marketplace rate changes"
+    ],
+    "evidence": "Epic's Fab documentation states 88% share, $100 threshold and ~30-day payment; Fab support requires the 'Created with AI' flag; Unity docs describe monthly PayPal / quarterly bank payouts; CGTrader's official schedule lists 55-80% tiers and weekly payouts.",
+    "sources": [
+      "https://dev.epicgames.com/documentation/en-us/fab/publisher-get-started-in-fab",
+      "https://support.fab.com/s/article/Introducing-NoAI-meta-tags-and-Created-with-AI-self-declaration?language=en_US",
+      "https://docs.unity.com/en-us/asset-store/publishing/asset-packages/revenue/payouts",
+      "https://www.cgtrader.com/pages/earnings-and-payout-schedule"
+    ],
+    "tags": ["gamedev", "3d", "assets"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Blender (free)",
+          "Unreal Engine / Unity (free tiers)",
+          "Fab, Unity Asset Store, CGTrader (no fee to list)"
+        ],
+        "skills": [
+          "3D modelling, UVs and texturing to game-ready standards",
+          "engine integration or tool scripting (C#/Blueprints)",
+          "documentation and support"
+        ],
+        "equipment": ["laptop or desktop with a capable GPU"],
+        "accounts": [
+          "Fab / Unity publisher accounts + tax forms",
+          "bank or PayPal/Payoneer for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 25,
+          "high": 100
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 0.05,
+        "notes": "Median $25 asset pack; blended fee ~20% between Fab (12%, publisher keeps 88% per Fab docs), Unity (30%) and CGTrader (20-45%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 4000
+        },
+        "notes": "Publishers of editor tools, systems and complete themed environments earn most; single props rarely sell. Text-to-3D tools (2025-2026) and Fab's free-asset promotions have flooded the low end, while well-supported code tools retain pricing power. Store review rejections and long build time are typical failure modes."
+      },
+      "pricingStrategy": "Start with a modest launch price and a free sample asset to gather reviews; raise price after updates and bundle into larger packs.",
+      "profitPath": [
+        "Month 0: build and submit 1-2 high-quality packs (cost $0)",
+        "Month 1-3: pass review, first sales",
+        "Month 3-6: release monthly, respond to reviews; $20-150/month",
+        "Month 6-12: bundles, sales events; median ~$50/month"
+      ],
+      "sources": [
+        "https://dev.epicgames.com/documentation/en-us/fab/publisher-get-started-in-fab",
+        "https://docs.unity.com/en-us/asset-store/publishing/asset-packages/revenue/payouts",
+        "https://www.cgtrader.com/pages/earnings-and-payout-schedule"
+      ]
+    }
+  },
+  {
+    "id": "roblox-game-devex",
+    "name": "Roblox game monetization cashed out via DevEx",
+    "category": "digital-products",
+    "summary": "Build a Roblox experience, earn Robux from game passes, items and Premium engagement, and convert to USD through DevEx.",
+    "howItWorks": "You build a game in Roblox Studio (Luau scripting) and monetize with game passes, developer products, UGC items and Premium Payouts. Players spend Robux; earned Robux can be exchanged via the Developer Exchange (DevEx) at $0.0038 per Robux once you hold 30,000+ earned Robux (~$114). Success is hit-driven; most games earn nothing, a few earn millions.",
+    "platforms": ["Roblox", "Roblox DevEx"],
+    "payout": {
+      "methods": ["DevEx via Tipalti -> bank/PayPal"],
+      "minimumPayout": "30,000 earned Robux (~$114 at the standard rate)",
+      "frequency": "one cash-out request per calendar month",
+      "typicalDelayDays": 14,
+      "notes": "Requires age 13+, verified email, DevEx portal (Tipalti) account and W-8/W-9. Standard rate $0.0038/Robux; $0.0054/Robux for certain purchases in eligible games by ID/face-verified US players aged 18+; Robux earned before Sept 5, 2025 cash out at $0.0035. Processing ~10 business days first time, ~5 thereafter, plus bank time."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 4,
+      "setupEffort": 7,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; Roblox itself has been blocked by some governments (platform availability, not illegality of the activity).",
+      "complianceRequirements": [
+        "report income for tax",
+        "DevEx terms and tax forms",
+        "child-safety and content policies"
+      ]
+    },
+    "availability": {
+      "notes": "DevEx available in most countries except sanctioned ones; Roblox access has been blocked in a few countries at times."
+    },
+    "automationPlan": [
+      "Coding agents write Luau systems",
+      "Analytics-driven A/B tests of monetization",
+      "Scripted content/event updates"
+    ],
+    "manualSteps": [
+      "Game design and playtesting",
+      "DevEx application and Tipalti setup",
+      "Community moderation"
+    ],
+    "fullCycle": [
+      "Learn Roblox Studio",
+      "Build game",
+      "Add monetization",
+      "Accumulate 30k Robux",
+      "DevEx to bank"
+    ],
+    "risks": [
+      "Hit-driven; most games get no players",
+      "Platform rate/policy changes",
+      "Moderation actions on games"
+    ],
+    "evidence": "Roblox Creator Hub DevEx documentation confirms the 30,000 Robux minimum, $0.0038 standard and $0.0054 higher rates, Tipalti portal and monthly request limit; Roblox publicly reports hundreds of millions paid to creators annually.",
+    "sources": [
+      "https://create.roblox.com/docs/production/monetization/developer-exchange",
+      "https://en.help.roblox.com/hc/articles/203314100",
+      "https://www.tubefilter.com/2026/05/01/roblox-hikes-developer-earnings-by-42-but-only-if-they-make-games-aimed-at-adults/amp/"
+    ],
+    "tags": ["gamedev", "hit-driven", "youth-audience"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 150,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Roblox Studio (free)",
+          "Roblox Assistant / AI coding tools",
+          "Blender (free) for assets"
+        ],
+        "skills": [
+          "Luau scripting and game design",
+          "live-ops and analytics",
+          "marketing to a young audience within Roblox rules"
+        ],
+        "equipment": ["laptop or desktop"],
+        "accounts": [
+          "Roblox account (13+), ID verification",
+          "DevEx eligibility (verified email, 30,000 earned Robux)",
+          "Tipalti payout to bank/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 Robux spent by players",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 12,
+          "high": 13
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 78,
+        "grossMarginPercent": 22,
+        "hoursPerUnit": 0,
+        "notes": "Players pay ~$10-13 per 1,000 Robux; creator keeps 70% (700 Robux) and DevEx pays $0.0038 per Robux = ~$2.66, i.e. ~22% of player spend."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, but cash only arrives after accumulating 30,000 earned Robux (~$114) for DevEx."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 3,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 8000
+        },
+        "notes": "Roblox engagement keeps growing, but revenue is extremely hit-driven: studios and experienced teams with marketing budgets dominate the charts. AI assistants make building faster, but discoverability is the bottleneck; most solo games never reach the DevEx threshold."
+      },
+      "pricingStrategy": "Use cheap optional game passes (25-100 Robux) and developer products; tune pricing with A/B tests once you have traffic.",
+      "profitPath": [
+        "Month 0-2: build a small game in a proven genre (cost $0)",
+        "Month 3-4: launch, iterate on retention; Robux trickle in",
+        "Month 5-9: updates and sponsored ads funded by earnings; reach 30,000 Robux only if the game catches on",
+        "Month 9-12: first DevEx (~$114) for a minority; median $0"
+      ],
+      "sources": [
+        "https://create.roblox.com/docs/production/monetization/developer-exchange",
+        "https://en.help.roblox.com/hc/articles/203314100"
+      ]
+    }
+  },
+  {
+    "id": "photo-presets-luts",
+    "name": "Lightroom presets and video LUTs",
+    "category": "digital-products",
+    "summary": "Sell photo-editing presets and color-grading LUTs to photographers and video creators.",
+    "howItWorks": "You build Lightroom presets (.xmp) or video LUTs (.cube) for specific looks (film, wedding, travel) and sell packs on Etsy, Gumroad, Payhip or Creative Market. Buyers pay to save editing time and match a style. Before/after previews are the main selling tool. The niche is saturated, so a specific niche or bundling with your own photo/video audience helps.",
+    "platforms": ["Etsy", "Gumroad", "Payhip", "Creative Market"],
+    "payout": {
+      "methods": [
+        "Etsy Payments -> bank",
+        "Gumroad/Payhip -> PayPal/Stripe",
+        "Creative Market -> PayPal/bank"
+      ],
+      "minimumPayout": "Per platform: Payhip $0 (instant), Etsy $0 weekly, Creative Market $20, Gumroad $100",
+      "frequency": "weekly to monthly",
+      "typicalDelayDays": 7,
+      "notes": "Same payout rails as the host platform."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 3,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; use only images you own for previews.",
+      "complianceRequirements": [
+        "report income for tax",
+        "own rights to preview images"
+      ]
+    },
+    "availability": {
+      "notes": "Available wherever the host platform pays."
+    },
+    "automationPlan": [
+      "Script batch-generates preset variants and LUTs",
+      "Auto-render before/after previews",
+      "LLM writes listings"
+    ],
+    "manualSteps": ["Taste/QA of looks on varied photos", "Platform KYC"],
+    "fullCycle": [
+      "Create presets/LUTs",
+      "Make previews",
+      "List",
+      "Sales",
+      "Payout"
+    ],
+    "risks": [
+      "Highly saturated; many free presets",
+      "Low prices",
+      "Previews using others' images cause takedowns"
+    ],
+    "evidence": "Presets/LUTs are a long-standing digital category on Etsy, Gumroad and Creative Market; platform fees/payouts documented by each platform.",
+    "sources": [
+      "https://help.etsy.com/hc/en-us/articles/360035902374-Etsy-Fee-Basics",
+      "https://gumroad.com/help/article/13-getting-paid",
+      "https://payhip.com/pricing",
+      "https://support.creativemarket.com/hc/en-us/articles/115004015634"
+    ],
+    "tags": ["photography", "video", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Adobe Lightroom (assumed already owned; otherwise ~$15/month Photography plan)",
+          "DaVinci Resolve free for LUTs",
+          "Etsy/Payhip/Gumroad storefront"
+        ],
+        "skills": [
+          "photo/colour grading",
+          "before/after marketing",
+          "Instagram/TikTok content"
+        ],
+        "equipment": ["laptop", "camera or phone with a photo library"],
+        "accounts": ["Etsy/Payhip account + KYC", "PayPal/Stripe or bank"]
+      },
+      "unitEconomics": {
+        "unit": "per sale (preset or LUT pack)",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 15,
+          "high": 39
+        },
+        "costPerUnitUsd": 0.45,
+        "platformFeePercent": 9.5,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 0,
+        "notes": "Median $15 per pack on Etsy; Etsy fees 9.5% + $0.45 fixed."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed cost if you already own Lightroom; a new Adobe plan adds ~$15/month and would need 2 sales/month to break even."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 1000
+        },
+        "notes": "Photographers and influencers with followings sell presets; without an audience sales are rare. AI editing features (Lightroom adaptive presets, phone AI looks) and thousands of free presets have eroded demand since 2024."
+      },
+      "pricingStrategy": "Offer a free sample preset, price packs at $9-15, and bundle mobile + desktop versions at $25-39.",
+      "profitPath": [
+        "Month 0: create 2 niche packs with before/after images (cost $0)",
+        "Month 1-3: list and post edits; first 0-5 sales",
+        "Month 3-6: $5-50/month",
+        "Month 6-12: median ~$10/month unless you grow an audience"
+      ],
+      "sources": [
+        "https://www.adobe.com/products/photoshop-lightroom/plans.html",
+        "https://www.etsy.com/legal/fees",
+        "https://payhip.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "spreadsheet-templates-calculators",
+    "name": "Spreadsheet templates and calculators (Excel / Google Sheets)",
+    "category": "digital-products",
+    "summary": "Sell budget trackers, business dashboards, invoicing and planning spreadsheets as instant downloads.",
+    "howItWorks": "You build Google Sheets/Excel templates with formulas, dashboards and instructions (budgets, small-business bookkeeping, wedding planners, KPI trackers) and sell them on Etsy or Gumroad. Buyers pay for a ready-to-use tool rather than building it. Google Sheets copy links make delivery trivial. Avoid presenting outputs as personalized financial advice.",
+    "platforms": ["Etsy", "Gumroad", "Payhip"],
+    "payout": {
+      "methods": ["Etsy Payments -> bank", "Gumroad/Payhip -> PayPal/Stripe"],
+      "minimumPayout": "Per platform: Payhip $0 (instant), Etsy $0 weekly, Gumroad $100",
+      "frequency": "instant (Payhip) to weekly (Etsy, Gumroad)",
+      "typicalDelayDays": 7,
+      "notes": "Same as host platform."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 150
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 5,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; budgeting tools are not regulated financial advice if no personalized recommendations are given.",
+      "complianceRequirements": [
+        "report income for tax",
+        "avoid financial/tax advice claims",
+        "disclaimer on calculators"
+      ]
+    },
+    "availability": {
+      "notes": "Etsy Payments covers ~26 of ~50 reference countries; Gumroad (bank in ~120 countries, PayPal elsewhere) and Payhip (PayPal/Stripe) cover most reference countries."
+    },
+    "automationPlan": [
+      "LLM/coding agents write formulas and Apps Script",
+      "Auto-generate screenshots and demo GIFs",
+      "Bulk listing creation via API"
+    ],
+    "manualSteps": [
+      "Formula QA and edge-case testing",
+      "Customer questions about usage"
+    ],
+    "fullCycle": ["Build sheet", "Create previews", "List", "Sales", "Payout"],
+    "risks": [
+      "Copying by competitors",
+      "Support burden from non-technical buyers",
+      "Etsy saturation"
+    ],
+    "evidence": "Spreadsheet templates are a well-established Etsy digital category; fees and payout rules documented on Etsy, Gumroad and Payhip official pages.",
+    "sources": [
+      "https://help.etsy.com/hc/en-us/articles/360035902374-Etsy-Fee-Basics",
+      "https://gumroad.com/help/article/13-getting-paid",
+      "https://gumroad.com/pricing",
+      "https://payhip.com/pricing"
+    ],
+    "tags": ["templates", "productivity", "ai-friendly"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Google Sheets (free) / Excel",
+          "LLM chat for formulas and Apps Script",
+          "Etsy/Payhip/Gumroad storefront"
+        ],
+        "skills": [
+          "spreadsheet design (formulas, dashboards)",
+          "niche knowledge (budgeting, small business)",
+          "clear instructions and buyer support"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Etsy/Payhip/Gumroad account + KYC", "bank or PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 15,
+          "high": 49
+        },
+        "costPerUnitUsd": 0.45,
+        "platformFeePercent": 9.5,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 0.05,
+        "notes": "Median $15 for a budget/business tracker on Etsy; Etsy fees 9.5% + $0.45 fixed."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 14,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 3000
+        },
+        "notes": "Sellers with polished dashboards in specific niches (small-business bookkeeping, rental property, wedding) do best. AI makes building far faster but also lets buyers generate simple sheets in Gemini/Copilot, so simple trackers are commoditised. Support load from non-technical buyers is a hidden cost."
+      },
+      "pricingStrategy": "Start at $7-12 to collect reviews, then $15-29 for complete dashboards and $39-49 for business bundles.",
+      "profitPath": [
+        "Month 0: build 3 templates with video walkthroughs (cost $0)",
+        "Month 1-2: list on Etsy/Payhip; first sales",
+        "Month 3-6: expand in the best niche; $20-100/month",
+        "Month 6-12: bundles and price increases; median ~$40/month"
+      ],
+      "sources": [
+        "https://help.etsy.com/hc/en-us/articles/360035902374-Etsy-Fee-Basics",
+        "https://payhip.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "website-themes-templates",
+    "name": "Website templates and themes: Framer, Webflow, Shopify Theme Store",
+    "category": "marketplaces",
+    "summary": "Sell website templates on no-code marketplaces where buyers are site builders, plus referral revenue when they upgrade.",
+    "howItWorks": "You build a template (landing page, portfolio, SaaS site) and publish it on Framer Marketplace (creator keeps 100% of paid template revenue plus commissions when people upgrade via your remix link), Webflow Marketplace (95% to creator) or the Shopify Theme Store (strict review; 15% revenue share on gross theme sales). Buyers are founders, freelancers and merchants. Free templates can still earn via referral commissions.",
+    "platforms": [
+      "Framer Marketplace",
+      "Webflow Marketplace",
+      "Shopify Theme Store"
+    ],
+    "payout": {
+      "methods": ["Platform payouts -> bank/PayPal (per partner program)"],
+      "minimumPayout": "Per platform threshold",
+      "frequency": "monthly",
+      "typicalDelayDays": 30,
+      "notes": "Framer/Webflow/Shopify payout schedules and minimums are shown in partner dashboards and were not confirmed from public pages."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 9000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere.",
+      "complianceRequirements": [
+        "report income for tax",
+        "partner agreement",
+        "asset licensing (fonts/images in templates)"
+      ]
+    },
+    "availability": {
+      "notes": "Framer/Webflow/Shopify partner programs pay internationally; Shopify Theme Store has a high acceptance bar."
+    },
+    "automationPlan": [
+      "AI generates copy, imagery and layout variants",
+      "Coding agents write Liquid/Framer components",
+      "Auto-generated preview sites"
+    ],
+    "manualSteps": [
+      "Template review and approval",
+      "Design QA and responsive testing",
+      "Buyer support"
+    ],
+    "fullCycle": [
+      "Join creator/partner program",
+      "Build template",
+      "Submit for review",
+      "Sales/referrals",
+      "Payout"
+    ],
+    "risks": [
+      "Review rejection",
+      "Platform policy and revenue-share changes",
+      "Theme maintenance on platform updates"
+    ],
+    "evidence": "Framer help center states creators keep 100% of paid template revenue; Webflow's official blog (updated Oct 2025) states 95% commission and cites creators selling 4,000+ templates; Shopify docs state a 15% revenue share on gross theme sales.",
+    "sources": [
+      "https://www.framer.com/help/articles/how-the-creator-program-works/",
+      "https://webflow.com/blog/template-creator-enhancements",
+      "https://shopify.dev/docs/storefronts/themes/store/revenue-share"
+    ],
+    "tags": ["templates", "no-code", "web-design"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Framer / Webflow free accounts",
+          "Shopify Partner account (free)",
+          "Figma free"
+        ],
+        "skills": [
+          "web design and responsive layout",
+          "Framer/Webflow/Liquid platform skills",
+          "documentation and buyer support"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Framer/Webflow creator approval",
+          "Stripe or platform payout account + tax forms"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per template sale",
+        "typicalPriceUsd": {
+          "low": 29,
+          "median": 59,
+          "high": 149
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 92,
+        "hoursPerUnit": 0.1,
+        "notes": "Median $59 Framer/Webflow template; Webflow keeps 5% (Framer 0% plus referral commissions); ~$2 payment processing assumed. Shopify themes ($180-400) take 15%."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 7000
+        },
+        "notes": "A few top creators earn thousands per month on Framer; most templates sell a handful of copies. Framer and Webflow AI site generators (2025-2026) reduce demand for basic landing pages, so polished niche templates with CMS setups win. Marketplace review and design standards are strict. Median month-12 net lowered from $100 to $80 so it stays consistent with a 12% profit likelihood (most starters stay under $100/month)."
+      },
+      "pricingStrategy": "Release one free template to earn referral income and visibility, price paid templates at $39-79, and raise prices for premium multi-page versions.",
+      "profitPath": [
+        "Month 0-1: build and submit 1 free + 1 paid template (cost $0)",
+        "Month 2-3: approval, first sales/referrals",
+        "Month 3-6: release a template monthly; $50-300/month",
+        "Month 6-12: median ~$80/month; top 10% $1k+"
+      ],
+      "sources": [
+        "https://www.framer.com/help/articles/how-the-creator-program-works/",
+        "https://webflow.com/blog/template-creator-enhancements",
+        "https://shopify.dev/docs/storefronts/themes/store/revenue-share"
+      ]
+    }
+  },
+  {
+    "id": "stock-music-sound-effects",
+    "name": "Stock music and sound effects licensing (Pond5, AudioJungle)",
+    "category": "marketplaces",
+    "summary": "License original music tracks and sound effects to video creators and agencies via stock audio marketplaces.",
+    "howItWorks": "You compose/record royalty-free tracks or SFX packs and upload them to Pond5 (30% royalty on music/SFX, exclusive or not) and Envato's AudioJungle (flat 50% author fee for all authors since July 1, 2026, with the exclusive/non-exclusive distinction removed). Buyers are YouTubers, ad agencies and game devs who license per-use. Large catalogs earn small but steady sales. Pond5 does not accept AI-generated content, and Envato bans AI-generated content as a standalone item or primary component; human-composed work is required.",
+    "platforms": ["Pond5", "AudioJungle (Envato)"],
+    "payout": {
+      "methods": [
+        "Pond5: PayPal, Payoneer, Skrill (4% fee)",
+        "Envato: PayPal, Payoneer, bank (SWIFT)"
+      ],
+      "minimumPayout": "Pond5 $25; Envato $50",
+      "frequency": "monthly (15th)",
+      "typicalDelayDays": 45,
+      "notes": "Both pay on the 15th of the month if the balance meets the threshold; below-threshold balances roll over."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 3,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 4,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; you must own all rights (no uncleared samples).",
+      "complianceRequirements": [
+        "report income for tax",
+        "original composition/cleared samples",
+        "platform AI-content policies"
+      ]
+    },
+    "availability": {
+      "notes": "Pond5 and Envato pay contributors globally via PayPal/Payoneer/bank."
+    },
+    "automationPlan": [
+      "Scripted metadata/keywording",
+      "Batch export of stems, loops and cutdowns",
+      "Upload automation where allowed"
+    ],
+    "manualSteps": [
+      "Composing and mixing (human, AI-primary banned on Envato)",
+      "Quality review rejections",
+      "Tax forms"
+    ],
+    "fullCycle": [
+      "Sign up as contributor",
+      "Produce tracks",
+      "Upload with metadata",
+      "Licenses sold",
+      "Monthly payout"
+    ],
+    "risks": [
+      "High rejection rates",
+      "Catalog saturation and subscription pressure on per-sale pay",
+      "AI policy changes",
+      "Content ID disputes"
+    ],
+    "evidence": "Pond5 contributor portal states 30% music/SFX royalty, $25 minimum and 15th-of-month payouts; Envato author help center documents the flat 50% author fee from July 1, 2026, $50 minimum, 15th payouts and its AI-generated content ban.",
+    "sources": [
+      "https://contributor.pond5.com/getting-started/payout-overview/",
+      "https://www.pond5.com/help/en/articles/10086182-does-pond5-allow-ai-generated-content-for-licensing",
+      "https://author.envato.com/hub/changes-to-envato-market-revenue-share-and-exclusivity-what-you-need-to-know/",
+      "https://help.author.envato.com/hc/en-us/articles/360000472943-Introduction-to-Earnings",
+      "https://help.author.envato.com/hc/en-us/articles/13313674070681-AI-generated-content-policy-for-Market-and-Elements"
+    ],
+    "tags": ["audio", "licensing", "catalog"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "DAW (Reaper ~$60 licence after trial, or free Cakewalk/GarageBand)",
+          "free sample libraries",
+          "Pond5 and Envato author accounts"
+        ],
+        "skills": [
+          "music composition and mixing (human-made; AI content not accepted)",
+          "metadata/keywording",
+          "catalogue planning"
+        ],
+        "equipment": ["laptop", "headphones or monitors"],
+        "accounts": [
+          "Pond5 contributor + Envato author accounts",
+          "PayPal/Payoneer/bank for payouts",
+          "tax interview"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per licence sale",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 70
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 60,
+        "grossMarginPercent": 40,
+        "hoursPerUnit": 0,
+        "notes": "Median $20 standard licence; blended ~60% platform share: Pond5 pays contributors 30% on music and sound effects (keeps 70%), Envato Market author fee is 50% for all authors from 1 July 2026 - both confirmed on official pages."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 1500
+        },
+        "notes": "Composers with catalogues of hundreds of tracks earn steady small amounts; per-sale income has been eroded by subscriptions (Envato Elements, Artlist). AI music generators (Suno, Udio) have cut demand for generic background tracks even though the marketplaces ban AI uploads."
+      },
+      "pricingStrategy": "Use the platforms' standard price bands at first; raise prices on tracks that sell and offer bundles/loops.",
+      "profitPath": [
+        "Month 0-1: produce and upload 10-20 tracks (cost $0)",
+        "Month 2-6: upload weekly; first sale often 3-6 months in",
+        "Month 6-9: $5-40/month",
+        "Month 9-12: median ~$20/month for 100+ items"
+      ],
+      "sources": [
+        "https://contributor.pond5.com/getting-started/payout-overview/",
+        "https://author.envato.com/hub/changes-to-envato-market-revenue-share-and-exclusivity-what-you-need-to-know/"
+      ]
+    }
+  },
+  {
+    "id": "online-course-marketplaces",
+    "name": "Online courses on Udemy and Skillshare (with self-hosted option)",
+    "category": "marketplaces",
+    "summary": "Record a video course once and earn per-sale revenue (Udemy) or watch-time royalties (Skillshare).",
+    "howItWorks": "You produce a structured video course and publish on Udemy (37% of organic marketplace sales, 97% via your own coupon/referral link; subscription revenue share dropped to 15% on Jan 1, 2026) and/or Skillshare (monthly royalty pool split by minutes watched; since July 2026 you need 50 followers plus 400+ qualifying minutes/month if you published a class in the last 18 months, otherwise 650+). Self-hosting keeps more per sale but needs your own audience: Thinkific has a free plan, Payhip's free plan charges 5%, Teachable has no free plan (from $39/mo + 7.5%).",
+    "platforms": ["Udemy", "Skillshare", "Teachable", "Thinkific"],
+    "payout": {
+      "methods": [
+        "Udemy: PayPal, Payoneer",
+        "Skillshare: Tipalti (PayPal, ACH/e-check, wire)"
+      ],
+      "minimumPayout": "Udemy $25 (since Sept 2025; paid anyway each December); Skillshare: no cash minimum but eligibility thresholds (50 followers + 400/650 qualifying minutes)",
+      "frequency": "monthly",
+      "typicalDelayDays": 40,
+      "notes": "Udemy pays roughly 30+ days after month end (after refund window); Skillshare pays on the 16th for the previous month's minutes."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 5,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; regulated topics (finance, medicine) require care not to give personalized advice.",
+      "complianceRequirements": [
+        "report income for tax",
+        "tax interview",
+        "original content and licensed media"
+      ]
+    },
+    "availability": {
+      "notes": "Udemy and Skillshare pay instructors worldwide via PayPal/Payoneer."
+    },
+    "automationPlan": [
+      "LLM drafts curriculum, scripts, quizzes",
+      "AI voice/slides/editing (where policies allow)",
+      "Automated promo coupons and announcements"
+    ],
+    "manualSteps": [
+      "Recording/teaching quality control",
+      "Course review approval",
+      "Answering student Q&A"
+    ],
+    "fullCycle": [
+      "Pick topic",
+      "Produce course",
+      "Publish",
+      "Sales/watch-time",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Revenue share cuts over time",
+      "Heavy discounting on Udemy",
+      "Skillshare eligibility thresholds exclude small teachers (50 followers + 400 minutes)"
+    ],
+    "evidence": "Udemy's 2023 instructor notice and Q1 2026 SEC 10-Q confirm 37% marketplace and 15% subscription share from Jan 2026; Udemy states a $25 payout minimum; Skillshare help center documents the 2026 eligibility rules and Tipalti payouts on the 16th; Teachable pricing page shows no free plan.",
+    "sources": [
+      "https://support.udemy.com/hc/en-us/articles/229605008-Instructor-revenue-share",
+      "https://www.sec.gov/Archives/edgar/data/1607939/000160793923000181/exhibit991-xinstructorle.htm",
+      "https://teach.udemy.com/payment-threshold-for-instructor-monthly-payouts-faq/",
+      "https://help.skillshare.com/hc/en-us/articles/4415798406285-Earn-From-Your-Teaching",
+      "https://help.skillshare.com/hc/en-us/articles/226578788-When-and-how-do-I-receive-payments-from-Skillshare",
+      "https://teachable.com/pricing"
+    ],
+    "tags": ["education", "video", "evergreen"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 120,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Udemy / Skillshare instructor accounts",
+          "OBS Studio + DaVinci Resolve (free)",
+          "Thinkific free plan for self-hosting"
+        ],
+        "skills": [
+          "teaching a marketable skill",
+          "scripting and video editing",
+          "course marketing"
+        ],
+        "equipment": ["laptop", "USB microphone (~$50 recommended)"],
+        "accounts": [
+          "Udemy/Skillshare accounts + tax info",
+          "PayPal/Payoneer for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per Udemy sale",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 14,
+          "high": 100
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 63,
+        "grossMarginPercent": 37,
+        "hoursPerUnit": 0.02,
+        "notes": "Udemy courses mostly sell at $10-20 during constant promotions; instructor gets 37% on organic sales (97% via own coupons). Self-hosted sales ($50-100) keep ~90%."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 4000
+        },
+        "notes": "Udemy's consumer marketplace has been shrinking and cut subscription revenue share to 15% in 2026; Skillshare tightened eligibility. AI tutors and free YouTube content compete for learners, so winners teach niche, current or certification topics and bring their own traffic."
+      },
+      "pricingStrategy": "Launch with free/low coupons to earn early reviews, then let Udemy's pricing run and send your own audience to premium self-hosted versions.",
+      "profitPath": [
+        "Month 0-2: produce one 2-4 hour course (cost $0-50)",
+        "Month 2-3: launch with coupons; first $10-50",
+        "Month 3-6: second course, Q&A, updates; $20-100/month",
+        "Month 6-12: median ~$40/month"
+      ],
+      "sources": [
+        "https://support.udemy.com/hc/en-us/articles/229605008-Instructor-revenue-share",
+        "https://help.skillshare.com/hc/en-us/articles/4415798406285-Earn-From-Your-Teaching"
+      ]
+    }
+  },
+  {
+    "id": "ai-prompts-promptbase",
+    "name": "Sell AI prompts on PromptBase",
+    "category": "marketplaces",
+    "summary": "Sell tested prompts for image and text models on a dedicated prompt marketplace.",
+    "howItWorks": "You craft prompts that reliably produce a specific output (e.g. a sticker style, a product-photo look, an SEO workflow), test them, and list on PromptBase with example outputs. Buyers pay a few dollars to skip trial-and-error. PromptBase takes a 20% fee on marketplace sales (0% on sales via your own referral link) and pays via Stripe or Zoneless (USDC). Demand has declined as models improved and prompting became easier, so income is usually small.",
+    "platforms": ["PromptBase"],
+    "payout": {
+      "methods": [
+        "Stripe Connect -> bank",
+        "Zoneless (daily USDC payout, then off-ramp to bank)"
+      ],
+      "minimumPayout": "Stripe $30 (account must be 30+ days old); Zoneless no minimum",
+      "frequency": "weekly or monthly (Stripe); daily (Zoneless); early payout fee $3.99",
+      "typicalDelayDays": 14,
+      "notes": "Stripe transfer to bank can take 3-5 days after release. Zoneless pays in a crypto stablecoin, which is restricted in some reference countries; Stripe is the bank-ending path."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 5,
+      "high": 300
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 7,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 2,
+      "aiLeverage": 10,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere.",
+      "complianceRequirements": [
+        "report income for tax",
+        "Stripe KYC",
+        "model provider terms of use"
+      ]
+    },
+    "availability": {
+      "notes": "Bank payouts depend on Stripe Connect country support; Zoneless (USDC) widens coverage but requires a crypto off-ramp."
+    },
+    "automationPlan": [
+      "LLM/image models generate and test prompt variants",
+      "Script produces sample outputs and listings",
+      "Auto-tracking of best sellers"
+    ],
+    "manualSteps": [
+      "Stripe onboarding",
+      "Listing approval",
+      "Human curation of outputs"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Create and test prompts",
+      "Submit listings",
+      "Sales",
+      "Stripe payout"
+    ],
+    "risks": [
+      "Shrinking demand as models improve",
+      "Prompts easily copied",
+      "Model updates break prompts"
+    ],
+    "evidence": "PromptBase's payouts knowledge base and changelog document the 20% fee, $30 Stripe minimum, 30-day account age and Zoneless daily USDC payouts (added Dec 2025).",
+    "sources": [
+      "https://promptbase.com/knowledge-base/payouts",
+      "https://promptbase.com/blog/payout-updates-september-2023",
+      "https://promptbase.com/changelog"
+    ],
+    "tags": ["ai-native", "low-ticket", "micro-product"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "PromptBase seller account",
+          "image/text model free tiers for testing"
+        ],
+        "skills": [
+          "prompt engineering",
+          "spotting niche output styles",
+          "example-output curation (AI covers most of the work)"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "PromptBase account",
+          "Stripe account (30+ days old) or USDC wallet"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 4,
+          "high": 10
+        },
+        "costPerUnitUsd": 0.2,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 75,
+        "hoursPerUnit": 0,
+        "notes": "Most PromptBase prompts sell at $2.99-5.99; 20% marketplace fee; ~$0.20 of model credits per prompt for test outputs (estimate). The 20% fee is estimated (PromptBase payout page bot-blocked)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 2,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 3,
+          "high": 200
+        },
+        "notes": "Demand fell as models got better at following plain instructions; a few long-time sellers with large catalogues still earn. Prompts are easily copied, and 2025-2026 image models need little prompt craft."
+      },
+      "pricingStrategy": "Price at $2.99-3.99 to compete; bundle prompts by style; send your own traffic via referral links to avoid the 20% fee.",
+      "profitPath": [
+        "Month 0: create and list 20 prompts (cost $0)",
+        "Month 1-3: first sales, if any",
+        "Month 3-6: $0-10/month",
+        "Month 6-12: median ~$3/month; reaching the $30 Stripe minimum can take months"
+      ],
+      "sources": ["https://promptbase.com/knowledge-base/payouts"]
+    }
+  }
+]

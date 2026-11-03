@@ -1,0 +1,1574 @@
+[
+  {
+    "id": "3d-printable-model-stores",
+    "name": "Sell 3D-printable STL models on Cults3D, Printables Store and Thangs",
+    "category": "marketplaces",
+    "summary": "Design functional or decorative 3D-printable models and sell the files per download on 3D-printing marketplaces.",
+    "howItWorks": "You model and test-print functional or decorative objects (organisers, mounts, cosplay parts, replacement parts) and list STL/3MF files; hobbyists buy and print at home. Cults3D reportedly pays designers 80% of the sale; Printables Store charges a 20% fee (min. price $5, Stripe payouts); Thangs takes 30%/20%/15% for items under $5/$5-10/$10+ plus Stripe fees. Alternative: Bambu Lab's MakerWorld is free-download only, but models enrolled in its Exclusive Model Program earn Exclusive Points worth $0.066 each that can be cashed out per $100 earned (eligibility after 100 total prints on your account). Free uploads build followers who buy paid models; parametric OpenSCAD designs yield many variants.",
+    "platforms": [
+      "Cults3D",
+      "Printables Store (Prusa)",
+      "Thangs",
+      "MakerWorld Exclusive Model Program (alternative)"
+    ],
+    "payout": {
+      "methods": [
+        "Cults3D: PayPal/bank (unverified)",
+        "Printables: Stripe -> bank",
+        "Thangs: Stripe Express -> bank (monthly)",
+        "MakerWorld: Exclusive Points cash withdrawal -> bank (via payout provider; users report Airwallex wire)"
+      ],
+      "minimumPayout": "Cults3D: threshold exists but amount unverified; Printables/Thangs: none stated (Stripe); MakerWorld: $100 of Exclusive Points per withdrawal",
+      "frequency": "Cults3D on request (unverified); Thangs monthly; Printables per Stripe schedule; MakerWorld on request (manual review ~1 week)",
+      "typicalDelayDays": 30,
+      "notes": "Thangs fees and Stripe-only payout confirmed on its help center (Stripe payout fee 0.25% + $0.25, currency conversion 2% non-US). Printables 20% fee / $5 minimum price confirmed on Prusa blog. MakerWorld cash rules confirmed on Bambu Lab blog (Oct 2024); regular MakerWorld points are NOT cash (points store only), and Printables Prusameters are NOT cash. Cults3D share/minimum/methods unverified (site returns 403)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 2500
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 4,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling original 3D designs is legal everywhere; do not sell files of trademarked characters or replicas of copyrighted products; weapons files are prohibited by platforms and illegal in some countries.",
+      "complianceRequirements": [
+        "report income for tax",
+        "Stripe/PayPal KYC",
+        "no IP-infringing or weapon models"
+      ]
+    },
+    "availability": {
+      "notes": "Thangs payouts limited to its Stripe country list (~21/50 reference countries incl. US, UK, Canada, EU members, Japan, Korea, Taiwan, India, Indonesia, Malaysia, Philippines, Mexico, Argentina, Morocco, Singapore). Printables pays only via Stripe (limited list). Cults3D reportedly pays via PayPal (45/50 reference countries, unverified). MakerWorld cash-outs go to a bank account via its payout provider (country coverage unverified)."
+    },
+    "automationPlan": [
+      "OpenSCAD/CadQuery scripts generate variant families",
+      "LLM drafts listings and print settings",
+      "Blender batch renders",
+      "Cross-post to all stores (MakerWorld exclusives cannot be sold elsewhere under the exclusive licence)"
+    ],
+    "manualSteps": [
+      "Physical test print of each model (needs access to a 3D printer)",
+      "KYC and payout account setup",
+      "Answer maker comments/print-failure questions"
+    ],
+    "fullCycle": [
+      "Sign up on Cults3D/Printables/Thangs",
+      "Design and test-print model",
+      "Upload STL + photos, set price",
+      "Build following with free models",
+      "Withdraw via PayPal/Stripe/MakerWorld cash-out -> bank"
+    ],
+    "risks": [
+      "Free-model competition (Thingiverse/Printables free culture)",
+      "Piracy/reposting of paid files",
+      "Untested AI-generated meshes fail to print and draw refunds",
+      "Fee changes"
+    ],
+    "evidence": "Prusa's Dec-2023 blog post documents the Printables Store (20% fee, Stripe, $5 min price). Thangs help center publishes its fee tiers and Stripe country list. Bambu Lab's Oct-2024 blog documents MakerWorld Exclusive Points cash rewards ($0.066/point, per $100). Cults3D's 80% designer share is reported by press (Fabbaloo) but its payout page could not be fetched.",
+    "sources": [
+      "https://blog.prusa3d.com/printables-store_87810",
+      "https://thangs.com/resources/help-center-articles/what-does-thangs-charge-designers",
+      "https://thangs.com/resources/help-center-articles/do-i-have-to-use-stripe-as-a-payment-processor",
+      "https://thangs.com/resources/help-center-articles/what-countries-are-currently-supported-for-thangs-memberships",
+      "https://blog.bambulab.com/exclusive-model-program-cash-rewards-and-copyright-support/",
+      "https://cults3d.com/fr/ajouter"
+    ],
+    "tags": ["3d-printing", "maker", "passive", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Fusion (personal free) / Blender / OpenSCAD (free)",
+          "slicer (free)",
+          "Cults3D, Printables, Thangs (free to list)"
+        ],
+        "skills": [
+          "CAD modelling for printability",
+          "test printing and photography",
+          "community engagement"
+        ],
+        "equipment": ["laptop", "FDM or resin 3D printer (assumed owned)"],
+        "accounts": [
+          "Cults3D/Printables/Thangs accounts",
+          "Stripe or PayPal + KYC"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per model sale",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 6,
+          "high": 25
+        },
+        "costPerUnitUsd": 0.5,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 72,
+        "hoursPerUnit": 0,
+        "notes": "Median $6 functional/decorative model; ~20% platform fee (Thangs charges 20% on $5-9.99 sales, 30% under $5, 15% at $10+; Cults3D/Printables similar) plus ~$0.50 card processing (estimated)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 2000
+        },
+        "notes": "Printer ownership keeps growing (Bambu Lab), but MakerWorld and Printables' free-download culture means most users never pay; designers with followings sell paid files and earn from MakerWorld points. Text-to-3D AI is not yet good enough for functional parts, so craft still matters."
+      },
+      "pricingStrategy": "Give away several useful free models to build followers, price paid models at $3-8 and bundles at $15-25.",
+      "profitPath": [
+        "Month 0: design and test-print 5 free + 3 paid models (filament ~$10)",
+        "Month 1-3: post free models, first paid sales",
+        "Month 3-6: release weekly; $10-60/month",
+        "Month 6-12: median ~$20/month; popular designers $500+"
+      ],
+      "sources": [
+        "https://blog.prusa3d.com/printables-store_87810",
+        "https://thangs.com/resources/help-center-articles/what-does-thangs-charge-designers"
+      ]
+    }
+  },
+  {
+    "id": "stl-miniature-subscriptions",
+    "name": "Monthly STL subscription for tabletop miniatures (Thangs Memberships, MyMiniFactory Tribes, Printables Clubs)",
+    "category": "marketplaces",
+    "summary": "Release a themed set of printable miniatures every month to paying subscribers on 3D-printing-native membership platforms.",
+    "howItWorks": "Tabletop gamers with resin printers subscribe ($5-15/month) for a monthly release of pre-supported miniatures and terrain. Thangs Memberships charges a 14% platform fee (+Stripe fees); Printables Clubs launched with a 10% fee and Stripe payments (tiers $3-100); MyMiniFactory Tribes earnings are withdrawn via PayPal on the 14th/28th. Unlike generic Patreon, files are delivered automatically to a 3D-print search audience. Back-catalogue sets are later sold as bundles.",
+    "platforms": [
+      "Thangs Memberships",
+      "MyMiniFactory Tribes",
+      "Printables Clubs"
+    ],
+    "payout": {
+      "methods": [
+        "Thangs/Printables: Stripe -> bank",
+        "MyMiniFactory: payout request -> PayPal (14th and 28th for Pro/Studio; 28th only for Upcoming) or bank transfer (monthly, 28th)"
+      ],
+      "minimumPayout": "No minimum stated by Thangs, Printables or MyMiniFactory; MyMiniFactory charges a $2 processing fee on payouts under $100",
+      "frequency": "Thangs monthly; MyMiniFactory twice-monthly on request; Printables via Stripe",
+      "typicalDelayDays": 30,
+      "notes": "MyMiniFactory Tribes requires the Pro ($24.99/mo) or Studio ($99.99/mo) creator plan (store commission 15/12.5/10% by tier + 3.49% + $0.49 processing); the Tribes-specific commission is not published on the creator help center. Thangs membership fee 14% and Printables Clubs 10% confirmed on official pages."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 15000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 7,
+      "incomePotential": 7,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; sculpts must be original (no Games Workshop/Disney likenesses).",
+      "complianceRequirements": [
+        "report income for tax",
+        "Stripe/PayPal KYC",
+        "original IP only"
+      ]
+    },
+    "availability": {
+      "notes": "MyMiniFactory pays by PayPal (45/50 reference countries) or bank; Thangs memberships limited to its Stripe country list (~21/50 reference countries); Printables Clubs via Stripe (limited country list)."
+    },
+    "automationPlan": [
+      "Pre-supporting automated with Lychee/Chitubox scripts",
+      "Blender batch renders for promo images",
+      "Scheduled monthly release posts and Discord announcements",
+      "LLM writes lore/stat cards per release"
+    ],
+    "manualSteps": [
+      "Sculpting each month's set (ZBrush/Blender) - heavy manual art work",
+      "Test resin prints",
+      "Community management"
+    ],
+    "fullCycle": [
+      "Choose platform",
+      "Build 2-3 months of backlog",
+      "Launch tiers",
+      "Release monthly",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Monthly content treadmill; churn when releases slip",
+      "Piracy of STL packs",
+      "Paid MMF tier is a fixed cost",
+      "Saturated fantasy-mini niche"
+    ],
+    "evidence": "MyMiniFactory creator help center documents payout schedule, $2 fee under $100 and store fees; Thangs help center publishes the 14% membership fee and supported countries; Prusa blog announced Clubs with a 10% fee. Dozens of mini studios run 4-5 figure monthly subscriptions.",
+    "sources": [
+      "https://creator.myminifactory.com/how-to-request-a-payout",
+      "https://creator.myminifactory.com/how-will-i-receive-my-store-manager-payouts",
+      "https://creator.myminifactory.com/store-manager-fees",
+      "https://creator.myminifactory.com/premium-creator-tiers-faq",
+      "https://thangs.com/resources/help-center-articles/what-does-thangs-charge-designers",
+      "https://thangs.com/resources/help-center-articles/what-countries-are-currently-supported-for-thangs-memberships",
+      "https://blog.prusa3d.com/printables-clubs-are-live-you-can-now-support-the-creators-you-love-on-printables_81063/"
+    ],
+    "tags": ["3d-printing", "recurring", "tabletop", "miniatures"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 120,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Blender (free) / Nomad Sculpt (~$20 one-time) / ZBrush (optional)",
+          "Lychee or Chitubox (free tiers) for pre-supporting",
+          "Thangs / MyMiniFactory / Printables Clubs"
+        ],
+        "skills": [
+          "digital sculpting of miniatures",
+          "pre-supporting for resin printing",
+          "community management and release schedule"
+        ],
+        "equipment": [
+          "desktop with a good GPU",
+          "resin printer for test prints"
+        ],
+        "accounts": [
+          "Thangs/MyMiniFactory creator accounts",
+          "Stripe or PayPal + KYC"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per subscriber-month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 10,
+          "high": 15
+        },
+        "costPerUnitUsd": 0.6,
+        "platformFeePercent": 14,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 0,
+        "notes": "Median $10/month tier; Thangs 14% fee plus ~$0.60 Stripe processing. Each monthly release is a fixed ~60-80 hours of work regardless of subscriber count."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 70,
+          "high": 12000
+        },
+        "notes": "Established sculptors with recognisable styles and back-catalogues earn thousands monthly; newcomers struggle to get the first 20 subscribers. The workload is a monthly treadmill, and piracy of STL packs is common. AI sculpting still falls short of print-ready minis."
+      },
+      "pricingStrategy": "Launch at $5-7 with a generous first release, then add a $10-15 tier with commercial-print licences.",
+      "profitPath": [
+        "Month 0-2: sculpt a 6-10 model launch release (cost $0)",
+        "Month 2-3: launch, first 5-20 subscribers ($40-150)",
+        "Month 3-6: monthly releases, free samples; 10-40 subscribers",
+        "Month 6-12: median ~$70/month net; churn is the main risk"
+      ],
+      "sources": [
+        "https://creator.myminifactory.com/store-manager-fees",
+        "https://thangs.com/resources/help-center-articles/what-does-thangs-charge-designers"
+      ]
+    }
+  },
+  {
+    "id": "craft-design-subscription-marketplaces",
+    "name": "Craft design files on Creative Fabrica, Design Bundles and So Fontsy",
+    "category": "marketplaces",
+    "summary": "Upload SVG cut files, laser-cut templates, embroidery files and craft fonts to craft marketplaces that also pay from all-access subscriptions.",
+    "howItWorks": "Cricut/Silhouette/laser and embroidery hobbyists buy files individually or via all-access subscriptions. Designers are paid per individual sale plus a share of the subscription pool weighted by downloads, so a large catalogue earns small recurring amounts. Unlike Etsy you pay no listing fees and the marketplace brings its own traffic. Bundle deals and freebies feature designers to new buyers.",
+    "platforms": ["Creative Fabrica", "Design Bundles", "So Fontsy"],
+    "payout": {
+      "methods": ["PayPal -> bank", "Payoneer (reported for Creative Fabrica)"],
+      "minimumPayout": "Unverified (sites block automated fetch)",
+      "frequency": "monthly",
+      "typicalDelayDays": 30,
+      "notes": "Revenue-share percentages, subscription-pool formula and minimum payouts still unverified: Creative Fabrica (site and help center), Design Bundles and So Fontsy all returned 403/429 to fetches in Nov 2026; commonly reported ~50% share of individual sales."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; do not upload licensed characters/brand logos; AI-generated designs must follow each marketplace's disclosure policy.",
+      "complianceRequirements": [
+        "report income for tax",
+        "PayPal/Payoneer KYC",
+        "designer application approval",
+        "AI-disclosure rules"
+      ]
+    },
+    "availability": {
+      "notes": "PayPal/Payoneer payouts reach most reference countries (Payoneer 50/50, PayPal 45/50)."
+    },
+    "automationPlan": [
+      "Generate and vectorise designs in batches (AI + Inkscape trace)",
+      "Scripted export to SVG/DXF/PNG/EPS bundle formats",
+      "LLM-written titles/tags",
+      "Bulk upload where supported"
+    ],
+    "manualSteps": [
+      "Designer application",
+      "Manual quality check that paths cut cleanly",
+      "Mockup photos"
+    ],
+    "fullCycle": [
+      "Apply as designer",
+      "Upload catalogue",
+      "Join bundle/freebie promos",
+      "Earn per sale + subscription share",
+      "Withdraw to PayPal/Payoneer"
+    ],
+    "risks": [
+      "Subscription pool payouts are tiny per download",
+      "Flooding by AI designs depresses earnings",
+      "Policy changes on AI content",
+      "Unverified fee structure"
+    ],
+    "evidence": "Creative Fabrica and Design Bundles host tens of thousands of independent designers; payouts are widely documented by crafter-designers but terms were not verifiable here.",
+    "sources": [
+      "https://www.creativefabrica.com/designer-program/",
+      "https://www.designbundles.net/sell-your-designs",
+      "https://sofontsy.com/pages/become-a-designer"
+    ],
+    "tags": ["craft", "svg", "subscription-pool", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Inkscape / Affinity (free)",
+          "AI image tools for ideation (check marketplace AI rules)",
+          "Creative Fabrica / Design Bundles designer accounts"
+        ],
+        "skills": [
+          "SVG design clean enough for cutting machines",
+          "file preparation in multiple formats",
+          "mockups and keywording"
+        ],
+        "equipment": ["laptop", "cutting machine (optional, for testing)"],
+        "accounts": ["designer accounts (application)", "PayPal/Payoneer"]
+      },
+      "unitEconomics": {
+        "unit": "per individual sale",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 50,
+        "grossMarginPercent": 50,
+        "hoursPerUnit": 0,
+        "notes": "Median $3 cut file; designer share ~50% is estimated (Creative Fabrica and Design Bundles pages bot-blocked). Subscription-pool earnings per download are a few cents and not modelled."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 35,
+          "high": 1500
+        },
+        "notes": "Large-catalogue designers (thousands of files) earn steady pool income; small shops earn cents per download. Marketplaces and buyers are flooded with AI SVGs, and Creative Fabrica pushes its own AI tools."
+      },
+      "pricingStrategy": "Accept marketplace default pricing; drive individual sales via free items and bundle-deal participation.",
+      "profitPath": [
+        "Month 0: upload 50 files (cost $0)",
+        "Month 1-3: 10-20 uploads/week; first earnings",
+        "Month 3-6: $10-50/month",
+        "Month 6-12: 500+ files; median ~$35/month"
+      ],
+      "sources": [
+        "https://www.creativefabrica.com/designer-program/",
+        "https://www.designbundles.net/sell-your-designs"
+      ]
+    }
+  },
+  {
+    "id": "cutting-machine-design-store-artist",
+    "name": "Licensed artist for cutting-machine design stores (Silhouette Design Store)",
+    "category": "marketplaces",
+    "summary": "Become an approved artist whose cut files are sold inside the machine maker's own design store and software.",
+    "howItWorks": "Silhouette's Design Store sells cut files directly inside Silhouette Studio, which every Silhouette Cameo/Portrait owner uses. Approved artists (500+ listed) upload original designs; the store pays royalties per purchase/subscription use. Silhouette also advertises an open 'Marketplace Shop' where registered sellers list products. This reaches buyers at the point of cutting, unlike Etsy. Similar license deals exist with Cricut's Design Space image library on a contract basis.",
+    "platforms": [
+      "Silhouette Design Store",
+      "Cricut Design Space (licensing contracts)"
+    ],
+    "payout": {
+      "methods": ["Royalty payment -> PayPal/bank (unverified)"],
+      "minimumPayout": "Unverified",
+      "frequency": "monthly (unverified)",
+      "typicalDelayDays": 45,
+      "notes": "Royalty rate, payout method and minimum are not published: the become-an-artist, artist-application, register-as-an-artists and marketplace pages (checked Nov 2026) show only sign-up links. Cricut artist licensing terms are private contracts."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; original artwork only.",
+      "complianceRequirements": [
+        "report income for tax",
+        "artist application and agreement"
+      ]
+    },
+    "availability": {
+      "notes": "Store is global; payout rail unverified."
+    },
+    "automationPlan": [
+      "Batch-produce themed cut-file sets",
+      "Automated path cleanup/weld checks",
+      "LLM tagging"
+    ],
+    "manualSteps": [
+      "Artist application and contract",
+      "Test cuts on a machine"
+    ],
+    "fullCycle": [
+      "Apply via Become an Artist",
+      "Get approved",
+      "Upload designs",
+      "Earn royalties",
+      "Get paid"
+    ],
+    "risks": [
+      "Application may be rejected",
+      "Opaque royalty terms",
+      "Dependence on a single device ecosystem"
+    ],
+    "evidence": "Silhouette Design Store publicly lists 500+ artists and an artist application page.",
+    "sources": [
+      "https://www.silhouettedesignstore.com/artists",
+      "https://www.silhouettedesignstore.com/become-an-artist"
+    ],
+    "tags": ["craft", "royalties", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Silhouette Studio (free)", "Inkscape / Affinity (free)"],
+        "skills": [
+          "cut-ready vector design",
+          "portfolio for artist application",
+          "seasonal trend awareness"
+        ],
+        "equipment": ["laptop", "Silhouette machine (helpful for testing)"],
+        "accounts": [
+          "Silhouette Design Store artist approval",
+          "payout account (terms unverified)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per design purchase",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 1,
+          "high": 5
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 70,
+        "grossMarginPercent": 30,
+        "hoursPerUnit": 0,
+        "notes": "Most Silhouette designs sell at $0.99; the artist royalty share is not published - ~30% is estimated (the become-an-artist page gives no figure)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 7,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 25,
+          "high": 1200
+        },
+        "notes": "Long-standing approved artists with large catalogues get featured; newcomers face approval delays and opaque royalty terms. AI-made vector art increases competition; price points are fixed by the store."
+      },
+      "pricingStrategy": "Prices are largely fixed by the store ($0.99 typical), so compete on volume, seasonal sets and being featured; use the open Marketplace Shop for higher-priced bundles.",
+      "profitPath": [
+        "Month 0-1: build portfolio and apply (cost $0)",
+        "Month 2-3: approval, upload 50+ designs",
+        "Month 3-6: first royalties",
+        "Month 6-12: median ~$25/month"
+      ],
+      "sources": ["https://www.silhouettedesignstore.com/become-an-artist"]
+    }
+  },
+  {
+    "id": "knitting-crochet-patterns",
+    "name": "Knitting and crochet pattern sales on Ravelry, LoveCrafts and Ribblr",
+    "category": "digital-products",
+    "summary": "Design, test-knit and sell written knitting/crochet patterns on yarn-community marketplaces.",
+    "howItWorks": "You design a garment or amigurumi, write the sized pattern with charts, run test knitters and sell the PDF. On Ravelry buyers pay your PayPal directly; Ravelry bills a small monthly fee (reportedly none under $30/month in sales, ~3.5% above). LoveCrafts runs an indie designer program. Ribblr sells interactive ePatterns via Stripe Connect with a sale fee from 4% (reducible to 0% with its '$elFee' scheme, min. fee $0.25 per pattern). Patterns indexed in Ravelry's project database sell for years.",
+    "platforms": ["Ravelry", "LoveCrafts", "Ribblr"],
+    "payout": {
+      "methods": [
+        "Ravelry: buyer pays your PayPal directly -> bank",
+        "Ribblr: Stripe Connect -> bank",
+        "LoveCrafts: platform payout (method unverified)"
+      ],
+      "minimumPayout": "Ravelry: none (instant to PayPal); Ribblr: none stated (Stripe); LoveCrafts unverified",
+      "frequency": "instant (Ravelry, Ribblr per Stripe); monthly (LoveCrafts, unverified)",
+      "typicalDelayDays": 2,
+      "notes": "Ribblr fees and Stripe Connect requirement confirmed in its Payments Policy. Ravelry fee figures come from designer blogs (fee table is behind login; help pages return login/500). LoveCrafts designer handbook returned 429; share unverified."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 3,
+      "setupEffort": 6,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; patterns are copyrightable instructions; avoid copying others' charts.",
+      "complianceRequirements": [
+        "report income for tax",
+        "PayPal account",
+        "EU VAT handled per platform rules"
+      ]
+    },
+    "availability": {
+      "notes": "Ravelry requires PayPal (receivable in 45/50 reference countries; not Nigeria, Lebanon, Bangladesh, Libya, Iraq). Ribblr requires a Stripe account (limited country list)."
+    },
+    "automationPlan": [
+      "Pattern grading spreadsheets auto-calculate sizes",
+      "Chart generation (Stitch Fiddle) and PDF layout templates",
+      "LLM drafts pattern text and listing copy for review"
+    ],
+    "manualSteps": [
+      "Designing and knitting/crocheting samples",
+      "Coordinating test knitters",
+      "Photographing finished items"
+    ],
+    "fullCycle": [
+      "Open Ravelry designer store and PayPal",
+      "Design + sample",
+      "Test-knit and edit",
+      "Publish pattern",
+      "Receive PayPal payments -> bank"
+    ],
+    "risks": [
+      "Errors in patterns cause refunds/bad reputation",
+      "AI cannot reliably write correct patterns",
+      "Ravelry site/accessibility controversies reduced traffic"
+    ],
+    "evidence": "Ravelry hosts over a million patterns with thousands of paid indie designers; pattern-sales platform comparisons document its PayPal-based model.",
+    "sources": [
+      "https://ribblr.com/paymentspolicy",
+      "https://ribblr.com/fordesigners",
+      "https://lovecrafts.com/en-gb/c/article/designer-handbook-payment-pricing-taxes",
+      "https://www.ravelry.com/help/sellers",
+      "https://payhip.com/PatternDesignCircle/blog/pattern-design-circle-blog/where-to-sell-knitting-patterns-online-a-summary-of-online-platforms-for-selling-knitting-patterns"
+    ],
+    "tags": ["craft", "fiber-arts", "passive", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Ravelry (no fee under ~$30/month in sales)",
+          "Ribblr / LoveCrafts",
+          "free charting tools (Stitch Fiddle) and Google Docs/Canva for layout"
+        ],
+        "skills": [
+          "original knit/crochet design and grading sizes",
+          "technical pattern writing and charting",
+          "running test knits"
+        ],
+        "equipment": [
+          "laptop",
+          "camera/phone for photos",
+          "yarn and tools (sample yarn ~$20-60 per design, assumed from stash or yarn support)"
+        ],
+        "accounts": ["Ravelry pro account", "PayPal or Stripe + KYC"]
+      },
+      "unitEconomics": {
+        "unit": "per pattern sale",
+        "typicalPriceUsd": {
+          "low": 4,
+          "median": 7,
+          "high": 12
+        },
+        "costPerUnitUsd": 0.73,
+        "platformFeePercent": 3.5,
+        "grossMarginPercent": 86,
+        "hoursPerUnit": 0,
+        "notes": "Median $7 PDF pattern; Ravelry ~3.5% above $30/month in sales plus PayPal ~3.49% + $0.49 (~$0.73)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale. Sample yarn is excluded (assumed stash)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 2500
+        },
+        "notes": "Designers with consistent style and Instagram/YouTube presence sell well; Ravelry's database keeps patterns selling for years. AI cannot reliably produce working patterns, and 2024-2025 scandals over fake AI crochet patterns increased buyer trust in tested human designs."
+      },
+      "pricingStrategy": "Launch new patterns at a 20-30% discount for a week, then standard $6-9; sell e-book collections at $20-30.",
+      "profitPath": [
+        "Month 0-1: design, knit and test 1-2 patterns (cost $0-40)",
+        "Month 1-3: release with launch discount; first sales",
+        "Month 3-6: one pattern/month; $20-80/month",
+        "Month 6-12: median ~$40/month"
+      ],
+      "sources": [
+        "https://www.ravelry.com/help/sellers",
+        "https://ribblr.com/paymentspolicy"
+      ]
+    }
+  },
+  {
+    "id": "sewing-quilting-pdf-patterns",
+    "name": "PDF sewing and quilting patterns with projector files (Etsy, Payhip, Makerist)",
+    "category": "digital-products",
+    "summary": "Draft, grade and sell multi-size sewing and quilting patterns as print-at-home, A0 copy-shop and projector files.",
+    "howItWorks": "Home sewists buy PDF patterns that include tiled A4/Letter pages, A0 copy-shop files, layered sizes and projector files, plus an illustrated instruction booklet. Quilters buy block/quilt patterns with fabric requirements and cutting charts. Etsy and Payhip handle direct sales (Payhip free plan: 5% fee, sales deposited instantly to your PayPal/Stripe). Makerist, a European pattern marketplace, appeared offline in Nov 2026. Pattern testers and sew-along posts drive launches; one pattern sells for years.",
+    "platforms": ["Etsy", "Payhip", "Makerist (appears offline Nov 2026)"],
+    "payout": {
+      "methods": [
+        "Payhip: PayPal/Stripe instant -> bank",
+        "Etsy Payments -> bank",
+        "Makerist: unverified"
+      ],
+      "minimumPayout": "Payhip: none (instant); Etsy per Etsy Payments schedule; Makerist unverified",
+      "frequency": "instant (Payhip), daily/weekly (Etsy)",
+      "typicalDelayDays": 3,
+      "notes": "Payhip fees confirmed on its pricing page: Free 5%, Plus $29/mo 2%, Pro $99/mo 0%, plus PayPal/Stripe fees. Makerist status: in Nov 2026 makerist.com had no DNS address, makerist.de served an expired TLS certificate and other country domains failed TLS - the marketplace appears offline/closed (no official notice found); do not rely on it."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 80,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 7,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; pattern drafting from scratch only (no tracing commercial patterns).",
+      "complianceRequirements": [
+        "report income for tax",
+        "platform KYC",
+        "EU VAT on digital goods (Payhip/Etsy collect)"
+      ]
+    },
+    "availability": {
+      "notes": "Payhip (PayPal or Stripe) and Etsy pay in most reference countries; Makerist (EU-focused) appears offline."
+    },
+    "automationPlan": [
+      "Parametric drafting (Seamly2D/Valentina free) auto-grades sizes",
+      "Scripts output A4/Letter/A0/projector layers",
+      "LLM drafts instruction text; diagram templates reused"
+    ],
+    "manualSteps": [
+      "Sewing samples in multiple sizes",
+      "Tester coordination and fit fixes",
+      "Photos"
+    ],
+    "fullCycle": [
+      "Draft pattern",
+      "Grade and test-sew",
+      "Produce PDF set",
+      "List on Payhip/Etsy",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Fit problems cause refunds",
+      "Long development cycle per pattern",
+      "Competition from big indie pattern houses"
+    ],
+    "evidence": "Indie pattern houses (e.g. many on Makerist/Etsy) sell PDF patterns as primary business; projector files became standard after 2020.",
+    "sources": [
+      "https://payhip.com/sell-sewing-patterns",
+      "https://payhip.com/pricing"
+    ],
+    "tags": ["craft", "sewing", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 100,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Inkscape (free) or Seamly2D (free) for pattern drafting",
+          "Payhip free plan / Etsy",
+          "PDF tiling tools"
+        ],
+        "skills": [
+          "pattern drafting and grading",
+          "instruction writing and illustration",
+          "running pattern tests"
+        ],
+        "equipment": [
+          "laptop",
+          "sewing machine",
+          "fabric for samples (assumed on hand)"
+        ],
+        "accounts": ["Payhip/Etsy account + KYC", "PayPal/Stripe"]
+      },
+      "unitEconomics": {
+        "unit": "per pattern sale",
+        "typicalPriceUsd": {
+          "low": 8,
+          "median": 14,
+          "high": 22
+        },
+        "costPerUnitUsd": 0.72,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 0,
+        "notes": "Median $14 PDF pattern; Payhip free plan 5% plus ~$0.72 PayPal/Stripe processing."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 3500
+        },
+        "notes": "Indie designers with sew-along communities and testers succeed; patterns sell for years. AI cannot yet produce graded, tested patterns reliably, so competition is mostly human. Development is slow and fit problems cause refunds."
+      },
+      "pricingStrategy": "Launch with a time-limited discount for testers' followers, then $12-16; sell size bundles and quilt kits at higher prices.",
+      "profitPath": [
+        "Month 0-2: develop and test one pattern (cost $0-40)",
+        "Month 2-3: launch with testers' posts",
+        "Month 3-6: second pattern; $20-100/month",
+        "Month 6-12: median ~$50/month"
+      ],
+      "sources": [
+        "https://payhip.com/pricing",
+        "https://www.etsy.com/legal/fees"
+      ]
+    }
+  },
+  {
+    "id": "cross-stitch-embroidery-files",
+    "name": "Cross-stitch charts and machine-embroidery files",
+    "category": "digital-products",
+    "summary": "Sell cross-stitch charts (PDF + Pattern Keeper-compatible) and machine-embroidery files (PES/DST/JEF) for hobbyists.",
+    "howItWorks": "Cross-stitchers buy charts with colour keys (DMC) that work in the Pattern Keeper app; embroidery-machine owners buy multi-format stitch files plus colour sheets. Charts are generated from original artwork with stitch software and hand-cleaned; machine designs are digitised in free Ink/Stitch (Inkscape) or paid Hatch/Embrilliance. Sold on Creative Fabrica, LoveCrafts (cross-stitch) and Payhip; bundles of themed seasonal designs sell repeatedly each year.",
+    "platforms": ["Creative Fabrica", "LoveCrafts", "Payhip"],
+    "payout": {
+      "methods": [
+        "PayPal/Payoneer -> bank (Creative Fabrica)",
+        "Payhip PayPal/Stripe instant"
+      ],
+      "minimumPayout": "Marketplace minimums unverified; Payhip none (instant)",
+      "frequency": "monthly / instant",
+      "typicalDelayDays": 20,
+      "notes": "Payhip terms confirmed (5% fee on free plan, instant PayPal/Stripe deposit). Creative Fabrica and LoveCrafts shares/minimums unverified (pages return 403/429)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 150
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 2500
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; do not chart licensed characters or others' art without permission.",
+      "complianceRequirements": [
+        "report income for tax",
+        "platform KYC",
+        "copyright clearance of source art"
+      ]
+    },
+    "availability": {
+      "notes": "Payhip/Payoneer cover nearly all reference countries."
+    },
+    "automationPlan": [
+      "Image-to-chart pipeline (original art -> colour-reduced DMC chart)",
+      "Ink/Stitch scripted export to PES/DST/JEF/EXP",
+      "Auto-generated colour keys and mockups"
+    ],
+    "manualSteps": [
+      "Hand cleanup of confetti stitches/density",
+      "Test stitch-outs for machine files"
+    ],
+    "fullCycle": ["Create art", "Chart/digitise", "Test", "List", "Payout"],
+    "risks": [
+      "Bad density files damage reputation",
+      "Many low-effort auto-charted competitors",
+      "Copyright takedowns"
+    ],
+    "evidence": "Creative Fabrica and LoveCrafts list thousands of independent embroidery and cross-stitch designs; Pattern Keeper compatibility is a common selling point.",
+    "sources": [
+      "https://www.creativefabrica.com/designer-program/",
+      "https://payhip.com/pricing",
+      "https://inkstitch.org/"
+    ],
+    "tags": ["craft", "embroidery", "passive", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Ink/Stitch (free)",
+          "free/cheap charting software",
+          "Payhip / Etsy"
+        ],
+        "skills": [
+          "artwork design",
+          "charting and colour-key cleanup",
+          "embroidery digitising (machine files)"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Payhip/Etsy account + KYC", "PayPal/Stripe"]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 6,
+          "high": 15
+        },
+        "costPerUnitUsd": 0.5,
+        "platformFeePercent": 7,
+        "grossMarginPercent": 85,
+        "hoursPerUnit": 0,
+        "notes": "Median $6 chart; blended Payhip/Etsy fees ~7% + ~$0.50 processing."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 14,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 35,
+          "high": 2000
+        },
+        "notes": "Designers with original art and Pattern Keeper-compatible PDFs sell steadily, especially seasonal sets. Auto-charted AI images have flooded Etsy and lowered trust and prices."
+      },
+      "pricingStrategy": "Price single charts at $4-7, seasonal bundles at $12-20.",
+      "profitPath": [
+        "Month 0: chart 5 designs (cost $0)",
+        "Month 1-3: list on Payhip/Etsy; first sales",
+        "Month 3-6: seasonal sets; $15-60/month",
+        "Month 6-12: median ~$35/month"
+      ],
+      "sources": ["https://payhip.com/pricing", "https://inkstitch.org/"]
+    }
+  },
+  {
+    "id": "lego-moc-instructions-rebrickable",
+    "name": "Sell LEGO MOC building instructions on Rebrickable",
+    "category": "digital-products",
+    "summary": "Design original LEGO models (MOCs) and sell PDF instructions plus parts lists that buyers source themselves.",
+    "howItWorks": "You build a model digitally in BrickLink Studio (free), generate step-by-step instructions, and list it as a Premium MOC on Rebrickable. Buyers pay for the instructions and use Rebrickable to buy parts or match their own collection. Payment goes straight to your PayPal or Stripe account; Rebrickable then deducts or invoices its commission (reported 8%/13%/18% by price band on its Designer Plan). Popular MOC designers also get approached by kit sellers for licensing.",
+    "platforms": ["Rebrickable"],
+    "payout": {
+      "methods": ["PayPal (direct) -> bank", "Stripe Connect -> bank"],
+      "minimumPayout": "None (paid at time of sale); commission invoiced monthly when owed > $5",
+      "frequency": "per sale",
+      "typicalDelayDays": 3,
+      "notes": "Commission tiers and $5 invoice threshold from Rebrickable help pages seen via search snippets; live help/plans pages returned 403 to fetches in Nov 2026, so still unverified."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 3,
+      "setupEffort": 6,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal: MOC instructions are your own work; LEGO's fan policy allows it, but do not use LEGO logos or sell counterfeit kits.",
+      "complianceRequirements": [
+        "report income for tax",
+        "PayPal/Stripe KYC",
+        "respect LEGO trademarks"
+      ]
+    },
+    "availability": {
+      "notes": "PayPal works in 45/50 reference countries; users report PayPal/Stripe issues in some (e.g. Ukraine, South Korea)."
+    },
+    "automationPlan": [
+      "Studio auto-generates instruction steps and parts lists",
+      "Renders via Studio/POV-Ray batch",
+      "LLM writes listing text"
+    ],
+    "manualSteps": [
+      "Creative design and stability checks",
+      "Instruction step cleanup"
+    ],
+    "fullCycle": [
+      "Design in Studio",
+      "Generate instructions",
+      "List Premium MOC",
+      "Promote on Reddit/Flickr",
+      "Get paid per sale"
+    ],
+    "risks": [
+      "Small niche audience",
+      "Copying of MOCs by kit makers",
+      "Commission terms may change"
+    ],
+    "evidence": "Rebrickable's founder interview and help pages describe the Premium MOC marketplace where designers sell instructions.",
+    "sources": [
+      "https://rebrickable.com/help/selling-premium-mocs/",
+      "https://rebrickable.com/help/mocs-fees/",
+      "https://brickset.com/article/111720/interview-with-nathan-thom-founder-of-rebrickable"
+    ],
+    "tags": ["hobby", "lego", "passive", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["BrickLink Studio (free)", "Rebrickable Designer account"],
+        "skills": [
+          "LEGO building design",
+          "instruction layout in Studio",
+          "photography and renders"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Rebrickable account", "PayPal or Stripe + KYC"]
+      },
+      "unitEconomics": {
+        "unit": "per instruction sale",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 12,
+          "high": 30
+        },
+        "costPerUnitUsd": 0.91,
+        "platformFeePercent": 13,
+        "grossMarginPercent": 79,
+        "hoursPerUnit": 0,
+        "notes": "Median $12 MOC; Rebrickable commission ~13% at that band (estimated; Rebrickable fee page bot-blocked), plus PayPal ~3.49% + $0.49."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 25,
+          "high": 2500
+        },
+        "notes": "Adult LEGO fans are a growing market; designers with recognisable themes (modulars, vehicles) and good renders sell repeatedly. Kit cloners copying popular MOCs are a risk."
+      },
+      "pricingStrategy": "Launch at $8-12, raise to $15-25 for large builds; offer alternate builds of popular official sets.",
+      "profitPath": [
+        "Month 0-1: design and render 1-2 MOCs (cost $0)",
+        "Month 1-3: list as Premium MOCs; first sales",
+        "Month 3-6: release monthly; $15-60/month",
+        "Month 6-12: median ~$25/month"
+      ],
+      "sources": [
+        "https://rebrickable.com/help/mocs-fees/",
+        "https://rebrickable.com/help/selling-premium-mocs/"
+      ]
+    }
+  },
+  {
+    "id": "ttrpg-supplements-dmsguild-drivethrurpg",
+    "name": "Tabletop RPG adventures and supplements on DMs Guild / DriveThruRPG",
+    "category": "digital-products",
+    "summary": "Write and sell PDF adventures, monsters, maps and rules supplements for D&D and other RPGs on OneBookShelf marketplaces.",
+    "howItWorks": "On DMs Guild you may use official D&D IP (Forgotten Realms etc.) under the Community Content Program and earn a reported 50% royalty. On DriveThruRPG you sell your own-IP or 5e-SRD (CC-BY) products for a higher reported share. Customers are GMs looking for ready-to-run content; bestseller medals (Copper/Silver/etc.) drive visibility. Bundles and print-on-demand versions add revenue. Text must be human-written: the marketplaces do not accept products written primarily by AI.",
+    "platforms": ["DMs Guild", "DriveThruRPG"],
+    "payout": {
+      "methods": ["PayPal -> bank (reported)", "cheque (reported)"],
+      "minimumPayout": "Unverified",
+      "frequency": "monthly (on request; reported ~$1 withdrawal fee)",
+      "typicalDelayDays": 30,
+      "notes": "50% DMs Guild split confirmed only via press/creator sources; DriveThruRPG royalty (creator comments cite 65% non-exclusive / 70% exclusive) and payout rules unverified (dmsguild.com, drivethrurpg.com and its help center return 403). AI policy (per Gizmodo/EN World 2023 coverage): since 31 Jul 2023 products made primarily of AI-written text are not accepted, standalone AI-art products are barred and AI-generated art must be labelled; buyers can filter 'Handcrafted' vs 'Contains AI'. Community programs (DMs Guild, Chaosium's Miskatonic Repository) set their own stricter rules - Chaosium removed 40+ community titles over AI text in Oct 2026."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 5,
+      "median": 60,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 4,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; DMs Guild content is licensed IP that must stay on DMs Guild; follow OGL/CC rules on DriveThruRPG.",
+      "complianceRequirements": [
+        "report income for tax",
+        "tax form (W-8BEN for non-US)",
+        "AI-content disclosure per marketplace policy"
+      ]
+    },
+    "availability": {
+      "notes": "OneBookShelf sells globally; PayPal reaches 45/50 reference countries."
+    },
+    "automationPlan": [
+      "LLM for brainstorming, proofreading and consistency checks only (text must be human-written; disclose any AI use)",
+      "Layout via templates (Homebrewery/Affinity)",
+      "Map generation tools (label AI art or use licensed/hand-made art)",
+      "Scheduled bundle promotions"
+    ],
+    "manualSteps": [
+      "Writing/editing for quality",
+      "Playtesting",
+      "Rights checks for art (licensed/stock)"
+    ],
+    "fullCycle": [
+      "Create creator account",
+      "Write and lay out PDF",
+      "Publish with preview",
+      "Promote in RPG communities",
+      "Withdraw royalties"
+    ],
+    "risks": [
+      "Most titles sell under 50 copies",
+      "IP licence terms controlled by Wizards of the Coast",
+      "AI-content restrictions",
+      "Payout terms unverified"
+    ],
+    "evidence": "DMs Guild launched 2016 with a 50/50 split reported by Kotaku and others; many creators publish sales reports. aiLeverage lowered to 3 because the marketplaces bar primarily AI-written products.",
+    "sources": [
+      "https://kotaku.com/d-ds-dungeon-masters-guild-wants-players-to-monetize-fa-1784518350",
+      "https://gnomestew.com/getting-started-on-the-dms-guild-part-1-your-first-product/",
+      "https://gizmodo.com/drivethrurpg-ai-generated-art-writing-dmsguild-1850673912",
+      "https://letsdatascience.com/news/chaosium-removes-40-community-titles-over-ai-generated-text-70ccf45e",
+      "https://www.dmsguild.com/"
+    ],
+    "tags": ["tabletop", "writing", "royalties", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Homebrewery / GM Binder (free)",
+          "Affinity (free) for layout",
+          "free stock art from publishers' art packs"
+        ],
+        "skills": [
+          "writing RPG adventures (human-written)",
+          "game balance",
+          "layout and cartography"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "DMs Guild / DriveThruRPG publisher account",
+          "PayPal for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 5,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 50,
+        "grossMarginPercent": 50,
+        "hoursPerUnit": 0,
+        "notes": "Median $5 adventure; DMs Guild pays 50% royalty, DriveThruRPG ~65-70% for own IP (estimated, from reports)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 14,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 2500
+        },
+        "notes": "Prolific creators with series and bestseller medals earn most; most titles sell under 50 copies. AI-written text is banned, keeping human competition, while the 2024 D&D rules refresh brought new demand."
+      },
+      "pricingStrategy": "Release a pay-what-you-want title to build an audience, then price adventures at $3-8 and bundles at $15-25.",
+      "profitPath": [
+        "Month 0: write and lay out first adventure (cost $0)",
+        "Month 1-2: launch; first sales",
+        "Month 3-6: release monthly; $20-80/month",
+        "Month 6-12: median ~$40/month"
+      ],
+      "sources": [
+        "https://gnomestew.com/getting-started-on-the-dms-guild-part-1-your-first-product/"
+      ]
+    }
+  },
+  {
+    "id": "pod-board-games-game-crafter",
+    "name": "Publish print-on-demand board and card games on The Game Crafter",
+    "category": "marketplaces",
+    "summary": "Upload a board/card game design; The Game Crafter prints and ships each order and pays you 70% of the markup.",
+    "howItWorks": "You design a card or board game, upload art files, set a retail price above TGC's manufacturing cost, and list it in their shop. TGC manufactures and ships each copy (physical step done by the platform, not you). Royalty = 70% of (price - cost); e.g. $15 price - $8 cost = $7 profit, you get $4.90. Payouts run every Monday after a 30-day hold. Contests on TGC and print-and-play versions help gain traction.",
+    "platforms": ["The Game Crafter"],
+    "payout": {
+      "methods": ["PayPal -> bank", "TGC shop credit"],
+      "minimumPayout": "No minimum stated",
+      "frequency": "weekly (Mondays) after 30-day hold",
+      "typicalDelayDays": 37,
+      "notes": "Royalties default to shop credit unless a valid PayPal email is set. Publishing requires buying a copy of your own game and waiting 10 days (contest entries exempt)."
+    },
+    "capitalRequiredUsd": 30,
+    "timeToFirstDollarDays": {
+      "min": 47,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 1000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; avoid gambling mechanics and licensed IP.",
+      "complianceRequirements": ["report income for tax", "PayPal account"]
+    },
+    "availability": {
+      "notes": "PayPal payout reaches 45/50 reference countries. Physical product is printed/shipped by TGC (marked PHYSICAL but no seller handling)."
+    },
+    "automationPlan": [
+      "AI-assisted card art and rules drafting",
+      "Scripted card generation from spreadsheets (e.g. nanDECK)",
+      "Auto-generated print-and-play PDFs"
+    ],
+    "manualSteps": [
+      "Playtesting",
+      "Ordering one physical copy of your game (required before publishing to the shop, then a 10-day wait)",
+      "Marketing to board-game community"
+    ],
+    "fullCycle": [
+      "Design game",
+      "Upload to TGC",
+      "Proof and publish",
+      "Promote",
+      "Collect weekly PayPal royalties"
+    ],
+    "risks": [
+      "Low organic sales",
+      "Manufacturing cost leaves thin margin",
+      "Playtesting is time-intensive"
+    ],
+    "evidence": "TGC help center documents 70/30 profit split, weekly payouts and PayPal method.",
+    "sources": [
+      "https://help.thegamecrafter.com/article/130-royalties",
+      "https://help.thegamecrafter.com/article/128-getting-paid",
+      "https://help.thegamecrafter.com/article/126-designer-rewards",
+      "https://help.thegamecrafter.com/article/109-publishing-help"
+    ],
+    "tags": ["tabletop", "print-on-demand", "physical-by-platform"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 30,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "The Game Crafter (free to publish)",
+          "Affinity/Inkscape (free)",
+          "AI art tools (check rights)"
+        ],
+        "skills": [
+          "game design and playtesting",
+          "graphic design",
+          "marketing to board-game communities"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["The Game Crafter account", "PayPal/bank for payouts"]
+      },
+      "unitEconomics": {
+        "unit": "per game sale",
+        "typicalPriceUsd": {
+          "low": 12,
+          "median": 20,
+          "high": 45
+        },
+        "costPerUnitUsd": 10,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 35,
+        "hoursPerUnit": 0,
+        "notes": "Median $20 game with ~$10 manufacturing cost; TGC keeps 30% of the ~$10 profit (= 15% of price), you get ~$7. TGC's 70/30 profit split confirmed on its royalties help page."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 3,
+        "notes": "Startup $30 = proof copy. Month-6 net ~$10 means ~3 months to recover."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "rising",
+        "profitLikelihoodPercent": 3,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 800
+        },
+        "notes": "Few print-on-demand games sell more than a handful of copies; designers who win TGC contests or build a community on BoardGameGeek and Reddit do best. Manufacturing and shipping costs rose in 2025-2026, squeezing a margin that is already ~$7 on a $20 game. AI art lowers production cost but does not solve discovery."
+      },
+      "pricingStrategy": "Price just above manufacturing cost plus a small margin to win early buyers and contest votes; raise price once reviews arrive, and offer a free print-and-play version as a funnel.",
+      "profitPath": [
+        "Month 0-2: design, playtest, order proof (cost $30)",
+        "Month 2-4: publish; first sales",
+        "Month 4-8: marketing; $5-30/month",
+        "Month 8-12: median ~$10/month"
+      ],
+      "sources": ["https://help.thegamecrafter.com/article/130-royalties"]
+    }
+  },
+  {
+    "id": "vtt-assets-roll20-marketplace",
+    "name": "Virtual tabletop assets and modules (Roll20 Marketplace, Foundry VTT premium modules)",
+    "category": "marketplaces",
+    "summary": "Sell battle maps, tokens and ready-to-run modules for virtual tabletops.",
+    "howItWorks": "Online RPG groups pay for tokens, battle maps, character sheets and automated modules. Roll20 Marketplace sells creator art packs and adventures with a revenue share. Foundry VTT opened its own official Marketplace on 12 Feb 2025; creators can also sell premium modules via their own store (activation keys) or Patreon-linked access. Battle maps can be produced in Dungeondraft/Wonderdraft with consistent asset packs.",
+    "platforms": [
+      "Roll20 Marketplace",
+      "Foundry VTT Marketplace / premium packages"
+    ],
+    "payout": {
+      "methods": [
+        "Roll20: payout (method unverified)",
+        "Foundry Marketplace: unverified",
+        "Own store via Stripe/PayPal or Patreon"
+      ],
+      "minimumPayout": "Unverified",
+      "frequency": "monthly (unverified)",
+      "typicalDelayDays": 30,
+      "notes": "Roll20 revenue share and payout rules not verifiable: help center returns 403 and the 'Become a Creator' page linked from marketplace.roll20.net (pages.roll20.net/marketplace-creators) returned 404 in Nov 2026. Foundry Marketplace creator terms are not public."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 4,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; licensed art only.",
+      "complianceRequirements": ["report income for tax", "creator application"]
+    },
+    "availability": {
+      "notes": "Roll20 global; payout rail unverified."
+    },
+    "automationPlan": [
+      "Batch map generation with templated asset packs",
+      "Script token cropping and export",
+      "LLM drafts module text"
+    ],
+    "manualSteps": [
+      "Creator application",
+      "Art quality control",
+      "Testing modules in VTT"
+    ],
+    "fullCycle": [
+      "Apply as creator",
+      "Produce asset pack",
+      "Publish",
+      "Promote",
+      "Payout"
+    ],
+    "risks": [
+      "Marketplace discoverability",
+      "Unverified terms",
+      "VTT platform shifts"
+    ],
+    "evidence": "Roll20 Marketplace has hosted community creators for years; Foundry premium module ecosystem is well established.",
+    "sources": [
+      "https://marketplace.roll20.net/",
+      "https://foundryvtt.com/article/premium-content/",
+      "https://foundryvtt.com/packages/"
+    ],
+    "tags": ["tabletop", "vtt", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Dungeondraft (~$20 one-time, optional)",
+          "Roll20 / Foundry VTT accounts"
+        ],
+        "skills": [
+          "battlemap and token art",
+          "VTT module scripting",
+          "community marketing"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Roll20 Marketplace creator account", "PayPal/bank"]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 10,
+          "high": 30
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 50,
+        "grossMarginPercent": 50,
+        "hoursPerUnit": 0,
+        "notes": "Median $10 map/token pack; Roll20 creator share estimated at 50% (Roll20 help and wiki pages bot-blocked, unverified)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 25,
+          "high": 1500
+        },
+        "notes": "Battlemap and token creators who already run Patreon audiences dominate sales; Foundry VTT's official Marketplace (2025) and continued online play support demand. AI-generated battlemaps flooded the market in 2024-2026, pushing pack prices down, and Roll20's creator revenue share is not published (50% assumed). Typical failure mode: packs listed with no audience get almost no marketplace visibility."
+      },
+      "pricingStrategy": "Give away a free sample pack to build followers, price map/token packs at $5-15 and offer $25-30 bundles; add premium Foundry modules with automation at higher prices.",
+      "profitPath": [
+        "Month 0: create 3 packs (cost $0)",
+        "Month 1-3: list; first sales",
+        "Month 3-6: $10-50/month",
+        "Month 6-12: median ~$25/month"
+      ],
+      "sources": [
+        "https://marketplace.roll20.net/",
+        "https://foundryvtt.com/article/premium-content/"
+      ]
+    }
+  }
+]

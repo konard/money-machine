@@ -1,0 +1,1966 @@
+[
+  {
+    "id": "amazon-associates-comparison-site",
+    "name": "Amazon Associates niche review/comparison site",
+    "category": "affiliate",
+    "summary": "Hands-on 'best X for Y' comparison content linking to Amazon products for a commission on qualifying purchases.",
+    "howItWorks": "Pick a narrow buyer-intent niche (e.g. tools for a specific hobby), publish genuinely useful comparisons, buying guides and spec tables, and link products with your Associates tag. Amazon pays a category-based % of purchases made within the 24-hour click window. Rates are low: Amazon US's official fixed table runs 0-10% by category (most categories 1-4.5%, e.g. 3% home/toys, 2.5% PC, 1% grocery/health), and 2026 trade press reports further cuts for some publishers, so volume and real first-hand testing are what differentiate a site from AI-generated competitors.",
+    "platforms": [
+      "Amazon Associates (local Amazon stores)",
+      "WordPress/static site",
+      "Google Search"
+    ],
+    "payout": {
+      "methods": ["direct deposit", "Amazon gift card", "check (some stores)"],
+      "minimumPayout": "$10 for gift card and direct deposit (US); higher for check; GBP 25 (UK); varies by store",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "Official help: paid monthly, about 60 days after the end of the earning month (January earnings paid late March). New accounts need 3 qualifying sales within 180 days or are closed."
+    },
+    "capitalRequiredUsd": 50,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Affiliate marketing is legal across the reference set; disclosure required. UK ASA/CAP guidance: affiliate content must be obviously identifiable as advertising (e.g. 'Ad' label upfront); a footer disclaimer or vague 'may earn a commission' wording is unlikely to be enough.",
+      "complianceRequirements": [
+        "affiliate disclosure (FTC/CAP)",
+        "Amazon Operating Agreement",
+        "income tax / tax interview"
+      ]
+    },
+    "availability": {
+      "notes": "Anyone can join any Amazon store; direct deposit only to supported banks per store, otherwise gift card/check. Content must target countries with an Amazon store (US, UK, DE, FR, IT, JP, CA, AU, BR, MX, IN, SG etc.)."
+    },
+    "automationPlan": [
+      "Generate product data via PA-API (unlocked after sales) and keep price/availability fresh",
+      "LLM drafts outlines, spec tables, FAQ; human adds tests/photos",
+      "Automated broken-link and out-of-stock monitoring",
+      "Scheduled internal linking and sitemap updates"
+    ],
+    "manualSteps": [
+      "Buy/borrow and actually test products for first-hand claims",
+      "Amazon tax interview and payment setup",
+      "Editorial review to avoid thin/scaled AI content"
+    ],
+    "fullCycle": [
+      "Pick niche & keywords",
+      "Build site + disclosure page",
+      "Join Associates",
+      "Publish 30-60 guides",
+      "Get 3 sales in 180 days",
+      "Earn commissions",
+      "Monthly payout to bank"
+    ],
+    "risks": [
+      "Google helpful-content/core updates can erase traffic",
+      "Amazon commission cuts and 24h cookie",
+      "Account closure for policy breaches",
+      "AI Overviews reducing click-through"
+    ],
+    "evidence": "Amazon Associates is the largest affiliate program; official help confirms the ~60-day payout cycle and publishes the fixed category rate table (0-10%, mostly 1-4.5%). 2026 trade-press reporting describes rate cuts of up to 50% for some publishers, so expectations should be modest.",
+    "sources": [
+      "https://affiliate-program.amazon.com/help/node/topic/G63DR893K4DH55XZ",
+      "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "https://www.asa.org.uk/advice-online/affiliate-marketing.html",
+      "https://www.shopifreaks.com/amazon-slashed-affiliate-commission-rates-by-up-to-50-and-gutted-reporting-tools/"
+    ],
+    "tags": ["seo", "content-site", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 50,
+        "recurringMonthlyUsd": 10,
+        "tools": [
+          "WordPress or a static-site generator",
+          "hosting (~$5-10/mo)",
+          "domain (~$12/yr)",
+          "Google Search Console (free)",
+          "AI writing assistant (free tier)"
+        ],
+        "skills": [
+          "niche and keyword research",
+          "honest product testing and photography",
+          "on-page SEO",
+          "writing (AI drafts, human verification)"
+        ],
+        "equipment": [
+          "laptop",
+          "smartphone camera",
+          "some products in the niche to test"
+        ],
+        "accounts": [
+          "Amazon Associates account + tax interview",
+          "bank account for direct deposit"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 pageviews (affiliate RPM)",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 10,
+          "high": 40
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: a 1-4.5% category rate on ~$40-60 orders at 3-8% click-to-purchase gives roughly $3-40 per 1,000 pageviews; cost is AI/hosting variable spend."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 10,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 3,
+        "notes": "Fixed cost is recurringMonthlyUsd only; startup cash is not amortised. Break-even is ~2,000 pageviews/month, which new sites typically reach after 6-12 months of publishing. Startup recovery assumes about $20/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -10,
+          "median": 15,
+          "high": 2500
+        },
+        "notes": "Winners are established sites with real first-hand testing and brand trust. Since 2024-2026 Google AI Overviews and helpful-content updates have cut clicks to review sites, and Amazon has trimmed category rates, so generic AI-written review sites mostly fail. Typical failure: 30-60 articles, little traffic, account closed for missing 3 sales in 180 days."
+      },
+      "pricingStrategy": "No pricing control: choose niches with higher-rate categories (home, toys, luxury beauty) and higher order values, then add a second merchant/network so revenue is not 100% Amazon.",
+      "profitPath": [
+        "Month 0: niche research, domain + hosting, 10 cornerstone comparison posts (cost ~$50)",
+        "Month 1-3: publish 20-40 tested reviews; expect $0-10 and must hit 3 sales within 180 days",
+        "Month 3-6: build internal links and refresh posts that rank on page 2; expect $10-50/month",
+        "Month 6-12: double down on winning clusters, add email list and other merchants; median ~$30/month"
+      ],
+      "sources": [
+        "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+        "https://www.shopifreaks.com/amazon-slashed-affiliate-commission-rates-by-up-to-50-and-gutted-reporting-tools/"
+      ]
+    }
+  },
+  {
+    "id": "affiliate-network-programmatic-seo",
+    "name": "Affiliate-network content site with programmatic SEO (Awin, CJ, Impact, Rakuten)",
+    "category": "affiliate",
+    "summary": "Data-driven pages (comparisons, alternatives, 'X vs Y', location/spec pages) monetized with merchant programs from major networks.",
+    "howItWorks": "Join networks such as Awin (absorbed ShareASale in 2025), CJ, Impact and Rakuten, get approved by merchants in one vertical (e.g. software, travel gear, home services), then generate many structured pages from a real dataset (specs, prices, features) with unique analysis per page. Merchants pay CPA/CPS commissions (typically 5-30%, cookie windows 30-90 days set per merchant).",
+    "platforms": ["Awin", "CJ Affiliate", "Impact.com", "Rakuten Advertising"],
+    "payout": {
+      "methods": ["bank transfer", "PayPal (Impact)", "Payoneer (some)"],
+      "minimumPayout": "Awin 20 GBP/EUR/USD (selectable; default 50); Impact $10; CJ and Rakuten thresholds not re-verified (commonly cited ~$50)",
+      "frequency": "twice monthly (Awin, CJ) / threshold or fixed-day autopay (Impact)",
+      "typicalDelayDays": 60,
+      "notes": "Commissions lock only after merchant validation (30-90 days) before becoming payable. Impact PayPal payouts carry a 2% fee (max $20); domestic EFT is free. CJ pays twice monthly via direct deposit (150+ currencies) or Payoneer."
+    },
+    "capitalRequiredUsd": 50,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 270
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 7,
+      "setupEffort": 6,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the reference set; Google spam policies (scaled content abuse) are a ranking risk, not a legal one.",
+      "complianceRequirements": [
+        "affiliate disclosure (FTC/CAP)",
+        "merchant program terms",
+        "tax forms per network"
+      ]
+    },
+    "availability": {
+      "notes": "Networks accept publishers from most countries; merchant approval is per program and often favours established sites. Some merchants only accept traffic from specific countries."
+    },
+    "automationPlan": [
+      "Ingest merchant product feeds/APIs into a database",
+      "Template + LLM generate pages with unique per-entity commentary",
+      "Auto-refresh prices, deals and dead links from feeds",
+      "Track EPC per page and prune losers"
+    ],
+    "manualSteps": [
+      "Network and merchant applications (often manual review)",
+      "Quality review of generated pages",
+      "Payment/KYC details per network"
+    ],
+    "fullCycle": [
+      "Choose vertical & dataset",
+      "Build programmatic site",
+      "Apply to networks/merchants",
+      "Publish & index",
+      "Earn validated commissions",
+      "Network payout to bank"
+    ],
+    "risks": [
+      "Merchant rejection for new sites",
+      "Scaled-content penalties",
+      "Commission reversals on returns",
+      "Merchants leaving networks"
+    ],
+    "evidence": "Official Awin help: twice-monthly payments with a selectable 20 GBP/EUR/USD threshold (default 50). Official Impact help: $10 minimum threshold, payouts on the Tuesday/Thursday after threshold or on the 1st/15th. CJ's publisher page confirms two payouts per month. These are mainstream networks paying thousands of publishers.",
+    "sources": [
+      "https://success.awin.com/articles/en_US/Knowledge/What-are-the-payment-thresholds",
+      "https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/finance/payments-withdrawals-and-balance/withdraw-funds-to-your-bank-account",
+      "https://success.awin.com/articles/en_US/Knowledge/ShareASale-to-Awin-platform-upgrade-FAQ",
+      "https://www.cj.com/publishers"
+    ],
+    "tags": ["seo", "programmatic", "data-driven"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 50,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "static-site generator or WordPress",
+          "hosting (~$10/mo)",
+          "spreadsheet/database of product data",
+          "LLM API credits (~$10/mo)",
+          "Google Search Console"
+        ],
+        "skills": [
+          "data collection and cleaning",
+          "basic scripting (an AI coding agent covers most of it)",
+          "SEO and site architecture",
+          "writing unique analysis per page"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Awin, CJ, Impact and/or Rakuten publisher accounts + tax forms",
+          "PayPal or bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 pageviews (affiliate EPMV)",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 80
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: network CPA/CPS of 5-30% on software, travel and home-service offers converts better than Amazon; variable cost is data/API spend."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 3,
+        "notes": "Fixed cost is recurringMonthlyUsd only; startup cash is not amortised. Commissions lock 30-90 days after the sale, so cash break-even lags traffic break-even by 1-3 months. Startup recovery assumes about $20/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -20,
+          "median": 20,
+          "high": 4000
+        },
+        "notes": "Programmatic sites that win are built on proprietary or hard-to-gather data with real per-page analysis. Google's 2024-2025 scaled-content-abuse and site-reputation policies deindex thin template pages, and AI answers reduce clicks. Common failures: merchant approval refusals for new sites, then a traffic spike followed by a core-update collapse."
+      },
+      "pricingStrategy": "Commissions are set by merchants; after you show volume, ask merchants for tiered or custom rates (often +2-5 points) and prioritise recurring or high-CPA offers.",
+      "profitPath": [
+        "Month 0: pick a vertical, assemble a dataset, build templates, apply to 10-20 merchants (cost ~$50)",
+        "Month 1-3: publish 200-1,000 pages with unique analysis; expect $0-20",
+        "Month 3-6: prune pages without impressions, enrich winners; expect $20-100/month",
+        "Month 6-12: negotiate rates, add comparison tools; median ~$50/month, top sites $1k+"
+      ],
+      "sources": [
+        "https://success.awin.com/articles/en_US/Knowledge/What-are-the-payment-thresholds",
+        "https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/finance/payments-withdrawals-and-balance/withdraw-funds-to-your-bank-account"
+      ]
+    }
+  },
+  {
+    "id": "saas-recurring-affiliate-tutorials",
+    "name": "SaaS recurring-commission affiliate via tutorials and YouTube",
+    "category": "affiliate",
+    "summary": "Teach people to use hosting, dev tools or AI tools and earn recurring or high one-time commissions on signups.",
+    "howItWorks": "Create step-by-step tutorials (blog + YouTube + GitHub templates) that solve a concrete problem with a tool, e.g. 'deploy X on a VPS' or 'automate Y with an AI tool'. Viewers who sign up through your link generate commissions. Official 2026 terms: Kit (ConvertKit) pays 50% of a referral's first 12 months, plus 10% lifetime recurring once you refer 10 paying customers in a year; ElevenLabs pays up to 22% for 12 months; Semrush pays one-time $50-$300 per sale (up to $450 at higher tiers) plus $10 per trial with a 120-day cookie; Hostinger starts at 40% per sale. Notion's program (20% of first-year revenue) is currently not accepting new affiliates. Recurring revenue compounds as tutorials keep ranking.",
+    "platforms": [
+      "PartnerStack",
+      "Impact.com",
+      "Rewardful/FirstPromoter (vendor-hosted)",
+      "YouTube",
+      "Blog/GitHub"
+    ],
+    "payout": {
+      "methods": ["PayPal", "Stripe", "bank transfer"],
+      "minimumPayout": "Commonly $5-$50 depending on program (PartnerStack $5, e.g. Kit; Impact $10, e.g. Semrush)",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Programs hold commissions for refunds before paying (Kit: 31-day hold, withdrawable from $5 around the 13th of each month via PartnerStack: Stripe, PayPal or direct deposit by region)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 80,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; follow each program's rules.",
+      "complianceRequirements": [
+        "affiliate disclosure (FTC/CAP)",
+        "YouTube paid-promotion/affiliate disclosure",
+        "no self-referral or cookie stuffing"
+      ]
+    },
+    "availability": {
+      "notes": "Most SaaS programs accept affiliates worldwide and pay via PayPal/Stripe; a few exclude sanctioned countries."
+    },
+    "automationPlan": [
+      "AI drafts tutorial scripts and code samples; agent verifies the code runs",
+      "Auto-generate blog post from video transcript",
+      "Link management with UTM + per-program dashboards",
+      "Monitor tool pricing changes and update content"
+    ],
+    "manualSteps": [
+      "Recording or voicing videos (or AI voice with disclosure)",
+      "Applying to programs",
+      "Hands-on testing of each tool"
+    ],
+    "fullCycle": [
+      "Pick tools you use",
+      "Join affiliate programs",
+      "Publish tutorials/videos",
+      "Viewers sign up",
+      "Commission locks after refund window",
+      "Payout to PayPal/bank"
+    ],
+    "risks": [
+      "Programs cut rates or end recurring terms",
+      "Tool shutdown or pricing changes",
+      "YouTube discovery is uncertain",
+      "Trust damage if you shill weak tools"
+    ],
+    "evidence": "Official affiliate pages (Nov 2026): Kit 50% for 12 months + 10% lifetime after 10 referrals/year, 90-day cookie; ElevenLabs up to 22% for 12 months; Semrush $50-$300 per sale + $10 per trial, 120-day cookie, hosted on Impact; Hostinger at least 40% per sale. Notion is closed to new affiliates, a reminder that programs change.",
+    "sources": [
+      "https://kit.com/affiliate",
+      "https://elevenlabs.io/affiliates",
+      "https://www.semrush.com/lp/affiliate-program/en/",
+      "https://www.hostinger.com/affiliates",
+      "https://www.notion.com/affiliates",
+      "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking"
+    ],
+    "tags": ["recurring", "developer", "youtube", "ai-tools"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "YouTube + OBS (free)",
+          "GitHub Pages or free blog",
+          "free trials of the tools you teach",
+          "AI script and editing helpers (free tiers)"
+        ],
+        "skills": [
+          "using the SaaS tools well",
+          "screen-recorded tutorial production",
+          "basic SEO/YouTube titling",
+          "clear written explanations"
+        ],
+        "equipment": ["laptop", "USB microphone (optional, ~$30)"],
+        "accounts": [
+          "PartnerStack and Impact partner accounts",
+          "individual vendor affiliate accounts",
+          "PayPal/Stripe/bank for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per referred paying customer (commission)",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 60,
+          "high": 300
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 2,
+        "grossMarginPercent": 98,
+        "hoursPerUnit": 3,
+        "notes": "Official 2026 terms: Semrush $50-300 per sale, Kit 50% of first 12 months, Hostinger 40%+ per sale; median assumes a ~$60 average first-year commission. Fee is PayPal payout (~2%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. First referrals usually come 2-6 months after tutorials start ranking, then refund holds add ~30 days."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 6000
+        },
+        "notes": "Winners are practitioners whose tutorials solve a concrete job and keep ranking on YouTube and Google for years. AI makes scripting and editing cheap, but AI search answers absorb some how-to traffic and programs like Notion's have closed to new affiliates. Failure mode: generic 'top 10 AI tools' content with no conversions."
+      },
+      "pricingStrategy": "Promote tools whose recurring commission covers 12+ months; once a tutorial converts, ask the vendor's partner manager for a higher tier or a custom discount code for your audience.",
+      "profitPath": [
+        "Month 0: pick 3-5 tools you actually use, join their programs, publish 4 tutorials (cost $0)",
+        "Month 1-2: 2 tutorials/week with GitHub templates; expect $0-30",
+        "Month 3-6: update winners, add comparison and migration guides; expect $30-200/month",
+        "Month 6-12: recurring commissions stack; median ~$80/month, top channels $1k+"
+      ],
+      "sources": [
+        "https://www.semrush.com/lp/affiliate-program/en/",
+        "https://kit.com/affiliate",
+        "https://www.hostinger.com/affiliates"
+      ]
+    }
+  },
+  {
+    "id": "amazon-influencer-shoppable-videos",
+    "name": "Amazon Influencer Program shoppable product videos",
+    "category": "affiliate",
+    "summary": "Upload short product review videos that Amazon shows on product pages; earn commission when shoppers buy after viewing.",
+    "howItWorks": "After acceptance (social account review) and onsite approval of test videos, you record honest 1-3 minute reviews of products you own and upload them to Amazon. Amazon places them on product detail pages; purchases attributed to your video earn onsite commissions, plus storefront/link commissions. Income comes from a growing video library without needing your own traffic. Payer is Amazon via the Associates payment system.",
+    "platforms": ["Amazon Influencer Program", "Amazon Associates"],
+    "payout": {
+      "methods": ["direct deposit", "Amazon gift card"],
+      "minimumPayout": "$10 (US gift card/direct deposit)",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "Same Associates payment cycle (~60 days after month end); onsite earnings use a separate Onsite Store ID that needs its own payment and tax info. Official US onsite rates (Table A) are 0-4% by category, mostly 0.5-3% (e.g. home 3%, beauty 2%, apparel 1%, books/toys/electronics 0.5%); Creator Ads (Table B) pay 0.5-5%. UK onsite table runs 0-6%."
+    },
+    "capitalRequiredUsd": 100,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 4,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 30
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; videos must be genuine reviews of products you have used (no fake/incentivized reviews).",
+      "complianceRequirements": [
+        "Amazon Influencer/Associates policies",
+        "genuine first-hand review only",
+        "affiliate disclosure (FTC/CAP)"
+      ]
+    },
+    "availability": {
+      "notes": "Most mature in Amazon US; also UK, DE, CA, IN and other stores with smaller programs. Shoppers must be in the store's market."
+    },
+    "automationPlan": [
+      "Shot lists and scripts drafted by AI from product specs/reviews",
+      "Batch editing/captioning templates",
+      "Track which ASINs have few videos",
+      "Upload queue and performance tracking"
+    ],
+    "manualSteps": [
+      "Physically handle and film products (unavoidable physical step)",
+      "Program application and onsite approval",
+      "On-camera or voice presence"
+    ],
+    "fullCycle": [
+      "Apply with a social account",
+      "Pass onsite video review",
+      "Film & upload videos",
+      "Videos shown on product pages",
+      "Earn onsite commissions",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Onsite rates are low (mostly 0.5-3%) and change",
+      "Video rejection/removal",
+      "Saturation on popular ASINs",
+      "Product costs if not already owned"
+    ],
+    "evidence": "Amazon's official help publishes the onsite commission tables (US Table A 0-4%, Creator Ads up to 5%; UK up to 6%), well below standard Associates rates. Creator reports range from hundreds to thousands per month for large libraries, though data is mostly self-reported.",
+    "sources": [
+      "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA",
+      "https://affiliate-program.amazon.com/help/node/topic/GV7VUCCSS8MQFSQT",
+      "https://affiliate-program.amazon.co.uk/help/node/topic/G4ARBJC7Z2NK48CA",
+      "https://affiliate-program.amazon.com/help/node/topic/G63DR893K4DH55XZ"
+    ],
+    "tags": ["video", "amazon", "physical-step"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 100,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "smartphone camera app",
+          "free video editor (CapCut/DaVinci Resolve)",
+          "Amazon Influencer upload tool"
+        ],
+        "skills": [
+          "on-camera product demos",
+          "basic lighting and audio",
+          "picking products with high search volume and few videos"
+        ],
+        "equipment": [
+          "smartphone",
+          "tripod + light + mic (~$100)",
+          "products you already own or buy"
+        ],
+        "accounts": [
+          "Amazon Influencer Program acceptance (social account review)",
+          "separate Onsite Store ID with tax and payment info"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per onsite video per year",
+        "typicalPriceUsd": {
+          "low": 0,
+          "median": 10,
+          "high": 60
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Estimated (Amazon publishes onsite rates only inside Associates Central): creator-reported libraries average roughly $0.5-5 per video per month at 0.5-4% onsite rates; median assumes ~$10/video/year. Products already owned cost $0."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 4,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Earnings start once videos are approved and placed; payment ~60 days after month end. Startup recovery assumes about $30/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 2500
+        },
+        "notes": "Winners upload hundreds of honest videos on products with many searches and few existing videos. Amazon has cut onsite rates (now mostly 0.5-3%) and the US carousel is crowded, so per-video earnings keep falling. Failure: low approval of test videos or a library of under 100 videos earning cents each."
+      },
+      "pricingStrategy": "No pricing control; raise income per hour by targeting high-ticket home and kitchen products and being first to review new listings.",
+      "profitPath": [
+        "Month 0: apply, film test videos, buy basic gear (cost ~$100)",
+        "Month 1-2: upload 30-60 videos of owned products; expect $5-30",
+        "Month 3-6: 20+ videos/week on new-release products; expect $30-150/month",
+        "Month 6-12: 300-500 video library; median ~$100/month"
+      ],
+      "sources": [
+        "https://affiliate-program.amazon.com/help/node/topic/GV7VUCCSS8MQFSQT",
+        "https://affiliate-program.amazon.com/help/node/topic/G63DR893K4DH55XZ"
+      ]
+    }
+  },
+  {
+    "id": "coupon-deal-aggregator-site",
+    "name": "Curated coupon and deal aggregator site",
+    "category": "affiliate",
+    "summary": "Publish verified coupons/deals in a niche and earn affiliate commissions when users shop through them.",
+    "howItWorks": "Build a niche deal site (e.g. developer tools, outdoor gear, a specific country's e-commerce) that verifies codes and curates time-limited deals, ideally with a deals newsletter and alerts. Clicks go through merchant affiliate links or a sub-network (Skimlinks, Sovrn Commerce) which auto-affiliates thousands of merchants. You only list codes merchants actually released; paying publishers are merchants via networks. Generic coupon SEO is heavily contested and Google penalises third-party coupon sections on unrelated sites.",
+    "platforms": [
+      "Skimlinks",
+      "Sovrn Commerce",
+      "Awin/CJ/Impact merchant programs",
+      "Email newsletter"
+    ],
+    "payout": {
+      "methods": ["bank transfer", "PayPal"],
+      "minimumPayout": "Skimlinks reportedly $65/EUR55/GBP50; Sovrn ~$25; networks $10-50 (Skimlinks/Sovrn not re-verified: official help pages blocked automated access)",
+      "frequency": "monthly",
+      "typicalDelayDays": 90,
+      "notes": "Sub-networks pay after merchants pay them, often 60-90 days after month end."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 8,
+      "setupEffort": 5,
+      "ongoingEffort": 3,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; never publish fake or leaked codes (consumer-protection law). UK ASA/CAP guidance specifically requires voucher sites to label affiliate offers (e.g. 'Ad' in or around the title).",
+      "complianceRequirements": [
+        "affiliate disclosure (FTC/CAP)",
+        "merchant coupon policies (only authorised codes)",
+        "consumer-protection rules on price claims"
+      ]
+    },
+    "availability": {
+      "notes": "Skimlinks/Sovrn accept publishers globally; merchants mostly US/UK/EU."
+    },
+    "automationPlan": [
+      "Pull coupon/deal feeds from networks' APIs",
+      "Auto-expire and verify codes",
+      "AI writes short merchant summaries",
+      "Auto-send daily deal newsletter"
+    ],
+    "manualSteps": [
+      "Network/merchant approval",
+      "Editorial check that deals are real",
+      "Payment setup"
+    ],
+    "fullCycle": [
+      "Pick niche",
+      "Build site + newsletter",
+      "Join networks",
+      "Ingest authorised deals",
+      "Users buy",
+      "Payout"
+    ],
+    "risks": [
+      "Google site-reputation/coupon spam enforcement",
+      "Merchants cancel commissions for coupon sites",
+      "Last-click attribution disputes",
+      "Thin margins"
+    ],
+    "evidence": "Skimlinks official docs confirm monthly payouts above threshold; coupon sites remain a major affiliate channel, but 2024-25 Google enforcement removed many coupon directories.",
+    "sources": [
+      "https://support.skimlinks.com/hc/en-us/articles/223835448-Payment-Schedule-When-will-I-get-paid",
+      "https://www.seroundtable.com/google-white-label-coupon-sites-site-reputation-abuse-37515.html",
+      "https://www.asa.org.uk/advice-online/affiliate-marketing.html"
+    ],
+    "tags": ["deals", "newsletter", "seo"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 10,
+        "tools": [
+          "static site or WordPress",
+          "hosting (~$5-10/mo)",
+          "Skimlinks/Sovrn auto-affiliation script",
+          "free newsletter tool tier"
+        ],
+        "skills": [
+          "deal verification",
+          "light scripting for feeds (AI coding agents help)",
+          "SEO",
+          "newsletter writing"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Skimlinks or Sovrn Commerce publisher account",
+          "network/merchant accounts",
+          "PayPal or bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 pageviews (affiliate RPM)",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 8,
+          "high": 40
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: deal traffic converts well but sub-networks keep ~25% of commission and merchants cut coupon-site rates; variable cost is feed/AI spend."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 10,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 2,
+        "notes": "Fixed cost is recurringMonthlyUsd only; startup cash is not amortised. Sub-network payouts arrive 60-90 days after month end. Startup recovery assumes about $10/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 7,
+        "typicalNetProfitMonth12Usd": {
+          "low": -10,
+          "median": 10,
+          "high": 2500
+        },
+        "notes": "Big coupon brands and browser extensions dominate, and Google penalises white-label coupon sections, so generic coupon SEO is close to closed. Since the 2024-2025 extension cookie-stuffing scandals, many merchants exclude or underpay coupon affiliates. A niche deals newsletter with real curation is the only realistic angle."
+      },
+      "pricingStrategy": "Commissions are fixed; instead monetise attention: after 1,000+ subscribers sell a sponsored deal slot ($25-100) to merchants in the niche.",
+      "profitPath": [
+        "Month 0: pick a niche or country, build site and newsletter (cost ~$20)",
+        "Month 1-3: post verified deals daily; expect $0-10",
+        "Month 3-6: grow newsletter and alerts; expect $10-40/month",
+        "Month 6-12: add sponsored slots; median ~$30/month"
+      ],
+      "sources": [
+        "https://support.skimlinks.com/hc/en-us/articles/223835448-Payment-Schedule-When-will-I-get-paid",
+        "https://www.seroundtable.com/google-white-label-coupon-sites-site-reputation-abuse-37515.html"
+      ]
+    }
+  },
+  {
+    "id": "newsletter-sponsorships-ad-network",
+    "name": "Newsletter sponsorships and ad-network placements",
+    "category": "affiliate",
+    "summary": "Grow a niche newsletter and sell ad slots directly or through beehiiv Ad Network, Paved or Passionfroot.",
+    "howItWorks": "Run a focused newsletter (e.g. weekly AI tools for accountants) and earn when advertisers pay for placements: CPC/CPM via the beehiiv Ad Network, or flat-fee sponsorships booked through marketplaces (Paved, Passionfroot) or directly. Payers are brands buying attention of your subscribers. Revenue scales with engaged, real subscribers; buying lists or bot subscribers is prohibited and destroys deliverability.",
+    "platforms": [
+      "beehiiv Ad Network",
+      "Paved",
+      "Passionfroot",
+      "direct sponsors"
+    ],
+    "payout": {
+      "methods": ["Stripe Express -> bank", "bank transfer", "PayPal"],
+      "minimumPayout": "beehiiv: no stated minimum (Stripe Express via beehiiv Wallet); Paved: $1,000 balance threshold (lower balances roll over)",
+      "frequency": "monthly (beehiiv on the 20th; Paved monthly) / per campaign for direct sponsors",
+      "typicalDelayDays": 50,
+      "notes": "beehiiv pays Ad Network earnings on the 20th for the previous month's placements (reports ~96h after send); PayPal/Wise not supported. Paved's publisher terms: paid within 60 days after month end once the $1,000 threshold is met; the marketplace platform fee is shown in-platform, not a fixed published %."
+    },
+    "capitalRequiredUsd": 50,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 270
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 7,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 8,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; sponsored content must be labelled; email laws (CAN-SPAM, GDPR/PECR) apply to list building.",
+      "complianceRequirements": [
+        "label sponsored content",
+        "affiliate disclosure (FTC/CAP)",
+        "double opt-in / GDPR consent",
+        "CAN-SPAM unsubscribe"
+      ]
+    },
+    "availability": {
+      "notes": "beehiiv Ad Network is open to anyone on a paid beehiiv plan who is actively sending (no subscriber minimum, but small lists get fewer offers) and requires Stripe Express in your country. Paved/Passionfroot favour English-language audiences. Direct sponsorships need no platform."
+    },
+    "automationPlan": [
+      "AI curates sources and drafts issues; human edits",
+      "Auto-insert ad network slots",
+      "Media kit and rate card auto-updated from stats",
+      "Referral/boost programs for organic growth"
+    ],
+    "manualSteps": [
+      "Editorial voice and final review",
+      "Negotiating direct sponsors",
+      "Stripe KYC"
+    ],
+    "fullCycle": [
+      "Pick niche",
+      "Launch newsletter",
+      "Grow to ~1k+ engaged subs",
+      "Enable ad network/marketplace",
+      "Run sponsored issues",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Slow audience growth",
+      "Platform plan costs",
+      "Ad fill rates vary",
+      "Deliverability issues"
+    ],
+    "evidence": "Official beehiiv Ad Network FAQ documents eligibility and the monthly 20th payout; Paved's publisher terms document a $1,000 threshold and net-60 payout, which delays first payouts for small newsletters. beehiiv reports ad-network payouts of roughly $1M/month to creators (2026).",
+    "sources": [
+      "https://www.beehiiv.com/support/article/17507491038231-Ad-Network-FAQ",
+      "https://www.paved.com/publisher-terms",
+      "https://www.paved.com/publishers",
+      "https://www.emarketer.com/content/beehiiv-doubles-ad-sales-team-newsletter-monetization-heats-up"
+    ],
+    "tags": ["newsletter", "sponsorship", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 50,
+        "recurringMonthlyUsd": 49,
+        "tools": [
+          "beehiiv Lite plan ($49/mo annual, $59 monthly; the Ad Network needs any paid plan, Sponsorship Storefront needs Pro at $95-109/mo)",
+          "domain (~$12/yr)",
+          "AI research/drafting assistant (free tier)"
+        ],
+        "skills": [
+          "niche expertise",
+          "consistent weekly writing",
+          "audience growth (referrals, cross-promotions)",
+          "sponsor sales outreach"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "beehiiv account + Stripe Express KYC",
+          "Paved/Passionfroot publisher profiles"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 opens of one sponsored placement",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 60
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 1,
+        "notes": "Estimated: niche B2B newsletters sell placements at ~$20-50 per 1,000 opens and ad networks pay less (beehiiv says advertisers set each offer's CPM/CPC). The 20% is an estimated network/marketplace cut: neither beehiiv's Ad Network FAQ nor Paved's publisher terms publish a percentage."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 49,
+        "unitsPerMonthToBreakEven": 4,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 3,
+        "notes": "Fixed cost is recurringMonthlyUsd only; startup cash is not amortised. Break-even needs ~4,000 sponsored opens/month (e.g. 1,000 opens x 4 issues). You can start on beehiiv Free (2,500 subs) and upgrade only when ads are ready. Startup recovery assumes about $20/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": -49,
+          "median": 60,
+          "high": 8000
+        },
+        "notes": "Winners are focused B2B or professional newsletters with 40%+ open rates where sponsors value the audience. Newsletter ad budgets grew in 2025-2026, but AI made launching a newsletter trivial so subscriber growth is the bottleneck. Failure: paying for a plan for months while stuck under 1,000 subscribers."
+      },
+      "pricingStrategy": "Start with ad-network fill and one low-priced direct sponsor to collect testimonials, then publish a rate card and raise CPM as open rate and list size grow.",
+      "profitPath": [
+        "Month 0: niche, beehiiv Free, domain, 4 sample issues (cost ~$50)",
+        "Month 1-3: grow to 500-1,000 subs via cross-promos; expect $0",
+        "Month 3-6: upgrade to Lite, run ad network + first direct sponsor; expect $50-150/month",
+        "Month 6-12: rate card and repeat sponsors; median ~$150/month gross"
+      ],
+      "sources": [
+        "https://www.beehiiv.com/pricing",
+        "https://www.beehiiv.com/support/article/17507491038231-Ad-Network-FAQ",
+        "https://www.paved.com/publisher-terms"
+      ]
+    }
+  },
+  {
+    "id": "pay-per-lead-landing-pages",
+    "name": "Pay-per-lead landing pages (B2B, solar, home services, legal intake)",
+    "category": "affiliate",
+    "summary": "Build informational pages and calculators that generate consented leads paid per qualified lead by networks or vendors.",
+    "howItWorks": "Create genuinely useful tools (solar savings calculator, B2B software selector quiz, 'do I need a lawyer for X' guide) that end in a clearly consented form or partner redirect. CPA/lead networks (e.g. MaxBounty) or vendor partner programs pay a fixed amount per qualified lead or signup ($5-$100+ depending on vertical). Incentivized or fake form fills are fraud.",
+    "platforms": [
+      "MaxBounty",
+      "CJ/Impact CPL offers",
+      "vendor partner programs (B2B SaaS)"
+    ],
+    "payout": {
+      "methods": ["PayPal", "direct deposit", "check", "wire"],
+      "minimumPayout": "MaxBounty $100 (or higher if you choose); vendor programs vary",
+      "frequency": "monthly (MaxBounty; weekly after first payment if on electronic payments) / monthly",
+      "typicalDelayDays": 30,
+      "notes": "MaxBounty pays about 15 days after the last business day of the month by default; leads can be scrubbed (rejected) for quality before payment."
+    },
+    "capitalRequiredUsd": 50,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 6,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 85,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [
+        "Insurance/legal lead referral needs a licence in some US states and EU countries"
+      ],
+      "notes": "Lead gen is legal broadly; insurance, legal-referral and credit leads are regulated, so the score assumes unregulated verticals (B2B, solar, home services).",
+      "complianceRequirements": [
+        "TCPA/GDPR explicit consent for contact",
+        "no incentivized or fake submissions",
+        "affiliate disclosure (FTC/CAP)",
+        "vertical licensing where required"
+      ]
+    },
+    "availability": {
+      "notes": "CPA networks focus on US/UK/CA/AU traffic; B2B vendor programs accept affiliates globally."
+    },
+    "automationPlan": [
+      "Auto-generated calculators/quizzes from public data",
+      "Server-side lead validation and dedup",
+      "A/B testing of landing pages",
+      "Pipe leads to network APIs with consent logs"
+    ],
+    "manualSteps": [
+      "Network approval (often strict)",
+      "Legal review of consent language",
+      "Choosing compliant traffic sources"
+    ],
+    "fullCycle": [
+      "Pick vertical & offer",
+      "Get network approval",
+      "Build calculator/landing page",
+      "Drive organic traffic",
+      "Leads validated",
+      "Weekly/monthly payout"
+    ],
+    "risks": [
+      "Lead scrubbing and chargebacks",
+      "Strict network approval",
+      "Regulatory fines for consent failures (TCPA)",
+      "Offer caps/pauses"
+    ],
+    "evidence": "MaxBounty's official site states a $100 threshold, monthly payment ~15 days after month end, and optional weekly payments after a first payment. Per-lead rates vary by offer.",
+    "sources": [
+      "https://www.maxbounty.com/",
+      "https://www.affpaying.com/maxbounty"
+    ],
+    "tags": ["lead-gen", "cpa", "b2b"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 50,
+        "recurringMonthlyUsd": 15,
+        "tools": [
+          "static site or landing-page builder",
+          "hosting (~$5-10/mo)",
+          "consent-compliant form tool",
+          "AI coding agent to build calculators"
+        ],
+        "skills": [
+          "building calculators/quizzes",
+          "SEO or organic distribution",
+          "privacy and consent compliance",
+          "conversion copywriting"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "MaxBounty or other CPL network approval (phone interview possible)",
+          "vendor partner accounts",
+          "bank/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per qualified lead",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 25,
+          "high": 100
+        },
+        "costPerUnitUsd": 3,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 1,
+        "notes": "Estimate from public CPL offers: B2B/home services $5-50, solar and legal intake up to $100+; ~$3 variable cost for tools/traffic; scrubbed leads are unpaid."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 15,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 2,
+        "notes": "Fixed cost is recurringMonthlyUsd only; startup cash is not amortised. One qualified lead per month covers fixed cost; most networks also require minimum volume to stay approved. Startup recovery assumes about $25/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -15,
+          "median": 30,
+          "high": 4000
+        },
+        "notes": "Lead-gen profits go to operators with organic traffic or efficient paid media and strict consent records. New publishers are often rejected by CPL networks, and AI answers reduce traffic to simple calculators. Failure: low volume, rejected leads, or consent violations that get the account closed."
+      },
+      "pricingStrategy": "Network payouts are fixed at first; after 3 months of clean volume ask for a payout bump or move to direct vendor deals at 20-50% higher CPL.",
+      "profitPath": [
+        "Month 0: pick vertical, build 1-2 calculators, apply to networks (cost ~$50)",
+        "Month 1-2: publish supporting content; first leads $0-25",
+        "Month 3-6: improve conversion and add vendors; expect $25-150/month",
+        "Month 6-12: negotiate direct deals; median ~$50/month"
+      ],
+      "sources": [
+        "https://www.maxbounty.com/",
+        "https://www.affpaying.com/maxbounty"
+      ]
+    }
+  },
+  {
+    "id": "fintech-referral-bonuses",
+    "name": "Fintech and brokerage referral programs via educational content",
+    "category": "affiliate",
+    "summary": "Explain how to use cross-border money apps and brokers; earn official referral rewards when readers open accounts.",
+    "howItWorks": "Publish neutral, factual guides (e.g. 'how freelancers in Kenya receive USD', fee comparisons) and include your official referral/partner link for apps like Wise, Revolut or Interactive Brokers. Programs pay fixed rewards per qualifying new customer: Wise's reward is set per region and shown on your invite page; IBKR pays $200 per referral (max 15/year, 30 total) but requires the referrer's own account to hold at least $2,000 and have made a securities trade. Never give personalised investment advice.",
+    "platforms": [
+      "Wise (invite/partner program)",
+      "Revolut referrals",
+      "Interactive Brokers referral",
+      "Payoneer referral"
+    ],
+    "payout": {
+      "methods": ["credited to your account in the app -> bank withdrawal"],
+      "minimumPayout": "No minimum (rewards credited per qualifying referral)",
+      "frequency": "per qualifying referral",
+      "typicalDelayDays": 30,
+      "notes": "Rewards arrive after the invitee completes the qualifying action (transfer/deposit/trade). Wise: claim within one year of qualifying. IBKR: referrer needs $2,000+ net liquidation value."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 5,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 90,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [
+        "IBKR referral: residents of Japan, Denmark, Spain, Portugal, Poland, mainland China and Israel excluded (Japan is the only one in the reference set)",
+        "countries where a given app is not licensed"
+      ],
+      "notes": "Referral rewards are legal; financial-promotion rules (e.g. UK FCA) apply to investment content: stay factual, add risk warnings, avoid crypto/leveraged products.",
+      "complianceRequirements": [
+        "financial promotion rules: no personalised advice",
+        "program terms",
+        "affiliate disclosure (FTC/CAP)",
+        "tax on rewards"
+      ]
+    },
+    "availability": {
+      "notes": "Each app licenses only certain countries; Wise and Payoneer cover most of the reference set, Revolut mainly EEA/UK/US/AU/SG/JP/BR/MX; IBKR excludes some countries."
+    },
+    "automationPlan": [
+      "AI drafts and updates fee-comparison guides from public fee pages",
+      "Automated checks that referral terms/amounts are current",
+      "Track referral status per program"
+    ],
+    "manualSteps": [
+      "Hold a real account in each app (KYC)",
+      "Compliance review of claims",
+      "Personal checking of terms in your country"
+    ],
+    "fullCycle": [
+      "Open accounts",
+      "Get official referral links",
+      "Publish guides",
+      "Readers sign up & qualify",
+      "Rewards credited",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Programs change or end suddenly",
+      "Reward caps per year",
+      "Financial promotion breaches",
+      "Low conversion without audience"
+    ],
+    "evidence": "IBKR's official referrer page: $200 per referral, 15/year and 30 lifetime cap, $2,000 minimum account value, exclusions for Japan, Denmark, Spain, Portugal, Poland, mainland China and Israel. Wise's official help confirms rewards can be earned repeatedly and are region-specific (amount shown in-app). Revolut terms not re-verified (page blocked automated access).",
+    "sources": [
+      "https://www.interactivebrokers.com/en/accounts/referrer.php",
+      "https://wise.com/uk/help/articles/77zvWSO4tKdGobXrgHIJAA/how-does-the-standard-invite-program-work",
+      "https://www.revolut.com/en-US/legal/referrals-terms/"
+    ],
+    "tags": ["fintech", "referral", "low-setup"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "free blog or YouTube",
+          "the fintech apps' referral dashboards"
+        ],
+        "skills": [
+          "clear factual explainers about fees and transfers",
+          "staying within financial-promotion rules (no advice)"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": [
+          "own verified accounts at Wise/Revolut/IBKR/Payoneer",
+          "IBKR needs $2,000+ in your own account to refer"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per qualifying referral",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 50,
+          "high": 200
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 2,
+        "notes": "Rewards are per programme and region: Payoneer/Revolut small fixed amounts, Wise set per region, IBKR $200 (max 15/year)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 1200
+        },
+        "notes": "Winners serve a specific audience (freelancers in one country, expats) with trustworthy fee comparisons. Programmes regularly shrink rewards or add caps, and financial-promotion rules restrict how products can be advertised. Failure: low traffic and referrals that never complete the qualifying action."
+      },
+      "pricingStrategy": "No pricing control; prioritise programmes whose reward per referral is highest for your audience's country and that tolerate content links.",
+      "profitPath": [
+        "Month 0: open own accounts, write 5 country-specific fee guides (cost $0)",
+        "Month 1-2: share in freelancer forums where allowed; expect $0-50",
+        "Month 3-6: add videos and comparisons; expect $20-100/month",
+        "Month 6-12: update fees monthly; median ~$40/month"
+      ],
+      "sources": [
+        "https://www.interactivebrokers.com/en/accounts/referrer.php",
+        "https://wise.com/uk/help/articles/77zvWSO4tKdGobXrgHIJAA/how-does-the-standard-invite-program-work"
+      ]
+    }
+  },
+  {
+    "id": "pinterest-affiliate-pinning",
+    "name": "Pinterest affiliate pinning",
+    "category": "affiliate",
+    "summary": "Create original pins (images/video) that link to affiliate products or affiliate blog posts in visual niches.",
+    "howItWorks": "Pinterest is a search engine for planning (home decor, recipes, crafts, fashion). You design original pins with keyword-rich titles that link either directly to affiliate products (allowed with disclosure) or to your own blog posts containing affiliate links, which is safer and diversifies. Pins have long shelf lives, so a consistent library compounds traffic. Payers are the merchants/networks behind the links (Amazon, LTK, Awin, etc.).",
+    "platforms": [
+      "Pinterest",
+      "Amazon Associates/Awin/Impact/LTK",
+      "Tailwind (scheduler)"
+    ],
+    "payout": {
+      "methods": ["per underlying network (bank/PayPal)"],
+      "minimumPayout": "Depends on network ($10-$50 typical)",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "Pinterest itself does not pay; payout comes from the affiliate program."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 8,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 5,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; Pinterest Community Guidelines forbid repetitive money-making pins, deceptive/excessive redirects, and multiple accounts used to manipulate the platform. UK ASA/CAP guidance: put 'Ad' at the start of the Pin description for affiliate pins.",
+      "complianceRequirements": [
+        "affiliate disclosure (FTC/CAP)",
+        "Pinterest Community Guidelines (no spam, no deceptive redirects)",
+        "network terms"
+      ]
+    },
+    "availability": {
+      "notes": "Pinterest available in most reference countries; traffic value highest in US/UK/CA/AU."
+    },
+    "automationPlan": [
+      "AI image/template generation for pin variations",
+      "Keyword research and title/description generation",
+      "Scheduled publishing via official API/approved schedulers",
+      "Analytics-driven reposting of winners"
+    ],
+    "manualSteps": [
+      "Account setup and claiming website",
+      "Quality control on visuals",
+      "Affiliate program approvals"
+    ],
+    "fullCycle": [
+      "Choose visual niche",
+      "Set up business account",
+      "Join affiliate programs",
+      "Pin daily",
+      "Clicks convert",
+      "Payout from network"
+    ],
+    "risks": [
+      "Spam filters suspending accounts",
+      "Volatile Pinterest reach",
+      "Low conversion from inspiration browsing"
+    ],
+    "evidence": "Pinterest affiliate links are widely used and allowed with disclosure per multiple 2026 guides; Pinterest added Amazon storefront linking for creators.",
+    "sources": [
+      "https://policy.pinterest.com/en/community-guidelines",
+      "https://www.asa.org.uk/advice-online/affiliate-marketing.html",
+      "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "https://www.auditsocials.com/blog/pinterest-affiliate-idea-pin-disclosure-2026-ftc-endorsement-rules-material-connection-creator-workflow"
+    ],
+    "tags": ["visual", "social", "scheduling"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Pinterest business account (free)",
+          "Canva free",
+          "optional Tailwind scheduler (paid plans ~$15+/mo)",
+          "affiliate links from Amazon/LTK/Awin"
+        ],
+        "skills": [
+          "graphic design (AI image tools help)",
+          "Pinterest keyword research",
+          "affiliate disclosure"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": [
+          "Pinterest business account",
+          "affiliate network accounts",
+          "bank/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 outbound clicks",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 15,
+          "high": 80
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 93,
+        "hoursPerUnit": 3,
+        "notes": "Estimate: ~3-8% purchase rate x $40 order x 3-10% commission gives ~$5-80 per 1,000 clicks; $1 is AI image credits."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Pins take 2-4 months to gain search distribution."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 1500
+        },
+        "notes": "Winners run blogs in home, recipe or craft niches and use Pinterest as a traffic source rather than direct-linking. Pinterest was flooded with AI images in 2024-2025 and added AI labels and user controls to see fewer AI pins, which hurts mass-generated accounts. Failure: thousands of pins, little click-through, cents of commission."
+      },
+      "pricingStrategy": "No pricing control; route clicks to higher-commission merchants (LTK, Awin home brands) instead of Amazon once traffic exists.",
+      "profitPath": [
+        "Month 0: niche, boards, 50 original pins (cost $0)",
+        "Month 1-2: 5-15 pins/day; expect $0-10",
+        "Month 3-6: double down on pins that earn saves; expect $10-50/month",
+        "Month 6-12: add a blog and email capture; median ~$30/month"
+      ],
+      "sources": [
+        "https://policy.pinterest.com/en/community-guidelines",
+        "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking"
+      ]
+    }
+  },
+  {
+    "id": "tiktok-shop-affiliate",
+    "name": "TikTok Shop affiliate creator",
+    "category": "affiliate",
+    "summary": "Promote TikTok Shop products in short videos/lives and earn commission on in-app sales.",
+    "howItWorks": "Once eligible (18+, 1,000+ followers in the US, 500+ in the UK, plus an account risk review), you add products from the TikTok Shop marketplace to your showcase and create demo/review videos or livestreams. Sellers set commissions (commonly 10-30%) and often send free samples. Sales happen inside TikTok, so conversion can be high, but it requires consistent on-camera content.",
+    "platforms": ["TikTok Shop (Affiliate)"],
+    "payout": {
+      "methods": ["bank transfer via TikTok Shop creator wallet"],
+      "minimumPayout": "Low/no minimum per market (withdraw from creator balance)",
+      "frequency": "after order settlement",
+      "typicalDelayDays": 30,
+      "notes": "Commission settles after delivery and the return window, then is withdrawable to a linked bank. Exact settlement days and withdrawal minimums per market were not confirmed on an official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 4,
+      "ongoingEffort": 7,
+      "incomePotential": 8,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 95,
+      "platformAvailabilityPercent": 25
+    },
+    "legality": {
+      "restrictedIn": [
+        "Markets where TikTok is banned or restricted (none in most reference countries; check local status)"
+      ],
+      "notes": "Legal; product claims must be truthful, and sponsored/affiliate content must use TikTok's commercial content disclosure.",
+      "complianceRequirements": [
+        "TikTok commercial content disclosure toggle",
+        "product-claim truthfulness (health/beauty)",
+        "tax"
+      ]
+    },
+    "availability": {
+      "notes": "Official TikTok Shop seller region list (Nov 2026): US, Mexico, Brazil, Philippines, Singapore, Thailand, Vietnam, Indonesia, Malaysia, Japan, Germany, France, Spain, Ireland, Italy, Poland, Netherlands, Belgium, UK. About 13 of the ~50 reference countries are covered; creators elsewhere cannot participate."
+    },
+    "automationPlan": [
+      "AI scripting of hooks and product demos",
+      "Batch editing/captions",
+      "Track trending products and commission rates",
+      "Schedule posts"
+    ],
+    "manualSteps": [
+      "On-camera filming and handling samples (physical step)",
+      "Reaching follower threshold",
+      "KYC and bank linking"
+    ],
+    "fullCycle": [
+      "Grow to threshold",
+      "Apply as affiliate",
+      "Request samples",
+      "Post videos/lives",
+      "Orders settle",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Algorithm volatility",
+      "Country availability",
+      "Policy strikes for misleading claims",
+      "High ongoing effort"
+    ],
+    "evidence": "Official TikTok Shop creator pages state the 18+ and follower requirements (US 1,000+, UK 500+); the official seller site lists 19 markets. Seller-set commissions of 10-30% are reported by third-party guides.",
+    "sources": [
+      "https://business.tiktokshop.com/us/creator",
+      "https://business.tiktokshop.com/uk/creator",
+      "https://seller.tiktok.com/uk",
+      "https://creatorsagency.co/blog/tiktok-shop-affiliate-requirements-2026"
+    ],
+    "tags": ["short-video", "social-commerce", "physical-step"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "TikTok app + TikTok Shop creator centre",
+          "CapCut (free)",
+          "free product samples from sellers"
+        ],
+        "skills": [
+          "on-camera presenting",
+          "short-form hooks and editing",
+          "picking products that convert",
+          "consistency (daily posting)"
+        ],
+        "equipment": ["smartphone", "ring light (optional)"],
+        "accounts": [
+          "TikTok account with 1,000+ followers (US) / 500+ (UK)",
+          "TikTok Shop affiliate KYC + bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per attributed sale (commission)",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 4,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: commissions 10-30% set by sellers on mostly $10-40 items give ~$1-20 per sale; free samples mean ~$0 product cost."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Getting to the follower threshold usually takes 1-3 months; commissions settle after the return window."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 8000
+        },
+        "notes": "A small share of creators earn most commissions, usually with daily videos or livestreams in beauty, home and gadgets. TikTok Shop GMV kept growing in 2025-2026 but creator supply grew faster, and sellers trimmed open-collaboration rates. Failure: never reaching the follower bar or posting without sales."
+      },
+      "pricingStrategy": "Start with open collaborations, then use sales history to request targeted collaborations at higher rates (20-30%) plus paid flat fees per video.",
+      "profitPath": [
+        "Month 0: grow account in one niche to the follower threshold (cost $0)",
+        "Month 1-2: request samples, post 1-3 videos/day; expect $0-50",
+        "Month 3-6: double down on converting products, try live; expect $50-300/month",
+        "Month 6-12: negotiate targeted rates and flat fees; median ~$100/month"
+      ],
+      "sources": [
+        "https://business.tiktokshop.com/us/creator",
+        "https://business.tiktokshop.com/uk/creator"
+      ]
+    }
+  },
+  {
+    "id": "creator-storefront-affiliate",
+    "name": "Creator storefront affiliate (LTK, ShopMy)",
+    "category": "affiliate",
+    "summary": "Curate shoppable product collections and earn commissions across thousands of retailers through LTK or ShopMy.",
+    "howItWorks": "Creator affiliate platforms aggregate retailer programs: you apply, then build storefronts/collections (outfits, home, beauty, gear) and share links on Instagram, blog, YouTube or newsletter. When followers buy, the platform collects commission from retailers and pays you your share; brands also offer gifting and paid collabs inside the platform. Works best with an existing lifestyle audience.",
+    "platforms": ["LTK", "ShopMy"],
+    "payout": {
+      "methods": ["Stripe (direct deposit)", "PayPal"],
+      "minimumPayout": "ShopMy $11 (confirmed); LTK threshold not confirmed on an official page (third-party reports say $25-$100)",
+      "frequency": "weekly (ShopMy Fridays) / monthly (LTK)",
+      "typicalDelayDays": 90,
+      "notes": "ShopMy: commissions pending 30-120 days until the retailer pays, then paid weekly on Fridays via Stripe or PayPal. LTK help center blocked automated access, so its terms are unverified."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 45
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; disclosure needed on every post.",
+      "complianceRequirements": [
+        "affiliate disclosure (FTC/CAP)",
+        "platform creator terms",
+        "tax forms"
+      ]
+    },
+    "availability": {
+      "notes": "Strongest for US/UK/EU/AU audiences; retailers mainly ship to those countries; creators elsewhere can join but conversions are low."
+    },
+    "automationPlan": [
+      "AI drafts collection titles/descriptions",
+      "Auto-sync collections to blog/newsletter",
+      "Track click-to-sale per collection"
+    ],
+    "manualSteps": [
+      "Application approval",
+      "Taste/curation and personal content",
+      "Social posting with face/personality"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Build storefront",
+      "Share links",
+      "Followers buy",
+      "Commissions lock",
+      "Payout"
+    ],
+    "risks": [
+      "Approval favours established creators",
+      "Long lock periods",
+      "Retailer rate changes",
+      "Audience dependence"
+    ],
+    "evidence": "ShopMy's official payment FAQ documents the $11 minimum, weekly Friday payouts and 30-120 day pending period; LTK pays thousands of creators but its payout terms could not be re-verified.",
+    "sources": [
+      "https://shopmy.helpkit.so/payment/43V9gf7Co7gb6ZT2oTe8eM/payment-faq/43V9gf7Co5t5aH6rWwpwyi",
+      "https://creatorflow.so/blog/affiliate-platform-payout-comparison-creators/"
+    ],
+    "tags": ["creator", "fashion", "lifestyle"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "LTK or ShopMy (free for creators)",
+          "Instagram/YouTube/blog",
+          "Canva free"
+        ],
+        "skills": [
+          "styling or curating products",
+          "consistent lifestyle content",
+          "audience engagement"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": [
+          "LTK/ShopMy creator approval",
+          "Stripe or PayPal (ShopMy) / bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per attributed sale (your share of commission)",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 6,
+          "high": 30
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: retailers pay ~5-20% on $60-150 fashion/home orders; the platform keeps a share and the rest is shown as your earnings, so the price already nets out the platform cut."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Commissions stay pending 30-120 days until retailers pay."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 4000
+        },
+        "notes": "Earnings concentrate in creators with engaged lifestyle audiences of 10k+; brand gifting and paid collabs inside the platforms are where most of their income comes from. AI does not replace the trust factor, but feeds are crowded. Failure: storefront with no audience gets no clicks."
+      },
+      "pricingStrategy": "No commission control early; once you have conversion data, pitch brands for flat-fee collabs ($100-500) in addition to commissions.",
+      "profitPath": [
+        "Month 0: apply to ShopMy (and LTK), build 5 collections (cost $0)",
+        "Month 1-2: post outfit/home content 4-5x/week; expect $0-20",
+        "Month 3-6: grow audience; expect $20-100/month",
+        "Month 6-12: add brand collabs; median ~$50/month"
+      ],
+      "sources": [
+        "https://shopmy.helpkit.so/payment/43V9gf7Co7gb6ZT2oTe8eM/payment-faq/43V9gf7Co5t5aH6rWwpwyi",
+        "https://creatorflow.so/blog/affiliate-platform-payout-comparison-creators/"
+      ]
+    }
+  },
+  {
+    "id": "video-podcast-sponsorship-marketplaces",
+    "name": "YouTube/podcast sponsorship marketplaces",
+    "category": "affiliate",
+    "summary": "List your channel or podcast on sponsorship marketplaces so brands pay for integrated reads or segments.",
+    "howItWorks": "Once a YouTube channel or podcast has a consistent niche audience, list it on YouTube Creator Partnerships (formerly BrandConnect, requires YPP in eligible countries) and third-party marketplaces (ThoughtLeaders, Podcorn, Passionfroot). Brands pay flat fees or CPM for integrations, with briefs and reporting handled in-platform. This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.",
+    "platforms": [
+      "YouTube Creator Partnerships",
+      "ThoughtLeaders",
+      "Podcorn",
+      "Passionfroot"
+    ],
+    "payout": {
+      "methods": ["platform payout -> bank/PayPal", "direct invoice"],
+      "minimumPayout": "Per campaign (no threshold on most)",
+      "frequency": "per campaign",
+      "typicalDelayDays": 45,
+      "notes": "Typically paid 30-60 days after the content goes live and is approved."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; paid promotion must be disclosed (YouTube paid-promotion checkbox, spoken disclosure in podcasts).",
+      "complianceRequirements": [
+        "paid promotion disclosure",
+        "brand contract compliance",
+        "tax/invoicing"
+      ]
+    },
+    "availability": {
+      "notes": "YouTube Creator Partnerships: 18+, YPP members in 24 countries/regions (incl. US, UK, CA, AU, DE, FR, IT, JP, KR, IN, ID, PH, SG, BR, MX); third-party marketplaces mostly English-language audiences."
+    },
+    "automationPlan": [
+      "AI-assisted script integration and show notes",
+      "Automated media kit from analytics",
+      "Pipeline tracking of brand inquiries"
+    ],
+    "manualSteps": [
+      "Building the audience (months)",
+      "Recording reads",
+      "Negotiating and approving briefs"
+    ],
+    "fullCycle": [
+      "Build channel/podcast",
+      "Join marketplaces",
+      "Receive/pitch offers",
+      "Deliver integration",
+      "Brand approves",
+      "Payout"
+    ],
+    "risks": [
+      "Need sizeable audience first",
+      "Irregular deal flow",
+      "Brand safety restrictions"
+    ],
+    "evidence": "YouTube's official help page documents Creator Partnerships (formerly BrandConnect) for YPP creators with its 24-country list; marketplaces publicly list paid campaigns.",
+    "sources": [
+      "https://support.google.com/youtube/answer/9385307",
+      "https://outlierkit.com/resources/youtube-sponsorship-platforms/"
+    ],
+    "tags": ["sponsorship", "video", "podcast"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "YouTube Creator Partnerships (in YPP)",
+          "ThoughtLeaders/Podcorn/Passionfroot profiles (free)",
+          "media kit (Canva free)"
+        ],
+        "skills": [
+          "growing a niche channel or podcast",
+          "scripting natural ad reads",
+          "brand negotiation"
+        ],
+        "equipment": ["laptop", "microphone (often already owned)"],
+        "accounts": [
+          "YouTube Partner Program membership (for Creator Partnerships)",
+          "marketplace accounts + Stripe/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sponsored integration",
+        "typicalPriceUsd": {
+          "low": 100,
+          "median": 400,
+          "high": 3000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 4,
+        "notes": "Estimate: niche integrations sell at ~$20-50 CPM of expected views, so a 10k-view video earns ~$200-500; 10% is an estimated marketplace cut (most charge brands instead)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 12,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Only possible after an audience exists (typically 5k+ subscribers or 1k+ downloads per episode), which most people need over a year to reach."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 6000
+        },
+        "notes": "Sponsorship budgets are moving to mid-size niche creators, but brands buy proven view counts, so payouts accrue to channels that already grew. AI makes editing cheap but faceless AI channels face YouTube's 2025 'inauthentic content' demonetisation. Failure: never getting enough views to be booked."
+      },
+      "pricingStrategy": "Accept 1-2 discounted first deals for case studies, then price at a fixed CPM on 30-day average views and raise it 20% each quarter.",
+      "profitPath": [
+        "Month 0: list existing channel/podcast on marketplaces (cost $0)",
+        "Month 1-6: grow audience; usually $0 in sponsorships",
+        "Month 6-12: first 1-2 integrations if audience exists; $100-500 each",
+        "Month 12+: repeat sponsors; median at month 12 still $0"
+      ],
+      "sources": [
+        "https://support.google.com/youtube/answer/9385307",
+        "https://outlierkit.com/resources/youtube-sponsorship-platforms/"
+      ]
+    }
+  },
+  {
+    "id": "niche-directory-paid-listings",
+    "name": "Niche 'best X' directory with paid/featured listings",
+    "category": "affiliate",
+    "summary": "Build a curated directory (e.g. AI tools for lawyers, local coworking spaces) and charge vendors for featured listings and sponsorships.",
+    "howItWorks": "Seed a directory with accurate, verified entries from public data, add useful filters and editorial 'best X' pages, and grow organic traffic. Revenue comes from vendors paying for featured placement, verified badges, sponsored slots, plus affiliate links on listings. Paid placements must be labelled as sponsored and must not masquerade as editorial rankings. Payers are businesses seeking visibility.",
+    "platforms": [
+      "Stripe",
+      "directory software (WordPress/Directorist, static site)",
+      "affiliate networks"
+    ],
+    "payout": {
+      "methods": ["Stripe -> bank", "PayPal"],
+      "minimumPayout": "Stripe payouts from ~$1 (rolling 2-7 days)",
+      "frequency": "per sale / subscription",
+      "typicalDelayDays": 7,
+      "notes": "You set prices; common featured listings $20-$200/month."
+    },
+    "capitalRequiredUsd": 50,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 300
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 7,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; sponsored listings must be disclosed; scraping must respect site ToS/robots and data-protection law.",
+      "complianceRequirements": [
+        "label sponsored/featured listings",
+        "GDPR for business-contact data",
+        "Stripe KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Stripe available in ~45 countries; elsewhere use PayPal or Lemon Squeezy-style merchant of record."
+    },
+    "automationPlan": [
+      "Agent collects and refreshes listing data from permitted sources/APIs",
+      "AI writes listing summaries and category pages",
+      "Self-serve Stripe checkout for featured slots",
+      "Automated newsletter of new listings"
+    ],
+    "manualSteps": [
+      "Verify listings and handle vendor disputes",
+      "Outreach to first paying vendors",
+      "Payment KYC"
+    ],
+    "fullCycle": [
+      "Pick niche",
+      "Seed 100+ listings",
+      "Grow traffic",
+      "Open paid/featured tiers",
+      "Vendors buy",
+      "Stripe payout"
+    ],
+    "risks": [
+      "Slow traffic growth",
+      "Vendors unwilling to pay early",
+      "Data accuracy complaints",
+      "SEO competition"
+    ],
+    "evidence": "Directory operators report revenue from featured listings (e.g. $197/month slots) and sponsorships; most figures are self-reported.",
+    "sources": [
+      "https://dirstarter.com/blog/how-much-do-directory-websites-make",
+      "https://www.edirectory.com/updates/how-directory-websites-make-money/"
+    ],
+    "tags": ["directory", "seo", "b2b"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 50,
+        "recurringMonthlyUsd": 15,
+        "tools": [
+          "WordPress + directory plugin or static directory template",
+          "hosting (~$10/mo)",
+          "Stripe (2.9% + $0.30 per charge)",
+          "LLM API for data enrichment"
+        ],
+        "skills": [
+          "data collection and verification",
+          "basic web building (AI coding agents help)",
+          "SEO",
+          "selling to small businesses"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Stripe account + KYC", "affiliate network accounts"]
+      },
+      "unitEconomics": {
+        "unit": "per featured listing-month",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 50,
+          "high": 200
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 4,
+        "grossMarginPercent": 96,
+        "hoursPerUnit": 1,
+        "notes": "Common featured-listing prices are $20-200/month (directory operators' published rates); fee is Stripe's ~2.9% + $0.30 (~4% at $50)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 15,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 2,
+        "notes": "Fixed cost is recurringMonthlyUsd only; startup cash is not amortised. One paid listing covers fixed cost, but vendors only pay once the directory has visible traffic. Startup recovery assumes about $25/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -15,
+          "median": 50,
+          "high": 4000
+        },
+        "notes": "Directories with a sharp niche and verified data (local services, AI tools for a profession) sell featured slots once they rank. AI made launching directories trivial, so generic 'AI tools' directories are oversupplied and launch-day traffic fades. Failure: traffic too low for vendors to pay."
+      },
+      "pricingStrategy": "Offer free basic listings and a cheap launch-price featured slot ($10-20) to the first 10 vendors, then raise prices as traffic grows and add annual plans.",
+      "profitPath": [
+        "Month 0: seed 200-1,000 verified entries, build filters (cost ~$50)",
+        "Month 1-3: SEO pages and outreach to listed businesses; expect $0-50",
+        "Month 3-6: sell first featured slots; expect $50-200/month",
+        "Month 6-12: annual plans and affiliate links; median ~$100/month gross"
+      ],
+      "sources": [
+        "https://stripe.com/pricing",
+        "https://dirstarter.com/blog/how-much-do-directory-websites-make"
+      ]
+    }
+  }
+]

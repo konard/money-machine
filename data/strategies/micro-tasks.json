@@ -1,0 +1,1860 @@
+[
+  {
+    "id": "academic-research-studies",
+    "name": "Paid academic research studies (Prolific, CloudResearch Connect)",
+    "category": "micro-tasks",
+    "summary": "Get paid to take part in academic and market-research studies such as surveys, experiments and AI-evaluation tasks, with a minimum hourly pay rate enforced by the platform.",
+    "howItWorks": "Researchers post studies with a set reward. Studies that match your profile appear first come, first served. Prolific enforces a minimum hourly reward for researchers. Bots and AI-written answers get you banned. Amazon MTurk permanently closed on 2026-09-30, so these platforms are the main remaining option.",
+    "platforms": ["Prolific", "CloudResearch Connect"],
+    "payout": {
+      "methods": ["Prolific: PayPal -> bank", "Connect: PayPal, bank transfer"],
+      "minimumPayout": "Prolific £6/$6 (combined balance); Connect $5 PayPal (max $100/transfer) or $25 bank transfer (max $250)",
+      "frequency": "on demand (Prolific once per 24h; Connect once per day)",
+      "typicalDelayDays": 1,
+      "notes": "Prolific cash-outs reach PayPal within 24 hours; researchers have up to 22 days to approve a submission, and new or changed PayPal accounts get a 72-hour cool-off. The PayPal account country must match your residence or country of birth (US residents need a US PayPal)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 1,
+      "max": 22
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 20,
+      "median": 100,
+      "high": 400
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 1,
+      "setupEffort": 2,
+      "ongoingEffort": 4,
+      "incomePotential": 3,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 30
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Taking part in research for pay is legal everywhere. Account eligibility, not legality, is the limiting factor.",
+      "complianceRequirements": [
+        "report income for tax",
+        "one account per person",
+        "ID/phone verification"
+      ]
+    },
+    "availability": {
+      "notes": "Prolific's help centre gates eligibility through PayPal country rules rather than publishing a country list here; third-party reports say it accepts mostly OECD countries plus South Africa and waitlists are common (country list not confirmed from an official page). Connect is US-centric."
+    },
+    "automationPlan": [
+      "Browser alerts for new studies",
+      "Auto-log earnings for tax"
+    ],
+    "manualSteps": [
+      "Answer every study yourself; automated or LLM answers violate ToS",
+      "Pass attention checks",
+      "Verify ID and phone",
+      "Link PayPal"
+    ],
+    "fullCycle": [
+      "Join the waitlist / sign up",
+      "Complete the profile",
+      "Take studies as they appear",
+      "Get approved",
+      "Cash out to PayPal -> bank"
+    ],
+    "risks": [
+      "Waitlists can last months",
+      "Bans for failed attention checks",
+      "Low study volume outside the US/UK"
+    ],
+    "evidence": "Prolific's help centre documents the £6/$6 cash-out, PayPal-only payouts within 24 hours and the 22-day approval window. CloudResearch's Connect page documents the $5 PayPal / $25 bank minimums. MTurk's own help page states it permanently closed on September 30, 2026. paymentProbability lowered to 7 because Prolific waitlists can delay entry for months.",
+    "sources": [
+      "https://participant-help.prolific.com/en/article/3bfbb2",
+      "https://www.cloudresearch.com/products/connect-for-participants/",
+      "https://www.mturk.com/worker/help"
+    ],
+    "tags": ["surveys", "human-only", "low-barrier"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Prolific participant app (free)",
+          "CloudResearch Connect (free)",
+          "browser study-alert extension (free)"
+        ],
+        "skills": [
+          "careful reading",
+          "passing attention checks",
+          "consistent honest answers (AI cannot do this; AI answers get you banned)"
+        ],
+        "equipment": [
+          "laptop or desktop",
+          "webcam and microphone for some studies"
+        ],
+        "accounts": [
+          "Prolific account + ID/phone verification",
+          "CloudResearch Connect account",
+          "PayPal in your country of residence"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour of studies",
+        "typicalPriceUsd": {
+          "low": 6,
+          "median": 10,
+          "high": 15
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Prolific enforces an hourly floor of £6/$8 and recommends at least £9/$12 (researcher help centre); studies paying near the floor are the norm and AI-evaluation studies pay at the upper end. Researchers pay the platform fee, so participant rates are net."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. The main delay is the Prolific waitlist, which can run for months."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 20,
+          "median": 90,
+          "high": 350
+        },
+        "notes": "MTurk's closure on 2026-09-30 moved both requesters and workers onto Prolific and Connect, so studies fill within minutes and waitlists are longer. AI labs now buy many AI-evaluation studies here, which adds demand, but platforms screen hard for LLM-written answers and ban offenders. Roughly 40% of active participants (mostly US/UK) reach $100/month; elsewhere study volume is thin. profitLikelihoodPercent lowered from 70 to 40 to match the ~40% who reach $100/month stated above (typical income here is $100/month, so the standard definition applies)."
+      },
+      "pricingStrategy": "Rates are set by researchers; maximise effective pay by taking studies above £9/$12 per hour, keeping a near-perfect approval rate and a complete profile so you qualify for higher-paying longitudinal and AI-task studies.",
+      "profitPath": [
+        "Month 0: join Prolific (waitlist) and Connect, complete every profile question, link PayPal (cost $0)",
+        "Month 1-2: once admitted, about 1 hour/day yields $30-80/month",
+        "Month 3-6: keep approval near 100%, use alerts to catch studies first, unlock AI-task and longitudinal studies: $80-150/month",
+        "Month 6-12: plateau around $100-300/month; add paid research interviews for higher per-hour sessions"
+      ],
+      "sources": [
+        "https://participant-help.prolific.com/en/article/3bfbb2",
+        "https://www.cloudresearch.com/products/connect-for-participants/",
+        "https://www.mturk.com/worker/help",
+        "https://researcher-help.prolific.com/en/article/2273bd"
+      ]
+    }
+  },
+  {
+    "id": "crowd-microtask-platforms",
+    "name": "Crowd micro-task platforms (Clickworker/UHRS, Appen CrowdGen, Mindrift (formerly Toloka))",
+    "category": "micro-tasks",
+    "summary": "Do short human tasks such as categorizing, tagging, short writing, search-relevance judgments and audio/photo collection on general crowdsourcing marketplaces.",
+    "howItWorks": "Companies buy human judgments in bulk from crowd platforms. You pass qualification tests, which then unlock jobs paid per task, and Clickworker also gives access to Microsoft's UHRS task hub. Pay is roughly $3-10/hour and depends on speed and how many tasks are available. Bots and scripted answers are forbidden.",
+    "platforms": [
+      "Clickworker",
+      "UHRS (via Clickworker)",
+      "Appen CrowdGen",
+      "Mindrift (formerly Toloka)"
+    ],
+    "payout": {
+      "methods": [
+        "PayPal",
+        "SEPA",
+        "ACH",
+        "Payoneer",
+        "bank transfer",
+        "Tipalti (PayPal)"
+      ],
+      "minimumPayout": "Clickworker: €/$10 PayPal/SEPA/ACH, €/$20 Payoneer/non-EU bank; Mindrift: no minimum stated",
+      "frequency": "Clickworker per bill run; Mindrift twice monthly (5th and 20th)",
+      "typicalDelayDays": 10,
+      "notes": "Clickworker balances below the minimum stay in your account until the next bill run. Mindrift pays accepted tasks via Payoneer or Tipalti (PayPal) for the 1st-15th and 16th-month-end periods."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 3,
+      "max": 30
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 10,
+      "median": 50,
+      "high": 250
+    },
+    "scores": {
+      "paymentProbability": 8,
+      "automation": 1,
+      "setupEffort": 2,
+      "ongoingEffort": 5,
+      "incomePotential": 2,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the reference set.",
+      "complianceRequirements": [
+        "report income for tax",
+        "verified PayPal",
+        "one account per person"
+      ]
+    },
+    "availability": {
+      "notes": "Clickworker pays in most countries. Task volume is much higher for US/EU English speakers. Toloka's worker page now permanently redirects to Mindrift, which states that Toloka and Toloka Annotators tasks moved there with balances transferred automatically, and that anyone can join from any country (subject to its eligibility page)."
+    },
+    "automationPlan": [
+      "Track qualification openings and earnings in a sheet",
+      "Use keyboard macros only where the platform allows them (UHRS hit apps do not)"
+    ],
+    "manualSteps": [
+      "Pass qualification tests",
+      "Do the tasks yourself",
+      "Verify the payout account"
+    ],
+    "fullCycle": [
+      "Register",
+      "Complete the profile and assessments",
+      "Work available tasks",
+      "Reach the payout threshold (Clickworker €10)",
+      "Payout to PayPal/SEPA/Payoneer -> bank"
+    ],
+    "risks": [
+      "Very low effective hourly pay",
+      "Task droughts",
+      "Quality scores can lock you out"
+    ],
+    "evidence": "Clickworker's official support pages list the payout methods and minimums. Mindrift's official welcome page (redirect target of toloka.ai/tolokers) documents the Toloka migration and twice-monthly Payoneer/Tipalti payouts. Appen CrowdGen terms were not re-verified.",
+    "sources": [
+      "https://support-workplace.clickworker.com/en/support/solutions/articles/80000672348-what-do-i-have-to-do-to-receive-payment-from-clickworker-",
+      "https://support-workplace.clickworker.com/support/solutions/articles/80000672350",
+      "https://mindrift.ai/welcome"
+    ],
+    "tags": ["microtasks", "human-only", "global"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 4,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Clickworker workplace (free)",
+          "UHRS via Clickworker (free)",
+          "Mindrift / Appen CrowdGen portals (free)"
+        ],
+        "skills": [
+          "fast, accurate judgment against written guidelines",
+          "English or another in-demand language",
+          "patience with qualification tests"
+        ],
+        "equipment": [
+          "laptop or desktop",
+          "smartphone for audio/photo collection tasks"
+        ],
+        "accounts": [
+          "Clickworker account + verified PayPal or Payoneer",
+          "Mindrift account (Payoneer/Tipalti)",
+          "Appen CrowdGen account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour of tasks",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 6,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Effective hourly pay reported by workers on Clickworker/UHRS; per-task rates are quoted net of the platform's cut."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Clickworker pays only once the €10/$10 threshold is reached."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 75,
+        "typicalNetProfitMonth12Usd": {
+          "low": 5,
+          "median": 40,
+          "high": 200
+        },
+        "notes": "Simple labelling is increasingly done by models themselves, and vendors are shifting budget to expert AI-training work: Appen lost its Google contract in 2024 and Toloka moved its crowd onto Mindrift with an AI-trainer focus. UHRS volume swings week to week. Payment is reliable, but only about 15% of workers reach $100/month, mostly US/EU English speakers. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor."
+      },
+      "pricingStrategy": "You cannot set prices; raise effective pay by passing more qualifications, focusing on the best-paying UHRS hit apps and dropping tasks below about $5/hour.",
+      "profitPath": [
+        "Month 0: register on Clickworker, Mindrift and CrowdGen, pass assessments (cost $0)",
+        "Month 1-2: $10-40/month while qualifications unlock",
+        "Month 3-6: concentrate on the 2-3 best-paying task types: $40-100/month",
+        "Month 6-12: plateau; use as filler alongside better-paid AI-training or rating work"
+      ],
+      "sources": [
+        "https://support-workplace.clickworker.com/en/support/solutions/articles/80000672348-what-do-i-have-to-do-to-receive-payment-from-clickworker-",
+        "https://mindrift.ai/welcome"
+      ]
+    }
+  },
+  {
+    "id": "generalist-rlhf-ai-training",
+    "name": "Generalist AI training / RLHF work (DataAnnotation, Outlier, legacy Remotasks)",
+    "category": "micro-tasks",
+    "summary": "Write and rate chatbot responses, rank outputs and fact-check AI answers for model-training contractors. Pay is hourly, starting around $25/hour for general work.",
+    "howItWorks": "AI labs pay data vendors for human preference data. After you pass a writing and reasoning assessment, projects appear in your dashboard, and you are paid hourly or per task for rating, rewriting or red-teaming LLM output. The work is irregular, and projects can disappear without notice. Vendors usually forbid using AI to produce your answers, so this is human labour. Scale wound Remotasks into Outlier.",
+    "platforms": ["DataAnnotation", "Outlier (Scale AI)", "Remotasks (legacy)"],
+    "payout": {
+      "methods": ["DataAnnotation: PayPal -> bank", "Outlier: PayPal, Airtm"],
+      "minimumPayout": "DataAnnotation: no minimum stated; Outlier: not stated",
+      "frequency": "DataAnnotation on request; Outlier weekly",
+      "typicalDelayDays": 7,
+      "notes": "DataAnnotation pays via PayPal, delivered within a few days of a request. Outlier states it pays weekly; its PayPal/Airtm methods come from third-party reviews and were not confirmed on an official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 400,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 2,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 55
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. These are independent-contractor arrangements, and worker classification is being litigated (reported 2025 class action against DataAnnotation).",
+      "complianceRequirements": [
+        "report income for tax",
+        "ID verification",
+        "no AI-generated submissions where forbidden"
+      ]
+    },
+    "availability": {
+      "notes": "Each project limits which countries it accepts. Outlier cites 50 countries and requires a valid ID and phone from your country of residence. DataAnnotation requires English fluency; its country list is not published (reported as US/UK/CA/AU/NZ/IE). Remotasks cut off several African and South Asian countries in 2024."
+    },
+    "automationPlan": [
+      "Calendar/alert automation for new projects",
+      "Earnings logging for tax"
+    ],
+    "manualSteps": [
+      "Pass the assessment",
+      "Do the tasks manually",
+      "Follow project guidelines",
+      "KYC"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Pass the assessment",
+      "Get onboarded to a project",
+      "Do the tasks",
+      "Withdraw to PayPal -> bank"
+    ],
+    "risks": [
+      "Many applicants are never activated",
+      "Sudden project droughts",
+      "Accounts deactivated without explanation"
+    ],
+    "evidence": "DataAnnotation's official FAQ lists starting rates of $25-50/hour (general) and $40-150+/hour (coding/STEM) paid via PayPal. Outlier's official site says contributors are paid weekly in 50 countries. Activation odds are low, hence paymentProbability 5.",
+    "sources": [
+      "https://www.dataannotation.tech/faq",
+      "https://outlier.ai/",
+      "https://theairankings.com/ai-jobs/outlier-review/"
+    ],
+    "tags": ["ai-training", "rlhf", "human-only"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "DataAnnotation / Outlier dashboards (free)",
+          "time-tracking sheet (free)"
+        ],
+        "skills": [
+          "strong written English",
+          "reasoning and fact-checking",
+          "following long guidelines (AI drafting usually forbidden)"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "DataAnnotation account + PayPal",
+          "Outlier account + ID and phone from your country",
+          "tax form"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 25,
+          "high": 40
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "DataAnnotation's FAQ lists $25-50/hour for general work; Outlier and non-US rates are often lower, hence the $15 low."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Many applicants are never activated, so break-even for them never arrives."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 2500
+        },
+        "notes": "AI labs still buy large volumes of preference data, but spend has shifted from generalists to credentialed experts and synthetic data. After Meta's 2025 investment in Scale AI, several labs pulled work from Scale, causing Outlier project droughts. Winners are fluent writers who pass the assessment and get onto steady projects; the common failure is silent non-activation or a sudden project end. Median month-12 net profit was lowered below $100 so it agrees with a profit likelihood under 50% (most starters never reach $100/month)."
+      },
+      "pricingStrategy": "Rates are set per project; move up by passing specialist qualifications (coding, maths, a second language), which unlock higher-rate projects.",
+      "profitPath": [
+        "Month 0: apply to DataAnnotation and Outlier, take the assessments carefully (cost $0)",
+        "Month 1-2: if activated, $100-500/month at 5-10 hours/week",
+        "Month 3-6: take specialist qualifications to reach higher-rate projects: $300-1,000/month",
+        "Month 6-12: income depends on project supply; keep two platforms active to ride out droughts"
+      ],
+      "sources": ["https://www.dataannotation.tech/faq", "https://outlier.ai/"]
+    }
+  },
+  {
+    "id": "expert-ai-training",
+    "name": "Expert-domain AI training (Alignerr, Mercor, Outlier expert tracks)",
+    "category": "micro-tasks",
+    "summary": "Professionals and graduate-degree holders write hard prompts, reference solutions and rubrics in their own field (coding, finance, law, medicine, languages) to train frontier models.",
+    "howItWorks": "Labs need difficult, verifiable tasks written by experts. These platforms screen for credentials, then pay hourly for authoring and grading tasks in your specialty. Rates are far above generalist work: Alignerr lists $40-120/hour. Work comes in project bursts. AI help is usually restricted, and your domain judgment is what you are paid for.",
+    "platforms": ["Alignerr", "Mercor", "Outlier (expert)"],
+    "payout": {
+      "methods": ["PayPal", "bank transfer / Stripe (platform-dependent)"],
+      "minimumPayout": "Varies by platform; typically no minimum",
+      "frequency": "weekly (Alignerr); Mercor advertises daily payouts",
+      "typicalDelayDays": 7,
+      "notes": "Alignerr states $1M paid weekly. Mercor's site advertises daily payouts and an average contracted rate of $91/hour. Neither homepage names the payout method, so confirm it in your contract."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 1500,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 2,
+      "setupEffort": 4,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. Independent-contractor status applies.",
+      "complianceRequirements": [
+        "report income for tax",
+        "KYC",
+        "NDA/confidentiality",
+        "credential verification"
+      ]
+    },
+    "availability": {
+      "notes": "Usually open globally, but English-language and US/EU-credential projects dominate. Each project may restrict countries."
+    },
+    "automationPlan": [
+      "Automate application tracking across platforms",
+      "Keep a reusable credential portfolio"
+    ],
+    "manualSteps": [
+      "Interviews/assessments, often an AI-led video interview",
+      "Author tasks manually",
+      "Sign the NDA"
+    ],
+    "fullCycle": [
+      "Apply with CV/credentials",
+      "Pass the domain assessment",
+      "Join a project",
+      "Author/grade tasks",
+      "Weekly payout -> bank"
+    ],
+    "risks": [
+      "Highly competitive",
+      "Work is bursty",
+      "Confidentiality and IP restrictions"
+    ],
+    "evidence": "Alignerr's official site advertises an $80/hour average, roles at $40-120/hour, and '$1M paid weekly'. Mercor's official site lists a $91/hour average contracted rate and '$4M+' in daily payouts.",
+    "sources": [
+      "https://www.alignerr.com/",
+      "https://www.mercor.com/",
+      "https://outlier.ai/"
+    ],
+    "tags": ["ai-training", "expert", "high-rate"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 6,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Alignerr / Mercor / Outlier profiles (free)",
+          "CV and credential portfolio"
+        ],
+        "skills": [
+          "degree-level or professional expertise (coding, maths, finance, law, medicine, languages)",
+          "writing hard, verifiable prompts and rubrics",
+          "passing AI-led video interviews"
+        ],
+        "equipment": ["laptop or desktop", "webcam for interviews"],
+        "accounts": [
+          "platform accounts + KYC",
+          "PayPal or bank/Stripe",
+          "signed NDA and contractor agreement"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour",
+        "typicalPriceUsd": {
+          "low": 40,
+          "median": 80,
+          "high": 150
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Alignerr advertises $40-120/hour (average about $80) and Mercor a $91/hour average contracted rate; rates are quoted net to the contractor."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. The delay is screening and waiting for a matching project."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 8000
+        },
+        "notes": "Frontier labs now pay a premium for expert-written tasks, and Mercor and Alignerr grew fast in 2025-2026. Work comes in bursts, though, and whole projects end without notice (xAI cut hundreds of tutors in 2025). Credentialed professionals in coding, maths and finance win most work; the failure mode is passing screening but never getting a project. Median month-12 net profit was lowered below $100 so it agrees with a profit likelihood under 50% (most starters never reach $100/month)."
+      },
+      "pricingStrategy": "Apply only to projects at or above your field's advertised average; after strong quality scores, request higher-tier or reviewer roles, which pay more per hour.",
+      "profitPath": [
+        "Month 0: build a credential portfolio, apply to Alignerr, Mercor and Outlier expert tracks (cost $0)",
+        "Month 1-2: interviews and assessments; first project likely $500-2,000",
+        "Month 3-6: aim for reviewer roles and repeat projects: $1,000-4,000/month when work is available",
+        "Month 6-12: keep 2-3 platforms active to smooth gaps between projects"
+      ],
+      "sources": [
+        "https://www.alignerr.com/",
+        "https://www.mercor.com/",
+        "https://outlier.ai/"
+      ]
+    }
+  },
+  {
+    "id": "remote-usability-testing",
+    "name": "Remote usability testing (UserTesting, Userlytics, Trymata/QuestionPro)",
+    "category": "micro-tasks",
+    "summary": "Record yourself using websites and apps while thinking aloud. Product teams pay for each test.",
+    "howItWorks": "Companies pay UX research platforms to recruit testers who match a demographic. You take a screener, and if you qualify you record a 10-20 minute screen-and-voice session, usually paid about $10, while live interviews pay $30-120. Screeners are competitive, so most of the time goes into qualifying. The feedback has to be genuinely yours.",
+    "platforms": ["UserTesting", "Userlytics", "Trymata (now QuestionPro UX)"],
+    "payout": {
+      "methods": ["PayPal -> bank"],
+      "minimumPayout": "$0 (per-test payment)",
+      "frequency": "per test (UserTesting); every 15 days (Userlytics)",
+      "typicalDelayDays": 14,
+      "notes": "UserTesting pays only via PayPal, usually 14 days after the test. Userlytics pays $10-50 per study, every 15 days after client approval (method not stated on its tester page). Trymata's tester page now redirects to QuestionPro UX; its tester payouts could not be confirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 3,
+      "max": 30
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 10,
+      "median": 60,
+      "high": 400
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 1,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 3,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 40
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere.",
+      "complianceRequirements": [
+        "report income for tax",
+        "verified PayPal",
+        "screen/voice recording consent"
+      ]
+    },
+    "availability": {
+      "notes": "UserTesting recruits only in countries where PayPal operates. Its standard tester countries are the US, UK, DE, FR, CA, IN and AU. Userlytics recruits more broadly."
+    },
+    "automationPlan": [
+      "Auto-refresh notifications/email filters for new tests",
+      "Pre-written profile facts to answer screeners consistently"
+    ],
+    "manualSteps": [
+      "Answer screeners honestly",
+      "Record think-aloud sessions",
+      "Pass the practice test"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Take the practice test",
+      "Qualify for screeners",
+      "Record the test",
+      "PayPal payout"
+    ],
+    "risks": [
+      "Few tests outside core countries",
+      "Ratings drop if audio quality is poor"
+    ],
+    "evidence": "UserTesting's official 'get paid to test' page says PayPal is the only method and pays ~14 days after completion. Userlytics' tester page lists $10-50 per study, paid every 15 days. Reviews consistently report $10 per standard UserTesting test.",
+    "sources": [
+      "https://www.usertesting.com/get-paid-to-test",
+      "https://help.usertesting.com/hc/articles/11880389286429-Which-countries-can-I-test-in",
+      "https://www.userlytics.com/testers/"
+    ],
+    "tags": ["ux", "human-only"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "UserTesting / Userlytics tester apps (free)",
+          "email filters for test alerts (free)"
+        ],
+        "skills": [
+          "thinking aloud clearly",
+          "honest, specific feedback",
+          "answering screeners consistently"
+        ],
+        "equipment": [
+          "laptop with microphone",
+          "smartphone for mobile tests",
+          "quiet room"
+        ],
+        "accounts": ["UserTesting account", "Userlytics account", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per test",
+        "typicalPriceUsd": {
+          "low": 4,
+          "median": 10,
+          "high": 60
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.3,
+        "notes": "UserTesting shows each test's reward before you take it and no longer publishes a rate card; the $10 standard / $4 short-test figures are reported by testers (estimated). Userlytics lists $10-50 per study; live interviews pay $30-120 (estimated)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. First pay arrives about 14 days after the first qualified test."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 45,
+        "typicalNetProfitMonth12Usd": {
+          "low": 5,
+          "median": 50,
+          "high": 300
+        },
+        "notes": "The $10 test rate has not moved for years while tester supply has grown, so screeners fill within minutes. UX research budgets were cut in 2023-2024 and AI 'synthetic user' tools now replace some cheap unmoderated tests. Testers in the US/UK with professional profiles get the live interviews that make up most of the money; only about 15% reach $100/month. profitLikelihoodPercent here is the chance of receiving any real net-positive payout within 12 months (typical income is under $100/month), calibrated to the catalog's survey-panel anchor. Cross-catalog calibration: profitLikelihoodPercent lowered from 60 to 45 to sit with paid-research-interviews (45) and crowdtesting-bug-hunts (50); income can exceed $100/month, and the median starter nets only about $50."
+      },
+      "pricingStrategy": "Rates are fixed; improve earnings by keeping high ratings (clear audio, following tasks) which unlock more invites and live interviews.",
+      "profitPath": [
+        "Month 0: sign up, pass the practice test (cost $0)",
+        "Month 1-2: 2-5 tests: $20-50",
+        "Month 3-6: alerts plus a consistent profile: $40-100/month",
+        "Month 6-12: chase live interviews ($30-120 each) to lift income above $100/month"
+      ],
+      "sources": [
+        "https://www.usertesting.com/get-paid-to-test",
+        "https://www.userlytics.com/testers/"
+      ]
+    }
+  },
+  {
+    "id": "search-and-ai-rating",
+    "name": "Search engine and AI response rating (TELUS Digital AI Community, RWS TrainAI)",
+    "category": "micro-tasks",
+    "summary": "Part-time contract work rating search results, ads and AI answers against detailed guidelines, at a fixed hourly rate.",
+    "howItWorks": "Search and AI companies outsource quality rating to vendors. You pass a guideline exam, often unpaid and multi-part, then work 10-20 hours a week rating tasks. Pay is set per country, around $12-14/hour in the US and as low as $5/hour in some Asian markets. Quality audits decide whether you keep access. The work cannot be automated.",
+    "platforms": ["TELUS Digital AI Community", "RWS TrainAI"],
+    "payout": {
+      "methods": ["bank transfer / Payoneer (vendor- and country-dependent)"],
+      "minimumPayout": "none (monthly invoice)",
+      "frequency": "monthly",
+      "typicalDelayDays": 30,
+      "notes": "Contractors invoice monthly. The payout method could not be confirmed on an official TELUS or RWS page (both blocked or empty when checked); verify it in your contract."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 50,
+      "median": 300,
+      "high": 700
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 1,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 3,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. These are contractor roles.",
+      "complianceRequirements": [
+        "report income for tax",
+        "contractor agreement",
+        "confidentiality"
+      ]
+    },
+    "availability": {
+      "notes": "Hiring is by language and locale. Many reference countries have openings, but these open and close. Pay varies by country."
+    },
+    "automationPlan": [
+      "Track openings by locale",
+      "Time logging/invoicing templates"
+    ],
+    "manualSteps": [
+      "Pass the qualification exam",
+      "Do the ratings yourself",
+      "Submit invoices"
+    ],
+    "fullCycle": [
+      "Apply for a locale",
+      "Pass the exam",
+      "Get onboarded",
+      "Rate weekly",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Unpaid exam effort",
+      "Hours capped",
+      "Fake-recruiter scams (TELUS never charges fees)"
+    ],
+    "evidence": "Current TELUS job postings list about $14/hour (US search rater) and $5/hour (Indonesia).",
+    "sources": [
+      "https://www.mediabistro.com/jobs/2026277722-content-reviewer-us",
+      "https://remoteonlineevaluator.com/telus-international-review-for-ai-raters/"
+    ],
+    "tags": ["rating", "part-time", "human-only"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "TELUS Digital AI Community / RWS TrainAI portals (free)",
+          "time-logging and invoice template (free)"
+        ],
+        "skills": [
+          "mastering a 150+ page rating guideline",
+          "local language and culture knowledge",
+          "consistent judgment under quality audits"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "vendor contractor account + background check",
+          "bank or Payoneer for monthly invoices"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 13,
+          "high": 18
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Current postings list about $14/hour for US search raters and $5/hour in some Asian markets; rates are net to the contractor. (estimated from postings and rater reports; vendors publish no rate card)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. About 20 unpaid exam hours plus a monthly invoice cycle delay the first payment by 1-3 months."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 650
+        },
+        "notes": "Search and AI raters are still needed, but vendors have consolidated (Google ended its Appen contract in 2024) and hours are capped around 10-20 per week. Raters report flat or lower hourly rates and more AI-answer rating work. Failure modes are failing the exam, losing the role after an audit, or fake recruiters; legitimate vendors never charge fees. Median month-12 net profit was lowered below $100 so it agrees with a profit likelihood under 50% (most starters never reach $100/month)."
+      },
+      "pricingStrategy": "Pay is set per locale; the only lever is working the full allowed hours and passing quality audits to keep the contract.",
+      "profitPath": [
+        "Month 0: apply for your locale, study for and pass the exam (about 20 hours, cost $0)",
+        "Month 1-2: onboarding; first monthly invoice $150-300",
+        "Month 3-6: work the allowed 10-20 hours/week: $250-700/month in high-rate locales",
+        "Month 6-12: stable if audits are passed; projects can end at short notice"
+      ],
+      "sources": [
+        "https://www.mediabistro.com/jobs/2026277722-content-reviewer-us",
+        "https://remoteonlineevaluator.com/telus-international-review-for-ai-raters/"
+      ]
+    }
+  },
+  {
+    "id": "bug-bounty-programs",
+    "name": "Bug bounty hunting on authorized programs (HackerOne, Bugcrowd, Intigriti, huntr)",
+    "category": "micro-tasks",
+    "summary": "Find and responsibly report security vulnerabilities in in-scope assets of companies that run public bounty programs.",
+    "howItWorks": "Companies publish a scope, rules and reward tables. You test only in-scope assets under the program's safe-harbour terms, write a reproducible report, and get paid when the finding is triaged and accepted. huntr runs AI/ML-focused challenges with prize pools. Recon and scanning can be scripted within rate limits the program allows. Exploitation and reporting need skill, and payouts follow a power law.",
+    "platforms": ["HackerOne", "Bugcrowd", "Intigriti", "huntr"],
+    "payout": {
+      "methods": [
+        "PayPal",
+        "bank transfer (Currencycloud/local)",
+        "USDC/BTC (HackerOne; Bugcrowd select researchers)"
+      ],
+      "minimumPayout": "HackerOne: PayPal none; crypto $15; local bank $50; SWIFT $100. Bugcrowd/Intigriti: not stated in docs",
+      "frequency": "per bounty (HackerOne processes weekdays; none on first/last day of month)",
+      "typicalDelayDays": 3,
+      "notes": "HackerOne PayPal arrives in 1-2 days, bank in 1-10 days. Bugcrowd pays by PayPal (up to 24h+) or bank transfer and uses a payment-threshold setting for small rewards. Intigriti funds arrive 1-3 working days in Belgium and 3-5 internationally; the previously reported €50 minimum is not in its knowledge base and is unconfirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 95,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal only within authorized scope and safe harbour. Testing outside scope is a computer-crime offence. Payouts are blocked for OFAC-sanctioned banks and persons.",
+      "complianceRequirements": [
+        "stay strictly in scope",
+        "follow program rules on automation/rate limits",
+        "report income for tax",
+        "KYC/tax forms"
+      ]
+    },
+    "availability": {
+      "notes": "Open globally apart from sanctioned countries. HackerOne cannot pay HDFC Bank India accounts."
+    },
+    "automationPlan": [
+      "Automated recon (subdomain/asset monitoring) on in-scope assets",
+      "LLM-assisted code review and report drafting",
+      "Alerts for new programs and scope changes"
+    ],
+    "manualSteps": [
+      "Manual validation and exploitation",
+      "Writing reports and talking to triage",
+      "Following disclosure rules"
+    ],
+    "fullCycle": [
+      "Learn the basics (PortSwigger Academy)",
+      "Pick a program",
+      "Recon in scope",
+      "Submit a report",
+      "Bounty -> PayPal/bank"
+    ],
+    "risks": [
+      "Many hunters never earn",
+      "Duplicates and N/A reports",
+      "Legal risk if out of scope"
+    ],
+    "evidence": "HackerOne's official docs list payout methods, minimums and schedules. Bugcrowd's payments FAQ and Intigriti's payout-lifecycle article document their methods and timing. Top-paid HackerOne reports are publicly catalogued.",
+    "sources": [
+      "https://docs.hackerone.com/en/articles/8395720-payment-preferences",
+      "https://docs.bugcrowd.com/researchers/payments/frequently-asked-questions-payment-methods/",
+      "https://kb.intigriti.com/en/articles/3379564-payout-lifecycle",
+      "https://github.com/reddelexc/hackerone-reports/blob/master/tops_100/TOP100PAID.md",
+      "https://huntr.com/"
+    ],
+    "tags": ["security", "skill-based", "power-law"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 200,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Burp Suite Community (free; Pro about $475/year optional)",
+          "PortSwigger Web Security Academy (free)",
+          "open-source recon tools (free)",
+          "optional $5/month VPS"
+        ],
+        "skills": [
+          "web/API security testing",
+          "writing reproducible reports",
+          "reading program scope and rules; AI helps with recon and code review but not validation"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "HackerOne / Bugcrowd / Intigriti account + KYC and tax form",
+          "PayPal or bank"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per accepted report (bounty)",
+        "typicalPriceUsd": {
+          "low": 100,
+          "median": 500,
+          "high": 10000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 40,
+        "notes": "Typical low/medium-severity bounties are $100-1,000; critical findings pay $5,000+. Platforms charge companies, not hunters; the 40 hours per accepted report includes duplicates and N/A reports."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Learning plus the first accepted report usually takes 6-12 months, and most starters never get there."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 4,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 4000
+        },
+        "notes": "Program count and AI/ML scopes keep growing, but hunters now outnumber easy bugs, and duplicates are the norm on popular programs. Since 2025 programs are flooded with AI-generated junk reports (curl ended its bounty over this), so triage is stricter. Payouts follow a power law: a few hundred full-time hunters take most of the money."
+      },
+      "pricingStrategy": "Rewards are set by program tables; target newer or private programs and less-popular asset types where duplicates are rarer, and build reputation to get private invitations with higher bounties.",
+      "profitPath": [
+        "Month 0: work through PortSwigger Academy labs (about 200 hours, cost $0)",
+        "Month 1-6: hunt 1-2 programs deeply; expect duplicates and N/A reports, likely $0",
+        "Month 6-9: first accepted low/medium bugs: $100-500",
+        "Month 9-12: private invitations if reputation grows; income stays lumpy, $0-4,000/month"
+      ],
+      "sources": [
+        "https://docs.hackerone.com/en/articles/8395720-payment-preferences",
+        "https://github.com/reddelexc/hackerone-reports/blob/master/tops_100/TOP100PAID.md"
+      ]
+    }
+  },
+  {
+    "id": "ml-competitions",
+    "name": "Data science / ML competitions (Kaggle, DrivenData, AIcrowd, Zindi)",
+    "category": "data",
+    "summary": "Enter prize-paying machine-learning competitions and get paid if your model places in the top ranks.",
+    "howItWorks": "Sponsors post a dataset and metric with a prize pool. You build models, submit predictions, and top finishers are paid after code review and eligibility checks, usually with tax forms. AI coding agents can automate much of the feature engineering and model search. Prizes go to a handful of people per contest, so for most entrants the realistic gain is a portfolio.",
+    "platforms": ["Kaggle", "DrivenData", "AIcrowd", "Zindi"],
+    "payout": {
+      "methods": ["bank wire", "PayPal (host-dependent)"],
+      "minimumPayout": "none (lump-sum prize)",
+      "frequency": "per competition",
+      "typicalDelayDays": 60,
+      "notes": "Prizes are paid after the winner verifies eligibility and hands over code/licence."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Prize competitions with skill-based outcomes are legal everywhere. Some competitions limit prizes by country (e.g. US-only).",
+      "complianceRequirements": [
+        "read each competition's rules",
+        "sanctions screening",
+        "report income for tax",
+        "license winning code as required"
+      ]
+    },
+    "availability": {
+      "notes": "Open globally except sanctioned countries. Individual contests may restrict prize eligibility."
+    },
+    "automationPlan": [
+      "Agent-driven experiment pipelines",
+      "Automated submissions within daily limits",
+      "Notebook templates"
+    ],
+    "manualSteps": [
+      "Read rules and accept terms",
+      "Final model selection",
+      "Winner paperwork"
+    ],
+    "fullCycle": [
+      "Pick a contest",
+      "Build a baseline",
+      "Iterate",
+      "Place top-N",
+      "Receive prize"
+    ],
+    "risks": [
+      "Very low win probability",
+      "Large compute time",
+      "Disqualification for rule breaches"
+    ],
+    "evidence": "Kaggle and DrivenData publicly list paid winners. DrivenData requires sanctions screening before paying prizes.",
+    "sources": [
+      "https://community.drivendata.org/t/can-i-participate-in-this-competition/6276",
+      "https://www.kdnuggets.com/2020/09/international-alternatives-kaggle-data-science-competitions.html"
+    ],
+    "tags": ["ml", "competition", "ai-leverage"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Kaggle notebooks with free GPU quota",
+          "Python ML stack (free)",
+          "AI coding agent (optional, free tier)"
+        ],
+        "skills": [
+          "machine learning and feature engineering",
+          "validation discipline",
+          "reading competition rules"
+        ],
+        "equipment": ["laptop (cloud GPUs optional)"],
+        "accounts": [
+          "Kaggle / DrivenData / Zindi accounts",
+          "bank or PayPal for prize payment + tax forms"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per prize won",
+        "typicalPriceUsd": {
+          "low": 500,
+          "median": 5000,
+          "high": 50000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 150,
+        "notes": "Prize pools are public on each competition page; mid-size contests pay $1,000-10,000 per placing team, often split among team members."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 12,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Most entrants never place in the money; for winners, the first prize typically comes after 6-18 months of contests."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 3,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 2000
+        },
+        "notes": "Kaggle has over 20 million users, and AI coding agents now produce strong baselines in hours, which raises the bar for the top-N places that get paid. Prizes go to experienced grandmaster teams far more often than to newcomers. The realistic return for most entrants is a portfolio and job leads, not cash."
+      },
+      "pricingStrategy": "Not applicable; pick smaller or niche contests (Zindi, DrivenData) with fewer competitors per dollar of prize money.",
+      "profitPath": [
+        "Month 0: complete Kaggle Learn courses and one Playground series (cost $0)",
+        "Month 1-6: enter 2-3 real contests, aim for top 10%; likely $0",
+        "Month 6-12: team up with stronger competitors; small chance of a $500-5,000 share",
+        "Month 12+: use medals as a portfolio for paid freelance ML work"
+      ],
+      "sources": [
+        "https://community.drivendata.org/t/can-i-participate-in-this-competition/6276",
+        "https://www.kaggle.com/competitions"
+      ]
+    }
+  },
+  {
+    "id": "sell-datasets",
+    "name": "Sell lawfully collected non-personal datasets (Datarade, Snowflake/AWS marketplaces, licensed Hugging Face repos)",
+    "category": "data",
+    "summary": "Package original or aggregated non-personal data, such as prices, product specs, public statistics or synthetic data, and license it to companies.",
+    "howItWorks": "Buyers pay for clean, documented, regularly updated data they can't easily collect themselves. You compile data from sources whose licence allows commercial reuse (open-government data, your own measurements, synthetic generation), document it, and list it. Datarade's commission-only plan has no fee and takes 30% of facilitated sales. Hugging Face is mainly for free hosting and discovery, so paid access is usually sold through a gated repo plus an external licence/checkout. Kaggle datasets earn nothing. Do not resell personal data.",
+    "platforms": [
+      "Datarade",
+      "Hugging Face (gated + external checkout)",
+      "AWS Data Exchange",
+      "Snowflake Marketplace"
+    ],
+    "payout": {
+      "methods": ["bank transfer", "Stripe/Gumroad -> bank"],
+      "minimumPayout": "varies by marketplace",
+      "frequency": "per sale / monthly",
+      "typicalDelayDays": 30,
+      "notes": "Marketplaces take 15-30% commission."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 8,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 95,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal when the data is non-personal and the source licence allows commercial redistribution. Database rights (EU) and scraping ToS still apply.",
+      "complianceRequirements": [
+        "no personal data (GDPR etc.)",
+        "respect source licences/ToS",
+        "B2B invoicing/VAT",
+        "report income for tax"
+      ]
+    },
+    "availability": {
+      "notes": "Datarade and Gumroad-style checkouts serve most countries. AWS/Snowflake seller programs need a company in supported jurisdictions."
+    },
+    "automationPlan": [
+      "Automated collection/refresh pipelines",
+      "Auto-generated data docs and samples with LLMs",
+      "Scheduled publishing"
+    ],
+    "manualSteps": [
+      "Licence review of sources",
+      "Seller onboarding/KYC",
+      "B2B sales conversations"
+    ],
+    "fullCycle": [
+      "Find a niche gap",
+      "Build the pipeline",
+      "Publish a sample",
+      "List on a marketplace",
+      "Sell licences -> bank"
+    ],
+    "risks": [
+      "Few buyers for niche data",
+      "Licence/legal disputes",
+      "Data goes stale"
+    ],
+    "evidence": "Datarade's provider pages describe a commission-only seller plan at 30%.",
+    "sources": [
+      "https://providers.datarade.ai/apply",
+      "https://datarade.ai/company/blog/data-marketplace"
+    ],
+    "tags": ["data", "b2b", "automatable"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Python + GitHub Actions for refresh pipelines (free tier)",
+          "Hugging Face gated repo (free)",
+          "Datarade commission-only plan (free)",
+          "LLM for documentation (free tier)"
+        ],
+        "skills": [
+          "data engineering",
+          "licence review of sources",
+          "B2B selling"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Datarade provider account",
+          "Stripe or Gumroad for direct licences",
+          "AWS/Snowflake seller account (needs a company)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per licence sale",
+        "typicalPriceUsd": {
+          "low": 50,
+          "median": 500,
+          "high": 5000
+        },
+        "costPerUnitUsd": 10,
+        "platformFeePercent": 30,
+        "grossMarginPercent": 68,
+        "hoursPerUnit": 2,
+        "notes": "Datarade's commission-only plan takes 30%; niche B2B datasets sell for $50-5,000 per licence. $10 covers compute/storage per delivery."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Free tiers cover hosting; the first sale typically takes 6-12 months of listing and outreach."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "medium",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 2000
+        },
+        "notes": "Demand for licensed, clean data has grown with AI, but large buyers prefer established vendors with legal warranties. AI makes collection and documentation cheap, so generic datasets compete with free open data. Winners own a narrow niche dataset that is refreshed and hard to collect; most listings never sell."
+      },
+      "pricingStrategy": "Publish a free sample, price the first licences low ($50-200) to get references, then move to annual subscriptions priced per refresh frequency.",
+      "profitPath": [
+        "Month 0: pick a niche, verify source licences, build the pipeline (about 60 hours, cost $0)",
+        "Month 1-3: list on Datarade and a gated Hugging Face repo; likely $0",
+        "Month 3-9: direct outreach to 50+ potential buyers; first $50-500 licence",
+        "Month 9-12: convert buyers to subscriptions; $0-2,000/month"
+      ],
+      "sources": [
+        "https://providers.datarade.ai/apply",
+        "https://datarade.ai/company/blog/data-marketplace"
+      ]
+    }
+  },
+  {
+    "id": "public-data-scraping-service",
+    "name": "Public-data scraping tools and monitoring reports (Apify Store Actors, paid report subscriptions)",
+    "category": "data",
+    "summary": "Publish ToS- and robots.txt-compliant scrapers as paid Actors on Apify Store, and sell recurring monitoring reports built from public data.",
+    "howItWorks": "Many businesses want structured public data (listings, prices, job posts, tenders, regulatory filings). On Apify Store you publish an Actor priced per result or event. Users run it on Apify's infrastructure; Apify deducts platform costs, keeps 20% of the profit and pays you monthly after KYC. The same pipelines can feed a paid weekly report (e.g. tender or price tracker) sold through a subscription tool. Most ongoing work is maintenance when target sites change.",
+    "platforms": ["Apify Store", "Substack/Gumroad (reports)"],
+    "payout": {
+      "methods": ["PayPal", "bank transfer"],
+      "minimumPayout": "not stated in Apify's public docs (KYC required)",
+      "frequency": "monthly",
+      "typicalDelayDays": 40,
+      "notes": "Apify takes 20% (of revenue for rentals; of profit after platform costs for pay-per-result/event). Its current developer docs list only pay-per-event and pay-per-usage models, consistent with rentals being phased out. Payout methods, thresholds and the ~11th-of-month invoice date come from earlier docs and were not re-confirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 9,
+      "setupEffort": 5,
+      "ongoingEffort": 3,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 95,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Scraping public, non-personal data is lawful in most jurisdictions when it respects ToS, robots.txt and database rights. Personal data falls under GDPR and similar laws.",
+      "complianceRequirements": [
+        "robots.txt and ToS compliance",
+        "no personal data or authentication bypass",
+        "Apify KYC",
+        "report income for tax"
+      ]
+    },
+    "availability": {
+      "notes": "Apify pays worldwide outside sanctioned countries. Report subscriptions depend on Stripe/Gumroad support."
+    },
+    "automationPlan": [
+      "Coding agents write and repair Actors",
+      "Monitoring tests alert on breakage",
+      "Scheduled report generation and emailing"
+    ],
+    "manualSteps": ["Legal review of target sites", "KYC", "Customer support"],
+    "fullCycle": [
+      "Pick a compliant data source",
+      "Build the Actor",
+      "Publish with pricing",
+      "Earn from usage",
+      "Monthly payout -> bank"
+    ],
+    "risks": [
+      "Target site changes break Actors",
+      "Marketplace competition",
+      "Source ToS changes"
+    ],
+    "evidence": "Apify's official help article and docs describe the 20% commission, monthly payouts and identity verification (KYC). Apify's partner page reports top independent creators earning over $10k MRR.",
+    "sources": [
+      "https://help.apify.com/en/articles/8684010-how-does-actor-monetization-work",
+      "https://docs.apify.com/actors/publishing/monetize.md",
+      "https://apify.com/partners/actor-developers"
+    ],
+    "tags": ["scraping", "developer", "passive-ish"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Apify platform (free plan with monthly credits)",
+          "Crawlee / Python (free)",
+          "AI coding agent (free tier)",
+          "Substack or Gumroad for reports (free)"
+        ],
+        "skills": [
+          "web scraping and JavaScript/Python",
+          "checking robots.txt and ToS",
+          "maintaining scrapers when sites change (AI agents help a lot)"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Apify account + KYC", "PayPal or bank"]
+      },
+      "unitEconomics": {
+        "unit": "per 10,000 results (pay-per-result Actor)",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 50
+        },
+        "costPerUnitUsd": 3,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 68,
+        "hoursPerUnit": 0.1,
+        "notes": "Store Actors commonly charge $0.50-5 per 1,000 results; Apify deducts about $3 of platform usage and then 20% of the remaining profit (so effective fee is about 17% of price, margin 68%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Platform costs are deducted per run, so there is no fixed bill; first payout comes the month after first paying users."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 3000
+        },
+        "notes": "AI agents now call Apify Actors via MCP, which adds demand, and coding agents make Actors fast to build. The Store holds thousands of Actors, so popular targets have many near-identical scrapers and prices are being undercut. Winners pick underserved, compliant data sources and keep them reliable; the failure mode is a scraper nobody finds or one that breaks. Median month-12 net profit was lowered below $100 so it agrees with a profit likelihood under 50% (most starters never reach $100/month)."
+      },
+      "pricingStrategy": "Launch slightly below competing Actors with a free trial quota, then raise prices once reviews and reliability stats are strong; bundle a weekly paid report for non-technical buyers.",
+      "profitPath": [
+        "Month 0: build and publish 2-3 Actors for underserved compliant sources (about 30 hours, cost $0)",
+        "Month 1-3: first users; $0-50/month",
+        "Month 3-6: add Actors, fix breakages fast, improve SEO of Store listings: $50-300/month",
+        "Month 6-12: a hit Actor can reach $1,000+/month; most portfolios settle at $50-300"
+      ],
+      "sources": [
+        "https://help.apify.com/en/articles/8684010-how-does-actor-monetization-work",
+        "https://docs.apify.com/actors/publishing/monetize.md",
+        "https://apify.com/partners/actor-developers"
+      ]
+    }
+  },
+  {
+    "id": "bandwidth-sharing",
+    "name": "Passive bandwidth sharing (Honeygain, Pawns.app)",
+    "category": "data",
+    "summary": "Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared.",
+    "howItWorks": "Proxy companies route customers' traffic (price monitoring, ad verification, scraping) through your home IP. You install the app and leave it running. A typical income is about $1-3 per device per month, so reaching Honeygain's $20 minimum can take many months; Pawns pays from $5. You are legally exposed because unknown third parties' traffic leaves your IP, and Honeygain's terms make you responsible for checking that your ISP allows it.",
+    "platforms": ["Honeygain", "Pawns.app"],
+    "payout": {
+      "methods": [
+        "Honeygain: PayPal (USD) or crypto via JumpTask",
+        "Pawns: PayPal, ACH, Bitcoin"
+      ],
+      "minimumPayout": "Honeygain $20; Pawns $5",
+      "frequency": "on request once the threshold is reached",
+      "typicalDelayDays": 3,
+      "notes": "Honeygain processes payouts in 2-3 business days. Its terms void earnings after 6 months without sharing or payouts, and above-threshold earnings expire after 24 months. PayPal may charge fees."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 1,
+      "median": 3,
+      "high": 15
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 10,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 90,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal in itself, but it often breaches residential ISP terms; Honeygain's terms require you to check your ISP contract and accept risks such as blocklisting. Avoid it on employer, shared or metered networks. Honeygain excludes sanctioned regions (incl. occupied Ukrainian regions), not whole reference countries.",
+      "complianceRequirements": [
+        "check ISP terms",
+        "do not run via VPN/proxy",
+        "report income for tax"
+      ]
+    },
+    "availability": {
+      "notes": "Available in most countries. Earnings are much lower in low-demand geographies."
+    },
+    "automationPlan": [
+      "Fully automatic once installed",
+      "Auto-redeem at threshold"
+    ],
+    "manualSteps": [
+      "Install on owned devices",
+      "Check ISP terms",
+      "Set up the payout account"
+    ],
+    "fullCycle": [
+      "Install",
+      "Share bandwidth",
+      "Accumulate the threshold ($5 Pawns / $20 Honeygain)",
+      "Request payout",
+      "PayPal -> bank"
+    ],
+    "risks": [
+      "ISP ToS violation",
+      "IP reputation/blacklisting",
+      "Security exposure",
+      "Tiny income"
+    ],
+    "evidence": "Honeygain's official payout page and terms document the $20 threshold, PayPal/JumpTask methods, 2-3 day processing and expiry rules. Pawns.app's site states payouts from $5. Reviews report $1-3/month per device.",
+    "sources": [
+      "https://www.honeygain.com/honeygain-payout",
+      "https://www.honeygain.com/terms-of-use/",
+      "https://pawns.app/",
+      "https://clark.com/make-money/honeygain-review/"
+    ],
+    "tags": ["passive", "low-income", "risky"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Honeygain app (free)", "Pawns.app (free)"],
+        "skills": ["installing an app", "reading your ISP contract"],
+        "equipment": [
+          "always-on computer or phone on an unmetered home connection"
+        ],
+        "accounts": ["Honeygain / Pawns account", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per device-month",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 2,
+          "high": 5
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0,
+        "notes": "Reviews report $1-3 per device per month; electricity is treated as zero because the device is already on."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Reaching the $5 Pawns minimum takes about 2-3 months; Honeygain's $20 can take a year."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 3,
+          "high": 12
+        },
+        "notes": "AI scraping has increased demand for residential proxies, but supply of sharers has grown faster, so per-GB rates keep falling. Earnings depend heavily on your country and IP reputation, and ISPs or security vendors can flag the IP. Essentially nobody reaches $100/month; profit likelihood here means ever receiving a net payout."
+      },
+      "pricingStrategy": "Not applicable; rates are fixed by the app.",
+      "profitPath": [
+        "Month 0: check ISP terms, install on owned devices (cost $0)",
+        "Month 1-3: accumulate to the $5 Pawns threshold",
+        "Month 3-6: first payout; $2-5/month",
+        "Month 6-12: stays at $1-15/month; stop if your IP gets blocklisted"
+      ],
+      "sources": [
+        "https://www.honeygain.com/honeygain-payout",
+        "https://pawns.app/",
+        "https://clark.com/make-money/honeygain-review/"
+      ]
+    }
+  },
+  {
+    "id": "transcription-work",
+    "name": "Freelance transcription and captioning (Rev, TranscribeMe, GoTranscript)",
+    "category": "micro-tasks",
+    "summary": "Transcribe or caption audio/video files for per-audio-minute pay on transcription marketplaces.",
+    "howItWorks": "Clients upload audio, and platforms split it into jobs that freelancers claim and transcribe or correct. Rev pays about $0.40-1.10 per audio minute, and TranscribeMe pays $15-22 per audio hour (average about $250/month). Most jobs now start from an ASR draft, which lowers pay per minute. Speed and accuracy decide your income. Entrance tests and waitlists are common.",
+    "platforms": ["Rev", "TranscribeMe", "GoTranscript"],
+    "payout": {
+      "methods": ["PayPal -> bank"],
+      "minimumPayout": "none (Rev weekly)",
+      "frequency": "weekly",
+      "typicalDelayDays": 7,
+      "notes": "Rev pays all approved work weekly via PayPal and currently has a waitlist. TranscribeMe's payout method is not stated on its jobs page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 20,
+      "median": 150,
+      "high": 800
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 2,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 3,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere.",
+      "complianceRequirements": [
+        "report income for tax",
+        "confidentiality of client audio"
+      ]
+    },
+    "availability": {
+      "notes": "Mostly open to English speakers worldwide, provided PayPal works in your country. Rev has a waitlist."
+    },
+    "automationPlan": [
+      "Text expanders/hotkeys",
+      "Foot-pedal/keyboard playback control"
+    ],
+    "manualSteps": [
+      "Pass the transcription test",
+      "Transcribe/edit manually",
+      "Follow style guides"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Pass the test",
+      "Claim jobs",
+      "Submit",
+      "Weekly PayPal payout"
+    ],
+    "risks": [
+      "Pay rates falling because of ASR",
+      "Waitlists",
+      "Repetitive strain"
+    ],
+    "evidence": "Rev's official freelancer page lists $0.40-1.10 per audio minute (transcription) and weekly PayPal pay. TranscribeMe's official jobs page states $15-22 per audio hour with a $250 average and $2,200 top monthly earnings.",
+    "sources": [
+      "https://www.rev.com/freelancers",
+      "https://www.transcribeme.com/transcription-jobs/"
+    ],
+    "tags": ["transcription", "human-only"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Rev / TranscribeMe / GoTranscript editors (free)",
+          "text expander (free)",
+          "optional USB foot pedal (about $40)"
+        ],
+        "skills": [
+          "fast, accurate typing (60+ wpm)",
+          "excellent English spelling and grammar",
+          "following style guides"
+        ],
+        "equipment": ["laptop", "good headphones"],
+        "accounts": ["platform account (Rev has a waitlist)", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per audio hour",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 25,
+          "high": 60
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "Rev pays $0.40-1.10 per audio minute and TranscribeMe $15-22 per audio hour; editing an ASR draft takes about 3 hours per audio hour for a beginner, so effective pay is $5-10/hour."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Weekly PayPal payouts once you pass the test."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 10,
+          "median": 60,
+          "high": 700
+        },
+        "notes": "Speech recognition now produces near-final drafts, so most work is cheaper ASR clean-up and per-minute rates have fallen. Rev keeps a waitlist and job queues empty quickly. Fast, accurate typists with niche skills (legal, medical, foreign accents) still earn; beginners often quit at $5/hour. Median month-12 net profit was lowered below $100 so it agrees with a profit likelihood under 50% (most starters never reach $100/month). Cross-catalog calibration: profitLikelihoodPercent lowered from 45 to 35 to match content-mill-writing (35) and below crowd-translation-gengo (40), peers with the same declining, AI-squeezed per-unit pay."
+      },
+      "pricingStrategy": "Rates are fixed per job; raise effective pay by speed (hotkeys, foot pedal) and by qualifying for higher-paying difficult-audio or foreign-language queues.",
+      "profitPath": [
+        "Month 0: pass entrance tests on 2-3 platforms (cost $0)",
+        "Month 1-2: $30-100/month while learning style guides",
+        "Month 3-6: improve speed and claim premium jobs: $100-300/month",
+        "Month 6-12: plateau; consider moving to captioning QA or specialist transcription"
+      ],
+      "sources": [
+        "https://www.rev.com/freelancers",
+        "https://www.transcribeme.com/transcription-jobs/"
+      ]
+    }
+  },
+  {
+    "id": "online-mystery-shopping",
+    "name": "Online and phone mystery shopping (MSPA-member firms)",
+    "category": "micro-tasks",
+    "summary": "Evaluate a company's website, chat, email or phone customer service as a covert customer and file a structured report.",
+    "howItWorks": "Brands hire mystery-shopping firms to audit their service. Some assignments can be done entirely online: placing a web inquiry, testing live chat, calling a call centre or completing an online ordering flow. You then fill in a detailed questionnaire. Pay is typically $5-25 per online or phone shop, and many shops reimburse purchases. Most shops still need in-person visits, so online-only volume is small. Never pay to join, and treat any 'deposit this cheque' request as a scam.",
+    "platforms": [
+      "MSPA-member firms (e.g. Market Force, BestMark, Intellishop)"
+    ],
+    "payout": {
+      "methods": ["PayPal", "direct deposit"],
+      "minimumPayout": "none (per-shop)",
+      "frequency": "per assignment; schedule varies by firm",
+      "typicalDelayDays": 45,
+      "notes": "MSPA Americas shopper FAQ: payment terms vary by firm, some pay within a week and others within 30 to 60 days; remuneration is stated before you accept a project; shoppers should never pay a company to work or to be listed in its database."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 200
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 1,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 2,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 50
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal. Some assignments involve call recording, which needs consent under local law.",
+      "complianceRequirements": [
+        "never pay fees to join",
+        "follow call-recording laws",
+        "report income for tax"
+      ]
+    },
+    "availability": {
+      "notes": "MSPA has Americas, Europe/Africa and Asia-Pacific chapters. Online-only assignments are concentrated in the US/UK/EU."
+    },
+    "automationPlan": ["Job-board alert filters", "Report templates"],
+    "manualSteps": [
+      "Do the evaluations yourself",
+      "Write the reports",
+      "Pass certification quizzes"
+    ],
+    "fullCycle": [
+      "Register with firms",
+      "Pick online/phone shops",
+      "Complete the evaluation",
+      "Submit the report",
+      "Payout"
+    ],
+    "risks": [
+      "Scams impersonating firms",
+      "Little online-only volume",
+      "Slow pay"
+    ],
+    "evidence": "MSPA is the trade association for mystery-shopping firms. Pay figures could not be verified against an official firm page (Market Force pages unavailable when checked), so treat them as approximate.",
+    "sources": [
+      "https://www.mspa-americas.org/",
+      "https://consumer.ftc.gov/articles/mystery-shopper-scams",
+      "https://www.mspa-americas.org/shopper-faq/"
+    ],
+    "tags": ["human-only", "low-volume"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 4,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "MSPA-member firm job boards (free)",
+          "report templates (free)"
+        ],
+        "skills": [
+          "observing and recalling details",
+          "writing structured reports on deadline",
+          "spotting scams"
+        ],
+        "equipment": ["laptop", "phone (call recording where legal)"],
+        "accounts": [
+          "profiles with several MSPA firms",
+          "PayPal or direct deposit"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per online or phone shop",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 12,
+          "high": 25
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Typical online/phone shop fees reported by shoppers (estimated; MSPA publishes no pay figures); purchase reimbursements are excluded because they are pass-through."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Firms pay 30-60 days after report acceptance."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 25,
+          "high": 150
+        },
+        "notes": "Online and phone shops are a small share of mystery shopping, which is still mostly in-person. Volume is concentrated in the US/UK/EU and scams impersonating real firms are common. Regular shoppers with good ratings earn $20-50/month online; only about 5% reach $100/month without in-person shops. profitLikelihoodPercent here is the chance of receiving any real net-positive payout within 12 months (typical income is under $100/month), calibrated to the catalog's survey-panel anchor."
+      },
+      "pricingStrategy": "Fees are set per shop; accept only shops paying at least $10/hour and ask schedulers for bonuses on hard-to-fill assignments.",
+      "profitPath": [
+        "Month 0: register with 5+ MSPA-member firms (cost $0)",
+        "Month 1-2: 1-3 online/phone shops; first pay arrives after 30-60 days",
+        "Month 3-6: build ratings to get more offers: $20-50/month",
+        "Month 6-12: plateau; add local in-person shops if you want more volume"
+      ],
+      "sources": [
+        "https://www.mspa-americas.org/",
+        "https://consumer.ftc.gov/articles/mystery-shopper-scams"
+      ]
+    }
+  }
+]

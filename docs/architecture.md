@@ -2,6 +2,8 @@
 
 This document describes the technical architecture of the money-machine system designed to legally generate income with zero capital investment.
 
+> **Where the strategies come from.** The catalog of business plans lives in `data/strategies/*.json` and is compiled by `scripts/build-catalog.mjs` into `data/strategies.json`, `docs/business-plans/` and the website. Strategy modules under `src/strategies/` implement the top-ranked catalog entries following [`REQUIREMENTS.md`](../REQUIREMENTS.md). See the [roadmap](./plans/roadmap.md) for the order of implementation.
+
 ## Design Goals
 
 1. **Zero Capital**: Operate without requiring financial investment

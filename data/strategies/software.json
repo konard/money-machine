@@ -1,0 +1,2209 @@
+[
+  {
+    "id": "github-sponsors",
+    "name": "GitHub Sponsors for open-source maintainers",
+    "category": "software",
+    "summary": "Recurring and one-time donations from users and companies of your open-source projects via GitHub's built-in sponsorship.",
+    "howItWorks": "Publish genuinely useful open-source libraries/CLIs, enable a Sponsors profile with tiers (e.g. $5/$25/$250 with perks like priority issues or logo in README), and add FUNDING.yml so a Sponsor button appears on every repo. Individuals and companies that depend on your code pay to keep it maintained. Sponsorships from personal accounts carry 0% GitHub fee; org sponsorships carry up to 6%. Income tracks adoption, so it is slow and concentrated in popular maintainers.",
+    "platforms": ["GitHub Sponsors"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank account"],
+      "minimumPayout": "No published minimum",
+      "frequency": "monthly",
+      "typicalDelayDays": 30,
+      "notes": "Region of residence must match bank region; 103 supported regions as of 2026 docs. Payouts follow monthly cycle after Stripe onboarding."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 15,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Receiving donations/sponsorship is legal across the reference set; taxable income.",
+      "complianceRequirements": [
+        "Stripe KYC",
+        "tax reporting (W-8BEN/W-9 for US tax forms)"
+      ]
+    },
+    "availability": {
+      "notes": "GitHub lists 103 supported regions (incl. US, CA, UK, EU, JP, AU, IN, BR, KE). Non-supported regions can use a fiscal host such as Open Collective."
+    },
+    "automationPlan": [
+      "AI agent triages issues, drafts fixes and release notes to keep repos active",
+      "Auto-generate sponsor shout-outs/README sponsor blocks via GitHub Actions",
+      "Scheduled newsletter of changelog to sponsors"
+    ],
+    "manualSteps": [
+      "Stripe KYC and bank linking",
+      "Tax form",
+      "Community engagement and responding to sponsors"
+    ],
+    "fullCycle": [
+      "Create GitHub account",
+      "Ship useful OSS project",
+      "Apply to Sponsors and set tiers",
+      "Add FUNDING.yml",
+      "Grow users",
+      "Receive sponsorships",
+      "Monthly Stripe payout to bank"
+    ],
+    "risks": [
+      "Most maintainers earn $0-$50/month",
+      "Depends on project popularity",
+      "Burnout from maintenance expectations"
+    ],
+    "evidence": "GitHub docs state 0% fees on personal sponsorships and list 103 payout regions; GitHub/Stripe case study reports the program scaling to 100+ countries with thousands of paid maintainers.",
+    "sources": [
+      "https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors",
+      "https://stripe.com/customers/github"
+    ],
+    "tags": ["recurring", "developer", "open-source", "donations"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "GitHub (free)",
+          "GitHub Sponsors (0% fee on personal sponsorships)",
+          "AI coding assistant (optional, free tier)"
+        ],
+        "skills": [
+          "build and maintain a library/CLI other developers depend on",
+          "write clear docs and READMEs (AI helps)",
+          "handle issues and community politely"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "GitHub account with 2FA",
+          "GitHub Sponsors profile + Stripe Connect KYC",
+          "bank account in a supported region"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sponsor-month",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 5,
+          "high": 100
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.2,
+        "notes": "Typical GitHub Sponsors tiers are $1-$10 for individuals and $50-$250+ for companies; personal sponsorships carry 0% GitHub fee (orgs up to 6%), and GitHub covers card processing for personal sponsors."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed costs, so the break-even month is simply the month of the first sponsor; with an already-used project this takes 3-12 months."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 1000
+        },
+        "notes": "Money concentrates in maintainers of widely used projects and those with corporate users; most profiles earn $0-$50/month. Since 2025 AI coding assistants have cut visits to docs and repos, which reduces Sponsor-button exposure (Tailwind Labs publicly blamed AI for falling revenue in early 2026). Failure mode: a niche project with few dependents earns nothing however good it is."
+      },
+      "pricingStrategy": "Offer a $5 personal tier and a visible $100-$250/month company tier with a logo in the README and priority issue triage; add one-time options. Raise company tiers once you have a few logos to show.",
+      "profitPath": [
+        "Month 0: polish one useful repo, add FUNDING.yml, create tiers and finish Stripe KYC (cost $0)",
+        "Month 1-2: announce in release notes and README; expected $0-$10",
+        "Month 3-6: ship features asked for by company users and pitch them the logo tier directly; expected $5-$50/month",
+        "Month 6-12: add more dependents (plugins, integrations) and a sponsor-only roadmap call; $10-$200/month if adoption grows"
+      ],
+      "sources": [
+        "https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors",
+        "https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/about-sponsorships-fees-and-taxes"
+      ]
+    }
+  },
+  {
+    "id": "oss-funding-opencollective-polar-thanksdev",
+    "name": "Open Collective, Polar.sh and thanks.dev funding for OSS",
+    "category": "software",
+    "summary": "Collect OSS funding through a fiscal host (Open Collective), Polar.sh donations/subscriptions, or dependency-based corporate funding via thanks.dev, then pay yourself.",
+    "howItWorks": "Open Collective: a fiscal host holds money transparently and you submit expenses/invoices for your work, paid via PayPal or Wise. Polar.sh: merchant of record that lets you sell sponsorships, paid access, license keys and donations for repos. thanks.dev: companies fund their whole dependency tree; registered maintainers receive an algorithmic share. Payers are companies and users who depend on your code.",
+    "platforms": ["Open Collective", "Polar.sh", "thanks.dev"],
+    "payout": {
+      "methods": [
+        "PayPal",
+        "Wise -> bank",
+        "Stripe Connect Express -> bank (Polar)"
+      ],
+      "minimumPayout": "Polar: no minimum published; Open Collective: per-expense, no fixed minimum",
+      "frequency": "per expense / monthly",
+      "typicalDelayDays": 21,
+      "notes": "Polar pays out via Stripe Connect Express (Stripe payout fees apply); Open Collective hosts may charge a host fee (e.g. ~10%); thanks.dev requires maintainer registration. Polar/Open Collective fee figures not re-confirmed on official pages in Nov 2026."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Donations and invoices for maintenance work are legal; income taxable. Fiscal host handles some compliance.",
+      "complianceRequirements": [
+        "fiscal host rules",
+        "Stripe KYC (Polar)",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Polar's official list has 119 Stripe Connect Express payout countries, covering 36 of 48 reference countries (missing: Brazil, Nepal, Uganda, Zambia, Malawi, Zimbabwe, Lebanon, Iraq, Libya, Ukraine, Georgia, Kyrgyzstan). Open Collective pays expenses via PayPal/Wise, which covers several of those gaps; thanks.dev payouts route via its partners."
+    },
+    "automationPlan": [
+      "Auto-submit monthly expense invoices from a template",
+      "Polar API/webhooks to deliver license keys and gated content",
+      "AI-generated transparency updates and changelogs for backers"
+    ],
+    "manualSteps": [
+      "Apply to a fiscal host",
+      "KYC and payout account setup",
+      "Register projects on thanks.dev"
+    ],
+    "fullCycle": [
+      "Create collective/Polar org",
+      "Link repos",
+      "Promote funding links",
+      "Receive funds",
+      "Submit expense or await payout",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Low and irregular amounts",
+      "Host fees",
+      "Funds may sit at org level (thanks.dev)",
+      "Open Collective Foundation host closed 2024 - pick an active host"
+    ],
+    "evidence": "Open Collective publicly lists transparent ledgers of paid expenses for thousands of collectives; Polar's docs describe Stripe Connect payouts across its supported countries; thanks.dev distributes funds from companies like Sentry to dependency maintainers.",
+    "sources": [
+      "https://docs.opencollective.com/help/expenses-and-getting-paid",
+      "https://polar.sh/docs/merchant-of-record/supported-countries",
+      "https://opencollective.com/pricing",
+      "https://thanks.dev"
+    ],
+    "tags": ["open-source", "donations", "recurring", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Open Collective via Open Source Collective host",
+          "Polar.sh (free account)",
+          "thanks.dev (free maintainer registration)"
+        ],
+        "skills": [
+          "maintain an open-source project with real users",
+          "write transparent budgets/expense reports",
+          "basic invoicing"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Open Collective account (fiscal host application)",
+          "Polar account + Stripe Connect Express KYC",
+          "PayPal or Wise for expense reimbursement"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per backer-month",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 10,
+          "high": 500
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 13,
+        "grossMarginPercent": 87,
+        "hoursPerUnit": 0.2,
+        "notes": "Typical backer pledges $2-$25/month, company backers $100-$500; fee approximates a ~10% fiscal-host fee plus ~3% card processing on Open Collective (Polar Starter is 5% + 50c for organisations created after May 27, 2026, +1.5% for non-US cards). Open Collective host fee estimated; its pricing page is bot-blocked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed costs; break-even equals the month of the first backer or first thanks.dev allocation."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 800
+        },
+        "notes": "Collectives with corporate users and visible budgets win; thanks.dev and similar dependency-funding schemes pay small algorithmic shares spread across thousands of packages. The Open Collective Foundation host shut down in 2024 and Polar has refocused on selling products/subscriptions, so maintainers must pick hosts carefully. Failure mode: money sits in the collective balance and is too small to justify expense paperwork."
+      },
+      "pricingStrategy": "Publish a concrete budget (e.g. $500/month = 2 days of maintenance) and offer company tiers with logo placement; switch to paid support or license keys on Polar once demand is proven.",
+      "profitPath": [
+        "Month 0: apply to Open Source Collective, register on thanks.dev, connect Polar (cost $0)",
+        "Month 1-2: add funding links and a budget page; expected $0-$10",
+        "Month 3-6: contact companies in your dependents list; expected $10-$50/month",
+        "Month 6-12: submit monthly expenses to pay yourself and add a paid tier on Polar; $15-$300/month if usage grows"
+      ],
+      "sources": [
+        "https://opencollective.com/pricing",
+        "https://docs.opencollective.com/help/expenses-and-getting-paid",
+        "https://polar.sh/docs/merchant-of-record/supported-countries",
+        "https://thanks.dev",
+        "https://polar.sh/docs/merchant-of-record/fees"
+      ]
+    }
+  },
+  {
+    "id": "oss-bounties-algora",
+    "name": "Paid open-source bounties (Algora, Opire, Gitcoin)",
+    "category": "software",
+    "summary": "Solve GitHub issues that companies have attached cash bounties to and get paid when the PR is merged.",
+    "howItWorks": "Companies and maintainers post bounties ($50-$5,000+) on GitHub issues via Algora and similar platforms. You (often assisted by an AI coding agent) claim the issue, submit a quality PR, and once merged the bounty is paid out. Payers are funded OSS companies wanting features/fixes. Competition is fierce on popular bounties, and spammy AI PRs get banned, so quality and communication matter. Gitcoin-style bounties pay in crypto and are less relevant now.",
+    "platforms": ["Algora", "Opire", "Gitcoin (crypto)"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank"],
+      "minimumPayout": "No minimum per bounty",
+      "frequency": "per bounty",
+      "typicalDelayDays": 5,
+      "notes": "Algora fee/timing figures (payer pays fee on top; contributor gets 100% in ~1-8 business days) could not be re-confirmed: algora.io/docs/payments and algora.io/pricing return 404 and the algora.io homepage now markets hiring/recruiting. Replit Bounties is discontinued (replit.com/bounties redirects to Contra). IssueHunt has pivoted to a Japanese security bug-bounty platform and is no longer an OSS issue-bounty site."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 2,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 96,
+      "platformAvailabilityPercent": 65
+    },
+    "legality": {
+      "restrictedIn": [
+        "Bangladesh (crypto-paid bounties only)",
+        "Nepal (crypto-paid bounties only)"
+      ],
+      "notes": "Fiat bounties are ordinary contractor income. Crypto-paid bounties (Gitcoin) are restricted where crypto is banned.",
+      "complianceRequirements": ["Stripe KYC", "contractor tax reporting"]
+    },
+    "availability": {
+      "notes": "Algora pays through Stripe Connect including cross-border payouts; some countries without Stripe payout support cannot receive."
+    },
+    "automationPlan": [
+      "Watch Algora/GitHub bounty labels via API and rank by value vs. difficulty",
+      "AI coding agent drafts fixes and tests",
+      "Automated CI checks before submission"
+    ],
+    "manualSteps": [
+      "Claiming issues and communicating with maintainers",
+      "Human review of PR quality",
+      "Stripe onboarding"
+    ],
+    "fullCycle": [
+      "Sign up on Algora with GitHub",
+      "Connect Stripe",
+      "Find bounty",
+      "Claim and submit PR",
+      "PR merged",
+      "Bounty paid to Stripe",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Competition and duplicate claims",
+      "Low-quality AI PRs lead to bans",
+      "Unpaid work if PR rejected",
+      "Bounty platforms keep closing or pivoting (Replit Bounties closed; IssueHunt pivoted; Algora now recruiting-first)"
+    ],
+    "evidence": "Algora's open-source repo (github.com/algora-io/algora) still describes a GitHub app for bounties and tips with a Stripe-based payout processor, and public GitHub issues show /bounty and /claim payouts. Payment probability lowered from 5 to 3: Algora's public pricing/docs pages are gone and its homepage now leads with recruiting, Replit Bounties closed, IssueHunt left OSS bounties, and popular bounties draw many competing (often AI) PRs.",
+    "sources": [
+      "https://github.com/algora-io/algora",
+      "https://algora.io/",
+      "https://opire.dev/",
+      "https://issuehunt.io/"
+    ],
+    "tags": ["bounties", "developer", "ai-assisted", "per-task"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Algora / Opire accounts (free)",
+          "AI coding agent subscription (~$20/mo)",
+          "GitHub"
+        ],
+        "skills": [
+          "read and modify unfamiliar codebases",
+          "write tests and clean PRs",
+          "communicate with maintainers (AI assists but cannot replace review quality)"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "GitHub account",
+          "Algora account + Stripe Connect KYC",
+          "PayPal/Wise for other platforms"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per merged bounty",
+        "typicalPriceUsd": {
+          "low": 50,
+          "median": 200,
+          "high": 2000
+        },
+        "costPerUnitUsd": 10,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 8,
+        "notes": "Algora bounties typically range $50-$500 with occasional $1k-$5k items; payer pays the platform fee; cost is AI-agent credits per attempt (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). One median bounty a month covers the AI subscription; unpaid attempts (PRs not merged) are the real cost and are not counted here."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": -20,
+          "median": 30,
+          "high": 1500
+        },
+        "notes": "Winners are experienced contributors who specialise in one or two codebases and get assigned bounties before posting PRs. Since 2025 AI agents let anyone file a PR in minutes, so popular bounties get dozens of attempts and maintainers increasingly ban low-quality AI PRs or close bounty programs. Failure mode: many hours of unpaid work on PRs that lose the race."
+      },
+      "pricingStrategy": "Not price-set by you: target $100-$500 bounties in a stack you know, comment with a plan before coding, and build reputation so maintainers assign you work directly or offer paid contracts.",
+      "profitPath": [
+        "Month 0: set up accounts and pick 2-3 repositories you can learn deeply (cost $0-$20)",
+        "Month 1-2: fix small issues to build reputation; first bounty expected $0-$200",
+        "Month 3-6: claim 1-2 bounties/month in the same codebases; expected $100-$400/month",
+        "Month 6-12: convert maintainer relationships into retainers or contract work"
+      ],
+      "sources": [
+        "https://algora.io/",
+        "https://github.com/algora-io/algora",
+        "https://opire.dev/"
+      ]
+    }
+  },
+  {
+    "id": "paid-browser-extensions",
+    "name": "Paid browser extensions with ExtensionPay/Stripe",
+    "category": "software",
+    "summary": "Build Chrome/Firefox/Edge extensions with a freemium or subscription model and charge users via ExtensionPay or your own Stripe/merchant-of-record checkout.",
+    "howItWorks": "Chrome Web Store has no built-in payments, so use external billing. You build a narrowly useful extension (productivity, scraping-for-self, tab management, AI writing helpers), publish it free, and gate premium features behind a paywall. ExtensionPay adds a hosted payment/login flow on top of your Stripe account (5% per transaction + Stripe fees); alternatives are Lemon Squeezy/Paddle/Polar license keys. Payers are end users who want the premium features.",
+    "platforms": [
+      "Chrome Web Store",
+      "Firefox Add-ons",
+      "Microsoft Edge Add-ons",
+      "ExtensionPay",
+      "Stripe"
+    ],
+    "payout": {
+      "methods": [
+        "Stripe -> bank",
+        "or merchant of record (Lemon Squeezy/Paddle) -> bank/PayPal"
+      ],
+      "minimumPayout": "Stripe: none; Lemon Squeezy $50; Paddle $100/EUR100/GBP100",
+      "frequency": "daily-weekly (Stripe) / twice monthly (Lemon Squeezy) / monthly (Paddle)",
+      "typicalDelayDays": 7,
+      "notes": "Chrome Web Store charges a one-time $5 developer registration fee."
+    },
+    "capitalRequiredUsd": 5,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 7,
+      "setupEffort": 4,
+      "ongoingEffort": 3,
+      "incomePotential": 6,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling software is legal everywhere in the reference set.",
+      "complianceRequirements": [
+        "Chrome Web Store developer program policies (no data harvesting)",
+        "Stripe KYC or MoR verification",
+        "privacy policy"
+      ]
+    },
+    "availability": {
+      "notes": "Stripe direct accounts exist in ~46 countries; elsewhere use a merchant of record (Paddle/Lemon Squeezy/Polar) that pays via PayPal/bank in 200+ countries."
+    },
+    "automationPlan": [
+      "AI agent builds and updates extension code",
+      "Automated store publishing via Chrome Web Store API",
+      "License checks via ExtensionPay/MoR APIs",
+      "Auto-generate listing screenshots and copy"
+    ],
+    "manualSteps": [
+      "Developer registration and identity verification",
+      "Store review responses",
+      "Payment account KYC"
+    ],
+    "fullCycle": [
+      "Pay $5 CWS fee",
+      "Build extension",
+      "Integrate ExtensionPay/license keys",
+      "Publish",
+      "Acquire users",
+      "Users upgrade",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Store rejections/policy changes (MV3)",
+      "Clones",
+      "Low conversion (1-3%)",
+      "Account suspension for policy violations"
+    ],
+    "evidence": "ExtensionPay's homepage states developers have made over $800,000 through it (5% fee, funds paid straight to the developer's Stripe account); many indie developers publicly report $1k-$10k MRR from paid extensions (e.g. on Indie Hackers).",
+    "sources": [
+      "https://extensionpay.com/articles/add-stripe-payments-to-chrome-extensions",
+      "https://www.indiehackers.com/product/extensionpay/25000-payments-in-browser-extensions--MvJwDXPIrwfoFTC2Az4",
+      "https://extensionpay.com/",
+      "https://docs.lemonsqueezy.com/help/getting-started/getting-paid",
+      "https://www.paddle.com/legal/terms"
+    ],
+    "tags": ["freemium", "recurring", "developer", "ai-assisted"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 5,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Chrome Web Store developer account ($5 one-time)",
+          "ExtensionPay (5% + Stripe)",
+          "free hosting/backend tier (Cloudflare/Firebase)"
+        ],
+        "skills": [
+          "JavaScript/TypeScript and Manifest V3 (AI coding agents cover most of it)",
+          "store listing copywriting and screenshots",
+          "customer support"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Chrome Web Store developer account",
+          "Stripe account + KYC (or Lemon Squeezy/Paddle where Stripe is unavailable)",
+          "Firefox/Edge add-on accounts (free)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per paying subscriber-month",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 5,
+          "high": 15
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 14,
+        "grossMarginPercent": 86,
+        "hoursPerUnit": 0.05,
+        "notes": "Most premium extensions charge $3-$10/month or $20-$60/year; fee combines ExtensionPay 5% + Stripe 2.9% + 30c (~6% of a $5 charge). Chrome Web Store takes no revenue share; the $5 registration amount is not stated on the register page (estimated from common knowledge)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed costs; break-even is the first paid conversion, usually after reaching a few hundred weekly users (1-3% convert)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 3000
+        },
+        "notes": "Winners own a narrow workflow (e.g. a specific site or job role) and rank in store search; generic AI-writing and tab tools are cloned within weeks. In 2025-2026 browsers shipped built-in AI assistants (Chrome Gemini, AI-first browsers), eroding simple AI-wrapper extensions, while MV3 rules limit some categories. Failure mode: plenty of free installs but under 1% pay."
+      },
+      "pricingStrategy": "Launch free with one premium feature and a 7-day trial at $3-$5/month; once reviews and usage data exist, add an annual plan and raise to $8-$10/month for new users.",
+      "profitPath": [
+        "Month 0: build MVP with an AI coding agent and publish to Chrome/Edge/Firefox (cost $5)",
+        "Month 1-2: improve listing, collect reviews; first $0-$20",
+        "Month 3-6: add premium features users request, cross-post in niche communities; $20-$150/month",
+        "Month 6-12: launch a second extension for the same audience and annual plans; $50-$500/month for the top quartile"
+      ],
+      "sources": [
+        "https://extensionpay.com/",
+        "https://stripe.com/pricing",
+        "https://developer.chrome.com/docs/webstore/register"
+      ]
+    }
+  },
+  {
+    "id": "paid-ide-plugins",
+    "name": "Paid IDE plugins (JetBrains Marketplace, VS Code via license keys)",
+    "category": "software",
+    "summary": "Sell paid or freemium plugins for JetBrains IDEs through the native marketplace, or VS Code/Cursor extensions unlocked by license keys.",
+    "howItWorks": "JetBrains Marketplace supports paid plugins natively: JetBrains handles licensing and billing and keeps a 15% commission. VS Code Marketplace has no built-in payments, so developers ship a free extension that validates a license key sold via Lemon Squeezy/Polar/Paddle. Payers are professional developers and companies buying productivity tooling, who are relatively willing to pay.",
+    "platforms": [
+      "JetBrains Marketplace",
+      "Visual Studio Marketplace",
+      "Open VSX",
+      "Lemon Squeezy/Polar license keys"
+    ],
+    "payout": {
+      "methods": ["JetBrains: bank transfer (USD/EUR)", "MoR -> bank/PayPal"],
+      "minimumPayout": "JetBrains: $200/EUR200 (or paid every Dec 31)",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Official: paid by bank in USD/EUR on a JetBrains self-billing invoice, up to 30 days after month end once balance exceeds $200/EUR200, and every 31 December regardless. Commission is 15% (contractually capped at 25%; custom terms possible for high revenue)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 3,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal software sale.",
+      "complianceRequirements": [
+        "JetBrains vendor agreement and tax info",
+        "MoR KYC"
+      ]
+    },
+    "availability": {
+      "notes": "JetBrains is a global vendor and pays by bank transfer in most countries outside sanctions; MoRs cover most of the rest."
+    },
+    "automationPlan": [
+      "AI agent writes/maintains plugin code against IDE APIs",
+      "CI publishing to Marketplace",
+      "Automated license provisioning via webhooks"
+    ],
+    "manualSteps": ["Vendor verification", "Plugin review", "Customer support"],
+    "fullCycle": [
+      "Register as JetBrains vendor",
+      "Build plugin",
+      "Set pricing",
+      "Approval",
+      "Sales",
+      "Reach $200",
+      "Bank payout"
+    ],
+    "risks": [
+      "Narrow market",
+      "IDE API breakages each release",
+      "Free alternatives and AI assistants commoditize features"
+    ],
+    "evidence": "JetBrains help docs describe paid plugin payouts and revenue sharing; JetBrains blog 'One year of paid plugins' reported growing vendor revenue.",
+    "sources": [
+      "https://plugins.jetbrains.com/docs/marketplace/getting-paid.html",
+      "https://plugins.jetbrains.com/docs/marketplace/revenue-sharing-and-fees.html",
+      "https://blog.jetbrains.com/platform/2020/07/one-year-of-paid-plugins-on-the-marketplace/"
+    ],
+    "tags": ["developer-tools", "recurring", "licensing"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "JetBrains Marketplace (15% commission)",
+          "VS Code/Open VSX publisher (free)",
+          "Lemon Squeezy or Polar for VS Code license keys"
+        ],
+        "skills": [
+          "Kotlin/Java for IntelliJ Platform or TypeScript for VS Code (AI covers much)",
+          "developer-tool UX",
+          "release maintenance against IDE updates"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "JetBrains Marketplace vendor profile + payout bank details",
+          "Visual Studio Marketplace publisher",
+          "MoR account for license keys"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per paying user-month",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 5,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 85,
+        "hoursPerUnit": 0.05,
+        "notes": "Paid JetBrains plugins commonly cost $2-$10/month for individuals (more for organizations); JetBrains keeps 15% and handles billing."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed costs; JetBrains pays only once the balance exceeds $200 (or every 31 Dec), so cash arrives later than break-even on paper."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 3000
+        },
+        "notes": "Developers will pay for tools that save real time in a specific stack (framework support, database tools, test runners). Since 2025 AI coding agents (Copilot, Cursor, Claude Code, JetBrains AI) absorb many former plugin features, so generic helpers lose value. Failure mode: a narrow user base plus constant API breakage each IDE release."
+      },
+      "pricingStrategy": "Offer a free tier and a 30-day trial, price at $3-$5/month for individuals and 2-3x for organizations; raise after adding team features.",
+      "profitPath": [
+        "Month 0: build plugin, publish free version, set up paid listing (cost $0)",
+        "Month 1-2: gather installs and feedback; $0-$20",
+        "Month 3-6: add paid features and org licensing; $20-$150/month",
+        "Month 6-12: port to the other IDE family; $40-$500/month for top quartile"
+      ],
+      "sources": [
+        "https://plugins.jetbrains.com/docs/marketplace/revenue-sharing-and-fees.html",
+        "https://plugins.jetbrains.com/docs/marketplace/getting-paid.html"
+      ]
+    }
+  },
+  {
+    "id": "shopify-apps",
+    "name": "Shopify App Store apps",
+    "category": "software",
+    "summary": "Build apps for Shopify merchants and bill them through Shopify's Billing API, with 0% revenue share on the first $1M lifetime gross app revenue (after a one-time $19 registration).",
+    "howItWorks": "Merchants pay monthly subscriptions or usage fees for apps that solve store problems (SEO, upsells, inventory, reviews import, AI product descriptions). Billing runs through Shopify, which pays partners twice monthly via Hyperwallet. Shopify takes 0% on the first $1M of lifetime gross app revenue (counted from 1 Jan 2025) and 15% above, after a one-time $19 App Store registration; very large developers ($20M+ prior-year app revenue or $100M+ company revenue) pay 15% on everything. Requires app review and meeting Built-for-Shopify style quality standards to rank well.",
+    "platforms": ["Shopify App Store", "Shopify Partners"],
+    "payout": {
+      "methods": [
+        "Hyperwallet (payout method chosen in Hyperwallet, e.g. bank/PayPal depending on country)"
+      ],
+      "minimumPayout": "$25",
+      "frequency": "twice monthly",
+      "typicalDelayDays": 20,
+      "notes": "Official: $25 minimum (smaller balances roll over); earnings from the 1st-10th paid 5 business days after the 15th, 11th to 5th-last day paid 5 business days after month end; first referral earnings have a 30-day hold."
+    },
+    "capitalRequiredUsd": 19,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 15000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 6,
+      "ongoingEffort": 5,
+      "incomePotential": 8,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal B2B software.",
+      "complianceRequirements": [
+        "Shopify Partner Program Agreement",
+        "GDPR webhooks/privacy compliance",
+        "tax form"
+      ]
+    },
+    "availability": {
+      "notes": "Shopify Partner payouts via Hyperwallet (PayPal/bank/wire) depending on country."
+    },
+    "automationPlan": [
+      "AI agent builds app with Shopify CLI templates",
+      "Automated billing via Billing API",
+      "AI support chatbot",
+      "Automated onboarding emails"
+    ],
+    "manualSteps": [
+      "Partner account and app review",
+      "Support responses",
+      "Listing optimization"
+    ],
+    "fullCycle": [
+      "Join Shopify Partners",
+      "Build app",
+      "Submit for review",
+      "Launch on App Store",
+      "Merchants install and subscribe",
+      "Twice-monthly payout"
+    ],
+    "risks": [
+      "Crowded categories",
+      "Review/ranking dependence",
+      "Shopify policy changes (revenue share changed in 2025)"
+    ],
+    "evidence": "Shopify's official help page documents twice-monthly Hyperwallet payouts above $25; shopify.dev documents the 0%-on-first-$1M-lifetime revenue share.",
+    "sources": [
+      "https://help.shopify.com/en/partners/partner-program/getting-paid",
+      "https://shopify.dev/changelog/update-to-shopifys-app-developer-revenue-share",
+      "https://shopify.dev/docs/apps/launch/distribution/revenue-share"
+    ],
+    "tags": ["saas", "recurring", "b2b", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 120,
+        "cashUsd": 19,
+        "recurringMonthlyUsd": 25,
+        "tools": [
+          "Shopify Partners (free) + $19 App Store registration",
+          "hosting + database (~$25/mo on Fly/Render/Railway)",
+          "Shopify CLI and Polaris UI kit"
+        ],
+        "skills": [
+          "full-stack web development (Remix/Node, GraphQL Admin API)",
+          "pass Shopify app review",
+          "merchant support and onboarding"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Shopify Partner account",
+          "App Store listing ($19 one-time)",
+          "Hyperwallet/bank payout setup + tax forms"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per merchant-month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 15,
+          "high": 100
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 93,
+        "hoursPerUnit": 0.2,
+        "notes": "Typical small-merchant app plans are $5-$30/month; Shopify takes 0% on the first $1M lifetime revenue; cost is hosting per merchant (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 25,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Two median merchants cover hosting; app review typically adds 2-6 weeks before the first install."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": -25,
+          "median": 40,
+          "high": 8000
+        },
+        "notes": "Winners pick an unglamorous niche (compliance, B2B ordering, specific integrations) and earn 'Built for Shopify' status; crowded categories (reviews, upsells, SEO) are dominated by incumbents. Shopify's own AI (Sidekick, Magic) now covers basic product-description and SEO apps, while the 0% share on the first $1M keeps margins high. Failure mode: app approved but never ranks, so installs stay in single digits. Median net at month 12 set to $40 to match the 12% profit likelihood (most new apps stay under $100/month)."
+      },
+      "pricingStrategy": "Start with a free plan plus $9-$19 paid tier and a 14-day trial; after 20+ reviews, add $49+ tiers for higher-volume stores.",
+      "profitPath": [
+        "Month 0: validate a niche in the Shopify community, build MVP, submit for review (cost $19 + hosting)",
+        "Month 1-2: approval and first installs; $0-$50",
+        "Month 3-6: collect reviews, improve listing keywords; $50-$300/month",
+        "Month 6-12: add higher tiers and integrations; $100-$1,500/month for successful apps"
+      ],
+      "sources": [
+        "https://shopify.dev/docs/apps/launch/distribution/revenue-share",
+        "https://help.shopify.com/en/partners/partner-program/getting-paid"
+      ]
+    }
+  },
+  {
+    "id": "wordpress-freemium-plugins",
+    "name": "WordPress.org freemium plugins with Freemius",
+    "category": "software",
+    "summary": "Publish a free plugin on WordPress.org and sell Pro licenses via Freemius (or similar), leveraging WordPress.org's built-in distribution.",
+    "howItWorks": "WordPress.org hosts free plugins with huge organic discovery; upsells to a Pro version are permitted if the free version is functional. Freemius handles checkout, licensing, updates, and sales tax as merchant of record for 3.8% + $0.50 per transaction plus a 2.3% WordPress add-on, plus gateway fees (~3.5% average). Payers are site owners and agencies buying annual licenses. Revenue compounds through renewals.",
+    "platforms": ["WordPress.org", "Freemius", "Lemon Squeezy (alternative)"],
+    "payout": {
+      "methods": ["PayPal (default)", "Payoneer", "Wise", "bank wire"],
+      "minimumPayout": "$100 (balances below roll over)",
+      "frequency": "monthly",
+      "typicalDelayDays": 40,
+      "notes": "Official: paid automatically on the 10th of each month; a month's earnings are released on the 1st of the second following month. Freemius charges no payout fees (wire FX fees waived); PayPal/Payoneer/bank may charge their own fees."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 300
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 200,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal software sale (GPL-licensed code sold with support/updates).",
+      "complianceRequirements": [
+        "WordPress.org plugin guidelines (no trialware locking)",
+        "MoR KYC",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Freemius pays via PayPal/Payoneer/Wise/wire to most countries."
+    },
+    "automationPlan": [
+      "AI coding agent builds/maintains plugin and compatibility updates",
+      "Automated SVN deploy to WordPress.org via GitHub Actions",
+      "Automated license/update delivery via Freemius SDK"
+    ],
+    "manualSteps": [
+      "Plugin review on WordPress.org",
+      "Support forum responses",
+      "Seller verification"
+    ],
+    "fullCycle": [
+      "Build plugin",
+      "Submit to WordPress.org",
+      "Integrate Freemius SDK",
+      "Launch Pro",
+      "Sales/renewals",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Support burden",
+      "Security vulnerabilities",
+      "Guideline violations can get plugin closed"
+    ],
+    "evidence": "Freemius publishes data on thousands of WordPress products and payouts; many WordPress businesses (e.g. plugins with Pro tiers) report six-figure ARR.",
+    "sources": [
+      "https://freemius.com/help/documentation/selling-with-freemius/your-earnings/",
+      "https://freemius.com/help/documentation/getting-started/our-pricing/",
+      "https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/"
+    ],
+    "tags": ["freemium", "recurring", "wordpress", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 100,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 10,
+        "tools": [
+          "WordPress.org plugin repository (free)",
+          "Freemius (3.8% + 50c + 2.3% WP add-on)",
+          "demo/docs site hosting (~$10/mo)"
+        ],
+        "skills": [
+          "PHP and WordPress APIs (AI helps)",
+          "security-conscious coding",
+          "support forum handling"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "WordPress.org account",
+          "Freemius developer account + payout KYC",
+          "PayPal/Payoneer/bank"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per annual license",
+        "typicalPriceUsd": {
+          "low": 39,
+          "median": 79,
+          "high": 299
+        },
+        "costPerUnitUsd": 3,
+        "platformFeePercent": 6,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 0.5,
+        "notes": "Pro plugin single-site licenses typically sell for $39-$99/year, agency licenses $199-$299; Freemius 3.8% + $0.50 plus a 2.3% WordPress add-on (6.1% + $0.50) plus ~3.5% gateway fees (cost)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 10,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). One median license a month covers demo hosting; WordPress.org review adds 1-4 weeks."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -10,
+          "median": 80,
+          "high": 6000
+        },
+        "notes": "Income compounds via renewals for plugins that rank in WordPress.org search for a specific job; 60,000+ free plugins make generic categories hopeless. The 2024-2025 Automattic vs WP Engine dispute added governance uncertainty, and AI site builders slowly erode new WordPress installs. Failure mode: many free installs, support burden, and <1% upgrade rate."
+      },
+      "pricingStrategy": "Make the free version genuinely useful, sell Pro at $49-$69/year launch pricing with a lifetime deal cap; raise to $79-$99 after reviews and add agency tiers.",
+      "profitPath": [
+        "Month 0: build and submit free plugin (cost $0)",
+        "Month 1-2: approval, gather installs and reviews; $0",
+        "Month 3-6: launch Pro via Freemius; $50-$300/month",
+        "Month 6-12: renewals plus add-ons; $80-$1,000/month for plugins that rank"
+      ],
+      "sources": [
+        "https://freemius.com/help/documentation/getting-started/our-pricing/",
+        "https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/"
+      ]
+    }
+  },
+  {
+    "id": "envato-code-themes",
+    "name": "Selling themes, templates and scripts on Envato (ThemeForest/CodeCanyon)",
+    "category": "software",
+    "summary": "Sell WordPress themes, HTML/React templates, scripts and plugins on Envato Market for a share of each sale.",
+    "howItWorks": "You build polished, documented items and submit them for Envato's quality review; buyers (freelancers, agencies, small businesses) purchase licenses. Author fee is 12.5-37.5% for exclusive authors and 55% for non-exclusive. Approval bar is high and the market is mature, so new authors need niches. Note: Envato paused new author intake and began reopening some content types from Feb 2026.",
+    "platforms": ["ThemeForest", "CodeCanyon", "Envato Market"],
+    "payout": {
+      "methods": ["PayPal", "Payoneer (bank transfer option)", "SWIFT"],
+      "minimumPayout": "$50 (SWIFT higher)",
+      "frequency": "monthly (15th)",
+      "typicalDelayDays": 20,
+      "notes": "Payout on the 15th for balances above threshold; arrives within 1-3 business days. NOT re-confirmed in Nov 2026: Envato's author help center returns 403 to automated fetches, so the $50 minimum and the author-intake status are from the first-pass research."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 5,
+      "setupEffort": 7,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal digital product sale.",
+      "complianceRequirements": [
+        "Envato author agreement",
+        "tax info",
+        "quality review"
+      ]
+    },
+    "availability": {
+      "notes": "Envato pays globally via PayPal/Payoneer; new-author intake was paused and reportedly partially reopened from Feb 2026 (unverified against official pages)."
+    },
+    "automationPlan": [
+      "AI generates boilerplate, docs and demo content",
+      "Automated build/package pipeline",
+      "Templated support replies"
+    ],
+    "manualSteps": [
+      "Item review and resubmissions",
+      "Buyer support",
+      "Author application"
+    ],
+    "fullCycle": [
+      "Apply as author",
+      "Build item",
+      "Submit for review",
+      "Approved and listed",
+      "Sales",
+      "Monthly payout"
+    ],
+    "risks": [
+      "High rejection rate",
+      "Intake pauses",
+      "Declining marketplace sales",
+      "Support load"
+    ],
+    "evidence": "Envato help center documents $50 minimum monthly payouts and author fees; the Envato forums show monthly payout threads from active authors.",
+    "sources": [
+      "https://help.author.envato.com/hc/en-us/articles/360000472943",
+      "https://help.author.envato.com/hc/en-us/articles/360041052771-Becoming-an-Envato-Author-FAQs"
+    ],
+    "tags": ["marketplace", "templates", "developer", "one-time-sales"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 150,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 10,
+        "tools": [
+          "Envato Market author account (free)",
+          "demo hosting (~$10/mo)",
+          "design/dev tools (free tiers)"
+        ],
+        "skills": [
+          "front-end/WordPress or app development to Envato quality standards",
+          "documentation writing",
+          "buyer support"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Envato author account + tax interview",
+          "PayPal/Payoneer/SWIFT payout"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 19,
+          "median": 49,
+          "high": 79
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 38,
+        "grossMarginPercent": 62,
+        "hoursPerUnit": 0.3,
+        "notes": "ThemeForest themes list at ~$39-$79 and CodeCanyon scripts at ~$19-$60; new exclusive authors pay a 37.5% author fee (shown as 38), non-exclusive 55%. Fee estimated: Envato's author-fee help page is bot-blocked, so 37.5%/55% could not be re-checked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 10,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 7,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). One sale a month covers demo hosting; soft-reject cycles commonly add 1-3 months before the first sale."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 4,
+        "typicalNetProfitMonth12Usd": {
+          "low": -10,
+          "median": 20,
+          "high": 4000
+        },
+        "notes": "Established authors with large catalogs and support teams take most sales; Envato Elements subscriptions cannibalise single-item Market sales and AI site builders reduce theme demand. Envato paused new author intake and only reopened some content types from Feb 2026. Failure mode: rejection after months of work, or approval followed by a handful of sales."
+      },
+      "pricingStrategy": "Price at the category median to gain sales rank, then raise by $5-$10 after 50+ sales and positive ratings; bundle updates to justify renewals of support.",
+      "profitPath": [
+        "Month 0: confirm your content type is open to new authors, build item and docs (cost $0-$10)",
+        "Month 1-3: submit, handle soft rejects, launch; $0-$50",
+        "Month 3-6: updates and promotions; $20-$200/month",
+        "Month 6-12: release a second item in the same niche; $20-$1,000/month"
+      ],
+      "sources": [
+        "https://help.author.envato.com/hc/en-us/articles/360000472943",
+        "https://help.author.envato.com/hc/en-us/articles/360041052771-Becoming-an-Envato-Author-FAQs"
+      ]
+    }
+  },
+  {
+    "id": "workplace-app-marketplaces",
+    "name": "Atlassian, Figma and Zoom marketplace apps",
+    "category": "software",
+    "summary": "Build paid apps/plugins for Jira/Confluence (Atlassian Forge), Figma Community, or Zoom, billed through the host's marketplace.",
+    "howItWorks": "Teams pay per-user subscriptions for apps that extend tools they already use. Atlassian Marketplace pays partners 100% of the first $1M lifetime Forge revenue (from 1 Jan 2026, Forge-only apps) then 83% (from 1 Oct 2026; Connect apps 75%). Figma Community sells paid plugins via Stripe (commission reported as 15%, not re-confirmed). Zoom App Marketplace takes 15% but monetization is US-only. Slack Marketplace has no native billing (use own Stripe). Payers are businesses on per-seat plans, so ARPU is high.",
+    "platforms": [
+      "Atlassian Marketplace",
+      "Figma Community",
+      "Zoom App Marketplace",
+      "Slack Marketplace"
+    ],
+    "payout": {
+      "methods": [
+        "Atlassian: bank transfer",
+        "Figma: Stripe -> bank",
+        "Zoom: bank (US)"
+      ],
+      "minimumPayout": "Atlassian: $500 accrued profit; Figma: via Stripe; Zoom: not published",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Atlassian pays within 30 days after the end of the month in which you accrue $500+ profit (30-60 days after a sale); Figma sellers must activate Stripe and live in a Stripe-supported country; Zoom monetization limited to US-based developers and US customers, 15% commission, paid to bank."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 20000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 7,
+      "ongoingEffort": 4,
+      "incomePotential": 8,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal B2B software.",
+      "complianceRequirements": [
+        "Marketplace partner agreement",
+        "security/privacy requirements (Forge, Cloud Fortified)",
+        "Stripe KYC (Figma)"
+      ]
+    },
+    "availability": {
+      "notes": "Atlassian pays partners broadly; Figma requires a Stripe-supported country and seller approval; Zoom monetization is US-only."
+    },
+    "automationPlan": [
+      "AI agent builds Forge/Figma plugin code",
+      "Automated deploys via Forge CLI",
+      "License/entitlement checks via APIs",
+      "AI support triage"
+    ],
+    "manualSteps": [
+      "Partner/vendor onboarding",
+      "Security review",
+      "Customer support"
+    ],
+    "fullCycle": [
+      "Join Atlassian Marketplace or Figma seller program",
+      "Build app",
+      "Pass review",
+      "List with pricing",
+      "Customers subscribe",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Platform revenue-share changes",
+      "Long enterprise sales cycles",
+      "Figma seller approval may be paused"
+    ],
+    "evidence": "Atlassian's developer docs document the Forge 100%-to-$1M lifetime share, 83%/75% rates from Oct 2026 and the $500 remittance threshold; Zoom's developer blog states the 15% commission and US-only eligibility; Figma help requires Stripe activation.",
+    "sources": [
+      "https://developer.atlassian.com/platform/marketplace/pricing-payment-and-billing/",
+      "https://help.figma.com/hc/en-us/articles/12730712101783",
+      "https://developers.zoom.us/blog/app-monetization-revenue-stream/"
+    ],
+    "tags": ["b2b", "recurring", "saas", "plugins"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 150,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Atlassian Forge (free tier hosting)",
+          "Figma plugin API",
+          "Zoom/Slack developer accounts",
+          "monitoring and small backend (~$20/mo)"
+        ],
+        "skills": [
+          "JavaScript/TypeScript on Forge/Figma APIs",
+          "security and data-residency questionnaires",
+          "B2B support and docs"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Atlassian Marketplace partner account + payment details",
+          "Figma creator + Stripe account",
+          "Zoom/Slack developer accounts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per customer-month",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 50,
+          "high": 500
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 96,
+        "hoursPerUnit": 0.5,
+        "notes": "Atlassian apps price per user tier, so a small team pays ~$10-$100/month; Forge apps keep 100% of the first $1M lifetime revenue under the 2026 terms (Figma/Zoom fees estimated at ~15%, not confirmed on their help pages); Forge drops to 83% to the partner above $1M from Oct 2026; cost is hosting/support per customer (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). One customer covers fixed costs, but Atlassian pays only after $500 accrued profit, so cash break-even lags by 1-3 months."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -20,
+          "median": 40,
+          "high": 10000
+        },
+        "notes": "Partners solving specific admin/reporting gaps in Jira/Confluence win, as companies buy per seat and churn little. Atlassian's Connect-to-Forge migration and 0% Forge share open room for new entrants, while Atlassian Rovo and Figma AI absorb some generic features. Failure mode: long security reviews and enterprise sales cycles before revenue. Median net at month 12 set to $40 to match the 10% profit likelihood."
+      },
+      "pricingStrategy": "Use free tier for up to 10 users and price paid tiers just below the category leader; add enterprise data-residency features to justify raising prices later.",
+      "profitPath": [
+        "Month 0: build Forge MVP for one pain point and pass security self-assessment (cost $0-$20/mo)",
+        "Month 1-3: list app, free trials; $0-$50",
+        "Month 3-6: case studies and integrations; $50-$400/month",
+        "Month 6-12: enterprise tier; $100-$2,000/month for successful apps"
+      ],
+      "sources": [
+        "https://developer.atlassian.com/platform/marketplace/pricing-payment-and-billing/",
+        "https://help.figma.com/hc/en-us/articles/12730712101783",
+        "https://developers.zoom.us/blog/app-monetization-revenue-stream/"
+      ]
+    }
+  },
+  {
+    "id": "rapidapi-api-marketplace",
+    "name": "Selling APIs on RapidAPI",
+    "category": "software",
+    "summary": "Wrap a useful data/processing capability as an API and sell freemium/pro subscription plans on RapidAPI Hub.",
+    "howItWorks": "You build an API (e.g. text processing, file conversion, validation, AI wrappers with permitted licensing) and list it with tiered plans and quotas. RapidAPI handles keys, billing and discovery; developers who need the capability subscribe. RapidAPI takes a 25% marketplace fee (from Nov 2025) and pays only via PayPal. Must use lawful data sources (no ToS-violating scraping).",
+    "platforms": ["RapidAPI Hub"],
+    "payout": {
+      "methods": ["PayPal -> bank"],
+      "minimumPayout": "Not published",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Official: flat 25% marketplace fee from 15 Nov 2025; PayPal is the only payout method (PayPal fees deducted separately); a month's charges are paid at the end of the following month. Charges for a month are paid at the end of the following month (official)."
+    },
+    "capitalRequiredUsd": 5,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 8,
+      "setupEffort": 4,
+      "ongoingEffort": 2,
+      "incomePotential": 5,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal software/API sale; ensure underlying data is licensed.",
+      "complianceRequirements": [
+        "RapidAPI provider terms",
+        "data licensing",
+        "PayPal KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Requires PayPal account that can receive payments (not possible in e.g. Bangladesh, Sri Lanka, Lebanon and some others)."
+    },
+    "automationPlan": [
+      "AI agent writes API and OpenAPI spec",
+      "Serverless hosting with auto-scaling",
+      "Automated monitoring and uptime alerts",
+      "Auto-generated docs/examples"
+    ],
+    "manualSteps": [
+      "PayPal setup",
+      "Responding to user issues",
+      "Pricing decisions"
+    ],
+    "fullCycle": [
+      "Build API",
+      "Host it",
+      "List on RapidAPI with plans",
+      "Users subscribe",
+      "Monthly PayPal payout",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Hosting costs exceed revenue",
+      "Marketplace traffic declined after Nokia acquisition",
+      "Fee increases"
+    ],
+    "evidence": "RapidAPI docs describe provider payouts (worked example: $100 plan nets $75); many indie providers report small but recurring API income.",
+    "sources": ["https://docs.rapidapi.com/docs/payouts-and-finance"],
+    "tags": ["api", "passive", "recurring", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 5,
+        "recurringMonthlyUsd": 10,
+        "tools": [
+          "RapidAPI provider account (25% fee)",
+          "serverless hosting (~$10/mo; free tiers possible)",
+          "domain ($5)"
+        ],
+        "skills": [
+          "build and document a REST API (AI coding agents cover most)",
+          "rate limiting and monitoring",
+          "lawful data sourcing"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "RapidAPI provider account",
+          "PayPal account (only payout method)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per subscriber-month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 15,
+          "high": 100
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 25,
+        "grossMarginPercent": 68,
+        "hoursPerUnit": 0.1,
+        "notes": "Typical paid plans are $5-$25/month (Basic/Pro) with rare $100+ Ultra/Mega plans; RapidAPI takes 25% since Nov 2025; cost covers compute and PayPal fees (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 10,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). One median subscriber covers hosting."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": -10,
+          "median": 20,
+          "high": 2000
+        },
+        "notes": "A few long-standing utility APIs still earn, but marketplace traffic declined after the Nokia acquisition and the fee rose to 25%. LLMs now do many tasks once sold as APIs (text processing, extraction), and agent builders prefer direct APIs or MCP. Failure mode: hosting costs and abuse on free tiers exceed revenue."
+      },
+      "pricingStrategy": "Offer a generous free tier for discovery and a $9-$15 Pro plan; raise quotas-based prices once you see which customers hit limits.",
+      "profitPath": [
+        "Month 0: build and list API (cost $5 + $10/mo)",
+        "Month 1-2: free users; $0-$15",
+        "Month 3-6: add endpoints, SEO docs; $10-$80/month",
+        "Month 6-12: replicate on your own site or Apify; $20-$500/month for top quartile"
+      ],
+      "sources": ["https://docs.rapidapi.com/docs/payouts-and-finance"]
+    }
+  },
+  {
+    "id": "micro-saas-merchant-of-record",
+    "name": "Micro-SaaS sold via merchant of record (Lemon Squeezy/Paddle/Polar/Stripe)",
+    "category": "software",
+    "summary": "Build a small niche web app and sell subscriptions globally through a merchant of record that handles tax/VAT.",
+    "howItWorks": "Solve one painful problem for a niche (e.g. invoice parsing, social scheduler for a vertical, PDF tools). A merchant of record (Lemon Squeezy, Paddle, Polar) is the legal seller, collects VAT/sales tax and pays you, which enables sellers from countries Stripe doesn't support. Fees ~5% + 50c (Paddle/Lemon Squeezy) or ~4-5% (Polar). Payers are businesses/consumers paying monthly. Most micro-SaaS earn little; a minority reach $1k-$20k MRR.",
+    "platforms": ["Lemon Squeezy", "Paddle", "Polar.sh", "Stripe"],
+    "payout": {
+      "methods": ["Bank transfer", "PayPal"],
+      "minimumPayout": "Lemon Squeezy $50; Paddle $100/EUR100/GBP100; Polar none published; Stripe none",
+      "frequency": "twice monthly (Lemon Squeezy) / monthly (Paddle) / daily (Stripe)",
+      "typicalDelayDays": 15,
+      "notes": "Lemon Squeezy: payouts on the 14th and 28th after a 13-day hold, bank (USD or local) or PayPal (USD). Paddle seller terms: paid on or before the 15th of the following month if the month's fee exceeds $100/EUR100/GBP100; bank (ACH/international, $15 per international transfer) or PayPal."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 20000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 7,
+      "setupEffort": 6,
+      "ongoingEffort": 5,
+      "incomePotential": 9,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal software sale; MoR handles indirect tax.",
+      "complianceRequirements": [
+        "MoR seller verification/KYC",
+        "privacy policy/terms",
+        "income tax"
+      ]
+    },
+    "availability": {
+      "notes": "Paddle sells into 200+ countries; Lemon Squeezy pays sellers in 'hundreds' of supported countries; Polar pays via Stripe Connect Express in 119 countries; Stripe direct in ~46 countries."
+    },
+    "automationPlan": [
+      "AI coding agent builds and maintains the app",
+      "Automated billing/dunning via MoR",
+      "AI support and onboarding emails",
+      "Programmatic SEO content"
+    ],
+    "manualSteps": [
+      "MoR verification",
+      "Product decisions and customer discovery",
+      "Marketing"
+    ],
+    "fullCycle": [
+      "Pick niche",
+      "Build MVP",
+      "Connect MoR checkout",
+      "Launch",
+      "Subscribers pay",
+      "Monthly payout to bank"
+    ],
+    "risks": [
+      "Most products never reach meaningful revenue",
+      "Churn",
+      "MoR account holds/reviews"
+    ],
+    "evidence": "Lemon Squeezy and Paddle docs publish payout rules; Indie Hackers and public 'open startup' dashboards show many solo SaaS earning recurring revenue.",
+    "sources": [
+      "https://docs.lemonsqueezy.com/help/getting-started/getting-paid",
+      "https://docs.lemonsqueezy.com/help/getting-started/fees",
+      "https://developer.paddle.com/concepts/sell/supported-countries-locales",
+      "https://www.paddle.com/legal/terms",
+      "https://polar.sh/docs/merchant-of-record/supported-countries"
+    ],
+    "tags": ["saas", "recurring", "ai-assisted", "global"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 120,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 30,
+        "tools": [
+          "Lemon Squeezy/Paddle/Polar (~5% + 50c)",
+          "hosting + database + email (~$30/mo)",
+          "domain ($20/yr)",
+          "AI coding agent"
+        ],
+        "skills": [
+          "full-stack development (AI-assisted)",
+          "customer discovery and marketing",
+          "support and churn reduction"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "merchant-of-record seller account + KYC",
+          "domain registrar",
+          "bank/PayPal for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per customer-month",
+        "typicalPriceUsd": {
+          "low": 9,
+          "median": 19,
+          "high": 99
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 84,
+        "hoursPerUnit": 0.2,
+        "notes": "Indie SaaS commonly charges $9-$29/month; MoR fee ~5% plus $0.50 and ~$1 infra per customer (cost). Lemon Squeezy adds +1.5% for international and PayPal payments and +0.5% for subscriptions; Polar Starter is 5% + 50c."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 30,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Two median customers cover fixed costs; most products take 6-12 months to reach a handful of paying users."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": -30,
+          "median": 50,
+          "high": 5000
+        },
+        "notes": "Builders with distribution (an audience, SEO, or a niche community) win; AI coding agents made building trivial in 2025-2026, so launches exploded and features get copied fast. Stripe acquired Lemon Squeezy in 2024 and MoR options keep expanding, so payments are no longer the bottleneck; marketing is. Failure mode: a polished product with no channel to customers."
+      },
+      "pricingStrategy": "Charge from day one with a low founding price ($9-$19) and annual discount; raise prices for new customers every few months as features and testimonials accumulate.",
+      "profitPath": [
+        "Month 0: interview 10 potential users, build MVP (cost $20 + $30/mo)",
+        "Month 1-2: launch on niche communities; $0-$50",
+        "Month 3-6: content/SEO and integrations; $30-$300 MRR",
+        "Month 6-12: annual plans and price increase; $50-$2,000 MRR for top quartile"
+      ],
+      "sources": [
+        "https://docs.lemonsqueezy.com/help/getting-started/fees",
+        "https://www.paddle.com/pricing",
+        "https://polar.sh/docs/merchant-of-record/supported-countries",
+        "https://polar.sh/docs/merchant-of-record/fees"
+      ]
+    }
+  },
+  {
+    "id": "mobile-apps-iap-ads",
+    "name": "Mobile apps on App Store/Google Play (IAP + AdMob)",
+    "category": "software",
+    "summary": "Publish utility or casual apps and earn via in-app purchases/subscriptions (15% store fee under $1M) and AdMob ads.",
+    "howItWorks": "Build focused apps (utilities, trackers, niche tools, simple games) with cross-platform frameworks. Users pay via IAP/subscriptions; Apple and Google take 15% under small-business tiers. Free users generate ad revenue via AdMob. Ongoing work is ASO, updates for OS changes, and policy compliance. Google Play requires 12 testers for 14 days for new personal accounts.",
+    "platforms": ["Apple App Store", "Google Play", "Google AdMob"],
+    "payout": {
+      "methods": [
+        "Bank transfer (Apple, Google)",
+        "AdMob: EFT, wire, Western Union Quick Cash, check where EFT unavailable, PayPal Hyperwallet (US only)"
+      ],
+      "minimumPayout": "Apple: $40 default (as low as $0.02 for US/EU banks); Google Play: not re-confirmed; AdMob: $100 / EUR70 / GBP60",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Apple pays within 45 days of fiscal month end; AdMob pays on or around the 21st of the following month once the threshold is met. Google Play: 15% on first $1M/yr, 15% on subscriptions (10% + 5% billing fee in AU/EEA/JP/UK/US)."
+    },
+    "capitalRequiredUsd": 125,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 6,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; apps must meet local content rules and privacy laws.",
+      "complianceRequirements": [
+        "Apple $99/yr and Google $25 one-time developer fees",
+        "privacy policy/consent (GDPR/UMP)",
+        "tax forms",
+        "D-U-N-S for org accounts"
+      ]
+    },
+    "availability": {
+      "notes": "Google Play merchant registration supported in ~200 locations; AdMob payments broadly available."
+    },
+    "automationPlan": [
+      "AI agent builds Flutter/React Native apps",
+      "Fastlane CI for builds and store uploads",
+      "Automated ASO experiments and screenshot generation",
+      "Mediation and ad config automation"
+    ],
+    "manualSteps": [
+      "Developer account verification",
+      "App review responses",
+      "Tester recruitment for Google Play"
+    ],
+    "fullCycle": [
+      "Pay developer fees",
+      "Build app",
+      "Integrate IAP/AdMob",
+      "Publish",
+      "Users download/pay",
+      "Monthly bank payout"
+    ],
+    "risks": [
+      "App review rejections",
+      "Low ad eCPM in many regions",
+      "Discoverability",
+      "Account bans for policy violations"
+    ],
+    "evidence": "Apple Small Business Program (15%), Apple's minimum payment threshold table, Google Play's 15% tier, and AdMob's payment threshold ($100/EUR70/GBP60) and ~21st payment date are all documented on official help pages.",
+    "sources": [
+      "https://developer.apple.com/app-store/small-business-program/",
+      "https://support.google.com/googleplay/android-developer/answer/112622",
+      "https://support.google.com/admob/answer/2772140",
+      "https://support.google.com/admob/answer/2772208",
+      "https://developer.apple.com/help/app-store-connect/reference/reporting/minimum-payment-threshold"
+    ],
+    "tags": ["mobile", "ads", "iap", "ai-assisted"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 120,
+        "cashUsd": 125,
+        "recurringMonthlyUsd": 10,
+        "tools": [
+          "Apple Developer Program ($99/yr)",
+          "Google Play developer ($25 one-time)",
+          "Flutter/React Native (free)",
+          "AdMob (free)",
+          "RevenueCat (free tier)"
+        ],
+        "skills": [
+          "mobile development (AI-assisted)",
+          "App Store Optimization",
+          "handling review guidelines and privacy forms"
+        ],
+        "equipment": [
+          "laptop (a Mac is needed for iOS builds)",
+          "test smartphone"
+        ],
+        "accounts": [
+          "Apple Developer account + tax/banking",
+          "Google Play Console + identity verification",
+          "AdMob account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per paying user-month",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 5,
+          "high": 15
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 85,
+        "hoursPerUnit": 0.02,
+        "notes": "Utility app subscriptions typically run $2-$10/month; Apple/Google take 15% under small-business tiers; backend cost per user is a few cents (rounded to $0). Google Play subscriptions in the US/EEA/UK/JP/AU are 10% + 5% billing fee (still 15%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 10,
+        "unitsPerMonthToBreakEven": 3,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 7,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Recurring cost is mainly the Apple fee amortised (~$8/mo) plus a small backend; ad revenue is excluded from break-even."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": -10,
+          "median": 30,
+          "high": 3000
+        },
+        "notes": "Winners combine ASO with paid acquisition or an existing audience; AI-assisted building in 2025-2026 drove a surge in new submissions, raising discovery difficulty. The 2025 US court ruling allowing external payment links in US App Store apps cuts fees for those who can steer users to web checkout. Failure mode: new Google personal accounts need 12 testers for 14 days, and most apps get under 100 downloads."
+      },
+      "pricingStrategy": "Use a free tier with a paywall on one compelling feature and weekly/annual subscription options; test price increases with RevenueCat experiments after 1,000 installs.",
+      "profitPath": [
+        "Month 0: build MVP, enroll in both stores (cost $125)",
+        "Month 1-2: closed testing, launch; $0-$20",
+        "Month 3-6: ASO iterations and paywall tests; $10-$100/month",
+        "Month 6-12: localise listings and add features; $30-$1,000/month for top quartile"
+      ],
+      "sources": [
+        "https://developer.apple.com/app-store/small-business-program/",
+        "https://support.google.com/googleplay/android-developer/answer/112622",
+        "https://support.google.com/admob/answer/2772208"
+      ]
+    }
+  },
+  {
+    "id": "ai-assistant-store-revenue",
+    "name": "AI assistant store revenue share (Poe bots, GPT Store)",
+    "category": "software",
+    "summary": "Build AI bots/GPTs and earn from per-message pricing (Poe) or engagement-based revenue share programs (GPT Store, limited).",
+    "howItWorks": "Poe lets eligible creators set a price per message on their bots and also pays referral bonuses for subscriptions; you build a bot on top of an LLM (or your own server bot) with a valuable prompt/workflow. OpenAI's GPT Store builder revenue program is still a small US-only pilot not accepting new builders, so it should not be relied on. Payers are platform users (via the platform). Expect tiny earnings unless a bot goes viral.",
+    "platforms": ["Poe", "OpenAI GPT Store"],
+    "payout": {
+      "methods": ["Stripe (Poe's payment agent) -> bank"],
+      "minimumPayout": "Poe: $10 (smaller balances roll over)",
+      "frequency": "monthly",
+      "typicalDelayDays": 40,
+      "notes": "Poe's earnings terms: paid via Stripe within 30-45 days of month end; must set up the Stripe account within 90 days or forfeit earnings; open to residents of countries listed in Poe's help center (list not re-confirmed)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 10,
+      "high": 500
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 8,
+      "setupEffort": 2,
+      "ongoingEffort": 2,
+      "incomePotential": 3,
+      "aiLeverage": 10,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 30
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; content must follow platform usage policies.",
+      "complianceRequirements": [
+        "platform creator earnings terms",
+        "KYC/tax forms"
+      ]
+    },
+    "availability": {
+      "notes": "Poe creator monetization limited to listed countries (list not re-confirmed). OpenAI's GPT Store builder earnings remain a small US-only pilot that is 'not currently accepting additional builders'."
+    },
+    "automationPlan": [
+      "Bot logic and prompts fully AI-built",
+      "Server bots auto-deployed",
+      "Automated analytics on message volume"
+    ],
+    "manualSteps": ["Eligibility/KYC", "Promotion"],
+    "fullCycle": [
+      "Create Poe account",
+      "Build bot",
+      "Enable per-message pricing",
+      "Promote",
+      "Users message",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Programs can change or end",
+      "Low discovery",
+      "Margins squeezed by model costs"
+    ],
+    "evidence": "Poe's official earnings terms define a $10 threshold and Stripe payouts 30-45 days after month end; OpenAI's FAQ (quoted on its community forum, threads active through Dec 2025) says GPT earnings are a small US-only test not accepting additional builders.",
+    "sources": [
+      "https://poe.com/pages/earnings-tos",
+      "https://venturebeat.com/ai/poe-wants-to-be-the-app-store-of-conversational-ai-will-pay-chatbot-creators",
+      "https://community.openai.com/t/what-is-the-status-with-gpt-store-revenue-share/839172"
+    ],
+    "tags": ["ai-native", "low-effort", "revenue-share"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 8,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Poe creator account (free)",
+          "ChatGPT Plus for GPT builder (optional, $20/mo)"
+        ],
+        "skills": [
+          "prompt design and testing",
+          "writing a clear bot description",
+          "picking a niche task"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Poe account + creator monetization enrollment",
+          "Stripe account in an eligible country"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 paid messages",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 5,
+          "high": 30
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0,
+        "notes": "Prompt-bot creators set their own per-message price on Poe; low single-digit dollars per 1,000 messages is typical for prompt bots (estimate, rates not published). GPT Store pays almost nobody."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed costs for prompt bots; Poe pays only after a $10 balance."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 2,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 300
+        },
+        "notes": "Only bots that go viral in Poe's discovery feeds earn meaningfully; the GPT Store revenue pilot remains closed and OpenAI shifted focus to Apps in ChatGPT (Apps SDK, Oct 2025). Better base models make most prompt wrappers redundant. Failure mode: zero discovery, or earnings forfeited if Stripe is not set up within 90 days."
+      },
+      "pricingStrategy": "Price low per message to rank in usage, then raise for heavy-use specialised bots once retention is proven.",
+      "profitPath": [
+        "Month 0: build 3-5 specialised bots (cost $0)",
+        "Month 1-2: iterate on descriptions; $0-$5",
+        "Month 3-6: double down on the one bot with retention; $0-$20/month",
+        "Month 6-12: convert the best bot into a server bot or standalone app"
+      ],
+      "sources": [
+        "https://poe.com/pages/earnings-tos",
+        "https://community.openai.com/t/what-is-the-status-with-gpt-store-revenue-share/839172"
+      ]
+    }
+  },
+  {
+    "id": "apify-actors-mcp-tools",
+    "name": "Paid Apify Actors and MCP/agent tools",
+    "category": "software",
+    "summary": "Publish automation tools (Actors) and MCP servers on Apify Store and earn 80% of revenue minus compute costs as AI agents and users run them.",
+    "howItWorks": "Apify Store lets developers monetize Actors via pay-per-event or pay-per-usage pricing; Apify bills users and keeps a 20% commission. Actors can also be exposed as MCP tools to AI agents, and agents can pay per request. Build tools that use public, ToS-compliant data sources or provide utility (document conversion, enrichment from licensed APIs, workflow automation). Payers are developers, businesses, and AI agents running workloads.",
+    "platforms": [
+      "Apify Store",
+      "Apify MCP",
+      "other MCP marketplaces (MCPize etc.)"
+    ],
+    "payout": {
+      "methods": ["PayPal", "Wise -> bank", "bank wire"],
+      "minimumPayout": "$20 PayPal/Wise; $100 other methods",
+      "frequency": "monthly",
+      "typicalDelayDays": 25,
+      "notes": "Invoice issued day 11, auto-approved day 14, payouts days 21-25 of month."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 8,
+      "setupEffort": 4,
+      "ongoingEffort": 3,
+      "incomePotential": 7,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal if tools respect target sites' terms and data-protection law; avoid ToS-violating scraping and personal data.",
+      "complianceRequirements": [
+        "Apify Store terms",
+        "KYC for agentic payments",
+        "GDPR when touching personal data"
+      ]
+    },
+    "availability": {
+      "notes": "Apify pays via PayPal/Wise/wire in most countries."
+    },
+    "automationPlan": [
+      "AI agent writes Actor code from templates",
+      "Automated tests and monitoring of runs",
+      "Auto-generated READMEs/SEO for Store listing",
+      "MCP schema generation"
+    ],
+    "manualSteps": [
+      "Choosing compliant niches",
+      "Responding to user issues",
+      "Payout invoice approval (auto by default)"
+    ],
+    "fullCycle": [
+      "Create Apify account",
+      "Build Actor",
+      "Publish with pay-per-event pricing",
+      "Users/agents run it",
+      "Monthly invoice",
+      "Payout to PayPal/Wise/bank"
+    ],
+    "risks": [
+      "ToS/legal risk if scraping",
+      "Competition from many similar Actors",
+      "Breakage when targets change"
+    ],
+    "evidence": "Apify's official docs state Apify keeps a 20% commission (payout = revenue minus commission and platform usage costs), with monthly invoices on the 11th and payouts on days 21-25 via PayPal/Wise ($20 minimum) or other methods ($100). A third-party claim of $500k+ paid in one month was dropped as unverifiable.",
+    "sources": [
+      "https://docs.apify.com/platform/actors/publishing/monetize",
+      "https://docs.apify.com/platform/actors/publishing/monetize/monthly-payouts"
+    ],
+    "tags": ["ai-native", "passive", "usage-based", "developer"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Apify free plan ($5 monthly credits)",
+          "Apify SDK/Crawlee",
+          "AI coding agent"
+        ],
+        "skills": [
+          "JavaScript/Python automation development",
+          "API/data licensing judgement (stay ToS-compliant)",
+          "documentation and maintenance"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Apify account + monetization profile",
+          "PayPal/Wise or bank for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per paying user-month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 200
+        },
+        "costPerUnitUsd": 3,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 65,
+        "hoursPerUnit": 0.1,
+        "notes": "Pay-per-event and rental Actors typically yield $5-$50 per paying user per month; Apify keeps 20%; cost is platform compute the developer absorbs under pay-per-event (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed costs on the free plan; payout requires $20 via PayPal/Wise."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 6000
+        },
+        "notes": "Developers who maintain reliable Actors for high-demand, lawful data/automation jobs earn steadily, and agent/MCP usage added new demand in 2025-2026. Competition is heavy for popular targets and scrapers face ToS/legal risk. Failure mode: Actor breaks when a target changes and users churn before you fix it."
+      },
+      "pricingStrategy": "Start with low pay-per-event prices and a free trial allowance to rank in the Store; raise prices once reviews and run-success stats are strong.",
+      "profitPath": [
+        "Month 0: build 1-2 Actors for lawful utility tasks (cost $0)",
+        "Month 1-2: publish, gather users; $0-$20",
+        "Month 3-6: expose as MCP tools, add features; $20-$200/month",
+        "Month 6-12: portfolio of 5-10 Actors; $60-$2,000/month for top quartile"
+      ],
+      "sources": [
+        "https://docs.apify.com/platform/actors/publishing/monetize",
+        "https://docs.apify.com/platform/actors/publishing/monetize/monthly-payouts"
+      ]
+    }
+  },
+  {
+    "id": "indie-games-steam-itch",
+    "name": "Indie games on Steam and itch.io",
+    "category": "software",
+    "summary": "Make small games or game assets and sell them on Steam (70/30) or itch.io (open revenue share, default 10%).",
+    "howItWorks": "Build a small, polished game or tool (or asset packs) and sell to players. itch.io lets you set your own revenue share and pays via PayPal/Payoneer; Steam requires a $100 Steam Direct fee (recouped after $1,000 adjusted gross) and takes 30%, but offers vastly more traffic. Payers are gamers. Results are hit-driven; most games earn under $1,000 lifetime.",
+    "platforms": ["Steam", "itch.io"],
+    "payout": {
+      "methods": ["Steam: bank wire", "itch.io: PayPal, Payoneer"],
+      "minimumPayout": "Steam ~$100 (third-party reported); itch.io small (method-dependent)",
+      "frequency": "monthly (Steam) / on request (itch)",
+      "typicalDelayDays": 30,
+      "notes": "Steam pays monthly ~30 days after month end; itch.io pays out after a holding period on request. NOT re-confirmed in Nov 2026: Steamworks partner docs were unreachable and itch.io docs returned 403, so the Steam ~$100 threshold remains third-party reported."
+    },
+    "capitalRequiredUsd": 100,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 4,
+      "setupEffort": 8,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; observe age ratings and local content rules; avoid gambling mechanics (loot boxes restricted in some countries).",
+      "complianceRequirements": [
+        "Steamworks tax/bank verification",
+        "itch.io payout tax forms"
+      ]
+    },
+    "availability": {
+      "notes": "Steam pays to bank accounts in most countries; itch.io via PayPal/Payoneer globally."
+    },
+    "automationPlan": [
+      "AI generates art/code/sound assets (disclose AI use on Steam)",
+      "Automated builds and uploads (SteamPipe, butler)",
+      "AI-written store copy"
+    ],
+    "manualSteps": [
+      "Game design and playtesting",
+      "Steamworks verification",
+      "Community/marketing"
+    ],
+    "fullCycle": [
+      "Create accounts",
+      "Pay Steam Direct fee",
+      "Build game",
+      "Store page and wishlists",
+      "Launch",
+      "Monthly payout"
+    ],
+    "risks": [
+      "Hit-driven income",
+      "Long development time",
+      "Market saturation"
+    ],
+    "evidence": "Valve's Steamworks docs describe the $100 recoupable fee; itch.io documents PayPal/Payoneer payouts to creators in its official forum announcements.",
+    "sources": [
+      "https://partner.steamgames.com/doc/gettingstarted/appfee",
+      "https://itch.io/t/654159/payoneer-payout-destination-now-available-for-all-accounts"
+    ],
+    "tags": ["games", "one-time-sales", "creative"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 400,
+        "cashUsd": 100,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Steam Direct fee ($100 per game)",
+          "Godot/Unity (free tiers)",
+          "itch.io (free; open revenue share)"
+        ],
+        "skills": [
+          "game design and programming",
+          "art/audio (AI use must be disclosed on Steam)",
+          "marketing via wishlists, trailers, festivals"
+        ],
+        "equipment": ["laptop or desktop", "stable internet"],
+        "accounts": [
+          "Steamworks partner account + tax/bank verification",
+          "itch.io account + PayPal/Payoneer"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per copy sold",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 10,
+          "high": 20
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 30,
+        "grossMarginPercent": 60,
+        "hoursPerUnit": 0,
+        "notes": "Small indie games usually sell at $5-$15; Steam takes 30%; cost covers VAT/refund leakage (estimate). Steam 30% and the $100 recoupable fee are estimated; the Steamworks and itch.io pages were unreachable at check time."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 12,
+        "monthsToRecoverStartup": 12,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No recurring cost; development time is the real investment. Steam recoups the $100 fee after $1,000 adjusted gross."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 3000
+        },
+        "notes": "Hits come from strong hooks and wishlist marketing; Steam saw roughly 19,000+ releases in 2025 and the median game earns under $1,000 lifetime. AI art is controversial with players and must be disclosed. Failure mode: a year of development and fewer than 100 sales."
+      },
+      "pricingStrategy": "Launch at $5-$10 with a 10-20% launch discount and wishlist-driven festival timing; avoid deep discounts until after the first major sale.",
+      "profitPath": [
+        "Month 0-3: prototype, Steam page and wishlists (cost $100)",
+        "Month 4-8: demo, festivals; $0",
+        "Month 9-10: launch; $50-$500 one-off",
+        "Month 10-12: updates and sales; $0-$300/month long tail"
+      ],
+      "sources": [
+        "https://partner.steamgames.com/doc/gettingstarted/appfee",
+        "https://itch.io/docs/creators/payments"
+      ]
+    }
+  }
+]

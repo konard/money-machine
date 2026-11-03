@@ -1,5 +1,7 @@
 # Legal Zero-Capital Money-Making Strategies
 
+> **Superseded.** This early research note listed 13 ideas. The project now maintains a scored catalog of 100+ legal ways to get paid in [`docs/business-plans/README.md`](../business-plans/README.md), generated from `data/strategies/*.json` and ranked by the [methodology](../methodology.md). This file is kept for history.
+
 This document outlines legal methods to generate income starting from absolutely zero capital investment. All strategies are designed to be automatable and scalable.
 
 ## 1. Content Creation & Monetization

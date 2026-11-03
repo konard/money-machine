@@ -1,7 +1,7 @@
 {
-  "name": "my-package",
+  "name": "money-machine",
   "version": "1.1.0",
-  "description": "A JavaScript/TypeScript package template for AI-driven development",
+  "description": "A legal, automation-first catalog and toolkit of 100+ ways to get paid online, ranked by probability of payment, automation and effort.",
   "type": "module",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -18,24 +18,32 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:file-size": "node scripts/check-file-size.mjs",
-    "check": "npm run lint && npm run format:check && npm run check:file-size",
+    "check": "npm run lint && npm run format:check && npm run check:file-size && npm run check:catalog",
     "prepare": "husky || true",
     "changeset": "changeset",
     "changeset:version": "node scripts/changeset-version.mjs",
     "changeset:publish": "changeset publish",
-    "changeset:status": "changeset status --since=origin/main"
+    "changeset:status": "changeset status --since=origin/main",
+    "build:catalog": "node scripts/build-catalog.mjs",
+    "website": "npm run build:catalog && npx --yes serve website",
+    "check:catalog": "node scripts/build-catalog.mjs && git diff --quiet -- data/strategies.json docs/business-plans docs/legal/incorporation-costs.md || (echo \"Catalog out of date: run npm run build:catalog and commit\" && exit 1)"
   },
   "keywords": [
-    "template",
-    "javascript",
-    "typescript",
-    "ai-driven"
+    "money",
+    "income",
+    "automation",
+    "business-plans",
+    "side-income",
+    "passive-income",
+    "freelancing",
+    "affiliate",
+    "open-source"
   ],
   "author": "",
   "license": "Unlicense",
   "repository": {
     "type": "git",
-    "url": "https://github.com/link-foundation/js-ai-driven-development-pipeline-template"
+    "url": "https://github.com/konard/money-machine"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -47,6 +55,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
+    "marked": "^15.0.12",
     "prettier": "^3.6.2",
     "test-anywhere": "^0.8.48"
   },
@@ -60,5 +69,6 @@
       "prettier --write",
       "prettier --check"
     ]
-  }
+  },
+  "homepage": "https://konard.github.io/money-machine/"
 }
