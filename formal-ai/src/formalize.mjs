@@ -180,6 +180,9 @@ function property(a) {
   if (a.alternative) {
     p.alternative = property(a.alternative);
   }
+  if (a.join) {
+    p.join = a.join;
+  }
   if (a.degree) {
     p.degree = a.degree.concept || a.degree.candidates?.[0];
   }

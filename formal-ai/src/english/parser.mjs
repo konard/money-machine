@@ -23,7 +23,7 @@ import {
 } from './token-readings.mjs';
 import { Cursor } from './cursor.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
-import { parseQuantity, quantityDegree } from './quantity.mjs';
+import { countAhead, parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
@@ -184,7 +184,11 @@ export function parseNP(c, options = {}) {
     // "rated 2/10": a score or an amount takes no adjective
     const amountAhead = c.at(1)?.kind === 'quantity';
     // "low/medium risk": alternative adjectives written with a slash
-    const pair = c.at(1)?.slash && has(c.at(2), 'adj') && nounAhead(c, 3);
+    // …or with "and"/"or": "raw or unpublished video"
+    const pair =
+      (c.at(1)?.slash || ['and', 'or'].includes(c.at(1)?.lower)) &&
+      (has(c.at(2), 'adj') || participleReading(c.at(2))) &&
+      nounAhead(c, 3);
     if (
       limited ||
       amountAhead ||
@@ -206,8 +210,16 @@ export function parseNP(c, options = {}) {
       a.participle = 'past-passive';
     }
     if (pair) {
-      const t4 = (c.next(), c.next());
-      a.alternative = head(t4, reading(t4, 'adj'));
+      const join = c.next();
+      const t4 = c.next();
+      const r4 = reading(t4, 'adj') || participleReading(t4);
+      a.alternative = head(t4, r4);
+      if (r4.pos === 'verb') {
+        a.alternative.participle = 'past-passive';
+      }
+      if (!join.slash) {
+        a.alternative.join = join.lower === 'and' ? 'conj.and' : 'conj.or';
+      }
     }
     if (last?.comparison) {
       a.comparison = last.comparison;
@@ -827,7 +839,10 @@ export function parseTail(c, frame, options = {}) {
       }
       continue;
     }
-    const bounded = parseQuantity(c, options, parseNP);
+    // "ask about 3 options": a preposition the verb takes is no bound
+    const bounded =
+      !takes.includes(c.peek?.lower) &&
+      parseQuantity(c, { ...options, measureOnly: true }, parseNP);
     if (bounded) {
       if (frame === 'copula' && !out.complement) {
         out.complement = { type: 'np', np: bounded };
@@ -848,7 +863,8 @@ export function parseTail(c, frame, options = {}) {
       if (
         has(c.peek, 'adv') &&
         reading(c.peek, 'adv').features &&
-        !startsNP(c.peek)
+        !startsNP(c.peek) &&
+        !countAhead(c.at(1))
       ) {
         // "go to home" never happens; "from here"
         const a = c.next();
@@ -907,8 +923,15 @@ export function parseTail(c, frame, options = {}) {
         has(next, 'coord') ||
         has(next, 'subord') ||
         (has(next, 'prep') && !has(next, 'noun')));
+    // "sell new and used books": an adjective coordinated before a noun
+    const pairedAdjective =
+      has(t, 'adj') &&
+      ['and', 'or'].includes(next?.lower) &&
+      (has(c.at(2), 'adj') || participleReading(c.at(2))) &&
+      has(c.at(3), 'noun');
     if (
       has(t, 'adv') &&
+      !pairedAdjective &&
       (!has(t, 'noun') || bareAdverb || finalAdverb) &&
       !(
         has(t, 'adj') &&

@@ -8,6 +8,35 @@ export const quantityDegree = (token) =>
     least: 'least',
   })[token?.lower];
 
+/** Closed-class approximators before a count. */
+const APPROXIMATE = {
+  about: 'approximate',
+  around: 'approximate',
+  approximately: 'approximate',
+  roughly: 'approximate',
+  nearly: 'almost',
+  almost: 'almost',
+};
+
+/** A number or a quantity token ("4", "$20", "1-2"). */
+export const countAhead = (t) =>
+  /quantity|number/.test(t?.kind || '') ||
+  Boolean(t?.readings?.some((r) => r.pos === 'num'));
+
+/** A measured amount: money, a percentage, a unit or a time period. */
+function measure(np, lexicon) {
+  if (/[\p{Sc}%]/u.test(`${np.quantityText || ''}${np.name || ''}`)) {
+    return true;
+  }
+  return (np.head?.candidates || []).some((id) => {
+    const x = lexicon?.get(id);
+    return (
+      x?.classes?.some((k) => ['time', 'period', 'unit'].includes(k)) ||
+      /\b(?:currency|unit|measure)\b/.test(x?.gloss || '')
+    );
+  });
+}
+
 /** Quantified constructions, kept separate from the core noun parser. */
 export function parseQuantity(c, options, parseNP) {
   const start = c.i;
@@ -45,6 +74,10 @@ export function parseQuantity(c, options, parseNP) {
   } else if (words(1) === 'between') {
     bound = 'range';
     length = 1;
+  } else if (APPROXIMATE[words(1)] && countAhead(c.at(1))) {
+    // "about 4 days", "nearly $20"
+    bound = APPROXIMATE[words(1)];
+    length = 1;
   }
   if (!bound) {
     return null;
@@ -63,7 +96,11 @@ export function parseQuantity(c, options, parseNP) {
   const np = parseNP(c, { ...options, quantityInner: true });
   if (
     !np ||
-    (np.quantity === undefined && !/\d/.test(np.name || np.head?.text || ''))
+    (np.quantity === undefined && !/\d/.test(np.name || np.head?.text || '')) ||
+    // after a verb, "about 3 options" is a topic; "about 3 hours" a measure
+    (options.measureOnly &&
+      /approximate|almost/.test(bound) &&
+      !measure(np, options.lexicon))
   ) {
     c.i = start;
     return null;

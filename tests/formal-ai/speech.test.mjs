@@ -127,3 +127,18 @@ test('a quantifier standing alone is a pronoun with plural agreement', () => {
 test('a fragment may be prepositional phrases only', () => {
   assert.equal(ru('In the morning.'), 'Утром.');
 });
+
+test('"about" before a measured count approximates it', () => {
+  assert.equal(
+    ru('We met in about 3 days.'),
+    'Мы встретились примерно через 3 дня.'
+  );
+  assert.equal(ru('We work about 3 days.'), 'Мы работаем примерно 3 дня.');
+});
+
+test('coordinated adjectives before a noun', () => {
+  assert.match(
+    ru('Students read new and old books.'),
+    /^Студенты \S+ новые и старые книги\.$/
+  );
+});

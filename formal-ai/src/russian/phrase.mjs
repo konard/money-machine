@@ -198,6 +198,11 @@ export function renderEntity(e, kase, ctx) {
   }
   if (e.bound) {
     const { bound, rangeFrom, ...rest } = e;
+    // примерно/почти keep the phrase's own case
+    const near = { approximate: 'примерно', almost: 'почти' }[bound];
+    if (near) {
+      return `${near} ${renderEntity(rest, kase, ctx)}`;
+    }
     const upper = renderEntity(rest, 'gen', ctx);
     if (bound === 'range') {
       const lower = cardinal(
@@ -424,8 +429,14 @@ function renderNoun(e, entry, kase, ctx) {
   }
   const postproperties = [];
   for (const p of e.properties || []) {
+    // "low/medium", "raw or unpublished": an alternative property
+    const alt = p.alternative && propertyWord(p.alternative, agree, ctx);
+    const joined = (word) =>
+      alt
+        ? `${word}${p.alternative.join ? ` ${p.alternative.join === 'conj.and' ? 'и' : 'или'} ` : '/'}${alt}`
+        : word;
     if (p.participle && ctx.renderParticiple) {
-      words.push(ctx.renderParticiple(p, agree, ctx));
+      words.push(joined(ctx.renderParticiple(p, agree, ctx)));
       continue;
     }
     if (p.degree) {
@@ -451,11 +462,8 @@ function renderNoun(e, entry, kase, ctx) {
     if (p.superlative) {
       words.push(declineAdjective('самый', agree));
     }
-    const other = p.alternative && conceptOf(ctx, p.alternative.concept)?.ru;
     (adj.postpositive ? postproperties : words).push(
-      [adj, ...(other?.pos === 'adj' ? [other] : [])]
-        .map((x) => declineAdjective(x.lemma, agree))
-        .join('/')
+      joined(declineAdjective(adj.lemma, agree))
     );
   }
   if (entry.adjective) {
@@ -513,6 +521,15 @@ function renderNoun(e, entry, kase, ctx) {
     );
   }
   return words.join(' ');
+}
+
+/** One plain property word: an adjective or a participle. */
+function propertyWord(p, agree, ctx) {
+  if (p.participle && ctx.renderParticiple) {
+    return ctx.renderParticiple(p, agree, ctx);
+  }
+  const adj = conceptOf(ctx, p.concept)?.ru;
+  return adj?.pos === 'adj' ? declineAdjective(adj.lemma, agree) : null;
 }
 
 function determinerWord(e, entry, agree, _ctx) {
@@ -600,6 +617,13 @@ export function isPerson(e, ctx) {
  */
 export function renderRelation(m, ctx) {
   const e = m.entity;
+  // "in about 4 days" → «примерно через 4 дня»: the approximation
+  // goes before the preposition
+  const near = { approximate: 'примерно', almost: 'почти' }[e?.bound];
+  if (near) {
+    const { bound: _bound, ...rest } = e;
+    return `${near} ${renderRelation({ ...m, entity: rest }, ctx)}`;
+  }
   if (m.adverb) {
     const adv = conceptOf(ctx, m.adverb)?.ru;
     return adv?.lemma || `[${m.adverb}]`;
