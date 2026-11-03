@@ -33,7 +33,7 @@ What it costs and takes for a resident to legally earn online income in each of 
 | Italy | before earning | $0 | $400 | SRL semplificata (SRLS) / SRL | $700 | $2,300 | $3,500 | $1 | 24% | 22% | from first sale | estimated |
 | Japan | before earning | $0 | $0 | Gōdō Kaisha (GK, LLC) or Kabushiki Kaisha (KK) | $380 | $1,000 | $2,700 | $0 | 23.2% | 10% | $63,333 | verified |
 | Jordan | before earning | $150 | $250 | Limited Liability Company (LLC) | $550 | $1,500 | $1,800 | $1 | 21% | 16% | $42,300 | estimated |
-| Kenya | before earning | $7 | $77 | Private Limited Company (Ltd) | $82 | $310 | $800 | $0 | 30% | 16% | $38,460 | estimated |
+| Kenya | before earning | $7 | $77 | Private Limited Company (Ltd) | $82 | $310 | $800 | $0 | 30% | 16% | $38,460 | verified |
 | Kyrgyzstan | before earning | $0 | $0 | Limited Liability Company (OsOO) | $30 | $400 | $800 | $0 | 10% | 12% | $343,000 | estimated |
 | Lebanon | before earning | $100 | $150 | SARL (Société à Responsabilité Limitée) | $500 | $2,500 | $3,000 | $0 | 17% | 11% | none | estimated |
 | Libya | before earning | $150 | $150 | Limited Liability Company (LLC) | $500 | $3,000 | $2,000 | n/a | 24% | 0% | none | estimated |
@@ -42,17 +42,17 @@ What it costs and takes for a resident to legally earn online income in each of 
 | Mexico | before earning | $0 | $0 | Sociedad por Acciones Simplificada (S.A.S.) or S. de R.L. de C.V. | $0 | $1,100 | $1,300 | $0 | 30% | 16% | from first sale | estimated |
 | Morocco | before earning | $0 | $150 | SARL / SARLAU (single-member) | $255 | $700 | $1,500 | $0 | 20% | 20% | $50,900 | estimated |
 | Netherlands | before earning | $99 | $300 | Besloten Vennootschap (BV) | $99 | $1,000 | $3,000 | $0 | 19% | 21% | $23,200 | verified |
-| Nigeria | before earning | $7 | $5 | Private Company Limited by Shares (Ltd) | $15 | $150 | $600 | $74 | 30% | 7.5% | $74,300 | estimated |
+| Nigeria | before earning | $8 | $5 | Private Company Limited by Shares (Ltd) | $13 | $150 | $600 | $74 | 30% | 7.5% | $74,300 | verified |
 | Philippines | before earning | $60 | $60 | One Person Corporation (OPC) or Domestic Stock Corporation | $50 | $700 | $1,500 | $0 | 25% | 12% | $47,300 | estimated |
 | Serbia | optional | $15 | $300 | Društvo sa ograničenom odgovornošću (DOO) | $49 | $300 | $1,500 | $1 | 15% | 20% | $80,000 | estimated |
-| Singapore | before earning | $90 | $23 | Private Limited Company (Pte Ltd) | $246 | $1,000 | $3,000 | $1 | 17% | 9% | $782,000 | estimated |
+| Singapore | before earning | $90 | $23 | Private Limited Company (Pte Ltd) | $246 | $1,000 | $3,000 | $1 | 17% | 9% | $782,000 | verified |
 | South Africa | before earning | $0 | $0 | Private company (Pty) Ltd | $11 | $150 | $900 | $0 | 27% | 15% | $60,192 | verified |
 | South Korea | before earning | $0 | $0 | Jusik Hoesa (stock company, 주식회사) | $100 | $700 | $2,000 | $0 | 10% | 10% | from first sale | estimated |
 | Sri Lanka | before earning | $9 | $10 | Private Limited Company (Pvt) Ltd | $60 | $250 | $700 | $0 | 30% | 18% | $180,500 | estimated |
 | Taiwan | above income threshold | $32 | $100 | Company limited (有限公司, Ltd) | $50 | $600 | $2,500 | $0 | 20% | 5% | $15,500 | estimated |
 | The Gambia | before earning | $20 | $40 | Private Limited Company (Ltd) | $100 | $600 | $900 | $0 | 27% | 15% | $13,400 | estimated |
 | Tunisia | before earning | $20 | $100 | SUARL / SARL | $150 | $700 | $1,200 | $0 | 20% | 19% | $33,300 | estimated |
-| Uganda | before earning | $15 | $40 | Private Company Limited by Shares (Ltd) | $110 | $450 | $900 | $0 | 30% | 18% | $36,460 | estimated |
+| Uganda | before earning | $22 | $40 | Private Company Limited by Shares (Ltd) | $110 | $450 | $900 | $0 | 30% | 18% | $72,910 | verified |
 | Ukraine | before earning | $0 | $501 | Limited Liability Company (TOV) | $0 | $250 | $1,200 | $0 | 18% | 20% | $21,950 | estimated |
 | United Kingdom | above income threshold | $0 | $0 | Private company limited by shares (Ltd) | $133 | $200 | $1,800 | $0 | 25% | 20% | $119,700 | verified |
 | United States | not required | $0 | $50 | Limited Liability Company (LLC) — e.g. Wyoming | $100 | $250 | $700 | $0 | 21% | 0% | none | verified |
@@ -329,7 +329,7 @@ _Confidence: verified; last checked 2026-11-03._
 
 ### IN India
 
-**Sole proprietor.** Registration: above income threshold (No business registration is needed to freelance with a PAN. GST registration is needed above INR 20 lakh of services turnover (INR 10 lakh in special-category states). Udyam registration is free and optional). Cost $0, annual $100, about 1 days, online: yes. A freelance professional ('proprietorship') files ITR-3 or ITR-4. Under the presumptive scheme (s.44ADA, carried into the Income-tax Act 2025 from April 2026), 50% of receipts is deemed profit for receipts up to INR 50 lakh, or INR 75 lakh if cash receipts are 5% or less. Udyam MSME registration is free with Aadhaar and PAN (official). Register: <https://udyamregistration.gov.in>
+**Sole proprietor.** Registration: above income threshold (No business registration is needed to freelance with a PAN. GST registration is needed above INR 20 lakh of aggregate turnover (INR 10 lakh in special-category states; INR 40 lakh for intra-state supply of goods only). Udyam registration is free and optional). Cost $0, annual $100, about 1 days, online: yes. A freelance professional ('proprietorship') files ITR-3 or ITR-4. Under the presumptive scheme (s.44ADA, carried into the Income-tax Act 2025 from April 2026), 50% of receipts is deemed profit for receipts up to INR 50 lakh, or INR 75 lakh if cash receipts are 5% or less. Udyam MSME registration is free with Aadhaar and PAN (official). Register: <https://udyamregistration.gov.in>
 
 **Company.** Private Limited Company (Pvt Ltd) / One Person Company (OPC): government fee $55, typical all-in $180, minimum capital $0, annual compliance about $600, about 7 days, online: yes, 100% foreign ownership: yes, local director required: yes. Formed online with the MCA SPICe+ form. MCA filing fees are nil for authorised capital up to INR 15 lakh, so the cost is mostly state stamp duty and DSCs. At least one director must be resident in India for 182 days. Statutory audits and ROC filings (AOC-4, MGT-7) are mandatory. Register: <https://www.mca.gov.in>
 
@@ -337,7 +337,7 @@ _Confidence: verified; last checked 2026-11-03._
 
 **Foreign currency.** Capital controls: reporting only. Under FEMA, export proceeds must be realised within 9 months with purpose codes. PayPal requires India balances to be withdrawn automatically to a bank, while Payoneer, Wise and Skydo all work.
 
-Sources: <https://udyamregistration.gov.in>, <https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1>, <https://www.mca.gov.in>, <https://www.gst.gov.in>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://udyamregistration.gov.in>, <https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1>, <https://www.mca.gov.in>, <https://www.gst.gov.in>, <https://taxsummaries.pwc.com/india/corporate/taxes-on-corporate-income>, <https://taxsummaries.pwc.com/india/corporate/other-taxes>, <https://taxsummaries.pwc.com/india/individual/taxes-on-personal-income>, <https://open.er-api.com/v6/latest/USD>
 
 _Confidence: estimated; last checked 2026-11-03._
 
@@ -351,7 +351,7 @@ _Confidence: estimated; last checked 2026-11-03._
 
 **Foreign currency.** Capital controls: reporting only. Bank Indonesia requires reporting, and natural-resource export proceeds must be retained, which does not affect freelancers. PayPal, Wise and Payoneer all work for receiving and converting.
 
-Sources: <https://taxsummaries.pwc.com/indonesia/corporate/taxes-on-corporate-income>, <https://oss.go.id>, <https://ahu.go.id>, <https://www.pajak.go.id>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/indonesia/corporate/taxes-on-corporate-income>, <https://oss.go.id>, <https://ahu.go.id>, <https://www.pajak.go.id>, <https://taxsummaries.pwc.com/indonesia/corporate/other-taxes>, <https://taxsummaries.pwc.com/indonesia/individual/taxes-on-personal-income>, <https://open.er-api.com/v6/latest/USD>
 
 _Confidence: estimated; last checked 2026-11-03._
 
@@ -415,15 +415,15 @@ _Confidence: estimated; last checked 2026-11-03._
 
 **Sole proprietor.** Registration: before earning (Get a KRA PIN before trading. Turnover tax covers KES 1M to 25M turnover; below KES 1M normal income tax applies). Cost $7, annual $77, about 2 days, online: yes. A sole proprietorship (business name) registers on eCitizen BRS for KES 950. A county Unified Business Permit costs roughly KES 5,000 to 15,000 a year depending on the county and activity. Register: <https://brs.go.ke>
 
-**Company.** Private Limited Company (Ltd): government fee $82, typical all-in $310, minimum capital $0, annual compliance about $800, about 7 days, online: yes, 100% foreign ownership: yes, local director required: no. Registered online on eCitizen BRS for about KES 10,650 including the name search. A single director is allowed. ICT companies have faced a 30% Kenyan-ownership guideline from the ICT Authority, so check before setting up a foreign-owned tech company. Register: <https://brs.go.ke>
+**Company.** Private Limited Company (Ltd): government fee $82, typical all-in $310, minimum capital $0, annual compliance about $800, about 7 days, online: yes, 100% foreign ownership: yes, local director required: no. Registered online on eCitizen BRS for a KES 10,650 registration fee per the BRS fee schedule (an official name search is KES 650 extra). A single director is allowed. ICT companies have faced a 30% Kenyan-ownership guideline from the ICT Authority, so check before setting up a foreign-owned tech company. Register: <https://brs.go.ke>
 
 **Tax.** Corporate 30%, personal top rate 35%, VAT 16% above $38,460. Small-business regime: Turnover tax at 1.5% of gross turnover for KES 1M to 25M (Finance Act 2023). Exported services are zero-rated (Finance Act 2023). A 3% significant economic presence tax replaced the digital service tax in December 2024. Resident freelancers pay income tax on platform income.
 
 **Foreign currency.** Capital controls: none. No exchange controls. PayPal works with withdrawals through M-Pesa, and Payoneer and Wise are widely used. Banks report transfers over USD 10k.
 
-Sources: <https://taxsummaries.pwc.com/kenya/individual/other-taxes>, <https://brs.go.ke>, <https://www.kra.go.ke>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/kenya/individual/other-taxes>, <https://brs.go.ke>, <https://www.kra.go.ke>, <https://brs.go.ke/fee-schedule-companies-registry/>, <https://taxsummaries.pwc.com/kenya/corporate/taxes-on-corporate-income>, <https://taxsummaries.pwc.com/kenya/corporate/other-taxes>, <https://taxsummaries.pwc.com/kenya/individual/taxes-on-personal-income>, <https://open.er-api.com/v6/latest/USD>
 
-_Confidence: estimated; last checked 2026-11-03._
+_Confidence: verified; last checked 2026-11-03._
 
 ### KG Kyrgyzstan
 
@@ -505,7 +505,7 @@ _Confidence: verified; last checked 2026-11-03._
 
 **Foreign currency.** Capital controls: none. No capital controls. USD can be freely received through PayPal, Wise or Payoneer and converted. Cash USD deposits are capped, but electronic transfers are not.
 
-Sources: <https://taxsummaries.pwc.com/mexico/individual/taxes-on-personal-income>, <https://www.sat.gob.mx>, <https://www.gob.mx/tuempresa>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/mexico/individual/taxes-on-personal-income>, <https://www.sat.gob.mx>, <https://www.gob.mx/tuempresa>, <https://taxsummaries.pwc.com/mexico/corporate/taxes-on-corporate-income>, <https://taxsummaries.pwc.com/mexico/corporate/other-taxes>, <https://open.er-api.com/v6/latest/USD>
 
 _Confidence: estimated; last checked 2026-11-03._
 
@@ -519,7 +519,7 @@ _Confidence: estimated; last checked 2026-11-03._
 
 **Foreign currency.** Capital controls: approval needed. Office des Changes rules require export proceeds to be repatriated. Residents cannot freely hold foreign balances abroad. Payoneer and Wise work, and auto-entrepreneurs receiving foreign payments for services are covered by specific Office des Changes rules.
 
-Sources: <https://taxsummaries.pwc.com/morocco/individual/taxes-on-personal-income>, <https://ae.gov.ma>, <https://www.tax.gov.ma>, <https://www.oc.gov.ma>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/morocco/individual/taxes-on-personal-income>, <https://ae.gov.ma>, <https://www.tax.gov.ma>, <https://www.oc.gov.ma>, <https://taxsummaries.pwc.com/morocco/corporate/taxes-on-corporate-income>, <https://taxsummaries.pwc.com/morocco/corporate/other-taxes>, <https://open.er-api.com/v6/latest/USD>
 
 _Confidence: estimated; last checked 2026-11-03._
 
@@ -539,17 +539,17 @@ _Confidence: verified; last checked 2026-11-03._
 
 ### NG Nigeria
 
-**Sole proprietor.** Registration: before earning (Register a business name with CAC before trading; individuals' first NGN 800k a year is tax-free under the Nigeria Tax Act 2025). Cost $7, annual $5, about 5 days, online: yes. A Business Name (sole proprietorship) registers through the CAC online portal for about NGN 10,000 and needs a Tax ID (free). From 2026, personal income tax follows the Nigeria Tax Act 2025 (0% to 25%). Register: <https://cac.gov.ng>
+**Sole proprietor.** Registration: before earning (Register a business name with CAC before trading; individuals' first NGN 800k a year is tax-free under the Nigeria Tax Act 2025). Cost $8, annual $5, about 5 days, online: yes. A Business Name (sole proprietorship) registers through the CAC online portal for NGN 10,500 (NGN 500 name reservation plus NGN 10,000 registration) and needs a Tax ID (free). From 2026, personal income tax follows the Nigeria Tax Act 2025 (0% to 25%). Register: <https://cac.gov.ng>
 
-**Company.** Private Company Limited by Shares (Ltd): government fee $15, typical all-in $150, minimum capital $74, annual compliance about $600, about 7 days, online: yes, 100% foreign ownership: yes, local director required: no. CAMA 2020 allows a single shareholder and director. Minimum share capital is NGN 100,000. Companies with foreign shareholders need much higher issued capital (reportedly NGN 100M) for a Business Permit or expatriate quota (estimated). Register: <https://cac.gov.ng>
+**Company.** Private Company Limited by Shares (Ltd): government fee $13, typical all-in $150, minimum capital $74, annual compliance about $600, about 7 days, online: yes, 100% foreign ownership: yes, local director required: no. CAMA 2020 allows a single shareholder and director. Minimum share capital is NGN 100,000. CAC fees for a small company with issued capital of NGN 1M or less are NGN 500 name reservation plus NGN 10,000 incorporation; about 0.75% stamp duty on share capital comes on top. Annual returns cost NGN 5,000. Companies with foreign shareholders need much higher issued capital (reportedly NGN 100M) for a Business Permit or expatriate quota (estimated). Register: <https://cac.gov.ng>
 
 **Tax.** Corporate 30%, personal top rate 25%, VAT 7.5% above $74,300. Small-business regime: Small companies (turnover NGN 100M or less and fixed assets NGN 250M or less) pay 0% CIT and no development levy; others pay 30% plus a 4% development levy. The VAT threshold shown (NGN 100M) is the small-company exemption under the 2025 reforms (estimated); it was NGN 25M before 2026. Non-resident digital suppliers charge VAT, and significant economic presence rules apply.
 
 **Foreign currency.** Capital controls: reporting only. Since the 2023–24 FX unification, residents can receive USD through Payoneer, PayPal (enabled for receiving) or Wise into domiciliary accounts and convert at market rates. Outbound transfers need documentation.
 
-Sources: <https://taxsummaries.pwc.com/nigeria/corporate/taxes-on-corporate-income>, <https://cac.gov.ng>, <https://www.firs.gov.ng>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/nigeria/corporate/taxes-on-corporate-income>, <https://cac.gov.ng>, <https://www.firs.gov.ng>, <https://www.cac.gov.ng/api/download-fees>, <https://taxsummaries.pwc.com/nigeria/corporate/other-taxes>, <https://taxsummaries.pwc.com/nigeria/individual/taxes-on-personal-income>, <https://open.er-api.com/v6/latest/USD>
 
-_Confidence: estimated; last checked 2026-11-03._
+_Confidence: verified; last checked 2026-11-03._
 
 ### PH Philippines
 
@@ -557,11 +557,11 @@ _Confidence: estimated; last checked 2026-11-03._
 
 **Company.** One Person Corporation (OPC) or Domestic Stock Corporation: government fee $50, typical all-in $700, minimum capital $0, annual compliance about $1,500, about 14 days, online: yes, 100% foreign ownership: yes, local director required: no. Registered online with SEC (eSPARC/eSECURE), then with the LGU and BIR. Domestic-market enterprises over 40% foreign-owned need USD 200k paid-in capital; export enterprises (60% or more exported) are exempt. The corporate secretary must be a Filipino resident. Audited financial statements and a GIS are filed every year. Register: <https://esecure.sec.gov.ph>
 
-**Tax.** Corporate 25%, personal top rate 35%, VAT 12% above $47,300. Small-business regime: Self-employed people can elect 8% of gross receipts above PHP 250k (up to PHP 3M) instead of graduated rates and 3% percentage tax; BMBE gives an income tax exemption; small corporations pay 20%. Services to non-residents paid in foreign currency are zero-rated for VAT. Since 2025 (RA 12023), non-resident digital service providers charge 12% VAT.
+**Tax.** Corporate 25%, personal top rate 35%, VAT 12% above $47,300. Small-business regime: Self-employed people can elect 8% of gross receipts above PHP 250k (up to PHP 3M) instead of graduated rates and 3% percentage tax; BMBE gives an income tax exemption; domestic corporations with total assets of PHP 100M or less and net taxable income of PHP 5M or less pay 20%. Services to non-residents paid in foreign currency are zero-rated for VAT. Since 2025 (RA 12023), non-resident digital service providers charge 12% VAT.
 
 **Foreign currency.** Capital controls: none. No capital controls for receipts. PayPal, Wise and Payoneer all work for receiving and withdrawing to PHP or USD accounts.
 
-Sources: <https://taxsummaries.pwc.com/philippines/individual/taxes-on-personal-income>, <https://www.bir.gov.ph>, <https://bnrs.dti.gov.ph>, <https://www.sec.gov.ph>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/philippines/individual/taxes-on-personal-income>, <https://www.bir.gov.ph>, <https://bnrs.dti.gov.ph>, <https://www.sec.gov.ph>, <https://taxsummaries.pwc.com/philippines/corporate/taxes-on-corporate-income>, <https://taxsummaries.pwc.com/philippines/corporate/other-taxes>, <https://open.er-api.com/v6/latest/USD>
 
 _Confidence: estimated; last checked 2026-11-03._
 
@@ -583,15 +583,15 @@ _Confidence: estimated; last checked 2026-11-03._
 
 **Sole proprietor.** Registration: before earning (Register with ACRA if carrying on business (some freelancers are exempt). Self-employed people must contribute to MediSave once net trade income exceeds SGD 6k). Cost $90, annual $23, about 1 days, online: yes. A sole proprietorship costs SGD 15 for the name plus SGD 100 to register on Bizfile, with renewal of about SGD 30 a year. Only citizens, PRs or eligible pass holders can register one. Register: <https://www.bizfile.gov.sg>
 
-**Company.** Private Limited Company (Pte Ltd): government fee $246, typical all-in $1,000, minimum capital $1, annual compliance about $3,000, about 1 days, online: yes, 100% foreign ownership: yes, local director required: yes. Costs SGD 15 for the name plus SGD 300 to incorporate, and the annual return is SGD 60. At least one director must ordinarily reside in Singapore (nominee directors cost about SGD 1,500 to 3,000 a year), and a company secretary is required. Compliance costs shown include a corporate secretary, accounting and tax. Register: <https://www.bizfile.gov.sg>
+**Company.** Private Limited Company (Pte Ltd): government fee $246, typical all-in $1,000, minimum capital $1, annual compliance about $3,000, about 1 days, online: yes, 100% foreign ownership: yes, local director required: yes. Costs SGD 15 for the name plus SGD 300 to incorporate (SGD 315 in total), and the annual return is SGD 60. At least one director must ordinarily reside in Singapore (nominee directors cost about SGD 1,500 to 3,000 a year), and a company secretary is required. Compliance costs shown include a corporate secretary, accounting and tax. Register: <https://www.bizfile.gov.sg>
 
 **Tax.** Corporate 17%, personal top rate 24%, VAT 9% above $782,000. Small-business regime: No turnover regime. New companies get a 75% exemption on their first SGD 100k for 3 years, and all companies get partial exemptions. International services are zero-rated for GST (s.21(3)). Overseas digital service providers must register for GST.
 
 **Foreign currency.** Capital controls: none. No capital controls. PayPal, Wise, Payoneer and multi-currency bank accounts all work freely.
 
-Sources: <https://www.acra.gov.sg>, <https://www.bizfile.gov.sg>, <https://www.iras.gov.sg>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://www.acra.gov.sg>, <https://www.bizfile.gov.sg>, <https://www.iras.gov.sg>, <https://www.acra.gov.sg/how-to-guides/setting-up-a-local-company>, <https://www.acra.gov.sg/register/business/choosing-reserving-a-business-name/reserving-bizfile/>, <https://taxsummaries.pwc.com/singapore/corporate/taxes-on-corporate-income>, <https://taxsummaries.pwc.com/singapore/corporate/other-taxes>, <https://taxsummaries.pwc.com/singapore/individual/taxes-on-personal-income>, <https://open.er-api.com/v6/latest/USD>
 
-_Confidence: estimated; last checked 2026-11-03._
+_Confidence: verified; last checked 2026-11-03._
 
 ### ZA South Africa
 
@@ -679,17 +679,17 @@ _Confidence: estimated; last checked 2026-11-03._
 
 ### UG Uganda
 
-**Sole proprietor.** Registration: before earning (Get a URA TIN before trading. The presumptive regime applies up to UGX 150M turnover, but professional services are excluded). Cost $15, annual $40, about 3 days, online: yes. A sole proprietor registers a business name with URSB online and gets a free URA TIN. A local trading licence is needed. Professionals (consultants, engineers and similar) cannot use the presumptive tax. Register: <https://ursb.go.ug>
+**Sole proprietor.** Registration: before earning (Get a URA TIN before trading. The presumptive regime applies up to UGX 150M turnover, but professional services are excluded). Cost $22, annual $40, about 3 days, online: yes. A sole proprietor registers a business name with URSB online (UGX 35,000 name reservation plus UGX 55,000 registration) and gets a free URA TIN. A local trading licence is needed. Professionals (consultants, engineers and similar) cannot use the presumptive tax. Register: <https://ursb.go.ug>
 
-**Company.** Private Company Limited by Shares (Ltd): government fee $110, typical all-in $450, minimum capital $0, annual compliance about $900, about 5 days, online: yes, 100% foreign ownership: yes, local director required: no. Registered online through URSB's OBRS. Fees include name reservation, the registration fee, and 0.5% stamp duty on share capital. A single-member company is allowed. Register: <https://ursb.go.ug>
+**Company.** Private Company Limited by Shares (Ltd): government fee $110, typical all-in $450, minimum capital $0, annual compliance about $900, about 5 days, online: yes, 100% foreign ownership: yes, local director required: no. Registered online through URSB's OBRS. URSB charges UGX 35,000 for name reservation and UGX 105,000 to incorporate (nominal capital up to UGX 5M; 1.5% above), plus document filing fees and stamp duty on share capital. Annual returns cost UGX 55,000. A single-member company is allowed. Register: <https://ursb.go.ug>
 
-**Tax.** Corporate 30%, personal top rate 40%, VAT 18% above $36,460. Small-business regime: Presumptive tax for small resident businesses with turnover of UGX 150M or less (fixed amounts or turnover rates); professionals excluded. A 5% digital service tax applies to non-residents' services to Ugandan customers. Exported services are zero-rated for VAT.
+**Tax.** Corporate 30%, personal top rate 40%, VAT 18% above $72,910. Small-business regime: Presumptive tax for small resident businesses with turnover of UGX 150M or less (fixed amounts or turnover rates); professionals excluded. VAT registration is required above UGX 300M annual taxable turnover from 1 July 2026 (previously UGX 150M), or UGX 75M in any three months. A 5% digital service tax applies to non-residents' services to Ugandan customers. Exported services are zero-rated for VAT.
 
 **Foreign currency.** Capital controls: none. No exchange controls. Payoneer and Wise are commonly used; PayPal receiving is limited.
 
-Sources: <https://taxsummaries.pwc.com/uganda/corporate/taxes-on-corporate-income>, <https://ursb.go.ug>, <https://www.ura.go.ug>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/uganda/corporate/taxes-on-corporate-income>, <https://ursb.go.ug>, <https://www.ura.go.ug>, <https://ursb.go.ug/business-company-and-document-registration-fees/>, <https://taxsummaries.pwc.com/uganda/corporate/other-taxes>, <https://taxsummaries.pwc.com/uganda/individual/taxes-on-personal-income>, <https://open.er-api.com/v6/latest/USD>
 
-_Confidence: estimated; last checked 2026-11-03._
+_Confidence: verified; last checked 2026-11-03._
 
 ### UA Ukraine
 
@@ -701,7 +701,7 @@ _Confidence: estimated; last checked 2026-11-03._
 
 **Foreign currency.** Capital controls: reporting only. FOPs can freely receive USD and EUR into Ukrainian bank accounts, including from Payoneer and PayPal, and convert them. Under martial law, NBU rules restrict outbound transfers and FX purchases, and export proceeds face settlement deadlines.
 
-Sources: <https://taxsummaries.pwc.com/ukraine/individual/taxes-on-personal-income>, <https://taxsummaries.pwc.com/ukraine/corporate/other-taxes>, <https://tax.gov.ua>, <https://diia.gov.ua>, <https://open.er-api.com/v6/latest/USD>
+Sources: <https://taxsummaries.pwc.com/ukraine/individual/taxes-on-personal-income>, <https://taxsummaries.pwc.com/ukraine/corporate/other-taxes>, <https://tax.gov.ua>, <https://diia.gov.ua>, <https://taxsummaries.pwc.com/ukraine/corporate/taxes-on-corporate-income>, <https://open.er-api.com/v6/latest/USD>
 
 _Confidence: estimated; last checked 2026-11-03._
 
