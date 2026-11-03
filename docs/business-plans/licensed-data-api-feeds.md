@@ -2,7 +2,7 @@
 
 **Rank #69 · Tier B · Priority score 57/100 · Category: Licensing, royalties & rentals**
 
-Clean, normalize and enrich open government/open-licensed data and sell API access or bulk feeds by subscription.
+Clean, normalize and enrich open government/open-licensed data and sell API access or bulk feeds by subscription via RapidAPI (flat 25% fee) or direct Stripe billing.
 
 ## Scores
 
@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$15 per month** in the first year; t
 
 ## How it works
 
-You pick open datasets with commercial-reuse licenses (government open data under OGL/CC-BY, company registries, weather, transit, sanctions lists) and turn them into a reliable, documented API or periodic CSV/Parquet feed. Developers and analysts pay for convenience, freshness and uptime. List on RapidAPI (PayPal payouts after card settlement, ~20-25% fee) or sell directly with Stripe-metered billing.
+You pick open datasets with commercial-reuse licenses (government open data under OGL/CC-BY, company registries, weather, transit, sanctions lists) and turn them into a reliable, documented API or periodic CSV/Parquet feed. Developers and analysts pay for convenience, freshness and uptime. List on RapidAPI (PayPal-only payouts at the end of the month after the charge, flat 25% fee) or sell directly with Stripe-metered billing.
 
 **Platforms:** RapidAPI Hub, Stripe, AWS Data Exchange
 

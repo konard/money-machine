@@ -137,7 +137,7 @@ Collective rights management is legal in all reference countries; most have a na
 ## Risks
 
 - Small amounts for low-play catalogs
-- Long lag (6-12 months)
+- Long lag (about 4 months typical; 6-12 months for some PRO income)
 - Mis-registration and duplicate claims
 
 ## Evidence that people get paid

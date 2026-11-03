@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$600 per month** in the first year; 
 
 ## How it works
 
-Dev-tool companies pay $300-$1,500 per article or doc set. You read the code/OpenAPI spec, use an LLM to draft reference docs and examples, then test every snippet and edit. Work comes from Upwork, Contra and developer-content agencies such as Draft.dev that pay developer-writers per article.
+Dev-tool companies pay $150-$1,500 per article or doc set. You read the code/OpenAPI spec, use an LLM to draft reference docs and examples, then test every snippet and edit. Work comes from Upwork, Contra and developer-content agencies such as Draft.dev that pay developer-writers per article.
 
 **Platforms:** Upwork, Contra, Draft.dev and similar developer content agencies
 

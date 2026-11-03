@@ -28,7 +28,7 @@ Most people who try this earn around **$0–$50 per month** in the first year; t
 
 ## How it works
 
-Cross-stitchers buy charts with colour keys (DMC) that work in the Pattern Keeper app; embroidery-machine owners buy multi-format stitch files plus colour sheets. Charts are generated from original artwork with stitch software and hand-cleaned; machine designs are digitised in free Ink/Stitch (Inkscape) or paid Hatch/Embrilliance. Sold on Creative Fabrica, LoveCrafts (cross-stitch) and Payhip; bundles of themed seasonal designs sell repeatedly each year.
+Cross-stitchers buy charts with colour keys (DMC) that work in the Pattern Keeper app; embroidery-machine owners buy multi-format stitch files plus colour sheets. Charts are generated from original artwork with stitch software and hand-cleaned; machine designs are digitised in free Ink/Stitch (Inkscape) or paid Hatch/Embrilliance. Sold on Payhip or Etsy (about 5-7% fees, the basis of the unit economics) and on Creative Fabrica and LoveCrafts (cross-stitch; shares unverified); bundles of themed seasonal designs sell repeatedly each year.
 
 **Platforms:** Creative Fabrica, LoveCrafts, Payhip
 

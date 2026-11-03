@@ -2,7 +2,7 @@
 
 **Rank #94 · Tier B · Priority score 53/100 · Category: Micro-tasks & paid research**
 
-Listen to unreleased songs (and review fashion/video items) and get paid small amounts per written review.
+Listen to unreleased songs (and review fashion/video items) on Slicethepie and get paid small amounts per written review, withdrawable from $20 to PayPal or Revolut.
 
 ## Scores
 

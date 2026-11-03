@@ -823,7 +823,7 @@
     ],
     "risks": [
       "Small amounts for low-play catalogs",
-      "Long lag (6-12 months)",
+      "Long lag (about 4 months typical; 6-12 months for some PRO income)",
       "Mis-registration and duplicate claims"
     ],
     "evidence": "The MLC distributes monthly; ASCAP says it is free to join as a writer and pays OnStage live-performance royalties; PRS paid out £1.07bn in 2025, with nearly 7,000 members paid for the first time.",
@@ -1335,7 +1335,7 @@
     "id": "slicethepie-music-reviews",
     "name": "Paid music and product reviewing on Slicethepie",
     "category": "micro-tasks",
-    "summary": "Listen to unreleased songs (and review fashion/video items) and get paid small amounts per written review.",
+    "summary": "Listen to unreleased songs (and review fashion/video items) on Slicethepie and get paid small amounts per written review, withdrawable from $20 to PayPal or Revolut.",
     "howItWorks": "Slicethepie plays you a track clip and you write a short critique and rating; better-quality reviews raise your star rating and per-review pay. Labels and brands use aggregated listener feedback for market research. Pay per review is small but available with no audience or skills.",
     "platforms": ["Slicethepie"],
     "payout": {

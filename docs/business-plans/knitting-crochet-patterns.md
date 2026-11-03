@@ -2,7 +2,7 @@
 
 **Rank #190 · Tier C · Priority score 44/100 · Category: Digital products**
 
-Design, test-knit and sell written knitting/crochet patterns on yarn-community marketplaces.
+Design, test-knit and sell written knitting/crochet patterns on yarn-community marketplaces such as Ravelry (buyers pay your PayPal directly) and Ribblr (Stripe, fee from 4%).
 
 ## Scores
 

@@ -2,7 +2,7 @@
 
 **Rank #158 · Tier C · Priority score 47/100 · Category: Digital products**
 
-Draft, grade and sell multi-size sewing and quilting patterns as print-at-home, A0 copy-shop and projector files.
+Draft, grade and sell multi-size sewing and quilting patterns as print-at-home, A0 copy-shop and projector files via Payhip (5% fee on the free plan) or Etsy.
 
 ## Scores
 
@@ -140,7 +140,7 @@ Legal everywhere; pattern drafting from scratch only (no tracing commercial patt
 
 ## Evidence that people get paid
 
-Indie pattern houses (e.g. many on Makerist/Etsy) sell PDF patterns as primary business; projector files became standard after 2020.
+Indie pattern houses (e.g. many on Etsy, and formerly Makerist, which appears offline since Nov 2026) sell PDF patterns as primary business; projector files became standard after 2020.
 
 ## Sources
 

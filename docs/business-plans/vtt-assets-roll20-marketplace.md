@@ -2,7 +2,7 @@
 
 **Rank #162 · Tier C · Priority score 47/100 · Category: Marketplaces & e-commerce**
 
-Sell battle maps, tokens and ready-to-run modules for virtual tabletops.
+Sell battle maps, tokens and ready-to-run modules for virtual tabletops on the Roll20 Marketplace, Foundry VTT's Marketplace (opened Feb 2025) or your own store. Maps are built in Dungeondraft/Wonderdraft from reusable asset packs.
 
 ## Scores
 

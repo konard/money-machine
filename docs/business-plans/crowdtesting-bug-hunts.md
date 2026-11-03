@@ -2,7 +2,7 @@
 
 **Rank #34 · Tier A · Priority score 60/100 · Category: Micro-tasks & paid research**
 
-Join crowdtesting platforms that pay per approved bug or per completed test cycle on real apps and websites.
+Join crowdtesting platforms (uTest, Testlio, test IO, Testbirds) that pay per approved bug or per completed test cycle on real apps and websites.
 
 ## Scores
 
@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$80 per month** in the first year; t
 
 ## How it works
 
-Companies pay crowdtesting vendors to test releases on many real devices. Testers pick test cycles, follow instructions, report bugs with reproduction steps and screenshots, and are paid per approved bug (commonly $5–$50 by severity) or a flat fee per cycle. Payment goes to PayPal or Payoneer monthly. It is structured, well-paid-per-hour work compared with surveys, and bug approval rates improve quickly with experience.
+Companies pay crowdtesting vendors to test releases on many real devices. Testers pick test cycles, follow instructions, report bugs with reproduction steps and screenshots, and are paid per approved bug (commonly $5–$50 by severity) or a flat fee per cycle. Payment goes to PayPal or Payoneer weekly (Testlio) to monthly. It is structured, well-paid-per-hour work compared with surveys, and bug approval rates improve quickly with experience.
 
 **Platforms:** Testbirds, test IO, uTest (Applause), Testlio, Ubertesters
 
@@ -111,7 +111,7 @@ _Business-plan sources:_
 2. Pass onboarding
 3. Join test cycles
 4. Report approved bugs
-5. Monthly PayPal/Payoneer payout
+5. Weekly-to-monthly PayPal/Payoneer payout
 6. Withdraw to bank
 
 ## What can be automated

@@ -111,7 +111,7 @@ _Business-plan sources:_
 2. Pass writing assessment
 3. Claim orders
 4. Deliver
-5. Weekly PayPal payout
+5. PayPal payout (Textbroker processes twice weekly; Verblio invoices weekly)
 6. Withdraw to bank
 
 ## What can be automated

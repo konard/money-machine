@@ -2,7 +2,7 @@
 
 **Rank #90 · Tier B · Priority score 54/100 · Category: Software & developer monetization**
 
-Build a small niche web app and sell subscriptions globally through a merchant of record that handles tax/VAT.
+Build a small niche web app and sell subscriptions globally through a merchant of record (Lemon Squeezy, Paddle or Polar, about 5% + 50c) that handles tax/VAT.
 
 ## Scores
 
@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$100 per month** in the first year; 
 
 ## How it works
 
-Solve one painful problem for a niche (e.g. invoice parsing, social scheduler for a vertical, PDF tools). A merchant of record (Lemon Squeezy, Paddle, Polar) is the legal seller, collects VAT/sales tax and pays you, which enables sellers from countries Stripe doesn't support. Fees ~5% + 50c (Paddle/Lemon Squeezy) or ~4-5% (Polar). Payers are businesses/consumers paying monthly. Most micro-SaaS earn little; a minority reach $1k-$20k MRR.
+Solve one painful problem for a niche (e.g. invoice parsing, social scheduler for a vertical, PDF tools). A merchant of record (Lemon Squeezy, Paddle, Polar) is the legal seller, collects VAT/sales tax and pays you, which enables sellers from countries Stripe doesn't support. Fees ~5% + 50c (Paddle/Lemon Squeezy) or 5% + 50c on Polar's Starter plan (lower on its paid plans). Payers are businesses/consumers paying monthly. Most micro-SaaS earn little; a minority reach $1k-$20k MRR.
 
 **Platforms:** Lemon Squeezy, Paddle, Polar.sh, Stripe
 

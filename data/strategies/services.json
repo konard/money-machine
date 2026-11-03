@@ -1824,7 +1824,7 @@
     "name": "Technical writing and API documentation",
     "category": "services",
     "summary": "Write API references, developer guides and tutorials for software companies, with AI generating first drafts from code and specs.",
-    "howItWorks": "Dev-tool companies pay $300-$1,500 per article or doc set. You read the code/OpenAPI spec, use an LLM to draft reference docs and examples, then test every snippet and edit. Work comes from Upwork, Contra and developer-content agencies such as Draft.dev that pay developer-writers per article.",
+    "howItWorks": "Dev-tool companies pay $150-$1,500 per article or doc set. You read the code/OpenAPI spec, use an LLM to draft reference docs and examples, then test every snippet and edit. Work comes from Upwork, Contra and developer-content agencies such as Draft.dev that pay developer-writers per article.",
     "platforms": [
       "Upwork",
       "Contra",

@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$500 per month** in the first year; 
 
 ## How it works
 
-You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a commission. Acceptance is selective, so real publishing experience is needed.
+You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a 10% commission from the professional (falling to 7% with large repeat clients) and charges the author a matching fee. Acceptance is selective, so real publishing experience is needed.
 
 **Platforms:** Reedsy Marketplace
 
@@ -139,7 +139,7 @@ Writing and selling original text is legal in all reference countries; royalties
 
 ## Evidence that people get paid
 
-Reedsy is a well-known marketplace for self-published authors; terms unverified here.
+Reedsy is a well-known marketplace for self-published authors; its freelancer FAQ (checked Nov 2026) confirms Stripe payouts and the 10% professional-side commission.
 
 ## Sources
 

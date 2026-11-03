@@ -956,7 +956,7 @@
     "name": "Editing, cover design and ghostwriting for authors via Reedsy",
     "category": "content",
     "summary": "Sell vetted publishing services (developmental editing, copyediting, cover design, ghostwriting) to self-publishing authors through Reedsy's curated marketplace.",
-    "howItWorks": "You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a commission. Acceptance is selective, so real publishing experience is needed.",
+    "howItWorks": "You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a 10% commission from the professional (falling to 7% with large repeat clients) and charges the author a matching fee. Acceptance is selective, so real publishing experience is needed.",
     "platforms": ["Reedsy Marketplace"],
     "payout": {
       "methods": ["Stripe -> bank (automatic once client payments clear)"],
@@ -1018,7 +1018,7 @@
       "Competitive pricing",
       "AI pressure on editing rates"
     ],
-    "evidence": "Reedsy is a well-known marketplace for self-published authors; terms unverified here.",
+    "evidence": "Reedsy is a well-known marketplace for self-published authors; its freelancer FAQ (checked Nov 2026) confirms Stripe payouts and the 10% professional-side commission.",
     "sources": [
       "https://reedsy.com/",
       "https://reedsy.com/faq/freelancers/how-do-i-get-paid",
@@ -1466,7 +1466,7 @@
     "id": "crossword-puzzle-submissions",
     "name": "Construct and sell crossword puzzles to newspapers",
     "category": "content",
-    "summary": "Build original crosswords and submit them to newspaper puzzle editors who pay a flat fee per published puzzle.",
+    "summary": "Build original crosswords and submit them to newspaper puzzle editors (The New York Times, Universal, LA Times) who pay a flat fee per published puzzle.",
     "howItWorks": "You construct themed crosswords with free or paid construction software and word lists, then submit to outlets like The New York Times, Universal and the LA Times that accept freelance puzzles. Editors buy puzzles that meet strict specs. Pay is a flat fee per puzzle. Software automates grid filling; theme ideas and clueing are the human part.",
     "platforms": [
       "The New York Times Crossword",

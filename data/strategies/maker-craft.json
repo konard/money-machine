@@ -3,7 +3,7 @@
     "id": "3d-printable-model-stores",
     "name": "Sell 3D-printable STL models on Cults3D, Printables Store and Thangs",
     "category": "marketplaces",
-    "summary": "Design functional or decorative 3D-printable models and sell the files per download on 3D-printing marketplaces.",
+    "summary": "Design functional or decorative 3D-printable models and sell the files per download on 3D-printing marketplaces such as Cults3D, Printables and Thangs (roughly 20% fee).",
     "howItWorks": "You model and test-print functional or decorative objects (organisers, mounts, cosplay parts, replacement parts) and list STL/3MF files; hobbyists buy and print at home. Cults3D reportedly pays designers 80% of the sale; Printables Store charges a 20% fee (min. price $5, Stripe payouts); Thangs takes 30%/20%/15% for items under $5/$5-10/$10+ plus Stripe fees. Alternative: Bambu Lab's MakerWorld is free-download only, but models enrolled in its Exclusive Model Program earn Exclusive Points worth $0.066 each that can be cashed out per $100 earned (eligibility after 100 total prints on your account). Free uploads build followers who buy paid models; parametric OpenSCAD designs yield many variants.",
     "platforms": [
       "Cults3D",
@@ -230,7 +230,7 @@
     "risks": [
       "Monthly content treadmill; churn when releases slip",
       "Piracy of STL packs",
-      "Paid MMF tier is a fixed cost",
+      "Paid MMF tier is a fixed cost (Pro $24.99/mo; the $0 monthly cost here assumes Thangs or Printables Clubs)",
       "Saturated fantasy-mini niche"
     ],
     "evidence": "MyMiniFactory creator help center documents payout schedule, $2 fee under $100 and store fees; Thangs help center publishes the 14% membership fee and supported countries; Prusa blog announced Clubs with a 10% fee. Dozens of mini studios run 4-5 figure monthly subscriptions.",
@@ -460,7 +460,7 @@
     "id": "cutting-machine-design-store-artist",
     "name": "Licensed artist for cutting-machine design stores (Silhouette Design Store)",
     "category": "marketplaces",
-    "summary": "Become an approved artist whose cut files are sold inside the machine maker's own design store and software.",
+    "summary": "Become an approved artist whose cut files are sold inside the machine maker's own design store and software, chiefly the Silhouette Design Store in Silhouette Studio (most designs sell at $0.99; royalty rate unpublished).",
     "howItWorks": "Silhouette's Design Store sells cut files directly inside Silhouette Studio, which every Silhouette Cameo/Portrait owner uses. Approved artists (500+ listed) upload original designs; the store pays royalties per purchase/subscription use. Silhouette also advertises an open 'Marketplace Shop' where registered sellers list products. This reaches buyers at the point of cutting, unlike Etsy. Similar license deals exist with Cricut's Design Space image library on a contract basis.",
     "platforms": [
       "Silhouette Design Store",
@@ -595,7 +595,7 @@
     "id": "knitting-crochet-patterns",
     "name": "Knitting and crochet pattern sales on Ravelry, LoveCrafts and Ribblr",
     "category": "digital-products",
-    "summary": "Design, test-knit and sell written knitting/crochet patterns on yarn-community marketplaces.",
+    "summary": "Design, test-knit and sell written knitting/crochet patterns on yarn-community marketplaces such as Ravelry (buyers pay your PayPal directly) and Ribblr (Stripe, fee from 4%).",
     "howItWorks": "You design a garment or amigurumi, write the sized pattern with charts, run test knitters and sell the PDF. On Ravelry buyers pay your PayPal directly; Ravelry bills a small monthly fee (reportedly none under $30/month in sales, ~3.5% above). LoveCrafts runs an indie designer program. Ribblr sells interactive ePatterns via Stripe Connect with a sale fee from 4% (reducible to 0% with its '$elFee' scheme, min. fee $0.25 per pattern). Patterns indexed in Ravelry's project database sell for years.",
     "platforms": ["Ravelry", "LoveCrafts", "Ribblr"],
     "payout": {
@@ -744,7 +744,7 @@
     "id": "sewing-quilting-pdf-patterns",
     "name": "PDF sewing and quilting patterns with projector files (Etsy, Payhip, Makerist)",
     "category": "digital-products",
-    "summary": "Draft, grade and sell multi-size sewing and quilting patterns as print-at-home, A0 copy-shop and projector files.",
+    "summary": "Draft, grade and sell multi-size sewing and quilting patterns as print-at-home, A0 copy-shop and projector files via Payhip (5% fee on the free plan) or Etsy.",
     "howItWorks": "Home sewists buy PDF patterns that include tiled A4/Letter pages, A0 copy-shop files, layered sizes and projector files, plus an illustrated instruction booklet. Quilters buy block/quilt patterns with fabric requirements and cutting charts. Etsy and Payhip handle direct sales (Payhip free plan: 5% fee, sales deposited instantly to your PayPal/Stripe). Makerist, a European pattern marketplace, appeared offline in Nov 2026. Pattern testers and sew-along posts drive launches; one pattern sells for years.",
     "platforms": ["Etsy", "Payhip", "Makerist (appears offline Nov 2026)"],
     "payout": {
@@ -812,7 +812,7 @@
       "Long development cycle per pattern",
       "Competition from big indie pattern houses"
     ],
-    "evidence": "Indie pattern houses (e.g. many on Makerist/Etsy) sell PDF patterns as primary business; projector files became standard after 2020.",
+    "evidence": "Indie pattern houses (e.g. many on Etsy, and formerly Makerist, which appears offline since Nov 2026) sell PDF patterns as primary business; projector files became standard after 2020.",
     "sources": [
       "https://payhip.com/sell-sewing-patterns",
       "https://payhip.com/pricing"
@@ -891,7 +891,7 @@
     "name": "Cross-stitch charts and machine-embroidery files",
     "category": "digital-products",
     "summary": "Sell cross-stitch charts (PDF + Pattern Keeper-compatible) and machine-embroidery files (PES/DST/JEF) for hobbyists.",
-    "howItWorks": "Cross-stitchers buy charts with colour keys (DMC) that work in the Pattern Keeper app; embroidery-machine owners buy multi-format stitch files plus colour sheets. Charts are generated from original artwork with stitch software and hand-cleaned; machine designs are digitised in free Ink/Stitch (Inkscape) or paid Hatch/Embrilliance. Sold on Creative Fabrica, LoveCrafts (cross-stitch) and Payhip; bundles of themed seasonal designs sell repeatedly each year.",
+    "howItWorks": "Cross-stitchers buy charts with colour keys (DMC) that work in the Pattern Keeper app; embroidery-machine owners buy multi-format stitch files plus colour sheets. Charts are generated from original artwork with stitch software and hand-cleaned; machine designs are digitised in free Ink/Stitch (Inkscape) or paid Hatch/Embrilliance. Sold on Payhip or Etsy (about 5-7% fees, the basis of the unit economics) and on Creative Fabrica and LoveCrafts (cross-stitch; shares unverified); bundles of themed seasonal designs sell repeatedly each year.",
     "platforms": ["Creative Fabrica", "LoveCrafts", "Payhip"],
     "payout": {
       "methods": [
@@ -1022,7 +1022,7 @@
     "id": "lego-moc-instructions-rebrickable",
     "name": "Sell LEGO MOC building instructions on Rebrickable",
     "category": "digital-products",
-    "summary": "Design original LEGO models (MOCs) and sell PDF instructions plus parts lists that buyers source themselves.",
+    "summary": "Design original LEGO models (MOCs) and sell PDF instructions plus parts lists as Premium MOCs on Rebrickable; buyers source the bricks themselves.",
     "howItWorks": "You build a model digitally in BrickLink Studio (free), generate step-by-step instructions, and list it as a Premium MOC on Rebrickable. Buyers pay for the instructions and use Rebrickable to buy parts or match their own collection. Payment goes straight to your PayPal or Stripe account; Rebrickable then deducts or invoices its commission (reported 8%/13%/18% by price band on its Designer Plan). Popular MOC designers also get approached by kit sellers for licensing.",
     "platforms": ["Rebrickable"],
     "payout": {
@@ -1434,7 +1434,7 @@
     "id": "vtt-assets-roll20-marketplace",
     "name": "Virtual tabletop assets and modules (Roll20 Marketplace, Foundry VTT premium modules)",
     "category": "marketplaces",
-    "summary": "Sell battle maps, tokens and ready-to-run modules for virtual tabletops.",
+    "summary": "Sell battle maps, tokens and ready-to-run modules for virtual tabletops on the Roll20 Marketplace, Foundry VTT's Marketplace (opened Feb 2025) or your own store. Maps are built in Dungeondraft/Wonderdraft from reusable asset packs.",
     "howItWorks": "Online RPG groups pay for tokens, battle maps, character sheets and automated modules. Roll20 Marketplace sells creator art packs and adventures with a revenue share. Foundry VTT opened its own official Marketplace on 12 Feb 2025; creators can also sell premium modules via their own store (activation keys) or Patreon-linked access. Battle maps can be produced in Dungeondraft/Wonderdraft with consistent asset packs.",
     "platforms": [
       "Roll20 Marketplace",

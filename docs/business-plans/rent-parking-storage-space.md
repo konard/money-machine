@@ -2,7 +2,7 @@
 
 **Rank #61 · Tier B · Priority score 57/100 · Category: Other**
 
-List a garage, driveway, shed or parking space on a peer-to-peer platform; renters pay monthly via the platform.
+List a garage, driveway, shed or parking space on a peer-to-peer platform such as Neighbor (4.9% + $0.30 host fee); renters pay monthly via the platform.
 
 ## Scores
 

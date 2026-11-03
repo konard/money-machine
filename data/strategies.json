@@ -608,7 +608,7 @@
       "id": "bandwidth-sharing",
       "name": "Passive bandwidth sharing (Honeygain, Pawns.app)",
       "category": "data",
-      "summary": "Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared.",
+      "summary": "Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared (Honeygain: $20 cash-out minimum; Pawns.app: from $5).",
       "howItWorks": "Proxy companies route customers' traffic (price monitoring, ad verification, scraping) through your home IP. You install the app and leave it running. A typical income is about $1-3 per device per month, so reaching Honeygain's $20 minimum can take many months; Pawns pays from $5. You are legally exposed because unknown third parties' traffic leaves your IP, and Honeygain's terms make you responsible for checking that your ISP allows it.",
       "platforms": [
         "Honeygain",
@@ -4290,7 +4290,7 @@
           "platformFeePercent": 20,
           "grossMarginPercent": 65,
           "hoursPerUnit": 0.1,
-          "notes": "Pay-per-event and rental Actors typically yield $5-$50 per paying user per month; Apify keeps 20%; cost is platform compute the developer absorbs under pay-per-event (estimate)."
+          "notes": "Pay-per-event and pay-per-usage Actors typically yield $5-$50 per paying user per month; Apify keeps 20%; cost is platform compute the developer absorbs under pay-per-event (estimate)."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -5084,7 +5084,7 @@
         "Create resources",
         "List",
         "Sales",
-        "Monthly PayPal payout",
+        "Monthly Hyperwallet payout (direct deposit, PayPal or Venmo)",
         "Withdraw to bank"
       ],
       "risks": [
@@ -5690,8 +5690,8 @@
       "id": "crowdtesting-bug-hunts",
       "name": "Crowdtesting and paid bug hunts (Testbirds, test IO, uTest, Testlio)",
       "category": "micro-tasks",
-      "summary": "Join crowdtesting platforms that pay per approved bug or per completed test cycle on real apps and websites.",
-      "howItWorks": "Companies pay crowdtesting vendors to test releases on many real devices. Testers pick test cycles, follow instructions, report bugs with reproduction steps and screenshots, and are paid per approved bug (commonly $5–$50 by severity) or a flat fee per cycle. Payment goes to PayPal or Payoneer monthly. It is structured, well-paid-per-hour work compared with surveys, and bug approval rates improve quickly with experience.",
+      "summary": "Join crowdtesting platforms (uTest, Testlio, test IO, Testbirds) that pay per approved bug or per completed test cycle on real apps and websites.",
+      "howItWorks": "Companies pay crowdtesting vendors to test releases on many real devices. Testers pick test cycles, follow instructions, report bugs with reproduction steps and screenshots, and are paid per approved bug (commonly $5–$50 by severity) or a flat fee per cycle. Payment goes to PayPal or Payoneer weekly (Testlio) to monthly. It is structured, well-paid-per-hour work compared with surveys, and bug approval rates improve quickly with experience.",
       "platforms": [
         "Testbirds",
         "test IO",
@@ -5757,7 +5757,7 @@
         "Pass onboarding",
         "Join test cycles",
         "Report approved bugs",
-        "Monthly PayPal/Payoneer payout",
+        "Weekly-to-monthly PayPal/Payoneer payout",
         "Withdraw to bank"
       ],
       "risks": [
@@ -6280,7 +6280,7 @@
       ],
       "risks": [
         "Small amounts for low-play catalogs",
-        "Long lag (6-12 months)",
+        "Long lag (about 4 months typical; 6-12 months for some PRO income)",
         "Mis-registration and duplicate claims"
       ],
       "evidence": "The MLC distributes monthly; ASCAP says it is free to join as a writer and pays OnStage live-performance royalties; PRS paid out £1.07bn in 2025, with nearly 7,000 members paid for the first time.",
@@ -7075,7 +7075,7 @@
       "name": "Sell new translations/annotated editions of public-domain works",
       "category": "licensing",
       "summary": "Create genuinely new, copyrightable editions (translations, annotations, illustrated or modernized versions) of public-domain texts and sell them.",
-      "howItWorks": "You take public-domain texts (e.g. from Project Gutenberg), strip the Project Gutenberg name and license, and add original value: a new translation, notes, study guides, audio narration. Readers pay for the added value. KDP requires PD books to be differentiated and pays 35% royalty for PD content.",
+      "howItWorks": "You take public-domain texts (e.g. from Project Gutenberg), strip the Project Gutenberg name and license, and add original value: a new translation, notes, study guides, audio narration. Readers pay for the added value. KDP requires PD books to be differentiated and pays only 35% royalty on primarily public-domain content (up to 70% for differentiated editions).",
       "platforms": [
         "Amazon KDP",
         "Gumroad",
@@ -7778,7 +7778,7 @@
         "minimumPayout": "Not published",
         "frequency": "monthly",
         "typicalDelayDays": 45,
-        "notes": "Official: flat 25% marketplace fee from 15 Nov 2025; PayPal is the only payout method (PayPal fees deducted separately); a month's charges are paid at the end of the following month. Charges for a month are paid at the end of the following month (official)."
+        "notes": "Official: flat 25% marketplace fee from 15 Nov 2025; PayPal is the only payout method (PayPal fees deducted separately); a month's charges are paid at the end of the following month."
       },
       "capitalRequiredUsd": 5,
       "timeToFirstDollarDays": {
@@ -9615,7 +9615,7 @@
           "platformFeePercent": 2,
           "grossMarginPercent": 98,
           "hoursPerUnit": 2,
-          "notes": "Gengo standard-tier pay is about 3 cents/word and pro about 6 cents/word (estimated: Gengo shows the reward per job and publishes no rate card); the 2% fee is an estimated PayPal payout fee (support page bot-blocked)."
+          "notes": "Gengo standard-tier pay is about 3 cents/word and pro about 6 cents/word (estimated: Gengo shows the reward per job and publishes no rate card); the 2% fee approximates Gengo's PayPal payout fee (1.5%, min $1.50, max $20 per payout, as in the payout notes; Payoneer carries no Gengo fee)."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -10336,7 +10336,7 @@
       "id": "rent-parking-storage-space",
       "name": "Rent unused parking or storage space online (Neighbor, JustPark, Spacer) (PHYSICAL)",
       "category": "other",
-      "summary": "List a garage, driveway, shed or parking space on a peer-to-peer platform; renters pay monthly via the platform.",
+      "summary": "List a garage, driveway, shed or parking space on a peer-to-peer platform such as Neighbor (4.9% + $0.30 host fee); renters pay monthly via the platform.",
       "howItWorks": "PHYSICAL but low-touch: the space must exist and renters need access, but once a long-term renter books, you mostly receive automatic monthly payments. Neighbor charges the renter each period and pays hosts via Stripe 2-3 business days after, minus a 4.9% + $0.30 fee, with payout protection. SpotHero is for commercial operators, not individuals.",
       "platforms": [
         "Neighbor",
@@ -11706,8 +11706,8 @@
       "id": "licensed-data-api-feeds",
       "name": "License data feeds/APIs built from lawfully licensed public data",
       "category": "licensing",
-      "summary": "Clean, normalize and enrich open government/open-licensed data and sell API access or bulk feeds by subscription.",
-      "howItWorks": "You pick open datasets with commercial-reuse licenses (government open data under OGL/CC-BY, company registries, weather, transit, sanctions lists) and turn them into a reliable, documented API or periodic CSV/Parquet feed. Developers and analysts pay for convenience, freshness and uptime. List on RapidAPI (PayPal payouts after card settlement, ~20-25% fee) or sell directly with Stripe-metered billing.",
+      "summary": "Clean, normalize and enrich open government/open-licensed data and sell API access or bulk feeds by subscription via RapidAPI (flat 25% fee) or direct Stripe billing.",
+      "howItWorks": "You pick open datasets with commercial-reuse licenses (government open data under OGL/CC-BY, company registries, weather, transit, sanctions lists) and turn them into a reliable, documented API or periodic CSV/Parquet feed. Developers and analysts pay for convenience, freshness and uptime. List on RapidAPI (PayPal-only payouts at the end of the month after the charge, flat 25% fee) or sell directly with Stripe-metered billing.",
       "platforms": [
         "RapidAPI Hub",
         "Stripe",
@@ -13067,7 +13067,7 @@
       "name": "Cross-stitch charts and machine-embroidery files",
       "category": "digital-products",
       "summary": "Sell cross-stitch charts (PDF + Pattern Keeper-compatible) and machine-embroidery files (PES/DST/JEF) for hobbyists.",
-      "howItWorks": "Cross-stitchers buy charts with colour keys (DMC) that work in the Pattern Keeper app; embroidery-machine owners buy multi-format stitch files plus colour sheets. Charts are generated from original artwork with stitch software and hand-cleaned; machine designs are digitised in free Ink/Stitch (Inkscape) or paid Hatch/Embrilliance. Sold on Creative Fabrica, LoveCrafts (cross-stitch) and Payhip; bundles of themed seasonal designs sell repeatedly each year.",
+      "howItWorks": "Cross-stitchers buy charts with colour keys (DMC) that work in the Pattern Keeper app; embroidery-machine owners buy multi-format stitch files plus colour sheets. Charts are generated from original artwork with stitch software and hand-cleaned; machine designs are digitised in free Ink/Stitch (Inkscape) or paid Hatch/Embrilliance. Sold on Payhip or Etsy (about 5-7% fees, the basis of the unit economics) and on Creative Fabrica and LoveCrafts (cross-stitch; shares unverified); bundles of themed seasonal designs sell repeatedly each year.",
       "platforms": [
         "Creative Fabrica",
         "LoveCrafts",
@@ -15308,8 +15308,8 @@
       "id": "micro-saas-merchant-of-record",
       "name": "Micro-SaaS sold via merchant of record (Lemon Squeezy/Paddle/Polar/Stripe)",
       "category": "software",
-      "summary": "Build a small niche web app and sell subscriptions globally through a merchant of record that handles tax/VAT.",
-      "howItWorks": "Solve one painful problem for a niche (e.g. invoice parsing, social scheduler for a vertical, PDF tools). A merchant of record (Lemon Squeezy, Paddle, Polar) is the legal seller, collects VAT/sales tax and pays you, which enables sellers from countries Stripe doesn't support. Fees ~5% + 50c (Paddle/Lemon Squeezy) or ~4-5% (Polar). Payers are businesses/consumers paying monthly. Most micro-SaaS earn little; a minority reach $1k-$20k MRR.",
+      "summary": "Build a small niche web app and sell subscriptions globally through a merchant of record (Lemon Squeezy, Paddle or Polar, about 5% + 50c) that handles tax/VAT.",
+      "howItWorks": "Solve one painful problem for a niche (e.g. invoice parsing, social scheduler for a vertical, PDF tools). A merchant of record (Lemon Squeezy, Paddle, Polar) is the legal seller, collects VAT/sales tax and pays you, which enables sellers from countries Stripe doesn't support. Fees ~5% + 50c (Paddle/Lemon Squeezy) or 5% + 50c on Polar's Starter plan (lower on its paid plans). Payers are businesses/consumers paying monthly. Most micro-SaaS earn little; a minority reach $1k-$20k MRR.",
       "platforms": [
         "Lemon Squeezy",
         "Paddle",
@@ -15661,7 +15661,7 @@
       "id": "retail-audit-task-apps",
       "name": "Retail-audit and data-collection apps (Premise, Roamler, BeMyEye, Field Agent)",
       "category": "micro-tasks",
-      "summary": "Complete small paid tasks on your phone such as photographing shop shelves, checking prices or answering local surveys; paid to PayPal, Payoneer or mobile money, with wide coverage in Africa, Asia and Latin America.",
+      "summary": "Complete small paid tasks on your phone such as photographing shop shelves, checking prices or answering local surveys; paid to PayPal, Payoneer or (Premise, some countries) Bitcoin, with wide coverage in Africa, Asia and Latin America.",
       "howItWorks": "Market-research and NGO clients pay for ground-truth data. Apps publish tasks near you (take a photo of a product display, confirm a store is open, report local fuel prices, answer a short survey) paying roughly $0.25–$10 each. Premise pays contributors via PayPal, Payoneer or Bitcoin depending on country; Roamler covers Europe and the US. Tasks require leaving the house, but payment is reliable and these apps are among the few that pay residents of lower-income reference countries directly.",
       "platforms": [
         "Premise",
@@ -15725,7 +15725,7 @@
         "Install app",
         "Complete local tasks",
         "Reach minimum",
-        "Cash out to PayPal/mobile money",
+        "Cash out to PayPal/Payoneer",
         "Withdraw to bank"
       ],
       "risks": [
@@ -15997,7 +15997,7 @@
       "id": "slicethepie-music-reviews",
       "name": "Paid music and product reviewing on Slicethepie",
       "category": "micro-tasks",
-      "summary": "Listen to unreleased songs (and review fashion/video items) and get paid small amounts per written review.",
+      "summary": "Listen to unreleased songs (and review fashion/video items) on Slicethepie and get paid small amounts per written review, withdrawable from $20 to PayPal or Revolut.",
       "howItWorks": "Slicethepie plays you a track clip and you write a short critique and rating; better-quality reviews raise your star rating and per-review pay. Labels and brands use aggregated listener feedback for market research. Pay per review is small but available with no audience or skills.",
       "platforms": [
         "Slicethepie"
@@ -17512,7 +17512,7 @@
       "name": "Technical writing and API documentation",
       "category": "services",
       "summary": "Write API references, developer guides and tutorials for software companies, with AI generating first drafts from code and specs.",
-      "howItWorks": "Dev-tool companies pay $300-$1,500 per article or doc set. You read the code/OpenAPI spec, use an LLM to draft reference docs and examples, then test every snippet and edit. Work comes from Upwork, Contra and developer-content agencies such as Draft.dev that pay developer-writers per article.",
+      "howItWorks": "Dev-tool companies pay $150-$1,500 per article or doc set. You read the code/OpenAPI spec, use an LLM to draft reference docs and examples, then test every snippet and edit. Work comes from Upwork, Contra and developer-content agencies such as Draft.dev that pay developer-writers per article.",
       "platforms": [
         "Upwork",
         "Contra",
@@ -19191,7 +19191,7 @@
       "id": "cutting-machine-design-store-artist",
       "name": "Licensed artist for cutting-machine design stores (Silhouette Design Store)",
       "category": "marketplaces",
-      "summary": "Become an approved artist whose cut files are sold inside the machine maker's own design store and software.",
+      "summary": "Become an approved artist whose cut files are sold inside the machine maker's own design store and software, chiefly the Silhouette Design Store in Silhouette Studio (most designs sell at $0.99; royalty rate unpublished).",
       "howItWorks": "Silhouette's Design Store sells cut files directly inside Silhouette Studio, which every Silhouette Cameo/Portrait owner uses. Approved artists (500+ listed) upload original designs; the store pays royalties per purchase/subscription use. Silhouette also advertises an open 'Marketplace Shop' where registered sellers list products. This reaches buyers at the point of cutting, unlike Etsy. Similar license deals exist with Cricut's Design Space image library on a contract basis.",
       "platforms": [
         "Silhouette Design Store",
@@ -20019,7 +20019,7 @@
       "id": "remote-usability-testing",
       "name": "Remote usability testing (UserTesting, Userlytics, Trymata/QuestionPro)",
       "category": "micro-tasks",
-      "summary": "Record yourself using websites and apps while thinking aloud. Product teams pay for each test.",
+      "summary": "Record yourself using websites and apps while thinking aloud. Product teams pay per test on UserTesting or Userlytics, typically about $10 for a standard test, paid to PayPal.",
       "howItWorks": "Companies pay UX research platforms to recruit testers who match a demographic. You take a screener, and if you qualify you record a 10-20 minute screen-and-voice session, usually paid about $10, while live interviews pay $30-120. Screeners are competitive, so most of the time goes into qualifying. The feedback has to be genuinely yours.",
       "platforms": [
         "UserTesting",
@@ -21531,7 +21531,7 @@
       "id": "domain-lease-to-own",
       "name": "Lease domains on lease-to-own terms via Afternic (formerly Dan.com)",
       "category": "other",
-      "summary": "Hold brandable domains and offer them on monthly lease-to-own plans, earning installments until buyers own them.",
+      "summary": "Hold brandable domains and offer them on monthly lease-to-own plans on Afternic (15-30% commission depending on nameservers and Boost), earning installments until buyers own them.",
       "howItWorks": "You register or hand-pick brandable domains, then list them on Afternic, which inherited Dan.com's LTO system in 2024. Startups pay monthly installments; you keep ownership until fully paid, and if they default you keep the domain and payments. LTO max is $100,000 ($5,000 in California).",
       "platforms": [
         "Afternic (GoDaddy)",
@@ -25235,12 +25235,12 @@
       ],
       "payout": {
         "methods": [
-          "Twitch payout (bank/wire/PayPal per onboarding)"
+          "Twitch payout by check or EFT (bank) as Twitch chooses"
         ],
-        "minimumPayout": "Not stated for extension developers (unverified); Twitch's creator payout minimum is $50 ($100 for wire)",
+        "minimumPayout": "$100 (Payment Threshold in the Twitch Developer Services Agreement)",
         "frequency": "monthly",
         "typicalDelayDays": 45,
-        "notes": "Twitch announced the 80% broadcaster / 20% developer Bits split in 2018; current docs say only that revenue is shared and do not restate the percentages. Docs recommend choosing 'Hold My Payments' at first. Unconfirmed: the payout minimum for extension developers and the current developer share of Bits (dev.twitch.tv monetization and Bits docs and the Twitch Developer Agreement page re-checked Nov 2026)."
+        "notes": "Twitch Developer Services Agreement (read in a browser Nov 2026): for each eligible Bit used in your extension you receive a Bits Fee of 20% of one US cent ($0.002 per Bit, i.e. $20 per 10,000 Bits); paid about 45 days after the end of the calendar month in which the Bits were used, by check, EFT or other methods Twitch chooses; payments accrue until they reach the $100 Payment Threshold. Twitch may claw back the Bits Fee on refunds, withhold fees for 3 months after termination, and fees unclaimed for 180 days (missing payment/tax info) are forfeited month by month. The developer docs recommend choosing 'Hold My Payments' during onboarding."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -25301,14 +25301,14 @@
         "https://dev.twitch.tv/docs/extensions/monetization/",
         "https://dev.twitch.tv/docs/extensions/bits/",
         "https://blog.twitch.tv/en/2018/04/23/the-next-big-update-for-extensions-is-here-a036151cc309/",
-        "https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/"
+        "https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/",
+        "https://legal.twitch.com/legal/developer-agreement/"
       ],
       "tags": [
         "games",
         "streaming",
         "developer",
-        "low-probability",
-        "needs-verification"
+        "low-probability"
       ],
       "businessPlan": {
         "startupResources": {
@@ -25344,7 +25344,7 @@
           "platformFeePercent": 0,
           "grossMarginPercent": 100,
           "hoursPerUnit": 1,
-          "notes": "Viewers pay about $1.40 per 100 Bits; Twitch credits $0.01 per Bit, and the 2018 split gives the developer 20% ($20 per 10k Bits); current docs do not restate the split."
+          "notes": "Viewers pay about $1.40 per 100 Bits; Twitch credits $0.01 per Bit, and the Twitch Developer Services Agreement pays the developer 20% of $0.01 per Bit ($20 per 10k Bits)."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -25379,7 +25379,7 @@
       },
       "sourceFile": "games-virtual-worlds.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 2,
@@ -25562,7 +25562,7 @@
       "id": "transcription-work",
       "name": "Freelance transcription and captioning (Rev, TranscribeMe, GoTranscript)",
       "category": "micro-tasks",
-      "summary": "Transcribe or caption audio/video files for per-audio-minute pay on transcription marketplaces.",
+      "summary": "Transcribe or caption audio/video files for per-audio-minute pay on transcription marketplaces such as Rev ($0.40-1.10 per audio minute, weekly PayPal) and TranscribeMe.",
       "howItWorks": "Clients upload audio, and platforms split it into jobs that freelancers claim and transcribe or correct. Rev pays about $0.40-1.10 per audio minute, and TranscribeMe pays $15-22 per audio hour (average about $250/month). Most jobs now start from an ASR draft, which lowers pay per minute. Speed and accuracy decide your income. Entrance tests and waitlists are common.",
       "platforms": [
         "Rev",
@@ -25724,7 +25724,7 @@
       "id": "3d-printable-model-stores",
       "name": "Sell 3D-printable STL models on Cults3D, Printables Store and Thangs",
       "category": "marketplaces",
-      "summary": "Design functional or decorative 3D-printable models and sell the files per download on 3D-printing marketplaces.",
+      "summary": "Design functional or decorative 3D-printable models and sell the files per download on 3D-printing marketplaces such as Cults3D, Printables and Thangs (roughly 20% fee).",
       "howItWorks": "You model and test-print functional or decorative objects (organisers, mounts, cosplay parts, replacement parts) and list STL/3MF files; hobbyists buy and print at home. Cults3D reportedly pays designers 80% of the sale; Printables Store charges a 20% fee (min. price $5, Stripe payouts); Thangs takes 30%/20%/15% for items under $5/$5-10/$10+ plus Stripe fees. Alternative: Bambu Lab's MakerWorld is free-download only, but models enrolled in its Exclusive Model Program earn Exclusive Points worth $0.066 each that can be cashed out per $100 earned (eligibility after 100 total prints on your account). Free uploads build followers who buy paid models; parametric OpenSCAD designs yield many variants.",
       "platforms": [
         "Cults3D",
@@ -26525,7 +26525,7 @@
           "platformFeePercent": 55,
           "grossMarginPercent": 45,
           "hoursPerUnit": 2,
-          "notes": "Stock licenses typically $20-$50 with the artist keeping ~40-50% non-exclusive (estimated; Pond5 page bot-blocked); sync placements pay more. Hours = production time per track divided by expected sales (estimate)."
+          "notes": "Stock licenses typically $20-$50 with the artist keeping ~40-50% non-exclusive (blended estimate across libraries; the Pond5 page could not be fetched, but the evidence cites its stated 30% music royalty, so Pond5-only sales net less); sync placements pay more. Hours = production time per track divided by expected sales (estimate)."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 13,
@@ -26743,7 +26743,7 @@
       "id": "sewing-quilting-pdf-patterns",
       "name": "PDF sewing and quilting patterns with projector files (Etsy, Payhip, Makerist)",
       "category": "digital-products",
-      "summary": "Draft, grade and sell multi-size sewing and quilting patterns as print-at-home, A0 copy-shop and projector files.",
+      "summary": "Draft, grade and sell multi-size sewing and quilting patterns as print-at-home, A0 copy-shop and projector files via Payhip (5% fee on the free plan) or Etsy.",
       "howItWorks": "Home sewists buy PDF patterns that include tiled A4/Letter pages, A0 copy-shop files, layered sizes and projector files, plus an illustrated instruction booklet. Quilters buy block/quilt patterns with fabric requirements and cutting charts. Etsy and Payhip handle direct sales (Payhip free plan: 5% fee, sales deposited instantly to your PayPal/Stripe). Makerist, a European pattern marketplace, appeared offline in Nov 2026. Pattern testers and sew-along posts drive launches; one pattern sells for years.",
       "platforms": [
         "Etsy",
@@ -26815,7 +26815,7 @@
         "Long development cycle per pattern",
         "Competition from big indie pattern houses"
       ],
-      "evidence": "Indie pattern houses (e.g. many on Makerist/Etsy) sell PDF patterns as primary business; projector files became standard after 2020.",
+      "evidence": "Indie pattern houses (e.g. many on Etsy, and formerly Makerist, which appears offline since Nov 2026) sell PDF patterns as primary business; projector files became standard after 2020.",
       "sources": [
         "https://payhip.com/sell-sewing-patterns",
         "https://payhip.com/pricing"
@@ -27417,7 +27417,7 @@
       "id": "vtt-assets-roll20-marketplace",
       "name": "Virtual tabletop assets and modules (Roll20 Marketplace, Foundry VTT premium modules)",
       "category": "marketplaces",
-      "summary": "Sell battle maps, tokens and ready-to-run modules for virtual tabletops.",
+      "summary": "Sell battle maps, tokens and ready-to-run modules for virtual tabletops on the Roll20 Marketplace, Foundry VTT's Marketplace (opened Feb 2025) or your own store. Maps are built in Dungeondraft/Wonderdraft from reusable asset packs.",
       "howItWorks": "Online RPG groups pay for tokens, battle maps, character sheets and automated modules. Roll20 Marketplace sells creator art packs and adventures with a revenue share. Foundry VTT opened its own official Marketplace on 12 Feb 2025; creators can also sell premium modules via their own store (activation keys) or Patreon-linked access. Battle maps can be produced in Dungeondraft/Wonderdraft with consistent asset packs.",
       "platforms": [
         "Roll20 Marketplace",
@@ -27581,7 +27581,7 @@
       "id": "crossword-puzzle-submissions",
       "name": "Construct and sell crossword puzzles to newspapers",
       "category": "content",
-      "summary": "Build original crosswords and submit them to newspaper puzzle editors who pay a flat fee per published puzzle.",
+      "summary": "Build original crosswords and submit them to newspaper puzzle editors (The New York Times, Universal, LA Times) who pay a flat fee per published puzzle.",
       "howItWorks": "You construct themed crosswords with free or paid construction software and word lists, then submit to outlets like The New York Times, Universal and the LA Times that accept freelance puzzles. Editors buy puzzles that meet strict specs. Pay is a flat fee per puzzle. Software automates grid filling; theme ideas and clueing are the human part.",
       "platforms": [
         "The New York Times Crossword",
@@ -27916,7 +27916,7 @@
       "name": "Agency-assigned tutoring as a contractor (GoStudent, Varsity Tutors)",
       "category": "education",
       "summary": "Tutor school students that a tutoring company matches to you, at a per-session rate the company sets. The company handles acquisition, parents and billing.",
-      "howItWorks": "Tutoring companies sell lesson subscriptions to parents and assign the students to freelance tutors. You don't market yourself or set prices. You take students in your subjects, teach on the company's classroom tool and log sessions. GoStudent (Europe) pays a base rate of up to GBP 16 per 50-minute lesson, with volume raises (+1.00 per lesson after 150 lessons in 6 months, +1.50 after 300). Varsity Tutors (US) pays per session twice a week.",
+      "howItWorks": "Tutoring companies sell lesson subscriptions to parents and assign the students to freelance tutors. You don't market yourself or set prices. You take students in your subjects, teach on the company's classroom tool and log sessions. GoStudent (Europe) pays a base rate of up to GBP 16 per 50-minute lesson, with volume raises (+1.00 per lesson after 150 lessons in 6 months, +1.50 after 300). Varsity Tutors (US) reportedly pays per session twice a week (third-party reports, unverified).",
       "platforms": [
         "GoStudent",
         "Varsity Tutors"
@@ -28148,7 +28148,7 @@
         "Pass writing assessment",
         "Claim orders",
         "Deliver",
-        "Weekly PayPal payout",
+        "PayPal payout (Textbroker processes twice weekly; Verblio invoices weekly)",
         "Withdraw to bank"
       ],
       "risks": [
@@ -29599,7 +29599,7 @@
       "id": "oss-bounties-algora",
       "name": "Paid open-source bounties (Algora, Opire, Gitcoin)",
       "category": "software",
-      "summary": "Solve GitHub issues that companies have attached cash bounties to and get paid when the PR is merged.",
+      "summary": "Solve GitHub issues that companies have attached cash bounties to (via Algora or Opire) and get paid through Stripe when the PR is merged.",
       "howItWorks": "Companies and maintainers post bounties ($50-$5,000+) on GitHub issues via Algora and similar platforms. You (often assisted by an AI coding agent) claim the issue, submit a quality PR, and once merged the bounty is paid out. Payers are funded OSS companies wanting features/fixes. Competition is fierce on popular bounties, and spammy AI PRs get banned, so quality and communication matter. Gitcoin-style bounties pay in crypto and are less relevant now.",
       "platforms": [
         "Algora",
@@ -30126,7 +30126,7 @@
       "id": "ml-competitions",
       "name": "Data science / ML competitions (Kaggle, DrivenData, AIcrowd, Zindi)",
       "category": "data",
-      "summary": "Enter prize-paying machine-learning competitions and get paid if your model places in the top ranks.",
+      "summary": "Enter prize-paying machine-learning competitions on Kaggle, DrivenData, AIcrowd or Zindi and get paid if your model places in the top ranks.",
       "howItWorks": "Sponsors post a dataset and metric with a prize pool. You build models, submit predictions, and top finishers are paid after code review and eligibility checks, usually with tax forms. AI coding agents can automate much of the feature engineering and model search. Prizes go to a handful of people per contest, so for most entrants the realistic gain is a portfolio.",
       "platforms": [
         "Kaggle",
@@ -31189,7 +31189,7 @@
         "Register",
         "Receive case",
         "Complete questionnaire",
-        "PayPal payment",
+        "Payment (mailed cheque from OnlineVerdict; PayPal reported for eJury)",
         "Withdraw to bank"
       ],
       "risks": [
@@ -31464,7 +31464,7 @@
       "id": "lego-moc-instructions-rebrickable",
       "name": "Sell LEGO MOC building instructions on Rebrickable",
       "category": "digital-products",
-      "summary": "Design original LEGO models (MOCs) and sell PDF instructions plus parts lists that buyers source themselves.",
+      "summary": "Design original LEGO models (MOCs) and sell PDF instructions plus parts lists as Premium MOCs on Rebrickable; buyers source the bricks themselves.",
       "howItWorks": "You build a model digitally in BrickLink Studio (free), generate step-by-step instructions, and list it as a Premium MOC on Rebrickable. Buyers pay for the instructions and use Rebrickable to buy parts or match their own collection. Payment goes straight to your PayPal or Stripe account; Rebrickable then deducts or invoices its commission (reported 8%/13%/18% by price band on its Designer Plan). Popular MOC designers also get approached by kit sellers for licensing.",
       "platforms": [
         "Rebrickable"
@@ -32132,7 +32132,7 @@
       "id": "knitting-crochet-patterns",
       "name": "Knitting and crochet pattern sales on Ravelry, LoveCrafts and Ribblr",
       "category": "digital-products",
-      "summary": "Design, test-knit and sell written knitting/crochet patterns on yarn-community marketplaces.",
+      "summary": "Design, test-knit and sell written knitting/crochet patterns on yarn-community marketplaces such as Ravelry (buyers pay your PayPal directly) and Ribblr (Stripe, fee from 4%).",
       "howItWorks": "You design a garment or amigurumi, write the sized pattern with charts, run test knitters and sell the PDF. On Ravelry buyers pay your PayPal directly; Ravelry bills a small monthly fee (reportedly none under $30/month in sales, ~3.5% above). LoveCrafts runs an indie designer program. Ribblr sells interactive ePatterns via Stripe Connect with a sale fee from 4% (reducible to 0% with its '$elFee' scheme, min. fee $0.25 per pattern). Patterns indexed in Ravelry's project database sell for years.",
       "platforms": [
         "Ravelry",
@@ -34289,7 +34289,7 @@
       "name": "Editing, cover design and ghostwriting for authors via Reedsy",
       "category": "content",
       "summary": "Sell vetted publishing services (developmental editing, copyediting, cover design, ghostwriting) to self-publishing authors through Reedsy's curated marketplace.",
-      "howItWorks": "You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a commission. Acceptance is selective, so real publishing experience is needed.",
+      "howItWorks": "You apply to Reedsy with a portfolio of published credits. Accepted professionals get quote requests from authors, send fixed-price offers, and are paid through Reedsy's escrow in milestones. Authors pay because Reedsy pre-vets freelancers. Reedsy takes a 10% commission from the professional (falling to 7% with large repeat clients) and charges the author a matching fee. Acceptance is selective, so real publishing experience is needed.",
       "platforms": [
         "Reedsy Marketplace"
       ],
@@ -34355,7 +34355,7 @@
         "Competitive pricing",
         "AI pressure on editing rates"
       ],
-      "evidence": "Reedsy is a well-known marketplace for self-published authors; terms unverified here.",
+      "evidence": "Reedsy is a well-known marketplace for self-published authors; its freelancer FAQ (checked Nov 2026) confirms Stripe payouts and the 10% professional-side commission.",
       "sources": [
         "https://reedsy.com/",
         "https://reedsy.com/faq/freelancers/how-do-i-get-paid",
@@ -35709,7 +35709,7 @@
       "risks": [
         "Monthly content treadmill; churn when releases slip",
         "Piracy of STL packs",
-        "Paid MMF tier is a fixed cost",
+        "Paid MMF tier is a fixed cost (Pro $24.99/mo; the $0 monthly cost here assumes Thangs or Printables Clubs)",
         "Saturated fantasy-mini niche"
       ],
       "evidence": "MyMiniFactory creator help center documents payout schedule, $2 fee under $100 and store fees; Thangs help center publishes the 14% membership fee and supported countries; Prusa blog announced Clubs with a 10% fee. Dozens of mini studios run 4-5 figure monthly subscriptions.",

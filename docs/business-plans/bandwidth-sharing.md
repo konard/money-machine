@@ -2,7 +2,7 @@
 
 **Rank #4 · Tier S · Priority score 79/100 · Category: Data & security work**
 
-Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared.
+Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared (Honeygain: $20 cash-out minimum; Pawns.app: from $5).
 
 ## Scores
 

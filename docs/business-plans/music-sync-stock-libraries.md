@@ -55,7 +55,7 @@ You compose/produce royalty-free-friendly background tracks (corporate, cinemati
 | Gross margin (median case) | 45% |
 | Human hours per unit after automation | 2 |
 
-Stock licenses typically $20-$50 with the artist keeping ~40-50% non-exclusive (estimated; Pond5 page bot-blocked); sync placements pay more. Hours = production time per track divided by expected sales (estimate).
+Stock licenses typically $20-$50 with the artist keeping ~40-50% non-exclusive (blended estimate across libraries; the Pond5 page could not be fetched, but the evidence cites its stated 30% music royalty, so Pond5-only sales net less); sync placements pay more. Hours = production time per track divided by expected sales (estimate).
 
 ### Break-even
 

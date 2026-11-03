@@ -26,7 +26,7 @@ Most people who try this earn around **$0–$15 per month** in the first year; t
 
 ## How it works
 
-You take public-domain texts (e.g. from Project Gutenberg), strip the Project Gutenberg name and license, and add original value: a new translation, notes, study guides, audio narration. Readers pay for the added value. KDP requires PD books to be differentiated and pays 35% royalty for PD content.
+You take public-domain texts (e.g. from Project Gutenberg), strip the Project Gutenberg name and license, and add original value: a new translation, notes, study guides, audio narration. Readers pay for the added value. KDP requires PD books to be differentiated and pays only 35% royalty on primarily public-domain content (up to 70% for differentiated editions).
 
 **Platforms:** Amazon KDP, Gumroad, Payhip, Project Gutenberg (source)
 

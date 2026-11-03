@@ -2,7 +2,7 @@
 
 **Rank #186 · Tier C · Priority score 45/100 · Category: Digital products**
 
-Design original LEGO models (MOCs) and sell PDF instructions plus parts lists that buyers source themselves.
+Design original LEGO models (MOCs) and sell PDF instructions plus parts lists as Premium MOCs on Rebrickable; buyers source the bricks themselves.
 
 ## Scores
 

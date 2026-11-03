@@ -28,7 +28,7 @@ Most people who try this earn around **$100–$600 per month** in the first year
 
 ## How it works
 
-Tutoring companies sell lesson subscriptions to parents and assign the students to freelance tutors. You don't market yourself or set prices. You take students in your subjects, teach on the company's classroom tool and log sessions. GoStudent (Europe) pays a base rate of up to GBP 16 per 50-minute lesson, with volume raises (+1.00 per lesson after 150 lessons in 6 months, +1.50 after 300). Varsity Tutors (US) pays per session twice a week.
+Tutoring companies sell lesson subscriptions to parents and assign the students to freelance tutors. You don't market yourself or set prices. You take students in your subjects, teach on the company's classroom tool and log sessions. GoStudent (Europe) pays a base rate of up to GBP 16 per 50-minute lesson, with volume raises (+1.00 per lesson after 150 lessons in 6 months, +1.50 after 300). Varsity Tutors (US) reportedly pays per session twice a week (third-party reports, unverified).
 
 **Platforms:** GoStudent, Varsity Tutors
 

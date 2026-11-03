@@ -2,7 +2,7 @@
 
 **Rank #113 · Tier B · Priority score 52/100 · Category: Marketplaces & e-commerce**
 
-Become an approved artist whose cut files are sold inside the machine maker's own design store and software.
+Become an approved artist whose cut files are sold inside the machine maker's own design store and software, chiefly the Silhouette Design Store in Silhouette Studio (most designs sell at $0.99; royalty rate unpublished).
 
 ## Scores
 

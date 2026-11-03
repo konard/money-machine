@@ -2,7 +2,7 @@
 
 **Rank #92 · Tier B · Priority score 53/100 · Category: Micro-tasks & paid research**
 
-Complete small paid tasks on your phone such as photographing shop shelves, checking prices or answering local surveys; paid to PayPal, Payoneer or mobile money, with wide coverage in Africa, Asia and Latin America.
+Complete small paid tasks on your phone such as photographing shop shelves, checking prices or answering local surveys; paid to PayPal, Payoneer or (Premise, some countries) Bitcoin, with wide coverage in Africa, Asia and Latin America.
 
 ## Scores
 
@@ -110,7 +110,7 @@ _Business-plan sources:_
 1. Install app
 2. Complete local tasks
 3. Reach minimum
-4. Cash out to PayPal/mobile money
+4. Cash out to PayPal/Payoneer
 5. Withdraw to bank
 
 ## What can be automated

@@ -2,7 +2,7 @@
 
 **Rank #178 · Tier C · Priority score 46/100 · Category: Data & security work**
 
-Enter prize-paying machine-learning competitions and get paid if your model places in the top ranks.
+Enter prize-paying machine-learning competitions on Kaggle, DrivenData, AIcrowd or Zindi and get paid if your model places in the top ranks.
 
 ## Scores
 

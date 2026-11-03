@@ -102,7 +102,7 @@ _Business-plan sources:_
 - **Minimum payout:** Not published
 - **Frequency:** monthly
 - **Typical delay:** 45 days
-- **Notes:** Official: flat 25% marketplace fee from 15 Nov 2025; PayPal is the only payout method (PayPal fees deducted separately); a month's charges are paid at the end of the following month. Charges for a month are paid at the end of the following month (official).
+- **Notes:** Official: flat 25% marketplace fee from 15 Nov 2025; PayPal is the only payout method (PayPal fees deducted separately); a month's charges are paid at the end of the following month.
 
 ## Full cycle (setup → earn → bank account)
 

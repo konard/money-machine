@@ -443,7 +443,7 @@
     "name": "Agency-assigned tutoring as a contractor (GoStudent, Varsity Tutors)",
     "category": "education",
     "summary": "Tutor school students that a tutoring company matches to you, at a per-session rate the company sets. The company handles acquisition, parents and billing.",
-    "howItWorks": "Tutoring companies sell lesson subscriptions to parents and assign the students to freelance tutors. You don't market yourself or set prices. You take students in your subjects, teach on the company's classroom tool and log sessions. GoStudent (Europe) pays a base rate of up to GBP 16 per 50-minute lesson, with volume raises (+1.00 per lesson after 150 lessons in 6 months, +1.50 after 300). Varsity Tutors (US) pays per session twice a week.",
+    "howItWorks": "Tutoring companies sell lesson subscriptions to parents and assign the students to freelance tutors. You don't market yourself or set prices. You take students in your subjects, teach on the company's classroom tool and log sessions. GoStudent (Europe) pays a base rate of up to GBP 16 per 50-minute lesson, with volume raises (+1.00 per lesson after 150 lessons in 6 months, +1.50 after 300). Varsity Tutors (US) reportedly pays per session twice a week (third-party reports, unverified).",
     "platforms": ["GoStudent", "Varsity Tutors"],
     "payout": {
       "methods": [

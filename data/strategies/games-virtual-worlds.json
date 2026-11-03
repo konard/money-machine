@@ -5,10 +5,7 @@
     "category": "digital-products",
     "summary": "Publish UEFN islands and earn monthly engagement payouts plus V-Bucks in-island sales.",
     "howItWorks": "Join the Fortnite Developer Program (18+), build an island in UEFN and publish it. Epic puts 40% of eligible net Item Shop revenue into an Engagement Pool and splits it monthly by playtime, retention and new-player acquisition, counting only paying players. Islands can also sell items for V-Bucks: the creator gets 50% of the V-Bucks value, or 100% from 9 Jan 2026 to 31 Jan 2027. Discovery is winner-take-most.",
-    "platforms": [
-      "Fortnite Creative / UEFN",
-      "Epic Creator Portal"
-    ],
+    "platforms": ["Fortnite Creative / UEFN", "Epic Creator Portal"],
     "payout": {
       "methods": [
         "Hyperwallet payout account (Epic's official payout provider) -> transfer method offered for your country (bank etc.)"
@@ -103,10 +100,7 @@
           "game design for retention",
           "thumbnail and trailer marketing"
         ],
-        "equipment": [
-          "gaming-capable PC (Windows)",
-          "internet"
-        ],
+        "equipment": ["gaming-capable PC (Windows)", "internet"],
         "accounts": [
           "Epic account in the Fortnite Developer Program (18+)",
           "Tax Identity interview + Hyperwallet payee"
@@ -259,10 +253,7 @@
           "Minecraft skin, texture, map or add-on creation",
           "portfolio building and client communication"
         ],
-        "equipment": [
-          "PC",
-          "Minecraft Bedrock copy (likely already owned)"
-        ],
+        "equipment": ["PC", "Minecraft Bedrock copy (likely already owned)"],
         "accounts": [
           "portfolio site / Discord",
           "PayPal or Upwork for contract pay",
@@ -327,11 +318,7 @@
       "server lists"
     ],
     "payout": {
-      "methods": [
-        "Tebex -> PayPal",
-        "Tebex -> local bank transfer",
-        "wire"
-      ],
+      "methods": ["Tebex -> PayPal", "Tebex -> local bank transfer", "wire"],
       "minimumPayout": "PayPal $5; bank transfer about $20; wire about $50",
       "frequency": "on settlement",
       "typicalDelayDays": 16,
@@ -399,13 +386,7 @@
       "https://docs.tebex.io/creators/tebex-checkout/fund-withdrawals-and-transfers",
       "https://docs.tebex.io/creators/tebex-checkout/fund-withdrawals-and-transfers/wire-transfer-list-of-countries-and-fees"
     ],
-    "tags": [
-      "games",
-      "minecraft",
-      "community",
-      "recurring",
-      "small-capital"
-    ],
+    "tags": ["games", "minecraft", "community", "recurring", "small-capital"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
@@ -422,10 +403,7 @@
           "community moderation",
           "Mojang Usage Guidelines compliance"
         ],
-        "equipment": [
-          "PC",
-          "internet"
-        ],
+        "equipment": ["PC", "internet"],
         "accounts": [
           "Tebex store + payout verification",
           "hosting account",
@@ -484,10 +462,7 @@
     "category": "digital-products",
     "summary": "Publish free Minecraft mods/modpacks and earn ad-revenue-share rewards on CurseForge and Modrinth.",
     "howItWorks": "Publish free mods and modpacks. CurseForge hands out points from a monthly pool by project popularity once a project passes a threshold; each point is worth $0.05. Modpack authors also get 65% of a user's first month on BisectHosting servers bought through their page. Modrinth pays creators 75% of its ad revenue, split by views and downloads. Mojang's EULA bars selling mods, so ad-share is the sanctioned route.",
-    "platforms": [
-      "CurseForge (Overwolf)",
-      "Modrinth"
-    ],
+    "platforms": ["CurseForge (Overwolf)", "Modrinth"],
     "payout": {
       "methods": [
         "CurseForge: PayPal or Payoneer (USD); Amazon gift cards in US, CA, UK, DE, FR, IT",
@@ -559,13 +534,7 @@
       "https://modrinth.com/legal/cmp-info",
       "https://support.curseforge.com/en/support/solutions/articles/9000240602-curseforge-server-affiliation-program-faq"
     ],
-    "tags": [
-      "games",
-      "mods",
-      "passive",
-      "ad-revenue-share",
-      "developer"
-    ],
+    "tags": ["games", "mods", "passive", "ad-revenue-share", "developer"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
@@ -580,9 +549,7 @@
           "Java modding",
           "maintaining mods across Minecraft versions"
         ],
-        "equipment": [
-          "PC"
-        ],
+        "equipment": ["PC"],
         "accounts": [
           "CurseForge author account",
           "Modrinth creator account",
@@ -641,9 +608,7 @@
     "category": "digital-products",
     "summary": "Publish free mods for PC games (Skyrim, Cyberpunk 2077, Baldur's Gate 3, Stardew Valley etc.) and earn Donation Points from Nexus Mods' monthly pool, redeemable for cash.",
     "howItWorks": "Upload original mods for PC games and opt each mod page into Mod Rewards. Nexus pays a monthly pool (GBP 325,000 in March 2024) to authors using an undisclosed algorithm based on user interactions, with repeat interactions from the same user counting for less. Each Donation Point is worth $0.001 (1,000 DP = $1) and can be redeemed for cash via PayPal, games or Premium.",
-    "platforms": [
-      "Nexus Mods"
-    ],
+    "platforms": ["Nexus Mods"],
     "payout": {
       "methods": [
         "PayPal cash redemption (Nexus commits to always offering it)"
@@ -715,12 +680,7 @@
       "https://help.nexusmods.com/article/68-donation-points-system-terms-of-service",
       "https://help.nexusmods.com/article/131-donation-points-update-2024-faq"
     ],
-    "tags": [
-      "games",
-      "mods",
-      "passive",
-      "pool-payout"
-    ],
+    "tags": ["games", "mods", "passive", "pool-payout"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 30,
@@ -735,13 +695,8 @@
           "modding a popular PC game",
           "documentation and user support"
         ],
-        "equipment": [
-          "gaming PC"
-        ],
-        "accounts": [
-          "Nexus Mods author account",
-          "PayPal"
-        ]
+        "equipment": ["gaming PC"],
+        "accounts": ["Nexus Mods author account", "PayPal"]
       },
       "unitEconomics": {
         "unit": "per 10,000 unique downloads",
@@ -795,15 +750,9 @@
     "category": "digital-products",
     "summary": "Build Overwolf in-game overlay apps earning ad and subscription revenue share.",
     "howItWorks": "Build an HTML/JS app that uses Overwolf game-event APIs, such as a stats tracker or build helper. After QA it is listed in the Overwolf Appstore and Overwolf serves ads in it, and you can also sell Tebex-powered subscriptions. From 1 Nov 2026 Overwolf approves only apps using Overwolf monetization. Yield depends on tier-1 users.",
-    "platforms": [
-      "Overwolf Appstore",
-      "Overwolf ads",
-      "Tebex subscriptions"
-    ],
+    "platforms": ["Overwolf Appstore", "Overwolf ads", "Tebex subscriptions"],
     "payout": {
-      "methods": [
-        "Payoneer (USD) -> bank"
-      ],
+      "methods": ["Payoneer (USD) -> bank"],
       "minimumPayout": "$200 net (lower amounts roll over)",
       "frequency": "monthly",
       "typicalDelayDays": 75,
@@ -869,12 +818,7 @@
       "https://dev.overwolf.com/ow-native/monetization/advertising/overview",
       "https://www.overwolf.com/creators/build-an-app/"
     ],
-    "tags": [
-      "games",
-      "software",
-      "ad-revenue-share",
-      "developer"
-    ],
+    "tags": ["games", "software", "ad-revenue-share", "developer"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 150,
@@ -891,13 +835,8 @@
           "game event API integration",
           "UX for in-game overlays"
         ],
-        "equipment": [
-          "Windows gaming PC"
-        ],
-        "accounts": [
-          "Overwolf developer account",
-          "Payoneer"
-        ]
+        "equipment": ["Windows gaming PC"],
+        "accounts": ["Overwolf developer account", "Payoneer"]
       },
       "unitEconomics": {
         "unit": "per 1,000 monthly active users per month",
@@ -951,12 +890,7 @@
     "category": "digital-products",
     "summary": "Sell VRChat avatar/outfit/world assets in-world (Credits via Tilia) and as downloads on Jinxxy/BOOTH.",
     "howItWorks": "Approved VRChat sellers sell avatar/world unlocks and group subscriptions for VRChat Credits, and the creator keeps about 50% of what users spend (about $0.005 per credit), paid out via Tilia. Unity packages, outfits and shaders sell as downloads on Jinxxy (5% fee plus about 3% processing, weekly payouts) or on BOOTH. Compatibility with popular avatar bases drives repeat sales.",
-    "platforms": [
-      "VRChat Creator Economy",
-      "Tilia",
-      "Jinxxy",
-      "BOOTH (pixiv)"
-    ],
+    "platforms": ["VRChat Creator Economy", "Tilia", "Jinxxy", "BOOTH (pixiv)"],
     "payout": {
       "methods": [
         "VRChat: Tilia -> PayPal or bank transfer",
@@ -1029,12 +963,7 @@
       "https://creators.vrchat.com/economy/faq",
       "https://jinxxy.com/about/selling"
     ],
-    "tags": [
-      "games",
-      "social-vr",
-      "3d",
-      "digital-downloads"
-    ],
+    "tags": ["games", "social-vr", "3d", "digital-downloads"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 60,
@@ -1051,10 +980,7 @@
           "Unity avatar setup",
           "community marketing"
         ],
-        "equipment": [
-          "PC",
-          "VR headset optional"
-        ],
+        "equipment": ["PC", "VR headset optional"],
         "accounts": [
           "VRChat creator account",
           "Tilia payout account",
@@ -1113,12 +1039,7 @@
     "category": "marketplaces",
     "summary": "Sell Second Life virtual goods for L$, convert on the LindeX and withdraw through Tilia.",
     "howItWorks": "Make mesh fashion, furniture or scripted items in Blender/LSL and sell them in-world or on the SL Marketplace for Linden Dollars. Sell the L$ on the LindeX for a USD balance, then withdraw it with a Process Credit request through Tilia/Thunes. The economy is mature and buyers spend steadily, but sales are concentrated among top brands.",
-    "platforms": [
-      "Second Life",
-      "SL Marketplace",
-      "LindeX",
-      "Tilia (Thunes)"
-    ],
+    "platforms": ["Second Life", "SL Marketplace", "LindeX", "Tilia (Thunes)"],
     "payout": {
       "methods": [
         "Process Credit via Tilia -> PayPal or other payout account (depends on location)"
@@ -1189,30 +1110,19 @@
       "https://modemworld.me/2023/03/06/ll-announce-fee-changes-for-second-life-land-and-lindex/",
       "https://secondlife.com/"
     ],
-    "tags": [
-      "games",
-      "virtual-world",
-      "3d",
-      "marketplace"
-    ],
+    "tags": ["games", "virtual-world", "3d", "marketplace"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
         "cashUsd": 10,
         "recurringMonthlyUsd": 0,
-        "tools": [
-          "Blender (free)",
-          "LSL scripting",
-          "Second Life viewer"
-        ],
+        "tools": ["Blender (free)", "LSL scripting", "Second Life viewer"],
         "skills": [
           "3D modeling and texturing",
           "LSL scripting",
           "SL marketplace marketing"
         ],
-        "equipment": [
-          "PC"
-        ],
+        "equipment": ["PC"],
         "accounts": [
           "Second Life account",
           "SL Marketplace store",
@@ -1271,18 +1181,13 @@
     "category": "digital-products",
     "summary": "Build interactive Twitch Extensions (polls, viewer games, overlays) where viewers spend Bits on actions; the developer gets a share of the Bits revenue.",
     "howItWorks": "Build a panel/overlay Extension with Bits products (1-10,000 Bits), such as triggering on-stream effects or viewer mini-games. Twitch splits Bits revenue 80% to the broadcaster and 20% to the developer. You get paid after completing Twitch's monetization onboarding (tax interviews and financial details). You earn only if many streamers install it.",
-    "platforms": [
-      "Twitch Extensions",
-      "Twitch Bits"
-    ],
+    "platforms": ["Twitch Extensions", "Twitch Bits"],
     "payout": {
-      "methods": [
-        "Twitch payout (bank/wire/PayPal per onboarding)"
-      ],
-      "minimumPayout": "Not stated for extension developers (unverified); Twitch's creator payout minimum is $50 ($100 for wire)",
+      "methods": ["Twitch payout by check or EFT (bank) as Twitch chooses"],
+      "minimumPayout": "$100 (Payment Threshold in the Twitch Developer Services Agreement)",
       "frequency": "monthly",
       "typicalDelayDays": 45,
-      "notes": "Twitch announced the 80% broadcaster / 20% developer Bits split in 2018; current docs say only that revenue is shared and do not restate the percentages. Docs recommend choosing 'Hold My Payments' at first. Unconfirmed: the payout minimum for extension developers and the current developer share of Bits (dev.twitch.tv monetization and Bits docs and the Twitch Developer Agreement page re-checked Nov 2026)."
+      "notes": "Twitch Developer Services Agreement (read in a browser Nov 2026): for each eligible Bit used in your extension you receive a Bits Fee of 20% of one US cent ($0.002 per Bit, i.e. $20 per 10,000 Bits); paid about 45 days after the end of the calendar month in which the Bits were used, by check, EFT or other methods Twitch chooses; payments accrue until they reach the $100 Payment Threshold. Twitch may claw back the Bits Fee on refunds, withhold fees for 3 months after termination, and fees unclaimed for 180 days (missing payment/tax info) are forfeited month by month. The developer docs recommend choosing 'Hold My Payments' during onboarding."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -1343,15 +1248,10 @@
       "https://dev.twitch.tv/docs/extensions/monetization/",
       "https://dev.twitch.tv/docs/extensions/bits/",
       "https://blog.twitch.tv/en/2018/04/23/the-next-big-update-for-extensions-is-here-a036151cc309/",
-      "https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/"
+      "https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/",
+      "https://legal.twitch.com/legal/developer-agreement/"
     ],
-    "tags": [
-      "games",
-      "streaming",
-      "developer",
-      "low-probability",
-      "needs-verification"
-    ],
+    "tags": ["games", "streaming", "developer", "low-probability"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 100,
@@ -1367,9 +1267,7 @@
           "backend service for extension",
           "Twitch API"
         ],
-        "equipment": [
-          "PC"
-        ],
+        "equipment": ["PC"],
         "accounts": [
           "Twitch developer account",
           "Twitch monetization onboarding (tax + payout)"
@@ -1386,7 +1284,7 @@
         "platformFeePercent": 0,
         "grossMarginPercent": 100,
         "hoursPerUnit": 1,
-        "notes": "Viewers pay about $1.40 per 100 Bits; Twitch credits $0.01 per Bit, and the 2018 split gives the developer 20% ($20 per 10k Bits); current docs do not restate the split."
+        "notes": "Viewers pay about $1.40 per 100 Bits; Twitch credits $0.01 per Bit, and the Twitch Developer Services Agreement pays the developer 20% of $0.01 per Bit ($20 per 10k Bits)."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -1426,9 +1324,7 @@
     "category": "marketplaces",
     "summary": "Sell 1-to-1 game coaching sessions, asynchronous VOD reviews, written/video guides and memberships to players on Metafy's gaming-specific marketplace.",
     "howItWorks": "List coaching sessions, async VOD reviews, guides and memberships for competitive games on Metafy, which handles discovery, scheduling and payment. On the free Core plan Metafy takes 12% plus $1.79 per transaction, capped at 30% (from 14 Aug 2026). Pro costs $99 per month and takes 0%. VOD reviews and guides scale best.",
-    "platforms": [
-      "Metafy"
-    ],
+    "platforms": ["Metafy"],
     "payout": {
       "methods": [
         "Metafy wallet -> local bank transfer/ACH",
@@ -1501,34 +1397,19 @@
       "https://help.metafy.gg/en/articles/16415457-metafy-pricing-update-august-2026",
       "https://help.metafy.gg/en/articles/14674847-payout-timelines-and-hold-periods"
     ],
-    "tags": [
-      "games",
-      "coaching",
-      "services",
-      "fast-first-dollar"
-    ],
+    "tags": ["games", "coaching", "services", "fast-first-dollar"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 6,
         "cashUsd": 0,
         "recurringMonthlyUsd": 0,
-        "tools": [
-          "Metafy Core plan (free)",
-          "OBS for VOD reviews",
-          "Discord"
-        ],
+        "tools": ["Metafy Core plan (free)", "OBS for VOD reviews", "Discord"],
         "skills": [
           "high rank in a competitive game",
           "teaching and VOD analysis"
         ],
-        "equipment": [
-          "gaming PC",
-          "microphone"
-        ],
-        "accounts": [
-          "Metafy coach account + Veriff KYC",
-          "bank/PayPal"
-        ]
+        "equipment": ["gaming PC", "microphone"],
+        "accounts": ["Metafy coach account + Veriff KYC", "bank/PayPal"]
       },
       "unitEconomics": {
         "unit": "per coaching session (1 hour) or VOD review",
@@ -1589,10 +1470,7 @@
       "VPS providers that allow resale (e.g. OVHcloud, Hetzner per their ToS)"
     ],
     "payout": {
-      "methods": [
-        "Stripe -> bank",
-        "PayPal -> bank"
-      ],
+      "methods": ["Stripe -> bank", "PayPal -> bank"],
       "minimumPayout": "Stripe: none; PayPal: none",
       "frequency": "daily-weekly (Stripe/PayPal)",
       "typicalDelayDays": 7,
@@ -1659,12 +1537,7 @@
       "https://support.curseforge.com/en/support/solutions/articles/9000240602-curseforge-server-affiliation-program-faq",
       "https://www.minecraft.net/en-us/usage-guidelines"
     ],
-    "tags": [
-      "games",
-      "hosting",
-      "recurring",
-      "small-capital"
-    ],
+    "tags": ["games", "hosting", "recurring", "small-capital"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 30,
@@ -1681,9 +1554,7 @@
           "customer support",
           "billing and abuse handling"
         ],
-        "equipment": [
-          "PC"
-        ],
+        "equipment": ["PC"],
         "accounts": [
           "VPS provider account that allows resale",
           "Stripe/PayPal",
@@ -1742,14 +1613,9 @@
     "category": "digital-products",
     "summary": "Sell FiveM/RedM roleplay-server scripts and maps via Rockstar's Cfx.re marketplace and Tebex.",
     "howItWorks": "GTA V/RDR2 roleplay servers on Rockstar's Cfx.re platform buy jobs, inventories, housing, maps (MLOs) and UIs. Creators sell from a Tebex store; approved Tebex Partners can also list items on the curated Cfx Marketplace at no extra commission. Rockstar's Creator Platform License lets Rockstar and the operator act as agents licensing content to server admins. The licence forbids cash-out mechanics, loot boxes, real-money currency, crypto/NFTs and reselling third-party content.",
-    "platforms": [
-      "Cfx.re (FiveM/RedM) creator marketplace",
-      "Tebex"
-    ],
+    "platforms": ["Cfx.re (FiveM/RedM) creator marketplace", "Tebex"],
     "payout": {
-      "methods": [
-        "Tebex -> PayPal, local bank transfer, wire"
-      ],
+      "methods": ["Tebex -> PayPal, local bank transfer, wire"],
       "minimumPayout": "PayPal $5; bank transfer about $20; wire about $50 (Tebex wallet)",
       "frequency": "on settlement",
       "typicalDelayDays": 16,
@@ -1817,11 +1683,7 @@
       "https://docs.tebex.io/creators/growth-and-success/cfx-marketplace",
       "https://docs.tebex.io/creators/tebex-checkout/fund-withdrawals-and-transfers"
     ],
-    "tags": [
-      "games",
-      "scripts",
-      "developer"
-    ],
+    "tags": ["games", "scripts", "developer"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 60,
@@ -1838,14 +1700,8 @@
           "UI design",
           "customer support"
         ],
-        "equipment": [
-          "gaming PC with GTA V or RDR2"
-        ],
-        "accounts": [
-          "Cfx.re account",
-          "Tebex store",
-          "PayPal/bank"
-        ]
+        "equipment": ["gaming PC with GTA V or RDR2"],
+        "accounts": ["Cfx.re account", "Tebex store", "PayPal/bank"]
       },
       "unitEconomics": {
         "unit": "per script sale",

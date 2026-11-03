@@ -2,7 +2,7 @@
 
 **Rank #152 · Tier C · Priority score 48/100 · Category: Marketplaces & e-commerce**
 
-Design functional or decorative 3D-printable models and sell the files per download on 3D-printing marketplaces.
+Design functional or decorative 3D-printable models and sell the files per download on 3D-printing marketplaces such as Cults3D, Printables and Thangs (roughly 20% fee).
 
 ## Scores
 

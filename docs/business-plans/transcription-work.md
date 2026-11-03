@@ -2,7 +2,7 @@
 
 **Rank #151 · Tier C · Priority score 48/100 · Category: Micro-tasks & paid research**
 
-Transcribe or caption audio/video files for per-audio-minute pay on transcription marketplaces.
+Transcribe or caption audio/video files for per-audio-minute pay on transcription marketplaces such as Rev ($0.40-1.10 per audio minute, weekly PayPal) and TranscribeMe.
 
 ## Scores
 

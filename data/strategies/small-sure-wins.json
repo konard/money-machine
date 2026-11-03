@@ -675,8 +675,8 @@
     "id": "crowdtesting-bug-hunts",
     "name": "Crowdtesting and paid bug hunts (Testbirds, test IO, uTest, Testlio)",
     "category": "micro-tasks",
-    "summary": "Join crowdtesting platforms that pay per approved bug or per completed test cycle on real apps and websites.",
-    "howItWorks": "Companies pay crowdtesting vendors to test releases on many real devices. Testers pick test cycles, follow instructions, report bugs with reproduction steps and screenshots, and are paid per approved bug (commonly $5–$50 by severity) or a flat fee per cycle. Payment goes to PayPal or Payoneer monthly. It is structured, well-paid-per-hour work compared with surveys, and bug approval rates improve quickly with experience.",
+    "summary": "Join crowdtesting platforms (uTest, Testlio, test IO, Testbirds) that pay per approved bug or per completed test cycle on real apps and websites.",
+    "howItWorks": "Companies pay crowdtesting vendors to test releases on many real devices. Testers pick test cycles, follow instructions, report bugs with reproduction steps and screenshots, and are paid per approved bug (commonly $5–$50 by severity) or a flat fee per cycle. Payment goes to PayPal or Payoneer weekly (Testlio) to monthly. It is structured, well-paid-per-hour work compared with surveys, and bug approval rates improve quickly with experience.",
     "platforms": [
       "Testbirds",
       "test IO",
@@ -738,7 +738,7 @@
       "Pass onboarding",
       "Join test cycles",
       "Report approved bugs",
-      "Monthly PayPal/Payoneer payout",
+      "Weekly-to-monthly PayPal/Payoneer payout",
       "Withdraw to bank"
     ],
     "risks": [
@@ -882,7 +882,7 @@
       "Pass writing assessment",
       "Claim orders",
       "Deliver",
-      "Weekly PayPal payout",
+      "PayPal payout (Textbroker processes twice weekly; Verblio invoices weekly)",
       "Withdraw to bank"
     ],
     "risks": [
@@ -1069,7 +1069,7 @@
         "platformFeePercent": 2,
         "grossMarginPercent": 98,
         "hoursPerUnit": 2,
-        "notes": "Gengo standard-tier pay is about 3 cents/word and pro about 6 cents/word (estimated: Gengo shows the reward per job and publishes no rate card); the 2% fee is an estimated PayPal payout fee (support page bot-blocked)."
+        "notes": "Gengo standard-tier pay is about 3 cents/word and pro about 6 cents/word (estimated: Gengo shows the reward per job and publishes no rate card); the 2% fee approximates Gengo's PayPal payout fee (1.5%, min $1.50, max $20 per payout, as in the payout notes; Payoneer carries no Gengo fee)."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -1695,7 +1695,7 @@
       "Create resources",
       "List",
       "Sales",
-      "Monthly PayPal payout",
+      "Monthly Hyperwallet payout (direct deposit, PayPal or Venmo)",
       "Withdraw to bank"
     ],
     "risks": [
@@ -1924,7 +1924,7 @@
     "id": "retail-audit-task-apps",
     "name": "Retail-audit and data-collection apps (Premise, Roamler, BeMyEye, Field Agent)",
     "category": "micro-tasks",
-    "summary": "Complete small paid tasks on your phone such as photographing shop shelves, checking prices or answering local surveys; paid to PayPal, Payoneer or mobile money, with wide coverage in Africa, Asia and Latin America.",
+    "summary": "Complete small paid tasks on your phone such as photographing shop shelves, checking prices or answering local surveys; paid to PayPal, Payoneer or (Premise, some countries) Bitcoin, with wide coverage in Africa, Asia and Latin America.",
     "howItWorks": "Market-research and NGO clients pay for ground-truth data. Apps publish tasks near you (take a photo of a product display, confirm a store is open, report local fuel prices, answer a short survey) paying roughly $0.25–$10 each. Premise pays contributors via PayPal, Payoneer or Bitcoin depending on country; Roamler covers Europe and the US. Tasks require leaving the house, but payment is reliable and these apps are among the few that pay residents of lower-income reference countries directly.",
     "platforms": ["Premise", "Roamler", "BeMyEye", "Streetbees"],
     "payout": {
@@ -1983,7 +1983,7 @@
       "Install app",
       "Complete local tasks",
       "Reach minimum",
-      "Cash out to PayPal/mobile money",
+      "Cash out to PayPal/Payoneer",
       "Withdraw to bank"
     ],
     "risks": [
@@ -2278,7 +2278,7 @@
       "Register",
       "Receive case",
       "Complete questionnaire",
-      "PayPal payment",
+      "Payment (mailed cheque from OnlineVerdict; PayPal reported for eJury)",
       "Withdraw to bank"
     ],
     "risks": ["Very few cases outside large metros", "US-only"],

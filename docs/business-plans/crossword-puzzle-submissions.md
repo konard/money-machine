@@ -2,7 +2,7 @@
 
 **Rank #163 · Tier C · Priority score 47/100 · Category: Content & media**
 
-Build original crosswords and submit them to newspaper puzzle editors who pay a flat fee per published puzzle.
+Build original crosswords and submit them to newspaper puzzle editors (The New York Times, Universal, LA Times) who pay a flat fee per published puzzle.
 
 ## Scores
 

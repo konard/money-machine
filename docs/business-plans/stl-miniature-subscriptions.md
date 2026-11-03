@@ -137,7 +137,7 @@ Legal everywhere; sculpts must be original (no Games Workshop/Disney likenesses)
 
 - Monthly content treadmill; churn when releases slip
 - Piracy of STL packs
-- Paid MMF tier is a fixed cost
+- Paid MMF tier is a fixed cost (Pro $24.99/mo; the $0 monthly cost here assumes Thangs or Printables Clubs)
 - Saturated fantasy-mini niche
 
 ## Evidence that people get paid

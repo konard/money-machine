@@ -2,7 +2,7 @@
 
 **Rank #127 · Tier B · Priority score 50/100 · Category: Other**
 
-Hold brandable domains and offer them on monthly lease-to-own plans, earning installments until buyers own them.
+Hold brandable domains and offer them on monthly lease-to-own plans on Afternic (15-30% commission depending on nameservers and Boost), earning installments until buyers own them.
 
 ## Scores
 

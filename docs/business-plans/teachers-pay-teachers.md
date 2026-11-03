@@ -111,7 +111,7 @@ _Business-plan sources:_
 2. Create resources
 3. List
 4. Sales
-5. Monthly PayPal payout
+5. Monthly Hyperwallet payout (direct deposit, PayPal or Venmo)
 6. Withdraw to bank
 
 ## What can be automated

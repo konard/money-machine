@@ -590,7 +590,7 @@
     "id": "remote-usability-testing",
     "name": "Remote usability testing (UserTesting, Userlytics, Trymata/QuestionPro)",
     "category": "micro-tasks",
-    "summary": "Record yourself using websites and apps while thinking aloud. Product teams pay for each test.",
+    "summary": "Record yourself using websites and apps while thinking aloud. Product teams pay per test on UserTesting or Userlytics, typically about $10 for a standard test, paid to PayPal.",
     "howItWorks": "Companies pay UX research platforms to recruit testers who match a demographic. You take a screener, and if you qualify you record a 10-20 minute screen-and-voice session, usually paid about $10, while live interviews pay $30-120. Screeners are competitive, so most of the time goes into qualifying. The feedback has to be genuinely yours.",
     "platforms": ["UserTesting", "Userlytics", "Trymata (now QuestionPro UX)"],
     "payout": {
@@ -1019,7 +1019,7 @@
     "id": "ml-competitions",
     "name": "Data science / ML competitions (Kaggle, DrivenData, AIcrowd, Zindi)",
     "category": "data",
-    "summary": "Enter prize-paying machine-learning competitions and get paid if your model places in the top ranks.",
+    "summary": "Enter prize-paying machine-learning competitions on Kaggle, DrivenData, AIcrowd or Zindi and get paid if your model places in the top ranks.",
     "howItWorks": "Sponsors post a dataset and metric with a prize pool. You build models, submit predictions, and top finishers are paid after code review and eligibility checks, usually with tax forms. AI coding agents can automate much of the feature engineering and model search. Prizes go to a handful of people per contest, so for most entrants the realistic gain is a portfolio.",
     "platforms": ["Kaggle", "DrivenData", "AIcrowd", "Zindi"],
     "payout": {
@@ -1448,7 +1448,7 @@
     "id": "bandwidth-sharing",
     "name": "Passive bandwidth sharing (Honeygain, Pawns.app)",
     "category": "data",
-    "summary": "Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared.",
+    "summary": "Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared (Honeygain: $20 cash-out minimum; Pawns.app: from $5).",
     "howItWorks": "Proxy companies route customers' traffic (price monitoring, ad verification, scraping) through your home IP. You install the app and leave it running. A typical income is about $1-3 per device per month, so reaching Honeygain's $20 minimum can take many months; Pawns pays from $5. You are legally exposed because unknown third parties' traffic leaves your IP, and Honeygain's terms make you responsible for checking that your ISP allows it.",
     "platforms": ["Honeygain", "Pawns.app"],
     "payout": {
@@ -1586,7 +1586,7 @@
     "id": "transcription-work",
     "name": "Freelance transcription and captioning (Rev, TranscribeMe, GoTranscript)",
     "category": "micro-tasks",
-    "summary": "Transcribe or caption audio/video files for per-audio-minute pay on transcription marketplaces.",
+    "summary": "Transcribe or caption audio/video files for per-audio-minute pay on transcription marketplaces such as Rev ($0.40-1.10 per audio minute, weekly PayPal) and TranscribeMe.",
     "howItWorks": "Clients upload audio, and platforms split it into jobs that freelancers claim and transcribe or correct. Rev pays about $0.40-1.10 per audio minute, and TranscribeMe pays $15-22 per audio hour (average about $250/month). Most jobs now start from an ASR draft, which lowers pay per minute. Speed and accuracy decide your income. Entrance tests and waitlists are common.",
     "platforms": ["Rev", "TranscribeMe", "GoTranscript"],
     "payout": {

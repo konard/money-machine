@@ -55,7 +55,7 @@ Apify Store lets developers monetize Actors via pay-per-event or pay-per-usage p
 | Gross margin (median case) | 65% |
 | Human hours per unit after automation | 0.1 |
 
-Pay-per-event and rental Actors typically yield $5-$50 per paying user per month; Apify keeps 20%; cost is platform compute the developer absorbs under pay-per-event (estimate).
+Pay-per-event and pay-per-usage Actors typically yield $5-$50 per paying user per month; Apify keeps 20%; cost is platform compute the developer absorbs under pay-per-event (estimate).
 
 ### Break-even
 

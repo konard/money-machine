@@ -110,7 +110,7 @@ _Business-plan sources:_
 1. Register
 2. Receive case
 3. Complete questionnaire
-4. PayPal payment
+4. Payment (mailed cheque from OnlineVerdict; PayPal reported for eJury)
 5. Withdraw to bank
 
 ## What can be automated

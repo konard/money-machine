@@ -2,7 +2,7 @@
 
 **Rank #175 · Tier C · Priority score 46/100 · Category: Software & developer monetization**
 
-Solve GitHub issues that companies have attached cash bounties to and get paid when the PR is merged.
+Solve GitHub issues that companies have attached cash bounties to (via Algora or Opire) and get paid through Stripe when the PR is merged.
 
 ## Scores
 

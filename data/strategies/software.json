@@ -299,7 +299,7 @@
     "id": "oss-bounties-algora",
     "name": "Paid open-source bounties (Algora, Opire, Gitcoin)",
     "category": "software",
-    "summary": "Solve GitHub issues that companies have attached cash bounties to and get paid when the PR is merged.",
+    "summary": "Solve GitHub issues that companies have attached cash bounties to (via Algora or Opire) and get paid through Stripe when the PR is merged.",
     "howItWorks": "Companies and maintainers post bounties ($50-$5,000+) on GitHub issues via Algora and similar platforms. You (often assisted by an AI coding agent) claim the issue, submit a quality PR, and once merged the bounty is paid out. Payers are funded OSS companies wanting features/fixes. Competition is fierce on popular bounties, and spammy AI PRs get banned, so quality and communication matter. Gitcoin-style bounties pay in crypto and are less relevant now.",
     "platforms": ["Algora", "Opire", "Gitcoin (crypto)"],
     "payout": {
@@ -1348,7 +1348,7 @@
       "minimumPayout": "Not published",
       "frequency": "monthly",
       "typicalDelayDays": 45,
-      "notes": "Official: flat 25% marketplace fee from 15 Nov 2025; PayPal is the only payout method (PayPal fees deducted separately); a month's charges are paid at the end of the following month. Charges for a month are paid at the end of the following month (official)."
+      "notes": "Official: flat 25% marketplace fee from 15 Nov 2025; PayPal is the only payout method (PayPal fees deducted separately); a month's charges are paid at the end of the following month."
     },
     "capitalRequiredUsd": 5,
     "timeToFirstDollarDays": {
@@ -1477,8 +1477,8 @@
     "id": "micro-saas-merchant-of-record",
     "name": "Micro-SaaS sold via merchant of record (Lemon Squeezy/Paddle/Polar/Stripe)",
     "category": "software",
-    "summary": "Build a small niche web app and sell subscriptions globally through a merchant of record that handles tax/VAT.",
-    "howItWorks": "Solve one painful problem for a niche (e.g. invoice parsing, social scheduler for a vertical, PDF tools). A merchant of record (Lemon Squeezy, Paddle, Polar) is the legal seller, collects VAT/sales tax and pays you, which enables sellers from countries Stripe doesn't support. Fees ~5% + 50c (Paddle/Lemon Squeezy) or ~4-5% (Polar). Payers are businesses/consumers paying monthly. Most micro-SaaS earn little; a minority reach $1k-$20k MRR.",
+    "summary": "Build a small niche web app and sell subscriptions globally through a merchant of record (Lemon Squeezy, Paddle or Polar, about 5% + 50c) that handles tax/VAT.",
+    "howItWorks": "Solve one painful problem for a niche (e.g. invoice parsing, social scheduler for a vertical, PDF tools). A merchant of record (Lemon Squeezy, Paddle, Polar) is the legal seller, collects VAT/sales tax and pays you, which enables sellers from countries Stripe doesn't support. Fees ~5% + 50c (Paddle/Lemon Squeezy) or 5% + 50c on Polar's Starter plan (lower on its paid plans). Payers are businesses/consumers paying monthly. Most micro-SaaS earn little; a minority reach $1k-$20k MRR.",
     "platforms": ["Lemon Squeezy", "Paddle", "Polar.sh", "Stripe"],
     "payout": {
       "methods": ["Bank transfer", "PayPal"],
@@ -2030,7 +2030,7 @@
         "platformFeePercent": 20,
         "grossMarginPercent": 65,
         "hoursPerUnit": 0.1,
-        "notes": "Pay-per-event and rental Actors typically yield $5-$50 per paying user per month; Apify keeps 20%; cost is platform compute the developer absorbs under pay-per-event (estimate)."
+        "notes": "Pay-per-event and pay-per-usage Actors typically yield $5-$50 per paying user per month; Apify keeps 20%; cost is platform compute the developer absorbs under pay-per-event (estimate)."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,

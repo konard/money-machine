@@ -116,7 +116,7 @@
         "platformFeePercent": 55,
         "grossMarginPercent": 45,
         "hoursPerUnit": 2,
-        "notes": "Stock licenses typically $20-$50 with the artist keeping ~40-50% non-exclusive (estimated; Pond5 page bot-blocked); sync placements pay more. Hours = production time per track divided by expected sales (estimate)."
+        "notes": "Stock licenses typically $20-$50 with the artist keeping ~40-50% non-exclusive (blended estimate across libraries; the Pond5 page could not be fetched, but the evidence cites its stated 30% music royalty, so Pond5-only sales net less); sync placements pay more. Hours = production time per track divided by expected sales (estimate)."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 13,
@@ -439,8 +439,8 @@
     "id": "licensed-data-api-feeds",
     "name": "License data feeds/APIs built from lawfully licensed public data",
     "category": "licensing",
-    "summary": "Clean, normalize and enrich open government/open-licensed data and sell API access or bulk feeds by subscription.",
-    "howItWorks": "You pick open datasets with commercial-reuse licenses (government open data under OGL/CC-BY, company registries, weather, transit, sanctions lists) and turn them into a reliable, documented API or periodic CSV/Parquet feed. Developers and analysts pay for convenience, freshness and uptime. List on RapidAPI (PayPal payouts after card settlement, ~20-25% fee) or sell directly with Stripe-metered billing.",
+    "summary": "Clean, normalize and enrich open government/open-licensed data and sell API access or bulk feeds by subscription via RapidAPI (flat 25% fee) or direct Stripe billing.",
+    "howItWorks": "You pick open datasets with commercial-reuse licenses (government open data under OGL/CC-BY, company registries, weather, transit, sanctions lists) and turn them into a reliable, documented API or periodic CSV/Parquet feed. Developers and analysts pay for convenience, freshness and uptime. List on RapidAPI (PayPal-only payouts at the end of the month after the charge, flat 25% fee) or sell directly with Stripe-metered billing.",
     "platforms": ["RapidAPI Hub", "Stripe", "AWS Data Exchange"],
     "payout": {
       "methods": ["PayPal (RapidAPI)", "Stripe -> bank (direct)"],
@@ -1283,7 +1283,7 @@
     "id": "rent-parking-storage-space",
     "name": "Rent unused parking or storage space online (Neighbor, JustPark, Spacer) (PHYSICAL)",
     "category": "other",
-    "summary": "List a garage, driveway, shed or parking space on a peer-to-peer platform; renters pay monthly via the platform.",
+    "summary": "List a garage, driveway, shed or parking space on a peer-to-peer platform such as Neighbor (4.9% + $0.30 host fee); renters pay monthly via the platform.",
     "howItWorks": "PHYSICAL but low-touch: the space must exist and renters need access, but once a long-term renter books, you mostly receive automatic monthly payments. Neighbor charges the renter each period and pays hosts via Stripe 2-3 business days after, minus a 4.9% + $0.30 fee, with payout protection. SpotHero is for commercial operators, not individuals.",
     "platforms": ["Neighbor", "JustPark", "Spacer", "Stashbee"],
     "payout": {
@@ -1545,7 +1545,7 @@
     "id": "domain-lease-to-own",
     "name": "Lease domains on lease-to-own terms via Afternic (formerly Dan.com)",
     "category": "other",
-    "summary": "Hold brandable domains and offer them on monthly lease-to-own plans, earning installments until buyers own them.",
+    "summary": "Hold brandable domains and offer them on monthly lease-to-own plans on Afternic (15-30% commission depending on nameservers and Boost), earning installments until buyers own them.",
     "howItWorks": "You register or hand-pick brandable domains, then list them on Afternic, which inherited Dan.com's LTO system in 2024. Startups pay monthly installments; you keep ownership until fully paid, and if they default you keep the domain and payments. LTO max is $100,000 ($5,000 in California).",
     "platforms": ["Afternic (GoDaddy)", "Dan.com (legacy)"],
     "payout": {
@@ -1678,7 +1678,7 @@
     "name": "Sell new translations/annotated editions of public-domain works",
     "category": "licensing",
     "summary": "Create genuinely new, copyrightable editions (translations, annotations, illustrated or modernized versions) of public-domain texts and sell them.",
-    "howItWorks": "You take public-domain texts (e.g. from Project Gutenberg), strip the Project Gutenberg name and license, and add original value: a new translation, notes, study guides, audio narration. Readers pay for the added value. KDP requires PD books to be differentiated and pays 35% royalty for PD content.",
+    "howItWorks": "You take public-domain texts (e.g. from Project Gutenberg), strip the Project Gutenberg name and license, and add original value: a new translation, notes, study guides, audio narration. Readers pay for the added value. KDP requires PD books to be differentiated and pays only 35% royalty on primarily public-domain content (up to 70% for differentiated editions).",
     "platforms": [
       "Amazon KDP",
       "Gumroad",

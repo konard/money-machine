@@ -55,7 +55,7 @@ Gengo and similar marketplaces split client documents into small jobs that quali
 | Gross margin (median case) | 98% |
 | Human hours per unit after automation | 2 |
 
-Gengo standard-tier pay is about 3 cents/word and pro about 6 cents/word (estimated: Gengo shows the reward per job and publishes no rate card); the 2% fee is an estimated PayPal payout fee (support page bot-blocked).
+Gengo standard-tier pay is about 3 cents/word and pro about 6 cents/word (estimated: Gengo shows the reward per job and publishes no rate card); the 2% fee approximates Gengo's PayPal payout fee (1.5%, min $1.50, max $20 per payout, as in the payout notes; Payoneer carries no Gengo fee).
 
 ### Break-even
 

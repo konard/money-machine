@@ -20,8 +20,6 @@ Build interactive Twitch Extensions (polls, viewer games, overlays) where viewer
 | Time to first dollar | 60–365 d |
 | Typical monthly income (low / median / high) | $0 / $0 / $3,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$0 per month** in the first year; the high figure of $3,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **2/10**. Expect the first payment after 60–365 d.
@@ -57,7 +55,7 @@ Build a panel/overlay Extension with Bits products (1-10,000 Bits), such as trig
 | Gross margin (median case) | 100% |
 | Human hours per unit after automation | 1 |
 
-Viewers pay about $1.40 per 100 Bits; Twitch credits $0.01 per Bit, and the 2018 split gives the developer 20% ($20 per 10k Bits); current docs do not restate the split.
+Viewers pay about $1.40 per 100 Bits; Twitch credits $0.01 per Bit, and the Twitch Developer Services Agreement pays the developer 20% of $0.01 per Bit ($20 per 10k Bits).
 
 ### Break-even
 
@@ -100,11 +98,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** Twitch payout (bank/wire/PayPal per onboarding)
-- **Minimum payout:** Not stated for extension developers (unverified); Twitch's creator payout minimum is $50 ($100 for wire)
+- **Methods:** Twitch payout by check or EFT (bank) as Twitch chooses
+- **Minimum payout:** $100 (Payment Threshold in the Twitch Developer Services Agreement)
 - **Frequency:** monthly
 - **Typical delay:** 45 days
-- **Notes:** Twitch announced the 80% broadcaster / 20% developer Bits split in 2018; current docs say only that revenue is shared and do not restate the percentages. Docs recommend choosing 'Hold My Payments' at first. Unconfirmed: the payout minimum for extension developers and the current developer share of Bits (dev.twitch.tv monetization and Bits docs and the Twitch Developer Agreement page re-checked Nov 2026).
+- **Notes:** Twitch Developer Services Agreement (read in a browser Nov 2026): for each eligible Bit used in your extension you receive a Bits Fee of 20% of one US cent ($0.002 per Bit, i.e. $20 per 10,000 Bits); paid about 45 days after the end of the calendar month in which the Bits were used, by check, EFT or other methods Twitch chooses; payments accrue until they reach the $100 Payment Threshold. Twitch may claw back the Bits Fee on refunds, withhold fees for 3 months after termination, and fees unclaimed for 180 days (missing payment/tax info) are forfeited month by month. The developer docs recommend choosing 'Hold My Payments' during onboarding.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,8 +147,9 @@ Official Twitch developer docs (fetched 2026-11) describe Bits in Extensions, re
 - <https://dev.twitch.tv/docs/extensions/bits/>
 - <https://blog.twitch.tv/en/2018/04/23/the-next-big-update-for-extensions-is-here-a036151cc309/>
 - <https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/>
+- <https://legal.twitch.com/legal/developer-agreement/>
 
-_Tags: games, streaming, developer, low-probability, needs-verification_
+_Tags: games, streaming, developer, low-probability_
 
 ---
 

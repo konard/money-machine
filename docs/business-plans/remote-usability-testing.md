@@ -2,7 +2,7 @@
 
 **Rank #118 · Tier B · Priority score 51/100 · Category: Micro-tasks & paid research**
 
-Record yourself using websites and apps while thinking aloud. Product teams pay for each test.
+Record yourself using websites and apps while thinking aloud. Product teams pay per test on UserTesting or Userlytics, typically about $10 for a standard test, paid to PayPal.
 
 ## Scores
 
