@@ -495,6 +495,51 @@ export function analyze(sentence, lexicon) {
       token.readings = auxiliary;
     }
   });
+  return mergeNumerals(sharedSlashReadings(out));
+}
+
+/**
+ * "two thousand", "one hundred fifty": number words form one numeral;
+ * a round numeral after another is its multiplier.
+ */
+function mergeNumerals(out) {
+  const num = (t) => t?.readings.find((r) => r.pos === 'num')?.features.value;
+  for (let i = 0; i < out.length - 1; i += 1) {
+    if (num(out[i]) === undefined || out[i].kind !== 'word') {
+      continue;
+    }
+    let value = num(out[i]);
+    let j = i + 1;
+    while (num(out[j]) !== undefined && out[j].kind === 'word') {
+      const next = num(out[j]);
+      if (next >= 100 && next > value) {
+        value *= next;
+      } else if (next < value && value >= 100) {
+        value += next;
+      } else {
+        break;
+      }
+      j += 1;
+    }
+    if (j > i + 1) {
+      const text = out
+        .slice(i, j)
+        .map((t) => t.text)
+        .join(' ');
+      out.splice(i, j - i, {
+        ...out[i],
+        text,
+        lower: text.toLowerCase(),
+        readings: [
+          { pos: 'num', lemma: text, features: { value }, concepts: [] },
+        ],
+      });
+    }
+  }
+  return out;
+}
+
+function sharedSlashReadings(out) {
   // "low/medium risk": slash alternatives are the same part of speech,
   // so each keeps only the readings the other shares
   out.forEach((token, i) => {

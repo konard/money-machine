@@ -101,6 +101,11 @@ export function parseNP(c, options = {}) {
     np.det = r.features.det || null;
     np.detNumber = r.features.number || null;
     c.next();
+    // "a few" (несколько), "a little" (немного): one quantifier
+    const paired = { few: ['det.several', 'pl'], little: ['det.some', 'sg'] };
+    if (t.lower === 'a' && paired[c.peek?.lower] && nounAhead(c, 1)) {
+      [np.det, np.detNumber] = paired[c.next().lower];
+    }
     // "both work": a plural quantifier takes no singular noun, so a word
     // that may also be a verb is the verb
     const n = c.peek;

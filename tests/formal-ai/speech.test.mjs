@@ -142,3 +142,14 @@ test('coordinated adjectives before a noun', () => {
     /^Студенты \S+ новые и старые книги\.$/
   );
 });
+
+test('"a few", quantifiers in oblique cases, numeral words', () => {
+  assert.match(ru('Students read a few books.'), /несколько книг\.$/);
+  assert.equal(ru('We help many students.'), 'Мы помогаем многим студентам.');
+  assert.match(ru('Students read two thousand books.'), /2000 книг\.$/);
+  assert.match(ru('Students read 70% of the books.'), /70% книг\.$/);
+});
+
+test('"with" a person is «с», not a bare instrumental', () => {
+  assert.match(ru('We work with Tom.'), /^Мы работаем с /);
+});

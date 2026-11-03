@@ -346,6 +346,25 @@ export const QUANTIFIERS = {
   'det.some': { pl: 'несколько', sg: 'немного' },
 };
 
+/**
+ * Quantifiers in the oblique cases (nom gen dat acc ins prep): «нескольких
+ * дней», «многим людям»; `gen` marks one whose noun stays genitive
+ * («большинству пользователей»).
+ */
+export const QUANTIFIER_CASES = {
+  'det.several': table(
+    'несколько нескольких нескольким несколько несколькими нескольких'
+  ),
+  'det.many': table('много многих многим много многими многих'),
+  'det.few': table('мало немногих немногим мало немногими немногих'),
+  'det.most': Object.assign(
+    table(
+      'большинство большинства большинству большинство большинством большинстве'
+    ),
+    { gen: true }
+  ),
+};
+
 /** Latin → Cyrillic transliteration for unknown proper names. */
 export function transliterate(name) {
   const pairs = [

@@ -24,6 +24,7 @@ import {
   euphony,
   cardinal,
   QUANTIFIERS,
+  QUANTIFIER_CASES,
 } from './words.mjs';
 
 const CASE_INDEX = Object.fromEntries(CASES.map((c, i) => [c, i]));
@@ -311,6 +312,12 @@ export function renderEntity(e, kase, ctx) {
     return PRONOUN_WORDS[e.concept][CASE_INDEX[kase]];
   }
   const entry = nounEntry(e, ctx);
+  if (!entry && e.name && e.of) {
+    // "70% of the price" → «70% цены»
+    const { of, ...rest } = e;
+    const own = renderEntity(rest, kase, ctx);
+    return `${own} ${renderEntity(of, 'gen', { ...ctx, afterPrep: false, locative: false })}`;
+  }
   if (!entry) {
     if (e.name) {
       if (/^Xp[ch][a-j]+Q$/.test(e.name)) {
@@ -346,6 +353,26 @@ export function renderEntity(e, kase, ctx) {
 }
 
 function renderNoun(e, entry, kase, ctx) {
+  // "several hundred books" → «несколько сотен книг»: the round numeral is
+  // the counted noun (its own dictionary entry), the items its genitive
+  const scale = { 100: 'hundred', 1000: 'thousand', 1e6: 'million' }[
+    e.quantity
+  ];
+  const unit = scale && !e.digits && QUANTIFIERS[e.determiner];
+  const unitId = unit && ctx.lexicon.lookup?.('noun', scale)?.[0];
+  if (unitId && conceptOf(ctx, unitId)?.ru?.pos === 'noun') {
+    const { quantity: _q, quantityText: _t, determiner, ...items } = e;
+    const counted = renderEntity(
+      { concept: unitId, determiner, number: 'plural' },
+      kase,
+      ctx
+    );
+    const of = renderEntity({ ...items, number: 'plural' }, 'gen', {
+      ...ctx,
+      afterPrep: false,
+    });
+    return `${counted} ${of}`;
+  }
   let number = e.number === 'plural' ? 'pl' : 'sg';
   let nounCase = kase;
   let numeral = '';
@@ -403,6 +430,24 @@ function renderNoun(e, entry, kase, ctx) {
     quantifierWord = quantifier[number];
     nounCase = 'gen';
     adjCase = 'gen';
+  } else if (quantifier && e.quantity === undefined) {
+    // «нескольких дней», «многим людям», «большинству пользователей»;
+    // «некоторому времени»
+    const forms = QUANTIFIER_CASES[e.determiner];
+    if (forms) {
+      quantifierWord = forms[CASE_INDEX[kase]];
+      number = 'pl';
+      adjNumber = 'pl';
+      if (forms.gen) {
+        nounCase = 'gen';
+        adjCase = 'gen';
+      }
+    } else if (e.determiner === 'det.some') {
+      quantifierWord = declineAdjective('некоторый', {
+        ...(number === 'pl' ? { number } : { gender: entry.gender }),
+        case: kase,
+      });
+    }
   }
   // «установленные расходы»: a plurale tantum takes plural adjectives
   const g =

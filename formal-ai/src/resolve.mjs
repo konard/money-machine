@@ -100,6 +100,7 @@ export function unknownWords(text, lexicon = loadLexicon()) {
     // a preposition may be a content word too ("like", "near", "past"),
     // and so may "there" ("went there"):
     // only other grammatical words are never looked up
+    // a round numeral is a noun too: "several hundred" → несколько сотен
     const closed = found.some(
       (r) =>
         ![
@@ -111,7 +112,7 @@ export function unknownWords(text, lexicon = loadLexicon()) {
           'name',
           'prep',
           'there',
-        ].includes(r.pos)
+        ].includes(r.pos) && !(r.pos === 'num' && r.features?.value >= 100)
     );
     if (!closed && !lexicon.asked?.(w)) {
       out.add(w);

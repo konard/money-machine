@@ -22,6 +22,7 @@ import {
   nounEntry,
   isPerson,
 } from './phrase.mjs';
+import { withPartner } from './partner.mjs';
 import {
   renderCopula,
   renderPossession,
@@ -426,7 +427,7 @@ export function renderObjects(objects, entry, ctx, skip = new Set()) {
 /** Government for an object, honouring its English preposition. */
 function governmentFor(entry, o, fallback, ctx) {
   if (o?.marker && entry?.markerGovernment?.[o.marker]) {
-    return entry.markerGovernment[o.marker];
+    return withPartner(entry.markerGovernment[o.marker], o.marker, o, ctx);
   }
   const person =
     ctx && (isPerson(o, ctx) || ctx.lexicon.givenNames?.has(o?.name));
@@ -538,7 +539,10 @@ export function renderModifiers(mods, ctx, entry) {
         // "assumes about $20": an amount keeps the relation's own word
         !/^~?\p{Sc}?\d/u.test(m.entity?.name || '')
       ) {
-        after.push(governed(m.entity, entry.markerGovernment[marker], ctx));
+        const gov = entry.markerGovernment[marker];
+        after.push(
+          governed(m.entity, withPartner(gov, marker, m.entity, ctx), ctx)
+        );
         continue;
       }
       if (
