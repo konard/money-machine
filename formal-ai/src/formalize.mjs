@@ -177,6 +177,9 @@ function property(a) {
   if (a.participle) {
     p.participle = a.participle;
   }
+  if (a.alternative) {
+    p.alternative = property(a.alternative);
+  }
   if (a.degree) {
     p.degree = a.degree.concept || a.degree.candidates?.[0];
   }

@@ -93,7 +93,11 @@ export function tokenize(sentence) {
       out[i - 1].kind === 'word' &&
       out[i + 1].kind === 'word' &&
       // both common words or both names: "tax/payment", "US/UK"
-      ((/^\p{Ll}[\p{Ll}-]+$/u.test(out[i - 1].text) &&
+      // (the first may open the sentence: "Low/none")
+      ((new RegExp(
+        `^[\\p{Ll}${i === 1 ? '\\p{Lu}' : ''}][\\p{Ll}-]+$`,
+        'u'
+      ).test(out[i - 1].text) &&
         /^\p{Ll}[\p{Ll}-]+$/u.test(out[i + 1].text)) ||
         (/^\p{Lu}/u.test(out[i - 1].text) &&
           /^\p{Lu}[\p{L}\d]+$/u.test(out[i + 1].text))) &&
@@ -489,6 +493,22 @@ export function analyze(sentence, lexicon) {
     );
     if (out[i + 1]?.lower === "n't" && auxiliary.length) {
       token.readings = auxiliary;
+    }
+  });
+  // "low/medium risk": slash alternatives are the same part of speech,
+  // so each keeps only the readings the other shares
+  out.forEach((token, i) => {
+    const [a, b] = [out[i - 1], out[i + 1]];
+    if (!token.slash || !a || !b) {
+      return;
+    }
+    const shared = a.readings
+      .map((r) => r.pos)
+      .filter((p) => b.readings.some((r) => r.pos === p));
+    if (shared.length) {
+      for (const t of [a, b]) {
+        t.readings = t.readings.filter((r) => shared.includes(r.pos));
+      }
     }
   });
   return out;

@@ -295,10 +295,9 @@ function parseClauses(tokens, ctx) {
       !demonstrativeThat &&
       !frontedPhrase &&
       ((has(t, 'subord') && !has(t, 'wh')) ||
-        (has(t, 'subord') &&
-          has(t, 'wh') &&
-          result.list.length > 0 &&
-          !ctx.question))
+        // "When dogs bark, we run": a statement opening with "when" is
+        // a clause link, as it is mid-sentence
+        (has(t, 'subord') && has(t, 'wh') && !ctx.question))
     ) {
       const previous = result.list.at(-1);
       const candidates = previous?.verb?.candidates || [];

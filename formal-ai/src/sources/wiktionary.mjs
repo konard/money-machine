@@ -154,13 +154,14 @@ export function templateArgs(body) {
 /** Templates `{{name|…}}` (non-nested) in text. */
 function templates(text, names, positions = false) {
   const re = new RegExp(
-    `\\{\\{(${names})\\|((?:[^{}]|\\{\\{[^{}]*\\}\\})*)\\}\\}`,
+    // a template may have no arguments at all: {{ru-noun+}}
+    `\\{\\{(${names})(?:\\|((?:[^{}]|\\{\\{[^{}]*\\}\\})*))?\\}\\}`,
     'g'
   );
   return [...text.matchAll(re)].map((m) => ({
     name: m[1],
     ...(positions ? { index: m.index, end: m.index + m[0].length } : {}),
-    ...templateArgs(m[2]),
+    ...templateArgs(m[2] || ''),
   }));
 }
 

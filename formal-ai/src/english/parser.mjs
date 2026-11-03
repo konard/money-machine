@@ -167,7 +167,13 @@ export function parseNP(c, options = {}) {
       (has(t2, 'noun') || has(t2, 'name'));
     // "rated 2/10": a score or an amount takes no adjective
     const amountAhead = c.at(1)?.kind === 'quantity';
-    if (limited || amountAhead || (!nounAhead(c, 1) && !has(c.at(1), 'adj'))) {
+    // "low/medium risk": alternative adjectives written with a slash
+    const pair = c.at(1)?.slash && has(c.at(2), 'adj') && nounAhead(c, 3);
+    if (
+      limited ||
+      amountAhead ||
+      (!pair && !nounAhead(c, 1) && !has(c.at(1), 'adj'))
+    ) {
       if (has(t2, 'noun') || has(t2, 'name')) {
         break;
       }
@@ -182,6 +188,10 @@ export function parseNP(c, options = {}) {
     const a = head(t2, r);
     if (r.pos === 'verb') {
       a.participle = 'past-passive';
+    }
+    if (pair) {
+      const t4 = (c.next(), c.next());
+      a.alternative = head(t4, reading(t4, 'adj'));
     }
     if (last?.comparison) {
       a.comparison = last.comparison;

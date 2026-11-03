@@ -440,8 +440,11 @@ function renderNoun(e, entry, kase, ctx) {
     if (p.superlative) {
       words.push(declineAdjective('самый', agree));
     }
+    const other = p.alternative && conceptOf(ctx, p.alternative.concept)?.ru;
     (adj.postpositive ? postproperties : words).push(
-      declineAdjective(adj.lemma, agree)
+      [adj, ...(other?.pos === 'adj' ? [other] : [])]
+        .map((x) => declineAdjective(x.lemma, agree))
+        .join('/')
     );
   }
   if (entry.adjective) {

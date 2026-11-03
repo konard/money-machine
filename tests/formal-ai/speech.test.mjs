@@ -111,3 +111,10 @@ test('words with digits and letter pairs are single tokens', async () => {
   assert.deepEqual(words('US/UK'), ['US', 'or', 'UK']);
   assert.deepEqual(words('rated 2/10'), ['rated', '2/10']);
 });
+
+test('a statement opening with "when" is a clause link, not a question', () => {
+  assert.match(
+    ru('When students read books, we work.'),
+    /^Когда студенты \S+ книги, мы работаем\.$/
+  );
+});
