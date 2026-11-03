@@ -4,7 +4,7 @@ Money Machine's goal is a universal, legal, automation-first toolkit that lets a
 
 ## Phase 0 — Catalog (done in this release)
 
-- [x] 100+ legal ways to get paid, each with scores, payout path, full cycle, risks and sources
+- [x] 230+ legal ways to get paid, each with scores, payout path, full cycle, risks and sources
 - [x] Legality gate: legal in at least 80% of countries with relatively free internet
 - [x] Priority score that favors high probability of payment, high automation and low effort
 - [x] Generated markdown catalog (`docs/business-plans/`) and static website (`website/`)

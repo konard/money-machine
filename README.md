@@ -1,6 +1,6 @@
 # Money Machine
 
-**100+ legal ways to get paid online, ranked by how likely you are to actually get paid, how much runs on autopilot, and how little effort it takes.**
+**230+ legal ways to get paid online, ranked by how likely you are to actually get paid, how much runs on autopilot, and how little effort it takes.**
 
 Website: <https://konard.github.io/money-machine/> · Catalog: [`docs/business-plans/README.md`](docs/business-plans/README.md) · Data: [`data/strategies.json`](data/strategies.json)
 

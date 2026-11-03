@@ -484,7 +484,7 @@ function renderIndex(list) {
   lines.push('## Ranked by chance of real profit');
   lines.push('');
   lines.push(
-    '_Top 30 by the estimated share of diligent average starters who reach a real net profit within 12 months (at least $100/month where the plan can pay that much, any net-positive payout for small-but-certain plans). Ties broken by median net profit at month 12. These odds already feed the priority score above with weight 0.10._'
+    '_Top 30 by the estimated share of diligent average starters who reach a real net profit within 12 months (at least $100/month where the plan can pay that much, any net-positive payout for small-but-certain plans). Ties broken by median net profit at month 12; one-off plans such as selling things you already own or sign-up bonuses show $0 recurring profit by month 12. These odds already feed the priority score with weight 0.10._'
   );
   lines.push('');
   lines.push(
