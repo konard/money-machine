@@ -1,0 +1,2268 @@
+[
+  {
+    "id": "data-cleaning-conversion-gigs",
+    "name": "Productized data cleaning, PDF-to-Excel conversion and data-entry gigs",
+    "category": "services",
+    "summary": "Fixed-price gigs that clean, dedupe, reformat or extract data from client files, done mostly by scripts and LLMs with a human check.",
+    "howItWorks": "List fixed-scope gigs: PDF/scan to Excel, CSV cleanup, CRM dedupe, sheet merges. Small businesses pay because the work is tedious. A pipeline (OCR, pandas, LLM extraction) does most of each order; you spot-check and deliver. Repeat buyers send monthly batches.",
+    "platforms": ["Fiverr", "Upwork", "Contra"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "Upwork ACH/local bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Fiverr: 20% fee, 14-day clearance. Upwork: variable 0-15% freelancer fee (2025 change). Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 200,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Personal data in files triggers GDPR-type duties.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "Fiverr AI standards / Upwork no-misrepresentation",
+        "data-processing care for personal data"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh)."
+    },
+    "automationPlan": [
+      "OCR + LLM extraction scripts per gig type",
+      "validation rules and diff reports before delivery",
+      "templated order replies and delivery messages"
+    ],
+    "manualSteps": [
+      "ID verification",
+      "gig listing creation",
+      "QA of every delivery",
+      "client communication on scope"
+    ],
+    "fullCycle": [
+      "Sign up and verify ID",
+      "Publish 3 fixed-scope gigs",
+      "Process orders via pipeline + QA",
+      "Get reviews, raise prices",
+      "Withdraw via Payoneer/PayPal to bank"
+    ],
+    "risks": [
+      "crowded low-price market",
+      "new gigs get little visibility",
+      "data-privacy liability"
+    ],
+    "evidence": "Data entry/conversion are large Fiverr/Upwork categories; Fiverr permits AI in all categories if output is refined per client.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+      "https://help.fiverr.com/hc/en-us/articles/37333179414289",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://golance.com/blogs/upwork-fees-explained-2026"
+    ],
+    "tags": ["freelance", "productized", "data", "beginner"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Python + pandas (free)",
+          "Tesseract/OCRmyPDF (free)",
+          "LLM chat plan (~$20/mo)",
+          "Google Sheets/Excel"
+        ],
+        "skills": [
+          "spreadsheet formulas and pivoting",
+          "basic Python or Power Query (AI coding assistants cover most of it)",
+          "careful QA of extracted numbers"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Fiverr seller account + ID verification",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per order",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 40,
+          "high": 200
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 78,
+        "hoursPerUnit": 1,
+        "notes": "Estimate from typical Fiverr data-entry/PDF-to-Excel package tiers ($10 basic to $100-$200 bulk); fee = Fiverr 20%; cost = AI/OCR credits. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026. ChatGPT Plus (~$20/mo) and Canva Pro (~$15/mo) prices are estimated: their pricing pages were bot-blocked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 2500
+        },
+        "notes": "Thousands of low-cost sellers (many in South Asia) compete at $5-$15, and since 2024-2025 many buyers do simple conversions themselves with ChatGPT or Excel Copilot. Winners specialize (messy scanned invoices, CRM migrations, recurring monthly batches) and win repeat B2B buyers. The median starter nets under $100/month by month 12; failure modes are zero visibility for new gigs and underpricing."
+      },
+      "pricingStrategy": "Start with a $10-$20 basic tier capped by row/page count to collect the first 10 reviews, then reprice per 1,000 rows/pages and push monthly batch packages at $100+.",
+      "profitPath": [
+        "Month 0: build an OCR + pandas + LLM extraction pipeline and 3 gigs with sample before/after files (cost $0-$20)",
+        "Month 1-2: first 5-15 small orders at $10-$30, expected $50-$200 gross",
+        "Month 3-6: raise prices after reviews, add bulk/recurring tiers, bid on Upwork batch jobs",
+        "Month 6-12: convert repeat buyers to monthly retainers; target 10-20 orders/month"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://openai.com/chatgpt/pricing/"
+      ]
+    }
+  },
+  {
+    "id": "design-brand-kit-image-gigs",
+    "name": "Logo/brand kits and image editing (background removal, upscaling) gigs",
+    "category": "services",
+    "summary": "AI-assisted logo concepts, brand kits and product-photo editing sold as fixed packages to small businesses and e-commerce sellers.",
+    "howItWorks": "Packages: logo + palette + fonts + social templates, or bulk product-photo background removal, upscaling and resizing. AI generates concepts and batch edits; you vectorize, refine and check. Buyers are new businesses and online sellers wanting fast, consistent assets.",
+    "platforms": ["Fiverr", "Upwork", "Contra"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "Upwork ACH/local bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Fiverr: 20% fee, 14-day clearance. Upwork: variable 0-15% freelancer fee (2025 change). Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 200,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Purely AI-generated images may not be copyrightable (e.g. US), so disclose and add human vector work for logos.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "Fiverr AI standards / Upwork no-misrepresentation",
+        "use tools whose licenses allow commercial output",
+        "no imitation of existing trademarks"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh)."
+    },
+    "automationPlan": [
+      "batch background removal/upscale scripts",
+      "prompt templates for concept boards",
+      "auto-export of brand kit files (SVG/PNG/PDF)"
+    ],
+    "manualSteps": [
+      "vector cleanup and final design choices",
+      "revisions with client",
+      "trademark sanity check"
+    ],
+    "fullCycle": [
+      "Build portfolio of 10 samples",
+      "Publish gigs",
+      "Deliver with AI + manual polish",
+      "Upsell kits/retainers",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "very crowded category",
+      "copyright/trademark disputes over AI logos",
+      "client revisions eat margin"
+    ],
+    "evidence": "Fiverr runs dedicated logo and image-editing categories with high order volume; its AI guidelines allow AI if seller holds rights to delivered content.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+      "https://help.fiverr.com/hc/en-us/articles/37333379620369",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058"
+    ],
+    "tags": ["freelance", "design", "productized"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 25,
+        "tools": [
+          "image-generation plan (~$10/mo)",
+          "Canva Pro or Figma free tier (~$15/mo for Canva)",
+          "Inkscape for vectorizing (free)",
+          "rembg/upscaler (free, open-source)"
+        ],
+        "skills": [
+          "visual taste and typography",
+          "vector cleanup of AI concepts",
+          "client revision handling"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Fiverr seller account + ID verification",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Contra profile",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per order (logo/brand kit or batch of product photos)",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 60,
+          "high": 400
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 77,
+        "hoursPerUnit": 2,
+        "notes": "Estimate from Fiverr logo and image-editing tiers: background removal batches $10-$30, logo/brand kits $30-$400; fee = Fiverr 20%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026. ChatGPT Plus (~$20/mo) and Canva Pro (~$15/mo) prices are estimated: their pricing pages were bot-blocked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 25,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Startup cash = fonts/vectorizer credits."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 3000
+        },
+        "notes": "Logo design and background removal are among the most crowded gig categories, and free tools (Canva AI, Adobe Express, remove.bg-style tools) let small sellers do it themselves. Sellers still win with niche positioning (e.g. Shopify/Amazon sellers, specific industries) and fast bulk photo editing for e-commerce. Typical failure: competing on price with hundreds of $5 gigs and never ranking."
+      },
+      "pricingStrategy": "Launch with a cheap fixed-scope tier (3 concepts or 20 photos) to earn reviews, then sell full brand kits and monthly photo-batch plans at higher tiers.",
+      "profitPath": [
+        "Month 0: create portfolio of 10 mock brand kits and before/after photo sets; publish 2-3 gigs (cost $20)",
+        "Month 1-2: first orders at $15-$40, expected $50-$150",
+        "Month 3-6: niche down (e.g. Etsy/Amazon product photos), raise prices, add rush delivery",
+        "Month 6-12: recurring photo batches from online sellers; target $500+/month if reviews accumulate"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+        "https://help.fiverr.com/hc/en-us/articles/37333379620369",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://www.canva.com/pricing/"
+      ]
+    }
+  },
+  {
+    "id": "transcription-subtitles-human-qa",
+    "name": "Transcription and subtitle (SRT/VTT) service with ASR + human QA",
+    "category": "services",
+    "summary": "Sell accurate transcripts and burned-in or sidecar subtitles; Whisper-class ASR does the draft, you proofread.",
+    "howItWorks": "YouTubers, podcasters and course creators pay for accurate transcripts and timed captions. ASR gives a 90-95% draft; you fix names, jargon and timing, then deliver SRT/VTT/DOCX. Translated subtitles are an upsell.",
+    "platforms": ["Fiverr", "Upwork", "direct (Stripe/PayPal invoices)"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "Upwork ACH/local bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Fiverr: 20% fee, 14-day clearance. Upwork: variable 0-15% freelancer fee (2025 change). Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 250,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Legal/medical transcription can have confidentiality rules (e.g. HIPAA in the US); avoid unless compliant.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "Fiverr AI standards / Upwork no-misrepresentation",
+        "confidentiality of client audio"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh)."
+    },
+    "automationPlan": [
+      "local Whisper pipeline with diarization",
+      "auto subtitle segmentation and line-length rules",
+      "LLM glossary pass for names/terms"
+    ],
+    "manualSteps": [
+      "listen-through QA",
+      "client glossary collection",
+      "handle poor audio"
+    ],
+    "fullCycle": [
+      "Set up ASR pipeline",
+      "Publish gigs with turnaround tiers",
+      "Deliver ASR+QA output",
+      "Win repeat creators",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "clients can run free ASR themselves, pushing prices down",
+      "accuracy disputes",
+      "audio privacy"
+    ],
+    "evidence": "Transcription and subtitling remain active Fiverr/Upwork categories; Fiverr permits AI-assisted delivery when refined to client needs.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+      "https://help.fiverr.com/hc/en-us/articles/37333179414289",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058"
+    ],
+    "tags": ["freelance", "audio", "video", "productized"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 8,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Whisper / faster-whisper (free, local)",
+          "Subtitle Edit or Aegisub (free)",
+          "LLM free tier for proofreading"
+        ],
+        "skills": [
+          "excellent written grammar in the target language",
+          "subtitle timing and formatting (SRT/VTT)",
+          "domain-term research"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Fiverr seller account + ID verification",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per audio hour",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 40,
+          "high": 120
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 1.5,
+        "notes": "Estimate: AI-assisted human-verified transcription now sells ~$0.50-$1.50 per audio minute on gig sites; translated subtitles at the high end; fee = Fiverr 20%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. No fixed costs with local Whisper."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 2000
+        },
+        "notes": "Automatic captions on YouTube, Descript, CapCut and Zoom are now good enough for most creators, so plain transcription demand and prices have fallen sharply since 2023. Remaining paid demand is accuracy-critical work: legal/medical/research interviews, multi-speaker audio, translated and burned-in subtitles. The median starter earns little; specialists in a language pair or niche do better."
+      },
+      "pricingStrategy": "Price per audio minute with surcharges for poor audio, multiple speakers and 24h turnaround; start low for reviews, then lead with translated/burned-in subtitle packages.",
+      "profitPath": [
+        "Month 0: set up local Whisper + subtitle editor, make sample files, publish gigs (cost $0)",
+        "Month 1-2: first orders at ~$0.50/min, expected $30-$100",
+        "Month 3-6: add translation subtitles and research-interview transcription; pitch podcasters directly",
+        "Month 6-12: recurring clients (podcasts, course creators); target 15-30 audio hours/month"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://github.com/openai/whisper"
+      ]
+    }
+  },
+  {
+    "id": "translation-post-editing",
+    "name": "Machine-translation post-editing (MTPE) and localization",
+    "category": "services",
+    "summary": "Post-edit machine/LLM translations into your native language for websites, apps, e-commerce listings and documents.",
+    "howItWorks": "Businesses localizing content pay for fluent human review of machine output. You run MT/LLM, then edit for accuracy, tone and terminology. Work comes via Smartcat marketplace, Upwork, Fiverr and agencies. Native speakers of mid-demand languages have an edge.",
+    "platforms": ["Smartcat", "Upwork", "Fiverr", "ProZ.com"],
+    "payout": {
+      "methods": [
+        "Smartcat -> bank/Payoneer/PayPal",
+        "Upwork/Fiverr withdrawals"
+      ],
+      "minimumPayout": "Smartcat: self-set auto-payout threshold (each method has its own minimum); Fiverr $1-$20",
+      "frequency": "Smartcat automatic once balance hits threshold; Fiverr on demand",
+      "typicalDelayDays": 14,
+      "notes": "Smartcat takes no commission from freelancers; withdrawal fee 0.5% + fixed $1-$10 by method (since 27 Mar 2026), FX ~2.5% over mid-market; funds arrive within 5 business days. Fiverr 14-day clearance."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Ordinary translation is legal everywhere. Certified/sworn/court translation requires a license in many countries; exclude it.",
+      "complianceRequirements": [
+        "no certified translations without license",
+        "disclose MT use when client requires",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Smartcat, Upwork and Fiverr pay out globally via Payoneer/PayPal/bank; demand depends on language pair."
+    },
+    "automationPlan": [
+      "MT/LLM pre-translation with client glossary",
+      "QA checks (numbers, tags, terms) by script",
+      "translation memory reuse"
+    ],
+    "manualSteps": [
+      "human post-editing of every segment",
+      "language tests/vetting",
+      "client terminology queries"
+    ],
+    "fullCycle": [
+      "Create Smartcat/Upwork profiles",
+      "Pass vetting tests",
+      "Accept MTPE jobs",
+      "Deliver edited files",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "MTPE rates are falling",
+      "quality liability",
+      "competition from agencies"
+    ],
+    "evidence": "Smartcat's marketplace advertises 500K+ linguists, lets buyers add a human post-editing review to AI output, and lets freelancers set their own per-word rates; MTPE is a standard industry service.",
+    "sources": [
+      "https://www.smartcat.com/marketplace/",
+      "https://help.smartcat.com/understanding-freelancer-fees-in-smartcat/",
+      "https://help.smartcat.com/understanding-automatic-payouts/",
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593"
+    ],
+    "tags": ["freelance", "language", "mtpe"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 12,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "DeepL/LLM free tiers",
+          "Smartcat CAT editor (free for freelancers)",
+          "glossary/termbase in Sheets"
+        ],
+        "skills": [
+          "native-level target language and strong source language",
+          "terminology consistency",
+          "CAT tool use"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Smartcat freelancer profile",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "ProZ.com free profile",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 words post-edited",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 40,
+          "high": 80
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 1.5,
+        "notes": "Estimate: MTPE commonly pays ~40-60% of full translation rates ($0.02-$0.08/word); fee blends Smartcat 0% commission + withdrawal/FX costs with occasional Upwork/Fiverr work. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. No fixed costs."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 2500
+        },
+        "notes": "LLM translation quality jumped in 2024-2026 and agencies have shifted volume from full translation to cheaper post-editing, pushing per-word rates down. Native speakers of less-served languages (Nordic, Baltic, Southeast Asian, African languages) and those with legal/medical/technical specialization still get steady work. Failure modes: commodity language pairs (EN-ES, EN-FR) at bottom rates, and slow agency vetting."
+      },
+      "pricingStrategy": "Quote per word with a minimum fee per job; take agency test jobs at standard MTPE rates, then raise rates for specialized domains and rush delivery.",
+      "profitPath": [
+        "Month 0: complete Smartcat/ProZ profiles, pass agency tests, build termbases (cost $0)",
+        "Month 1-3: first small jobs, expected $50-$200",
+        "Month 3-6: win 1-2 recurring agency or e-commerce clients",
+        "Month 6-12: specialize in one domain; target 30-60k words/month"
+      ],
+      "sources": [
+        "https://www.smartcat.com/marketplace/",
+        "https://help.smartcat.com/understanding-freelancer-fees-in-smartcat/",
+        "https://help.smartcat.com/understanding-automatic-payouts/"
+      ]
+    }
+  },
+  {
+    "id": "resume-linkedin-rewriting",
+    "name": "Resume, cover letter and LinkedIn profile rewriting",
+    "category": "services",
+    "summary": "Rewrite job seekers' resumes and LinkedIn profiles for a target role, using LLMs plus an ATS-keyword checklist.",
+    "howItWorks": "Job seekers pay $30-$200 for an ATS-friendly resume. An intake form collects history and target roles; an LLM drafts; you edit for truth and tone. Packages add cover letters and LinkedIn rewrites.",
+    "platforms": ["Fiverr", "Upwork", "own site + Stripe"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "Upwork ACH/local bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Fiverr: 20% fee, 14-day clearance. Upwork: variable 0-15% freelancer fee (2025 change). Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 250,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 2,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Never fabricate credentials or experience.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "Fiverr AI standards / Upwork no-misrepresentation",
+        "only truthful client-supplied facts",
+        "protect personal data"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh)."
+    },
+    "automationPlan": [
+      "intake form -> structured JSON",
+      "LLM drafting with role-specific templates",
+      "ATS keyword match report"
+    ],
+    "manualSteps": [
+      "edit and fact-check each resume",
+      "client revision rounds"
+    ],
+    "fullCycle": [
+      "Publish gig packages",
+      "Collect intake",
+      "Draft with AI, edit",
+      "Deliver DOCX/PDF",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "buyers can self-serve with ChatGPT",
+      "refund requests",
+      "privacy of personal data"
+    ],
+    "evidence": "Resume writing is a long-running Fiverr/Upwork category; Fiverr permits AI when the work is customized to each client.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+      "https://help.fiverr.com/hc/en-us/articles/37333179414289",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058"
+    ],
+    "tags": ["freelance", "writing", "careers"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 8,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "LLM chat plan (~$20/mo)",
+          "Google Docs/Canva resume templates (free)",
+          "intake form (Google Forms/Tally free)"
+        ],
+        "skills": [
+          "concise business writing",
+          "knowledge of ATS conventions and hiring norms",
+          "interviewing clients for achievements"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Fiverr seller account + ID verification",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per resume package",
+        "typicalPriceUsd": {
+          "low": 25,
+          "median": 75,
+          "high": 250
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 79,
+        "hoursPerUnit": 2,
+        "notes": "Estimate from Fiverr/Upwork resume gig tiers ($30-$200); fee = Fiverr 20%; cost = AI usage. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026. ChatGPT Plus (~$20/mo) and Canva Pro (~$15/mo) prices are estimated: their pricing pages were bot-blocked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 70,
+          "high": 2500
+        },
+        "notes": "Job seekers can now get a decent ATS resume from free AI tools, so low-end demand is shrinking while the category remains crowded. Writers who win target a profession (nursing, engineering, federal jobs, executives) and sell LinkedIn + cover letter bundles. Demand rises with layoffs, so income is cyclical."
+      },
+      "pricingStrategy": "Start with an affordable single-resume tier to win reviews, then bundle resume + cover letter + LinkedIn and add niche/executive tiers at 2-3x.",
+      "profitPath": [
+        "Month 0: intake form, 3 sample resumes, gigs published (cost $0)",
+        "Month 1-2: 3-6 orders at $25-$60, expected $100-$250",
+        "Month 3-6: niche positioning and bundles; ask for referrals",
+        "Month 6-12: steady 10-20 packages/month for those who rank"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://openai.com/chatgpt/pricing/"
+      ]
+    }
+  },
+  {
+    "id": "seo-audit-productized",
+    "name": "Productized SEO / website audits",
+    "category": "services",
+    "summary": "Fixed-price technical and on-page SEO audits generated from crawl data and turned into prioritized action reports.",
+    "howItWorks": "Small sites pay $50-$500 for a clear audit. You crawl the site (crawler, PageSpeed API, client-granted Search Console), feed findings to an LLM report template, review and prioritize. Upsell fixes or monitoring.",
+    "platforms": ["Fiverr", "Upwork", "Contra", "own site"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "Upwork ACH/local bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Fiverr: 20% fee, 14-day clearance. Upwork: variable 0-15% freelancer fee (2025 change). Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 8,
+      "setupEffort": 4,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Only crawl sites the client owns or authorizes.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "Fiverr AI standards / Upwork no-misrepresentation",
+        "no guaranteed-ranking claims",
+        "no link schemes"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh)."
+    },
+    "automationPlan": [
+      "crawler + PageSpeed API script",
+      "LLM report generator with severity scoring",
+      "scheduled re-audits for retainer clients"
+    ],
+    "manualSteps": [
+      "review findings for false positives",
+      "explain priorities to client"
+    ],
+    "fullCycle": [
+      "Build audit pipeline",
+      "Publish gig with sample report",
+      "Deliver audits",
+      "Upsell fixes/monitoring",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "commoditized by free tools",
+      "clients expect ranking gains",
+      "Fiverr/Upwork ban selling backlinks/fake traffic, avoid those upsells"
+    ],
+    "evidence": "SEO audit gigs are a standard Fiverr Digital Marketing subcategory; automation-heavy delivery is allowed if output is reviewed.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://golance.com/blogs/upwork-fees-explained-2026"
+    ],
+    "tags": ["freelance", "seo", "productized", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Screaming Frog SEO Spider (free up to 500 URLs)",
+          "PageSpeed Insights API (free)",
+          "Google Search Console (client-granted)",
+          "LLM plan (~$20/mo)"
+        ],
+        "skills": [
+          "technical SEO fundamentals",
+          "prioritizing fixes by business impact",
+          "report writing"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Fiverr seller account + ID verification",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Contra profile",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per audit",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 120,
+          "high": 600
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 83,
+        "hoursPerUnit": 2,
+        "notes": "Estimate from SEO audit gig tiers ($50-$500); fee blends Fiverr 20% and Upwork/Contra 0-15%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026. Screaming Frog confirmed: free up to 500 URLs per crawl, paid licence GBP 199/yr."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 3500
+        },
+        "notes": "Automated audit tools (Semrush, Ahrefs, free AI site checkers) produce generic audits instantly, so standalone audits sell mainly as a lead-in to fix work or monitoring. AI Overviews/answer engines reduced organic clicks in 2025-2026, making some SMBs question SEO spend, while 'AI search visibility' audits are a new niche. Failure modes: generic PDF output, no ranking on gig sites."
+      },
+      "pricingStrategy": "Use a low-priced mini-audit as a door opener and earn margin on implementation and monthly monitoring retainers.",
+      "profitPath": [
+        "Month 0: build crawl + LLM report template, 3 sample audits (cost $0)",
+        "Month 1-3: first 2-5 audits at $30-$80, expected $100-$250",
+        "Month 3-6: upsell fixes and monitoring; add AI-search visibility checks",
+        "Month 6-12: 2-5 monitoring retainers plus audits"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://www.screamingfrog.co.uk/seo-spider/"
+      ]
+    }
+  },
+  {
+    "id": "ai-automation-agency",
+    "name": "AI automation agency (Zapier / Make / n8n builds for SMBs)",
+    "category": "services",
+    "summary": "Build and maintain workflow automations and AI agents for small businesses; charge per build plus monthly retainers.",
+    "howItWorks": "SMBs pay to remove manual work: lead routing, invoicing, CRM sync, AI email triage. You scope, build in Make/Zapier/n8n, document and hand over or maintain on retainer. Clients come from Upwork, Contra, the Make and Zapier Solution Partner directories and local networking. Affiliate programs (Make 35% for 12 months, n8n 30% for 12 months) add referral income.",
+    "platforms": [
+      "Upwork",
+      "Contra",
+      "Make Solution Partners",
+      "Zapier Solution Partner Program",
+      "n8n"
+    ],
+    "payout": {
+      "methods": ["Upwork/Contra withdrawals", "Stripe/Wise invoices to bank"],
+      "minimumPayout": "Upwork varies by method; Contra none stated; Make affiliate $100 (via Wise, after 3 paying referrals); n8n affiliate EUR 100 (PayPal)",
+      "frequency": "per milestone + monthly retainer",
+      "typicalDelayDays": 10,
+      "notes": "Upwork variable 0-15% fee (not re-confirmed; page blocks automated checks). Contra charges freelancers 0% commission (clients pay a $19 contract fee); standard payouts after 4-day clearance."
+    },
+    "capitalRequiredUsd": 30,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 800,
+      "high": 15000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Software consulting is legal everywhere. Client data handling triggers GDPR-style obligations; cold outreach must follow anti-spam laws (CAN-SPAM, GDPR/PECR, CASL).",
+      "complianceRequirements": [
+        "data processing agreement where needed",
+        "anti-spam compliance for outreach",
+        "tax reporting",
+        "n8n Sustainable Use License: build workflows on the client's own n8n instance or buy a commercial licence; do not resell hosted n8n access"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork 180+ countries; Contra pays out via local bank (Airwallex/Stripe), PayPal, Payoneer or crypto; Zapier partners must not be in US-sanctioned countries and need a business website and custom-domain email. Direct invoicing via Wise/Payoneer works almost everywhere."
+    },
+    "automationPlan": [
+      "reusable workflow templates per niche",
+      "coding agents to write custom steps",
+      "monitoring alerts for client workflows"
+    ],
+    "manualSteps": [
+      "discovery calls and scoping",
+      "client credential handover",
+      "Make/Zapier partner training and certification"
+    ],
+    "fullCycle": [
+      "Pick a niche",
+      "Publish 3 case-study demos",
+      "Win first Upwork project",
+      "Convert to retainer",
+      "Invoice and withdraw to bank"
+    ],
+    "risks": [
+      "sales-heavy",
+      "fragile third-party APIs",
+      "scope creep",
+      "liability for broken automations"
+    ],
+    "evidence": "Make runs a free Solution Partner program (training + certification required; leads only from Silver tier up); Zapier runs a Solution Partner directory with a 'match me' service and referral commissions; Make and n8n publish affiliate terms.",
+    "sources": [
+      "https://www.make.com/en/solution-partners",
+      "https://www.make.com/en/affiliate",
+      "https://zapier.com/experts",
+      "https://zapier.com/l/new-experts",
+      "https://n8n.io/affiliates",
+      "https://contra.com/commission-free",
+      "https://help.contra.com/en/articles/10008642-payout-methods-on-contra",
+      "https://docs.n8n.io/sustainable-use-license/"
+    ],
+    "tags": ["agency", "automation", "recurring", "b2b"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 30,
+        "recurringMonthlyUsd": 40,
+        "tools": [
+          "n8n self-hosted on a ~$6/mo VPS",
+          "Make/Zapier free tiers for demos",
+          "LLM API credits (~$10/mo)",
+          "LLM chat/coding plan (~$20/mo)"
+        ],
+        "skills": [
+          "process mapping and scoping",
+          "APIs/webhooks and JSON",
+          "prompting and testing LLM steps",
+          "client communication"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Contra profile",
+          "Make/Zapier partner application",
+          "Wise Business or Stripe account for invoicing (KYC)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per automation build",
+        "typicalPriceUsd": {
+          "low": 150,
+          "median": 600,
+          "high": 3000
+        },
+        "costPerUnitUsd": 10,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 93,
+        "hoursPerUnit": 8,
+        "notes": "Estimate: small Make/Zapier/n8n builds on Upwork commonly quote $150-$3,000; fee blends Contra 0% and Upwork 0-15% with direct invoices. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026. n8n Community Edition is self-hosted from GitHub; n8n Cloud starts at EUR 20/mo (annual)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 40,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Startup cash = domain + portfolio site."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 10000
+        },
+        "notes": "SMB demand for AI-agent and workflow automation is growing in 2025-2026, but the 'AI automation agency' YouTube wave flooded the space with beginners, and Zapier/Make now ship built-in AI builders that lower simple-job prices. Winners specialize in a vertical (clinics, real estate, e-commerce ops) and sell maintenance retainers. Failure modes: no sales pipeline, scope creep on fixed bids."
+      },
+      "pricingStrategy": "Win the first 2-3 clients with small fixed-price builds and a case study, then price by value (hours saved) and attach $100-$500/month maintenance retainers.",
+      "profitPath": [
+        "Month 0: build 3 demo automations and a portfolio site (cost $30)",
+        "Month 1-2: first 1-2 builds at $150-$400, expected $200-$500",
+        "Month 3-6: vertical niche, case studies, partner directory listing",
+        "Month 6-12: 3-6 retainers plus 2-4 builds/month for those who sell consistently"
+      ],
+      "sources": [
+        "https://www.make.com/en/solution-partners",
+        "https://zapier.com/experts",
+        "https://n8n.io/affiliates",
+        "https://contra.com/commission-free",
+        "https://n8n.io/pricing/"
+      ]
+    }
+  },
+  {
+    "id": "website-in-a-day",
+    "name": "Website-in-a-day / landing pages from templates",
+    "category": "services",
+    "summary": "Ship small-business sites and landing pages in 24-48 hours using templates, AI copy and coding agents; upsell hosting/care plans.",
+    "howItWorks": "Local businesses and startups pay $200-$1,500 for a fast site. You keep templates (Webflow/Framer/WordPress/static), generate copy with AI, customize and launch. Monthly care plans add recurring income.",
+    "platforms": ["Fiverr", "Upwork", "Contra", "own site"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "Upwork ACH/local bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Fiverr: 20% fee, 14-day clearance. Upwork: variable 0-15% freelancer fee (2025 change). Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 600,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Respect template and font licenses; add privacy/cookie notices where required.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "Fiverr AI standards / Upwork no-misrepresentation",
+        "template licensing",
+        "accessibility/privacy basics"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh)."
+    },
+    "automationPlan": [
+      "template library + AI copy generator",
+      "coding agent for section customization",
+      "scripted deploy to static hosting"
+    ],
+    "manualSteps": [
+      "client intake and content approval",
+      "domain/DNS setup with client",
+      "revisions"
+    ],
+    "fullCycle": [
+      "Build 5 niche templates",
+      "Publish gigs/portfolio",
+      "Deliver in 1-2 days",
+      "Sell care plan",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "DIY builders with AI compete",
+      "revision creep",
+      "ongoing support obligations"
+    ],
+    "evidence": "Website development is one of Fiverr's and Upwork's highest-volume categories; Contra highlights commission-free web design work.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://contra.com/commission-free",
+      "https://help.contra.com/en/articles/10008642-payout-methods-on-contra"
+    ],
+    "tags": ["freelance", "web", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "static site templates / WordPress (free)",
+          "Framer/Webflow free plans for staging",
+          "AI coding assistant (~$20/mo)",
+          "Netlify/Cloudflare Pages free hosting"
+        ],
+        "skills": [
+          "HTML/CSS basics or no-code builder fluency",
+          "copywriting with AI",
+          "domain/DNS setup"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Fiverr seller account + ID verification",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Contra profile",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per website",
+        "typicalPriceUsd": {
+          "low": 100,
+          "median": 400,
+          "high": 1500
+        },
+        "costPerUnitUsd": 5,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 84,
+        "hoursPerUnit": 6,
+        "notes": "Estimate from landing-page/small-site gig tiers ($100-$1,500); fee blends Fiverr 20% and Upwork/Contra 0-15%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Startup cash = domain for your own portfolio."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 70,
+          "high": 6000
+        },
+        "notes": "AI site builders (Wix/Squarespace/Framer AI, coding agents) let owners generate a basic site in minutes, compressing low-end prices. Buyers still pay for speed, conversion-focused copy, integrations and someone accountable. Care plans ($30-$150/month) are the stable profit; one-off builds alone rarely sustain income."
+      },
+      "pricingStrategy": "Sell a fixed 1-page/24h tier to get reviews, then a 5-page package and mandatory monthly care plan; raise price once you have 10+ live examples.",
+      "profitPath": [
+        "Month 0: 5 niche templates and a portfolio site (cost $20)",
+        "Month 1-2: first 1-3 sites at $100-$300, expected $150-$500",
+        "Month 3-6: add care plans and niche templates (trades, clinics)",
+        "Month 6-12: 2-6 builds/month plus 5-15 care plans"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://contra.com/commission-free",
+        "https://help.contra.com/en/articles/10008642-payout-methods-on-contra"
+      ]
+    }
+  },
+  {
+    "id": "local-business-chatbot-setup",
+    "name": "AI chatbot / AI receptionist setup for local businesses",
+    "category": "services",
+    "summary": "Set up website or messaging chatbots trained on a business's FAQs and booking flow; charge setup plus monthly management.",
+    "howItWorks": "Clinics, salons, trades and restaurants pay to answer FAQs and capture bookings 24/7. You ingest their site/FAQ into a no-code bot builder, connect booking or CRM, test and install. Monthly fee covers hosting, updates and reports. Leads come from local networking, Upwork and compliant outreach.",
+    "platforms": ["Upwork", "Fiverr", "direct sales (Stripe invoices)"],
+    "payout": {
+      "methods": ["Stripe/Wise invoice -> bank", "Upwork/Fiverr withdrawals"],
+      "minimumPayout": "Stripe: none; Fiverr $1-$20",
+      "frequency": "setup fee + monthly",
+      "typicalDelayDays": 7,
+      "notes": "Stripe payouts ~2-7 days depending on country."
+    },
+    "capitalRequiredUsd": 50,
+    "timeToFirstDollarDays": {
+      "min": 21,
+      "max": 150
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 7,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; bots must disclose they are AI where required (e.g. EU AI Act transparency), and health/legal businesses need careful scoping (no medical/legal advice).",
+      "complianceRequirements": [
+        "AI disclosure to end users",
+        "privacy policy for collected data",
+        "anti-spam compliant outreach"
+      ]
+    },
+    "availability": {
+      "notes": "Direct invoicing via Stripe is unavailable in some reference countries (e.g. Nigeria, Bangladesh); use Payoneer/Wise or Upwork there."
+    },
+    "automationPlan": [
+      "scripted FAQ/site ingestion",
+      "template bots per vertical",
+      "automated monthly usage reports"
+    ],
+    "manualSteps": [
+      "sales conversations",
+      "client onboarding call",
+      "testing edge cases"
+    ],
+    "fullCycle": [
+      "Build 2 vertical demo bots",
+      "Pitch 20 local businesses",
+      "Install and test",
+      "Bill monthly",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "churn",
+      "bot gives wrong info",
+      "heavy sales effort",
+      "platform pricing changes"
+    ],
+    "evidence": "Chatbot development is an established Fiverr/Upwork category; AI-receptionist agencies are widely marketed, though public income data is mostly anecdotal.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333379620369",
+      "https://golance.com/blogs/upwork-fees-explained-2026",
+      "https://www.make.com/en/solution-partners"
+    ],
+    "tags": ["agency", "ai", "local", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 50,
+        "recurringMonthlyUsd": 60,
+        "tools": [
+          "no-code chatbot/voice-agent builder (~$30-$50/mo agency tier)",
+          "LLM API credits (~$10/mo)",
+          "calendar/booking integration (free tiers)"
+        ],
+        "skills": [
+          "sales to local business owners",
+          "conversation design and testing",
+          "integrations (booking, CRM, website embed)"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "Wise Business or Stripe account for invoicing (KYC)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per client-month (setup amortised)",
+        "typicalPriceUsd": {
+          "low": 100,
+          "median": 250,
+          "high": 800
+        },
+        "costPerUnitUsd": 25,
+        "platformFeePercent": 3,
+        "grossMarginPercent": 87,
+        "hoursPerUnit": 3,
+        "notes": "Estimate: setup $300-$1,500 plus $100-$500/month management, expressed per client-month; cost = per-client platform seat and API usage; fee = payment processing ~3%. Stripe confirmed at 2.9% + 30c per US card payment."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 60,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 2,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Startup cash = domain + first month of builder plan for demos."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 22,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 6000
+        },
+        "notes": "Interest in AI receptionists and chatbots for local businesses is growing, but the offer is heavily marketed by course-sellers and SaaS vendors now sell self-serve versions directly to SMBs. Getting paid depends almost entirely on local selling; churn is high when bots don't produce bookings. Fixed monthly tool costs make it loss-making until 1 client signs."
+      },
+      "pricingStrategy": "Offer a free 14-day pilot on the client's real FAQ, then charge a modest setup fee plus monthly management tied to measured bookings or leads handled.",
+      "profitPath": [
+        "Month 0: build 2 demo bots (salon, clinic), recorded demo videos (cost $50)",
+        "Month 1-3: 20-50 local conversations to close the first client, expected $0-$300",
+        "Month 3-6: case study, referrals from the first clients, 2-4 clients",
+        "Month 6-12: 5-15 clients on retainer for those who keep selling"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333379620369",
+        "https://stripe.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "newsletter-social-content-retainer",
+    "name": "Newsletter ghostwriting and social media content calendars",
+    "category": "services",
+    "summary": "Monthly retainer producing a client's email newsletter and/or a scheduled social content calendar with AI drafting and human editing.",
+    "howItWorks": "Founders and local businesses pay $300-$2,000/month for consistent content. You build a voice guide, draft newsletters and 30-day post calendars with LLMs, edit, and schedule via their tools.",
+    "platforms": ["Upwork", "Fiverr", "Contra", "direct"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "Upwork ACH/local bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Fiverr: 20% fee, 14-day clearance. Upwork: variable 0-15% freelancer fee (2025 change). Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Ghostwriting is legal; sponsored posts need ad disclosures; no fake engagement.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "Fiverr AI standards / Upwork no-misrepresentation",
+        "advertising disclosure rules",
+        "no plagiarism"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh)."
+    },
+    "automationPlan": [
+      "voice-guide prompt per client",
+      "batch monthly drafting",
+      "auto-scheduling via Buffer/ESP APIs"
+    ],
+    "manualSteps": [
+      "client interviews and approvals",
+      "fact-checking",
+      "editing for voice"
+    ],
+    "fullCycle": [
+      "Offer a 1-month trial package",
+      "Draft and schedule",
+      "Convert to retainer",
+      "Invoice monthly",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "generic AI tone loses clients",
+      "Upwork: must not misrepresent AI work as fully own",
+      "churn"
+    ],
+    "evidence": "Ghostwriting and social media management are large Upwork/Fiverr categories; Upwork ToS (Sept 2025) allows AI if not misrepresented.",
+    "sources": [
+      "https://apps.eurofound.europa.eu/platformeconomydb/upwork-rolls-out-ai-agent-and-updates-its-global-tos-110274",
+      "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+      "https://help.fiverr.com/hc/en-us/articles/37333179414289"
+    ],
+    "tags": ["writing", "retainer", "recurring", "marketing"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 12,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "LLM chat plan (~$20/mo)",
+          "Canva free",
+          "client's own ESP/scheduler (Beehiiv, Buffer, etc.)"
+        ],
+        "skills": [
+          "voice matching and editing",
+          "content strategy",
+          "deadline discipline"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "Contra profile",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per client-month",
+        "typicalPriceUsd": {
+          "low": 150,
+          "median": 500,
+          "high": 2000
+        },
+        "costPerUnitUsd": 5,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 89,
+        "hoursPerUnit": 12,
+        "notes": "Estimate from Upwork ghostwriting/social management retainers ($300-$2,000/month), with entry clients at $150; fee blends Upwork 0-15% and Contra 0%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 6000
+        },
+        "notes": "AI has made generic posts nearly free, so clients now pay for strategy, voice and consistency rather than words. Founder-led LinkedIn ghostwriting and B2B newsletters remain in demand; low-end social posting has collapsed toward $100-$200/month. Failure modes: clients churning after 2-3 months and being undercut by AI tools."
+      },
+      "pricingStrategy": "Start with a 1-month trial package at a reduced rate, then move to 3-month retainers priced by channel and frequency.",
+      "profitPath": [
+        "Month 0: voice-guide template, 3 sample newsletters/calendars (cost $0)",
+        "Month 1-3: first retainer at $150-$400, expected $150-$400/month",
+        "Month 3-6: 2-3 clients; add analytics reporting",
+        "Month 6-12: 3-6 clients at $500+ for those who retain"
+      ],
+      "sources": [
+        "https://apps.eurofound.europa.eu/platformeconomydb/upwork-rolls-out-ai-agent-and-updates-its-global-tos-110274",
+        "https://help.fiverr.com/hc/en-us/articles/37333301560593",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "ai-voiceover-podcast-editing",
+    "name": "AI voiceover and podcast editing services (+ ElevenLabs Voice Library royalties)",
+    "category": "services",
+    "summary": "Sell AI voiceovers (in Fiverr's Voice Synthesis & AI category) and podcast cleanup/editing; optionally license your own cloned voice for royalties.",
+    "howItWorks": "Creators and businesses buy narration for explainers and ads, and podcasters pay for edited, leveled episodes. AI voices (licensed for commercial use) and tools like Descript/Auphonic do most of the work; you direct, fix pronunciation and QA. Separately, a clone of YOUR OWN voice shared in the ElevenLabs Voice Library earns royalties on paid usage.",
+    "platforms": ["Fiverr", "Upwork", "ElevenLabs Voice Library"],
+    "payout": {
+      "methods": [
+        "Fiverr/Upwork withdrawals",
+        "ElevenLabs via Stripe Connect -> bank"
+      ],
+      "minimumPayout": "ElevenLabs $10 (higher in some countries); Fiverr $1-$20",
+      "frequency": "ElevenLabs automatic every ~6-8 days above threshold; Fiverr on demand",
+      "typicalDelayDays": 14,
+      "notes": "ElevenLabs pays via Stripe Connect; W-8/W-9 required (payouts disabled without it); 30% US withholding on US-customer usage unless a tax treaty applies."
+    },
+    "capitalRequiredUsd": 22,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 250,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; cloning anyone else's voice without consent is prohibited by Fiverr and may violate personality/likeness laws.",
+      "complianceRequirements": [
+        "only own or licensed voices",
+        "tool plan with commercial rights",
+        "disclose AI voice to buyers",
+        "tax forms"
+      ]
+    },
+    "availability": {
+      "notes": "Fiverr/Upwork broadly available. ElevenLabs Stripe Connect list (61 countries) covers only ~25 reference countries; not Brazil, Kenya, Ghana, Ukraine, Georgia, Serbia, Morocco, Jordan, Bangladesh or Sri Lanka."
+    },
+    "automationPlan": [
+      "script-to-audio pipeline via TTS API",
+      "auto loudness/noise cleanup",
+      "templated show-notes generation"
+    ],
+    "manualSteps": [
+      "pronunciation and pacing fixes",
+      "listen-through QA",
+      "voice clone recording (once)"
+    ],
+    "fullCycle": [
+      "Record own voice clone (optional)",
+      "Publish voiceover + podcast gigs",
+      "Deliver with QA",
+      "Win recurring shows",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "AI voice saturation lowers prices",
+      "human-voice buyers reject AI",
+      "voice misuse disputes"
+    ],
+    "evidence": "Fiverr lists a Text-to-speech subcategory with hundreds of ElevenLabs-based gigs; ElevenLabs documents Voice Library payouts at $10 minimum.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/37333379620369",
+      "https://elevenlabs.io/docs/eleven-creative/voices/payouts"
+    ],
+    "tags": ["audio", "productized", "royalties"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 22,
+        "recurringMonthlyUsd": 22,
+        "tools": [
+          "ElevenLabs Creator (~$22/mo, commercial license)",
+          "Audacity/Auphonic free tier",
+          "Descript free tier"
+        ],
+        "skills": [
+          "audio editing and loudness normalization",
+          "directing AI voice pronunciation/pacing",
+          "script cleanup"
+        ],
+        "equipment": [
+          "laptop",
+          "headphones",
+          "decent USB microphone (only for your own voice clone)"
+        ],
+        "accounts": [
+          "Fiverr seller account + ID verification",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "ElevenLabs account + W-8BEN/W-9 + Stripe Connect",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per order (voiceover script or podcast episode)",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 40,
+          "high": 200
+        },
+        "costPerUnitUsd": 3,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 72,
+        "hoursPerUnit": 1,
+        "notes": "Estimate from Fiverr text-to-speech and podcast-editing tiers ($10-$200); fee = Fiverr 20%; cost = voice credits per order. ElevenLabs Voice Library royalties are extra and usually small. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026. ElevenLabs Creator confirmed at $22/mo ($11 first month); Starter ($6/mo) also includes a commercial licence."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 22,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Startup cash = first month of ElevenLabs Creator."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 28,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 3000
+        },
+        "notes": "Hundreds of ElevenLabs-based voiceover gigs now compete and buyers can generate voices themselves, so plain TTS orders are cheap. Podcast editing holds up better because it needs judgment. Voice Library royalties pay most voices only a few dollars a month. Failure modes: commodity TTS pricing and voice-rights disputes."
+      },
+      "pricingStrategy": "Undercut on turnaround (same day) for the first reviews, then sell bundled podcast packages (edit + show notes + clips) at monthly rates.",
+      "profitPath": [
+        "Month 0: subscribe to a commercial-license voice plan, produce demo reels (cost $22)",
+        "Month 1-2: first orders at $10-$30, expected $50-$150",
+        "Month 3-6: podcast editing clients on monthly packages",
+        "Month 6-12: 3-8 recurring podcasts plus voiceover orders"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/37333379620369",
+        "https://elevenlabs.io/docs/eleven-creative/voices/payouts",
+        "https://elevenlabs.io/pricing"
+      ]
+    }
+  },
+  {
+    "id": "virtual-assistant-bookkeeping",
+    "name": "Remote virtual assistant and bookkeeping (BELAY, Fancy Hands, Upwork, OnlineJobs.ph)",
+    "category": "services",
+    "summary": "Paid VA and bookkeeping work through staffing networks or Upwork, using AI to handle inbox, scheduling, data entry and reconciliation faster.",
+    "howItWorks": "Busy executives and small businesses pay for admin and bookkeeping hours. US residents (outside six states) can apply to BELAY's 1099 contractor roles; Fancy Hands pays $3-$7 per task to start; others find VA/bookkeeping clients on Upwork or OnlineJobs.ph (Philippines-focused job board). AI drafts emails, categorizes transactions and summarizes documents, letting you serve more clients per hour.",
+    "platforms": ["BELAY", "Fancy Hands", "Upwork", "OnlineJobs.ph"],
+    "payout": {
+      "methods": [
+        "BELAY contractor pay (1099)",
+        "Fancy Hands every other Tuesday",
+        "Upwork withdrawals",
+        "OnlineJobs.ph: employer pays worker directly (e.g. EasyPay)"
+      ],
+      "minimumPayout": "none stated for BELAY/Fancy Hands; Upwork varies",
+      "frequency": "monthly/biweekly/weekly",
+      "typicalDelayDays": 30,
+      "notes": "BELAY lists no pay rates officially ($18-$23/h is from third-party reviews); hours vary with client needs. Fancy Hands pays biweekly. OnlineJobs.ph employers pay weekly in arrears."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 600,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 3,
+      "setupEffort": 4,
+      "ongoingEffort": 8,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "VA and bookkeeping are legal; tax filing/advice and statutory accounting need licenses in many countries (e.g. Germany StBerG), so limit to bookkeeping/data entry.",
+      "complianceRequirements": [
+        "no tax advice without license",
+        "confidentiality",
+        "contractor tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "BELAY accepts US residents except CA, CO, MT, NJ, NY, PA. Fancy Hands' application page states no residency rule (historically US-focused). OnlineJobs.ph targets Filipino workers. Upwork covers most reference countries."
+    },
+    "automationPlan": [
+      "AI inbox triage and drafting",
+      "bank-feed categorization rules",
+      "templated weekly reports"
+    ],
+    "manualSteps": [
+      "interviews and background check",
+      "live client communication",
+      "judgment calls on accounts"
+    ],
+    "fullCycle": [
+      "Apply to network or build Upwork profile",
+      "Get matched/hired",
+      "Deliver hours",
+      "Invoice/timesheet",
+      "Payout to bank"
+    ],
+    "risks": [
+      "mostly manual hours",
+      "low per-task pay at Fancy Hands",
+      "no guaranteed hours"
+    ],
+    "evidence": "BELAY's careers page lists remote 1099 bookkeeping and executive-assistant contractor roles; Fancy Hands' application page states $3-$7 per task paid every other Tuesday. Score 6 reflects accessible per-task/Upwork entry, though BELAY wants prior professional experience.",
+    "sources": [
+      "https://www.belaysolutions.com/careers/",
+      "https://www.fancyhands.com/job/apply/",
+      "https://www.onlinejobs.ph/faq",
+      "https://www.theworkathomewoman.com/belay-solutions-review/",
+      "https://support.upwork.com/hc/en-us/articles/211067778"
+    ],
+    "tags": ["va", "bookkeeping", "hourly"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "client-provided tools (Google Workspace, QuickBooks/Xero)",
+          "LLM free tier",
+          "time tracker (Upwork app/Toggl free)"
+        ],
+        "skills": [
+          "reliable written English",
+          "calendar/inbox management",
+          "bookkeeping basics (QuickBooks/Xero certification is free)"
+        ],
+        "equipment": ["laptop", "reliable internet", "headset for calls"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "OnlineJobs.ph profile (Philippines-focused)",
+          "BELAY/Fancy Hands application (US only)",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 15,
+          "high": 35
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: OnlineJobs.ph VA roles ~$3-$7/h, Upwork general VAs $8-$20/h, bookkeeping $20-$35/h, BELAY $18-$23/h (third-party); fee ~10% Upwork blended with 0% direct. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. No fixed costs; profit equals hours billed."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 100,
+          "high": 3000
+        },
+        "notes": "VA work is steady because clients buy reliability and time zone coverage, not output volume; AI raises a VA's throughput but also lets clients do simple tasks themselves. Competition from the Philippines, Latin America and Africa keeps general VA rates low; bookkeeping pays more. Failure mode: income stops when hours stop; it is labor, not automation."
+      },
+      "pricingStrategy": "Accept a modest hourly rate for the first long-term client, then move to monthly packages (e.g. 20 h/month) and raise rates with bookkeeping or industry specialization.",
+      "profitPath": [
+        "Month 0: profiles, free QuickBooks/Xero certification, sample SOPs (cost $0)",
+        "Month 1-2: first part-time client, expected $100-$400",
+        "Month 3-6: 10-20 h/week across 1-3 clients",
+        "Month 6-12: shift to bookkeeping/executive support rates"
+      ],
+      "sources": [
+        "https://www.onlinejobs.ph/faq",
+        "https://www.fancyhands.com/job/apply/",
+        "https://www.theworkathomewoman.com/belay-solutions-review/",
+        "https://support.upwork.com/hc/en-us/articles/211067778"
+      ]
+    }
+  },
+  {
+    "id": "technical-writing-api-docs",
+    "name": "Technical writing and API documentation",
+    "category": "services",
+    "summary": "Write API references, developer guides and tutorials for software companies, with AI generating first drafts from code and specs.",
+    "howItWorks": "Dev-tool companies pay $150-$1,500 per article or doc set. You read the code/OpenAPI spec, use an LLM to draft reference docs and examples, then test every snippet and edit. Work comes from Upwork, Contra and developer-content agencies such as Draft.dev that pay developer-writers per article.",
+    "platforms": [
+      "Upwork",
+      "Contra",
+      "Draft.dev and similar developer content agencies"
+    ],
+    "payout": {
+      "methods": ["Upwork/Contra withdrawals", "PayPal/Wise invoices"],
+      "minimumPayout": "varies by method",
+      "frequency": "per article/milestone",
+      "typicalDelayDays": 14,
+      "notes": "Upwork variable 0-15% fee (not re-confirmed; page blocks automated checks); Contra 0% freelancer commission. Draft.dev confirms it pays writers but publishes no rates."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 21,
+      "max": 150
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 600,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. Many publishers require human-authored work or AI disclosure; follow each client's policy.",
+      "complianceRequirements": [
+        "follow client AI policy",
+        "no plagiarism",
+        "NDA compliance"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork 180+ countries; Contra pays out via local bank, PayPal, Payoneer or crypto."
+    },
+    "automationPlan": [
+      "spec-to-draft generation",
+      "auto-run and test code samples in CI",
+      "docs linting (Vale) and link checks"
+    ],
+    "manualSteps": [
+      "understanding product",
+      "technical accuracy review",
+      "editor feedback rounds"
+    ],
+    "fullCycle": [
+      "Publish 3 sample tutorials on GitHub",
+      "Pitch/ apply",
+      "Draft with AI, test, edit",
+      "Deliver",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "requires real coding knowledge",
+      "AI-detection or policy disputes",
+      "irregular demand"
+    ],
+    "evidence": "Technical writing is a well-paid Upwork category; Upwork ToS allows AI use if work is not misrepresented.",
+    "sources": [
+      "https://draft.dev/write",
+      "https://contra.com/commission-free",
+      "https://help.contra.com/en/articles/10008642-payout-methods-on-contra",
+      "https://apps.eurofound.europa.eu/platformeconomydb/upwork-rolls-out-ai-agent-and-updates-its-global-tos-110274",
+      "https://golance.com/blogs/upwork-fees-explained-2026"
+    ],
+    "tags": ["writing", "developer", "b2b"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "LLM/coding assistant (~$20/mo)",
+          "Docs-as-code tools (Markdown, Docusaurus/MkDocs free)",
+          "Postman/curl to test endpoints"
+        ],
+        "skills": [
+          "reading code and OpenAPI specs",
+          "clear technical prose",
+          "running and testing every code sample"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Contra profile",
+          "applications to developer-content agencies (e.g. Draft.dev)",
+          "Wise Business or Stripe account for invoicing (KYC)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per article or doc set",
+        "typicalPriceUsd": {
+          "low": 100,
+          "median": 400,
+          "high": 1500
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 8,
+        "notes": "Estimate from Upwork technical-writing contracts and agency rates ($150-$1,500 per article); fee ~10% Upwork blended with 0% Contra/direct. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 6000
+        },
+        "notes": "Dev-tool companies still pay for accurate, tested docs and tutorials, but AI drafts have cut the hours per piece and some companies now generate reference docs automatically. Writers who can actually run the code win; non-developers struggle to pass agency tests. Content-marketing budgets at startups are cyclical."
+      },
+      "pricingStrategy": "Build 3 public sample tutorials, take the first agency articles at standard rates, then sell doc-set projects priced per endpoint or per page.",
+      "profitPath": [
+        "Month 0: 3 published sample tutorials on GitHub/blog (cost $0)",
+        "Month 1-3: first 1-2 paid articles, expected $200-$600",
+        "Month 3-6: recurring agency slot or 1 direct client",
+        "Month 6-12: 2-6 pieces/month"
+      ],
+      "sources": [
+        "https://draft.dev/write",
+        "https://contra.com/commission-free"
+      ]
+    }
+  },
+  {
+    "id": "developer-marketplaces-code-review",
+    "name": "Code review, bug fixing and dev help via Codementor, Topcoder and Toptal",
+    "category": "services",
+    "summary": "Earn from on-demand debugging/mentoring (Codementor), competitive challenges (Topcoder) and vetted contracts (Toptal), with coding agents speeding delivery.",
+    "howItWorks": "Developers pay for live help and fixes on Codementor; companies post paid challenges on Topcoder (winners paid); Toptal places vetted freelancers in contracts. Coding agents help you reproduce bugs, write fixes and tests quickly, but you stay accountable and must follow each platform's rules on live sessions and original submissions.",
+    "platforms": ["Codementor", "Topcoder", "Toptal"],
+    "payout": {
+      "methods": [
+        "Codementor: PayPal/Stripe/local bank",
+        "Topcoder: bank transfer via Trolley (only option since 21 Oct 2025)",
+        "Toptal: invoiced contracts (method not published)"
+      ],
+      "minimumPayout": "Topcoder: none published; Codementor $1 min fee per transfer",
+      "frequency": "on demand / per challenge / per invoice",
+      "typicalDelayDays": 14,
+      "notes": "Topcoder/Trolley fee $1, $2 or $9 by country (+2% FX), 3-5 business days; needs W-8BEN/W-9 + ID. Codementor withdrawal fees: PayPal $1 (US) or 2% ($1-$20), Stripe 0.3% (min $1), local bank ~$3-$7. Codementor platform fee (~13-22%) not re-confirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 400,
+      "high": 15000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; respect client IP and licenses of AI-generated code.",
+      "complianceRequirements": [
+        "tax forms (W-8BEN)",
+        "ID verification",
+        "platform originality rules"
+      ]
+    },
+    "availability": {
+      "notes": "Topcoder pays by bank transfer via Trolley (broad but not universal country coverage); Codementor via PayPal/Stripe/local bank; Toptal accepts fewer than 3% of applicants."
+    },
+    "automationPlan": [
+      "local repro environment scripts",
+      "coding agent for fixes + tests",
+      "challenge spec parsing and submission checklists"
+    ],
+    "manualSteps": [
+      "live sessions",
+      "Toptal screening interviews",
+      "final review of submissions"
+    ],
+    "fullCycle": [
+      "Create profiles",
+      "Pass screening/compete",
+      "Deliver fix or win challenge",
+      "Get paid to wallet",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "skill bar is high",
+      "challenge wins uncertain",
+      "Toptal acceptance rare"
+    ],
+    "evidence": "Topcoder documents its Trolley bank payouts and fees; Codementor documents withdrawal fees; Toptal states it accepts fewer than 3% of 200,000+ yearly applicants.",
+    "sources": [
+      "https://www.topcoder.com/thrive/articles/Payment",
+      "https://community-app.topcoder.com/thrive/articles/trolley-setup",
+      "https://support.codementor.io/en/articles/4226177",
+      "https://www.toptal.com/faq"
+    ],
+    "tags": ["developer", "freelance", "competitions"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "AI coding assistant (~$20/mo)",
+          "GitHub",
+          "screen-share tools (free)"
+        ],
+        "skills": [
+          "professional-level programming in at least one stack",
+          "debugging under time pressure",
+          "explaining fixes clearly"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Codementor mentor profile",
+          "Topcoder member + Trolley payout (W-8BEN/W-9 + ID)",
+          "Toptal application (screening <3% acceptance)",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per billable hour",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 50,
+          "high": 120
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 85,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: Codementor sessions $20-$100/h, Toptal contracts $50-$120/h; fee ~15% is an estimate of Codementor's commission, which its help page does not publish (it lists only withdrawal fees: PayPal 2%, Stripe 0.3%); Topcoder prizes vary."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 10000
+        },
+        "notes": "Coding assistants now answer most junior debugging questions, cutting on-demand mentoring demand, while Toptal-style vetted contracts still pay well but are hard to enter. Topcoder challenges are competitive with uncertain wins. Experienced specialists (niche stacks, performance, security) earn; beginners rarely do."
+      },
+      "pricingStrategy": "Start slightly below market to get first ratings on Codementor, then raise to your niche's rate and move clients to longer contracts.",
+      "profitPath": [
+        "Month 0: profiles, portfolio repos, payout KYC (cost $0)",
+        "Month 1-3: first sessions/challenges, expected $0-$300",
+        "Month 3-6: repeat mentees or one longer contract",
+        "Month 6-12: part-time contract work for those who pass vetting"
+      ],
+      "sources": [
+        "https://www.topcoder.com/thrive/articles/Payment",
+        "https://support.codementor.io/en/articles/4226177",
+        "https://www.toptal.com/faq"
+      ]
+    }
+  },
+  {
+    "id": "expert-calls-and-paid-qa",
+    "name": "Paid expert consultations (GLG, AlphaSights, Guidepoint) and paid Q&A (JustAnswer)",
+    "category": "services",
+    "summary": "Get paid per call or per answer for professional knowledge; AI helps prepare briefings and research, the answers are yours.",
+    "howItWorks": "Investors and consultants pay expert networks for 30-60 minute calls with industry practitioners; you set an hourly rate (often $100-$500). JustAnswer pays verified professionals a share of customer payments per answer. AI speeds research, but advice must be your own; licensed fields need a license.",
+    "platforms": ["GLG", "AlphaSights", "Guidepoint", "JustAnswer"],
+    "payout": {
+      "methods": [
+        "bank transfer/PayPal (networks)",
+        "JustAnswer direct deposit/PayPal via Hyperwallet"
+      ],
+      "minimumPayout": "networks: per call; JustAnswer ~$20 (third-party, unverified)",
+      "frequency": "per call / monthly",
+      "typicalDelayDays": 14,
+      "notes": "Guidepoint pays typically within 15 days of a completed consultation (invoice within 45 days; prorated by full minutes). GLG pays an hourly rate or pre-disclosed flat fee, optionally to your employer. AlphaSights timing and JustAnswer revenue share/schedule not confirmed (sites block automated checks)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 2,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; never share employer confidential info or material non-public information (securities law). Legal/medical/financial answers require a valid license.",
+      "complianceRequirements": [
+        "employer conflict-of-interest checks",
+        "no MNPI",
+        "professional license where applicable",
+        "credential verification"
+      ]
+    },
+    "availability": {
+      "notes": "Expert networks recruit globally but demand favors industry experience; JustAnswer accepts experts in many countries after verification."
+    },
+    "automationPlan": [
+      "alerts for incoming project invites",
+      "AI briefing notes per call topic",
+      "answer research templates"
+    ],
+    "manualSteps": [
+      "credential verification",
+      "live calls/answers",
+      "compliance attestations"
+    ],
+    "fullCycle": [
+      "Create profiles with detailed work history",
+      "Accept matched project",
+      "Do call/answer",
+      "Get paid",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "invites depend on niche experience",
+      "compliance breaches",
+      "low JustAnswer revenue share"
+    ],
+    "evidence": "GLG states members are paid a set hourly rate or flat fee; Guidepoint's advisor terms pay your customary consulting fee, typically within 15 days. Reports cite typical $175/h GLG calls.",
+    "sources": [
+      "https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/",
+      "https://membership.glgresearch.com/council-members/member-programs?lang=en",
+      "https://glginsights.com/network-member-recruitment/",
+      "https://expertopportunities.com/alphasights-review/",
+      "https://www.flexjobs.com/blog/post/become-justanswer-expert"
+    ],
+    "tags": ["expertise", "per-call", "low-automation"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["LinkedIn profile (free)", "LLM free tier for call prep"],
+        "skills": [
+          "5+ years of real industry or professional expertise",
+          "concise verbal briefings",
+          "awareness of confidentiality/insider rules"
+        ],
+        "equipment": ["laptop or phone", "quiet space for calls"],
+        "accounts": [
+          "GLG/AlphaSights/Guidepoint expert profiles",
+          "JustAnswer expert application with credential verification",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1-hour call",
+        "typicalPriceUsd": {
+          "low": 50,
+          "median": 175,
+          "high": 500
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1.5,
+        "notes": "Expert networks pay the expert's own rate; reports cite ~$175/h typical GLG calls; network margin is charged to the client, so fee = 0 to the expert. JustAnswer pays a revenue share per answer; the share is estimated, as its expert page was bot-blocked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. No costs; income is sporadic."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 3000
+        },
+        "notes": "Calls depend entirely on whether a client project needs your exact niche; many registered experts get no calls in a year. AI research tools and transcript libraries (e.g. expert-call transcript databases) have reduced repeat calls on common topics. Those with current, rare operating roles in hot sectors get regular requests."
+      },
+      "pricingStrategy": "Set a rate near your salary-equivalent hourly x2-3; raise it after repeat requests and decline low-fit calls.",
+      "profitPath": [
+        "Month 0: register with 3 networks and complete detailed profiles (cost $0)",
+        "Month 1-6: respond quickly to project invitations; expected 0-2 calls",
+        "Month 6-12: repeat clients in your niche; JustAnswer answers if credentialed"
+      ],
+      "sources": [
+        "https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/",
+        "https://membership.glgresearch.com/council-members/member-programs?lang=en",
+        "https://expertopportunities.com/alphasights-review/",
+        "https://www.flexjobs.com/blog/post/become-justanswer-expert"
+      ]
+    }
+  }
+]

@@ -137,3 +137,11 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Playwright MCP artifacts
+.playwright-mcp/
+
+# Website output is generated in CI by .github/workflows/pages.yml
+website/plans/
+website/docs/
+website/strategies.json

@@ -1,0 +1,1450 @@
+[
+  {
+    "id": "workana-latam-freelance",
+    "name": "Spanish/Portuguese freelance projects on Workana (LatAm marketplace)",
+    "category": "marketplaces",
+    "summary": "Bid on fixed-price and hourly projects from Latin American clients on Workana, the largest Spanish/Portuguese freelance marketplace.",
+    "howItWorks": "Workana connects mostly Latin American SMB clients with freelancers in writing, design, IT, data entry and marketing. You build a profile, send proposals and deliver via milestones. Clients prefer Spanish/Portuguese speakers, so competition with English-only global freelancers is lower. Commission falls as a client relationship grows.",
+    "platforms": ["Workana"],
+    "payout": {
+      "methods": [
+        "Payoneer -> local bank",
+        "PayPal -> bank",
+        "Payoneer -> Airtm (13 LatAm countries)"
+      ],
+      "minimumPayout": "USD 50 for Payoneer bank transfer; PayPal per-country",
+      "frequency": "twice monthly, or weekly on paid Explorer/Master plans",
+      "typicalDelayDays": 5,
+      "notes": "Freelancer commission 20% up to USD 300 per client, 10% to USD 3,000, 5% above. Methods depend on country. Airtm and local Payoneer partners (Prex, Ligo, Santander AR) give local-currency cash-out."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 250,
+      "high": 2500
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 4,
+      "setupEffort": 2,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Freelancing is legal everywhere in the reference set; income is taxable. Off-platform payment is banned without the voluntary-exclusion fee.",
+      "complianceRequirements": [
+        "tax reporting",
+        "Payoneer/PayPal KYC",
+        "no disintermediation"
+      ]
+    },
+    "availability": {
+      "notes": "Open worldwide; demand is Spanish/Portuguese. PayPal receiving unavailable in Nigeria, Lebanon, Bangladesh, Libya, Iraq; Payoneer covers nearly all."
+    },
+    "automationPlan": [
+      "LLM-drafted proposals per project brief",
+      "AI first drafts for writing/translation/design work",
+      "saved-search alerts for new projects"
+    ],
+    "manualSteps": [
+      "ID check",
+      "profile and portfolio",
+      "client chat and revisions",
+      "QA of deliverables"
+    ],
+    "fullCycle": [
+      "Sign up and verify",
+      "Build Spanish/Portuguese profile",
+      "Send proposals",
+      "Deliver milestones",
+      "Auto-withdraw to Payoneer/PayPal -> bank"
+    ],
+    "risks": [
+      "low prices in some categories",
+      "early 20% commission",
+      "account sanction for sharing contacts"
+    ],
+    "evidence": "Workana's help center documents tiered commission, Payoneer bank withdrawals and an Airtm option for 13 LatAm countries, so payouts are routine.",
+    "sources": [
+      "https://help.workana.com/hc/en-us/articles/360041937573-Methods-for-withdrawing-",
+      "https://help.workana.com/hc/en-us/articles/360041873313-Withdraws-with-Payoneer",
+      "https://help.workana.com/hc/en-us/articles/360041235874-How-is-the-commission-calculated-at-Workana",
+      "https://help.workana.com/hc/en-us/articles/360041460154"
+    ],
+    "tags": ["freelance", "latam", "spanish", "portuguese", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Workana free plan (paid plans add more proposals)",
+          "AI writing/design assistants (free tiers)",
+          "portfolio on Behance/GitHub/Google Drive"
+        ],
+        "skills": [
+          "a sellable skill (writing, design, dev, data entry, marketing)",
+          "Spanish or Portuguese",
+          "proposal writing",
+          "client communication"
+        ],
+        "equipment": ["laptop", "stable internet"],
+        "accounts": [
+          "Workana account + identity verification",
+          "Payoneer or PayPal (country-dependent)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per project",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 150,
+          "high": 800
+        },
+        "costPerUnitUsd": 3,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 78,
+        "hoursPerUnit": 12,
+        "notes": "Estimate: typical small LatAm projects $30-800; fee is Workana's 20% on the first $300 per client (10%/5% after); $3 covers withdrawal/FX."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost; months count profile build-up to the first paid project."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 2000
+        },
+        "notes": "Bilingual freelancers with niche skills (Shopify, data, paid ads) win repeat LatAm clients, and fees drop as a relationship grows. AI has pushed down prices for basic writing, translation and logo work since 2024. Failure: dozens of unanswered proposals without reviews, or racing to the bottom on price. Calibration: median month-12 net lowered from $200 to $80 so it agrees with a 40% chance of reaching $100/month."
+      },
+      "pricingStrategy": "Underprice the first 3-5 small projects to earn reviews, then raise rates 20-30% and steer repeat clients toward larger milestones where the fee falls to 10%.",
+      "profitPath": [
+        "Month 0: profile, portfolio of 3 samples, 20 proposals (cost $0)",
+        "Month 1-2: first 1-3 small projects; expect $50-300",
+        "Month 3-6: reviews unlock better projects; expect $150-500/month",
+        "Month 6-12: repeat clients at lower fees; median ~$250/month"
+      ],
+      "sources": [
+        "https://help.workana.com/hc/en-us/articles/360041235874-How-is-the-commission-calculated-at-Workana",
+        "https://help.workana.com/hc/en-us/articles/360041873313-Withdraws-with-Payoneer"
+      ]
+    }
+  },
+  {
+    "id": "freelancer-com-contests",
+    "name": "Design and writing contests plus bidding on Freelancer.com",
+    "category": "marketplaces",
+    "summary": "Enter prize contests (logos, banners, names, copy) and bid on projects on Freelancer.com; the poster funds the prize in advance.",
+    "howItWorks": "Contest posters pre-fund the prize; entering is free and the winner gets the prize minus a fee. AI tools can make many concept entries quickly, then you refine the shortlisted ones. Winning builds reviews that help project bids. Bidding needs a USD 20 balance kept in your account, which is why this entry lists USD 20 capital.",
+    "platforms": ["Freelancer.com"],
+    "payout": {
+      "methods": [
+        "Express (local bank) withdrawal",
+        "PayPal",
+        "Skrill",
+        "Payoneer card",
+        "international wire"
+      ],
+      "minimumPayout": "USD 50 after fees",
+      "frequency": "on request",
+      "typicalDelayDays": 7,
+      "notes": "Current fee page: withdrawal fee USD 1 (Express/PayPal/Skrill/Payoneer card) or USD 25 international wire; USD 50 minimum after fees. Contest fee 10% or USD 5, whichever is greater, charged on prize release; fixed-price project fee 10%/USD 5, hourly 10%. Bids need a USD 20 unreserved balance (higher for risk-flagged users or some categories). First withdrawal has a ~15-day hold."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 80,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 2,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 94
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. Contest work must be original and must not infringe trademarks; disclose AI use if the poster requires it.",
+      "complianceRequirements": [
+        "tax reporting",
+        "ID/video verification",
+        "original work only"
+      ]
+    },
+    "availability": {
+      "notes": "Global marketplace. Express (local-bank) withdrawal covers reference countries Argentina, Bangladesh, Brazil, Canada, Colombia, Hungary, India, Indonesia, Japan, Malaysia, Mexico, Philippines, Singapore, the US and EU members (Freelancer community article; list may have changed). No African reference country is on it, so Kenya, Nigeria, Ghana etc. use PayPal (not in Nigeria), Skrill or wire."
+    },
+    "automationPlan": [
+      "batch-generate contest concepts with image models, then human polish",
+      "alerts for new contests in your skills",
+      "LLM-drafted bids"
+    ],
+    "manualSteps": [
+      "verification",
+      "choosing contests",
+      "final edits and handover files",
+      "client chat"
+    ],
+    "fullCycle": [
+      "Sign up and verify",
+      "Enter contests (free)",
+      "Win and hand over files",
+      "Use reviews to win projects",
+      "Withdraw USD 50+ to bank"
+    ],
+    "risks": [
+      "most entries win nothing",
+      "USD 20 bid balance",
+      "low-budget clients",
+      "AI-logo trademark issues"
+    ],
+    "evidence": "Freelancer.com's official fee page (checked Nov 2026) confirms prize pre-funding, free contest entry, 10%/USD 5 fees, the USD 20 bid balance and the USD 50 minimum withdrawal.",
+    "sources": [
+      "https://www.freelancer.com/feesandcharges",
+      "https://www.freelancer.com/support/payments/withdrawal-methods",
+      "https://www.freelancer.in/community/articles/introducing-express-withdrawal-system"
+    ],
+    "tags": ["freelance", "contests", "design", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 8,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Freelancer.com free membership (paid memberships add bids)",
+          "AI image/writing tools for concept drafts",
+          "vector editor (Inkscape free / Canva)"
+        ],
+        "skills": [
+          "graphic design or copywriting",
+          "reading briefs fast",
+          "refining AI concepts into original work"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Freelancer.com account + KYC",
+          "PayPal/Payoneer/Skrill or bank for withdrawal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per contest won",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 80,
+          "high": 500
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 89,
+        "hoursPerUnit": 10,
+        "notes": "Estimate: common logo/naming contest prizes $20-500; fee is 10% (min $5) of the prize; $1 withdrawal fee; hours include the losing entries per win."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 1,
+        "notes": "No fixed monthly cost; months count profile build-up to the first paid project. The $20 bid balance is a refundable deposit, not a cost. Startup recovery assumes about $20/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 1200
+        },
+        "notes": "Contests attract dozens to hundreds of entries, and since 2024 cheap AI concepts have flooded them, so most entrants never win. Winners specialise in one contest type, enter early and engage with the poster's feedback. Failure: many hours on unpaid entries."
+      },
+      "pricingStrategy": "No pricing control in contests; use contest wins as reviews to move into fixed-price bids priced 10-20% below the median, then raise rates.",
+      "profitPath": [
+        "Month 0: profile, $20 bid balance, 10 contest entries (cost $20 deposit)",
+        "Month 1-2: first win; expect $0-100",
+        "Month 3-6: mix contests with bids; expect $50-200/month",
+        "Month 6-12: shift to repeat clients; median ~$80/month"
+      ],
+      "sources": [
+        "https://www.freelancer.com/feesandcharges",
+        "https://www.freelancer.com/support/payments/withdrawal-methods"
+      ]
+    }
+  },
+  {
+    "id": "kolabtree-science-freelance",
+    "name": "Freelance scientific consulting on Kolabtree",
+    "category": "services",
+    "summary": "Postgraduate scientists, statisticians and medical writers take paid projects from companies and researchers on Kolabtree.",
+    "howItWorks": "Clients (biotech, pharma, food, med-device startups, academics) post projects such as literature reviews, statistical analysis, medical writing or regulatory documents. Experts send proposals and work to a statement of work with funded milestones. A PhD/MSc researcher anywhere can compete on expertise, not location. AI speeds literature searches and drafts, but experts sign off on accuracy.",
+    "platforms": ["Kolabtree"],
+    "payout": {
+      "methods": ["Payoneer -> local bank"],
+      "minimumPayout": "USD 49.99 balance before payout",
+      "frequency": "per milestone release",
+      "typicalDelayDays": 7,
+      "notes": "Payoneer is the only payout method; payout needs a USD 49.99 minimum balance. Kolabtree pays sending costs; the freelancer bears a 2% conversion charge plus any intermediary/receiving bank fees. The freelancer service fee is not stated on official pages; third-party profiles report up to 20%."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 96
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. Medical/regulatory writing needs domain competence; no ghost-writing that breaks academic-integrity rules.",
+      "complianceRequirements": [
+        "tax reporting",
+        "Payoneer KYC",
+        "confidentiality/NDA",
+        "no academic misconduct"
+      ]
+    },
+    "availability": {
+      "notes": "Payoneer does not serve Iraq (per Kolabtree help); all other reference countries are fine. Expert approval is selective (usually postgraduate)."
+    },
+    "automationPlan": [
+      "AI-assisted literature search and summary",
+      "templated statistical-analysis pipelines (R/Python)",
+      "LLM first drafts reviewed by you"
+    ],
+    "manualSteps": [
+      "apply and get approved as an expert",
+      "proposals and SOW negotiation",
+      "expert review of every deliverable"
+    ],
+    "fullCycle": [
+      "Apply as expert",
+      "Bid on projects",
+      "Agree SOW and milestones",
+      "Deliver",
+      "Payoneer -> bank"
+    ],
+    "risks": [
+      "selective approval",
+      "sparse projects in some fields",
+      "liability for wrong analysis"
+    ],
+    "evidence": "Kolabtree's help center (checked Nov 2026) confirms Payoneer-only payouts, the USD 49.99 minimum balance and the 2% conversion charge borne by freelancers.",
+    "sources": [
+      "https://kolabtree-help.freshdesk.com/support/solutions/articles/3000135523-payments-t-cs",
+      "https://kolabtree-help.freshdesk.com/support/solutions/articles/3000135613-can-i-receive-payment-directly-into-my-bank-account-instead-of-via-payoneer-",
+      "https://kolabtree-help.freshdesk.com/support/solutions/articles/3000135619-what-charges-will-i-have-to-bear-",
+      "https://www.kolabtree.com/how-it-works"
+    ],
+    "tags": ["freelance", "science", "phd", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 8,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Kolabtree free expert profile",
+          "reference manager (Zotero free)",
+          "R/Python or SPSS for stats",
+          "AI literature-search tools (free tiers)"
+        ],
+        "skills": [
+          "PhD/MSc-level domain expertise",
+          "scientific or medical writing",
+          "statistics",
+          "scoping statements of work"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Kolabtree expert account (credentials checked)",
+          "Payoneer (only payout method)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per project",
+        "typicalPriceUsd": {
+          "low": 200,
+          "median": 800,
+          "high": 5000
+        },
+        "costPerUnitUsd": 16,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 98,
+        "hoursPerUnit": 25,
+        "notes": "Posted project budgets typically $200-5,000 (estimated). Kolabtree's official freelancer-charges page lists only a 2% Payoneer currency-conversion fee (the $16) and says clients pay no payment fee; no freelancer commission is published, so any platform margin is not deducted from the expert's quote."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost; months count profile build-up to the first paid project. First award often takes 1-4 months of proposals."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 4000
+        },
+        "notes": "Specialists in regulatory writing, biostatistics and medical devices win repeat work; credentials limit competition. AI literature tools have commoditised basic literature reviews and simple writing, pushing value to sign-off-level expertise. Failure: generalist profiles with no award after months of proposals. Calibration: likelihood raised from 20 to 25 (official pages show no freelancer commission, and credentials limit competition), and median month-12 net lowered from $200 to $60 so it agrees with a below-50% chance of reaching $100/month."
+      },
+      "pricingStrategy": "Quote a fixed price for a small, well-scoped first milestone to earn a review, then price later work by deliverable at your full rate.",
+      "profitPath": [
+        "Month 0: credentials, profile and 3 sample deliverables (cost $0)",
+        "Month 1-3: 15-30 proposals; first project $200-800",
+        "Month 3-6: reviews and repeat clients; expect $200-800/month average",
+        "Month 6-12: niche positioning; median ~$300/month (lumpy)"
+      ],
+      "sources": [
+        "https://kolabtree-help.freshdesk.com/support/solutions/articles/3000135619-what-charges-will-i-have-to-bear-",
+        "https://kolabtree-help.freshdesk.com/support/solutions/articles/3000135523-payments-t-cs"
+      ]
+    }
+  },
+  {
+    "id": "dataforce-data-sourcing-projects",
+    "name": "Paid AI data-sourcing projects in your language (DataForce by TransPerfect)",
+    "category": "micro-tasks",
+    "summary": "Record speech, video or text, or rate websites, in your native language and locale for AI training projects posted by DataForce.",
+    "howItWorks": "DataForce posts country- and language-specific projects: voice recordings in Indian and other low-resource languages, first-person video of daily tasks, shopping-experience ratings and annotation. You apply per project, complete it, pass a quality check, then get paid per task, per hour or a flat fee. Speakers of under-served languages qualify for projects that English speakers cannot do.",
+    "platforms": ["DataForce Community (TransPerfect)"],
+    "payout": {
+      "methods": [
+        "wire transfer -> bank",
+        "PayPal -> bank",
+        "Western Union",
+        "check",
+        "Tremendous gift card"
+      ],
+      "minimumPayout": "No stated minimum; paid per completed project",
+      "frequency": "per project after QA",
+      "typicalDelayDays": 30,
+      "notes": "Remote projects: payment terms start after Quality Check results, whose timeline (e.g. 2 or 6 weeks) is in the project welcome email; the exact window depends on the payment method. Methods and terms vary by country and are listed on each job page. Non-US contributors sign a W-8; US residents sign a W-9 once income reaches USD 600 in a year."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 21,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 400
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 2,
+      "setupEffort": 1,
+      "ongoingEffort": 3,
+      "incomePotential": 3,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. You license your own voice/likeness under the project consent; read the data-use terms before recording.",
+      "complianceRequirements": [
+        "W-8/W-9 tax form",
+        "informed consent for biometric data",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Contributor sign-up is open in almost every country, but each project targets specific locales; many are on-site (e.g. Pune, Hyderabad). Count only remote ones."
+    },
+    "automationPlan": [
+      "saved alerts for new projects in your locale",
+      "scripted file naming/checks before upload"
+    ],
+    "manualSteps": [
+      "per-project application and screening",
+      "the recording itself",
+      "tax and payment-method forms"
+    ],
+    "fullCycle": [
+      "Register on DataForce hub",
+      "Apply to remote projects for your locale",
+      "Complete tasks",
+      "Pass QA",
+      "Wire/PayPal to bank"
+    ],
+    "risks": [
+      "irregular project flow",
+      "QA rejection means no pay",
+      "privacy of voice/video data"
+    ],
+    "evidence": "DataForce's official FAQ (checked Nov 2026) lists wire, PayPal, check, Tremendous and Western Union payouts and QA-based payment terms; it reports a 1.3M+ contributor community.",
+    "sources": [
+      "https://dataforcecommunity.transperfect.com/FAQ",
+      "https://dataforcecommunity.transperfect.com/projects",
+      "https://dataforcecommunity.transperfect.com/"
+    ],
+    "tags": ["ai-data", "speech", "low-resource-languages", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "DataForce Community portal",
+          "project-specific recording apps"
+        ],
+        "skills": [
+          "fluent speaking in an in-demand language",
+          "following detailed guidelines",
+          "passing quality checks"
+        ],
+        "equipment": ["smartphone", "laptop", "quiet room or headset"],
+        "accounts": [
+          "DataForce Community profile",
+          "payment method per country (listed on each job page)",
+          "W-8/W-9 tax form"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour of project work",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 10,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Estimated: DataForce's FAQ says pay is per task, per hour or flat fee and is stated only in each job announcement; its public project list shows no amounts. $5-20/hour-equivalent reflects typical speech and video data projects."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Payment starts only after the quality check (often 2-6 weeks)."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "medium",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 20,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 300
+        },
+        "notes": "AI labs are paying for speech and video data in under-represented languages, so speakers of those languages get chosen. Work is project-based and irregular, so few people earn $100+ every month. Failure: no matching open projects or failed QC."
+      },
+      "pricingStrategy": "Rates are fixed per project; maximise earnings by applying to every matching project fast and keeping a high QC pass rate to be invited again.",
+      "profitPath": [
+        "Month 0: profile with all languages/devices (cost $0)",
+        "Month 1-2: apply to projects; first payout after QC ~$20-80",
+        "Month 3-6: repeat invitations; expect $20-100/month",
+        "Month 6-12: irregular; median ~$40/month"
+      ],
+      "sources": [
+        "https://dataforcecommunity.transperfect.com/FAQ",
+        "https://dataforcecommunity.transperfect.com/projects"
+      ]
+    }
+  },
+  {
+    "id": "shopee-affiliate-sea-brazil",
+    "name": "Shopee Affiliate Program (Southeast Asia, Taiwan, Brazil)",
+    "category": "affiliate",
+    "summary": "Share Shopee product links on social media, chat groups or content and earn commission on orders, paid to a local bank account.",
+    "howItWorks": "Shopee runs country affiliate programs with dashboards that generate tracked links for any listing. Affiliates post deal roundups, short videos or Telegram/Facebook group posts. Commission is confirmed once the buyer receives the order and is then paid weekly or monthly. Lazada (SEA) and Daraz (South Asia) run similar programs.",
+    "platforms": [
+      "Shopee Affiliate Program",
+      "Lazada Affiliate (alternative)",
+      "Daraz Affiliate (alternative)"
+    ],
+    "payout": {
+      "methods": [
+        "bank transfer (IBG in Malaysia) -> local bank",
+        "ShopeePay (Indonesia, alongside bank transfer)"
+      ],
+      "minimumPayout": "None stated for local affiliates in MY, SG, ID and PH; Philippines USD 500 for cross-border payees; Brazil sets a variable minimum shown in the affiliate dashboard",
+      "frequency": "weekly (MY/SG/ID local individuals) or monthly (PH, BR, enterprises)",
+      "typicalDelayDays": 30,
+      "notes": "Malaysia (official FAQ): IBG bank transfer on Fridays; local individuals have 7 days of bills consolidated and paid within 14 days; local enterprise and overseas affiliates are consolidated on the 8th and 23rd and paid 21 days later; bills not validated within 12 months are forfeited. Singapore (official help): non-GST individuals paid weekly (Thursdays), tax-registered individuals/enterprises monthly. Indonesia (official affiliate help, read in a browser Nov 2026): commission is paid weekly by ShopeePay and bank transfer to the registered account; daily reports issued Mon-Wed are paid on Wednesday of the following week and Thu-Sun reports on Friday of the following week; no minimum is stated; a valid bank account and NPWP are required. Philippines (Shopee Affiliate Program Terms and Conditions): balance paid monthly within 90 days of system approval; a USD 500 minimum applies only to affiliates outside the Philippines needing a cross-border transfer; VAT-registered affiliates must issue an invoice. Brazil (Programa de Afiliados Termos e Condições): balance paid monthly within 60 days of system approval; the minimum payout is set by Shopee from time to time and shown in the affiliate dashboard (no fixed amount published); companies must issue a Nota Fiscal."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 20,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 7,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 5,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 12
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; self-purchases and household orders earn nothing. Disclose affiliate links per local advertising rules.",
+      "complianceRequirements": [
+        "tax ID (e.g. Malaysian TIN, e-invoice)",
+        "bank ownership proof",
+        "affiliate disclosure"
+      ]
+    },
+    "availability": {
+      "notes": "Shopee affiliates are paid in Singapore, Malaysia, Philippines, Indonesia, Taiwan and Brazil (6 of 50 reference countries; Thailand and Vietnam are outside the set; Shopee left Mexico, Colombia and Chile in 2022). Malaysia also accepts 'Overseas Individual' affiliates."
+    },
+    "automationPlan": [
+      "auto-pull daily deals via dashboard/feeds into a Telegram/Facebook group",
+      "AI captions and short videos",
+      "UTM/sub-ID tracking per channel"
+    ],
+    "manualSteps": [
+      "registration and tax/bank verification",
+      "channel building",
+      "compliance checks on posts"
+    ],
+    "fullCycle": [
+      "Join program",
+      "Verify bank and tax info",
+      "Post tracked links",
+      "Orders delivered and validated",
+      "Bank payout"
+    ],
+    "risks": [
+      "low commission caps",
+      "cancelled/refunded orders clawed back",
+      "program rule changes"
+    ],
+    "evidence": "Shopee's Malaysia and Singapore help centers (checked Nov 2026) publish weekly/monthly bank-transfer schedules for affiliates; per-country minimums remain unpublished.",
+    "sources": [
+      "https://help.shopee.com.my/portal/10/article/177403-[ENG]-Payment-Frequently-Asked-Questions-[FAQ]",
+      "https://help.shopee.sg/portal/10/article/191693",
+      "https://affiliate.shopee.ph/",
+      "https://help.shopee.co.id/portal/10/article/72049",
+      "https://help.shopee.ph/portal/4/article/77295",
+      "https://help.shopee.com.br/portal/10/article/124094"
+    ],
+    "tags": ["affiliate", "southeast-asia", "brazil", "social", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Shopee Affiliate dashboard and link generator",
+          "Shopee Video / TikTok / Facebook groups / Telegram",
+          "CapCut free"
+        ],
+        "skills": [
+          "finding trending deals",
+          "short videos or deal posts in the local language",
+          "community building"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": [
+          "Shopee account + affiliate approval in your country",
+          "local bank account (or ShopeePay)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 100 attributed orders",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 50,
+          "high": 150
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "Estimate: ~2-10% commission on mostly $5-20 orders gives ~$0.20-1.50 per order; Shopee does not publish one rate table across countries."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Commission is confirmed only after buyers receive orders."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 1200
+        },
+        "notes": "Shopee's affiliate programmes are huge in Indonesia, the Philippines, Vietnam and Brazil, and winners run big deal groups or daily Shopee Video content. Shopee has trimmed and capped commissions in several markets, while AI video tools make posting easier for everyone. Failure: posting links to small groups with cents of commission."
+      },
+      "pricingStrategy": "No commission control; focus on mega-sale days (9.9, 11.11, 12.12) and seller-funded extra commission (XTRA/collaboration offers).",
+      "profitPath": [
+        "Month 0: join programme, set up one channel (cost $0)",
+        "Month 1-2: daily posts; expect $0-20",
+        "Month 3-6: build audience and target sale days; expect $20-100/month",
+        "Month 6-12: seller collabs; median ~$60/month"
+      ],
+      "sources": [
+        "https://help.shopee.com.my/portal/10/article/177403-[ENG]-Payment-Frequently-Asked-Questions-[FAQ]",
+        "https://help.shopee.sg/portal/10/article/191693"
+      ]
+    }
+  },
+  {
+    "id": "earnkaro-india-deal-sharing",
+    "name": "India deal-sharing affiliate via EarnKaro (Flipkart, Myntra, 200+ brands)",
+    "category": "affiliate",
+    "summary": "Convert Flipkart, Myntra, Nykaa and other Indian store links into EarnKaro profit links, share them in WhatsApp/Telegram groups, and withdraw from ₹10.",
+    "howItWorks": "EarnKaro is an Indian sub-affiliate network: it holds the merchant affiliate relationships and pays you a share when people buy through your links. You run a deal channel or content page and post converted links. Profit shows as pending within 72 hours and is confirmed after the retailer's return window. You avoid applying to each Indian brand's program separately.",
+    "platforms": ["EarnKaro", "Flipkart/Myntra/Ajio (merchants)"],
+    "payout": {
+      "methods": ["NEFT -> Indian bank account"],
+      "minimumPayout": "₹10 confirmed profit",
+      "frequency": "on request; NEFT processed three times a week",
+      "typicalDelayDays": 4,
+      "notes": "Pending profit appears within 72 hours; confirmation takes about 30–90 days depending on retailer. NEFT payments are processed three times a week and arrive within 4–5 business days, free of charge."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 35,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 25,
+      "high": 600
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 7,
+      "setupEffort": 1,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 2
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal in India; disclose affiliate links (ASCI influencer guidelines). No spam messaging.",
+      "complianceRequirements": [
+        "Indian bank account",
+        "ASCI disclosure",
+        "income tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Requires an Indian bank account, so it effectively serves India only (1 of 50 reference countries)."
+    },
+    "automationPlan": [
+      "scheduled deal posts from feeds via bots in your own Telegram channel",
+      "AI-written deal blurbs",
+      "link conversion through the EarnKaro app/extension"
+    ],
+    "manualSteps": [
+      "sign-up",
+      "growing the audience",
+      "handling cancelled orders"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Convert deal links",
+      "Share in your channels",
+      "Profit confirmed",
+      "NEFT to bank"
+    ],
+    "risks": [
+      "long confirmation",
+      "low per-order profit",
+      "WhatsApp spam bans"
+    ],
+    "evidence": "EarnKaro's homepage states 30 lakh+ users, ₹40 crore+ paid and a ₹10 withdrawal threshold; its FAQ documents free NEFT payouts processed three times a week (checked Nov 2026).",
+    "sources": ["https://earnkaro.com/", "https://earnkaro.com/faq"],
+    "tags": ["affiliate", "india", "telegram", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "EarnKaro app/link converter",
+          "Telegram/WhatsApp channels",
+          "free blog or Instagram"
+        ],
+        "skills": [
+          "spotting genuine deals",
+          "writing short deal posts",
+          "growing a channel"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": ["EarnKaro account", "Indian bank account for NEFT"]
+      },
+      "unitEconomics": {
+        "unit": "per 100 confirmed orders",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 50,
+          "high": 150
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "Estimate: EarnKaro profit is a share of retailer commission, roughly ₹20-120 per order on typical ₹500-2,000 baskets; rates vary by retailer and category."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Profits confirm 30-90 days after purchase."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 500
+        },
+        "notes": "India has a dense crowd of Telegram deal channels; the winners have tens of thousands of members and post during big sale events. Retailers such as Flipkart have cut affiliate rates over time, and EarnKaro takes a share. Failure: small channel, few orders, cancellations wiping out pending profit."
+      },
+      "pricingStrategy": "No pricing control; earn more per post by focusing on high-commission categories (fashion, beauty) and Big Billion Days/End of Reason Sale windows.",
+      "profitPath": [
+        "Month 0: join EarnKaro, start a deals channel (cost $0)",
+        "Month 1-2: 5-10 posts/day; expect ₹0-500",
+        "Month 3-6: grow members; expect $5-40/month",
+        "Month 6-12: sale-event spikes; median ~$25/month"
+      ],
+      "sources": ["https://earnkaro.com/faq", "https://earnkaro.com/"]
+    }
+  },
+  {
+    "id": "jumia-kol-affiliate",
+    "name": "Jumia KOL affiliate program (African e-commerce)",
+    "category": "affiliate",
+    "summary": "Earn commission on Jumia orders in Nigeria, Kenya, Ghana, Morocco and Uganda by sharing tracked links as a 'Key Opinion Leader'.",
+    "howItWorks": "Jumia, Africa's largest e-commerce marketplace, replaced its affiliate program with the KOL program in 2020. Creators, bloggers and WhatsApp/Telegram deal channels share tracked links. Commission varies by category (fashion higher, electronics lower) and is paid after the return window. One of the few affiliate programs paying in local African currency.",
+    "platforms": ["Jumia KOL Program"],
+    "payout": {
+      "methods": ["local bank transfer"],
+      "minimumPayout": "Unverified: third-party guides report ₦5,000 in Nigeria (some say ₦10,000; older ones ₦2,500); about USD 10–50 equivalent elsewhere",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Official KOL pages (jumia.com.ng/sp-kol, jumia.co.ke/sp-kol) return 403 to automated fetching and, in a real browser (Nov 2026), stop at a Cloudflare 'Just a moment' bot check; no archived copy could be read. Third-party guides report category commissions of about 1–11% (some say up to 13%), payment between the 15th and 25th of the following month, and balances below the minimum rolling over. Unconfirmed: the minimum payout in every country."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 500
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 3,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 10
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; follow local consumer-protection and advertising disclosure rules.",
+      "complianceRequirements": [
+        "local bank account",
+        "tax reporting",
+        "affiliate disclosure"
+      ]
+    },
+    "availability": {
+      "notes": "Jumia operates in Nigeria, Kenya, Ghana, Morocco and Uganda among reference countries (plus Egypt, Côte d'Ivoire, Senegal, Algeria). It exited South Africa and Tunisia."
+    },
+    "automationPlan": [
+      "deal-feed posts in your own channels",
+      "AI product captions in local languages",
+      "per-channel sub-IDs"
+    ],
+    "manualSteps": ["KOL application", "bank details", "audience building"],
+    "fullCycle": [
+      "Apply to KOL program",
+      "Get links",
+      "Share",
+      "Orders validated",
+      "Monthly bank payout"
+    ],
+    "risks": ["low conversion", "Jumia market exits", "unclear official terms"],
+    "evidence": "Tech press (Tech-ish 2020) documented the KOL relaunch; 2025–2026 third-party guides describe monthly payouts. Not confirmed on an official page, and it is unclear the program still runs in every Jumia country, so paymentProbability is 3 rather than 4.",
+    "sources": [
+      "https://tech-ish.com/2020/11/02/jumia-affiliate-kol-program/",
+      "https://www.hovatek.com/blog/jumia-affiliate-vs-konga-affiliate-program/",
+      "https://www.jumia.com.ng/sp-kol/"
+    ],
+    "tags": ["affiliate", "africa", "needs-verification", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Jumia KOL dashboard",
+          "WhatsApp/Telegram/Facebook groups",
+          "free blog or TikTok"
+        ],
+        "skills": [
+          "local-language deal posts",
+          "community management",
+          "product comparison"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": ["Jumia KOL account", "local bank or mobile-money account"]
+      },
+      "unitEconomics": {
+        "unit": "per 100 attributed orders",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 80,
+          "high": 200
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "Estimate: third-party reported 1-11% category rates on ~$15-40 orders give ~$0.30-2 per order; official rates could not be fetched."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Unverified minimum (reported ₦5,000-10,000 in Nigeria) may delay first withdrawal."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 400
+        },
+        "notes": "Jumia has shrunk its footprint (exiting South Africa, Tunisia and Algeria in 2023-2024) and focuses on fewer markets, while social commerce via WhatsApp and Instagram sellers competes for the same buyers. Winners run large local deal communities. Failure: low order volume never reaching the minimum payout."
+      },
+      "pricingStrategy": "No pricing control; push higher-rate categories (fashion, beauty) and Black Friday/anniversary sales.",
+      "profitPath": [
+        "Month 0: register, start a deals group (cost $0)",
+        "Month 1-2: daily posts; expect $0-10",
+        "Month 3-6: grow group; expect $10-40/month",
+        "Month 6-12: sale events; median ~$30/month"
+      ],
+      "sources": [
+        "https://tech-ish.com/2020/11/02/jumia-affiliate-kol-program/",
+        "https://www.hovatek.com/blog/jumia-affiliate-vs-konga-affiliate-program/"
+      ]
+    }
+  },
+  {
+    "id": "mercado-livre-afiliados",
+    "name": "Mercado Livre / Mercado Libre affiliate program (LatAm marketplace)",
+    "category": "affiliate",
+    "summary": "Share Mercado Livre/Libre product links and earn commission credited to a Mercado Pago account that withdraws to a local bank.",
+    "howItWorks": "Mercado Libre runs a creator/affiliate program (the 'Programa de Afiliados' footer link on mercadolivre.com.br) for its huge LatAm marketplace. Affiliates generate links in-app or via the portal and post deals, reviews and comparison content. Commissions are category-based. Mercado Pago, the group's wallet, makes local bank cash-out straightforward.",
+    "platforms": ["Mercado Livre Afiliados", "Mercado Pago"],
+    "payout": {
+      "methods": ["Mercado Pago -> local bank"],
+      "minimumPayout": "R$30 (balance rolls over until reached)",
+      "frequency": "monthly cycle, paid 2 months after the R$30 minimum is passed",
+      "typicalDelayDays": 75,
+      "notes": "Mercado Livre help (read in a browser Nov 2026): earnings are credited to your Mercado Pago account 2 months after your balance passes the R$30 minimum; below that it rolls over (example: R$35 accumulated over January and February is paid in May). Commission counts for direct and indirect sales within 24 hours of the click, only on approved sales; cancelled, returned or fraudulent orders earn nothing. Earlier third-party claims of an R$80 minimum with three distinct buyers are not on the official pages. 2026 third-party guides also report category rates up to ~16%, 18+ with CPF/CNPJ and active Mercado Livre and Mercado Pago accounts, and no links on home, search, category or daily-deal pages (not re-checked; the afiliados landing page requires login)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 1000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 2,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 6
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; disclose advertising per Brazilian CONAR and Mexican PROFECO rules.",
+      "complianceRequirements": [
+        "Mercado Pago KYC (CPF/RFC etc.)",
+        "tax reporting",
+        "ad disclosure"
+      ]
+    },
+    "availability": {
+      "notes": "Confirmed in Brazil (Canaltech launch report) and Mexico (a Mercado Libre press-release PDF titled 'Programa Afiliados - MEX'). Argentina, Colombia and Chile are unverified, so treat it as 2–5 of 50 reference countries."
+    },
+    "automationPlan": [
+      "deal posts with AI captions",
+      "comparison pages generated from catalog data",
+      "sub-ID tracking"
+    ],
+    "manualSteps": ["registration and KYC", "audience building"],
+    "fullCycle": [
+      "Join program",
+      "Generate links",
+      "Publish",
+      "Commission to Mercado Pago",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "unverified terms",
+      "rule changes",
+      "low commissions on electronics"
+    ],
+    "evidence": "The program is linked from Mercado Livre's own site footer. Rates and payout rules are unverified.",
+    "sources": [
+      "https://www.mercadolivre.com.br/l/afiliados-home",
+      "https://www.mercadolivre.com.br/ajuda/33544",
+      "https://canaltech.com.br/internet/mercado-livre-lanca-programa-de-afiliados-para-criadores-de-conteudo-261989/",
+      "https://www.mercadolivre.com.br/ajuda/32116",
+      "https://www.mercadolivre.com.br/ajuda/como-ganar-comisiones-afiliados_45554"
+    ],
+    "tags": ["affiliate", "latam", "global-south"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Mercado Livre affiliate portal/app link generator",
+          "Instagram/TikTok/WhatsApp/YouTube",
+          "CapCut free"
+        ],
+        "skills": [
+          "product reviews or deal posts in Portuguese/Spanish",
+          "content consistency"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": [
+          "Mercado Livre + Mercado Pago accounts (18+, CPF/CNPJ)",
+          "affiliate programme approval"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 100 attributed orders",
+        "typicalPriceUsd": {
+          "low": 60,
+          "median": 160,
+          "high": 400
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "Estimate: third-party reported category rates up to ~16% (often 4-8%) on ~R$100-200 orders give ~$0.60-4 per order; official rates could not be fetched."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Unverified R$80 minimum with three distinct buyers plus a 45-60 day credit lag."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 900
+        },
+        "notes": "Mercado Livre opened its affiliate programme to creators in 2024-2025 and is still expanding it, so earnings go to Brazilian and Mexican creators with review or deal audiences. Competition from Shopee and TikTok Shop affiliates is intense. Failure: not reaching the minimum and three-buyer rule."
+      },
+      "pricingStrategy": "No pricing control; focus on higher-ticket categories (electronics accessories, home) where per-order commission is meaningful.",
+      "profitPath": [
+        "Month 0: join, set up one content channel (cost $0)",
+        "Month 1-2: daily deal/review posts; expect R$0-80",
+        "Month 3-6: grow audience; expect $15-60/month",
+        "Month 6-12: Black Friday/Hot Sale spikes; median ~$40/month"
+      ],
+      "sources": [
+        "https://www.mercadolivre.com.br/l/afiliados-home",
+        "https://canaltech.com.br/internet/mercado-livre-lanca-programa-de-afiliados-para-criadores-de-conteudo-261989/"
+      ]
+    }
+  },
+  {
+    "id": "esl-company-tutoring",
+    "name": "Fixed-rate online English teaching for Asian ESL companies (Engoo, 51Talk, NativeCamp)",
+    "category": "education",
+    "summary": "Teach scripted one-to-one English lessons to Japanese, Korean, Chinese and other Asian learners for companies that recruit non-native tutors worldwide.",
+    "howItWorks": "Unlike open marketplaces, these companies supply students, lesson materials and booking; you set availability and get paid per completed lesson or per-lesson coin rate. Engoo recruits tutors in 70+ countries including Nigeria, Kenya, Zimbabwe, the Philippines, Bangladesh and Latin America. Filipino tutors dominate 51Talk and NativeCamp. Pay is modest but steady, and acceptance is far easier than at native-only platforms.",
+    "platforms": ["Engoo", "51Talk", "NativeCamp"],
+    "payout": {
+      "methods": [
+        "Payoneer -> local bank (Engoo, new tutors)",
+        "PayPal (older Engoo tutors)",
+        "company-specific bank/e-wallet (51Talk, NativeCamp)"
+      ],
+      "minimumPayout": "Engoo: Payoneer requires a USD 20 minimum transfer (reported); others unpublished",
+      "frequency": "monthly (Engoo on the 20th, per job postings); others unverified",
+      "typicalDelayDays": 20,
+      "notes": "NativeCamp's tutor portal shows 430 NCC per booked class and 192 NCC per 25-minute instant lesson, plus a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks; it says applications from some countries are paused. NativeCamp's tutor FAQ (read in a browser Nov 2026) says pay depends on your tutor rank, shown only after you sign the contract, and the payment method is set by country and told to you once hired. 51Talk's public teacher FAQ says per-lesson rates rise with its Teacher Leveling System but gives no amounts; its fee and remittance pages are on a login-only Teacher Guide portal. Engoo pays per 25-minute lesson at nationality-dependent rates; its tutor help center is login-only. Unconfirmed: Engoo's Payoneer payout, its USD 20 minimum and the 20th-of-month pay date, and 51Talk's and NativeCamp's payout method, minimum and schedule (all behind tutor logins)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 50,
+      "median": 200,
+      "high": 600
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 1,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 3,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; contractor (not employee) status in most countries; income taxable.",
+      "complianceRequirements": [
+        "tax reporting",
+        "contractor agreement",
+        "ID check"
+      ]
+    },
+    "availability": {
+      "notes": "Engoo lists tutors from ~100 nationalities incl. most African, Asian and LatAm reference countries; 51Talk/NativeCamp focus on the Philippines."
+    },
+    "automationPlan": [
+      "calendar automation for open slots",
+      "AI lesson-feedback note drafts (where allowed)"
+    ],
+    "manualSteps": [
+      "English test, training and demo lesson",
+      "live teaching (fully manual)",
+      "headset/webcam/stable internet"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Pass English and connection test",
+      "Training + demo",
+      "Open slots and teach",
+      "Periodic payout to bank/e-wallet"
+    ],
+    "risks": [
+      "low hourly pay",
+      "penalties for absences/disconnects",
+      "dependence on student demand"
+    ],
+    "evidence": "Engoo's tutor page lists requirements and a 5-step process; NativeCamp's tutor portal shows per-lesson NCC rates and incentives. paymentProbability lowered from 7 to 6 because hiring is screened and paused for some nationalities.",
+    "sources": [
+      "https://engoo.com/app/teach",
+      "https://engoo.com/tutors",
+      "https://51talk.ph/",
+      "https://nativecamp.net/teacher/",
+      "https://nativecamp.net/tutors/faq/45",
+      "https://nativecamp.net/tutors/faq/46",
+      "https://51talk.ph/faqs"
+    ],
+    "tags": [
+      "tutoring",
+      "esl",
+      "philippines",
+      "global-south",
+      "needs-verification"
+    ],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "company teaching portal (Engoo/51Talk/NativeCamp)",
+          "Zoom/Skype or built-in classroom"
+        ],
+        "skills": [
+          "clear spoken English",
+          "following a set lesson plan",
+          "patience with beginners"
+        ],
+        "equipment": [
+          "laptop with webcam",
+          "headset with mic (usually owned)",
+          "stable internet",
+          "quiet, plain background"
+        ],
+        "accounts": [
+          "tutor application + interview/demo lesson",
+          "Payoneer or company payout method"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour taught",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 2,
+        "grossMarginPercent": 98,
+        "hoursPerUnit": 1,
+        "notes": "Estimated: rates are nationality-dependent and mostly unpublished. NativeCamp's teacher page lists 192 NCC (~$4) per 25-minute on-demand lesson and 430 NCC (~$9) per booked class, likely its upper rates; Engoo/51Talk non-native rates are lower, so ~$3-10/hour with a $5 median. Fee is Payoneer/FX (~2%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Paid from the first teaching month once accepted."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 30,
+          "median": 150,
+          "high": 500
+        },
+        "notes": "Filipino and African tutors with lots of open slots earn steady but small income; acceptance is easier than at native-only platforms. AI conversation tutors (ChatGPT voice, Speak, Praktika) are eating low-end ESL demand and some companies have paused applications from certain countries. Failure: few bookings when new, or rates too low to justify hours."
+      },
+      "pricingStrategy": "Rates are fixed by the company; increase pay by opening peak-hour slots (Japan/Korea evenings), earning bonuses, and building repeat students.",
+      "profitPath": [
+        "Month 0: apply and pass demo lesson (cost $0)",
+        "Month 1-2: open 20-40 slots/week; expect $50-150",
+        "Month 3-6: repeat students and bonuses; expect $100-250/month",
+        "Month 6-12: steady; median ~$200/month"
+      ],
+      "sources": [
+        "https://engoo.com/app/teach",
+        "https://nativecamp.net/teacher/"
+      ]
+    }
+  },
+  {
+    "id": "cuemath-online-math-tutor",
+    "name": "Online math tutor for Cuemath (India-based tutors, global students)",
+    "category": "education",
+    "summary": "Graduates with strong school math teach Cuemath's curriculum online to K-10 students in 80+ countries; Cuemath supplies students and lessons.",
+    "howItWorks": "Cuemath recruits tutors (mostly in India) after a communication test, a math test, an interview and training. It matches students to your time slots and provides a ready curriculum and interactive platform, so you only teach. Evening/night slots for US, UK and Australian students pay best. The company says top tutors earn more than ₹1,00,000 a month.",
+    "platforms": ["Cuemath"],
+    "payout": {
+      "methods": ["bank transfer -> Indian bank account (presumed)"],
+      "minimumPayout": "Unverified",
+      "frequency": "monthly (unverified)",
+      "typicalDelayDays": 30,
+      "notes": "Cuemath's recruiting pages (checked Nov 2026) publish no per-class rate, payout method or schedule, only 'transparent payouts' and top earnings above ₹1,00,000 a month; joining is free with no deposits or set-up fees. Its tutor-application site (tutorhiring.cuemath.com) and older teacher-jobs FAQ (a fee-share 'Teacher Partner' model, up to ₹40K a month) also give no payout terms (read in a browser Nov 2026). Unconfirmed: per-class rate, payout method, schedule and minimum payout."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 75
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 100,
+      "median": 300,
+      "high": 1200
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 1,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 4,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 2
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; contractor income is taxable (Indian TDS may apply).",
+      "complianceRequirements": [
+        "graduate degree",
+        "PAN/tax reporting",
+        "contractor agreement"
+      ]
+    },
+    "availability": {
+      "notes": "Earnings and FAQs are in rupees for tutors in India; hiring outside India is not stated, so treat it as India-only (1 of 50 reference countries)."
+    },
+    "automationPlan": [
+      "calendar/slot automation",
+      "AI-generated practice-sheet drafts for review"
+    ],
+    "manualSteps": [
+      "tests, interview, training",
+      "live teaching",
+      "stable internet + laptop"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Pass tests and interview",
+      "Complete training",
+      "Get matched and teach",
+      "Monthly bank payout"
+    ],
+    "risks": [
+      "night shifts for overseas time zones",
+      "rating-dependent student flow",
+      "unclear pay structure"
+    ],
+    "evidence": "Cuemath's recruiting page cites 4,000+ tutors, 200,000+ students in 80+ countries and top earnings above ₹1 lakh/month.",
+    "sources": [
+      "https://www.cuemath.com/teach-with-cuemath/",
+      "https://www.cuemath.com/become-a-tutor/"
+    ],
+    "tags": ["tutoring", "math", "india", "global-south", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Cuemath tutor platform and curriculum",
+          "video-call classroom (provided)"
+        ],
+        "skills": [
+          "strong school-level math",
+          "fluent English for US/UK/AU students",
+          "engaging young learners"
+        ],
+        "equipment": [
+          "laptop with webcam",
+          "stable broadband + power backup",
+          "headset; a pen tablet may be required (unverified)"
+        ],
+        "accounts": [
+          "Cuemath tutor onboarding (tests, interview, training)",
+          "Indian bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour taught",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 8
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Estimated: Cuemath's tutor pages publish no per-class or hourly rate, only that tutors can 'take home more than ₹1,00,000 a month'; ₹250-650/hour is inferred from that claim and typical Indian online tutoring rates."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings. Onboarding takes 2-6 weeks before the first paid class."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 60,
+          "median": 250,
+          "high": 1000
+        },
+        "notes": "Cuemath supplies students and curriculum, so accepted tutors with evening/night availability for US/UK/AU time zones get steady classes. AI math tutors add price pressure on the parent side, but live tutors for young children still sell. Failure: failing onboarding tests or having few slots in peak hours."
+      },
+      "pricingStrategy": "Pay is set by Cuemath; raise earnings by offering late-night slots, retaining students long term, and qualifying for higher grade levels.",
+      "profitPath": [
+        "Month 0: apply, pass tests and training (cost $0)",
+        "Month 1-2: first students; expect $50-150",
+        "Month 3-6: fuller schedule; expect $150-400/month",
+        "Month 6-12: retained students; median ~$300/month"
+      ],
+      "sources": [
+        "https://www.cuemath.com/teach-with-cuemath/",
+        "https://www.cuemath.com/become-a-tutor/"
+      ]
+    }
+  }
+]

@@ -4,3 +4,11 @@ dist
 *.min.js
 package-lock.json
 .eslintcache
+
+# Generated files (rebuilt by npm run build:catalog)
+docs/business-plans/
+data/strategies.json
+website/strategies.json
+website/plans/
+website/docs/
+docs/legal/incorporation-costs.md

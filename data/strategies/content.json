@@ -1,0 +1,2188 @@
+[
+  {
+    "id": "youtube-partner-program-ai-assisted",
+    "name": "YouTube Partner Program with an AI-assisted (faceless) channel",
+    "category": "content",
+    "summary": "Earn a share of ad and YouTube Premium revenue on long-form videos and Shorts from an original, AI-assisted channel.",
+    "howItWorks": "You run a niche channel (explainers, tutorials, data stories) where AI helps with research, scripts, voiceover and editing but each video adds original value. After 1,000 subscribers plus 4,000 qualified long-form watch hours in 365 days (or 10M Shorts views in 90 days) you apply to YPP. Advertisers pay Google; creators get 55% of long-form ad revenue and 45% of the Shorts pool share. Since July 2025 the 'inauthentic content' policy demonetizes mass-produced, template or repetitive videos, so volume farming fails.",
+    "platforms": ["YouTube", "Google AdSense"],
+    "payout": {
+      "methods": ["AdSense -> bank transfer (EFT/wire)"],
+      "minimumPayout": "$100 AdSense threshold",
+      "frequency": "monthly",
+      "typicalDelayDays": 25,
+      "notes": "AdSense pays between the 21st and 26th of the month if the balance on the 20th meets the $100 threshold (official AdSense help)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Content creation and ad revenue are legal throughout the reference set; income taxable; US tax info (W-8BEN) required for non-US.",
+      "complianceRequirements": [
+        "AdSense KYC + tax forms",
+        "Altered/synthetic content disclosure for realistic AI media",
+        "Copyright/Content ID compliance"
+      ]
+    },
+    "availability": {
+      "notes": "YPP available in 100+ countries covering most of the reference list; a few (e.g. some in Africa/Central Asia) lack YPP."
+    },
+    "automationPlan": [
+      "LLM topic research + script drafting",
+      "TTS/voice clone of own voice, AI B-roll, auto-captions",
+      "Scripted upload/scheduling via YouTube Data API",
+      "Analytics pulls to pick next topics"
+    ],
+    "manualSteps": [
+      "Create Google/AdSense account and verify identity/address (PIN)",
+      "Human review of every script for originality and accuracy",
+      "YPP application review"
+    ],
+    "fullCycle": [
+      "Pick niche",
+      "Produce 50-150 original videos",
+      "Reach YPP threshold",
+      "Apply + link AdSense",
+      "Earn ad share",
+      "AdSense pays to bank"
+    ],
+    "risks": [
+      "Demonetization under inauthentic/reused content policy",
+      "Most channels never reach threshold",
+      "Algorithm volatility, low RPM niches"
+    ],
+    "evidence": "YouTube reports paying creators, artists and media companies over $70B in the 3 years to 2023; coverage of the July 2025 policy confirms AI-assisted channels remain eligible if original.",
+    "sources": [
+      "https://support.google.com/adsense/answer/7164703",
+      "https://metricool.com/youtube-ai-content-rules-monetization/",
+      "https://ppc.land/youtube-clarifies-inauthentic-content-policy-changes/",
+      "https://support.google.com/youtube/answer/72857"
+    ],
+    "tags": ["video", "ad-revenue", "ai-assisted", "long-tail"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "YouTube Studio",
+          "DaVinci Resolve or CapCut (free)",
+          "LLM free tier for research/scripts",
+          "TTS free tier or own voice",
+          "Canva free for thumbnails"
+        ],
+        "skills": [
+          "niche and keyword research",
+          "scripting and fact-checking (AI drafts, human verifies)",
+          "basic video editing",
+          "thumbnail/title testing"
+        ],
+        "equipment": ["laptop", "USB microphone optional (~$50)"],
+        "accounts": [
+          "Google account + YouTube channel",
+          "AdSense with address PIN + tax info (W-8BEN for non-US)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 monetized long-form views (gross ad revenue before YouTube's share)",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 6,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 45,
+        "grossMarginPercent": 55,
+        "hoursPerUnit": 0.5,
+        "notes": "Gross CPM-style revenue per 1,000 monetized views; creator keeps 55% on long-form, so median creator RPM is ~$3. Finance/software niches sit at the high end, entertainment and non-Tier-1 audiences at the low end (estimate from public creator RPM reports). The 55% long-form share is not stated on the fetched YouTube help pages; treat as estimated."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. The binding constraint is the YPP threshold (1,000 subs + 4,000 watch hours) plus the $100 AdSense minimum, typically 6-12 months for channels that make it."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 3000
+        },
+        "notes": "Winners are channels with a clear expert angle and strong packaging that publish consistently for a year or more. AI made production cheap, so supply exploded, and the July 2025 inauthentic-content policy demonetizes templated faceless output. Most channels never reach YPP; those that do often earn under $50/month until a breakout video."
+      },
+      "pricingStrategy": "Ad rates are set by advertisers; pick high-CPM topics (software, finance, B2B tools) and 8+ minute videos for mid-rolls. Once past 10k subscribers, add sponsor slots priced at ~$15-30 per 1,000 expected views and affiliate links.",
+      "profitPath": [
+        "Month 0: pick a niche with search demand, set up channel and templates (cost $0)",
+        "Month 1-3: publish 2 original videos/week (~25 videos), expected $0",
+        "Month 4-8: double down on topics with highest click-through and retention; reach YPP if traction exists, first AdSense payout ~$100",
+        "Month 9-12: add affiliate links and a first sponsor; typical successful channel $50-300/month"
+      ],
+      "sources": [
+        "https://support.google.com/youtube/answer/72857",
+        "https://support.google.com/adsense/answer/7164703",
+        "https://ppc.land/youtube-clarifies-inauthentic-content-policy-changes/"
+      ]
+    }
+  },
+  {
+    "id": "tiktok-creator-rewards",
+    "name": "TikTok Creator Rewards Program (1-minute+ videos)",
+    "category": "content",
+    "summary": "Get paid per qualified view on original TikTok videos longer than one minute.",
+    "howItWorks": "Creators 18+ with 10,000 followers and 100,000 views in the last 30 days, in an eligible country, join Creator Rewards. TikTok pays from its own program budget for 'qualified views' on original videos over 60 seconds; RPM depends on originality, watch time, search value and engagement. AI-generated content must carry TikTok's AI label, and unoriginal/reposted content earns nothing.",
+    "platforms": ["TikTok"],
+    "payout": {
+      "methods": ["TikTok balance -> bank transfer", "PayPal"],
+      "minimumPayout": "$10 withdrawal minimum (in-app)",
+      "frequency": "on request (monthly earnings)",
+      "typicalDelayDays": 30,
+      "notes": "Estimated rewards settle about a month after the view month; withdrawals usually take a few days."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 16
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the set; TikTok itself is blocked/banned in some countries (not in this reference list's majority), which is availability rather than illegality.",
+      "complianceRequirements": [
+        "Age 18+ (19+ in South Korea)",
+        "AIGC label on AI-generated content",
+        "Tax info"
+      ]
+    },
+    "availability": {
+      "notes": "Most-cited list (reported as quoting TikTok's program page): US, UK, DE, FR, JP, KR, BR, MX = 8 of ~50 reference countries (16%). TikTok's official page is JS-only and could not be fetched, so the exact list is unverified; check TikTok Studio > Creator Rewards."
+    },
+    "automationPlan": [
+      "AI scripting + editing pipelines for 60-90s videos",
+      "Scheduled posting via TikTok Content Posting API / approved schedulers",
+      "Trend + retention analytics"
+    ],
+    "manualSteps": [
+      "Account in eligible country with real identity",
+      "On-camera or voice work usually needed for retention",
+      "Payout method verification"
+    ],
+    "fullCycle": [
+      "Join TikTok in eligible country",
+      "Grow to 10k followers / 100k views",
+      "Enroll in Creator Rewards",
+      "Post 1min+ originals",
+      "Withdraw to bank/PayPal"
+    ],
+    "risks": [
+      "Narrow country list",
+      "RPM volatility",
+      "Possible US regulatory disruption",
+      "Reused-content penalties"
+    ],
+    "evidence": "TikTok's Creator Rewards replaced the Creator Fund in 2024 with higher per-view rates; multiple 2026 guides document payouts and eligibility.",
+    "sources": [
+      "https://www.makeinfluence.com/en/academy/tiktok-creator-rewards-program-how-organic-monetization-works-in-2026",
+      "https://ttcalculator.net/data/reference/creator-fund-countries/",
+      "https://www.tiktok.com/creators/creator-portal/en-us/"
+    ],
+    "tags": ["short-video", "views-based", "country-limited"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "TikTok app/Studio",
+          "CapCut (free)",
+          "LLM free tier for hooks/scripts"
+        ],
+        "skills": [
+          "hook writing",
+          "short-form editing",
+          "on-camera or voiceover delivery",
+          "trend research"
+        ],
+        "equipment": ["smartphone", "ring light optional"],
+        "accounts": [
+          "TikTok account (18+, eligible country)",
+          "TikTok balance payout to bank or PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 qualified views (Creator Rewards RPM paid by TikTok)",
+        "typicalPriceUsd": {
+          "low": 0,
+          "median": 1,
+          "high": 1
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.3,
+        "notes": "Creators report roughly $0.40-$1.00 per 1,000 qualified views for 60s+ original videos (rounded to integers here: low $0, median/high $1); only views from eligible regions and 5s+ watch count (estimate from creator reports, not an official rate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 7,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. Requires 10,000 followers and 100,000 views in 30 days before any earnings; typical successful accounts take 4-9 months."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 4,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 2000
+        },
+        "notes": "Payouts concentrate among accounts doing search-friendly, 60s+ educational or storytelling videos. Program is only open in a minority of reference countries (~16% platform availability). RPMs have drifted down as more creators qualify, and AI-labelled or reposted content earns little; most starters never hit the 10k-follower bar."
+      },
+      "pricingStrategy": "TikTok sets the RPM; raise it by making 60-90s search-targeted videos with high completion. Use reach to sell brand deals (TikTok One) and affiliate products, which usually pay more than Creator Rewards.",
+      "profitPath": [
+        "Month 0: define niche and 20 video formats (cost $0)",
+        "Month 1-3: post daily, iterate on hooks; aim for 10k followers, expected $0",
+        "Month 4-6: join Creator Rewards if eligible; first $10+ withdrawals",
+        "Month 6-12: shift to 60s+ search videos and add brand/affiliate income"
+      ],
+      "sources": [
+        "https://www.tiktok.com/creators/creator-portal/en-us/",
+        "https://www.makeinfluence.com/en/academy/tiktok-creator-rewards-program-how-organic-monetization-works-in-2026",
+        "https://ttcalculator.net/data/reference/creator-fund-countries/"
+      ]
+    }
+  },
+  {
+    "id": "meta-facebook-instagram-content-monetization",
+    "name": "Facebook Content Monetization + Instagram creator payouts",
+    "category": "content",
+    "summary": "Earn from Reels, long video, photos and text posts on Facebook (plus Stars/subscriptions) and Instagram gifts/subscriptions/bonuses.",
+    "howItWorks": "Meta merged in-stream ads, ads on Reels and Performance bonus into a single Facebook Content Monetization program. A professional-mode profile or Page posting original content is invited (Meta's help page says the program is currently invitation-only; you can register interest in the Monetization tab), and earns a share of ad revenue plus bonuses by engagement. Instagram pays via Gifts on Reels, Subscriptions and invite-only bonuses. Meta's 2025 crackdown on 'unoriginal content' removes reach and monetization from reposted/aggregated material, so content must be your own.",
+    "platforms": ["Facebook", "Instagram", "Meta Business Suite"],
+    "payout": {
+      "methods": ["Meta payouts -> bank transfer", "PayPal (some countries)"],
+      "minimumPayout": "$100 (Meta payout threshold)",
+      "frequency": "monthly",
+      "typicalDelayDays": 30,
+      "notes": "Paid around the 21st of the following month once >= $100; the threshold/timing is not stated on Meta's content monetization help page and was not re-verified."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 25,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; ad income taxable.",
+      "complianceRequirements": [
+        "Partner Monetization Policies + Content Monetization Policies",
+        "Payout account + tax form",
+        "Label photorealistic AI content (Meta 'AI info')"
+      ]
+    },
+    "availability": {
+      "notes": "Meta publishes no single country list; coverage is broad in Americas/Europe/parts of Asia, partial in many African/South Asian markets. Check Business Suite > Monetization."
+    },
+    "automationPlan": [
+      "AI-assisted Reels/post creation",
+      "Cross-posting own original videos via Meta Graph API / Business Suite scheduling",
+      "Performance dashboards"
+    ],
+    "manualSteps": [
+      "Payout setup and identity verification",
+      "Original filming or creative direction",
+      "Appeals for policy flags"
+    ],
+    "fullCycle": [
+      "Switch to professional mode",
+      "Post original content consistently",
+      "Get invited/eligible",
+      "Earn",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Program changes frequently and is invite-gated",
+      "Unoriginal-content demotion",
+      "Low RPM outside tier-1 audiences"
+    ],
+    "evidence": "Meta reports paying creators billions per year across Facebook/Instagram; 2025-26 guides document the merged Content Monetization program and payouts.",
+    "sources": [
+      "https://creators.facebook.com/tools/facebook-content-monetization/",
+      "https://socialbee.com/blog/monetize-facebook-reels/",
+      "https://www.makeinfluence.com/en/academy/facebooks-creator-fast-track-and-content-monetization-a-new-channel-for-brand-and-influencer-marketing",
+      "https://www.facebook.com/business/help/1348682518563619"
+    ],
+    "tags": ["social", "ad-revenue", "short-video"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Meta Business Suite",
+          "Edits/CapCut (free)",
+          "LLM free tier for captions"
+        ],
+        "skills": [
+          "short-form video production",
+          "original photography or commentary",
+          "community engagement"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": [
+          "Facebook professional-mode profile or Page",
+          "Instagram professional account",
+          "Meta payout account (bank/PayPal) + tax info"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 views on monetized Reels/videos (payout to creator)",
+        "typicalPriceUsd": {
+          "low": 0,
+          "median": 1,
+          "high": 3
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.3,
+        "notes": "Meta does not publish rates; creators report from a few cents to ~$3 per 1,000 views depending on country and ad inventory (estimate; rounded to integers). Rate is already net of Meta's share."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. The program is invitation-only and pays once the balance reaches the $100 threshold (threshold not re-verified)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 2500
+        },
+        "notes": "Pages with original, consistently posted video in large-audience niches (humor, food, local news, how-to) are the ones invited. Meta's 2025 unoriginal-content crackdown removed reposting farms, and invitation-only access means many diligent creators never get in. Instagram payouts are mostly Gifts, Subscriptions and invite-only bonuses."
+      },
+      "pricingStrategy": "No price setting for ad share; once invited, add Facebook/Instagram Subscriptions at $2.99-$4.99/month for exclusive content and sell brand posts at roughly $10 per 1,000 followers.",
+      "profitPath": [
+        "Month 0: switch to professional mode, register interest in Monetization tab (cost $0)",
+        "Month 1-3: post 5+ original Reels/week, expected $0",
+        "Month 4-8: if invited, enable monetization; first $100 payout",
+        "Month 9-12: add Subscriptions and brand deals; typical invited creator $20-200/month"
+      ],
+      "sources": [
+        "https://creators.facebook.com/tools/facebook-content-monetization/",
+        "https://socialbee.com/blog/monetize-facebook-reels/"
+      ]
+    }
+  },
+  {
+    "id": "x-original-content-rewards",
+    "name": "X (Twitter) Original Content Rewards",
+    "category": "content",
+    "summary": "Paid share of X revenue based on qualified impressions on your original posts (replaced Creator Revenue Sharing in Sept 2026).",
+    "howItWorks": "X retired Creator Revenue Sharing (new enrolments stopped 7 Aug 2026; last payout ~11 Sep 2026) and launched Original Content Rewards. You need an X Premium subscription and to meet thresholds (500+ verified followers, 500K+ Home Timeline impressions from verified users in the last 90 days excluding replies, 18+, eligible country, account in good standing). Pay is based on qualified impressions on original posts; cross-platform reposts and copied content are excluded, commentary must add value.",
+    "platforms": ["X"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank"],
+      "minimumPayout": "Not published for the new program",
+      "frequency": "every two weeks",
+      "typicalDelayDays": 20,
+      "notes": "Payments every two weeks while you stay eligible; first payouts for accepted applications 25 Sep 2026 (GIGAZINE, Aug 2026). Payment processor not stated in coverage; Stripe was used for the predecessor program. Official help page blocks automated fetching."
+    },
+    "capitalRequiredUsd": 96,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 15,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 45
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; X is blocked in a few countries outside/at the edge of the list, which is availability not illegality.",
+      "complianceRequirements": [
+        "Premium subscription (~$8/mo)",
+        "Stripe KYC",
+        "Must not use automation for engagement; posting via API must follow X automation rules"
+      ]
+    },
+    "availability": {
+      "notes": "Payouts likely require Stripe Connect support for your country (~45% of reference countries): Stripe paid the predecessor program, and the new program's processor is unconfirmed."
+    },
+    "automationPlan": [
+      "LLM drafting of threads/articles from your research",
+      "Scheduled posting via X API within automation rules",
+      "Impression analytics"
+    ],
+    "manualSteps": [
+      "Premium purchase + ID verification",
+      "Human-written original takes; replies don't count",
+      "Stripe onboarding"
+    ],
+    "fullCycle": [
+      "Buy Premium",
+      "Grow verified followers",
+      "Apply to Original Content Rewards",
+      "Post originals",
+      "Stripe payout"
+    ],
+    "risks": [
+      "Program is brand new; terms may shift",
+      "Requires paid subscription",
+      "Payouts concentrated among large accounts"
+    ],
+    "evidence": "X help center and Aug-Sep 2026 coverage (GIGAZINE, Influencer Marketing Hub, TNW) document the switch, the eligibility rules and biweekly payments; revenue-sharing payouts were widely reported 2023-26.",
+    "sources": [
+      "https://gigazine.net/gsc_news/en/20260808-x-original-content-rewards-program/",
+      "https://help.x.com/en/using-x/original-content-rewards",
+      "https://thenextweb.com/news/x-original-content-rewards-program-revenue-sharing-ends",
+      "https://engadget.com/2232981/x-replacing-revenue-sharing-with-original-content-rewards-program"
+    ],
+    "tags": ["social", "text", "subscription-required"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 96,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "X Premium (~$8/mo; budgeted as $96 for 12 months)",
+          "LLM free tier for drafting threads",
+          "scheduler (X native, free)"
+        ],
+        "skills": [
+          "writing punchy original posts/threads",
+          "niche expertise or commentary",
+          "daily engagement"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": [
+          "X account with Premium",
+          "Stripe Connect + KYC (country must be supported)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000,000 qualified Home Timeline impressions from verified users",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 8,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "New program rates are unpublished; estimate based on predecessor revenue-sharing reports of roughly $2-$20 per million verified impressions. Payout is already net. X Premium price (~$8/mo) is estimated: the X help pages are bot-blocked and could not be re-verified."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 8,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 16,
+        "notes": "Fixed cost = $96/yr Premium amortised to $8/month; break-even needs ~1M qualified impressions per month, plus the 500 verified followers / 500K impressions in 90 days eligibility bar. Startup recovery assumes ~$6/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 3,
+        "typicalNetProfitMonth12Usd": {
+          "low": -8,
+          "median": -3,
+          "high": 1500
+        },
+        "notes": "Payouts go mainly to large news, tech and commentary accounts with verified-user audiences. Revenue Sharing was replaced by Original Content Rewards in Aug-Sep 2026, so terms are new and may change; copied and cross-posted content is excluded. Most starters pay for Premium and never reach eligibility, which makes the median result a small loss."
+      },
+      "pricingStrategy": "X sets the rate; treat payouts as a bonus and monetize reach through X Subscriptions ($3-$5/month), sponsored posts and a newsletter funnel.",
+      "profitPath": [
+        "Month 0: buy Premium, set profile and niche (cost $8-96)",
+        "Month 1-3: post 3-5 original posts/day plus replies to grow verified followers, expected $0",
+        "Month 4-6: reach 500K verified impressions in 90 days, apply; first biweekly payout",
+        "Month 6-12: add Subscriptions and sponsor posts; cancel Premium if still ineligible"
+      ],
+      "sources": [
+        "https://help.x.com/en/using-x/original-content-rewards",
+        "https://thenextweb.com/news/x-original-content-rewards-program-revenue-sharing-ends",
+        "https://gigazine.net/gsc_news/en/20260808-x-original-content-rewards-program/"
+      ]
+    }
+  },
+  {
+    "id": "medium-partner-program",
+    "name": "Medium Partner Program (paywalled articles)",
+    "category": "content",
+    "summary": "Earn from Medium members' reading time and engagement on your paywalled stories.",
+    "howItWorks": "You write long-form articles in a niche, put them behind Medium's metered paywall, and get paid from a pool funded by member subscriptions based on member reading time, claps, highlights and follows. Distribution in Medium publications and boosts raise earnings. Medium's policy bars fully AI-generated writing from the paywall; AI may assist but must be disclosed, so this is AI-assisted rather than AI-written.",
+    "platforms": ["Medium"],
+    "payout": {
+      "methods": ["Stripe -> bank"],
+      "minimumPayout": "$10",
+      "frequency": "monthly",
+      "typicalDelayDays": 10,
+      "notes": "Paid via Stripe around the 8th of the next month. $10 minimum and the paid-membership requirement to enroll (since 2023, ~$5/mo) could not be re-verified on Medium's help center."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 15,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 2,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 74
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the set.",
+      "complianceRequirements": [
+        "Bank account and tax residence in a supported country",
+        "Stripe KYC",
+        "AI-generated text disclosure; no fully AI stories behind paywall"
+      ]
+    },
+    "availability": {
+      "notes": "Medium expanded MPP to 119 countries in Aug 2024 (list reproduced by ILLUMINATION from Medium's announcement; help center blocks automated fetching). Of the reference set, 37/50 are listed; missing: Iceland, Georgia, Brazil, Ukraine, Zambia, Lebanon, Malawi, Uganda, Zimbabwe, Kyrgyzstan, Libya, Iraq, Nepal."
+    },
+    "automationPlan": [
+      "AI research/outline/edit assistance",
+      "Cross-post own blog via import tool",
+      "Track earnings per story to steer topics"
+    ],
+    "manualSteps": [
+      "Human authorship of each article",
+      "Stripe identity verification",
+      "Pitching to publications"
+    ],
+    "fullCycle": [
+      "Join MPP",
+      "Publish paywalled stories",
+      "Get member reads",
+      "Earn",
+      "Stripe payout to bank"
+    ],
+    "risks": [
+      "Most writers earn under $10/month",
+      "Policy enforcement against AI-written text",
+      "Pool-based pay fluctuates"
+    ],
+    "evidence": "Medium's help center has documented the $10 minimum and Stripe payouts (not re-verified in 2026: it blocks automated fetching); many writers publish monthly earnings reports.",
+    "sources": [
+      "https://help.medium.com/hc/en-us/articles/25267297935895",
+      "https://help.medium.com/hc/en-us/articles/39121627791639-Medium-Partner-Program-eligibility",
+      "https://illumination.substack.com/p/wonderful-news-for-the-community"
+    ],
+    "tags": ["writing", "pool-based", "low-barrier"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 5,
+        "tools": [
+          "Medium editor",
+          "LLM for outlining/editing (disclosed; no AI-written paywalled text)",
+          "Grammarly or LanguageTool free"
+        ],
+        "skills": [
+          "long-form writing in a niche",
+          "headline writing",
+          "pitching to Medium publications"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Medium account + paid membership (~$5/mo, requirement not re-verified)",
+          "Stripe Express + bank in supported country"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per paywalled article (lifetime earnings)",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 100
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 3,
+        "notes": "Pool-based pay from member reading time; most articles earn $0.50-$5 total, a boosted article can make $50-$500 (estimate from public writer earnings reports)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 5,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost is the ~$5/month membership; break-even = ~2 articles' lifetime earnings per month, usually reached after 2-4 months of steady publishing and publication acceptance. Fixed cost is the Medium membership (~$5/mo, estimated: Medium help/pricing pages are bot-blocked and could not be re-verified)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": -5,
+          "median": 5,
+          "high": 1000
+        },
+        "notes": "Earnings go to writers who get Boosted and publish in big publications in niches like tech, productivity and personal essays. The pool is shared by ever more writers, AI-written text is barred from the paywall, and many writers report under $10/month. It is a low-risk way to build a portfolio more than an income source."
+      },
+      "pricingStrategy": "Price is set by the pool; maximize member reading time with 5-8 minute articles, submit to top publications for Boost eligibility, and funnel readers to your own newsletter or products.",
+      "profitPath": [
+        "Month 0: join MPP, write 3 articles, submit to publications (cost $5)",
+        "Month 1-2: publish 2-3 articles/week, expected $2-$15",
+        "Month 3-6: double down on topics that got Boosted; $10-$50/month",
+        "Month 6-12: use Medium as funnel to a newsletter/product; most writers stay under $100/month"
+      ],
+      "sources": [
+        "https://help.medium.com/hc/en-us/articles/25267297935895",
+        "https://help.medium.com/hc/en-us/articles/39121627791639-Medium-Partner-Program-eligibility"
+      ]
+    }
+  },
+  {
+    "id": "paid-newsletter-subscriptions",
+    "name": "Paid newsletter subscriptions (Substack / beehiiv / Ghost)",
+    "category": "content",
+    "summary": "Readers pay a monthly/annual subscription for a niche newsletter on Substack (10% cut) or beehiiv/Ghost (0% cut), billed through Stripe.",
+    "howItWorks": "You publish a free newsletter to build a list, then gate premium issues (deep dives, data, research digests) behind a paid tier. Readers pay by card via Stripe; Substack keeps 10% plus Stripe fees, beehiiv and Ghost take 0% platform cut on paid subs (you pay the plan). AI can help aggregate sources, summarize and draft, but paying readers expect a distinct editorial voice and accuracy.",
+    "platforms": ["Substack", "beehiiv", "Ghost"],
+    "payout": {
+      "methods": ["Stripe -> bank"],
+      "minimumPayout": "Stripe default (no platform minimum)",
+      "frequency": "rolling (Stripe ~2-7 day payouts)",
+      "typicalDelayDays": 7,
+      "notes": "Subscriber charges settle to your Stripe balance and pay out automatically."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 8,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 40
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; may need to charge VAT/GST to EU/UK/AU readers.",
+      "complianceRequirements": [
+        "Stripe KYC",
+        "VAT/GST/sales tax on digital subscriptions where applicable",
+        "Email anti-spam law (double opt-in, unsubscribe)"
+      ]
+    },
+    "availability": {
+      "notes": "Paid subs require a Stripe-supported country (~46 countries); Substack lists exceptions (India, Brazil, Indonesia, Mexico, Malaysia, Thailand) with special handling."
+    },
+    "automationPlan": [
+      "Automated source monitoring + AI summaries for drafts",
+      "Scheduled sends, welcome sequences, paywall rules",
+      "Referral program automation"
+    ],
+    "manualSteps": [
+      "Editorial review of every issue",
+      "Stripe onboarding",
+      "Audience growth outreach"
+    ],
+    "fullCycle": [
+      "Pick niche",
+      "Launch free list",
+      "Add paid tier",
+      "Convert 2-5% of list",
+      "Stripe payout to bank"
+    ],
+    "risks": [
+      "Slow list growth",
+      "Churn",
+      "Stripe not available in many reference countries"
+    ],
+    "evidence": "Substack reported 5M+ paid subscriptions in 2025; many solo writers disclose $1k-$100k/month.",
+    "sources": [
+      "https://on.substack.com/p/internationalization",
+      "https://support.substack.com/hc/en-us/articles/34520598069396-How-do-I-connect-to-Stripe-on-the-Substack-app-to-start-receiving-payments",
+      "https://picktheplatform.pages.dev/platforms/substack"
+    ],
+    "tags": ["newsletter", "recurring", "subscription"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Substack (free; 10% of paid revenue) or beehiiv/Ghost (paid plans, 0% cut)",
+          "LLM for source digests and drafting",
+          "Stripe"
+        ],
+        "skills": [
+          "consistent editorial writing",
+          "niche expertise or original research",
+          "audience growth (cross-posting, recommendations)"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Substack/beehiiv/Ghost account",
+          "Stripe account + KYC in supported country"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per paid subscriber-month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 8,
+          "high": 15
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 17,
+        "grossMarginPercent": 83,
+        "hoursPerUnit": 0.2,
+        "notes": "Substack minimum is $5/mo; $8/mo or ~$80/yr is common. Fee = Substack 10% + Stripe ~2.9% + $0.30 (~7% at $8) folded into one percentage. Substack fee and minimum price are estimated (Substack help pages are bot-blocked)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. First paid subscribers usually appear after a free list of ~500-1,000; converting 2-5% of free readers is typical."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 8000
+        },
+        "notes": "Winners are experts and journalists with a defined niche and a weekly cadence; Substack's network recommendations and Notes now drive much of discovery. AI makes curation cheap, so generic summaries do not convert; paying readers want a voice and proprietary analysis. Common failure: launching paid before having 1,000 engaged free readers."
+      },
+      "pricingStrategy": "Launch at $5-8/month with a founding-member tier ($100+/yr) for early supporters; raise prices for new subscribers once churn is under 5%/month and add an annual discount.",
+      "profitPath": [
+        "Month 0: launch free newsletter, import contacts, set weekly schedule (cost $0)",
+        "Month 1-3: grow to ~500 free subscribers via cross-posting and recommendations, expected $0",
+        "Month 4-6: open paid tier; 10-20 paid subscribers ($70-$130/month net)",
+        "Month 6-12: add premium archive, annual plans, and swaps with peer newsletters"
+      ],
+      "sources": [
+        "https://support.substack.com/hc/en-us/articles/34520598069396-How-do-I-connect-to-Stripe-on-the-Substack-app-to-start-receiving-payments",
+        "https://on.substack.com/p/internationalization",
+        "https://picktheplatform.pages.dev/platforms/substack"
+      ]
+    }
+  },
+  {
+    "id": "newsletter-ad-network-boosts",
+    "name": "Newsletter ad network + Boosts (beehiiv Ad Network)",
+    "category": "content",
+    "summary": "Monetize a free newsletter with platform-sourced sponsors (paid per unique open or click, as each advertiser sets) and paid subscriber referrals.",
+    "howItWorks": "On a paid beehiiv plan (Lite from $49/mo billed annually, $59 monthly; Ad Network 'not in trial; not in all regions') you are offered sponsor campaigns each billing cycle; you place the ad and get paid per unique open (CPM) or unique click (CPC), as set by each advertiser. Boosts pay you a fee per subscriber you recommend to other newsletters. Payers are advertisers and other publishers, distinct from reader subscriptions. Content can be AI-assisted curation, but advertisers drop low-engagement lists.",
+    "platforms": ["beehiiv Ad Network", "beehiiv Boosts"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank"],
+      "minimumPayout": "No published minimum",
+      "frequency": "monthly",
+      "typicalDelayDays": 25,
+      "notes": "Paid on the 20th of each month for the prior month's ad units into your beehiiv Wallet; you withdraw manually to bank via Stripe Express (no PayPal/Wise). No minimum stated."
+    },
+    "capitalRequiredUsd": 300,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 40
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; must label sponsored content.",
+      "complianceRequirements": [
+        "Ad disclosure (FTC/ASA)",
+        "Email consent laws (CAN-SPAM, GDPR)",
+        "Stripe KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Payouts only via Stripe Express in Stripe-supported countries; beehiiv says the Ad Network is not available in all regions."
+    },
+    "automationPlan": [
+      "AI curation of daily/weekly digest",
+      "Auto-accept/auto-insert ad network campaigns",
+      "Boosts on autopilot",
+      "Growth via referral program"
+    ],
+    "manualSteps": [
+      "Pay for a paid plan (Lite or above)",
+      "Editorial QA",
+      "Stripe onboarding"
+    ],
+    "fullCycle": [
+      "Start newsletter on beehiiv",
+      "Grow engaged list",
+      "Upgrade to a paid plan",
+      "Run network ads + Boosts",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Plan cost before earnings",
+      "Clicks require real engaged readers",
+      "Advertiser demand fluctuates"
+    ],
+    "evidence": "beehiiv states creators have earned $37M+ from its ad network and guarantees eligible publishers at least one ad opportunity per cycle.",
+    "sources": [
+      "https://www.beehiiv.com/pricing",
+      "https://www.beehiiv.com/support/article/17507491038231-Ad-Network-FAQ",
+      "https://www.beehiiv.com/ad-network-offer",
+      "https://product.beehiiv.com/p/beehiiv-ad-network"
+    ],
+    "tags": ["newsletter", "sponsorship", "high-automation"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 300,
+        "recurringMonthlyUsd": 49,
+        "tools": [
+          "beehiiv paid plan (Lite/Scale from $49/mo annual, $59 monthly)",
+          "LLM for curation/drafting",
+          "beehiiv Ad Network and Boosts"
+        ],
+        "skills": [
+          "newsletter curation and writing",
+          "list growth",
+          "keeping open/click rates high"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "beehiiv account on paid plan",
+          "Stripe Express + bank (no PayPal/Wise)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 unique opens of a sponsored placement (CPM)",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 25,
+          "high": 50
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.5,
+        "notes": "Advertisers set CPM/CPC per campaign; $10-$50 per 1,000 unique opens is the commonly reported range (estimate). Offer amounts are shown as the publisher's payout. Boosts add ~$1-$3 per recommended subscriber. Verified: beehiiv Lite is $49/mo annual or $59/mo monthly and the Ad Network is open to all paid plans; beehiiv's own FAQ uses a $5 CPM example, so the low end was lowered from $10 to $5."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 49,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 15,
+        "notes": "Cash $300 = ~6 months of a paid plan before ads start (Ad Network excluded from trial); fixed $49/month needs ~2,000 sponsored opens/month to cover. Startup recovery assumes ~$20/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -49,
+          "median": 20,
+          "high": 4000
+        },
+        "notes": "Publishers in business, finance, tech and local-news niches with 5k+ engaged subscribers capture most Ad Network spend. A paid plan is required from day one, so small lists run at a loss for months. AI made curation newsletters easy to start, raising competition for readers; advertisers drop lists with weak clicks."
+      },
+      "pricingStrategy": "Accept network campaigns while small; once at 5k+ subscribers with 40%+ opens, sell direct sponsorships at $20-$40 CPM and keep Boosts on for subscriber-acquisition income.",
+      "profitPath": [
+        "Month 0: start on free plan, build format and first 300 subscribers (cost $0)",
+        "Month 1-3: upgrade to paid plan, grow via Boosts/referrals to ~1,500 subs (cost $49-59/month), expected $0-$30",
+        "Month 4-8: run 2-4 ad network placements/month; cover the plan fee",
+        "Month 9-12: add direct sponsors; profitable lists reach $100-$500/month"
+      ],
+      "sources": [
+        "https://www.beehiiv.com/pricing",
+        "https://www.beehiiv.com/support/article/17507491038231-Ad-Network-FAQ",
+        "https://www.beehiiv.com/ad-network-offer"
+      ]
+    }
+  },
+  {
+    "id": "seo-blog-display-ads",
+    "name": "Niche blog / programmatic SEO site with display ads (AdSense -> Ezoic/Journey/Raptive)",
+    "category": "content",
+    "summary": "Publish genuinely useful pages that rank in search, monetized with display ads via AdSense, then Ezoic, Mediavine or Raptive as traffic grows.",
+    "howItWorks": "You build a site on a cheap domain/host, generating templated-but-valuable pages from real datasets (programmatic SEO) and editorial articles with AI assistance. Visitors from Google/Bing see ads; AdSense pays from day one of approval, and at scale you move to premium networks (Ezoic: no pageview minimum; Journey by Mediavine: 1,000 Tier-1 sessions in 30 days; full Mediavine: $5,000+ annual ad revenue; Raptive: 25k monthly pageviews with 50%+ tier-1 traffic below 100k). Google's scaled-content-abuse policy penalizes mass low-value AI pages, so each page needs unique data or utility.",
+    "platforms": ["Google AdSense", "Ezoic", "Mediavine Journey", "Raptive"],
+    "payout": {
+      "methods": ["AdSense EFT/wire", "Network bank transfer/PayPal"],
+      "minimumPayout": "$100 (AdSense); ~$25 typical for premium networks",
+      "frequency": "monthly (Net-30 to Net-65)",
+      "typicalDelayDays": 50,
+      "notes": "AdSense pays the 21st-26th of the month once the balance meets the threshold (official). Premium-network terms (Mediavine Net-65, Raptive Net-45) not re-verified."
+    },
+    "capitalRequiredUsd": 30,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 8,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 8,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; privacy/cookie consent law (GDPR/CCPA) required for EU/UK/CA traffic.",
+      "complianceRequirements": [
+        "Cookie consent / CMP",
+        "Privacy policy",
+        "AdSense program policies (no invalid traffic)",
+        "Google spam policies (scaled content abuse)"
+      ]
+    },
+    "availability": {
+      "notes": "AdSense available in almost all reference countries; premium networks accept international publishers but want US/UK traffic."
+    },
+    "automationPlan": [
+      "Dataset ingestion + page templates generated by script",
+      "LLM drafting with human fact-check",
+      "Automated internal linking, sitemaps, IndexNow",
+      "Rank/RPM tracking"
+    ],
+    "manualSteps": [
+      "Domain purchase and AdSense approval",
+      "Editorial QA and E-E-A-T signals",
+      "Network applications"
+    ],
+    "fullCycle": [
+      "Pick niche + dataset",
+      "Build site",
+      "Publish 100+ useful pages",
+      "Get AdSense approval",
+      "Scale traffic",
+      "Upgrade network",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Google core/spam updates can wipe traffic",
+      "AI Overviews reduce clicks",
+      "Ad network threshold changes"
+    ],
+    "evidence": "Raptive and Mediavine pay thousands of independent publishers; SEJ reported Raptive's cut to 25k views to admit smaller sites.",
+    "sources": [
+      "https://support.google.com/adsense/answer/7164703",
+      "https://www.mediavine.com/mediavine-requirements",
+      "https://www.searchenginejournal.com/raptive-drops-traffic-requirement-by-75-to-25000-views/558780/",
+      "https://ppc.land/is-your-site-finally-ready-the-new-math-behind-premium-ad-network-approvals/",
+      "https://developers.google.com/search/docs/essentials/spam-policies"
+    ],
+    "tags": ["seo", "passive", "ad-revenue", "programmatic"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 30,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "domain (~$12/yr)",
+          "static hosting free tier (Cloudflare Pages/Netlify) or shared host",
+          "LLM + scripts for programmatic pages",
+          "Google Search Console",
+          "AdSense then Ezoic/Journey/Raptive"
+        ],
+        "skills": [
+          "keyword research",
+          "SEO and site structure",
+          "data sourcing/cleaning for programmatic pages",
+          "basic HTML or static-site generator (AI coding agent can help)"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "domain registrar",
+          "Google AdSense + tax info",
+          "cookie consent (CMP) setup"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 pageviews (gross ad revenue, page RPM before network share)",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 6,
+          "high": 35
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 0.2,
+        "notes": "AdSense keeps 20% on content ads; premium networks keep ~25-35% but lift RPM to $15-$35. Median reflects an AdSense-tier site (estimate from public publisher reports). AdSense 80% publisher share verified on Google's revenue-share page."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 3,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 6,
+        "notes": "Fixed cost = $30 startup amortised to ~$3/month (hosting free); needs ~1,000 pageviews/month to cover. New sites typically need 6-12 months to rank. Recovery assumes ~$5/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -3,
+          "median": 10,
+          "high": 5000
+        },
+        "notes": "Sites with unique data, tools or first-hand expertise still win; generic AI article sites were hit by the March 2024 scaled-content policy and later core updates. Google AI Overviews reduce clicks on informational queries, shrinking traffic per ranking. Typical failure is never getting indexed traffic beyond a few hundred visits a month."
+      },
+      "pricingStrategy": "Not buyer-priced; raise RPM by targeting commercial-intent topics with US/UK traffic and moving to Journey/Raptive as soon as thresholds allow, then add affiliate links.",
+      "profitPath": [
+        "Month 0: buy domain, build site and first 50-200 pages (cost ~$30)",
+        "Month 1-3: publish and interlink, get indexed, expected $0",
+        "Month 4-8: AdSense approval, first $100 payout as traffic hits ~15k pageviews",
+        "Month 9-12: move to Ezoic/Journey, prune weak pages; surviving sites $50-$500/month"
+      ],
+      "sources": [
+        "https://support.google.com/adsense/answer/7164703",
+        "https://www.mediavine.com/mediavine-requirements",
+        "https://www.searchenginejournal.com/raptive-drops-traffic-requirement-by-75-to-25000-views/558780/",
+        "https://support.google.com/adsense/answer/180195"
+      ]
+    }
+  },
+  {
+    "id": "kdp-ebooks-low-content",
+    "name": "Amazon KDP ebooks, paperbacks and low-content books",
+    "category": "content",
+    "summary": "Self-publish ebooks and print-on-demand books (incl. journals, planners, puzzle books) on Amazon for royalties.",
+    "howItWorks": "You write or compile books (nonfiction guides, fiction, workbooks, puzzle/activity books) and upload to KDP; Amazon prints on demand and pays 35-70% ebook royalties, ~60% minus print cost on paperbacks listed at $9.99+ (50% below that), plus Kindle Unlimited page reads. Amazon requires you to disclose AI-generated text, images or translations (AI-assisted editing need not be disclosed) and caps new titles at 3 per day per account. Low-content books have little moat, so niche research and quality covers matter.",
+    "platforms": ["Amazon KDP", "Kindle Unlimited"],
+    "payout": {
+      "methods": ["EFT direct deposit", "wire", "check"],
+      "minimumPayout": "$0 for EFT (usually no minimum); $100 for wire/check on Amazon.com",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "Royalties paid ~60 days after the end of the month of sale (90 days for Expanded Distribution). AI disclosure rule is on KDP's content guidelines; the 3-titles/day cap was confirmed by KDP to the Authors Guild (2023) but is not on a KDP help page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; must own rights to text and images.",
+      "complianceRequirements": [
+        "AI-content disclosure at upload",
+        "Tax interview (W-8BEN for non-US)",
+        "No trademarked/copyrighted material; 3 titles/day cap"
+      ]
+    },
+    "availability": {
+      "notes": "KDP accepts publishers worldwide; EFT supported to many countries, others paid by wire/check."
+    },
+    "automationPlan": [
+      "Keyword/niche research scripts",
+      "AI drafting + human editing",
+      "Programmatic interior generation (puzzles, planners) and cover templates",
+      "Amazon Ads bid automation (optional)"
+    ],
+    "manualSteps": [
+      "KDP account + tax interview",
+      "Human review of each manuscript",
+      "Manual title upload in KDP UI (no public upload API)"
+    ],
+    "fullCycle": [
+      "Research niche",
+      "Create manuscript + cover",
+      "Upload with AI disclosure",
+      "Sell",
+      "Royalties to bank"
+    ],
+    "risks": [
+      "Saturated low-content niches",
+      "Account termination for spammy/AI-violating titles",
+      "Ads spend can exceed royalties"
+    ],
+    "evidence": "Amazon publishes a monthly KDP Select Global Fund (tens of millions USD per month) paid to KU authors; Authors Guild documented the AI policy and 3/day limit.",
+    "sources": [
+      "https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46",
+      "https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ",
+      "https://authorsguild.org/news/amazon-adds-to-kdp-generative-ai-policy-caps-daily-self-publishing-uploads/",
+      "https://kdp.amazon.com/en_US/help/topic/G200672390"
+    ],
+    "tags": ["books", "passive", "royalties", "print-on-demand"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "KDP (free)",
+          "Kindle Create / Atticus alternative free tools",
+          "Canva free for covers",
+          "LLM for outlining/editing (disclose AI-generated text)",
+          "Publisher Rocket optional (skip for zero capital)"
+        ],
+        "skills": [
+          "niche/keyword research on Amazon",
+          "writing or compiling a useful book",
+          "cover and interior formatting"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Amazon KDP account + tax interview",
+          "bank account for EFT"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per paperback sale",
+        "typicalPriceUsd": {
+          "low": 7,
+          "median": 10,
+          "high": 20
+        },
+        "costPerUnitUsd": 4,
+        "platformFeePercent": 40,
+        "grossMarginPercent": 20,
+        "hoursPerUnit": 0,
+        "notes": "Paperback royalty is 60% of list minus print cost (~$3-$4 for a 120-150 page book) so Amazon keeps ~40%; a $9.99 paperback nets ~$2. Ebooks at $2.99-$9.99 pay 70% minus delivery (estimate from KDP royalty pages). Verified Nov 2026: paperback 60% royalty applies only at list prices of $9.99+ on Amazon.com (lower prices earn 50%); KDP example: $15 x 0.60 - $5.00 print cost = $4.00. Ebook 70% option deducts ~$0.06 average delivery. KU per-page (KENP) rate is not published on the KDP page (Sept 2026 KDP Select author earnings: $69.3M), so any per-page figure is estimated."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. First sales typically within 1-3 months of publishing if keyword research is sound; EFT has no minimum in most marketplaces."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 2000
+        },
+        "notes": "Earners run catalogs of 20+ well-researched titles in a niche, or write series fiction for Kindle Unlimited. AI caused a flood of low-quality books, prompting Amazon's AI disclosure rule and 3-titles-per-day cap; low-content books (journals, puzzles) are near-commodity. Most single books sell a few copies a month."
+      },
+      "pricingStrategy": "Launch ebooks at $2.99-$4.99 and paperbacks at the lowest price that still nets $2+; raise prices once reviews accumulate and bundle series boxsets later.",
+      "profitPath": [
+        "Month 0: research niches, write/publish first title (cost $0)",
+        "Month 1-2: first sales, expected $5-$20",
+        "Month 3-6: publish 1-2 titles/month in the same niche, add series and A+ content",
+        "Month 6-12: optionally run small Amazon Ads from royalties; typical 10-title catalog $30-$200/month"
+      ],
+      "sources": [
+        "https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46",
+        "https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ",
+        "https://authorsguild.org/news/amazon-adds-to-kdp-generative-ai-policy-caps-daily-self-publishing-uploads/",
+        "https://kdp.amazon.com/en_US/help/topic/G201834330",
+        "https://kdp.amazon.com/en_US/help/topic/G200644210",
+        "https://kdp.amazon.com/en_US/help/topic/G201541130"
+      ]
+    }
+  },
+  {
+    "id": "audiobooks-ai-narration",
+    "name": "Audiobooks via Virtual Voice, Google Play auto-narration, INaudio and ACX",
+    "category": "content",
+    "summary": "Turn your books into audiobooks (AI narration where allowed) and earn audiobook royalties.",
+    "howItWorks": "If you own ebook rights, you can create audio editions: Amazon KDP Virtual Voice (AI, US, invite/beta), Google Play Books auto-narrated audiobooks (English, Spanish, French, German, Hindi, Brazilian Portuguese; free \"for a limited time\"), and Voices by INaudio (formerly Findaway Voices) which distributes AI-narrated audio with disclosure to many retailers. ACX/Audible proper still requires human narration (or the narrator's own Voice Replica). Retail buyers and subscription services pay; distributors pass royalties monthly.",
+    "platforms": [
+      "KDP Virtual Voice",
+      "Google Play Books",
+      "Voices by INaudio",
+      "ACX"
+    ],
+    "payout": {
+      "methods": ["EFT/bank transfer", "PayPal (INaudio)"],
+      "minimumPayout": "$0-$10 depending on platform",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "Most audio royalties paid 30-60 days after month end."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 270
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 15,
+      "high": 1000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 8,
+      "setupEffort": 3,
+      "ongoingEffort": 2,
+      "incomePotential": 4,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; requires audio rights to the text.",
+      "complianceRequirements": [
+        "AI narration disclosure",
+        "Audio rights ownership",
+        "Retailer-specific AI rules (ACX human-only)"
+      ]
+    },
+    "availability": {
+      "notes": "Virtual Voice US-only/invite; ACX only for US/UK/CA/IE rights holders; Google Play and INaudio cover far more countries."
+    },
+    "automationPlan": [
+      "Auto-generate narration from existing manuscripts",
+      "Batch QA via speech-to-text diff",
+      "Metadata/pricing via distributor dashboards"
+    ],
+    "manualSteps": [
+      "Rights confirmation",
+      "Listen-through spot checks",
+      "Account/KYC per distributor"
+    ],
+    "fullCycle": [
+      "Own a published book",
+      "Generate AI narration",
+      "Distribute with disclosure",
+      "Sell",
+      "Royalties to bank"
+    ],
+    "risks": [
+      "Retailers may restrict AI narration",
+      "Low audio demand for weak books",
+      "Policy changes (ACX royalty changes 2026)"
+    ],
+    "evidence": "Audible lists 'Virtual Voice' titles publicly; Google Play has offered free auto-narration to publishers since 2020.",
+    "sources": [
+      "https://janefriedman.com/acx-audible-rolls-out-new-ai-narration-program/",
+      "https://www.inkfluenceai.com/blog/ai-narration-audible-acx-policy-2026",
+      "https://play.google.com/books/publish/autonarrated/"
+    ],
+    "tags": ["audio", "books", "high-automation", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Google Play Books auto-narration (free for a limited time)",
+          "KDP Virtual Voice (US beta)",
+          "Voices by INaudio",
+          "audio proofing by ear"
+        ],
+        "skills": [
+          "owning audio rights to an existing ebook",
+          "proof-listening and pronunciation fixes",
+          "metadata and pricing"
+        ],
+        "equipment": ["laptop", "headphones"],
+        "accounts": [
+          "Google Play Books Partner Center",
+          "KDP and/or INaudio account",
+          "bank or PayPal for royalties"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per audiobook sale",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 12,
+          "high": 25
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 60,
+        "grossMarginPercent": 40,
+        "hoursPerUnit": 0,
+        "notes": "Retailers and distributors keep most of list: author typically receives ~40-52% depending on channel (Google Play ~52%, INaudio 80% of retailer net). Median $12 sale nets ~$5 (estimate). Google Play 52% share and free auto-narration (limited time) verified on Google's page."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. Requires an existing ebook; AI narration replaces the $2,000-$5,000 cost of human narration."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "medium",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 7,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 8,
+          "high": 700
+        },
+        "notes": "Authors who already sell ebooks benefit most, since the audio edition rides on existing demand. AI narration made audio editions nearly free in 2024-2026, so many more titles are entering audio and prices are softening; Audible/ACX still mostly requires human narration. Audio rarely sells a book with no existing audience."
+      },
+      "pricingStrategy": "Price audio at 1.5-2x the ebook price and run launch discounts on Google Play; add bundles once there are three or more titles.",
+      "profitPath": [
+        "Month 0: generate auto-narrated editions of existing ebooks (cost $0)",
+        "Month 1-2: proof, publish, first sales $0-$20",
+        "Month 3-6: add all backlist titles and series bundles",
+        "Month 6-12: typical backlist author earns $10-$100/month extra"
+      ],
+      "sources": [
+        "https://play.google.com/books/publish/autonarrated/",
+        "https://janefriedman.com/acx-audible-rolls-out-new-ai-narration-program/"
+      ]
+    }
+  },
+  {
+    "id": "podcast-monetization",
+    "name": "Podcast monetization (Spotify Partner Program, memberships, host-read sponsorships)",
+    "category": "content",
+    "summary": "Earn from ads and sponsorships on an audio/video podcast via the Spotify Partner Program, Spotify's host-read sponsorship tool and direct sponsor deals.",
+    "howItWorks": "You publish a niche show (interviews, news recaps, explainers) on Spotify for Creators. The Spotify Partner Program pays ad revenue and Premium-engagement payouts once you have 3+ episodes, 1,000 unique listeners and 2,000 consumption hours in 30 days (lowered Jan 2026). Spotify added a host-read sponsorship tool (2026) and fan Memberships (Oct 2026); direct sponsor deals also pay. Podcorn, the former sponsorship marketplace, now redirects to a \"sunset\" notice. AI can handle research, editing, show notes and clips; synthetic hosts must be disclosed.",
+    "platforms": ["Spotify for Creators", "Direct sponsors"],
+    "payout": {
+      "methods": ["Spotify -> bank", "Direct sponsor -> bank/PayPal"],
+      "minimumPayout": "Spotify: not published; direct sponsors: per deal",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "Spotify pays monthly in arrears; marketplace sponsorships pay on completion."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 50
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; ad disclosure required.",
+      "complianceRequirements": [
+        "Sponsorship disclosure",
+        "Spotify monetization policies",
+        "Music/clip licensing"
+      ]
+    },
+    "availability": {
+      "notes": "SPP live in US, CA, UK, AU and others; Spotify announced expansion to 35+ new markets (Oct 2026). Direct sponsorships possible globally but brands favor US/UK audiences."
+    },
+    "automationPlan": [
+      "AI editing, transcription, show notes",
+      "Auto clip generation for Shorts/Reels",
+      "RSS publishing automation"
+    ],
+    "manualSteps": [
+      "Recording or hosting (human voice preferred)",
+      "Negotiating sponsor reads",
+      "Payout setup"
+    ],
+    "fullCycle": [
+      "Launch show",
+      "Publish weekly",
+      "Hit SPP thresholds",
+      "Run ads + sponsorships",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Discovery is hard",
+      "Thresholds unreachable for most",
+      "Sponsor demand concentrated in big shows"
+    ],
+    "evidence": "Tubefilter (Jan 2026) reported the lowered SPP thresholds and the host-read sponsorship tool; Spotify newsroom (Oct 2026) announced Memberships and 35+ new SPP markets.",
+    "sources": [
+      "https://newsroom.spotify.com/2026-10-20/spotify-memberships-creators/",
+      "https://support.spotify.com/us/creators/article/spotify-partner-program/",
+      "https://www.tubefilter.com/?p=190162"
+    ],
+    "tags": ["audio", "ad-revenue", "sponsorship"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Spotify for Creators (free hosting)",
+          "Audacity/Descript free tier",
+          "LLM for research, show notes, clips"
+        ],
+        "skills": [
+          "interviewing or presenting",
+          "audio editing (AI-assisted)",
+          "guest booking and promotion",
+          "sponsor outreach"
+        ],
+        "equipment": ["laptop", "USB microphone optional (~$50)"],
+        "accounts": [
+          "Spotify for Creators account",
+          "Spotify payout + tax info",
+          "PayPal/bank for direct sponsors"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 downloads (host-read sponsorship CPM)",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 25,
+          "high": 50
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 5,
+        "notes": "Industry host-read CPMs are commonly quoted at $15-$50 per 1,000 downloads for direct deals; marketplaces and Spotify's ad share take 30-50% (estimate), so fee 0 applies to direct deals only. Small shows spend several production hours per 1,000 downloads."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. Sponsors and the Spotify Partner Program (1,000 listeners + 2,000 hours/30 days) need an established audience; most shows take 6-12+ months."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 2000
+        },
+        "notes": "Revenue concentrates in shows with niche B2B or expert audiences and in video podcasts on YouTube/Spotify. Spotify lowered its partner threshold in Jan 2026 and added memberships in Oct 2026, but most shows stop before episode 20. AI cuts editing time but does not create the trust sponsors pay for."
+      },
+      "pricingStrategy": "Start with affiliate reads and one sponsor at a flat $50-$100 per episode; move to CPM pricing at $20-$30 once downloads per episode exceed 1,000.",
+      "profitPath": [
+        "Month 0: format, artwork, 3 launch episodes (cost $0)",
+        "Month 1-3: weekly episodes and clips, expected $0",
+        "Month 4-8: reach 300-1,000 downloads/episode; first affiliate/sponsor $50-$100",
+        "Month 9-12: Spotify Partner Program or memberships; typical surviving show $50-$300/month"
+      ],
+      "sources": [
+        "https://support.spotify.com/us/creators/article/spotify-partner-program/",
+        "https://newsroom.spotify.com/2026-10-20/spotify-memberships-creators/",
+        "https://www.tubefilter.com/?p=190162"
+      ]
+    }
+  },
+  {
+    "id": "music-streaming-distribution",
+    "name": "Music streaming royalties via DistroKid / TuneCore",
+    "category": "content",
+    "summary": "Release original tracks (incl. AI-assisted production) to Spotify, Apple Music, YouTube Music and others for streaming royalties.",
+    "howItWorks": "You produce tracks (ambient, lo-fi, focus, library-style music) and release via a distributor that delivers to DSPs and collects royalties. Spotify only pays on tracks with 1,000+ streams/12 months, filters spam uploads and bans unauthorized voice clones; Deezer tags fully AI tracks and excludes them from recommendations. DistroKid accepts AI-assisted music if you own the rights and it is not mass-generated spam. Real listening (playlists, sync, content creators) is what pays.",
+    "platforms": ["DistroKid", "TuneCore", "Spotify", "Apple Music"],
+    "payout": {
+      "methods": ["Distributor -> PayPal or bank"],
+      "minimumPayout": "Low/no minimum (DistroKid)",
+      "frequency": "monthly",
+      "typicalDelayDays": 90,
+      "notes": "Stores report 2-3 months after streams occur."
+    },
+    "capitalRequiredUsd": 25,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 5,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 5,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; rights to samples/vocals required.",
+      "complianceRequirements": [
+        "Own all rights; no voice clones of real artists",
+        "AI disclosure where DSP requests (DDEX AI credits)",
+        "No streaming manipulation"
+      ]
+    },
+    "availability": {
+      "notes": "DistroKid/TuneCore serve artists worldwide."
+    },
+    "automationPlan": [
+      "AI-assisted composition/mastering pipelines",
+      "Batch metadata + release scheduling",
+      "Pitching via Spotify for Artists"
+    ],
+    "manualSteps": [
+      "Creative curation of each release",
+      "Distributor account + tax form",
+      "Rights verification"
+    ],
+    "fullCycle": [
+      "Create tracks",
+      "Distribute",
+      "Pitch to playlists",
+      "Collect royalties",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Spam filters/takedowns, retroactive removal",
+      "1,000-stream threshold",
+      "Tiny per-stream rates"
+    ],
+    "evidence": "TechCrunch reported Spotify's Sept 2025 AI policy (labels, spam filter); millions of independent artists are paid by DistroKid.",
+    "sources": [
+      "https://techcrunch.com/2025/09/25/spotify-updates-ai-policy-to-label-tracks-cut-down-on-spam/",
+      "https://jackrighteous.com/es/blogs/ai-music-distribution-guide/ai-music-distribution-rules-distrokid-spotify-apple-deezer",
+      "https://support.distrokid.com/"
+    ],
+    "tags": ["music", "royalties", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 25,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "DistroKid Musician (~$25/yr)",
+          "DAW (free: GarageBand/Cakewalk/BandLab)",
+          "AI-assisted production tools with commercial rights"
+        ],
+        "skills": [
+          "music production",
+          "mixing/mastering basics",
+          "playlist pitching and short-video promotion"
+        ],
+        "equipment": ["laptop", "headphones"],
+        "accounts": [
+          "DistroKid or TuneCore account",
+          "Spotify for Artists",
+          "PayPal or bank for withdrawals"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 streams",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 4,
+          "high": 8
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Blended DSP payout to rights holders is roughly $2-$5 per 1,000 streams on Spotify and higher on Apple/Amazon; DistroKid's annual plan keeps 0% (estimate; Spotify pays nothing on tracks under 1,000 streams/12 months)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 2,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 8,
+        "notes": "Fixed cost = $25/yr plan amortised to ~$2/month; break-even needs ~1,000 paid streams/month on tracks above Spotify's 1,000-stream threshold. Stores report 2-3 months late. Recovery assumes ~$3/month net at month 6."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 4,
+        "typicalNetProfitMonth12Usd": {
+          "low": -2,
+          "median": 2,
+          "high": 1000
+        },
+        "notes": "Over 100,000 tracks are uploaded daily, so editorial and algorithmic playlist placement decides everything. Spotify's 2025 AI/spam policy and Deezer's AI tagging target mass-generated tracks, and the 1,000-stream minimum zeroes out most catalog. Earners combine streaming with sync licensing and creator-music libraries."
+      },
+      "pricingStrategy": "Streaming rates are fixed by DSPs; use singles every 4-6 weeks to feed algorithms and route listeners to higher-margin channels (Bandcamp, sync, licensing).",
+      "profitPath": [
+        "Month 0: produce 3-5 tracks, set up distributor (cost $25)",
+        "Month 1-3: release singles, pitch playlists, expected $0-$5",
+        "Month 4-6: first royalties arrive after 2-3 month lag",
+        "Month 6-12: keep a single every 4-6 weeks; typical result $1-$20/month"
+      ],
+      "sources": [
+        "https://techcrunch.com/2025/09/25/spotify-updates-ai-policy-to-label-tracks-cut-down-on-spam/",
+        "https://support.distrokid.com/"
+      ]
+    }
+  },
+  {
+    "id": "stock-media-contributor",
+    "name": "Stock photos, vectors and footage (Adobe Stock AI-labeled; Shutterstock/Pond5 human-made)",
+    "category": "content",
+    "summary": "License images, illustrations and video clips through stock agencies (Adobe Stock, Shutterstock, Pond5) for per-download royalties.",
+    "howItWorks": "You upload keyworded media; agencies sell licenses to marketers and designers and pay you a royalty (Adobe Stock ~33% images/35% video). Adobe Stock accepts generative-AI content if labeled 'Created using generative AI tools', with releases for any real people and tool licenses allowing commercial use. Shutterstock and Pond5 do NOT accept AI-generated submissions, so only your own photos/footage go there. Volume of high-demand, well-keyworded assets drives income.",
+    "platforms": ["Adobe Stock", "Shutterstock", "Pond5"],
+    "payout": {
+      "methods": ["PayPal", "Skrill", "Payoneer (agency-dependent) -> bank"],
+      "minimumPayout": "$25 (Adobe Stock, Pond5); ~$35 (Shutterstock)",
+      "frequency": "monthly / on request",
+      "typicalDelayDays": 30,
+      "notes": "Adobe pays within ~10 days of request; others monthly. Shutterstock's no-AI rule confirmed on its contributor FAQ; payout minimums and Adobe/Pond5 policies not re-verified (help pages block automated fetching)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 1000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; releases needed for people/property.",
+      "complianceRequirements": [
+        "AI-content label on Adobe Stock",
+        "Model/property releases",
+        "No AI uploads to Shutterstock/Pond5 (account termination)"
+      ]
+    },
+    "availability": {
+      "notes": "Contributor programs open in nearly all reference countries; PayPal/Skrill availability decides withdrawal route."
+    },
+    "automationPlan": [
+      "Batch generation + upscaling for Adobe Stock",
+      "AI keywording/titles",
+      "FTP/batch upload",
+      "Sales analytics by niche"
+    ],
+    "manualSteps": [
+      "Contributor KYC",
+      "Human curation/rejection review",
+      "Releases for real subjects"
+    ],
+    "fullCycle": [
+      "Register contributor account",
+      "Create assets",
+      "Keyword + upload",
+      "Sell licenses",
+      "Withdraw at threshold"
+    ],
+    "risks": [
+      "Oversupply of AI images lowers per-asset sales",
+      "Policy changes on AI",
+      "Low royalty per download"
+    ],
+    "evidence": "Adobe's help center documents AI submission rules; Shutterstock reported $4M+ paid via its Contributor Fund.",
+    "sources": [
+      "https://helpx.adobe.com/stock/contributor/submit-your-content/submit-generative-ai-content/generative-ai-content-guidelines.html",
+      "https://submit.shutterstock.com/help/en/articles/10594676-ai-generated-content-on-shutterstock-contributor-faq",
+      "https://www.pond5.com/help/en/articles/10086182-does-pond5-allow-ai-generated-content-for-licensing"
+    ],
+    "tags": ["licensing", "passive", "images", "video"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Adobe Stock contributor portal",
+          "Lightroom/Darktable free for editing",
+          "AI image tools with commercial-use licenses (Adobe only)",
+          "keywording with LLM"
+        ],
+        "skills": [
+          "commercial photography or image generation",
+          "keywording and trend research",
+          "release/rights management"
+        ],
+        "equipment": ["laptop", "smartphone or camera"],
+        "accounts": [
+          "Adobe Stock contributor",
+          "Shutterstock/Pond5 (human-made only)",
+          "PayPal/Skrill/Payoneer"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per license download",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 2,
+          "high": 80
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 67,
+        "grossMarginPercent": 33,
+        "hoursPerUnit": 0,
+        "notes": "Most downloads come through subscriptions where the effective license price is ~$0.30-$3; Adobe keeps ~67% (33% royalty for images), so a median download nets ~$0.66. Video and extended licenses reach $20-$80+. Adobe royalty split is estimated (Adobe contributor help is bot-blocked)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. First payout needs the $25 minimum (Adobe/Pond5), typically 2-6 months after uploading a few hundred assets."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 8,
+          "high": 600
+        },
+        "notes": "Portfolios of thousands of well-keyworded, trend-driven assets earn steady small sums; video earns more per download. Generative AI flooded Adobe Stock with supply and lets buyers make images themselves, pushing per-asset earnings down. Shutterstock and Pond5 reject AI submissions, so AI-only contributors depend on one agency."
+      },
+      "pricingStrategy": "Prices are set by agencies; focus on underserved commercial topics and video clips, which earn several times more per download than photos.",
+      "profitPath": [
+        "Month 0: open contributor accounts, upload first 100 assets (cost $0)",
+        "Month 1-3: upload 300-500 keyworded assets, expected $0-$10",
+        "Month 4-6: first $25 payout; analyse best sellers",
+        "Month 6-12: scale winning themes to 1,500+ assets; typical $10-$60/month"
+      ],
+      "sources": [
+        "https://helpx.adobe.com/stock/contributor/submit-your-content/submit-generative-ai-content/generative-ai-content-guidelines.html",
+        "https://submit.shutterstock.com/help/en/articles/10594676-ai-generated-content-on-shutterstock-contributor-faq",
+        "https://www.pond5.com/help/en/articles/10086182-does-pond5-allow-ai-generated-content-for-licensing"
+      ]
+    }
+  },
+  {
+    "id": "community-contributor-programs",
+    "name": "Reddit Contributor Program and Quora creator monetization",
+    "category": "content",
+    "summary": "Earn cash from awards/gold on Reddit and ad/subscription share on Quora Spaces for helpful answers.",
+    "howItWorks": "On Reddit, redditors 18+ in supported countries with 100+ karma (5,000+ for Top Contributor) earn from Gold that other users spend on awards for their content (reported $0.009-$0.01 per Gold, $10 minimum; unused Gold cannot be cashed out). On Quora, Space owners can earn ad revenue share and Quora+ subscription revenue proportional to member reading. Both reward genuinely helpful, human contributions; automated or AI-spam posting violates rules and gets accounts banned, so automation is limited to research.",
+    "platforms": ["Reddit", "Quora"],
+    "payout": {
+      "methods": ["Stripe -> bank (Reddit)", "Stripe/PayPal (Quora)"],
+      "minimumPayout": "$10 (Reddit)",
+      "frequency": "monthly",
+      "typicalDelayDays": 40,
+      "notes": "Reddit: program reported active Aug 2026, paid via Stripe 30-45 days after the earning month with Stripe fees (~$2.25 + 0.25%), per CloudsPress (Sep 2026) citing Reddit Help; Reddit pages block automated fetching. Quora monetization status in 2026 could not be verified."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 2,
+      "high": 200
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 3,
+      "setupEffort": 2,
+      "ongoingEffort": 5,
+      "incomePotential": 2,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 30
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set.",
+      "complianceRequirements": [
+        "Stripe KYC",
+        "Subreddit/Quora content policies (no spam, AI disclosure)",
+        "Tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Reddit cash-out in ~35 countries (mostly North America/Europe); Quora monetization launched in ~25 countries."
+    },
+    "automationPlan": [
+      "Topic monitoring and AI research notes (human writes)",
+      "Earnings tracking"
+    ],
+    "manualSteps": ["Writing every post/answer manually", "Stripe onboarding"],
+    "fullCycle": [
+      "Join program",
+      "Contribute expert answers",
+      "Receive awards/reads",
+      "Cash out via Stripe"
+    ],
+    "risks": [
+      "Tiny income",
+      "Program may be discontinued",
+      "Bans for promotional or AI content"
+    ],
+    "evidence": "Reddit launched the Contributor Program in 2023; a Sep 2026 summary of Reddit Help reports it still active with lower per-Gold rates. Quora creator monetization covered by TechCrunch (2021) but not re-verified for 2026.",
+    "sources": [
+      "https://www.cloudspress.com/?p=630173",
+      "https://www.androidauthority.com/reddit-contributor-program-3343397/",
+      "https://techcrunch.com/2021/08/05/creators-can-now-monetize-their-expertise-on-quora/",
+      "https://www.gobankingrates.com/?p=2234726"
+    ],
+    "tags": ["community", "writing", "low-income"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Reddit and Quora (free)",
+          "LLM only for research, never for posting"
+        ],
+        "skills": [
+          "genuinely helpful expert answers",
+          "community norms and moderation rules"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": [
+          "Reddit account (18+, 100+ karma, supported country) + Stripe",
+          "Quora Space + Stripe/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 Gold received on Reddit",
+        "typicalPriceUsd": {
+          "low": 9,
+          "median": 10,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 20,
+        "notes": "Reddit reportedly pays ~$0.009-$0.01 per Gold received ($9-$10 per 1,000 Gold); awards are rare, so it takes many hours of contributions to earn 1,000 Gold (estimate). Quora Space revenue is unpublished."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. Reddit's $10 minimum means ~1,000 Gold before the first payout, which most contributors take many months to reach."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 2,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 150
+        },
+        "notes": "Only highly active Top Contributors earn noticeable sums. AI-generated posting violates both platforms' rules and leads to bans, so automation is minimal. Quora's monetization has shrunk since its 2021 launch; treat this as a side effect of community work, not a business."
+      },
+      "pricingStrategy": "No price setting; the useful play is using the reputation to drive traffic to your own newsletter, product or services.",
+      "profitPath": [
+        "Month 0: join communities in your expertise, reach 100 karma (cost $0)",
+        "Month 1-6: answer daily, expected $0",
+        "Month 6-12: possible first $10 payout; route reputation to own offers"
+      ],
+      "sources": [
+        "https://www.androidauthority.com/reddit-contributor-program-3343397/",
+        "https://www.cloudspress.com/?p=630173",
+        "https://techcrunch.com/2021/08/05/creators-can-now-monetize-their-expertise-on-quora/"
+      ]
+    }
+  },
+  {
+    "id": "live-streaming-twitch-kick",
+    "name": "Live streaming on Twitch / Kick (subs, ads, bits, hourly incentives)",
+    "category": "content",
+    "summary": "Earn from subscriptions, ads, Bits and (on Kick) partner incentives by live streaming.",
+    "howItWorks": "Twitch Affiliate unlocks after 50 followers, 500 minutes on 7 days and 3 average viewers in 30 days; you earn ~50-70% of subs, Bits and ad share. Kick unlocks subscriptions after 5 cumulative streamed hours with a 95/5 split; its Partner Program (75 avg viewers, 30 h, 25 subs, 250 chatters in 30 days, or Fast Track) pays per stream. Viewers and advertisers pay. Live streaming is mostly manual; AI helps with overlays, clips, moderation and VOD repurposing. Gambling streams are excluded here (rule 3).",
+    "platforms": ["Twitch", "Kick"],
+    "payout": {
+      "methods": [
+        "Twitch: ACH/local bank/PayPal/check/wire",
+        "Kick: Stripe -> bank only"
+      ],
+      "minimumPayout": "$50 (Twitch; $100 for wire); no minimum (Kick)",
+      "frequency": "monthly",
+      "typicalDelayDays": 15,
+      "notes": "Twitch pays ~15 days after month end once threshold met (timing not re-verified). Kick pays monthly (weekly on request for verified streamers) via Stripe; 2-3 business days US, 3-7 international."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 2,
+      "setupEffort": 3,
+      "ongoingEffort": 8,
+      "incomePotential": 7,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal across the set; avoid gambling content which is restricted in many reference countries.",
+      "complianceRequirements": [
+        "Tax interview",
+        "Music licensing (DMCA)",
+        "No viewbots/fake engagement"
+      ]
+    },
+    "availability": {
+      "notes": "Twitch Affiliate payouts available in most countries; Kick pays only to Stripe-supported countries."
+    },
+    "automationPlan": [
+      "Auto-clipping to Shorts/TikTok",
+      "AI moderation bots",
+      "Stream schedule + notifications"
+    ],
+    "manualSteps": [
+      "Live hosting time",
+      "Community engagement",
+      "KYC and tax forms"
+    ],
+    "fullCycle": [
+      "Create channel",
+      "Stream on schedule",
+      "Reach Affiliate",
+      "Earn subs/ads",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Very time-intensive",
+      "Viewbot-heavy ecosystem on some platforms",
+      "Low viewer counts for most"
+    ],
+    "evidence": "Twitch publishes Affiliate requirements and announced the $50 threshold (2022); Kick's help center documents its payout schedule, no-minimum policy and Partner Program requirements.",
+    "sources": [
+      "https://help.kick.com/en/articles/15159725-kick-payout-schedule-and-methods",
+      "https://help.kick.com/en/articles/8894103-how-to-join-the-kick-partner-program",
+      "https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/",
+      "https://help.twitch.tv/s/article/joining-the-affiliate-program"
+    ],
+    "tags": ["live", "video", "manual"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "OBS Studio (free)",
+          "Twitch/Kick",
+          "AI clip tools free tier for Shorts/TikTok repurposing",
+          "chat moderation bots (free)"
+        ],
+        "skills": [
+          "on-camera entertaining or teaching live",
+          "consistent schedule",
+          "clip editing and cross-promotion"
+        ],
+        "equipment": [
+          "laptop/PC capable of streaming",
+          "webcam and microphone (~$50 optional)",
+          "stable broadband"
+        ],
+        "accounts": [
+          "Twitch account + Affiliate tax interview",
+          "Kick account + Stripe (Kick payouts)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per subscriber-month",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 25
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 50,
+        "grossMarginPercent": 50,
+        "hoursPerUnit": 4,
+        "notes": "Tier-1 sub is $4.99 (regional pricing lower); Twitch Affiliates usually keep 50% (Plus program can lift to 60-70%), Kick keeps only 5% (estimate per platform pages). Small streamers stream many hours per sub earned."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "No startup cash or fixed cost, so break-even = first payout received. Twitch Affiliate is reachable within weeks, but the $50 payout minimum usually takes 2-6 months for a new streamer."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 7,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 3000
+        },
+        "notes": "Most live viewers go to established streamers; newcomers average only a few viewers. Kick's 95/5 split helps small creators but its partner program needs sizable audiences. Gambling streams are excluded here; the realistic path is a niche (coding, art, education, specific games) plus short-clip promotion."
+      },
+      "pricingStrategy": "Rely on standard sub pricing; add an emote-driven reason to subscribe, sub goals, and sell sponsor segments once averaging 20+ viewers.",
+      "profitPath": [
+        "Month 0: set up OBS, schedule, overlays (cost $0)",
+        "Month 1-2: stream 3-4 times/week, reach Affiliate, expected $0-$20",
+        "Month 3-6: clip highlights to Shorts/TikTok; first $50 payout",
+        "Month 6-12: typical small streamer $10-$100/month; growth needs cross-platform clips"
+      ],
+      "sources": [
+        "https://help.kick.com/en/articles/15159725-kick-payout-schedule-and-methods",
+        "https://help.kick.com/en/articles/8894103-how-to-join-the-kick-partner-program",
+        "https://blog.twitch.tv/en/2022/07/12/coming-soon-a-lower-payout-minimum/"
+      ]
+    }
+  }
+]

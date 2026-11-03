@@ -1,0 +1,1228 @@
+[
+  {
+    "iso2": "ZM",
+    "country": "Zambia",
+    "currency": "ZMW",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with ZRA for a TPIN before trading; turnover tax applies up to about ZMW 5M a year (estimated, from the 2024 budget change)",
+      "registrationCostUsd": 15,
+      "annualCostUsd": 50,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "registerUrl": "https://www.pacra.org.zm",
+      "notes": "A sole trader registers a business name with PACRA (about ZMW 300, estimated) and gets a free ZRA TPIN. Many professional and consultancy services are excluded from turnover tax and pay income tax instead."
+    },
+    "company": {
+      "type": "Private Company Limited by Shares (Ltd)",
+      "formationCostUsd": 49,
+      "typicalAllInFormationCostUsd": 300,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 700,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://www.pacra.org.zm",
+      "notes": "Formed under the Companies Act 2017 through the PACRA online portal. At least half of the directors must be resident in Zambia. Government fees are estimated at about ZMW 1,000."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 37,
+      "smallBusinessRegime": "Turnover tax of about 5% on gross turnover for businesses up to about ZMW 5M a year (estimated); a base tax of ZMW 365 a year applies to informal traders",
+      "vatRatePercent": 16,
+      "vatRegistrationThresholdUsd": 39500,
+      "digitalServicesNote": "Exported services are generally zero-rated for VAT. Non-resident suppliers of electronic services must charge VAT on sales to Zambian customers."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No exchange controls. PayPal receiving is limited in Zambia, so freelancers usually use Payoneer or Wise and withdraw to a local USD or ZMW account."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/zambia/corporate/taxes-on-corporate-income",
+      "https://www.pacra.org.zm",
+      "https://www.zra.org.zm",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "UA",
+    "country": "Ukraine",
+    "currency": "UAH",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register as a FOP before earning. Single-tax limits are set in minimum wages: Group 1 up to 167, Group 2 up to 834, Group 3 up to 1,167 (about UAH 10.1M in 2026)",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 501,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://diia.gov.ua",
+      "notes": "A FOP (individual entrepreneur) registers free through Diia or a CNAP office in about a day. Group 3 pays 5% of income without VAT (or 3% with VAT) plus a 1% military levy. Group 2 covers services to individuals and single-tax payers only. The mandatory ESV social contribution is 22% of the minimum wage, about UAH 1,900 a month, which is the annual cost shown."
+    },
+    "company": {
+      "type": "Limited Liability Company (TOV)",
+      "formationCostUsd": 0,
+      "typicalAllInFormationCostUsd": 250,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://diia.gov.ua",
+      "notes": "State registration is free and needs no minimum capital; it can be done online using a model charter. A TOV can also choose single-tax Group 3. Diia City residents can choose a 5% tax on distributed profits instead."
+    },
+    "tax": {
+      "corporateRatePercent": 18,
+      "personalTopRatePercent": 23,
+      "smallBusinessRegime": "Single tax: Group 3 at 5% of turnover (non-VAT) or 3% plus VAT, plus a 1% military levy; Groups 1 and 2 pay fixed monthly amounts",
+      "vatRatePercent": 20,
+      "vatRegistrationThresholdUsd": 21950,
+      "digitalServicesNote": "Services supplied to non-residents with a place of supply outside Ukraine are generally outside VAT. Non-resident B2C digital service suppliers must register for VAT. The general military levy is 5% from December 2024."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "FOPs can freely receive USD and EUR into Ukrainian bank accounts, including from Payoneer and PayPal, and convert them. Under martial law, NBU rules restrict outbound transfers and FX purchases, and export proceeds face settlement deadlines."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/ukraine/individual/taxes-on-personal-income",
+      "https://taxsummaries.pwc.com/ukraine/corporate/other-taxes",
+      "https://tax.gov.ua",
+      "https://diia.gov.ua",
+      "https://taxsummaries.pwc.com/ukraine/corporate/taxes-on-corporate-income",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "MW",
+    "country": "Malawi",
+    "currency": "MWK",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register a business name and get an MRA TPIN before trading; VAT registration applies from MWK 25M turnover",
+      "registrationCostUsd": 10,
+      "annualCostUsd": 30,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://www.registrargeneral.gov.mw",
+      "notes": "A sole trader (business name) registers with the Department of the Registrar General through its online system and gets a free MRA TPIN. A presumptive or turnover tax applies to small businesses, but the current bands are unverified."
+    },
+    "company": {
+      "type": "Private Limited Company (Ltd)",
+      "formationCostUsd": 52,
+      "typicalAllInFormationCostUsd": 400,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 800,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://www.registrargeneral.gov.mw",
+      "notes": "Formed under the Companies Act 2013. At least one director is believed to need Malawi residency (estimated). Foreign investors also register with MITC."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 40,
+      "smallBusinessRegime": "Presumptive (turnover) tax for small businesses below the VAT threshold; current bands unverified",
+      "vatRatePercent": 16.5,
+      "vatRegistrationThresholdUsd": 14340,
+      "digitalServicesNote": "Exported services are generally zero-rated. Withholding taxes apply to many service payments."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "The Reserve Bank of Malawi controls foreign exchange, and the official rate differs sharply from the parallel market. PayPal does not let Malawian accounts receive money, so Payoneer or Wise into an FCDA account is the usual route. Export proceeds must be repatriated."
+    },
+    "sources": [
+      "https://www.registrargeneral.gov.mw",
+      "https://www.mra.mw",
+      "https://www.rbm.mw",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "MX",
+    "country": "Mexico",
+    "currency": "MXN",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with SAT for an RFC before invoicing. RESICO is available for income up to MXN 3.5M a year",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "registerUrl": "https://www.sat.gob.mx",
+      "notes": "A 'persona física con actividad empresarial' registers free with SAT. The first e.firma needs an in-person appointment, and CFDI e-invoices are issued free on the SAT portal. RESICO (Régimen Simplificado de Confianza) taxes income received at 1% to 2.5% with no deductions."
+    },
+    "company": {
+      "type": "Sociedad por Acciones Simplificada (S.A.S.) or S. de R.L. de C.V.",
+      "formationCostUsd": 0,
+      "typicalAllInFormationCostUsd": 1100,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1300,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.gob.mx/tuempresa",
+      "notes": "An S.A.S. can be formed online for free with a single shareholder, but it has an annual revenue cap of roughly MXN 7M (indexed). An S. de R.L. de C.V. needs a notary, typically MXN 15,000 to 25,000. Accountant fees are about MXN 2,000 a month."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 35,
+      "smallBusinessRegime": "RESICO for individuals at 1% to 2.5% of income up to MXN 3.5M; RESICO for companies keeps the 30% rate but on a cash basis",
+      "vatRatePercent": 16,
+      "vatRegistrationThresholdUsd": 0,
+      "digitalServicesNote": "There is no VAT threshold: IVA applies from the first peso. Some exported services are 0%. Digital platforms withhold ISR and IVA from individual sellers."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No capital controls. USD can be freely received through PayPal, Wise or Payoneer and converted. Cash USD deposits are capped, but electronic transfers are not."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/mexico/individual/taxes-on-personal-income",
+      "https://www.sat.gob.mx",
+      "https://www.gob.mx/tuempresa",
+      "https://taxsummaries.pwc.com/mexico/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/mexico/corporate/other-taxes",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "PH",
+    "country": "Philippines",
+    "currency": "PHP",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with BIR before earning. The 8% option is available up to PHP 3M gross a year, and BMBE status needs assets of PHP 3M or less",
+      "registrationCostUsd": 60,
+      "annualCostUsd": 60,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "registerUrl": "https://www.bir.gov.ph",
+      "notes": "A self-employed professional or freelancer registers with BIR (Form 1901). Sole proprietors also register a DTI business name (PHP 200 to 2,000) and get barangay and mayor's permits, which vary by LGU. The PHP 500 BIR annual registration fee was abolished in 2024 by the Ease of Paying Taxes Act. BMBE registration at a Negosyo Center exempts BMBE income from income tax."
+    },
+    "company": {
+      "type": "One Person Corporation (OPC) or Domestic Stock Corporation",
+      "formationCostUsd": 50,
+      "typicalAllInFormationCostUsd": 700,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 14,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://esecure.sec.gov.ph",
+      "notes": "Registered online with SEC (eSPARC/eSECURE), then with the LGU and BIR. Domestic-market enterprises over 40% foreign-owned need USD 200k paid-in capital; export enterprises (60% or more exported) are exempt. The corporate secretary must be a Filipino resident. Audited financial statements and a GIS are filed every year."
+    },
+    "tax": {
+      "corporateRatePercent": 25,
+      "personalTopRatePercent": 35,
+      "smallBusinessRegime": "Self-employed people can elect 8% of gross receipts above PHP 250k (up to PHP 3M) instead of graduated rates and 3% percentage tax; BMBE gives an income tax exemption; domestic corporations with total assets of PHP 100M or less and net taxable income of PHP 5M or less pay 20%",
+      "vatRatePercent": 12,
+      "vatRegistrationThresholdUsd": 47300,
+      "digitalServicesNote": "Services to non-residents paid in foreign currency are zero-rated for VAT. Since 2025 (RA 12023), non-resident digital service providers charge 12% VAT."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No capital controls for receipts. PayPal, Wise and Payoneer all work for receiving and withdrawing to PHP or USD accounts."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/philippines/individual/taxes-on-personal-income",
+      "https://www.bir.gov.ph",
+      "https://bnrs.dti.gov.ph",
+      "https://www.sec.gov.ph",
+      "https://taxsummaries.pwc.com/philippines/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/philippines/corporate/other-taxes",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "AO",
+    "country": "Angola",
+    "currency": "AOA",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register as an 'empresário em nome individual' with a NIF before trading; simplified tax regime up to AOA 25M turnover",
+      "registrationCostUsd": 40,
+      "annualCostUsd": 100,
+      "timeDays": 7,
+      "onlinePossible": false,
+      "registerUrl": "https://www.gue.gov.ao",
+      "notes": "Registration goes through the Guiché Único da Empresa (GUE) and the AGT for a NIF. Self-employed income falls under IRT Group B. Most steps are in person."
+    },
+    "company": {
+      "type": "Sociedade por Quotas (Lda) / Sociedade Unipessoal por Quotas",
+      "formationCostUsd": 200,
+      "typicalAllInFormationCostUsd": 1500,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 2500,
+      "timeDays": 15,
+      "onlinePossible": false,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.gue.gov.ao",
+      "notes": "Formed through GUE. Share capital is set freely (the old Kz 100,000 minimum no longer applies). The Private Investment Law 2018 allows 100% foreign ownership in most sectors. Accounting and tax compliance usually need a certified accountant."
+    },
+    "tax": {
+      "corporateRatePercent": 25,
+      "personalTopRatePercent": 25,
+      "smallBusinessRegime": "Simplified regime for taxpayers with turnover of AOA 25M or less (no VAT charged)",
+      "vatRatePercent": 14,
+      "vatRegistrationThresholdUsd": 26550,
+      "digitalServicesNote": "Exports of services are VAT-exempt. Paying foreign service providers requires BNA licensing and withholding."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "BNA licenses foreign exchange. PayPal does not support receiving in Angola, and Payoneer or Wise withdrawals to local banks can be difficult. Bringing in and converting foreign income involves banking documentation."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/angola/corporate/taxes-on-corporate-income",
+      "https://www.gue.gov.ao",
+      "https://portaldocontribuinte.minfin.gov.ao",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "MY",
+    "country": "Malaysia",
+    "currency": "MYR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with SSM before trading (some exemptions apply); file income tax with LHDN once chargeable",
+      "registrationCostUsd": 15,
+      "annualCostUsd": 15,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://ezbiz.ssm.com.my",
+      "notes": "Sole proprietorship registration with SSM costs RM30 a year in your own name or RM60 a year with a trade name (official SSM fee table), done online through ezBiz. Freelancers taxed as individuals file Form B."
+    },
+    "company": {
+      "type": "Private Limited Company (Sdn Bhd)",
+      "formationCostUsd": 258,
+      "typicalAllInFormationCostUsd": 700,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://www.ssm.com.my",
+      "notes": "SSM charges RM1,000 to incorporate and RM50 to reserve a name; the annual return costs RM150 (official fee table). At least one director must ordinarily reside in Malaysia, and a licensed company secretary is mandatory. Audits are required unless the company qualifies for SSM's audit exemption."
+    },
+    "tax": {
+      "corporateRatePercent": 24,
+      "personalTopRatePercent": 30,
+      "smallBusinessRegime": "SME rates of 15% on the first RM150k and 17% up to RM600k (paid-up capital RM2.5M or less, foreign ownership 20% or less), otherwise 24%; no turnover regime for individuals",
+      "vatRatePercent": 8,
+      "vatRegistrationThresholdUsd": 122850,
+      "digitalServicesNote": "The vatRate field shows SST service tax at 8%, with registration from RM500k of taxable services. Foreign digital service providers charge 8% service tax. Exported services generally fall outside SST."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Under Bank Negara foreign exchange policy, residents can freely receive foreign currency through PayPal, Wise or Payoneer and hold foreign-currency accounts."
+    },
+    "sources": [
+      "https://www.ssm.com.my/Pages/Services/Registration-of-Business-(ROB)/table-of-fees/Table-of-Fees.aspx",
+      "https://www.ssm.com.my/Pages/Services/Registration-of-Company-(ROC)/Table-of-Fees.aspx",
+      "https://www.hasil.gov.my",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "NG",
+    "country": "Nigeria",
+    "currency": "NGN",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register a business name with CAC before trading; individuals' first NGN 800k a year is tax-free under the Nigeria Tax Act 2025",
+      "registrationCostUsd": 8,
+      "annualCostUsd": 5,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "registerUrl": "https://cac.gov.ng",
+      "notes": "A Business Name (sole proprietorship) registers through the CAC online portal for NGN 10,500 (NGN 500 name reservation plus NGN 10,000 registration) and needs a Tax ID (free). From 2026, personal income tax follows the Nigeria Tax Act 2025 (0% to 25%)."
+    },
+    "company": {
+      "type": "Private Company Limited by Shares (Ltd)",
+      "formationCostUsd": 13,
+      "typicalAllInFormationCostUsd": 150,
+      "minimumCapitalUsd": 74,
+      "annualComplianceCostUsd": 600,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://cac.gov.ng",
+      "notes": "CAMA 2020 allows a single shareholder and director. Minimum share capital is NGN 100,000. CAC fees for a small company with issued capital of NGN 1M or less are NGN 500 name reservation plus NGN 10,000 incorporation; about 0.75% stamp duty on share capital comes on top. Annual returns cost NGN 5,000. Companies with foreign shareholders need much higher issued capital (reportedly NGN 100M) for a Business Permit or expatriate quota (estimated)."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 25,
+      "smallBusinessRegime": "Small companies (turnover NGN 100M or less and fixed assets NGN 250M or less) pay 0% CIT and no development levy; others pay 30% plus a 4% development levy",
+      "vatRatePercent": 7.5,
+      "vatRegistrationThresholdUsd": 74300,
+      "digitalServicesNote": "The VAT threshold shown (NGN 100M) is the small-company exemption under the 2025 reforms (estimated); it was NGN 25M before 2026. Non-resident digital suppliers charge VAT, and significant economic presence rules apply."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Since the 2023–24 FX unification, residents can receive USD through Payoneer, PayPal (enabled for receiving) or Wise into domiciliary accounts and convert at market rates. Outbound transfers need documentation."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/nigeria/corporate/taxes-on-corporate-income",
+      "https://cac.gov.ng",
+      "https://www.firs.gov.ng",
+      "https://www.cac.gov.ng/api/download-fees",
+      "https://taxsummaries.pwc.com/nigeria/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/nigeria/individual/taxes-on-personal-income",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "TN",
+    "country": "Tunisia",
+    "currency": "TND",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with the RNE and get a tax ID before trading; the auto-entrepreneur status is capped at about TND 75k turnover (estimated)",
+      "registrationCostUsd": 20,
+      "annualCostUsd": 100,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://www.registre-entreprises.tn",
+      "notes": "Options are the 'auto-entrepreneur' status (Decree 2020-33, a single combined tax and social contribution) or a 'personne physique' under the forfait or real regime. Registration goes through the Registre National des Entreprises."
+    },
+    "company": {
+      "type": "SUARL / SARL",
+      "formationCostUsd": 150,
+      "typicalAllInFormationCostUsd": 700,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.registre-entreprises.tn",
+      "notes": "A single-member SUARL or a SARL registers through the RNE. Minimum capital was effectively removed (estimated). Most service sectors allow 100% foreign ownership. A statutory auditor is needed above size thresholds."
+    },
+    "tax": {
+      "corporateRatePercent": 20,
+      "personalTopRatePercent": 40,
+      "smallBusinessRegime": "Auto-entrepreneur single contribution; forfait regime for individuals with turnover under about TND 100k. Minimum corporate tax is 0.2% of turnover (at least TND 500)",
+      "vatRatePercent": 19,
+      "vatRegistrationThresholdUsd": 33300,
+      "digitalServicesNote": "The Finance Law 2025 raised CIT from 15% to 20%. Exported services are VAT-exempt with deduction rights. Startup Act labelled companies get tax and FX advantages."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "Strict Central Bank exchange controls apply. Export proceeds must be repatriated, and PayPal receiving is not available. Online payments use an annual 'carte technologique internationale' allowance, and Startup Act companies can hold foreign-currency accounts."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/tunisia/corporate/taxes-on-corporate-income",
+      "https://www.registre-entreprises.tn",
+      "https://www.finances.gov.tn",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "KE",
+    "country": "Kenya",
+    "currency": "KES",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Get a KRA PIN before trading. Turnover tax covers KES 1M to 25M turnover; below KES 1M normal income tax applies",
+      "registrationCostUsd": 7,
+      "annualCostUsd": 77,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "registerUrl": "https://brs.go.ke",
+      "notes": "A sole proprietorship (business name) registers on eCitizen BRS for KES 950. A county Unified Business Permit costs roughly KES 5,000 to 15,000 a year depending on the county and activity."
+    },
+    "company": {
+      "type": "Private Limited Company (Ltd)",
+      "formationCostUsd": 82,
+      "typicalAllInFormationCostUsd": 310,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 800,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://brs.go.ke",
+      "notes": "Registered online on eCitizen BRS for a KES 10,650 registration fee per the BRS fee schedule (an official name search is KES 650 extra). A single director is allowed. ICT companies have faced a 30% Kenyan-ownership guideline from the ICT Authority, so check before setting up a foreign-owned tech company."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 35,
+      "smallBusinessRegime": "Turnover tax at 1.5% of gross turnover for KES 1M to 25M (Finance Act 2023)",
+      "vatRatePercent": 16,
+      "vatRegistrationThresholdUsd": 38460,
+      "digitalServicesNote": "Exported services are zero-rated (Finance Act 2023). A 3% significant economic presence tax replaced the digital service tax in December 2024. Resident freelancers pay income tax on platform income."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No exchange controls. PayPal works with withdrawals through M-Pesa, and Payoneer and Wise are widely used. Banks report transfers over USD 10k."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/kenya/individual/other-taxes",
+      "https://brs.go.ke",
+      "https://www.kra.go.ke",
+      "https://brs.go.ke/fee-schedule-companies-registry/",
+      "https://taxsummaries.pwc.com/kenya/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/kenya/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/kenya/individual/taxes-on-personal-income",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "GM",
+    "country": "The Gambia",
+    "currency": "GMD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register a business name and get a TIN with the GRA before trading; VAT applies from GMD 1M turnover",
+      "registrationCostUsd": 20,
+      "annualCostUsd": 40,
+      "timeDays": 5,
+      "onlinePossible": false,
+      "registerUrl": "https://www.giepa.gm",
+      "notes": "A sole proprietorship registers its business name with the Single Window Business Registry (Ministry of Justice) and the GRA. Municipal trade licences apply. The process is mostly in person."
+    },
+    "company": {
+      "type": "Private Limited Company (Ltd)",
+      "formationCostUsd": 100,
+      "typicalAllInFormationCostUsd": 600,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 900,
+      "timeDays": 10,
+      "onlinePossible": false,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.giepa.gm",
+      "notes": "Formed under the Companies Act 2013 through the Single Window Business Registry. Foreign ownership is unrestricted in most sectors."
+    },
+    "tax": {
+      "corporateRatePercent": 27,
+      "personalTopRatePercent": 25,
+      "smallBusinessRegime": "Minimum tax and turnover tax for small businesses below the VAT threshold (rates unverified)",
+      "vatRatePercent": 15,
+      "vatRegistrationThresholdUsd": 13400,
+      "digitalServicesNote": "Exported services are generally zero-rated. There is little specific guidance on digital services."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No formal capital controls, but PayPal receiving is not available. Freelancers use Payoneer, Wise or remittance companies, and USD liquidity at banks can be thin."
+    },
+    "sources": [
+      "https://www.gra.gm",
+      "https://www.giepa.gm",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "MA",
+    "country": "Morocco",
+    "currency": "MAD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Auto-entrepreneur turnover is capped at MAD 200k for services and MAD 500k for commerce. Above MAD 80k a year from a single client, the excess is taxed at 30% withholding",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 150,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://ae.gov.ma",
+      "notes": "The 'auto-entrepreneur' status is free and registered online or at Barid Al-Maghrib. It pays 1% of turnover for services (0.5% for commerce and crafts) plus mandatory AMO health contributions (about MAD 1,500 a year, estimated)."
+    },
+    "company": {
+      "type": "SARL / SARLAU (single-member)",
+      "formationCostUsd": 255,
+      "typicalAllInFormationCostUsd": 700,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.directentreprise.ma",
+      "notes": "Registered online through DirectEntreprise or a Centre Régional d'Investissement, with no minimum capital. A minimum tax (cotisation minimale) of 0.25% of turnover, at least MAD 3,000, applies even when the company makes a loss."
+    },
+    "tax": {
+      "corporateRatePercent": 20,
+      "personalTopRatePercent": 37,
+      "smallBusinessRegime": "Auto-entrepreneur at 0.5% (commerce) or 1% (services) of turnover; standard CIT is converging to 20% by 2026",
+      "vatRatePercent": 20,
+      "vatRegistrationThresholdUsd": 50900,
+      "digitalServicesNote": "Exported services are VAT-exempt with deduction rights. The VAT threshold shown (MAD 500k) applies to small traders; the export CIT regime was merged into the unified rate."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "Office des Changes rules require export proceeds to be repatriated. Residents cannot freely hold foreign balances abroad. Payoneer and Wise work, and auto-entrepreneurs receiving foreign payments for services are covered by specific Office des Changes rules."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/morocco/individual/taxes-on-personal-income",
+      "https://ae.gov.ma",
+      "https://www.tax.gov.ma",
+      "https://www.oc.gov.ma",
+      "https://taxsummaries.pwc.com/morocco/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/morocco/corporate/other-taxes",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "SG",
+    "country": "Singapore",
+    "currency": "SGD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with ACRA if carrying on business (some freelancers are exempt). Self-employed people must contribute to MediSave once net trade income exceeds SGD 6k",
+      "registrationCostUsd": 90,
+      "annualCostUsd": 23,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.bizfile.gov.sg",
+      "notes": "A sole proprietorship costs SGD 15 for the name plus SGD 100 to register on Bizfile, with renewal of about SGD 30 a year. Only citizens, PRs or eligible pass holders can register one."
+    },
+    "company": {
+      "type": "Private Limited Company (Pte Ltd)",
+      "formationCostUsd": 246,
+      "typicalAllInFormationCostUsd": 1000,
+      "minimumCapitalUsd": 1,
+      "annualComplianceCostUsd": 3000,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://www.bizfile.gov.sg",
+      "notes": "Costs SGD 15 for the name plus SGD 300 to incorporate (SGD 315 in total), and the annual return is SGD 60. At least one director must ordinarily reside in Singapore (nominee directors cost about SGD 1,500 to 3,000 a year), and a company secretary is required. Compliance costs shown include a corporate secretary, accounting and tax."
+    },
+    "tax": {
+      "corporateRatePercent": 17,
+      "personalTopRatePercent": 24,
+      "smallBusinessRegime": "No turnover regime. New companies get a 75% exemption on their first SGD 100k for 3 years, and all companies get partial exemptions",
+      "vatRatePercent": 9,
+      "vatRegistrationThresholdUsd": 782000,
+      "digitalServicesNote": "International services are zero-rated for GST (s.21(3)). Overseas digital service providers must register for GST."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No capital controls. PayPal, Wise, Payoneer and multi-currency bank accounts all work freely."
+    },
+    "sources": [
+      "https://www.acra.gov.sg",
+      "https://www.bizfile.gov.sg",
+      "https://www.iras.gov.sg",
+      "https://www.acra.gov.sg/how-to-guides/setting-up-a-local-company",
+      "https://www.acra.gov.sg/register/business/choosing-reserving-a-business-name/reserving-bizfile/",
+      "https://taxsummaries.pwc.com/singapore/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/singapore/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/singapore/individual/taxes-on-personal-income",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "LK",
+    "country": "Sri Lanka",
+    "currency": "LKR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "All residents over 18 must obtain a TIN. Register the business with the Divisional Secretariat or Provincial Council before trading",
+      "registrationCostUsd": 9,
+      "annualCostUsd": 10,
+      "timeDays": 5,
+      "onlinePossible": false,
+      "registerUrl": "https://www.ird.gov.lk",
+      "notes": "A sole proprietorship registers with the provincial or local business registration office for a small fee. Income tax for individuals is progressive up to 36%, and service-export income is capped at 15% from April 2025."
+    },
+    "company": {
+      "type": "Private Limited Company (Pvt) Ltd",
+      "formationCostUsd": 60,
+      "typicalAllInFormationCostUsd": 250,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 700,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://eroc.drc.gov.lk",
+      "notes": "Registered online through the Registrar of Companies eROC. Annual audits are mandatory, and the company secretary must be a qualified Sri Lankan secretary."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 36,
+      "smallBusinessRegime": "No turnover regime; export-of-services income is taxed at 15% from April 2025, replacing the earlier exemption",
+      "vatRatePercent": 18,
+      "vatRegistrationThresholdUsd": 180500,
+      "digitalServicesNote": "Exported services are zero-rated for VAT, and non-resident digital services carry VAT from October 2025. SSCL of 2.5% applies above LKR 120M turnover. The VAT threshold shown is LKR 60M; a cut to LKR 36M was proposed."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Service-export proceeds must come in through the banking system. PayPal receiving is not available, so freelancers use Payoneer or Wise into local banks. Some post-2022 controls on outflows remain."
+    },
+    "sources": [
+      "https://www.ird.gov.lk",
+      "https://eroc.drc.gov.lk",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "UG",
+    "country": "Uganda",
+    "currency": "UGX",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Get a URA TIN before trading. The presumptive regime applies up to UGX 150M turnover, but professional services are excluded",
+      "registrationCostUsd": 22,
+      "annualCostUsd": 40,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "registerUrl": "https://ursb.go.ug",
+      "notes": "A sole proprietor registers a business name with URSB online (UGX 35,000 name reservation plus UGX 55,000 registration) and gets a free URA TIN. A local trading licence is needed. Professionals (consultants, engineers and similar) cannot use the presumptive tax."
+    },
+    "company": {
+      "type": "Private Company Limited by Shares (Ltd)",
+      "formationCostUsd": 110,
+      "typicalAllInFormationCostUsd": 450,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 900,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://ursb.go.ug",
+      "notes": "Registered online through URSB's OBRS. URSB charges UGX 35,000 for name reservation and UGX 105,000 to incorporate (nominal capital up to UGX 5M; 1.5% above), plus document filing fees and stamp duty on share capital. Annual returns cost UGX 55,000. A single-member company is allowed."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 40,
+      "smallBusinessRegime": "Presumptive tax for small resident businesses with turnover of UGX 150M or less (fixed amounts or turnover rates); professionals excluded",
+      "vatRatePercent": 18,
+      "vatRegistrationThresholdUsd": 72910,
+      "digitalServicesNote": "VAT registration is required above UGX 300M annual taxable turnover from 1 July 2026 (previously UGX 150M), or UGX 75M in any three months. A 5% digital service tax applies to non-residents' services to Ugandan customers. Exported services are zero-rated for VAT."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No exchange controls. Payoneer and Wise are commonly used; PayPal receiving is limited."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/uganda/corporate/taxes-on-corporate-income",
+      "https://ursb.go.ug",
+      "https://www.ura.go.ug",
+      "https://ursb.go.ug/business-company-and-document-registration-fees/",
+      "https://taxsummaries.pwc.com/uganda/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/uganda/individual/taxes-on-personal-income",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "IN",
+    "country": "India",
+    "currency": "INR",
+    "soleProprietor": {
+      "registrationRequired": "above income threshold",
+      "thresholdNote": "No business registration is needed to freelance with a PAN. GST registration is needed above INR 20 lakh of aggregate turnover (INR 10 lakh in special-category states; INR 40 lakh for intra-state supply of goods only). Udyam registration is free and optional",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 100,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://udyamregistration.gov.in",
+      "notes": "A freelance professional ('proprietorship') files ITR-3 or ITR-4. Under the presumptive scheme (s.44ADA, carried into the Income-tax Act 2025 from April 2026), 50% of receipts is deemed profit for receipts up to INR 50 lakh, or INR 75 lakh if cash receipts are 5% or less. Udyam MSME registration is free with Aadhaar and PAN (official)."
+    },
+    "company": {
+      "type": "Private Limited Company (Pvt Ltd) / One Person Company (OPC)",
+      "formationCostUsd": 55,
+      "typicalAllInFormationCostUsd": 180,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 600,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://www.mca.gov.in",
+      "notes": "Formed online with the MCA SPICe+ form. MCA filing fees are nil for authorised capital up to INR 15 lakh, so the cost is mostly state stamp duty and DSCs. At least one director must be resident in India for 182 days. Statutory audits and ROC filings (AOC-4, MGT-7) are mandatory."
+    },
+    "tax": {
+      "corporateRatePercent": 25.17,
+      "personalTopRatePercent": 39,
+      "smallBusinessRegime": "Presumptive scheme: 44ADA for professionals at 50% of receipts up to INR 50/75 lakh; 44AD for businesses at 6% (digital receipts) or 8% up to INR 2/3 crore. The corporate rate shown is 22% plus surcharge and cess under s.115BAA",
+      "vatRatePercent": 18,
+      "vatRegistrationThresholdUsd": 21070,
+      "digitalServicesNote": "Exported services are zero-rated for GST under a LUT when paid in convertible foreign exchange. The VAT figures are GST at 18%. Banks issue FIRC/FIRA receipt certificates."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Under FEMA, export proceeds must be realised within 9 months with purpose codes. PayPal requires India balances to be withdrawn automatically to a bank, while Payoneer, Wise and Skydo all work."
+    },
+    "sources": [
+      "https://udyamregistration.gov.in",
+      "https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1",
+      "https://www.mca.gov.in",
+      "https://www.gst.gov.in",
+      "https://taxsummaries.pwc.com/india/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/india/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/india/individual/taxes-on-personal-income",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "ZW",
+    "country": "Zimbabwe",
+    "currency": "ZWG",
+    "soleProprietor": {
+      "registrationRequired": "optional",
+      "thresholdNote": "There is no national sole-trader register. Register with ZIMRA for a BP number for tax and VAT (VAT from USD 40k turnover). Local authority trading licences apply to premises",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 100,
+      "timeDays": 3,
+      "onlinePossible": false,
+      "registerUrl": "https://www.zimra.co.zw",
+      "notes": "Sole traders operate in their own name with a ZIMRA registration and local authority licences. A Private Business Corporation (PBC) is a cheap incorporated alternative. Taxes are payable in ZWG or USD."
+    },
+    "company": {
+      "type": "Private Limited Company (Pvt) Ltd / Private Business Corporation (PBC)",
+      "formationCostUsd": 60,
+      "typicalAllInFormationCostUsd": 400,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://www.zidainvest.com",
+      "notes": "Formed under the Companies and Other Business Entities Act 2019 through the online registry. At least one director must ordinarily reside in Zimbabwe. Some sectors are reserved for citizens."
+    },
+    "tax": {
+      "corporateRatePercent": 25.75,
+      "personalTopRatePercent": 41.2,
+      "smallBusinessRegime": "Presumptive taxes for informal traders and small operators; no general turnover regime for online services",
+      "vatRatePercent": 15.5,
+      "vatRegistrationThresholdUsd": 40000,
+      "digitalServicesNote": "IMTT of 2% applies to electronic transfers (capped). The corporate rate shown is 25% plus a 3% AIDS levy, and the personal rate is 40% plus the levy. Exported services are zero-rated. The VAT threshold is denominated in USD."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "RBZ requires a share of export receipts to be surrendered for local currency (about 30%). PayPal receiving is limited, and USD cash dominates. Payoneer and Wise withdrawals to local nostro accounts are possible."
+    },
+    "sources": [
+      "https://www.zimra.co.zw",
+      "https://www.rbz.co.zw",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "LB",
+    "country": "Lebanon",
+    "currency": "LBP",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with the Ministry of Finance for a tax number before trading. Merchants also register in the Commercial Register; professionals register with their syndicate",
+      "registrationCostUsd": 100,
+      "annualCostUsd": 150,
+      "timeDays": 14,
+      "onlinePossible": false,
+      "registerUrl": "https://www.finance.gov.lb",
+      "notes": "Self-employed people register as a 'commerçant individuel' or a liberal professional with the MoF. Most steps are in person."
+    },
+    "company": {
+      "type": "SARL (Société à Responsabilité Limitée)",
+      "formationCostUsd": 500,
+      "typicalAllInFormationCostUsd": 2500,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 3000,
+      "timeDays": 30,
+      "onlinePossible": false,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.finance.gov.lb",
+      "notes": "Formed through a lawyer, a notary and the Commercial Register; a lawyer retainer is mandatory above capital thresholds. Single-partner SARLs are allowed since 2019. The statutory LBP minimum capital is negligible after the devaluation. An SAL needs a majority-Lebanese board."
+    },
+    "tax": {
+      "corporateRatePercent": 17,
+      "personalTopRatePercent": 25,
+      "smallBusinessRegime": "Small taxpayers move from the deemed-profit method to a lump-sum method from 1 January 2026 (MoF Notification 4913)",
+      "vatRatePercent": 11,
+      "vatRegistrationThresholdUsd": null,
+      "digitalServicesNote": "The VAT registration threshold was being re-indexed after the devaluation and could not be confirmed, so it is null. Withholding of 8.5% applies to payments to non-residents for services."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "Banks impose informal post-2019 restrictions on 'lollar' deposits. New 'fresh USD' accounts and cash are usable, but PayPal and Wise are not available for receiving. Payoneer, OMT and Whish are the common channels."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/lebanon/corporate/taxes-on-corporate-income",
+      "https://www.finance.gov.lb",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "ID",
+    "country": "Indonesia",
+    "currency": "IDR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Get an NIB (free, through OSS) and an NPWP. Individual MSMEs pay a 0.5% final tax on gross turnover up to IDR 4.8B, with the first IDR 500M a year exempt",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://oss.go.id",
+      "notes": "An individual MSME ('usaha perseorangan') registers free and online through OSS-RBA. The PP 55/2022 0.5% final tax was time-limited for individuals (7 years) but extended by 2025 policy; check the current regulation."
+    },
+    "company": {
+      "type": "PT Perorangan (individual PT) / PT (Perseroan Terbatas)",
+      "formationCostUsd": 3,
+      "typicalAllInFormationCostUsd": 120,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 500,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": false,
+      "localDirectorRequired": false,
+      "registerUrl": "https://ahu.go.id",
+      "notes": "A PT Perorangan is formed online through AHU for an IDR 50,000 PNBP fee with no notary, but only Indonesian citizens running micro or small businesses can use it. A regular PT needs a notary (about IDR 5–10M all-in). A foreign-owned PT PMA needs IDR 10B investment and IDR 2.5B paid-up capital. Companies can use the 0.5% final tax for 4 years."
+    },
+    "tax": {
+      "corporateRatePercent": 22,
+      "personalTopRatePercent": 35,
+      "smallBusinessRegime": "PP 55/2022 0.5% final tax on turnover up to IDR 4.8B (individuals get the first IDR 500M exempt); companies with turnover up to IDR 50B get a 50% CIT discount",
+      "vatRatePercent": 12,
+      "vatRegistrationThresholdUsd": 264500,
+      "digitalServicesNote": "PPN is nominally 12% but effectively 11% for most services. Certain exported services, including some IT services, are zero-rated. Foreign digital platforms collect PPN."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Bank Indonesia requires reporting, and natural-resource export proceeds must be retained, which does not affect freelancers. PayPal, Wise and Payoneer all work for receiving and converting."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/indonesia/corporate/taxes-on-corporate-income",
+      "https://oss.go.id",
+      "https://ahu.go.id",
+      "https://www.pajak.go.id",
+      "https://taxsummaries.pwc.com/indonesia/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/indonesia/individual/taxes-on-personal-income",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "JO",
+    "country": "Jordan",
+    "currency": "JOD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register an individual establishment with the Ministry of Industry, Trade and Supply, join the Chamber of Commerce, and get a municipal vocational licence. Sales tax applies from JOD 30k for services",
+      "registrationCostUsd": 150,
+      "annualCostUsd": 250,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://www.ccd.gov.jo",
+      "notes": "Sole traders register as an 'individual establishment' (mu'assasa fardiya). Chamber membership and the vocational licence are renewed every year."
+    },
+    "company": {
+      "type": "Limited Liability Company (LLC)",
+      "formationCostUsd": 550,
+      "typicalAllInFormationCostUsd": 1500,
+      "minimumCapitalUsd": 1,
+      "annualComplianceCostUsd": 1800,
+      "timeDays": 14,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": false,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.ccd.gov.jo",
+      "notes": "Registered with the Companies Control Department; nominal minimum capital is JOD 1. Audited accounts are mandatory, and a lawyer retainer is needed above capital thresholds. Non-Jordanian ownership is capped at 49–50% in some service and trading sectors under the Non-Jordanian Investment regulation, though 100% is allowed in many others."
+    },
+    "tax": {
+      "corporateRatePercent": 21,
+      "personalTopRatePercent": 25,
+      "smallBusinessRegime": "None; the corporate rate shown is 20% plus a 1% national contribution",
+      "vatRatePercent": 16,
+      "vatRegistrationThresholdUsd": 42300,
+      "digitalServicesNote": "Exported services are generally zero-rated for GST. ICT companies may qualify for reduced rates or exemptions under investment incentives."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "The JOD is pegged to the USD and there are no capital controls. PayPal, Payoneer and Wise work."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/jordan/corporate/taxes-on-corporate-income",
+      "https://www.ccd.gov.jo",
+      "https://istd.gov.jo",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "KG",
+    "country": "Kyrgyzstan",
+    "currency": "KGS",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register as an individual entrepreneur (IP) with the State Tax Service before trading. The single tax is available up to KGS 30M turnover; patents cover listed activities",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://salyk.kg",
+      "notes": "An individual entrepreneur (IP) registers free. Options are the single tax (rates by activity, lower for non-cash income), a patent, or High Technology Park residency for IT exporters (1% of revenue, 5% personal income tax)."
+    },
+    "company": {
+      "type": "Limited Liability Company (OsOO)",
+      "formationCostUsd": 30,
+      "typicalAllInFormationCostUsd": 400,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 800,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://minjust.gov.kg",
+      "notes": "Registered with the Ministry of Justice in a few days, with no minimum capital. IT companies can join the High Technology Park."
+    },
+    "tax": {
+      "corporateRatePercent": 10,
+      "personalTopRatePercent": 10,
+      "smallBusinessRegime": "Single tax for SMEs up to KGS 30M (low single-digit percent of turnover); patents; High Technology Park at 1% of gross revenue",
+      "vatRatePercent": 12,
+      "vatRegistrationThresholdUsd": 343000,
+      "digitalServicesNote": "Exported IT services under the High Technology Park pay 1% of revenue with no VAT or profit tax. Non-resident e-service providers register for VAT."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No capital controls. PayPal receiving is limited, but Payoneer and Wise generally work and USD accounts are common."
+    },
+    "sources": [
+      "https://salyk.kg",
+      "https://ht.kg",
+      "https://minjust.gov.kg",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "BD",
+    "country": "Bangladesh",
+    "currency": "BDT",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Get an e-TIN and a trade licence from the city corporation or municipality. Turnover tax (VAT enlistment) applies from BDT 5M, and full VAT from BDT 30M",
+      "registrationCostUsd": 25,
+      "annualCostUsd": 25,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://etaxnbr.gov.bd",
+      "notes": "A sole proprietorship needs a trade licence and an e-TIN. IT and ITES freelancers can get an ICT Division freelancer ID, and IT and ITES income is tax-exempt until 30 June 2027 subject to conditions such as cashless receipts."
+    },
+    "company": {
+      "type": "Private Limited Company / One Person Company (OPC)",
+      "formationCostUsd": 200,
+      "typicalAllInFormationCostUsd": 600,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 900,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://roc.gov.bd",
+      "notes": "Registered online with the RJSC; fees scale with authorised capital. An OPC needs BDT 2.5M to 50M paid-up capital. Audits are mandatory, and foreign-owned companies register with BIDA."
+    },
+    "tax": {
+      "corporateRatePercent": 27.5,
+      "personalTopRatePercent": 30,
+      "smallBusinessRegime": "VAT turnover tax at 4% for turnover of BDT 5M to 30M; a 1% minimum tax on gross receipts; the IT and ITES income exemption until June 2027",
+      "vatRatePercent": 15,
+      "vatRegistrationThresholdUsd": 241000,
+      "digitalServicesNote": "The corporate rate shown is for non-listed companies (25% if all transactions are cashless). Export of IT services is VAT zero-rated, and software and ITES exports get Bangladesh Bank cash incentives."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "Bangladesh Bank exchange controls apply, and export proceeds must be repatriated. PayPal receiving is not available (Xoom inbound only). Payoneer and Wise into local bank accounts are the norm, and freelancers can open ERQ foreign-currency accounts."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/bangladesh/corporate/taxes-on-corporate-income",
+      "https://roc.gov.bd",
+      "https://nbr.gov.bd",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "LY",
+    "country": "Libya",
+    "currency": "LYD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register in the commercial register and Chamber of Commerce and get a municipal licence before trading",
+      "registrationCostUsd": 150,
+      "annualCostUsd": 150,
+      "timeDays": 30,
+      "onlinePossible": false,
+      "registerUrl": "https://economy.gov.ly",
+      "notes": "Sole traders register in the commercial register and with the tax department. The process is in person and slow, and the administration is split between rival governments."
+    },
+    "company": {
+      "type": "Limited Liability Company (LLC)",
+      "formationCostUsd": 500,
+      "typicalAllInFormationCostUsd": 3000,
+      "minimumCapitalUsd": null,
+      "annualComplianceCostUsd": 2000,
+      "timeDays": 60,
+      "onlinePossible": false,
+      "foreignerCanOwn100Percent": false,
+      "localDirectorRequired": false,
+      "registerUrl": "https://economy.gov.ly",
+      "notes": "Foreign participation generally requires a joint venture with Libyan partners, who usually hold a majority, or a branch under the Investment Law. Minimum capital depends on structure and could not be confirmed, so it is null."
+    },
+    "tax": {
+      "corporateRatePercent": 24,
+      "personalTopRatePercent": 10,
+      "smallBusinessRegime": "None",
+      "vatRatePercent": 0,
+      "vatRegistrationThresholdUsd": null,
+      "digitalServicesNote": "There is no VAT, so the threshold is null. CIT is 20% plus a 4% Jihad tax. Stamp duty applies to contracts. A government surcharge on official FX purchases has applied since 2024."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "Central Bank of Libya controls FX, and the official rate differs from the parallel market. PayPal, Wise and Payoneer withdrawals to Libya are effectively unavailable, so receiving foreign income is very difficult."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/libya/corporate/taxes-on-corporate-income",
+      "https://cbl.gov.ly",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "KH",
+    "country": "Cambodia",
+    "currency": "KHR",
+    "soleProprietor": {
+      "registrationRequired": "above income threshold",
+      "thresholdNote": "Sole proprietors with turnover above KHR 250M (about USD 61k) a year must register as small taxpayers with the GDT and the Ministry of Commerce",
+      "registrationCostUsd": 150,
+      "annualCostUsd": 100,
+      "timeDays": 14,
+      "onlinePossible": true,
+      "registerUrl": "https://www.businessregistration.moc.gov.kh",
+      "notes": "A sole proprietorship registers through the Ministry of Commerce's online business registration (single portal) and the GDT. It pays a patent tax each year and progressive tax of 0–20% on profit."
+    },
+    "company": {
+      "type": "Private Limited Company (Co., Ltd.)",
+      "formationCostUsd": 300,
+      "typicalAllInFormationCostUsd": 1000,
+      "minimumCapitalUsd": 974,
+      "annualComplianceCostUsd": 1800,
+      "timeDays": 14,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.businessregistration.moc.gov.kh",
+      "notes": "Registered online through the MoC single portal. Minimum capital is KHR 4M (about USD 1,000). Companies are medium taxpayers by default, with monthly filings and an annual patent tax. Foreigners can own 100% except land."
+    },
+    "tax": {
+      "corporateRatePercent": 20,
+      "personalTopRatePercent": 20,
+      "smallBusinessRegime": "Small taxpayers pay progressive rates of 0–20%; a 1% minimum tax applies if proper accounting records are not kept",
+      "vatRatePercent": 10,
+      "vatRegistrationThresholdUsd": 60900,
+      "digitalServicesNote": "The economy is dollarised and the VAT threshold is KHR 250M. Non-resident e-commerce suppliers charge 10% VAT, and exported services are zero-rated."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No capital controls. USD is widely used. PayPal receiving is limited, but Payoneer, Wise and local banks such as ABA work."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/cambodia/corporate/taxes-on-corporate-income",
+      "https://www.businessregistration.moc.gov.kh",
+      "https://www.tax.gov.kh",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "IQ",
+    "country": "Iraq",
+    "currency": "IQD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with the Chamber of Commerce and the General Commission for Taxes before trading. The Kurdistan Region has separate procedures",
+      "registrationCostUsd": 100,
+      "annualCostUsd": 100,
+      "timeDays": 21,
+      "onlinePossible": false,
+      "registerUrl": "https://www.mot.gov.iq",
+      "notes": "Sole traders register with the Chamber of Commerce and get a tax file. The process is mostly in person."
+    },
+    "company": {
+      "type": "Limited Liability Company (LLC)",
+      "formationCostUsd": 300,
+      "typicalAllInFormationCostUsd": 2500,
+      "minimumCapitalUsd": 659,
+      "annualComplianceCostUsd": 2000,
+      "timeDays": 30,
+      "onlinePossible": false,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.mot.gov.iq",
+      "notes": "Registered with the Companies Registrar (Ministry of Trade). Minimum capital is IQD 1M. A lawyer is mandatory, and accounts must be audited by an Iraqi certified accountant. Foreign ownership is allowed but in practice often goes through an investment licence."
+    },
+    "tax": {
+      "corporateRatePercent": 15,
+      "personalTopRatePercent": 15,
+      "smallBusinessRegime": "The GCT may assess tax on deemed revenue (the higher of deemed tax or 15% of profit)",
+      "vatRatePercent": 0,
+      "vatRegistrationThresholdUsd": null,
+      "digitalServicesNote": "There is no VAT, so the threshold is null. Sales tax applies to selected goods and services. Payments to non-residents may attract withholding."
+    },
+    "foreignCurrency": {
+      "capitalControls": "approval needed",
+      "notes": "The Central Bank of Iraq tightly controls USD access through its electronic platform. PayPal and Wise are not available for receiving, and Payoneer is limited. Inbound freelance income usually comes through banks or exchange houses."
+    },
+    "sources": [
+      "https://taxsummaries.pwc.com/iraq/corporate/taxes-on-corporate-income",
+      "https://www.mot.gov.iq",
+      "https://open.er-api.com/v6/latest/USD"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  }
+]

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Money Machine — 230+ legal ways to get paid online, ranked</title>
+    <meta
+      name="description"
+      content="An open catalog of legal, mostly-online ways to earn money, ranked by probability of getting paid, automation level and effort. Every entry is legal in at least 80% of countries with free internet."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Open source · Public domain · No capital required</p>
+        <h1>Money Machine</h1>
+        <p class="lede">
+          <span id="count">230+</span> legal ways to get paid online, ranked by
+          how likely you are to actually receive money, how much of the work can
+          run on autopilot, and how little effort it takes. Every entry is legal
+          in at least 80% of countries with relatively free internet.
+        </p>
+        <p class="links">
+          <a href="./plans/index.html">Ranked list</a> ·
+          <a href="./docs/methodology.html">Methodology</a> ·
+          <a href="./docs/legal/reference-countries.html"
+            >Reference countries</a
+          >
+          ·
+          <a href="./docs/legal/excluded-activities.html">What is excluded</a> ·
+          <a href="./docs/legal/incorporation-costs.html"
+            >Incorporation costs</a
+          >
+          · <a href="./docs/platform-rules.html">Platform rules</a> ·
+          <a href="./docs/roadmap.html">Roadmap</a> ·
+          <a href="https://github.com/konard/money-machine">GitHub</a>
+        </p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="stats" id="stats" aria-label="Catalog summary"></section>
+
+      <section
+        class="shortlists"
+        id="shortlists"
+        aria-label="Start here"
+      ></section>
+
+      <section class="controls" aria-label="Filters">
+        <input
+          id="search"
+          type="search"
+          placeholder="Search strategies, platforms, tags…"
+          aria-label="Search"
+        />
+        <select id="category" aria-label="Category">
+          <option value="">All categories</option>
+        </select>
+        <select id="tier" aria-label="Tier">
+          <option value="">All tiers</option>
+          <option value="S">Tier S (70+, profit odds 25%+)</option>
+          <option value="A">Tier A (60+)</option>
+          <option value="B">Tier B (50–59)</option>
+          <option value="C">Tier C (&lt;50)</option>
+        </select>
+        <select id="maxCash" aria-label="Maximum startup cash">
+          <option value="-1">Any startup cash</option>
+          <option value="0">Startup cash: $0</option>
+          <option value="50">Startup cash ≤ $50</option>
+          <option value="200">Startup cash ≤ $200</option>
+          <option value="1000">Startup cash ≤ $1,000</option>
+        </select>
+        <select id="sort" aria-label="Sort by">
+          <option value="priorityScore">Sort: priority score</option>
+          <option value="paymentProbability">Sort: payment probability</option>
+          <option value="automation">Sort: automation</option>
+          <option value="incomePotential">Sort: income potential</option>
+          <option value="aiLeverage">Sort: AI leverage</option>
+          <option value="fastest">Sort: fastest first dollar</option>
+          <option value="lowEffort">Sort: lowest effort</option>
+          <option value="profitOdds">Sort: profit odds</option>
+          <option value="cheapest">Sort: cheapest to start</option>
+        </select>
+        <label class="check">
+          <input id="zeroCapital" type="checkbox" /> $0 capital only
+        </label>
+        <label class="check">
+          <input id="highAuto" type="checkbox" /> Automation ≥ 7
+        </label>
+      </section>
+
+      <section id="list" class="grid" aria-live="polite"></section>
+
+      <p class="empty" id="empty" hidden>No strategies match these filters.</p>
+    </main>
+
+    <dialog id="detail">
+      <article id="detailBody"></article>
+      <form method="dialog" class="dialog-actions">
+        <button type="submit">Close</button>
+      </form>
+    </dialog>
+
+    <footer class="wrap foot">
+      <p>
+        Nothing here is financial, legal or tax advice. Income figures are rough
+        ranges for a solo operator; most people earn at the low end. Scores are
+        opinions derived from public evidence and are updated as platforms
+        change. Data file:
+        <a href="./strategies.json">strategies.json</a>.
+      </p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

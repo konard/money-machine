@@ -1,0 +1,2353 @@
+[
+  {
+    "id": "qmee-surveys-no-minimum-cashout",
+    "name": "Qmee surveys and search rewards (no minimum cash-out)",
+    "category": "micro-tasks",
+    "summary": "Short paid surveys and sponsored search results paid to PayPal with no minimum balance, so the first cent is withdrawable the same day.",
+    "howItWorks": "Qmee runs a survey wall and a browser extension that shows sponsored results next to normal searches. Each completed survey pays a few cents to a few dollars and each clicked sponsored result pays a few cents. Unlike most panels, there is no minimum cash-out: the balance can be withdrawn to PayPal at any time. Pay is low, but the odds of receiving a real payout are among the highest of anything online.",
+    "platforms": ["Qmee"],
+    "payout": {
+      "methods": ["PayPal", "Venmo (US)", "gift cards"],
+      "minimumPayout": "$0 (no minimum)",
+      "frequency": "on request",
+      "typicalDelayDays": 0,
+      "notes": "Official FAQ: 'With no minimum withdrawal amount, you can cashout to your PayPal or Venmo account whenever you like'; money usually arrives within minutes. Gift cards come in fixed denominations and need a linked PayPal. Cashback-offer rewards (a separate feature) take up to 90 days."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 1,
+      "max": 7
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 2,
+      "median": 15,
+      "high": 60
+    },
+    "scores": {
+      "paymentProbability": 10,
+      "automation": 2,
+      "setupEffort": 1,
+      "ongoingEffort": 4,
+      "incomePotential": 1,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 12
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Market research participation is legal everywhere in the reference set. Small income is still taxable.",
+      "complianceRequirements": [
+        "one account per person",
+        "answer honestly (fraud checks disqualify)",
+        "no bots or auto-clickers (ToS)"
+      ]
+    },
+    "availability": {
+      "notes": "Official FAQ: available in the US, UK, Canada, Australia, France and Germany (6 of the ~50 reference countries)."
+    },
+    "automationPlan": [
+      "Nothing in the earning step may be automated; Qmee's ToS forbid bots.",
+      "Automate only the bookkeeping: log PayPal payouts into the earnings ledger."
+    ],
+    "manualSteps": [
+      "Create a Qmee account and link PayPal",
+      "Complete surveys and use the extension",
+      "Press cash out"
+    ],
+    "fullCycle": [
+      "Sign up at qmee.com",
+      "Link PayPal",
+      "Complete surveys / clicks",
+      "Cash out any amount to PayPal",
+      "Withdraw PayPal to bank"
+    ],
+    "risks": [
+      "Very low hourly rate",
+      "Survey disqualifications waste time",
+      "Country availability is narrow"
+    ],
+    "evidence": "Qmee's homepage states over $45,000,000 paid to users; its FAQ confirms PayPal/Venmo cash-out with no minimum, arriving within minutes. Paying since 2012.",
+    "sources": ["https://www.qmee.com/", "https://www.qmee.com/en-us/faq"],
+    "tags": ["tiny-income", "near-certain-payout", "surveys"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Qmee website and browser extension (free)"],
+        "skills": ["answering surveys honestly and consistently"],
+        "equipment": ["laptop or smartphone"],
+        "accounts": ["Qmee account", "PayPal or Venmo"]
+      },
+      "unitEconomics": {
+        "unit": "per hour of surveys",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 5
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Surveys pay a few cents to a few dollars; after disqualifications, effective pay is about $1-5/hour."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. No minimum cash-out, so the first cents can be withdrawn on day one."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 90,
+        "typicalNetProfitMonth12Usd": {
+          "low": 2,
+          "median": 12,
+          "high": 50
+        },
+        "notes": "Payment is near-certain because there is no threshold, but income is tiny and limited to six countries. AI-generated survey fraud has led panels to tighten quality checks, so disqualifications are frequent. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; almost nobody reaches $100/month from Qmee alone."
+      },
+      "pricingStrategy": "Not applicable; take only surveys that pay at least $3/hour at the stated length.",
+      "profitPath": [
+        "Month 0: sign up and link PayPal (cost $0)",
+        "Month 1-2: $5-15/month",
+        "Month 3-6: same, about $10-20/month",
+        "Month 6-12: plateau; use as filler alongside other panels"
+      ],
+      "sources": ["https://www.qmee.com/", "https://www.qmee.com/en-us/faq"]
+    }
+  },
+  {
+    "id": "paid-survey-panels",
+    "name": "Paid survey panels (Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel)",
+    "category": "micro-tasks",
+    "summary": "Join several established market-research panels and cash out small balances to PayPal; the money is small but the payout is close to guaranteed.",
+    "howItWorks": "Market-research firms pay panel members for opinions. Each survey pays roughly $0.50–$5 and takes 5–20 minutes. Joining 3–5 panels at once keeps a steady flow of qualifying surveys. Balances are cashed out to PayPal (or bank on some panels) once a low minimum is reached, typically $5–$10. This is labor, not passive income, and the hourly rate is poor, but the payment itself is reliable.",
+    "platforms": [
+      "Swagbucks",
+      "Branded Surveys",
+      "Toluna",
+      "YouGov",
+      "PrizeRebel",
+      "Survey Junkie",
+      "Mobrog"
+    ],
+    "payout": {
+      "methods": ["PayPal", "bank transfer (some panels)", "gift cards"],
+      "minimumPayout": "$5–$10 depending on panel",
+      "frequency": "on request",
+      "typicalDelayDays": 3,
+      "notes": "Branded Surveys (official site): 500 points = $5 minimum, via PayPal, bank transfer or Tango gift cards. Swagbucks (help centre): PayPal cash arrives in 2–5 business days; the first PayPal redemption needs matching names and a confirmed bank on PayPal; the SB minimum was not stated on the pages checked. PrizeRebel (official site): PayPal, Bitcoin and gift cards; minimum not confirmed. YouGov/Toluna: PayPal/vouchers shown, thresholds not confirmed on official pages."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 3,
+      "max": 21
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 5,
+      "median": 30,
+      "high": 150
+    },
+    "scores": {
+      "paymentProbability": 9,
+      "automation": 1,
+      "setupEffort": 1,
+      "ongoingEffort": 5,
+      "incomePotential": 2,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the reference set. Panels ban multiple accounts, VPN use and automated answering.",
+      "complianceRequirements": [
+        "one account per person",
+        "truthful demographic profile",
+        "no VPN or automation (ToS)"
+      ]
+    },
+    "availability": {
+      "notes": "Swagbucks help centre: live in most countries in the Americas, Europe and Asia and some in Africa. Branded Surveys: US, Canada and UK residents only (official). Toluna and YouGov run country panels in many markets. Survey Junkie is reported as US/Canada/Australia only (not re-checked). Mobrog runs in 70+ countries with a €5 minimum paid via PayPal/Skrill (unverified)."
+    },
+    "automationPlan": [
+      "Survey answering must stay manual (ToS).",
+      "Automate reminders: a daily script that lists new surveys from panel email notifications.",
+      "Automate payout logging: parse PayPal payout emails into the earnings ledger."
+    ],
+    "manualSteps": [
+      "Sign up for 3–5 panels with the same email and PayPal",
+      "Fill profile questionnaires fully (they drive survey invites)",
+      "Take surveys; cash out at minimum"
+    ],
+    "fullCycle": [
+      "Register on panels",
+      "Complete profile surveys",
+      "Answer surveys daily",
+      "Cash out to PayPal",
+      "Withdraw PayPal to bank"
+    ],
+    "risks": [
+      "Low hourly rate ($2–$6 effective)",
+      "Frequent disqualification mid-survey",
+      "Account bans for inconsistent answers"
+    ],
+    "evidence": "Swagbucks publicly states it has paid members over $1 billion in rewards; YouGov, Toluna and Branded Surveys are long-running panels owned by established market-research groups.",
+    "sources": [
+      "https://help.swagbucks.com/hc/en-us",
+      "https://surveys.gobranded.com/",
+      "https://www.toluna.com/",
+      "https://yougov.com/",
+      "https://www.prizerebel.com/"
+    ],
+    "tags": ["tiny-income", "near-certain-payout", "surveys"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "3-5 panels: Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel (free)"
+        ],
+        "skills": [
+          "honest, consistent profile answers",
+          "patience with disqualifications"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": ["panel accounts (one per person)", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per hour of surveys",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 4,
+          "high": 6
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Surveys pay $0.50-5 for 5-20 minutes; with disqualifications effective pay is $2-6/hour."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. First cash-out once a $5-10 minimum is reached."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 90,
+        "typicalNetProfitMonth12Usd": {
+          "low": 5,
+          "median": 25,
+          "high": 120
+        },
+        "notes": "Panels pay reliably, but buyers worry about bots and AI-written answers, so fraud checks and disqualifications have increased and some research is shifting to synthetic respondents. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; only about 10% reach $100/month, typically US/UK members doing an hour a day across several panels."
+      },
+      "pricingStrategy": "Not applicable; skip surveys under $3/hour and prioritise panels that pay for profile surveys and do not screen out late.",
+      "profitPath": [
+        "Month 0: join 3-5 panels, complete all profile questionnaires (cost $0)",
+        "Month 1-2: $10-30/month",
+        "Month 3-6: focus on the 2 best-paying panels: $20-50/month",
+        "Month 6-12: plateau at $20-120/month depending on hours"
+      ],
+      "sources": [
+        "https://help.swagbucks.com/hc/en-us",
+        "https://surveys.gobranded.com/"
+      ]
+    }
+  },
+  {
+    "id": "google-opinion-rewards",
+    "name": "Google Opinion Rewards",
+    "category": "micro-tasks",
+    "summary": "Answer 1–3 question surveys from Google. On Android (39 countries) rewards are Google Play credit only; cash via PayPal exists only on the iOS app, whose country list Google no longer documents.",
+    "howItWorks": "Google's own survey app sends very short location- and purchase-based surveys a few times a week, paying about $0.10–$1 each. On Android the reward is Google Play credit (not withdrawable); on iOS rewards are paid to PayPal, so the bank path exists only through the iOS app. Income is tiny but near-certain where the app is available.",
+    "platforms": ["Google Opinion Rewards"],
+    "payout": {
+      "methods": ["PayPal (iOS)", "Google Play credit (Android)"],
+      "minimumPayout": "Android: no threshold (Play credit); iOS PayPal threshold not documented officially",
+      "frequency": "on request",
+      "typicalDelayDays": 2,
+      "notes": "Official help ('Redeem rewards'): credit is applied to your Google payment profile, spent in the Play Store, and each credit expires one year after it is earned, so Android rewards never reach a bank. The survey landing page mentions 'Google Play or PayPal credit'; PayPal is the iOS reward, but the help centre no longer documents iOS availability or a cash-out minimum (historically $2)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 1,
+      "median": 3,
+      "high": 10
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 1,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 10
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the reference set. Requires sharing location history for many surveys.",
+      "complianceRequirements": ["one account per person", "honest answers"]
+    },
+    "availability": {
+      "notes": "Official 'App availability and eligibility' page: Android app in 39 countries (Australia, Austria, Belgium, Brazil, Canada, Chile, Colombia, Czech Republic, Denmark, Finland, France, Germany, Hong Kong, Hungary, India, Indonesia, Ireland, Italy, Japan, Malaysia, Mexico, Netherlands, New Zealand, Norway, Poland, Russia, Singapore, South Africa, South Korea, Spain, Sweden, Switzerland, Taiwan, Thailand, Turkey, UAE, UK, US, Vietnam), 20 of which are reference countries; but Android pays only Play credit. The cash (PayPal, iOS) route is undocumented and historically limited to a few countries such as the US, hence the low availability score."
+    },
+    "automationPlan": [
+      "None for earning; surveys are delivered by Google and answered by hand.",
+      "Automate payout logging only."
+    ],
+    "manualSteps": [
+      "Install the app and link Google/PayPal",
+      "Answer surveys when notified",
+      "Cash out on iOS"
+    ],
+    "fullCycle": [
+      "Install app",
+      "Answer surveys",
+      "Cash out to PayPal (iOS)",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Android rewards are not cash",
+      "Survey frequency depends on your location history and shopping"
+    ],
+    "evidence": "Operated by Google since 2013. Payment of Play credit is certain; paymentProbability was lowered from 9 to 6 because a bank-reachable cash payout depends on the iOS app, whose availability Google's help centre no longer documents.",
+    "sources": [
+      "https://surveys.google.com/google-opinion-rewards/",
+      "https://support.google.com/opinionrewards/answer/6322274?hl=en",
+      "https://support.google.com/opinionrewards/answer/6322284?hl=en"
+    ],
+    "tags": ["tiny-income", "near-certain-payout", "surveys"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Google Opinion Rewards app (free)"],
+        "skills": ["answering short surveys"],
+        "equipment": ["iPhone for PayPal cash (Android pays Play credit only)"],
+        "accounts": ["Google account", "PayPal (iOS)"]
+      },
+      "unitEconomics": {
+        "unit": "per month of surveys",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.5,
+        "notes": "Surveys pay about $0.10-1 each, a few per week; figures are monthly totals."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Cash requires the iOS app; on Android the reward is non-withdrawable Play credit."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 2,
+          "high": 8
+        },
+        "notes": "Google still runs the panel, but cash payouts depend on the iOS app, whose country availability is no longer documented. Survey frequency depends on location history and shopping. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; nobody reaches $100/month here."
+      },
+      "pricingStrategy": "Not applicable.",
+      "profitPath": [
+        "Month 0: install on iOS and link PayPal (cost $0)",
+        "Month 1-2: $1-3",
+        "Month 3-6: $2-5/month",
+        "Month 6-12: plateau at a few dollars a month"
+      ],
+      "sources": [
+        "https://surveys.google.com/google-opinion-rewards/",
+        "https://support.google.com/opinionrewards/answer/6322284?hl=en"
+      ]
+    }
+  },
+  {
+    "id": "paid-research-interviews",
+    "name": "Paid user-research interviews and focus groups (Respondent, User Interviews, dscout)",
+    "category": "micro-tasks",
+    "summary": "Get paid $30–$200+ for 30–60 minute remote interviews with product teams and researchers who need people matching a profile.",
+    "howItWorks": "Companies recruit interviewees through platforms like Respondent and User Interviews. You fill a profile, apply to studies that match, and if selected join a video call or complete a diary study. Pay is set per study (Respondent: most sessions $50–$250 depending on length and seniority, senior B2B roles $400+). Payment is sent through Tremendous (PayPal, bank or gift card) after the session is verified. Selection is competitive, so apply to many studies; professionals with specific job titles are picked far more often.",
+    "platforms": ["Respondent.io", "User Interviews", "dscout", "Prolific"],
+    "payout": {
+      "methods": [
+        "Tremendous (PayPal, bank or gift card)",
+        "PayPal",
+        "gift cards"
+      ],
+      "minimumPayout": "$0 (paid per study)",
+      "frequency": "per study",
+      "typicalDelayDays": 7,
+      "notes": "Respondent (official participant page): paid via Tremendous, usually within 5–7 business days of the session; 'you'll never be asked to pay to participate'. User Interviews and dscout payout terms not re-checked."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 500
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 2,
+      "setupEffort": 1,
+      "ongoingEffort": 3,
+      "incomePotential": 3,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 55
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. Do not misrepresent your profile; platforms verify LinkedIn and ban fraud.",
+      "complianceRequirements": [
+        "truthful profile",
+        "one account",
+        "NDAs for some studies"
+      ]
+    },
+    "availability": {
+      "notes": "Respondent says its panel covers 150+ countries but highlights US, Canada, Australia, UK, Germany and France; many studies are restricted to specific regions."
+    },
+    "automationPlan": [
+      "Automate study discovery: a script that checks new studies and drafts screener answers from your saved profile (you submit).",
+      "Automate calendar booking and payout logging."
+    ],
+    "manualSteps": [
+      "Create profiles with verified LinkedIn",
+      "Apply to screeners",
+      "Attend sessions"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Complete profile",
+      "Apply to studies",
+      "Attend session",
+      "Receive PayPal/Tremendous payment",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Low selection rate for generic profiles",
+      "Sessions require live availability",
+      "No-shows or unverified sessions are unpaid"
+    ],
+    "evidence": "User Interviews states participants have earned $60 million; Respondent publishes typical session pay of $50–$250 (senior B2B $400+) and focus groups of $75–$200 online.",
+    "sources": [
+      "https://www.respondent.io/participants",
+      "https://www.userinterviews.com/participants",
+      "https://dscout.com/"
+    ],
+    "tags": ["near-certain-payout", "interviews", "fast-cash"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Respondent, User Interviews, dscout profiles (free)",
+          "calendar booking (free)"
+        ],
+        "skills": [
+          "articulate on-camera conversation",
+          "accurate professional profile",
+          "fast screener applications"
+        ],
+        "equipment": ["laptop with webcam and microphone", "quiet room"],
+        "accounts": [
+          "Respondent / User Interviews / dscout accounts",
+          "verified LinkedIn",
+          "Tremendous or PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per completed session",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 75,
+          "high": 250
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1.5,
+        "notes": "Respondent lists most sessions at $50-250 (senior B2B $400+); 1.5 hours includes applying to screeners. Researchers pay the platform fee."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Selection rate is low for generic profiles, so the first session can take 1-3 months."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 45,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 450
+        },
+        "notes": "Product teams still pay well for real users, but AI-moderated interviews and synthetic-user tools have cut some demand, and platforms now verify LinkedIn and ID to block fraud. People with in-demand job titles (IT buyers, engineers, clinicians, finance) are picked often; generic consumer profiles are rarely selected. profitLikelihoodPercent here is the chance of receiving any real net-positive payout within 12 months (typical income is under $100/month), calibrated to the catalog's survey-panel anchor."
+      },
+      "pricingStrategy": "Rates are set per study; apply first to B2B studies matching your real job title, which pay 2-5 times consumer rates.",
+      "profitPath": [
+        "Month 0: build verified profiles on 3 platforms (cost $0)",
+        "Month 1-2: apply to 20+ screeners; first $50-100 session",
+        "Month 3-6: 1-3 sessions/month: $50-250",
+        "Month 6-12: steady $60-450/month for matching professionals"
+      ],
+      "sources": [
+        "https://www.respondent.io/participants",
+        "https://www.userinterviews.com/participants"
+      ]
+    }
+  },
+  {
+    "id": "game-playtesting",
+    "name": "Paid game playtesting (PlaytestCloud, BetaTesting, Antidote)",
+    "category": "micro-tasks",
+    "summary": "Play unreleased mobile and PC games for 15–60 minutes while recording your screen and thoughts; paid per test via PayPal.",
+    "howItWorks": "Studios pay for recorded play sessions with think-aloud commentary. PlaytestCloud pays the fee stated in each invitation (commonly reported at about $9 for a 15-minute mobile test); BetaTesting and Antidote pay per project. You install the build, play as instructed, answer a survey, and are paid by PayPal after approval. Invitations depend on your device, country and demographics.",
+    "platforms": ["PlaytestCloud", "BetaTesting", "Antidote.gg"],
+    "payout": {
+      "methods": ["PayPal"],
+      "minimumPayout": "$0 (paid per test)",
+      "frequency": "per test, due within 7 days of completion (PlaytestCloud)",
+      "typicalDelayDays": 7,
+      "notes": "PlaytestCloud tester terms §6: fee stated in the invitation email, paid via PayPal within 7 days of completing a successful test, in USD (GBP for UK players). Per-test rates are not published on the site; the ~$9/15 min figure is from third-party reports. BetaTesting and Antidote terms not re-checked."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 150
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 1,
+      "setupEffort": 1,
+      "ongoingEffort": 2,
+      "incomePotential": 2,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; tests are under NDA and recordings must not be shared.",
+      "complianceRequirements": ["NDA compliance", "one account", "age 18+"]
+    },
+    "availability": {
+      "notes": "PlaytestCloud accepts testers worldwide with PayPal; most tests go to US/UK/EU/Canada/Australia testers."
+    },
+    "automationPlan": [
+      "None for the test itself (must be a real human session).",
+      "Automate invitation triage and payout logging."
+    ],
+    "manualSteps": [
+      "Register and complete a qualification test",
+      "Install builds and record sessions",
+      "Complete post-test surveys"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Pass qualification",
+      "Accept invitations",
+      "Record play session",
+      "Get PayPal payment",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Irregular invitations",
+      "Rejected sessions (poor audio, not following tasks) are unpaid"
+    ],
+    "evidence": "PlaytestCloud has run paid tests for mobile studios since 2014; its player terms commit to PayPal payment within 7 days of a completed test.",
+    "sources": [
+      "https://www.playtestcloud.com/player-terms-of-service",
+      "https://betatesting.com/beta-testers",
+      "https://antidote.gg/"
+    ],
+    "tags": ["near-certain-payout", "games", "tiny-income"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["PlaytestCloud, BetaTesting, Antidote (free)"],
+        "skills": [
+          "thinking aloud while playing",
+          "following test instructions"
+        ],
+        "equipment": [
+          "recent smartphone or tablet",
+          "PC for PC tests",
+          "microphone"
+        ],
+        "accounts": ["tester accounts", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per test",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 10,
+          "high": 50
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.5,
+        "notes": "PlaytestCloud states the fee in each invitation (about $9-10 for a 15-minute test reported); longer BetaTesting projects pay $15-50."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. PlaytestCloud pays within 7 days of a successful test."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 55,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 120
+        },
+        "notes": "Games-industry layoffs in 2023-2025 shrank research budgets, while tester sign-ups keep rising, so invitations are irregular. Testers in the US/UK/EU with recent devices and fitting demographics get most tests. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; very few reach $100/month."
+      },
+      "pricingStrategy": "Not applicable; accept every invitation quickly and keep audio quality high to stay on studios' preferred lists.",
+      "profitPath": [
+        "Month 0: register and pass qualification (cost $0)",
+        "Month 1-2: 1-2 tests: $10-20",
+        "Month 3-6: $10-40/month",
+        "Month 6-12: plateau; combine with usability testing"
+      ],
+      "sources": [
+        "https://www.playtestcloud.com/player-terms-of-service",
+        "https://betatesting.com/beta-testers"
+      ]
+    }
+  },
+  {
+    "id": "crowdtesting-bug-hunts",
+    "name": "Crowdtesting and paid bug hunts (Testbirds, test IO, uTest, Testlio)",
+    "category": "micro-tasks",
+    "summary": "Join crowdtesting platforms (uTest, Testlio, test IO, Testbirds) that pay per approved bug or per completed test cycle on real apps and websites.",
+    "howItWorks": "Companies pay crowdtesting vendors to test releases on many real devices. Testers pick test cycles, follow instructions, report bugs with reproduction steps and screenshots, and are paid per approved bug (commonly $5–$50 by severity) or a flat fee per cycle. Payment goes to PayPal or Payoneer weekly (Testlio) to monthly. It is structured, well-paid-per-hour work compared with surveys, and bug approval rates improve quickly with experience.",
+    "platforms": [
+      "Testbirds",
+      "test IO",
+      "uTest (Applause)",
+      "Testlio",
+      "Ubertesters"
+    ],
+    "payout": {
+      "methods": ["PayPal", "Payoneer", "bank transfer (some)"],
+      "minimumPayout": "$0–$10 depending on platform",
+      "frequency": "weekly (Testlio) to monthly",
+      "typicalDelayDays": 30,
+      "notes": "Testlio (official): freelancers are paid hourly, approved payments sent weekly via Payoneer or PayPal, open to all non-sanctioned countries. uTest's payment FAQ is behind login and test IO/Testbirds pages could not be read, so their schedules (reported as twice-monthly/monthly via PayPal/Payoneer) remain unconfirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 80,
+      "high": 800
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 3,
+      "setupEffort": 2,
+      "ongoingEffort": 5,
+      "incomePotential": 4,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Fully authorised testing under contract; legal everywhere. Projects are under NDA.",
+      "complianceRequirements": [
+        "NDA compliance",
+        "one account",
+        "no automated bug submission"
+      ]
+    },
+    "availability": {
+      "notes": "Testlio works with freelancers from any non-sanctioned country; uTest and Testbirds also recruit globally. Payout through PayPal/Payoneer covers nearly all reference countries."
+    },
+    "automationPlan": [
+      "AI can draft bug reports from your notes and screenshots (you verify and submit).",
+      "Scripts can run automated checks (link checkers, accessibility scans) that surface candidate bugs for manual confirmation.",
+      "Automate payout logging."
+    ],
+    "manualSteps": [
+      "Register, pass onboarding tests",
+      "Execute test cycles on your devices",
+      "Report bugs"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Pass onboarding",
+      "Join test cycles",
+      "Report approved bugs",
+      "Weekly-to-monthly PayPal/Payoneer payout",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Duplicate bugs are unpaid",
+      "Cycle availability varies by device/country",
+      "Payment delayed to monthly cycle"
+    ],
+    "evidence": "Applause/uTest has a community of over a million testers and publishes payout schedules; Testbirds and test IO have paid testers since the early 2010s.",
+    "sources": [
+      "https://www.utest.com/",
+      "https://test.io/testers/",
+      "https://nest.testbirds.com/",
+      "https://www.testlio.com/join-the-community"
+    ],
+    "tags": ["near-certain-payout", "qa", "skill-building"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 6,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "uTest, test IO, Testbirds, Testlio portals (free)",
+          "screen recorder (free)",
+          "AI for drafting bug reports (free tier)"
+        ],
+        "skills": [
+          "exploratory testing",
+          "clear reproduction steps",
+          "documenting with screenshots and video"
+        ],
+        "equipment": [
+          "laptop",
+          "1-2 smartphones (more devices unlock more cycles)"
+        ],
+        "accounts": ["tester accounts + NDA", "PayPal or Payoneer"]
+      },
+      "unitEconomics": {
+        "unit": "per approved bug",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 10,
+          "high": 50
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Bug payouts are commonly $3-50 by severity; Testlio pays hourly instead. 1 hour per approved bug includes duplicates and rejected reports."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. First payout after the first approved cycle and the platform's monthly or weekly run."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 700
+        },
+        "notes": "Companies still pay for testing on real devices, but AI-driven test automation absorbs simple regression checks and bug rates have not risen. Testers with many devices and fast, high-quality reports climb ratings and get paid test-case work; beginners lose time to duplicate bugs. profitLikelihoodPercent here is the chance of receiving any real net-positive payout within 12 months (typical income is under $100/month), calibrated to the catalog's survey-panel anchor."
+      },
+      "pricingStrategy": "Not applicable; focus on cycles with few testers and on higher-severity functional bugs, and move to Testlio-style hourly work once rated.",
+      "profitPath": [
+        "Month 0: register on 2-3 platforms, pass onboarding (cost $0)",
+        "Month 1-2: first cycles: $10-50",
+        "Month 3-6: rating improves: $50-200/month",
+        "Month 6-12: hourly or invite-only cycles: $100-700/month"
+      ],
+      "sources": [
+        "https://www.utest.com/",
+        "https://www.testlio.com/join-the-community"
+      ]
+    }
+  },
+  {
+    "id": "content-mill-writing",
+    "name": "Pay-per-word content platforms (Textbroker, Verblio, Crowd Content)",
+    "category": "services",
+    "summary": "Write short articles for open-order marketplaces that pay per word or per accepted piece; reliable payouts, but the main platforms only accept residents/citizens of specific countries.",
+    "howItWorks": "Content platforms hold a queue of client orders that any approved writer can claim. Textbroker US pays per word by quality rating (3 stars 1.1¢, 4 stars 1.6¢, 5 stars 5.5¢; DirectOrders from 2.2¢) with payouts processed twice a week; Verblio pays per accepted piece and lets writers invoice weekly. Textbroker rejects AI-generated writing and runs every submission through AI detection, so AI can help research and outline but the prose must be your own. Income is modest, but orders are usually available and payouts are dependable.",
+    "platforms": ["Textbroker", "Verblio", "Crowd Content"],
+    "payout": {
+      "methods": ["PayPal", "Payoneer (some)"],
+      "minimumPayout": "$10 (Textbroker)",
+      "frequency": "on request, processed twice weekly (Textbroker); weekly invoicing (Verblio)",
+      "typicalDelayDays": 4,
+      "notes": "Textbroker US (official payment page): $10 minimum balance, payout requests any time, processed twice per week. Verblio: no minimum invoice, invoice weekly. Listverse was removed: its old 'write-get-paid' page is gone (404) and its submission page now states 'Listverse does not pay for submissions'."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 30
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 20,
+      "median": 150,
+      "high": 1200
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 2,
+      "setupEffort": 2,
+      "ongoingEffort": 6,
+      "incomePotential": 3,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 15
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. Platform rules: original work, no plagiarism; Textbroker states 'AI-generated writing is not accepted' and checks every submission. Platform availability is limited by residency rules, not legality.",
+      "complianceRequirements": [
+        "original writing",
+        "no AI-generated text where banned",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Textbroker US requires permanent US residence and US ID; Verblio requires US citizenship and an SSN. Textbroker runs separate national sites (e.g. Germany, France, Spain, Italy, Netherlands) whose residency rules were not re-checked. Writers outside these markets have few options here."
+    },
+    "automationPlan": [
+      "AI for research, outlines, fact lists and proofreading suggestions.",
+      "Script to watch the order board and alert on high-paying orders.",
+      "Automate invoicing/payout logging."
+    ],
+    "manualSteps": [
+      "Register and submit a writing sample",
+      "Claim and write orders",
+      "Submit for review"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Pass writing assessment",
+      "Claim orders",
+      "Deliver",
+      "PayPal payout (Textbroker processes twice weekly; Verblio invoices weekly)",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Low per-word rates at entry level",
+      "Rejections if AI detection triggers",
+      "Demand has fallen since 2023"
+    ],
+    "evidence": "Textbroker has operated since 2005 and publishes its US per-word rate table and payout rules; Verblio publishes writer terms. paymentProbability lowered to 7 and availability to 15 after confirming US-only eligibility and dropping Listverse.",
+    "sources": [
+      "https://www.textbroker.com/authors",
+      "https://www.textbroker.com/authors-payments-conditions",
+      "https://www.verblio.com/join-our-writing-team",
+      "https://listverse.com/submit-a-list/"
+    ],
+    "tags": ["near-certain-payout", "writing"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 4,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Textbroker / Verblio writer accounts (free)",
+          "grammar checker (free tier)",
+          "AI for research and outlines only"
+        ],
+        "skills": [
+          "fast, clean English prose",
+          "research",
+          "writing without AI-generated text"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Textbroker or Verblio account (US residency/ID)",
+          "PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 500-word article",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 8,
+          "high": 28
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Textbroker US pays 1.1-5.5 cents/word by rating (4-star 1.6 cents = $8 per 500 words); rates are net to the writer."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Textbroker processes payouts twice a week once $10 is reached."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 10,
+          "median": 60,
+          "high": 1000
+        },
+        "notes": "Since 2023 clients have replaced cheap articles with AI output, so open-order queues are thinner and rates have not risen. Platforms run AI detection and reject flagged work, sometimes wrongly. Writers who reach 5-star ratings or win direct-order clients still earn; most stay at $5-10/hour. Median month-12 net profit was lowered below $100 so it agrees with a profit likelihood under 50% (most starters never reach $100/month)."
+      },
+      "pricingStrategy": "Start on open orders to build a rating, then set a DirectOrder rate of 3-5 cents/word and pitch repeat clients for team orders.",
+      "profitPath": [
+        "Month 0: pass the writing sample (cost $0)",
+        "Month 1-2: $50-150/month from open orders",
+        "Month 3-6: reach 4-5 stars and first direct clients: $100-400/month",
+        "Month 6-12: direct orders and teams: $150-1,000/month"
+      ],
+      "sources": [
+        "https://www.textbroker.com/authors-payments-conditions",
+        "https://www.verblio.com/join-our-writing-team"
+      ]
+    }
+  },
+  {
+    "id": "crowd-translation-gengo",
+    "name": "Crowd translation and post-editing (Gengo, Unbabel, Smartcat marketplace)",
+    "category": "services",
+    "summary": "Pass a language test, then pick small translation jobs from an open queue and request payouts, which are processed twice a month.",
+    "howItWorks": "Gengo and similar marketplaces split client documents into small jobs that qualified translators claim from a dashboard. Pay is per word (Gengo's standard tier is a few cents per word) and payouts go to PayPal or Payoneer on a fixed schedule. Unbabel pays for post-editing machine translation per task. AI can pre-translate, but the platforms require human quality; using raw machine output is detectable and leads to removal. For bilingual people this is one of the most reliable small online incomes.",
+    "platforms": ["Gengo", "Unbabel", "Smartcat", "ProZ"],
+    "payout": {
+      "methods": ["PayPal", "Payoneer"],
+      "minimumPayout": "No stated minimum (PayPal fee 1.5%, min $1.50)",
+      "frequency": "on request; processed on the 5th and 20th (Gengo)",
+      "typicalDelayDays": 15,
+      "notes": "Gengo help centre: payouts are not automatic. Request at least 7 days ahead; paid on the 5th and 20th in USD via PayPal (1.5% fee, min $1.50, max $20) or Payoneer (no Gengo fee). A tax form is required before the first payout. Rates differ by language pair and are shown on each job. Unbabel's editor programme page still exists but its pay terms were not confirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 20,
+      "median": 150,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 3,
+      "setupEffort": 2,
+      "ongoingEffort": 6,
+      "incomePotential": 4,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. Not for sworn/certified translation, which needs licensing.",
+      "complianceRequirements": ["pass language tests", "NDA on client content"]
+    },
+    "availability": {
+      "notes": "Global; payout via PayPal/Payoneer covers nearly every reference country."
+    },
+    "automationPlan": [
+      "AI draft + human post-edit where the platform allows post-editing jobs.",
+      "Script alerts when jobs in your language pair appear (queues empty fast).",
+      "Automate payout logging."
+    ],
+    "manualSteps": [
+      "Pass the qualification test",
+      "Claim and translate jobs",
+      "Respond to reviewer feedback"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Pass test",
+      "Claim jobs",
+      "Deliver",
+      "Scheduled PayPal/Payoneer payout",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Tests are hard to pass for popular pairs",
+      "Job supply is uneven",
+      "Rates have fallen with machine translation"
+    ],
+    "evidence": "Gengo (part of Lionbridge) has paid translators since 2009 and publishes its payout schedule and fees in its help centre.",
+    "sources": [
+      "https://gengo.com/translators/",
+      "https://support.gengo.com/hc/en-us/articles/231441467-How-do-I-get-paid-",
+      "https://unbabel.com/editors/",
+      "https://www.smartcat.com/"
+    ],
+    "tags": ["near-certain-payout", "translation"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 5,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Gengo / Smartcat / Unbabel workbenches (free)",
+          "machine-translation draft tools where allowed (free tier)"
+        ],
+        "skills": [
+          "native-level fluency in two languages",
+          "passing translation tests",
+          "post-editing machine output"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Gengo translator account + tax form",
+          "PayPal or Payoneer"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 words",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 30,
+          "high": 60
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 2,
+        "grossMarginPercent": 98,
+        "hoursPerUnit": 2,
+        "notes": "Gengo standard-tier pay is about 3 cents/word and pro about 6 cents/word (estimated: Gengo shows the reward per job and publishes no rate card); the 2% fee approximates Gengo's PayPal payout fee (1.5%, min $1.50, max $20 per payout, as in the payout notes; Payoneer carries no Gengo fee)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Gengo pays on the 5th and 20th after a request made at least 7 days earlier."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 10,
+          "median": 60,
+          "high": 1200
+        },
+        "notes": "LLM translation now handles most routine text, so remaining work is post-editing at lower per-word rates and queues empty within minutes. Translators in rarer pairs or with pro-level test results still get steady work. Failure modes are failing the test for popular pairs and thin job supply. Median month-12 net profit was lowered below $100 so it agrees with a profit likelihood under 50% (most starters never reach $100/month)."
+      },
+      "pricingStrategy": "Rates are platform-set; take the pro test as soon as possible and add direct clients on Smartcat or ProZ at 6-10 cents/word.",
+      "profitPath": [
+        "Month 0: pass the Gengo test for your pair (cost $0)",
+        "Month 1-2: $30-100/month",
+        "Month 3-6: pro level and alerts: $100-300/month",
+        "Month 6-12: add direct clients: $150-1,200/month"
+      ],
+      "sources": [
+        "https://gengo.com/translators/",
+        "https://support.gengo.com/hc/en-us/articles/231441467-How-do-I-get-paid-"
+      ]
+    }
+  },
+  {
+    "id": "receipt-and-shopping-data-apps",
+    "name": "Receipt scanning and shopping-data apps paid in cash (Receipt Hog, Ibotta, Shopmium, CoinOut)",
+    "category": "micro-tasks",
+    "summary": "Photograph grocery receipts or link store accounts and receive small cash rewards to PayPal or bank for purchases you were making anyway.",
+    "howItWorks": "Market-research apps buy anonymised purchase data by rewarding receipt uploads. Receipt Hog pays points for any receipt and cashes out to PayPal; Ibotta pays cash rebates on specific products to PayPal or bank; Shopmium (France, UK, Belgium, US) pays rebates to PayPal or bank. Nothing changes in how you shop; a weekly photo session yields a few dollars a month. Avoid gift-card-only apps (Fetch) if you want money in a bank.",
+    "platforms": [
+      "Receipt Hog",
+      "Ibotta",
+      "Shopmium",
+      "CoinOut",
+      "Checkout 51"
+    ],
+    "payout": {
+      "methods": ["PayPal", "bank transfer (Ibotta, Shopmium)"],
+      "minimumPayout": "$5–$20 depending on app",
+      "frequency": "on request",
+      "typicalDelayDays": 3,
+      "notes": "Ibotta (help centre): withdraw to bank, PayPal or gift cards after reaching $20, redeeming one offer and, for new accounts, waiting 7 days and verifying a phone number. Receipt Hog (run by Numerator): coins redeem for PayPal or Amazon cards; minimum not shown on the official page. Shopmium: refunds are sent within 2 business days of a request; payout method and minimum not confirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 2,
+      "median": 8,
+      "high": 40
+    },
+    "scores": {
+      "paymentProbability": 9,
+      "automation": 3,
+      "setupEffort": 1,
+      "ongoingEffort": 2,
+      "incomePotential": 1,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 15
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; you are selling your own purchase data under the app's privacy policy.",
+      "complianceRequirements": [
+        "one account per household (some apps)",
+        "genuine receipts only"
+      ]
+    },
+    "availability": {
+      "notes": "Ibotta, Receipt Hog and CoinOut: mostly US. Shopmium: France, UK, Belgium and US. Checkout 51: Canada. Narrow availability."
+    },
+    "automationPlan": [
+      "Auto-upload e-receipts by linking store accounts or forwarding receipt emails where the app supports it.",
+      "Automate payout logging."
+    ],
+    "manualSteps": [
+      "Install apps and link PayPal/bank",
+      "Photograph paper receipts weekly",
+      "Request cash-out at minimum"
+    ],
+    "fullCycle": [
+      "Install app",
+      "Upload receipts",
+      "Reach minimum",
+      "Cash out to PayPal/bank"
+    ],
+    "risks": [
+      "Tiny income",
+      "Points expire on inactivity",
+      "US-centric availability"
+    ],
+    "evidence": "Ibotta is a public company that reports paying users over $2 billion in cash rewards; Receipt Hog (Numerator) has paid via PayPal since 2012.",
+    "sources": [
+      "https://receipthog.com/",
+      "https://ibotta.com/",
+      "https://help.ibotta.com/hc/en-us",
+      "https://www.shopmium.com/"
+    ],
+    "tags": ["tiny-income", "near-certain-payout", "passive-ish"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Receipt Hog, Ibotta, Shopmium, CoinOut apps (free)"],
+        "skills": ["photographing receipts weekly"],
+        "equipment": ["smartphone"],
+        "accounts": ["app accounts", "PayPal or bank"]
+      },
+      "unitEconomics": {
+        "unit": "per month of receipts",
+        "typicalPriceUsd": {
+          "low": 2,
+          "median": 8,
+          "high": 40
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "A weekly receipt session yields a few dollars a month; Ibotta rebates add more if you buy listed products."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Ibotta's $20 minimum is the slowest; Receipt Hog and Shopmium pay sooner."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 85,
+        "typicalNetProfitMonth12Usd": {
+          "low": 2,
+          "median": 6,
+          "high": 30
+        },
+        "notes": "Purchase-data buyers keep these apps funded and payouts are reliable, but availability is mostly US (Shopmium FR/UK/BE/US, Checkout 51 Canada). profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; nobody reaches $100/month without large household spending."
+      },
+      "pricingStrategy": "Not applicable; never buy products only for a rebate.",
+      "profitPath": [
+        "Month 0: install apps, link PayPal or bank (cost $0)",
+        "Month 1-2: reach the first minimum",
+        "Month 3-6: $5-10/month",
+        "Month 6-12: plateau at $2-30/month"
+      ],
+      "sources": ["https://receipthog.com/", "https://help.ibotta.com/hc/en-us"]
+    }
+  },
+  {
+    "id": "passive-data-panels",
+    "name": "Passive data-sharing panels (Nielsen Computer & Mobile Panel, MobileXpression, Savvy Connect)",
+    "category": "micro-tasks",
+    "summary": "Install a research company's metering app and earn a fixed yearly reward for letting it measure your browsing and app usage.",
+    "howItWorks": "Audience-measurement firms recruit panelists who install a meter on phones or computers. Nielsen pays up to about $50–$60 a year per device in points plus prize draws; MobileXpression gives weekly credits; SavvyConnect (SurveySavvy) pays $3 per device type per month. Rewards are redeemed for PayPal cash or gift cards. It is fully passive after installation, the sums are small and certain, and the trade-off is privacy: everything the device does is recorded.",
+    "platforms": [
+      "Nielsen Computer & Mobile Panel",
+      "MobileXpression",
+      "SavvyConnect"
+    ],
+    "payout": {
+      "methods": ["PayPal", "gift cards", "cheque"],
+      "minimumPayout": "varies ($5–$25 in points)",
+      "frequency": "on request",
+      "typicalDelayDays": 14,
+      "notes": "SavvyConnect (official): $3 USD for each type of device per month. Nielsen's panel site and MobileXpression's site returned no readable content, so their reward amounts (reported as about $50/year per device in points for Nielsen) remain unverified."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 2,
+      "median": 5,
+      "high": 20
+    },
+    "scores": {
+      "paymentProbability": 8,
+      "automation": 10,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 15
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal: you consent to measurement of your own devices. Do not install on employer devices or devices used by others without consent.",
+      "complianceRequirements": [
+        "own device only",
+        "age 18+",
+        "one panel membership per person"
+      ]
+    },
+    "availability": {
+      "notes": "Nielsen panels run in the US, UK, Germany, Australia and a few others; MobileXpression and SavvyConnect are US-only."
+    },
+    "automationPlan": [
+      "Fully passive after install; keep the meter running.",
+      "Automate reward redemption reminders and payout logging."
+    ],
+    "manualSteps": [
+      "Apply and get accepted",
+      "Install the meter",
+      "Redeem points"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Install meter",
+      "Earn monthly/yearly rewards",
+      "Redeem to PayPal",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Total loss of browsing privacy on that device",
+      "Panel acceptance depends on demographic quotas",
+      "Battery/data usage"
+    ],
+    "evidence": "Nielsen has run paid audience panels for decades and states the reward amounts on its panel sites.",
+    "sources": [
+      "https://computermobilepanel.nielsen.com/",
+      "https://www.mobilexpression.com/",
+      "https://www.surveysavvy.com/savvyconnect"
+    ],
+    "tags": ["tiny-income", "passive", "privacy-trade-off"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Nielsen, MobileXpression, SavvyConnect meters (free)"],
+        "skills": ["installing a meter app"],
+        "equipment": ["own phone and/or computer"],
+        "accounts": ["panel account (after acceptance)", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per device-month",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 5
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0,
+        "notes": "SavvyConnect pays $3 per device type per month (official page); Nielsen Computer & Mobile Panel rewards (about $50/year per device reported) are estimated because Nielsen's pages could not be read."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. First redemption after 1-3 months of points."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 70,
+        "typicalNetProfitMonth12Usd": {
+          "low": 2,
+          "median": 4,
+          "high": 15
+        },
+        "notes": "Audience-measurement firms still need metered panels, but acceptance depends on demographic quotas and most programmes are US-only. The real cost is privacy. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; nobody reaches $100/month."
+      },
+      "pricingStrategy": "Not applicable.",
+      "profitPath": [
+        "Month 0: apply and install meters (cost $0)",
+        "Month 1-2: accumulate points",
+        "Month 3-6: first redemption: $3-10/month",
+        "Month 6-12: plateau"
+      ],
+      "sources": [
+        "https://www.surveysavvy.com/savvyconnect",
+        "https://computermobilepanel.nielsen.com/"
+      ]
+    }
+  },
+  {
+    "id": "electronics-buyback-sites",
+    "name": "Sell old phones, laptops and games to buyback sites (Decluttr, Gazelle, Swappa, Back Market)",
+    "category": "marketplaces",
+    "summary": "Get an instant online quote for used electronics, post them in with a free label, and receive a near-guaranteed bank or PayPal payment within days.",
+    "howItWorks": "Buyback services quote a price by model and condition, send a prepaid shipping label, inspect the device and pay by PayPal, direct deposit or cheque. Decluttr (US/UK) also buys games, DVDs and books by scanning barcodes. Swappa and Back Market are marketplaces with buyer protection where you set the price and typically earn 20–40% more than buyback quotes. It is a one-off, not recurring, but the probability of being paid is close to certain and most households have unused devices.",
+    "platforms": [
+      "Decluttr",
+      "Gazelle",
+      "Swappa",
+      "Back Market",
+      "musicMagpie"
+    ],
+    "payout": {
+      "methods": ["PayPal", "direct deposit", "cheque"],
+      "minimumPayout": "$0 (per sale)",
+      "frequency": "per sale",
+      "typicalDelayDays": 5,
+      "notes": "Gazelle (owned by ecoATM; official site): quote, free shipping, payout via PayPal or check. Decluttr (reported: paid the day after inspection by direct deposit or PayPal) and Swappa (reported: PayPal at sale) block automated reading, so their terms are unconfirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 3,
+      "max": 14
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 300
+    },
+    "scores": {
+      "paymentProbability": 9,
+      "automation": 4,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 2,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 25
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; you must own the items and wipe personal data. Not a business unless done at scale (then resale registration and tax apply).",
+      "complianceRequirements": [
+        "own goods only",
+        "factory reset / data wipe",
+        "ID verification on some sites"
+      ]
+    },
+    "availability": {
+      "notes": "Decluttr: US/UK. Gazelle, Swappa: US. musicMagpie: UK. Back Market: US, UK, EU, Japan, Australia. Local equivalents exist in most countries."
+    },
+    "automationPlan": [
+      "Script to fetch quotes from several buyback sites and pick the best.",
+      "AI can draft marketplace listings from photos.",
+      "Automate payout logging."
+    ],
+    "manualSteps": ["Wipe and pack devices", "Post with prepaid label"],
+    "fullCycle": [
+      "Get quote",
+      "Accept and ship",
+      "Inspection",
+      "Payment to PayPal/bank"
+    ],
+    "risks": [
+      "Quotes revised down after inspection",
+      "One-off income",
+      "Physical shipping step"
+    ],
+    "evidence": "Gazelle (an ecoATM brand) still runs 'Sell to Us' trade-ins paid by PayPal or check; Decluttr, Swappa and Back Market publish seller payout terms.",
+    "sources": [
+      "https://www.decluttr.com/",
+      "https://www.gazelle.com/",
+      "https://swappa.com/sell",
+      "https://backmarket.com/"
+    ],
+    "tags": ["fast-cash", "near-certain-payout", "physical-step", "one-off"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Decluttr, Gazelle, Swappa, Back Market (free)",
+          "quote-comparison script (optional)"
+        ],
+        "skills": ["wiping devices", "honest condition grading"],
+        "equipment": ["the devices", "packaging"],
+        "accounts": ["buyback or marketplace account", "PayPal or bank"]
+      },
+      "unitEconomics": {
+        "unit": "per device sold",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 120,
+          "high": 600
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Buyback quotes for recent phones and laptops; buyback sites pay postage and take their margin in the quote (marketplaces such as Swappa or Back Market net 20-40% more but charge seller fees)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Paid within days of inspection; this is one-off cash, not recurring income."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 85,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 250
+        },
+        "notes": "Refurbished-phone demand is stable, but buyback quotes fall quickly as devices age, so selling sooner pays more. Payment is near-certain apart from downward re-quotes after inspection. Profit likelihood reflects the one-off sale; monthly profit is zero once your unused devices are gone."
+      },
+      "pricingStrategy": "Compare quotes across 3+ sites and sell before a new model launch; list higher-value devices on Swappa or Back Market for more than the buyback quote.",
+      "profitPath": [
+        "Month 0: inventory unused devices, compare quotes (cost $0)",
+        "Month 1: ship and get paid: $50-600 one-off",
+        "Month 2-6: sell remaining household items",
+        "Month 6-12: no recurring income unless you start reselling (a different strategy)"
+      ],
+      "sources": [
+        "https://www.gazelle.com/",
+        "https://swappa.com/sell",
+        "https://backmarket.com/"
+      ]
+    }
+  },
+  {
+    "id": "sell-unused-gift-cards",
+    "name": "Sell unwanted gift cards for cash (CardCash, Raise, GCX)",
+    "category": "marketplaces",
+    "summary": "Convert gift cards you will not use into bank or PayPal cash at 70–92% of face value through regulated gift-card exchanges.",
+    "howItWorks": "Gift-card exchanges buy unwanted cards outright (CardCash pays up to about 92% of face value) or let you list them for sale to other buyers (GCX). You enter the card number, accept the offer and are paid by ACH, PayPal or cheque after verification. Raise.com now focuses on selling discounted cards to buyers and states it 'operates separately from the GCX Marketplace', where reselling happens. This is a one-off source of cash rather than income, but it is near-certain and useful for turning gift-card-only rewards from other programs into money in a bank.",
+    "platforms": [
+      "CardCash",
+      "GCX (Gift Card Exchange)",
+      "Raise (buying side)"
+    ],
+    "payout": {
+      "methods": ["ACH bank transfer", "PayPal", "cheque"],
+      "minimumPayout": "$0 (per card)",
+      "frequency": "per transaction",
+      "typicalDelayDays": 3,
+      "notes": "CardCash and GCX pages block automated reading, so rates, fees and timelines (reported: CardCash 70–92% of face value, ACH/PayPal/cheque, 1–5 business days after verification) are from third-party sources. Cardpool was dropped from the list (no longer operating)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 2,
+      "max": 10
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 200
+    },
+    "scores": {
+      "paymentProbability": 9,
+      "automation": 5,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 10
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; exchanges perform fraud checks and require ID. Selling cards you did not legitimately obtain is fraud.",
+      "complianceRequirements": ["ID verification", "legitimately owned cards"]
+    },
+    "availability": {
+      "notes": "Primarily US (CardCash, Raise, GCX). UK has Cardyard; other countries have limited options."
+    },
+    "automationPlan": [
+      "Script to compare offers across exchanges.",
+      "Automate conversion of gift-card rewards from other programs (e.g., Microsoft Rewards, Fetch) into cash.",
+      "Automate payout logging."
+    ],
+    "manualSteps": ["Enter card details", "Verify identity", "Accept offer"],
+    "fullCycle": ["Get offer", "Accept", "Verification", "ACH/PayPal payout"],
+    "risks": [
+      "Discount of 8–30% of face value",
+      "Cards with zero balance are rejected and may trigger account closure",
+      "US-only in practice"
+    ],
+    "evidence": "CardCash and Raise have operated since 2009–2013 and are the standard way US consumers liquidate gift cards; both publish payout methods and timelines.",
+    "sources": [
+      "https://www.cardcash.com/sell-gift-cards/",
+      "https://gcx.raise.com/",
+      "https://www.raise.com/"
+    ],
+    "tags": ["fast-cash", "near-certain-payout", "one-off", "bridge-to-cash"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["CardCash, GCX (free)"],
+        "skills": ["comparing offers"],
+        "equipment": ["the gift cards"],
+        "accounts": ["exchange account + ID verification", "bank or PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per card (face value)",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 50,
+          "high": 200
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 18,
+        "grossMarginPercent": 82,
+        "hoursPerUnit": 0.3,
+        "notes": "Exchanges pay about 70-92% of face value (estimated from third-party reports; CardCash and Raise/GCX rate pages are bot-blocked or unpublished); the 18% fee is the median discount."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Paid 1-5 business days after verification; one-off cash."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 85,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 150
+        },
+        "notes": "Gift-card exchanges are a mature US market; payout is near-certain for legitimate cards with a balance. Rates depend on brand popularity. Profit likelihood reflects converting a card you would not use; it is not recurring income."
+      },
+      "pricingStrategy": "Check offers on 2-3 exchanges and sell popular-brand cards first, since they fetch 85-92%.",
+      "profitPath": [
+        "Month 0: collect unwanted cards and reward-program gift cards (cost $0)",
+        "Month 1: sell and receive ACH/PayPal",
+        "Month 2-6: convert gift-card rewards from other programmes as they arrive",
+        "Month 6-12: occasional one-off cash"
+      ],
+      "sources": [
+        "https://www.cardcash.com/sell-gift-cards/",
+        "https://gcx.raise.com/"
+      ]
+    }
+  },
+  {
+    "id": "teachers-pay-teachers",
+    "name": "Sell lesson plans and classroom resources on Teachers Pay Teachers",
+    "category": "digital-products",
+    "summary": "Upload original worksheets, lesson plans and classroom printables to TPT and earn a share of every sale, paid monthly through Hyperwallet (bank, PayPal or Venmo).",
+    "howItWorks": "TPT is the largest marketplace for teacher-made resources. Sellers upload PDFs or digital activities and set prices. Basic Sellers pay a one-time $29 fee and keep 55% of each sale minus $0.30 per resource; Exclusive Sellers pay $59.95 a year, must sell their digital resources only on TPT, and keep 80% (77.5% from 1 January 2027) minus $0.15 per resource on orders under $3. Premium Seller memberships closed to new sign-ups on 1 October 2026. Sales cluster around back-to-school and holidays. AI can help draft and format materials, but buyers punish low-quality uploads with reviews.",
+    "platforms": ["Teachers Pay Teachers"],
+    "payout": {
+      "methods": [
+        "Hyperwallet -> direct deposit",
+        "Hyperwallet -> PayPal",
+        "Venmo",
+        "wire transfer"
+      ],
+      "minimumPayout": "No minimum stated",
+      "frequency": "monthly (usually around the 10th, no later than the 21st)",
+      "typicalDelayDays": 30,
+      "notes": "TPT help centre: paid monthly via Hyperwallet; options (direct deposit, PayPal, Venmo, wire) depend on country. Basic Seller: $29 one-time fee, 55% payout, $0.30 per resource. Exclusive Seller: $59.95/yr, 80% until 31 Dec 2026 then 77.5%, $0.15 per resource on orders under $3, exclusivity required."
+    },
+    "capitalRequiredUsd": 29,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 5,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; content must be original and not infringe textbooks, fonts or clipart licences.",
+      "complianceRequirements": [
+        "original content",
+        "licensed fonts/clipart",
+        "tax info (W-9/W-8)"
+      ]
+    },
+    "availability": {
+      "notes": "Sellers worldwide via Hyperwallet (payout options vary by country); buyers are mainly US teachers."
+    },
+    "automationPlan": [
+      "AI-assisted drafting of worksheets and answer keys (human review required).",
+      "Templated product listing, preview image and description generation.",
+      "Seasonal scheduling of new uploads and price promotions.",
+      "Automate payout logging."
+    ],
+    "manualSteps": [
+      "Create seller account, submit tax form",
+      "Review every resource for accuracy",
+      "Upload"
+    ],
+    "fullCycle": [
+      "Sign up",
+      "Create resources",
+      "List",
+      "Sales",
+      "Monthly Hyperwallet payout (direct deposit, PayPal or Venmo)",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Crowded marketplace; new sellers earn little for months",
+      "Copyright claims on reused assets",
+      "$29 entry fee and 55% payout on the Basic plan; the Exclusive plan's rate drops to 77.5% in 2027"
+    ],
+    "evidence": "TPT reports having paid over $1 billion to teacher-authors and publishes its seller fees, payout rates and payout schedule in its help centre (checked Nov 2026).",
+    "sources": [
+      "https://help.teacherspayteachers.com/hc/en-us/articles/360044219891-Seller-Fees-and-Payout-Rates",
+      "https://help.teacherspayteachers.com/hc/en-us/articles/360042580932-How-do-I-get-paid-as-a-Seller"
+    ],
+    "tags": ["digital-product", "royalty", "education"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 29,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "TPT Basic Seller ($29 one-time)",
+          "Canva free (Pro $15/month optional)",
+          "LLM for drafting (free tier)",
+          "licensed fonts/clipart"
+        ],
+        "skills": [
+          "curriculum knowledge (ideally a teacher)",
+          "layout and design",
+          "careful accuracy review of AI drafts"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "TPT seller account + tax form",
+          "Hyperwallet -> bank/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per sale",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 45,
+        "grossMarginPercent": 49,
+        "hoursPerUnit": 0.2,
+        "notes": "Basic Sellers keep 55% minus $0.30 per resource, so a $5 sale nets about $2.45 (49%); Exclusive Sellers ($59.95/year) keep 80% (77.5% from 2027)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 3,
+        "notes": "No monthly fixed cost on the Basic plan; the $29 fee is recovered after about 12 sales, typically by month 4-6 at roughly $10/month net."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 1200
+        },
+        "notes": "TPT has millions of resources, and since 2023 AI-generated uploads have flooded the store while many teachers now make their own materials with AI. Established sellers with large catalogues and good reviews earn most of the money; new sellers often earn under $20/month for a year. The 2026-2027 fee changes reduce Exclusive payouts."
+      },
+      "pricingStrategy": "Price single resources at $3-5 and offer a free sample to collect reviews, then sell bundles at a 20-30% discount and raise prices on best-sellers.",
+      "profitPath": [
+        "Month 0: pay $29, publish 10 resources and a free sample (cost $29)",
+        "Month 1-2: first sales: $0-10",
+        "Month 3-6: grow to 50+ resources and seasonal bundles: $10-50/month",
+        "Month 6-12: back-to-school peak; $15-1,200/month for consistent sellers"
+      ],
+      "sources": [
+        "https://help.teacherspayteachers.com/hc/en-us/articles/360044219891-Seller-Fees-and-Payout-Rates",
+        "https://help.teacherspayteachers.com/hc/en-us/articles/360042580932-How-do-I-get-paid-as-a-Seller"
+      ]
+    }
+  },
+  {
+    "id": "recover-money-you-are-owed",
+    "name": "Recover money you are already owed (unclaimed property, class-action settlements, refunds, overpaid tax)",
+    "category": "other",
+    "summary": "Search official unclaimed-property registries, settlement claim sites and refund schemes for money that is legally yours and claim it online.",
+    "howItWorks": "Governments hold dormant bank balances, uncashed cheques, deposits and insurance proceeds in unclaimed-property registries that anyone can search free (US: each state's registry and MissingMoney.com; UK: My Lost Account, Gretel; Canada: Bank of Canada; Australia: ASIC MoneySmart). Class-action settlements publish claim forms where eligible consumers get cash. Many people are also owed tax refunds, energy or telecom overpayments, or forgotten pension pots. This is not income, but it is money in a bank account with no risk and a short online form, and it is one of the highest-probability 'payouts' for anyone who has never looked.",
+    "platforms": [
+      "MissingMoney.com (US)",
+      "state unclaimed-property sites",
+      "ClassAction.org / TopClassActions settlement lists",
+      "My Lost Account (UK)",
+      "Bank of Canada unclaimed balances",
+      "ASIC MoneySmart (AU)"
+    ],
+    "payout": {
+      "methods": ["bank transfer", "cheque"],
+      "minimumPayout": "$0",
+      "frequency": "one-off per claim",
+      "typicalDelayDays": 45,
+      "notes": "Government registries are free; never pay a finder fee above a few percent. Settlement payouts can take months after the claims deadline."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 500
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 6,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Claiming your own property is legal everywhere. Filing settlement claims you are not eligible for is fraud; only claim where you genuinely qualify.",
+      "complianceRequirements": [
+        "identity proof",
+        "only claim what you are eligible for"
+      ]
+    },
+    "availability": {
+      "notes": "Formal unclaimed-property registries exist in the US, UK, Canada, Australia, and several EU and Asian countries; class-action claim systems are mainly US."
+    },
+    "automationPlan": [
+      "Script to search official registries for your name and past addresses on a schedule.",
+      "AI agent to watch settlement lists and flag ones matching products/services you used.",
+      "Pre-fill claim forms from a stored profile (you review and submit)."
+    ],
+    "manualSteps": [
+      "Identity verification",
+      "Submit each claim",
+      "Provide proof where required"
+    ],
+    "fullCycle": [
+      "Search registries",
+      "File claim",
+      "Verification",
+      "Payment by cheque or bank transfer"
+    ],
+    "risks": [
+      "Nothing may be owed to you",
+      "Scam 'finder' services charge high fees",
+      "Long processing times"
+    ],
+    "evidence": "US states hold tens of billions in unclaimed property and return billions each year; the NAUPA-run MissingMoney.com is the official multi-state search.",
+    "sources": [
+      "https://www.missingmoney.com/",
+      "https://unclaimed.org/",
+      "https://www.mylostaccount.org.uk/",
+      "https://www.unclaimedproperties.bankofcanada.ca/",
+      "https://moneysmart.gov.au/find-unclaimed-money"
+    ],
+    "tags": ["near-certain-payout", "one-off", "no-risk"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "MissingMoney.com and state registries (free)",
+          "My Lost Account / Bank of Canada / ASIC MoneySmart (free)",
+          "settlement lists (free)"
+        ],
+        "skills": ["searching registries", "filling claim forms accurately"],
+        "equipment": ["laptop"],
+        "accounts": ["registry claim accounts + ID proof", "bank account"]
+      },
+      "unitEconomics": {
+        "unit": "per successful claim",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 50,
+          "high": 1000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Class-action settlements commonly pay $5-100 per claimant; unclaimed-property balances vary widely (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Registry claims take weeks; settlement payouts can take months after the deadline."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 60,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 400
+        },
+        "notes": "NAUPA says about 1 in 7 Americans has unclaimed property, and AI tools make it easy to match yourself to open settlements. This is recovery of money already owed, not income, and nothing may be owed to you. Never pay finder services more than a few percent."
+      },
+      "pricingStrategy": "Not applicable.",
+      "profitPath": [
+        "Month 0: search registries for every past name and address (cost $0)",
+        "Month 1-3: file claims; first payments arrive",
+        "Month 3-6: file eligible settlement claims as they open",
+        "Month 6-12: occasional small payouts"
+      ],
+      "sources": [
+        "https://www.missingmoney.com/",
+        "https://unclaimed.org/",
+        "https://www.mylostaccount.org.uk/"
+      ]
+    }
+  },
+  {
+    "id": "retail-audit-task-apps",
+    "name": "Retail-audit and data-collection apps (Premise, Roamler, BeMyEye, Field Agent)",
+    "category": "micro-tasks",
+    "summary": "Complete small paid tasks on your phone such as photographing shop shelves, checking prices or answering local surveys; paid to PayPal, Payoneer or (Premise, some countries) Bitcoin, with wide coverage in Africa, Asia and Latin America.",
+    "howItWorks": "Market-research and NGO clients pay for ground-truth data. Apps publish tasks near you (take a photo of a product display, confirm a store is open, report local fuel prices, answer a short survey) paying roughly $0.25–$10 each. Premise pays contributors via PayPal, Payoneer or Bitcoin depending on country; Roamler covers Europe and the US. Tasks require leaving the house, but payment is reliable and these apps are among the few that pay residents of lower-income reference countries directly.",
+    "platforms": ["Premise", "Roamler", "BeMyEye", "Streetbees"],
+    "payout": {
+      "methods": [
+        "PayPal",
+        "Payoneer",
+        "Bitcoin (Premise, some countries)",
+        "bank transfer"
+      ],
+      "minimumPayout": "$5–$10 depending on app and method",
+      "frequency": "on request (weekly processing)",
+      "typicalDelayDays": 7,
+      "notes": "Premise (official contributor site): 'paid instantly via Paypal, Payoneer, or Bitcoin', options depending on country; minimum not stated. Roamler €5 PayPal minimum not re-confirmed. Field Agent was dropped: fieldagent.net now redirects to Storesight, a B2B retail-intelligence platform. BeMyEye's site is now B2B-only; its contributor app status is unconfirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 3,
+      "max": 30
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 3,
+      "median": 20,
+      "high": 150
+    },
+    "scores": {
+      "paymentProbability": 8,
+      "automation": 1,
+      "setupEffort": 1,
+      "ongoingEffort": 4,
+      "incomePotential": 2,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; respect store photography rules and do not photograph people without consent.",
+      "complianceRequirements": [
+        "one account per person",
+        "genuine, on-location submissions (GPS verified)"
+      ]
+    },
+    "availability": {
+      "notes": "Premise recruits in many lower-income countries (country list not published on the contributor page; reported 100+ including Kenya, Nigeria, Ghana, Philippines, Indonesia, India, Colombia, Mexico, Brazil). Roamler: Europe and a US programme."
+    },
+    "automationPlan": [
+      "Nothing in task execution; submissions are GPS- and photo-verified.",
+      "Automate task alerts and payout logging."
+    ],
+    "manualSteps": [
+      "Install app, verify identity",
+      "Go to locations and complete tasks",
+      "Cash out"
+    ],
+    "fullCycle": [
+      "Install app",
+      "Complete local tasks",
+      "Reach minimum",
+      "Cash out to PayPal/Payoneer",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Requires travel; some tasks pay less than transport costs",
+      "Task supply depends on client demand in your city",
+      "Rejected submissions are unpaid"
+    ],
+    "evidence": "Premise's contributor site advertises instant PayPal/Payoneer/Bitcoin payouts and the company partners with large NGOs and CPG brands; Roamler still runs a 'For Roamlers' community programme in 2026.",
+    "sources": [
+      "https://contributors.premise.com/",
+      "https://www.roamler.com/",
+      "https://bemyeye.com/"
+    ],
+    "tags": [
+      "tiny-income",
+      "near-certain-payout",
+      "physical-step",
+      "global-south-friendly"
+    ],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Premise, Roamler apps (free)"],
+        "skills": [
+          "following photo/survey instructions",
+          "GPS-verified on-site work"
+        ],
+        "equipment": ["smartphone with GPS and camera"],
+        "accounts": [
+          "app account + identity verification",
+          "PayPal, Payoneer or Bitcoin wallet"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per task",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 10
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 67,
+        "hoursPerUnit": 0.5,
+        "notes": "Tasks pay roughly $0.25-10; $1 is a typical transport cost per task when it requires a short trip."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Premise pays as soon as the minimum is reached."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 60,
+        "typicalNetProfitMonth12Usd": {
+          "low": 2,
+          "median": 15,
+          "high": 120
+        },
+        "notes": "Premise remains one of the few apps paying residents of lower-income countries directly, but Field Agent exited and BeMyEye pivoted to B2B, so options have shrunk. Task supply depends on clients in your city. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; only a few heavy users in busy cities reach $100/month."
+      },
+      "pricingStrategy": "Not applicable; take tasks on routes you already travel so transport costs stay near zero.",
+      "profitPath": [
+        "Month 0: install apps and verify identity (cost $0)",
+        "Month 1-2: $5-20/month",
+        "Month 3-6: build trust score for better-paid tasks: $10-40/month",
+        "Month 6-12: plateau at $10-120/month"
+      ],
+      "sources": [
+        "https://contributors.premise.com/",
+        "https://www.roamler.com/"
+      ]
+    }
+  },
+  {
+    "id": "remote-contract-support-work",
+    "name": "Remote contract customer-support and moderation work (ModSquad, Arise, LiveOps, Working Solutions)",
+    "category": "services",
+    "summary": "Sign on as an independent contractor with remote support or moderation vendors and get paid hourly or per minute for scheduled online shifts.",
+    "howItWorks": "Companies outsource chat, email, phone support and community moderation to vendors who contract remote workers. ModSquad (mods in 90+ countries) pays hourly for moderation and support projects; Arise contracts independent micro-businesses in the US, Canada, UK, India, the Philippines, South Africa and parts of the Caribbean and Latin America; LiveOps (US) pays for talk time; Working Solutions (US/Canada only) pays contractors for time worked in 15-minute increments. After a background check and short unpaid training, you book shifts in a portal and are paid every two weeks or monthly by direct deposit or PayPal. This is work, not a business, and automation is minimal, but it is one of the most dependable ways to be paid online if you can commit scheduled hours.",
+    "platforms": [
+      "ModSquad",
+      "Arise",
+      "LiveOps",
+      "Working Solutions",
+      "TaskUs"
+    ],
+    "payout": {
+      "methods": ["direct deposit", "PayPal (ModSquad outside US)"],
+      "minimumPayout": "$0 (hourly pay)",
+      "frequency": "every two weeks or monthly",
+      "typicalDelayDays": 14,
+      "notes": "Working Solutions (official): independent contractors paid for time worked in 15-minute increments; applicants must be in the US or Canada. ModSquad (official): hourly, 90+ countries, apply via join.modsquad.com; payment method not published. Arise (official): network of independent businesses; its fees and business-entity rules were not visible on public pages. LiveOps page blocks automated reading."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 21,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 100,
+      "median": 600,
+      "high": 2500
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 1,
+      "setupEffort": 3,
+      "ongoingEffort": 8,
+      "incomePotential": 5,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 50
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere as contractor work; some vendors require a registered sole proprietorship (Arise) or local tax registration.",
+      "complianceRequirements": [
+        "background check",
+        "contractor tax registration where required",
+        "NDA"
+      ]
+    },
+    "availability": {
+      "notes": "ModSquad: 90+ countries. Arise: US, Canada, Mexico, Dominican Republic, Barbados, Jamaica, UK, India, Philippines, South Africa. Working Solutions: US and Canada only. LiveOps: US."
+    },
+    "automationPlan": [
+      "AI drafting of replies inside vendor tools where permitted.",
+      "Automate shift booking alerts and timesheet logging."
+    ],
+    "manualSteps": [
+      "Apply and pass screening",
+      "Complete unpaid training",
+      "Work booked shifts"
+    ],
+    "fullCycle": [
+      "Apply",
+      "Background check",
+      "Training",
+      "Work shifts",
+      "Biweekly/monthly pay",
+      "Direct deposit to bank"
+    ],
+    "risks": [
+      "Unpaid training and equipment requirements",
+      "Arise's business-entity requirement and fees",
+      "Shift availability fluctuates"
+    ],
+    "evidence": "ModSquad, Arise and LiveOps have paid remote contractors for over 15 years; pay rates and schedules are published on their recruiting pages.",
+    "sources": [
+      "https://modsquad.com/approach/the-mods/",
+      "https://join.modsquad.com/",
+      "https://www.arise.com/about/",
+      "https://www.liveops.com/become-an-agent/",
+      "https://workingsolutions.com/"
+    ],
+    "tags": ["near-certain-payout", "labor", "scheduled"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "vendor portals (free)",
+          "shift-alert and timesheet tools (free)"
+        ],
+        "skills": [
+          "customer service writing or phone skills",
+          "fluent English (or a needed language)",
+          "reliability on scheduled shifts"
+        ],
+        "equipment": [
+          "computer meeting vendor specs",
+          "wired headset (about $20)",
+          "wired broadband",
+          "quiet room"
+        ],
+        "accounts": [
+          "vendor contractor account + background check",
+          "bank (direct deposit) or PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per hour",
+        "typicalPriceUsd": {
+          "low": 9,
+          "median": 13,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Working Solutions pays $0.25-0.31 per productive minute (about $11-14/hour at 45 productive minutes); other US vendors pay up to about $20/hour and ModSquad and non-US rates are lower (estimated)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. About 40 hours of unpaid screening and training come before the first biweekly pay. Avoid vendors that charge certification fees (Arise requires a business entity and fees)."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 100,
+          "median": 500,
+          "high": 2200
+        },
+        "notes": "AI chatbots and voice agents have replaced much tier-1 support since 2024, so vendors are hiring fewer agents, though moderation and complex support remain. Pay is reliable once you are working shifts, but unpaid training and shift availability cause many to quit. Those who commit 15-30 scheduled hours a week reliably clear $100/month."
+      },
+      "pricingStrategy": "Pay is set by the vendor; move to higher-rate programmes (technical support, bilingual, moderation leads) after good performance metrics.",
+      "profitPath": [
+        "Month 0: apply to 2-3 vendors, pass checks and training (about 40 hours, cost $0)",
+        "Month 1-2: first shifts: $200-600/month",
+        "Month 3-6: secure regular shifts: $400-1,200/month",
+        "Month 6-12: move to higher-rate programmes: $500-2,200/month"
+      ],
+      "sources": [
+        "https://workingsolutions.com/",
+        "https://join.modsquad.com/",
+        "https://www.arise.com/about/",
+        "https://jobs.workingsolutions.com/"
+      ]
+    }
+  },
+  {
+    "id": "paid-online-juror",
+    "name": "Paid online mock juror (eJury, OnlineVerdict, JuryTest)",
+    "category": "micro-tasks",
+    "summary": "Read a case summary and answer lawyers' questions as a mock juror for $5–$60 per online case (more for virtual mock trials); US-only, infrequent, but reliably paid.",
+    "howItWorks": "Trial lawyers test arguments on mock juries before court. Sites such as OnlineVerdict and eJury email case summaries to registered adults in the relevant county or federal district; you read the materials (20–60 minutes), answer questions and are paid per case. OnlineVerdict also runs Zoom mock trials paying $75–$700. Cases are infrequent (a few per year unless you live in a large metro), so the income is tiny, but the payout is near-certain and the work is interesting.",
+    "platforms": ["OnlineVerdict", "eJury", "JuryTest"],
+    "payout": {
+      "methods": ["cheque (OnlineVerdict)", "PayPal (eJury, reported)"],
+      "minimumPayout": "$0 (per case)",
+      "frequency": "per case",
+      "typicalDelayDays": 14,
+      "notes": "OnlineVerdict (official): online case reviews $30–$60, virtual mock trials $75–$700; paid only by mailed cheque 1–2 weeks after completion (Venmo/Zelle/PayPal only if a cheque is lost). eJury's FAQ page is gone and its rates ($5–$10 via PayPal) are unconfirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 5,
+      "high": 50
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 1,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 2
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; OnlineVerdict requires US citizens aged 18+ living in the county or federal district where the case is tried. Some sites also exclude people working in law or insurance.",
+      "complianceRequirements": [
+        "US residency and eligibility",
+        "confidentiality of case materials"
+      ]
+    },
+    "availability": {
+      "notes": "United States only."
+    },
+    "automationPlan": [
+      "None; must be answered personally.",
+      "Automate payout logging."
+    ],
+    "manualSteps": [
+      "Register with eligibility details",
+      "Respond to case invitations"
+    ],
+    "fullCycle": [
+      "Register",
+      "Receive case",
+      "Complete questionnaire",
+      "Payment (mailed cheque from OnlineVerdict; PayPal reported for eJury)",
+      "Withdraw to bank"
+    ],
+    "risks": ["Very few cases outside large metros", "US-only"],
+    "evidence": "OnlineVerdict publishes its juror pay ranges and cheque payment terms; eJury has operated since the early 2000s.",
+    "sources": [
+      "https://www.onlineverdict.com/jurors/",
+      "https://www.ejury.com/"
+    ],
+    "tags": ["tiny-income", "near-certain-payout", "us-only"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["OnlineVerdict, eJury, JuryTest registrations (free)"],
+        "skills": [
+          "reading case summaries",
+          "answering questions thoughtfully"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "juror registrations (US only)",
+          "mailing address for cheques or PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per case",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 60
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "OnlineVerdict pays $30-60 per online case review; eJury reportedly $5-10; virtual mock trials ($75-700) are excluded as rare."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed costs, so every paid unit is profit; break-even equals the time to the first payout. Cases are infrequent; the first one can take weeks to a year depending on your county."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 50
+        },
+        "notes": "Lawyers still test cases on mock jurors, but invitations depend on your county, so income is a few cases a year at most. US-only. profitLikelihoodPercent here is the chance of any steady net profit (no costs are involved), calibrated to the catalog's survey-panel anchor; nobody reaches $100/month apart from an occasional virtual mock trial."
+      },
+      "pricingStrategy": "Not applicable.",
+      "profitPath": [
+        "Month 0: register on all three sites (cost $0)",
+        "Month 1-3: first case if you live in a large metro: $5-60",
+        "Month 3-6: occasional cases",
+        "Month 6-12: a few cases a year; accept virtual mock trials when offered"
+      ],
+      "sources": [
+        "https://www.onlineverdict.com/jurors/",
+        "https://www.ejury.com/"
+      ]
+    }
+  }
+]

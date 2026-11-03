@@ -1,0 +1,1816 @@
+[
+  {
+    "id": "music-sync-stock-libraries",
+    "name": "License original music through stock/sync libraries (Pond5, AudioJungle, Musicbed, Artlist)",
+    "category": "licensing",
+    "summary": "Upload original instrumentals to non-exclusive stock music marketplaces, and apply to curated sync libraries, earning per-license royalties.",
+    "howItWorks": "You compose/produce royalty-free-friendly background tracks (corporate, cinematic, lo-fi) and upload them non-exclusively to Pond5 and Envato AudioJungle, where video creators buy licenses. Pond5 pays a 30% royalty share on music for non-exclusive artists. Curated libraries (Musicbed, Artlist Original) are invite/application-only but pay larger sync fees or buyouts. Income compounds with catalog size.",
+    "platforms": [
+      "Pond5",
+      "Envato AudioJungle",
+      "Musicbed",
+      "Artlist",
+      "Jamendo Licensing"
+    ],
+    "payout": {
+      "methods": ["PayPal", "Payoneer", "Skrill (Pond5, 4% fee)"],
+      "minimumPayout": "$25 (Pond5)",
+      "frequency": "monthly (Pond5 pays on the 15th)",
+      "typicalDelayDays": 30,
+      "notes": "Songtradr's open Marketplace closed 1 Sep 2026 (moved to invite-only), so it is excluded."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Licensing your own copyrighted works is legal everywhere; income is taxable. Fully AI-generated audio is restricted or banned by many libraries.",
+      "complianceRequirements": [
+        "own 100% of composition and master (no uncleared samples)",
+        "platform tax form (W-8BEN for non-US)",
+        "disclose AI use per library policy"
+      ]
+    },
+    "availability": {
+      "notes": "Pond5/Envato accept contributors in most countries; payout via PayPal/Payoneer limits a few (e.g. PayPal receive limits in Bangladesh, Nepal, Libya, Iraq)."
+    },
+    "automationPlan": [
+      "Script metadata/keyword/description generation per track with an LLM",
+      "Batch-render stems, loops and 15/30/60s cutdowns from each master",
+      "Bulk upload via CSV/FTP where supported"
+    ],
+    "manualSteps": [
+      "Composing/producing the music",
+      "Contributor KYC and tax forms",
+      "Curated library applications"
+    ],
+    "fullCycle": [
+      "Sign up as contributor",
+      "Produce tracks + cutdowns",
+      "Upload with metadata",
+      "Buyers license tracks",
+      "Royalties accrue",
+      "Withdraw to PayPal/Payoneer -> bank"
+    ],
+    "risks": [
+      "Oversupplied market; most tracks never sell",
+      "Royalty cuts and policy changes",
+      "Library closures (Songtradr Marketplace 2026)",
+      "Do not register non-exclusive tracks in Content ID (causes false claims on buyers)"
+    ],
+    "evidence": "Pond5's official Sell Your Media page states the 30% music royalty and $25 minimum with 15th-of-month payout; Musicbed reports $155M+ royalties paid to artists all time.",
+    "sources": [
+      "https://www.pond5.com/sell-your-media",
+      "https://www.pond5.com/help/en/articles/10086161-how-do-i-get-paid",
+      "https://campaigns.musicbed.com/onboarding"
+    ],
+    "tags": ["passive", "royalties", "music", "catalog"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 13,
+        "tools": [
+          "DAW (free: Reaper trial, GarageBand, Cakewalk)",
+          "sample subscription such as Splice (~$13/mo)"
+        ],
+        "skills": [
+          "composing and mixing broadcast-quality instrumentals",
+          "metadata/keywording; AI-generated music is banned or restricted on most libraries"
+        ],
+        "equipment": [
+          "laptop",
+          "headphones or monitors",
+          "audio interface (optional)"
+        ],
+        "accounts": [
+          "Pond5 / AudioJungle contributor accounts + tax forms",
+          "PayPal or bank"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per license sold",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 35,
+          "high": 250
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 55,
+        "grossMarginPercent": 45,
+        "hoursPerUnit": 2,
+        "notes": "Stock licenses typically $20-$50 with the artist keeping ~40-50% non-exclusive (blended estimate across libraries; the Pond5 page could not be fetched, but the evidence cites its stated 30% music royalty, so Pond5-only sales net less); sync placements pay more. Hours = production time per track divided by expected sales (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 13,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost is an optional sample subscription."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": -13,
+          "median": 15,
+          "high": 1800
+        },
+        "notes": "Catalogue-heavy composers with hundreds of tracks earn steady royalties; newcomers face libraries of millions of tracks plus subscription libraries (Artlist, Epidemic) that cut per-license prices. AI music generators (Suno, Udio) flooded the low end in 2025-2026; libraries reacted with AI bans, which protects humans but raises review bars. Failure mode: uploading 20 tracks and seeing a handful of sales a year."
+      },
+      "pricingStrategy": "Use library-default prices on non-exclusive sites; reserve exclusive curated libraries (Musicbed/Artlist) for your best work and price custom sync on request.",
+      "profitPath": [
+        "Month 0: produce 10-20 tracks and upload with strong metadata (cost $0-$13/mo)",
+        "Month 1-6: first sales; expected $0-$50/month",
+        "Month 6-12: keep adding 5-10 tracks/month in proven genres",
+        "Month 12+: catalogue of 100+ tracks earning $50-$300/month"
+      ],
+      "sources": [
+        "https://www.pond5.com/sell-your-media",
+        "https://www.pond5.com/help/en/articles/10086161-how-do-i-get-paid",
+        "https://campaigns.musicbed.com/onboarding"
+      ]
+    }
+  },
+  {
+    "id": "youtube-content-id-own-catalog",
+    "name": "Collect YouTube Content ID revenue on your own music when others use it",
+    "category": "licensing",
+    "summary": "Register exclusively-owned recordings in YouTube Content ID via a distributor so ad revenue from third-party videos using them is paid to you.",
+    "howItWorks": "You release original music through a distributor that offers Content ID (DistroKid's annual per-release 'Social Media Pack' extra, CD Baby Social Video Monetization). YouTube fingerprints the audio and, when any uploader's video uses it, monetizes that video and routes a share of ad revenue to you. Works best for tracks creators reuse (lo-fi, stream background music). Only recordings you own exclusively qualify.",
+    "platforms": ["YouTube Content ID", "DistroKid", "CD Baby"],
+    "payout": {
+      "methods": [
+        "distributor -> bank/PayPal (DistroKid: PayPal, bank)",
+        "CD Baby: direct deposit/PayPal"
+      ],
+      "minimumPayout": "Distributor-dependent (often no minimum aside from method fees)",
+      "frequency": "monthly",
+      "typicalDelayDays": 90,
+      "notes": "Revenue reaches you roughly 2-3 months after views. DistroKid includes Content ID in its annually charged per-release Social Media Pack and passes on ad revenue minus 20% (you keep 80%), shown in the DistroKid Bank tab."
+    },
+    "capitalRequiredUsd": 30,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 10,
+      "high": 1000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 8,
+      "setupEffort": 3,
+      "ongoingEffort": 2,
+      "incomePotential": 4,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Claiming content you exclusively own is legal; claiming public-domain, royalty-free or others' material violates YouTube policy and can be fraud.",
+      "complianceRequirements": [
+        "exclusive rights to entire recording (no samples, loops from libraries or public-domain elements)",
+        "distributor KYC/tax form"
+      ]
+    },
+    "availability": {
+      "notes": "DistroKid and CD Baby accept artists worldwide; YouTube ads run globally."
+    },
+    "automationPlan": [
+      "Automate releases and Content ID opt-in through distributor upload",
+      "Monthly script to reconcile claim revenue reports"
+    ],
+    "manualSteps": [
+      "Creating the music",
+      "Handling disputes and whitelisting requests"
+    ],
+    "fullCycle": [
+      "Create original tracks",
+      "Distribute with Content ID enabled",
+      "Creators use tracks",
+      "Claims monetize videos",
+      "Distributor pays you",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Low revenue unless tracks are widely reused",
+      "Disputes/reputation damage if claims hit licensed users",
+      "Incompatible with non-exclusive stock licensing of the same track",
+      "Distributor may remove ineligible tracks permanently"
+    ],
+    "evidence": "DistroKid's official help article documents Content ID via the Social Media Pack with a 20% cut; Content ID is a standard monetization line in distributor statements.",
+    "sources": [
+      "https://support.distrokid.com/hc/en-us/articles/360013535314-What-is-YouTube-Content-ID",
+      "https://support.google.com/youtube/answer/2797370",
+      "https://dynamoi.com/learn/youtube-music-promotion/youtube-content-id-guide-for-musicians"
+    ],
+    "tags": ["passive", "royalties", "music", "youtube"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 30,
+        "recurringMonthlyUsd": 3,
+        "tools": [
+          "DistroKid (~$25/yr) with Social Media Pack (~$5/yr per release) or CD Baby"
+        ],
+        "skills": [
+          "owning 100% of recordings and samples",
+          "handling disputes and whitelisting creators"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["distributor account + tax forms", "PayPal or bank"]
+      },
+      "unitEconomics": {
+        "unit": "per 100,000 claimed third-party views",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 50,
+          "high": 150
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 0,
+        "notes": "Claimed-video revenue is often shared with other claimants and only monetised views pay; ~$0.20-$1.50 per 1,000 claimed views is a rough market range (estimate). DistroKid keeps 20%."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 3,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 6,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = distributor renewal amortised (~$3/month)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -3,
+          "median": 5,
+          "high": 900
+        },
+        "notes": "Pays meaningfully only for tracks that creators actually use (popular background music, viral sounds). YouTube and distributors tightened Content ID eligibility in 2025-2026 to curb abusive claims and AI-generated tracks, and many creators avoid claimed music. Most catalogues earn cents."
+      },
+      "pricingStrategy": "Not priced by you; maximise usage by whitelisting creators who credit you and promoting tracks to creator communities.",
+      "profitPath": [
+        "Month 0: distribute 3-10 exclusive tracks with Content ID ($30)",
+        "Month 1-3: claims appear; revenue lags 2-3 months",
+        "Month 3-6: first payouts (expected under $10/month)",
+        "Month 6-12: invest only if one track gets traction"
+      ],
+      "sources": [
+        "https://support.distrokid.com/hc/en-us/articles/360013535314-What-is-YouTube-Content-ID",
+        "https://support.google.com/youtube/answer/2797370",
+        "https://dynamoi.com/learn/youtube-music-promotion/youtube-content-id-guide-for-musicians"
+      ]
+    }
+  },
+  {
+    "id": "dual-license-open-source",
+    "name": "Dual-license your open-source library (AGPL/GPL + paid commercial license)",
+    "category": "licensing",
+    "summary": "Publish useful code under a copyleft license and sell commercial licenses to companies that cannot comply with AGPL/GPL obligations.",
+    "howItWorks": "You build a library/tool businesses want to embed (PDF, charting, sync engine, CLI), release it under AGPL/GPL and offer a commercial license that removes copyleft obligations, sold with license keys. Companies pay because their legal teams forbid shipping AGPL code in proprietary products. Sell via Polar (merchant of record, automatic license keys) or Stripe plus Keygen for license validation. You must hold copyright to all code, so require a CLA from contributors.",
+    "platforms": ["Polar", "Keygen", "Stripe", "GitHub"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank (Polar)", "Stripe -> bank"],
+      "minimumPayout": "Stripe payout minimums (about $1)",
+      "frequency": "weekly/on demand",
+      "typicalDelayDays": 7,
+      "notes": "Polar (merchant of record) fees: Starter 5% + 50c, Pro 3.8% + 40c, Growth 3.6% + 35c, Scale 3.4% + 30c (orgs created before 27 May 2026 keep 4% + 40c), plus 1.5% for non-US cards; Stripe payout costs ($2/month active, 0.25% + $0.25 per payout, 0.25-1% FX) pass through. Keygen has a free Dev tier (100 active licensed users, 10 releases) and a free self-hosted CE."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 540
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 7,
+      "setupEffort": 8,
+      "ongoingEffort": 5,
+      "incomePotential": 8,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Copyright licensing is legal everywhere; Polar as merchant of record handles sales tax/VAT.",
+      "complianceRequirements": [
+        "own copyright to all code (CLA for contributors)",
+        "clear LICENSE + COMMERCIAL-LICENSE terms",
+        "tax reporting",
+        "Stripe KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Polar/Stripe payouts cover ~45 countries; elsewhere use Paddle/Lemon Squeezy-style MoRs."
+    },
+    "automationPlan": [
+      "Coding agents build and maintain the library and docs",
+      "Automated license-key issuance on purchase via Polar benefits",
+      "CI checks for license headers and CLA bot",
+      "Automated renewal and dunning emails"
+    ],
+    "manualSteps": [
+      "Choosing a valuable niche",
+      "Enterprise sales questions and custom contracts",
+      "Stripe/Polar KYC"
+    ],
+    "fullCycle": [
+      "Build library",
+      "Publish under AGPL + commercial option",
+      "Gain adoption",
+      "Companies buy license keys",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Most projects never reach paying adoption",
+      "Copyleft lowers adoption",
+      "Forks of older versions",
+      "Hard to enforce"
+    ],
+    "evidence": "Long-running dual-license businesses: iText (AGPL+commercial), Artifex Ghostscript, Qt, MySQL historically; Sidekiq Pro/Enterprise show developers pay for commercial licenses.",
+    "sources": [
+      "https://polar.sh/docs/merchant-of-record/fees",
+      "https://keygen.sh/pricing/",
+      "https://www.gnu.org/philosophy/selling-exceptions.html"
+    ],
+    "tags": ["developer", "recurring", "ip"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 300,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 2,
+        "tools": [
+          "GitHub (free)",
+          "Polar or Stripe checkout",
+          "Keygen license keys (free tier)",
+          "lawyer-reviewed commercial license template"
+        ],
+        "skills": [
+          "building a library companies depend on",
+          "copyleft licensing and CLA management",
+          "B2B sales; AI helps with code and docs"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["GitHub", "Polar/Stripe + KYC", "bank account"]
+      },
+      "unitEconomics": {
+        "unit": "per commercial license-year",
+        "typicalPriceUsd": {
+          "low": 300,
+          "median": 1500,
+          "high": 15000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 6,
+        "grossMarginPercent": 94,
+        "hoursPerUnit": 3,
+        "notes": "Commercial licenses for niche libraries commonly $300-$5,000/year, enterprise more; Polar 5% + $0.50 (+1.5% non-US cards)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 2,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 12,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost is just a domain (~$2/month)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 3,
+        "typicalNetProfitMonth12Usd": {
+          "low": -2,
+          "median": -2,
+          "high": 8000
+        },
+        "notes": "Works for projects with real enterprise adoption (PDF, charting, DB drivers) where legal teams avoid AGPL. AI coding assistants now generate permissive alternatives for small libraries, shrinking demand at the low end. Most new projects never gain the adoption that triggers license purchases."
+      },
+      "pricingStrategy": "Start with a simple per-company annual price ($500-$1,500) and a free tier for small firms; add per-seat/enterprise tiers once inbound requests arrive.",
+      "profitPath": [
+        "Month 0-3: publish an AGPL library and grow users",
+        "Month 3-6: add a commercial license page and CLA",
+        "Month 6-12: first inbound requests if adoption exists ($0-$1,500)",
+        "Month 12+: 1-5 licenses/month for the rare successful project"
+      ],
+      "sources": [
+        "https://polar.sh/docs/merchant-of-record/fees",
+        "https://keygen.sh/pricing/",
+        "https://www.gnu.org/philosophy/selling-exceptions.html"
+      ]
+    }
+  },
+  {
+    "id": "licensed-data-api-feeds",
+    "name": "License data feeds/APIs built from lawfully licensed public data",
+    "category": "licensing",
+    "summary": "Clean, normalize and enrich open government/open-licensed data and sell API access or bulk feeds by subscription via RapidAPI (flat 25% fee) or direct Stripe billing.",
+    "howItWorks": "You pick open datasets with commercial-reuse licenses (government open data under OGL/CC-BY, company registries, weather, transit, sanctions lists) and turn them into a reliable, documented API or periodic CSV/Parquet feed. Developers and analysts pay for convenience, freshness and uptime. List on RapidAPI (PayPal-only payouts at the end of the month after the charge, flat 25% fee) or sell directly with Stripe-metered billing.",
+    "platforms": ["RapidAPI Hub", "Stripe", "AWS Data Exchange"],
+    "payout": {
+      "methods": ["PayPal (RapidAPI)", "Stripe -> bank (direct)"],
+      "minimumPayout": "RapidAPI: none published (PayPal only); Stripe ~ $1",
+      "frequency": "monthly",
+      "typicalDelayDays": 45,
+      "notes": "RapidAPI pays providers via PayPal only, at the end of the month following the charge, after deducting a flat 25% marketplace fee (effective 15 Nov 2025) and PayPal fees. Direct Stripe billing avoids the marketplace cut."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 15,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 8,
+      "setupEffort": 6,
+      "ongoingEffort": 3,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal when source licenses allow commercial reuse and no personal data is sold; scraping that violates ToS is excluded.",
+      "complianceRequirements": [
+        "verify each source's license and attribution terms",
+        "no personal data",
+        "API ToS and privacy policy",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "RapidAPI and Stripe broadly available; PayPal limits a few countries."
+    },
+    "automationPlan": [
+      "ETL pipeline on cron/GitHub Actions to fetch and normalize sources",
+      "LLM-generated docs and SDK examples",
+      "Automated uptime monitoring and billing",
+      "Auto-publish changelog"
+    ],
+    "manualSteps": [
+      "Selecting legally reusable datasets",
+      "Marketplace/Stripe KYC",
+      "Customer support for edge cases"
+    ],
+    "fullCycle": [
+      "Pick open dataset",
+      "Build API/feed",
+      "List on RapidAPI or own site",
+      "Customers subscribe",
+      "Payout to PayPal/bank"
+    ],
+    "risks": [
+      "Low demand for free-at-source data",
+      "Source license changes",
+      "Hosting costs",
+      "Marketplace fee changes"
+    ],
+    "evidence": "RapidAPI hosts tens of thousands of APIs with a documented provider payout process; open-data reuse businesses (e.g. OpenCorporates) operate commercially.",
+    "sources": [
+      "https://docs.rapidapi.com/docs/payouts-and-finance",
+      "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    ],
+    "tags": ["developer", "data", "recurring", "api"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 10,
+        "tools": [
+          "VPS or serverless (~$5-$10/mo)",
+          "RapidAPI listing or Stripe billing",
+          "AI coding agent for ETL"
+        ],
+        "skills": [
+          "data cleaning/ETL",
+          "checking source licenses (OGL, CC-BY)",
+          "API design; AI covers much of the coding"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "RapidAPI provider (PayPal payout) or Stripe + KYC",
+          "cloud account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per subscriber-month",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 30,
+          "high": 500
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 25,
+        "grossMarginPercent": 68,
+        "hoursPerUnit": 0.2,
+        "notes": "Typical paid API tiers $10-$50/month; RapidAPI keeps 25% (Stripe direct ~3%); cost = infra share per subscriber (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 10,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 4,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = hosting (~$10/month)."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -10,
+          "median": 5,
+          "high": 2500
+        },
+        "notes": "Demand from AI agents and developers for clean structured data is growing, but LLMs with browsing and free government APIs replace many simple feeds. Winners own a niche dataset that is painful to normalise (regulatory filings, local registries). Most APIs get few or no paying subscribers."
+      },
+      "pricingStrategy": "Offer a generous free tier for discovery, then $10-$30/month developer and $100+/month business tiers; raise prices once usage concentrates.",
+      "profitPath": [
+        "Month 0: build and list one API ($20 + $10/mo)",
+        "Month 1-3: free users, first paid subscriber if niche is right",
+        "Month 3-6: add endpoints customers ask for",
+        "Month 6-12: $50-$300/month for successful niches"
+      ],
+      "sources": [
+        "https://docs.rapidapi.com/docs/payouts-and-finance",
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ]
+    }
+  },
+  {
+    "id": "rent-gpu-vast-ai",
+    "name": "Rent out a spare GPU rig on Vast.ai",
+    "category": "other",
+    "summary": "List an idle NVIDIA GPU machine on Vast.ai's marketplace and earn per-hour rental fees from AI/ML customers.",
+    "howItWorks": "You install the Vast.ai host software on an Ubuntu machine with a modern NVIDIA GPU (RTX 3090/4090 class or better) and set hourly prices. Renters run Docker containers for AI training/inference and pay per hour; Vast takes a fee. Earnings depend on GPU demand, reliability score, bandwidth and your pricing; electricity is the main cost. RunPod's Community Cloud is closed to new hosts, so Vast is the main fiat-paying option.",
+    "platforms": ["Vast.ai"],
+    "payout": {
+      "methods": ["Wise", "PayPal", "Stripe"],
+      "minimumPayout": "$20",
+      "frequency": "weekly (invoices Fridays, paid next Friday)",
+      "typicalDelayDays": 10,
+      "notes": "No direct bank/ACH/wire/SWIFT from Vast; balances under $20 roll forward; invoices generated Fridays, generally paid the following Friday; first payout can take up to two weeks. Hosts must be able to receive B2B payments through their chosen provider."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 30
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 60,
+      "high": 600
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 9,
+      "setupEffort": 5,
+      "ongoingEffort": 2,
+      "incomePotential": 5,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Renting your own hardware's compute is legal; check residential electricity/ISP terms and local business registration.",
+      "complianceRequirements": [
+        "ISP terms allowing hosting",
+        "tax reporting",
+        "payout-provider KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Hosting is open globally; payout depends on Wise/PayPal/Stripe support in your country. capitalRequiredUsd assumes you already own the GPU."
+    },
+    "automationPlan": [
+      "Auto-pricing script against market rates",
+      "Uptime monitoring and auto-restart",
+      "Automated driver/host updates"
+    ],
+    "manualSteps": [
+      "Hardware setup and Ubuntu install",
+      "Payout provider KYC",
+      "Hardware repairs"
+    ],
+    "fullCycle": [
+      "Prepare Ubuntu + NVIDIA drivers",
+      "Install Vast host daemon",
+      "Pass verification",
+      "List and price",
+      "Renters pay hourly",
+      "Weekly payout to Wise/PayPal -> bank"
+    ],
+    "risks": [
+      "Electricity may exceed earnings for older GPUs",
+      "Hardware wear",
+      "Demand/price swings",
+      "Need good upload bandwidth"
+    ],
+    "evidence": "Vast.ai official host docs document the $20 minimum and weekly payouts; Vast publishes host-earnings articles; hosts report earnings on forums.",
+    "sources": [
+      "https://docs.vast.ai/host/payment",
+      "https://docs.vast.ai/host/earning",
+      "https://docs.runpod.io/hosting"
+    ],
+    "tags": ["passive", "hardware", "compute"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 12,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Vast.ai host software (free)", "Ubuntu Linux"],
+        "skills": [
+          "Linux and Docker administration",
+          "network port forwarding and uptime monitoring"
+        ],
+        "equipment": [
+          "NVIDIA GPU rig you already own (RTX 3090/4090 or better)",
+          "stable broadband"
+        ],
+        "accounts": [
+          "Vast.ai host account + KYC",
+          "PayPal/Wise or crypto payout per Vast options"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 100 GPU-hours rented",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 35,
+          "high": 150
+        },
+        "costPerUnitUsd": 8,
+        "platformFeePercent": 25,
+        "grossMarginPercent": 52,
+        "hoursPerUnit": 0,
+        "notes": "Consumer GPUs rent at ~$0.15-$0.40/hour (data-centre GPUs higher); cost = electricity (~0.5 kW x 100 h x $0.15/kWh). Vast host-side fee ~25% is estimated (not published in the Vast host payment, earnings or FAQ docs). Hardware depreciation not included."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost if the rig already exists and runs on home internet; electricity is counted per unit."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 45,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 45,
+          "high": 500
+        },
+        "notes": "AI demand keeps GPU rental utilisation healthy, but a 2025-2026 supply glut pushed hourly prices down sharply, especially for older cards. Profit depends on cheap electricity (US, Canada, parts of Asia) and high uptime; in Germany/UK-level electricity prices margins can go negative. Buying a GPU just to rent it rarely pays back."
+      },
+      "pricingStrategy": "Undercut similar machines slightly to get occupancy and reliability ratings, then raise toward the market median.",
+      "profitPath": [
+        "Month 0: install host software and pass verification (cost $0)",
+        "Month 1: first rentals; expected $20-$60",
+        "Month 2-6: tune pricing to keep 50%+ occupancy",
+        "Month 6-12: $30-$100/month net per consumer GPU"
+      ],
+      "sources": [
+        "https://docs.vast.ai/host/payment",
+        "https://docs.vast.ai/host/earning",
+        "https://docs.runpod.io/hosting"
+      ]
+    }
+  },
+  {
+    "id": "salad-idle-pc-compute",
+    "name": "Share idle gaming PC compute with Salad",
+    "category": "other",
+    "summary": "Run the Salad desktop app so your idle GPU/CPU performs containerized cloud workloads; redeem balance for PayPal cash or gift cards.",
+    "howItWorks": "Salad resells distributed consumer GPU capacity to AI companies (image generation, transcription, batch inference). You install the app on a Windows gaming PC; when idle, it runs workloads and credits your Salad balance. You redeem from the storefront, choosing PayPal where supported (gift cards otherwise). Unlike Vast you do not set prices; it is consumer-grade and simpler, but pays less.",
+    "platforms": ["Salad"],
+    "payout": {
+      "methods": ["PayPal (supported countries)", "gift cards (not bank)"],
+      "minimumPayout": "Storefront reward price (small PayPal denominations; check storefront)",
+      "frequency": "on redemption",
+      "typicalDelayDays": 1,
+      "notes": "PayPal rewards are bought from the Salad Storefront and delivered by a third-party vendor within ~24h (USD; converted to 14 currencies). Exact minimum PayPal denomination is only visible when logged in (unverified). Gift cards do not count as a bank path."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 3,
+      "max": 30
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 5,
+      "median": 25,
+      "high": 100
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 10,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 2,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 64
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; Salad is fiat-based.",
+      "complianceRequirements": [
+        "PayPal account in supported country",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Official supported-PayPal-country list covers 32 of 50 reference countries; NOT supported: Armenia, Ukraine, Nigeria, Tunisia, Ghana, Sri Lanka, Zambia, Angola, Lebanon, Bangladesh, Uganda, Zimbabwe, Kyrgyzstan, Cambodia, Thailand, Libya, Iraq, Nepal (there, gift cards only, which fails the bank-path rule)."
+    },
+    "automationPlan": [
+      "Run on idle schedule automatically",
+      "Auto-redeem when balance reaches PayPal reward amount"
+    ],
+    "manualSteps": ["Install app", "Link PayPal and redeem"],
+    "fullCycle": [
+      "Install Salad",
+      "Let it run when idle",
+      "Balance accrues",
+      "Redeem PayPal reward",
+      "PayPal -> bank"
+    ],
+    "risks": [
+      "Electricity cost may cancel earnings",
+      "Low workload availability",
+      "Mixed user reviews on payouts"
+    ],
+    "evidence": "Salad's support documents PayPal redemption flow; Trustpilot users report PayPal payouts (mixed).",
+    "sources": [
+      "https://support.salad.com/rewards/redeeming-your-rewards/how-to-redeem-paypal",
+      "https://support.salad.com/rewards/redeeming-your-rewards/supported-paypal-countries",
+      "https://salad.com/download"
+    ],
+    "tags": ["passive", "hardware", "compute"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Salad desktop app (free)"],
+        "skills": ["none; leave the PC running"],
+        "equipment": ["gaming PC with a modern NVIDIA GPU", "broadband"],
+        "accounts": ["Salad account", "PayPal in a supported country"]
+      },
+      "unitEconomics": {
+        "unit": "per 100 hours of idle machine time",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 12,
+          "high": 25
+        },
+        "costPerUnitUsd": 5,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 58,
+        "hoursPerUnit": 0,
+        "notes": "Earnings vary by GPU and demand, roughly $0.05-$0.25/hour (estimated; Salad publishes no per-hour rates); cost = electricity (~0.3 kW x 100 h x $0.15/kWh). Reward-store denominations net out any platform cut."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost; electricity counted per unit."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 60,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 80
+        },
+        "notes": "AI inference demand keeps Salad busy, but earnings per hour fell as more gamers joined. Profit is small and depends on electricity price and GPU tier; high-tariff countries often net zero after power. Hardware wear is the hidden cost."
+      },
+      "pricingStrategy": "Not priced by you; run only when electricity is cheap and redeem as soon as the minimum PayPal denomination is reached.",
+      "profitPath": [
+        "Month 0: install app and let it chop (cost $0)",
+        "Month 1: first redemption to PayPal ($5-$20)",
+        "Month 2-6: check that earnings exceed power cost",
+        "Month 6-12: steady $10-$30/month net on a mid-range GPU"
+      ],
+      "sources": [
+        "https://support.salad.com/rewards/redeeming-your-rewards/how-to-redeem-paypal",
+        "https://support.salad.com/rewards/redeeming-your-rewards/supported-paypal-countries",
+        "https://salad.com/download"
+      ]
+    }
+  },
+  {
+    "id": "rent-storage-storj-node",
+    "name": "Rent spare disk space and bandwidth as a Storj storage node",
+    "category": "other",
+    "summary": "Run a Storj storage node on a spare hard drive and earn monthly USDC stablecoin payouts for stored data and egress; convert to fiat via an exchange.",
+    "howItWorks": "Storj's decentralized S3-compatible cloud pays node operators for disk space used and download bandwidth. You run the node (Docker) on an always-on machine with a 1TB+ drive and open port. Earnings are calculated in USD and paid monthly in USDC on Ethereum (Storj no longer pays in STORJ tokens); the zkSync L2 option was sunset on 1 Sep 2026, so all payouts go via Ethereum L1 and are only sent when the gas fee is under 25% of the amount. New nodes have part of earnings held back during the first months. Sia (hostd) requires Siacoin collateral, a buy-in; prefer Storj.",
+    "platforms": ["Storj", "Sia (alternative)"],
+    "payout": {
+      "methods": ["USDC (Ethereum L1) -> exchange -> bank"],
+      "minimumPayout": "Dynamic: payout skipped if gas fee exceeds 25% of amount (e.g. $68.56 minimum at a $17.14 fee)",
+      "frequency": "monthly",
+      "typicalDelayDays": 40,
+      "notes": "Unpaid balances roll over to the next month. zkSync payouts ended 1 Sep 2026. Fiat conversion requires a regulated exchange in your country; pooling all your nodes on one wallet helps clear the threshold."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 35,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 1,
+      "median": 8,
+      "high": 40
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 9,
+      "setupEffort": 3,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 86,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [
+        "Bangladesh",
+        "Nepal",
+        "Iraq",
+        "Libya",
+        "Tunisia",
+        "Morocco (2017 crypto ban still formally in force)",
+        "Angola (2024 crypto-mining ban; applicability to storage nodes unclear)"
+      ],
+      "notes": "Running the node is legal everywhere; receiving and converting crypto (including stablecoins) is banned or effectively prohibited in about 6-7 reference countries, giving ~86% coverage. Ecuador, Jordan and Lebanon restrict crypto as payment/banking but do not ban holding it. Country legal status is from general knowledge, not re-verified this session.",
+      "complianceRequirements": [
+        "crypto tax reporting",
+        "exchange KYC",
+        "ISP terms allowing hosting"
+      ]
+    },
+    "availability": {
+      "notes": "Nodes work anywhere with stable internet; fiat off-ramp needed."
+    },
+    "automationPlan": [
+      "Docker auto-update (watchtower)",
+      "Uptime monitoring/alerts",
+      "Scheduled USDC-to-fiat conversion"
+    ],
+    "manualSteps": ["Port forwarding/setup", "Exchange KYC"],
+    "fullCycle": [
+      "Set up node + Ethereum wallet",
+      "Vetting period",
+      "Earn monthly (USD-denominated)",
+      "Receive USDC once above gas threshold",
+      "Sell on exchange",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Very low income per TB",
+      "L1 gas threshold can delay small payouts for months",
+      "Escrow held from new nodes",
+      "Disk failure disqualifies node"
+    ],
+    "evidence": "Storj's official node payout docs (storj.dev) describe monthly USDC payouts, the 25% gas-fee threshold rule and the zkSync sunset. paymentProbability lowered from 5 to 4 because small nodes may need several months to clear the L1 threshold.",
+    "sources": [
+      "https://storj.dev/node/payouts",
+      "https://forum.storj.io/t/february-and-first-batch-of-zksync-payments-complete/12138"
+    ],
+    "tags": ["passive", "crypto", "hardware"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 6,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 2,
+        "tools": ["Storj node software (free)", "Docker"],
+        "skills": [
+          "basic Linux/Docker",
+          "port forwarding and keeping the node online 99%+"
+        ],
+        "equipment": [
+          "always-on PC or Raspberry Pi",
+          "spare HDD (2 TB+)",
+          "broadband"
+        ],
+        "accounts": [
+          "Ethereum/USDC wallet",
+          "regulated crypto exchange account to convert to fiat"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per TB stored per month",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 1,
+          "high": 3
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 0,
+        "notes": "Storj pays $1.35 per TB-month stored and $1.00 per TB egress (rates as of 1 Sep 2026); with typical egress ~$1.5/TB-month blended, rounded to $1 median. Fee = estimated exchange/withdrawal costs; Ethereum gas can delay payouts."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 2,
+        "unitsPerMonthToBreakEven": 3,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = electricity for an always-on low-power box (~$2/month); a new node fills slowly (vetting takes months)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": -2,
+          "median": 5,
+          "high": 35
+        },
+        "notes": "Storj reduced node payouts in 2024 and a new node fills only ~0.5-1 TB per year, so income is a few dollars a month. It is only worth it on hardware that is already running; buying drives to farm never pays back. Crypto conversion adds friction. Verifier: median price per TB-month lowered from $2 to $1 to match the published $1.35/TB storage rate."
+      },
+      "pricingStrategy": "Not priced by you; maximise uptime and stored data, and pool nodes on one wallet to clear the payout threshold.",
+      "profitPath": [
+        "Month 0: set up node on an existing drive (cost $0)",
+        "Month 1-6: vetting; payouts below threshold roll over",
+        "Month 6-12: $2-$8/month as the node fills",
+        "Month 12+: convert USDC to fiat once a year to minimise fees"
+      ],
+      "sources": [
+        "https://storj.dev/node/payouts",
+        "https://forum.storj.io/t/february-and-first-batch-of-zksync-payments-complete/12138"
+      ]
+    }
+  },
+  {
+    "id": "rent-car-turo",
+    "name": "Rent out your car on Turo (PHYSICAL)",
+    "category": "other",
+    "summary": "List a car you own on Turo for peer-to-peer rentals; Turo handles booking, payment and protection plans.",
+    "howItWorks": "PHYSICAL: you hand over the car (or use remote unlock) and clean it between trips. Everything else is online: listing, pricing, messaging, payment. Renters pay Turo; you receive a percentage of the trip price determined by the chosen protection plan. Works best in cities/airports with tourist demand.",
+    "platforms": ["Turo", "Getaround"],
+    "payout": {
+      "methods": ["Stripe -> direct deposit/bank"],
+      "minimumPayout": "No fixed minimum",
+      "frequency": "per trip (Stripe, max one payout per day)",
+      "typicalDelayDays": 5,
+      "notes": "US: Stripe initiates payout 3 business days after your first completed trip, then 3 hours after each later trip ends (partial payouts every 7 days for long trips), plus 3-5 business days bank processing. US hosts keep 70%, 80% or 90% of the trip price depending on the chosen earnings (protection) plan."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 400,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 95,
+      "platformAvailabilityPercent": 10
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Peer-to-peer car sharing is legal in most countries, but personal auto insurance may exclude commercial use; some jurisdictions require commercial registration.",
+      "complianceRequirements": [
+        "vehicle insurance compatibility",
+        "local tax/registration rules",
+        "Turo KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Turo operates only in the US, Canada, UK, Australia and France (5 of 50 reference countries = 10%); Getaround coverage is similarly limited."
+    },
+    "automationPlan": [
+      "Dynamic pricing tools",
+      "AI-drafted guest messaging",
+      "Remote keyless entry"
+    ],
+    "manualSteps": [
+      "Vehicle handover/cleaning (physical)",
+      "Damage claims",
+      "Maintenance"
+    ],
+    "fullCycle": [
+      "List car",
+      "Set pricing",
+      "Accept trips",
+      "Handover",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Vehicle damage and depreciation",
+      "Insurance disputes",
+      "Low availability outside 5 countries"
+    ],
+    "evidence": "Turo's official help center documents Stripe payout timing and the 70/80/90% earnings plans; its site lists the five operating countries.",
+    "sources": [
+      "https://help.turo.com/en_us/getting-paid-SyALrVeN9",
+      "https://help.turo.com/en_us/earnings-plans-in-detail-us-hosts-ByMOIVxEc",
+      "https://turo.com/us/en/car-rental/united-states/how-turo-works"
+    ],
+    "tags": ["physical", "asset-rental"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 8,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Turo host app (free)",
+          "cleaning supplies",
+          "GPS tracker (optional)"
+        ],
+        "skills": [
+          "vehicle turnover and cleaning (PHYSICAL)",
+          "guest communication (AI-assisted)",
+          "handling damage claims"
+        ],
+        "equipment": ["a car you own in an eligible market", "smartphone"],
+        "accounts": [
+          "Turo host account + background check",
+          "bank account for Stripe payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per rental day",
+        "typicalPriceUsd": {
+          "low": 35,
+          "median": 60,
+          "high": 150
+        },
+        "costPerUnitUsd": 15,
+        "platformFeePercent": 25,
+        "grossMarginPercent": 50,
+        "hoursPerUnit": 0.5,
+        "notes": "Median daily rate ~$60; host keeps 60-90% depending on protection plan (75% median used); cost = depreciation/wear/cleaning per day (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost covers cleaning supplies and incremental insurance/maintenance (estimate)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 45,
+        "typicalNetProfitMonth12Usd": {
+          "low": -50,
+          "median": 80,
+          "high": 1500
+        },
+        "notes": "Hosts in tourist/airport areas with reliable cars do best; the market saw supply growth and lower daily rates. Only available in a handful of countries (US, UK, CA, AU, FR). Failure modes: low utilisation, damage disputes, depreciation and personal-insurance conflicts that exceed earnings. Verifier: median month-12 net lowered from $300 to $80 so it agrees with a 45% chance of reaching $100/month after depreciation and insurance. Host share by protection plan is estimated (help page did not render)."
+      },
+      "pricingStrategy": "Start 10-15% below comparable cars to win first reviews, enable automatic pricing, then raise rates on weekends and holidays.",
+      "profitPath": [
+        "Month 0: list your car with photos and pricing (cost $0)",
+        "Month 1-2: first trips and reviews; expected $100-$400",
+        "Month 3-6: refine pricing and delivery options",
+        "Month 6-12: $200-$600/month net if utilisation stays above 40%"
+      ],
+      "sources": [
+        "https://help.turo.com/en_us/getting-paid-SyALrVeN9",
+        "https://help.turo.com/en_us/earnings-plans-in-detail-us-hosts-ByMOIVxEc",
+        "https://turo.com/us/en/car-rental/united-states/how-turo-works"
+      ]
+    }
+  },
+  {
+    "id": "rent-room-airbnb",
+    "name": "Rent a spare room on Airbnb (PHYSICAL)",
+    "category": "other",
+    "summary": "List a spare room or property on Airbnb for short stays; payouts are initiated about one business day after guest check-in.",
+    "howItWorks": "PHYSICAL: guests stay in your space, so cleaning, key handover and maintenance are unavoidable. Listing, pricing, messaging, reviews and payouts are online and largely automatable. Guests pay Airbnb at booking; Airbnb releases payout to you ~24 hours after check-in, minus host fee.",
+    "platforms": ["Airbnb", "Booking.com"],
+    "payout": {
+      "methods": [
+        "bank transfer",
+        "ACH (US)",
+        "Fast Pay / pay to card (eligible regions)",
+        "PayPal",
+        "Payoneer",
+        "international wire",
+        "Western Union"
+      ],
+      "minimumPayout": "None",
+      "frequency": "per booking",
+      "typicalDelayDays": 4,
+      "notes": "Stays of 27 nights or less: payout initiated by end of the business day after scheduled check-in; hosts without two completed stays (unless listing verified) are paid after checkout; monthly stays first pay 28 days after check-in. Processing: Fast Pay/card 30 min, PayPal ~1 business day, bank 3-5 business days, wire 3-7. Reviews can delay payouts up to 45 days."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 95,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Short-term rentals are legal nationally across the reference set; many cities require registration, caps or permits; leases may prohibit subletting.",
+      "complianceRequirements": [
+        "local STR registration/permits",
+        "landlord permission",
+        "occupancy/tourist tax",
+        "income tax"
+      ]
+    },
+    "availability": {
+      "notes": "Airbnb operates in nearly all reference countries."
+    },
+    "automationPlan": [
+      "Dynamic pricing (PriceLabs)",
+      "AI auto-replies",
+      "Smart locks",
+      "Cleaning scheduling"
+    ],
+    "manualSteps": ["Cleaning and turnovers", "Guest issues", "Permits"],
+    "fullCycle": [
+      "Prepare room",
+      "List",
+      "Accept guests",
+      "Host",
+      "Payout to bank"
+    ],
+    "risks": ["Local regulation crackdowns", "Property damage", "Seasonality"],
+    "evidence": "Airbnb's official help article 'When you'll get your payout' documents release timing and per-method processing times; millions of hosts are paid this way.",
+    "sources": ["https://www.airbnb.com/help/article/425"],
+    "tags": ["physical", "asset-rental"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Airbnb / Booking.com (free to list)",
+          "smart lock (optional)",
+          "AI message templates"
+        ],
+        "skills": [
+          "hospitality, cleaning and turnover (PHYSICAL)",
+          "local permit/tax compliance"
+        ],
+        "equipment": [
+          "spare room or property you are allowed to sublet",
+          "linens and basic amenities"
+        ],
+        "accounts": [
+          "Airbnb host account + ID verification",
+          "bank account for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per night booked",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 60,
+          "high": 150
+        },
+        "costPerUnitUsd": 12,
+        "platformFeePercent": 3,
+        "grossMarginPercent": 77,
+        "hoursPerUnit": 1,
+        "notes": "Private-room rates ~$30-$80/night; split-fee hosts pay 3% (4% in Brazil/Mexico), host-only fee is ~15.5% (14-16%) and mandatory for PMS users; cost = cleaning, laundry, utilities and consumables per night (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost covers supplies and extra insurance (estimate)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 55,
+        "typicalNetProfitMonth12Usd": {
+          "low": -20,
+          "median": 400,
+          "high": 2500
+        },
+        "notes": "Demand for short stays is steady, but many cities (New York, Barcelona, Lisbon, etc.) restricted rentals in 2023-2026 and supply growth lowered occupancy. Room hosts in tourist or university areas with good reviews do best. Failure modes: local bans, damage, tax registration, low winter occupancy."
+      },
+      "pricingStrategy": "Launch 15-20% below comparable listings to earn first reviews, then use dynamic pricing to raise on weekends and events.",
+      "profitPath": [
+        "Month 0: furnish/clean the room, check local rules, list (cost ~$0-$100 if you have linens)",
+        "Month 1-2: first guests; expected $200-$600",
+        "Month 3-6: Superhost-level reviews, raise prices",
+        "Month 6-12: $300-$800/month net in a decent location"
+      ],
+      "sources": [
+        "https://www.airbnb.com/help/article/425",
+        "https://www.airbnb.com/help/article/1857"
+      ]
+    }
+  },
+  {
+    "id": "rent-parking-storage-space",
+    "name": "Rent unused parking or storage space online (Neighbor, JustPark, Spacer) (PHYSICAL)",
+    "category": "other",
+    "summary": "List a garage, driveway, shed or parking space on a peer-to-peer platform such as Neighbor (4.9% + $0.30 host fee); renters pay monthly via the platform.",
+    "howItWorks": "PHYSICAL but low-touch: the space must exist and renters need access, but once a long-term renter books, you mostly receive automatic monthly payments. Neighbor charges the renter each period and pays hosts via Stripe 2-3 business days after, minus a 4.9% + $0.30 fee, with payout protection. SpotHero is for commercial operators, not individuals.",
+    "platforms": ["Neighbor", "JustPark", "Spacer", "Stashbee"],
+    "payout": {
+      "methods": ["Stripe -> bank"],
+      "minimumPayout": "None",
+      "frequency": "monthly per rental",
+      "typicalDelayDays": 3,
+      "notes": "Neighbor: renter is charged at the start of each rental period and the host payout is sent via Stripe at the end, arriving in 2-3 business days; Neighbor deducts a 4.9% + $0.30 processing fee per host payout."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 600
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 8,
+      "setupEffort": 2,
+      "ongoingEffort": 1,
+      "incomePotential": 3,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 98,
+      "platformAvailabilityPercent": 12
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Renting your own space is legal; leases/HOAs/zoning may restrict.",
+      "complianceRequirements": [
+        "landlord/HOA permission",
+        "income tax",
+        "insurance check"
+      ]
+    },
+    "availability": {
+      "notes": "Neighbor US-only; JustPark/Stashbee UK; Spacer AU/US."
+    },
+    "automationPlan": ["Auto-renewing monthly rentals", "AI messaging replies"],
+    "manualSteps": ["Prepare space", "Grant access", "Disputes"],
+    "fullCycle": [
+      "List space",
+      "Renter books",
+      "Monthly charge",
+      "Payout to bank"
+    ],
+    "risks": ["Low demand in some areas", "Damage/prohibited items"],
+    "evidence": "Neighbor's official help centre documents Stripe payouts, timing and the 4.9% + $0.30 host fee; reviews cite $50-$600/month.",
+    "sources": [
+      "https://help.neighbor.com/en_us/how-do-payouts-work-as-a-host-HJkBDAICu",
+      "https://finmasters.com/neighbor-review/"
+    ],
+    "tags": ["physical", "asset-rental", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Neighbor / JustPark / Spacer / Stashbee (free to list)"],
+        "skills": [
+          "writing a clear listing; minimal management (PHYSICAL access)"
+        ],
+        "equipment": ["spare garage, driveway, shed or parking space"],
+        "accounts": ["platform host account", "bank account for Stripe payouts"]
+      },
+      "unitEconomics": {
+        "unit": "per rented space per month",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 100,
+          "high": 250
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 0.2,
+        "notes": "Parking/storage rents ~$30-$250/month depending on city; Neighbor host fee 4.9% + $0.30."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost; earnings depend on finding a renter."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 550
+        },
+        "notes": "Works well in dense cities with parking scarcity; suburban listings often sit empty. Platforms are mostly US/UK/AU, and leases or HOA rules may forbid subletting. Once rented, income is passive and stable."
+      },
+      "pricingStrategy": "Price 10-20% below nearby commercial parking or self-storage, then raise at renewal once occupancy is proven.",
+      "profitPath": [
+        "Month 0: list the space with photos (cost $0)",
+        "Month 1-3: first renter if location is in demand",
+        "Month 3-6: list on a second platform if empty",
+        "Month 6-12: $50-$200/month per occupied space"
+      ],
+      "sources": [
+        "https://help.neighbor.com/en_us/how-do-payouts-work-as-a-host-HJkBDAICu",
+        "https://finmasters.com/neighbor-review/"
+      ]
+    }
+  },
+  {
+    "id": "direct-ad-space-dev-sites",
+    "name": "Sell ad space on your developer site/newsletter (EthicalAds, BuySellAds, direct sponsors)",
+    "category": "other",
+    "summary": "Monetize a technical site, docs site or newsletter with privacy-friendly contextual ads or directly sold sponsorship slots.",
+    "howItWorks": "If you run docs, a dev blog or a newsletter with ~50k monthly pageviews, EthicalAds places contextual developer ads and pays 70% of revenue (about $2.50 CPM for US/EU traffic). Alternatively list ad slots on BuySellAds or sell fixed-price sponsor slots directly with a Stripe payment link. Advertisers pay to reach developers without tracking.",
+    "platforms": ["EthicalAds", "BuySellAds", "Stripe"],
+    "payout": {
+      "methods": [
+        "Stripe Connect -> bank",
+        "PayPal",
+        "Open Collective",
+        "GitHub Sponsors"
+      ],
+      "minimumPayout": "$50 (EthicalAds)",
+      "frequency": "monthly (by the 15th)",
+      "typicalDelayDays": 45,
+      "notes": "EthicalAds: 70% revenue share, $50 minimum, paid monthly by the 15th for the prior month via Stripe Connect, PayPal, Open Collective or GitHub Sponsors; delays possible if suspicious traffic is detected; requires ~50k pageviews/month (exceptions possible). BuySellAds/Carbon is application-only and does not publish its revenue share."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 7,
+      "setupEffort": 4,
+      "ongoingEffort": 4,
+      "incomePotential": 5,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Advertising is legal; disclose sponsorships per FTC/ASA-style rules.",
+      "complianceRequirements": [
+        "sponsored content disclosure",
+        "privacy policy",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "EthicalAds accepts sites worldwide meeting traffic thresholds."
+    },
+    "automationPlan": [
+      "AI-assisted content creation",
+      "Automated sponsor slot booking page",
+      "Embed ad client script"
+    ],
+    "manualSteps": ["Building an audience", "Sponsor negotiation"],
+    "fullCycle": [
+      "Grow traffic",
+      "Apply",
+      "Embed ads/sell slots",
+      "Earn",
+      "Payout"
+    ],
+    "risks": [
+      "Requires real traffic first",
+      "Ad blockers",
+      "Low CPM outside US/EU"
+    ],
+    "evidence": "EthicalAds publishes its publisher policy (70% share, $50 minimum, payout by the 15th) and FAQ (~$2.50 per 1,000 pageviews, 50k pageview requirement); used by Read the Docs.",
+    "sources": [
+      "https://www.ethicalads.io/publisher-policy/",
+      "https://www.ethicalads.io/publishers/faq/",
+      "https://www.buysellads.com/publishers"
+    ],
+    "tags": ["advertising", "developer", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 5,
+        "tools": [
+          "static hosting (free-$5/mo)",
+          "EthicalAds / BuySellAds (free)",
+          "Stripe for direct sponsors"
+        ],
+        "skills": [
+          "building a developer audience (docs, blog, newsletter)",
+          "selling sponsorships; AI helps write content"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "EthicalAds/BuySellAds publisher account",
+          "Stripe or PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1,000 ad impressions",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 30,
+        "grossMarginPercent": 70,
+        "hoursPerUnit": 0,
+        "notes": "EthicalAds says publishers typically see ~$2.50 per 1,000 pageviews (EU/NA traffic, 50k pageviews/month minimum) with 70% to publisher; direct newsletter sponsorships reach $10-$30 CPM (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 5,
+        "unitsPerMonthToBreakEven": 3,
+        "typicalMonthsToBreakEven": 10,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = hosting/domain (~$5/month)."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": -5,
+          "median": 30,
+          "high": 2800
+        },
+        "notes": "Established docs sites and newsletters with tens of thousands of developer visitors still sell well. AI coding assistants and AI search answers cut 2025-2026 traffic to tutorial and docs pages, lowering impressions. Most sites never reach the ~50k monthly views needed for $100/month."
+      },
+      "pricingStrategy": "Start with network ads for baseline, then sell direct monthly sponsor slots at $100-$500 once traffic is proven, raising each quarter.",
+      "profitPath": [
+        "Month 0: launch site/newsletter (cost $0-$5/mo)",
+        "Month 1-6: grow audience; network ads earn under $10/month",
+        "Month 6-12: apply to EthicalAds/BuySellAds; pitch first direct sponsor",
+        "Month 12+: $100-$500/month for sites with 50k+ monthly views"
+      ],
+      "sources": [
+        "https://www.ethicalads.io/publisher-policy/",
+        "https://www.ethicalads.io/publishers/faq/",
+        "https://www.buysellads.com/publishers"
+      ]
+    }
+  },
+  {
+    "id": "domain-lease-to-own",
+    "name": "Lease domains on lease-to-own terms via Afternic (formerly Dan.com)",
+    "category": "other",
+    "summary": "Hold brandable domains and offer them on monthly lease-to-own plans on Afternic (15-30% commission depending on nameservers and Boost), earning installments until buyers own them.",
+    "howItWorks": "You register or hand-pick brandable domains, then list them on Afternic, which inherited Dan.com's LTO system in 2024. Startups pay monthly installments; you keep ownership until fully paid, and if they default you keep the domain and payments. LTO max is $100,000 ($5,000 in California).",
+    "platforms": ["Afternic (GoDaddy)", "Dan.com (legacy)"],
+    "payout": {
+      "methods": ["PayPal", "ACH (US)", "eCheck (non-US)", "wire transfer"],
+      "minimumPayout": "PayPal $25 (no fee); ACH $10 ($0.90 fee); eCheck $25 ($5); wire $25 ($15-26)",
+      "frequency": "monthly payouts as installments arrive",
+      "typicalDelayDays": 30,
+      "notes": "LTO commission: 25% standard or 15% with GoDaddy Aftermarket nameservers ($15 minimum), +5% if Afternic Boost is on, minus a term discount (0% for up to 12 months, 5% for 13-24, 10% for 25-36, 15% for 37-60). Down payments pay full commission. Eligible Buy-It-Now prices $495 to $5M."
+    },
+    "capitalRequiredUsd": 300,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 720
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 20,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 7,
+      "setupEffort": 4,
+      "ongoingEffort": 2,
+      "incomePotential": 5,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Domain trading is legal; avoid trademarked names (UDRP risk).",
+      "complianceRequirements": [
+        "avoid trademark infringement",
+        "tax reporting",
+        "KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Afternic serves sellers worldwide."
+    },
+    "automationPlan": [
+      "AI name generation and trademark screening",
+      "Bulk listing and pricing",
+      "Renewal cost tracking"
+    ],
+    "manualSteps": ["Domain selection and budget", "KYC"],
+    "fullCycle": [
+      "Acquire domains",
+      "List with LTO",
+      "Buyer leases",
+      "Installments paid",
+      "Payout"
+    ],
+    "risks": ["Low sell-through (~1%/yr)", "Renewal fees", "Buyer defaults"],
+    "evidence": "Afternic's official help center and Lease-to-Own page document commission tiers and payout methods; DomainNameWire documented Dan.com's 2024 migration of LTO to Afternic.",
+    "sources": [
+      "https://help.afternic.com/s/article/What-are-your-fees-commissions",
+      "https://help.afternic.com/s/article/Supported-payment-methods-and-fees",
+      "https://www.afternic.com/lease-to-own",
+      "https://domainnamewire.com/2024/09/12/afternic-reveals-dan-com-migration-timeline-and-eventual-shutdown/"
+    ],
+    "tags": ["domains", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 300,
+        "recurringMonthlyUsd": 28,
+        "tools": [
+          "registrar (~$11/yr per .com)",
+          "Afternic lease-to-own listings (free)"
+        ],
+        "skills": ["choosing brandable names", "setting lease terms"],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Afternic/GoDaddy account + tax forms",
+          "PayPal or ACH payout"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per lease-to-own contract (total value)",
+        "typicalPriceUsd": {
+          "low": 600,
+          "median": 2400,
+          "high": 12000
+        },
+        "costPerUnitUsd": 15,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 79,
+        "hoursPerUnit": 1,
+        "notes": "Typical lease-to-own deals $50-$200/month over 12-36 months; Afternic commission 25% (Basic) or 30% (Boost), 15-20% with GoDaddy nameservers, with lease-to-own discounts of up to 15% by term (20% used); cost = acquisition of the leased name."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 28,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 24,
+        "monthsToRecoverStartup": 30,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = renewals of ~30 domains (~$28/month); installments arrive monthly once a contract starts."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": -30,
+          "median": -10,
+          "high": 1300
+        },
+        "notes": "LTO increases conversion for $2k-$10k names because startups prefer monthly payments, but you still need names buyers want, and most portfolios get no takers. AI name generators push buyers toward cheap available domains. Default by lessees is common, though the domain returns to you."
+      },
+      "pricingStrategy": "Offer 12-36 month terms at a total ~10-20% above the Buy Now price, with a low first installment to convert startups.",
+      "profitPath": [
+        "Month 0: register/buy ~30 brandable names ($300)",
+        "Month 1-6: enable LTO on Afternic; no deals expected",
+        "Month 6-12: prune names before renewal",
+        "Month 12-24: first contract (if any) adds $50-$150/month"
+      ],
+      "sources": [
+        "https://help.afternic.com/s/article/What-are-your-fees-commissions",
+        "https://help.afternic.com/s/article/Supported-payment-methods-and-fees",
+        "https://www.afternic.com/lease-to-own",
+        "https://www.afternic.com/sell-domains"
+      ]
+    }
+  },
+  {
+    "id": "public-domain-derived-works",
+    "name": "Sell new translations/annotated editions of public-domain works",
+    "category": "licensing",
+    "summary": "Create genuinely new, copyrightable editions (translations, annotations, illustrated or modernized versions) of public-domain texts and sell them.",
+    "howItWorks": "You take public-domain texts (e.g. from Project Gutenberg), strip the Project Gutenberg name and license, and add original value: a new translation, notes, study guides, audio narration. Readers pay for the added value. KDP requires PD books to be differentiated and pays only 35% royalty on primarily public-domain content (up to 70% for differentiated editions).",
+    "platforms": [
+      "Amazon KDP",
+      "Gumroad",
+      "Payhip",
+      "Project Gutenberg (source)"
+    ],
+    "payout": {
+      "methods": ["KDP EFT/wire", "Gumroad/Payhip -> bank"],
+      "minimumPayout": "KDP: none for EFT",
+      "frequency": "monthly",
+      "typicalDelayDays": 60,
+      "notes": "If you keep the Project Gutenberg name/trademark and charge a fee, the PG license requires a 20% royalty on gross profits (due within 60 days of each tax-return date); stripping all PG references and the license avoids this."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 15,
+      "high": 800
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 7,
+      "setupEffort": 4,
+      "ongoingEffort": 3,
+      "incomePotential": 4,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 98,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Copyright terms vary by country (life+50/70); verify PD status per country.",
+      "complianceRequirements": [
+        "verify PD status per country",
+        "disclose AI-generated content to KDP",
+        "tax interview"
+      ]
+    },
+    "availability": {
+      "notes": "KDP pays in most countries."
+    },
+    "automationPlan": [
+      "LLM-assisted translation and annotation",
+      "Automated formatting/EPUB",
+      "Bulk listing"
+    ],
+    "manualSteps": ["Human editing", "Country PD checks", "KYC"],
+    "fullCycle": [
+      "Choose PD work",
+      "Add original value",
+      "Strip PG references",
+      "Publish",
+      "Payout to bank"
+    ],
+    "risks": ["KDP may block undifferentiated PD", "Low sales"],
+    "evidence": "Project Gutenberg's official license (sections 1.C and 1.E.8 and the trademark section) permits free reuse of US public-domain texts once all PG references are removed.",
+    "sources": [
+      "https://www.gutenberg.org/policy/license.html",
+      "https://kdp.amazon.com/en_US/help/topic/G200743940"
+    ],
+    "tags": ["publishing", "ai-assisted", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Project Gutenberg / Wikisource sources (free)",
+          "AI translation and editing (free tiers)",
+          "Kindle Create / Calibre (free)",
+          "Canva for covers (free)"
+        ],
+        "skills": [
+          "editing AI-assisted translations to publishable quality",
+          "writing original introductions/annotations",
+          "copyright status checks per country"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Amazon KDP + tax interview",
+          "Gumroad/Payhip",
+          "bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per copy sold",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 50,
+        "grossMarginPercent": 50,
+        "hoursPerUnit": 0.4,
+        "notes": "Ebooks $2.99-$6.99; KDP pays only 35% for primarily public-domain content and up to 70% for differentiated works (blended ~50%); paperbacks higher price but print cost. Hours = creation time spread over expected sales (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 10,
+          "high": 700
+        },
+        "notes": "AI made translation and annotation cheap, so KDP is flooded with public-domain editions and Amazon tightened AI-content disclosure and daily title limits in 2023-2025. Winners pick under-served languages or niches (classics for learners, bilingual editions) with real scholarly value. Most editions sell a handful of copies."
+      },
+      "pricingStrategy": "Launch at $0.99-$2.99 to collect reviews, then raise to $4.99+ for annotated or bilingual editions and add paperback.",
+      "profitPath": [
+        "Month 0: produce one high-quality annotated or translated edition (cost $0)",
+        "Month 1-3: first sales; expected $5-$20/month",
+        "Month 3-6: publish 3-5 more in the same niche, build a series",
+        "Month 6-12: $20-$100/month from a catalogue of 10+ titles"
+      ],
+      "sources": [
+        "https://www.gutenberg.org/policy/license.html",
+        "https://kdp.amazon.com/en_US/help/topic/G200743940"
+      ]
+    }
+  }
+]

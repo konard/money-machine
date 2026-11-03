@@ -1,0 +1,1249 @@
+[
+  {
+    "iso2": "IS",
+    "country": "Iceland",
+    "currency": "ISK",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register with Skatturinn as self-employed before starting; VAT registration only once taxable sales exceed ISK 2,000,000 in a 12-month period.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 300,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "registerUrl": "https://www.skatturinn.is/english/",
+      "notes": "Self-employed individual ('einstaklingsrekstur'); must calculate a deemed salary ('reiknað endurgjald') and pay payroll/social charges on it. Online registration requires Icelandic electronic ID."
+    },
+    "company": {
+      "type": "Private limited company (einkahlutafélag, ehf.)",
+      "formationCostUsd": 1158,
+      "typicalAllInFormationCostUsd": 2000,
+      "minimumCapitalUsd": 4120,
+      "annualComplianceCostUsd": 3000,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.skatturinn.is/english/company-registration/register-a-company/private-limited-companies/",
+      "notes": "Minimum share capital ISK 500,000, fully paid at formation. Electronic applications take about 3-5 working days and need Icelandic eID. The registration fee for a new ehf. is ISK 140,500 per the Skatturinn company-register tariff. Managers must be resident in the EEA/EFTA/OECD or get an exemption."
+    },
+    "tax": {
+      "corporateRatePercent": 20,
+      "personalTopRatePercent": 46,
+      "smallBusinessRegime": "none (no turnover-based regime; small sellers below ISK 2M are outside VAT)",
+      "vatRatePercent": 24,
+      "vatRegistrationThresholdUsd": 16481,
+      "digitalServicesNote": "Services supplied to foreign businesses are generally zero-rated or outside the scope of VAT. Foreign sellers of electronic services to Icelandic consumers must register above ISK 2M."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "Capital controls were lifted in 2017. Residents can receive USD/EUR via PayPal, Wise or Payoneer and convert freely."
+    },
+    "sources": [
+      "https://www.skatturinn.is/english/company-registration/register-a-company/private-limited-companies/",
+      "https://www.skatturinn.is/english/companies/value-added-tax/",
+      "https://www.skatturinn.is/fyrirtaekjaskra/gjaldskra/",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "EE",
+    "country": "Estonia",
+    "currency": "EUR",
+    "soleProprietor": {
+      "registrationRequired": "optional",
+      "thresholdNote": "No registration needed with an 'ettevõtluskonto' (entrepreneur account). Turnover is taxed 20% at source up to EUR 25,000 a year and 40% above. Sole-trader (FIE) registration is optional.",
+      "registrationCostUsd": 23,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://ariregister.rik.ee/eng",
+      "notes": "Two options: the entrepreneur account, a bank account that withholds tax automatically with no bookkeeping, or 'füüsilisest isikust ettevõtja' (FIE, sole trader). The FIE state fee is roughly EUR 20 (estimate)."
+    },
+    "company": {
+      "type": "Private limited company (osaühing, OÜ)",
+      "formationCostUsd": 307,
+      "typicalAllInFormationCostUsd": 400,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.e-resident.gov.ee/start-a-company/",
+      "notes": "Official state fee EUR 265 for online registration, usually done within 15 minutes to 1 hour. Minimum share capital is EUR 0.01. Residents can use their own address; non-resident (e-resident) boards must pay for a contact person, EUR 200-400 a year."
+    },
+    "tax": {
+      "corporateRatePercent": 22,
+      "personalTopRatePercent": 22,
+      "smallBusinessRegime": "Entrepreneur account: 20% of turnover up to EUR 25,000/yr, 40% above; no bookkeeping",
+      "vatRatePercent": 24,
+      "vatRegistrationThresholdUsd": 46400,
+      "digitalServicesNote": "Corporate income tax applies only on distributed profits (22/78). B2B services to foreign businesses are outside Estonian VAT under reverse charge. B2C digital services to EU consumers go through EU OSS."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "Euro area. No restrictions; Wise, PayPal, Payoneer and Estonian banks are all available."
+    },
+    "sources": [
+      "https://www.e-resident.gov.ee/start-a-company/",
+      "https://www.emta.ee/en"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "CL",
+    "country": "Chile",
+    "currency": "CLP",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Must file 'inicio de actividades' with SII before invoicing; no income threshold.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 600,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.sii.cl",
+      "notes": "Self-employed professional ('persona natural con boletas de honorarios') or 'empresario individual' (EIRL optional). Honorarios carry a provisional withholding/retention of about 15.25% in 2026, rising yearly to 17% by 2028."
+    },
+    "company": {
+      "type": "Sociedad por Acciones (SpA) via 'Tu Empresa en un Día'",
+      "formationCostUsd": 20,
+      "typicalAllInFormationCostUsd": 300,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1300,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.registrodeempresasysociedades.cl",
+      "notes": "Formation in the online Registro de Empresas y Sociedades is free apart from an advanced electronic signature (~USD 20). No minimum capital. Needs a monthly accountant for F29 VAT returns."
+    },
+    "tax": {
+      "corporateRatePercent": 12.5,
+      "personalTopRatePercent": 40,
+      "smallBusinessRegime": "Pro-PYME regime (Art. 14 D) temporarily taxed at 12.5% for 2025-2027 (15% in 2028, 23% from 2029); general regime 27% in 2026, falling to 23% from 2029; honorarios for individuals carry no VAT",
+      "vatRatePercent": 19,
+      "vatRegistrationThresholdUsd": 0,
+      "digitalServicesNote": "Professional services billed through boletas de honorarios are VAT-exempt. Exported services can be VAT-exempt if Customs qualifies them as exports. There is no VAT registration threshold."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "Free FX market. Transactions above USD 10,000 must go through the formal FX market and be reported to the Banco Central. PayPal withdrawals to Chilean banks work, as do Wise and Payoneer."
+    },
+    "sources": [
+      "https://www.sii.cl",
+      "https://www.registrodeempresasysociedades.cl",
+      "https://taxsummaries.pwc.com/chile/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "CR",
+    "country": "Costa Rica",
+    "currency": "CRC",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Must register with Hacienda (TRIBU-CR) before starting and enrol with CCSS as an independent worker; no threshold.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 900,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "registerUrl": "https://www.hacienda.go.cr",
+      "notes": "'Trabajador independiente' / persona física con actividad lucrativa. CCSS social security contributions are mandatory, around 11-18% of declared income depending on the bracket."
+    },
+    "company": {
+      "type": "Sociedad de Responsabilidad Limitada (SRL) or Sociedad Anónima (S.A.)",
+      "formationCostUsd": 150,
+      "typicalAllInFormationCostUsd": 900,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.crearempresa.go.cr",
+      "notes": "A notary deed is required (Crear Empresa portal plus notary). There is an annual tax on legal entities of about 15-50% of a base salary (~USD 140-460), plus annual beneficial-ownership (RTBF) filing with BCCR. A resident agent is needed if the managers are non-resident."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 25,
+      "smallBusinessRegime": "Progressive reduced CIT 5/10/15/20% (net-income brackets to CRC 5.62M/8.43M/11.24M) for small companies with gross income up to CRC 119,174,000; Régimen de Tributación Simplificada for some trades",
+      "vatRatePercent": 13,
+      "vatRegistrationThresholdUsd": 0,
+      "digitalServicesNote": "Territorial system, but services performed in Costa Rica are CR-source even if the client is abroad. Exported services are exempt from IVA with credit rights. There is no VAT threshold for services."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No FX controls; USD accounts are common. PayPal withdrawals usually go through a US bank or Payoneer."
+    },
+    "sources": [
+      "https://www.hacienda.go.cr",
+      "https://www.crearempresa.go.cr",
+      "https://taxsummaries.pwc.com/costa-rica/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "CA",
+    "country": "Canada",
+    "currency": "CAD",
+    "soleProprietor": {
+      "registrationRequired": "not required",
+      "thresholdNote": "No registration needed when trading under your own legal name in most provinces; GST/HST registration is mandatory once worldwide taxable supplies exceed CAD 30,000 in four consecutive quarters.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.canada.ca/en/services/business/start.html",
+      "notes": "Sole proprietor; business income is reported on form T2125 with the T1 return. Registering a trade name costs about CAD 60 in Ontario (varies by province)."
+    },
+    "company": {
+      "type": "Corporation (federal CBCA or provincial, e.g. Ontario)",
+      "formationCostUsd": 143,
+      "typicalAllInFormationCostUsd": 400,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://ised-isde.canada.ca/site/corporations-canada/en",
+      "notes": "Federal online incorporation costs CAD 200 (1 business day; CAD 100 extra for 4-hour express) and a NUANS report is no longer needed for an online word name; Ontario charges CAD 300. The federal annual return is CAD 12. The CBCA requires 25% resident-Canadian directors, which a resident founder satisfies; several provinces dropped this rule."
+    },
+    "tax": {
+      "corporateRatePercent": 12,
+      "personalTopRatePercent": 54,
+      "smallBusinessRegime": "Small business deduction: ~9% federal + provincial (combined ~11-12.2%) on the first CAD 500,000 of active business income",
+      "vatRatePercent": 5,
+      "vatRegistrationThresholdUsd": 21700,
+      "digitalServicesNote": "GST 5% or HST 13-15% by province. Services supplied to non-residents are generally zero-rated. Digital platforms collect GST/HST on B2C supplies."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No controls. Large incoming cross-border transfers (CAD 10,000+) are reported by the institution to FINTRAC. PayPal, Wise and Payoneer all work."
+    },
+    "sources": [
+      "https://ised-isde.canada.ca/site/corporations-canada/en",
+      "https://www.canada.ca/en/revenue-agency.html",
+      "https://ised-isde.canada.ca/site/corporations-canada/en/services-fees-and-processing-times",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "NL",
+    "country": "Netherlands",
+    "currency": "EUR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Entrepreneurs must register in the KVK Business Register before or at start; the Belastingdienst then decides on VAT entrepreneur status. No income threshold.",
+      "registrationCostUsd": 99,
+      "annualCostUsd": 300,
+      "timeDays": 1,
+      "onlinePossible": false,
+      "registerUrl": "https://www.kvk.nl/en/registration/",
+      "notes": "'Eenmanszaak' (sole proprietorship). One-off KVK fee of EUR 85.15 (2026, indexed yearly). The KOR small-business scheme exempts VAT below EUR 20,000 turnover. Registration requires an in-person appointment or a digital route with DigiD."
+    },
+    "company": {
+      "type": "Besloten Vennootschap (BV)",
+      "formationCostUsd": 99,
+      "typicalAllInFormationCostUsd": 1000,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 3000,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.kvk.nl/en/registration/",
+      "notes": "The BV must be set up by a civil-law notary (deed fees ~EUR 500-1,500). The KVK fee is EUR 85.15. Minimum capital is EUR 0.01. Annual accounts must be filed with the KVK."
+    },
+    "tax": {
+      "corporateRatePercent": 19,
+      "personalTopRatePercent": 50,
+      "smallBusinessRegime": "KOR (kleineondernemersregeling): VAT exemption up to EUR 20,000 turnover; self-employed deductions (zelfstandigenaftrek) for eenmanszaak",
+      "vatRatePercent": 21,
+      "vatRegistrationThresholdUsd": 23200,
+      "digitalServicesNote": "CIT is 19% up to EUR 200,000 and 25.8% above. B2B services to foreign businesses are reverse-charged. B2C digital services to EU consumers go through OSS once EU-wide sales exceed EUR 10,000."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "Euro area; no controls."
+    },
+    "sources": [
+      "https://www.kvk.nl/en/registration/registration-fee/",
+      "https://www.belastingdienst.nl"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "TW",
+    "country": "Taiwan",
+    "currency": "TWD",
+    "soleProprietor": {
+      "registrationRequired": "above income threshold",
+      "thresholdNote": "Online sellers must register for business tax once monthly sales reach about NT$40,000 (services) or NT$80,000 (goods); freelance professional income can be reported on the personal return without registration.",
+      "registrationCostUsd": 32,
+      "annualCostUsd": 100,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://onestop.nat.gov.tw",
+      "notes": "Sole proprietorship ('獨資商號') registered with the city/county government. Small-scale businesses (monthly sales under NT$200,000) pay a 1% business tax assessed by the tax office instead of 5% VAT."
+    },
+    "company": {
+      "type": "Company limited (有限公司, Ltd)",
+      "formationCostUsd": 50,
+      "typicalAllInFormationCostUsd": 600,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 2500,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://onestop.nat.gov.tw",
+      "notes": "No statutory minimum capital, but a CPA must verify paid-in capital (~NT$5,000-10,000). The registration fee is 1/4,000 of capital (minimum NT$1,000). Foreign-invested companies need MOEA investment approval; a resident founder does not."
+    },
+    "tax": {
+      "corporateRatePercent": 20,
+      "personalTopRatePercent": 40,
+      "smallBusinessRegime": "Small-scale business 1% gross business tax (monthly sales < NT$200,000)",
+      "vatRatePercent": 5,
+      "vatRegistrationThresholdUsd": 15500,
+      "digitalServicesNote": "Exported services used abroad are zero-rated. Foreign e-service providers must register when B2C sales exceed NT$480,000 a year."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Individuals may convert up to USD 5M a year without approval. Transactions of NT$500,000 or more need a declaration form. Receiving via PayPal, Payoneer or Wise to local banks is common."
+    },
+    "sources": [
+      "https://onestop.nat.gov.tw",
+      "https://www.etax.nat.gov.tw",
+      "https://taxsummaries.pwc.com/taiwan/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "JP",
+    "country": "Japan",
+    "currency": "JPY",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "File a business-opening notification ('kaigyō todoke') with the tax office within 1 month of starting; no threshold. Side income up to ¥200,000 a year for salaried workers needs no tax return.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.e-tax.nta.go.jp",
+      "notes": "'Kojin jigyō nushi' (sole proprietor). Filing a blue-return application ('aoiro shinkoku') unlocks a deduction of up to ¥650,000 with e-filing and double-entry books."
+    },
+    "company": {
+      "type": "Gōdō Kaisha (GK, LLC) or Kabushiki Kaisha (KK)",
+      "formationCostUsd": 380,
+      "typicalAllInFormationCostUsd": 1000,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 2700,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.moj.go.jp/MINJI/minji06_00021.html",
+      "notes": "GK: registration licence tax 0.7% of capital, minimum ¥60,000, and no notary, about USD 380. KK: 0.7% of capital, minimum ¥150,000 plus about ¥50,000 for notarising the articles, about USD 1,300. Minimum capital ¥1. The ¥70,000 per-capita local inhabitant tax is due even with losses. No resident representative director has been required since 2015."
+    },
+    "tax": {
+      "corporateRatePercent": 23.2,
+      "personalTopRatePercent": 55,
+      "smallBusinessRegime": "SME reduced national CIT 15% on first ¥8M of income; consumption-tax exemption below ¥10M taxable sales (base period)",
+      "vatRatePercent": 10,
+      "vatRegistrationThresholdUsd": 63333,
+      "digitalServicesNote": "The national CIT rate is 23.2%; the combined effective rate is about 30-34%. Exported services to non-residents are generally zero-rated. Under the 2023 qualified invoice system, B2B clients prefer registered invoice issuers."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "No controls; cross-border payments of ¥30M or more are reported to the Ministry of Finance. PayPal, Wise and Payoneer work normally."
+    },
+    "sources": [
+      "https://www.nta.go.jp/english/",
+      "https://www.moj.go.jp/MINJI/minji06_00021.html",
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/inshi/7191.htm",
+      "https://taxsummaries.pwc.com/japan/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/japan/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "GB",
+    "country": "United Kingdom",
+    "currency": "GBP",
+    "soleProprietor": {
+      "registrationRequired": "above income threshold",
+      "thresholdNote": "Register with HMRC for Self Assessment once self-employed gross income exceeds the £1,000 trading allowance in a tax year (deadline 5 October after the tax year).",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.gov.uk/register-for-self-assessment",
+      "notes": "Sole trader. Making Tax Digital for Income Tax applies from April 2026 to income over £50,000 and from April 2027 to income over £30,000, requiring quarterly digital updates."
+    },
+    "company": {
+      "type": "Private company limited by shares (Ltd)",
+      "formationCostUsd": 133,
+      "typicalAllInFormationCostUsd": 200,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1800,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.gov.uk/limited-company-formation/register-your-company",
+      "notes": "Companies House fee: £100 online (usually within a day) or £124 by post. The confirmation statement costs £50 a year. Identity verification for directors is now mandatory. Accounts and the CT600 are usually done by an accountant."
+    },
+    "tax": {
+      "corporateRatePercent": 25,
+      "personalTopRatePercent": 45,
+      "smallBusinessRegime": "Corporation tax small profits rate 19% (profits ≤ £50,000); £1,000 trading allowance; VAT Flat Rate Scheme",
+      "vatRatePercent": 20,
+      "vatRegistrationThresholdUsd": 119700,
+      "digitalServicesNote": "B2B services to overseas clients are generally outside the scope of UK VAT. B2C digital services to EU consumers require EU VAT through non-Union OSS. Scotland's top income tax rate is 48%."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No controls. PayPal, Wise and Payoneer are all fully available."
+    },
+    "sources": [
+      "https://www.gov.uk/limited-company-formation/register-your-company",
+      "https://www.gov.uk/vat-registration/when-to-register",
+      "https://www.gov.uk/register-for-self-assessment"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "FR",
+    "country": "France",
+    "currency": "EUR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Must declare the activity through the INPI guichet unique before starting. Micro-entrepreneur turnover caps are EUR 77,700 for services and EUR 188,700 for sales.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 300,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://procedures.inpi.fr",
+      "notes": "'Micro-entrepreneur' (auto-entrepreneur). Registration is free. Social contributions are a flat percentage of turnover, about 21-26% for services. CFE local business tax applies from the second year (~EUR 100-500)."
+    },
+    "company": {
+      "type": "SASU (single-shareholder SAS) or EURL",
+      "formationCostUsd": 250,
+      "typicalAllInFormationCostUsd": 1200,
+      "minimumCapitalUsd": 1,
+      "annualComplianceCostUsd": 2900,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://procedures.inpi.fr",
+      "notes": "Government costs (~EUR 220): mandatory legal-notice publication (~EUR 140-200), registry fee (~EUR 37) and beneficial-owner declaration (~EUR 21). Minimum capital EUR 1. An accountant is effectively required for annual accounts."
+    },
+    "tax": {
+      "corporateRatePercent": 25,
+      "personalTopRatePercent": 45,
+      "smallBusinessRegime": "Micro-entrepreneur flat social charges with optional 'versement libératoire' income tax (1-2.2% of turnover); 15% CIT on first EUR 42,500 of profit for SMEs; VAT franchise",
+      "vatRatePercent": 20,
+      "vatRegistrationThresholdUsd": 41981,
+      "digitalServicesNote": "The VAT franchise threshold for services is EUR 37,500 (tolerance EUR 41,250), unchanged for 2026. B2B services to non-EU/EU businesses are reverse-charged or outside scope. A 4% high-income surtax (CEHR) comes on top of the 45% top rate."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "Euro area; no controls. Foreign bank accounts, including Wise and PayPal, must be declared on the annual tax return (form 3916)."
+    },
+    "sources": [
+      "https://procedures.inpi.fr",
+      "https://www.autoentrepreneur.urssaf.fr",
+      "https://entreprendre.service-public.gouv.fr/vosdroits/F21746",
+      "https://taxsummaries.pwc.com/france/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "AU",
+    "country": "Australia",
+    "currency": "AUD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "An ABN is needed to invoice businesses (free). GST registration is mandatory at AUD 75,000 annual turnover. Business-name registration is needed only if not trading under your own name.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.abr.gov.au",
+      "notes": "Sole trader. Registering a business name costs about AUD 45 for 1 year or AUD 104 for 3 years with ASIC (indexed)."
+    },
+    "company": {
+      "type": "Proprietary company (Pty Ltd)",
+      "formationCostUsd": 403,
+      "typicalAllInFormationCostUsd": 700,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 2200,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://asic.gov.au/for-business/registering-a-company/",
+      "notes": "The ASIC registration fee is about AUD 611 and the annual review fee about AUD 329 (both indexed each 1 July; figures estimated). At least one director must ordinarily reside in Australia, which a resident founder satisfies. A Director ID is required (free)."
+    },
+    "tax": {
+      "corporateRatePercent": 25,
+      "personalTopRatePercent": 47,
+      "smallBusinessRegime": "Base-rate entity CIT 25% (aggregated turnover < AUD 50M); small business income tax offset for sole traders",
+      "vatRatePercent": 10,
+      "vatRegistrationThresholdUsd": 49500,
+      "digitalServicesNote": "Services supplied to non-residents outside Australia are generally GST-free (exports). The top rate is 45% plus the 2% Medicare levy."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No controls; AUSTRAC reporting applies to international transfers. PayPal, Wise and Payoneer work."
+    },
+    "sources": [
+      "https://asic.gov.au/for-business/registering-a-company/",
+      "https://www.abr.gov.au",
+      "https://www.ato.gov.au",
+      "https://taxsummaries.pwc.com/australia/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "DE",
+    "country": "Germany",
+    "currency": "EUR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Notify the tax office via the ELSTER 'Fragebogen zur steuerlichen Erfassung' within one month of starting. Commercial (gewerbliche) activities also need a Gewerbeanmeldung; freelancers (Freiberufler) do not.",
+      "registrationCostUsd": 30,
+      "annualCostUsd": 0,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "registerUrl": "https://www.elster.de",
+      "notes": "'Freiberufler' or 'Gewerbetreibender' (Einzelunternehmen). Trade registration costs about EUR 20-60 by municipality. Kleinunternehmerregelung (since 2025): no VAT if prior-year turnover ≤ EUR 25,000 and current year ≤ EUR 100,000."
+    },
+    "company": {
+      "type": "UG (haftungsbeschränkt) or GmbH",
+      "formationCostUsd": 450,
+      "typicalAllInFormationCostUsd": 1000,
+      "minimumCapitalUsd": 1,
+      "annualComplianceCostUsd": 4000,
+      "timeDays": 14,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.handelsregister.de",
+      "notes": "Notary and commercial-register fees for a UG using the Musterprotokoll are about EUR 300-450. A GmbH needs EUR 25,000 capital (EUR 12,500 paid in). Online notarisation by video is possible. IHK membership, Transparenzregister and Bundesanzeiger filings add costs. Steuerberater fees dominate the annual cost."
+    },
+    "tax": {
+      "corporateRatePercent": 30,
+      "personalTopRatePercent": 45,
+      "smallBusinessRegime": "Kleinunternehmerregelung (VAT exemption, see notes); no turnover-tax regime for income tax",
+      "vatRatePercent": 19,
+      "vatRegistrationThresholdUsd": 27987,
+      "digitalServicesNote": "CIT 15% + solidarity surcharge + municipal trade tax comes to about 30% combined. CIT is legislated to fall by 1 point a year from 2028 to 10% in 2032. B2B services to foreign businesses are reverse-charged. The 45% top rate is before the 5.5% solidarity surcharge."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "Euro area; no controls. Incoming payments over EUR 12,500 from abroad are reported to the Bundesbank (AWV)."
+    },
+    "sources": [
+      "https://www.elster.de",
+      "https://www.handelsregister.de",
+      "https://taxsummaries.pwc.com/germany/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "IT",
+    "country": "Italy",
+    "currency": "EUR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "A Partita IVA must be opened with the Agenzia delle Entrate before habitual professional or commercial activity; occasional self-employment (prestazione occasionale) up to about EUR 5,000 does not require one.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 400,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.agenziaentrate.gov.it",
+      "notes": "'Libero professionista' or 'ditta individuale'. Regime forfettario: 15% flat substitute tax (5% for the first 5 years) up to EUR 85,000 revenue, plus INPS contributions (~26% gestione separata). Commercial activities also need Chamber of Commerce registration (~EUR 53/yr)."
+    },
+    "company": {
+      "type": "SRL semplificata (SRLS) / SRL",
+      "formationCostUsd": 700,
+      "typicalAllInFormationCostUsd": 2300,
+      "minimumCapitalUsd": 1,
+      "annualComplianceCostUsd": 3500,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.registroimprese.it",
+      "notes": "A notarial deed is required (no notary fee for SRLS, but registration tax, stamps and chamber fees come to about EUR 600). A standard SRL with notary costs EUR 1,500-2,500. Minimum capital EUR 1 (SRL: EUR 10,000 nominal, EUR 1 allowed). Annual costs include the chamber fee, book-keeping tax (EUR 309) and accountant."
+    },
+    "tax": {
+      "corporateRatePercent": 24,
+      "personalTopRatePercent": 43,
+      "smallBusinessRegime": "Regime forfettario: 15% (5% start-up) substitute tax on deemed profit, revenue ≤ EUR 85,000",
+      "vatRatePercent": 22,
+      "vatRegistrationThresholdUsd": 0,
+      "digitalServicesNote": "IRES 24% plus regional IRAP of about 3.9%. Regional and municipal surcharges add to the 43% top rate. Forfettario taxpayers charge no VAT. B2B services abroad are reverse-charged."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Euro area; foreign accounts and assets must be declared in the RW section of the tax return."
+    },
+    "sources": [
+      "https://www.agenziaentrate.gov.it",
+      "https://www.registroimprese.it",
+      "https://taxsummaries.pwc.com/italy/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "US",
+    "country": "United States",
+    "currency": "USD",
+    "soleProprietor": {
+      "registrationRequired": "not required",
+      "thresholdNote": "No federal registration needed; self-employment income above USD 400 must be reported (Schedule C/SE). City or county business licences and DBA filings vary by locality.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 50,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.irs.gov/businesses/small-businesses-self-employed",
+      "notes": "Sole proprietor. An EIN is free and optional. Self-employment tax is 15.3% (Social Security portion capped) on top of income tax."
+    },
+    "company": {
+      "type": "Limited Liability Company (LLC) — e.g. Wyoming",
+      "formationCostUsd": 100,
+      "typicalAllInFormationCostUsd": 250,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 700,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://sos.wyo.gov/Business/",
+      "notes": "Wyoming: USD 100 Articles of Organization, USD 60 minimum annual report licence tax, plus registered agent (~USD 25-150/yr). Delaware: USD 110 filing plus USD 300 annual LLC tax. California charges an USD 800 minimum annual franchise tax. A single-member LLC is tax-transparent by default."
+    },
+    "tax": {
+      "corporateRatePercent": 21,
+      "personalTopRatePercent": 37,
+      "smallBusinessRegime": "None federally; pass-through LLC with 20% QBI deduction for qualifying income",
+      "vatRatePercent": 0,
+      "vatRegistrationThresholdUsd": null,
+      "digitalServicesNote": "No federal VAT. Sales tax is state-level (0-~10%), and some states tax digital goods/SaaS. Economic-nexus thresholds are typically USD 100,000. State income tax (0-13.3%) adds to the 37% federal top rate. The 21% federal CIT applies only to C-corporations."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No controls. FBAR/FATCA reporting applies to foreign accounts over USD 10,000. PayPal, Wise and Payoneer work fully."
+    },
+    "sources": [
+      "https://sos.wyo.gov/Business/Docs/BusinessFees.pdf",
+      "https://www.irs.gov"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "ZA",
+    "country": "South Africa",
+    "currency": "ZAR",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "No CIPC registration needed; register as a taxpayer with SARS (eFiling) and pay provisional tax. VAT is compulsory above ZAR 1M taxable turnover over 12 months.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.sars.gov.za",
+      "notes": "Sole proprietor. Turnover Tax (0-3%) is available for micro businesses with turnover up to ZAR 1M."
+    },
+    "company": {
+      "type": "Private company (Pty) Ltd",
+      "formationCostUsd": 11,
+      "typicalAllInFormationCostUsd": 150,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 900,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.cipc.co.za",
+      "notes": "CIPC registration is ZAR 125 plus ZAR 50 for name reservation. The annual return is about ZAR 100 for turnover under ZAR 1M. A beneficial-ownership filing is mandatory. The low statutory fees mean all-in costs are mainly the agent."
+    },
+    "tax": {
+      "corporateRatePercent": 27,
+      "personalTopRatePercent": 45,
+      "smallBusinessRegime": "Turnover Tax for micro businesses (turnover ≤ ZAR 1M): 0-3% of turnover; small business corporation (SBC) progressive rates 0-27%",
+      "vatRatePercent": 15,
+      "vatRegistrationThresholdUsd": 60192,
+      "digitalServicesNote": "Services supplied to non-residents outside SA are zero-rated in many cases. Foreign e-commerce suppliers must register above ZAR 1M. The compulsory VAT threshold is ZAR 1M; it was announced to rise to ZAR 2.3M (voluntary ZAR 50,000 to ZAR 120,000) from 1 April 2026 once legislation is promulgated (confirm with SARS)."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Exchange control applies: incoming FX is converted via authorised dealers with balance-of-payments reporting. Outflows are limited to the ZAR 1M single discretionary allowance (check for recent increases) plus a ZAR 10M foreign investment allowance with tax clearance. PayPal withdrawals go through FNB."
+    },
+    "sources": [
+      "https://www.cipc.co.za/?page_id=3786",
+      "https://www.sars.gov.za",
+      "https://www.cipc.co.za/?page_id=4210",
+      "https://taxsummaries.pwc.com/south-africa/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "AM",
+    "country": "Armenia",
+    "currency": "AMD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Individual entrepreneurs must register before carrying out business; no threshold.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 300,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://e-register.moj.am/en/",
+      "notes": "'Individual entrepreneur' (անհատ ձեռնարկատեր, IE). State registration is free and online via e-register. Can opt into turnover tax (10% for most activities, including services; trade 10% less 9.5% of documented purchases) up to AMD 115M, or microbusiness status (tax-exempt for eligible activities up to AMD 24M)."
+    },
+    "company": {
+      "type": "Limited Liability Company (LLC, ՍՊԸ)",
+      "formationCostUsd": 0,
+      "typicalAllInFormationCostUsd": 300,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://e-register.moj.am/en/",
+      "notes": "Online state registration is free (a AMD 600,000 fee applies only to names containing \"Hay\", \"Armenia\" or \"Armenian\"). No minimum capital. Registration with the template charter is immediate; otherwise up to 2 business days."
+    },
+    "tax": {
+      "corporateRatePercent": 18,
+      "personalTopRatePercent": 20,
+      "smallBusinessRegime": "Turnover tax up to AMD 115M (10% for most activities incl. services; 1% for listed high-tech activities); microbusiness regime (exempt, limited activity list) up to AMD 24M",
+      "vatRatePercent": 20,
+      "vatRegistrationThresholdUsd": 319004,
+      "digitalServicesNote": "Services whose place of supply is outside Armenia (e.g. to foreign clients) are not subject to Armenian VAT. The IT-startup certificate regime has ended for new applicants."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No controls; AMD is freely convertible. Wise and Payoneer work. PayPal sends only, with limited receiving."
+    },
+    "sources": [
+      "https://e-register.moj.am/en/",
+      "https://www.petekamutner.am",
+      "https://e-register.moj.am/en/services/d0fd5a23-a8bf-4103-bedd-ef6a6db9cdda",
+      "https://taxsummaries.pwc.com/armenia/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "AR",
+    "country": "Argentina",
+    "currency": "ARS",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Must register with ARCA (ex-AFIP) as monotributista or autónomo before invoicing; no threshold.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 385,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.afip.gob.ar/monotributo/",
+      "notes": "'Monotributo' simplified regime: a single monthly payment (from 1 Aug 2026: category A ARS 49,527.18/month for services, up to ARS 12.0M gross income a year; top category K ARS 1,614,446/month, up to ARS 126.6M; indexed twice yearly) covers income tax, VAT and social security. Otherwise 'responsable inscripto'."
+    },
+    "company": {
+      "type": "Sociedad por Acciones Simplificada (SAS) or SRL",
+      "formationCostUsd": 150,
+      "typicalAllInFormationCostUsd": 900,
+      "minimumCapitalUsd": 450,
+      "annualComplianceCostUsd": 2500,
+      "timeDays": 20,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.argentina.gob.ar/justicia/igj",
+      "notes": "SAS minimum capital is 2 minimum monthly wages (~USD 450). IGJ (Buenos Aires) procedures and accountant/notary fees vary widely. Costs in USD swing with the exchange rate."
+    },
+    "tax": {
+      "corporateRatePercent": 35,
+      "personalTopRatePercent": 35,
+      "smallBusinessRegime": "Monotributo: fixed monthly fee by category (A-K) bundling tax and social security",
+      "vatRatePercent": 21,
+      "vatRegistrationThresholdUsd": 0,
+      "digitalServicesNote": "Progressive CIT 25-35%. Exports of services are VAT-exempt (VAT credits refundable). Monotributistas can invoice foreign clients with Factura E."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "The FX 'cepo' was largely lifted for individuals in April 2025. Companies may still face rules to liquidate service-export proceeds in the official market. Payoneer and Wise are commonly used; PayPal withdrawals are limited."
+    },
+    "sources": [
+      "https://www.afip.gob.ar/monotributo/",
+      "https://www.argentina.gob.ar/justicia/igj",
+      "https://www.arca.gob.ar/monotributo/categorias.asp",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "GE",
+    "country": "Georgia",
+    "currency": "GEL",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Register as an Individual Entrepreneur at the Public Service Hall/NAPR before trading, then apply for 'small business' status at rs.ge. The 1% rate applies up to GEL 500,000 annual turnover.",
+      "registrationCostUsd": 10,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://napr.gov.ge",
+      "notes": "'Individual Entrepreneur' (ინდივიდუალური მეწარმე) with Small Business status: 1% tax on gross turnover up to GEL 500,000 and 3% on the excess. Monthly declaration only; no bookkeeping beyond an income ledger."
+    },
+    "company": {
+      "type": "Limited Liability Company (LLC, შპს)",
+      "formationCostUsd": 77,
+      "typicalAllInFormationCostUsd": 300,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://napr.gov.ge",
+      "notes": "NAPR fee GEL 200 for registration in 1 working day or GEL 400 for same day (individual entrepreneur: GEL 26 / GEL 75). No minimum capital. Foreigners can register in person or by power of attorney. An LLC can apply for Virtual Zone Person status (0% CIT on qualifying IT services exported abroad)."
+    },
+    "tax": {
+      "corporateRatePercent": 15,
+      "personalTopRatePercent": 20,
+      "smallBusinessRegime": "Small Business status for IEs: 1% of turnover up to GEL 500,000 (3% above); micro-business 0% (no employees, ≤ GEL 30,000)",
+      "vatRatePercent": 18,
+      "vatRegistrationThresholdUsd": 38519,
+      "digitalServicesNote": "The 15% CIT applies only to distributed profits (Estonian model); dividends carry 5% withholding. Services supplied to foreign clients are generally outside Georgian VAT (place of supply abroad)."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "No controls; residents can hold USD/EUR accounts. Payoneer is widely used; check current PayPal/Wise availability for Georgian residents."
+    },
+    "sources": [
+      "https://napr.gov.ge",
+      "https://www.rs.ge",
+      "https://napr.gov.ge/en/page/fees-and-terms",
+      "https://taxsummaries.pwc.com/georgia/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "verified",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "HU",
+    "country": "Hungary",
+    "currency": "HUF",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Must register as an individual entrepreneur (egyéni vállalkozó) via Ügyfélkapu+ before starting; no threshold.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 1765,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://nav.gov.hu",
+      "notes": "'Egyéni vállalkozó'. KATA (kisadózó) costs a fixed HUF 50,000/month (~USD 147) up to HUF 18M revenue, but since 2022 only for entrepreneurs invoicing private individuals (not businesses). Others typically use 'átalányadó' (flat-rate cost deduction 40-90%)."
+    },
+    "company": {
+      "type": "Korlátolt felelősségű társaság (Kft.)",
+      "formationCostUsd": 147,
+      "typicalAllInFormationCostUsd": 600,
+      "minimumCapitalUsd": 8800,
+      "annualComplianceCostUsd": 2500,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.e-cegjegyzek.hu",
+      "notes": "Minimum capital is HUF 3,000,000. A lawyer must countersign and submit the filing electronically (simplified procedure 1 business day). The registration fee is about HUF 50,000."
+    },
+    "tax": {
+      "corporateRatePercent": 9,
+      "personalTopRatePercent": 15,
+      "smallBusinessRegime": "KATA HUF 50,000/month (B2C only, ≤ HUF 18M); KIVA 10% small-business tax; átalányadó flat-rate",
+      "vatRatePercent": 27,
+      "vatRegistrationThresholdUsd": 61444,
+      "digitalServicesNote": "The VAT exemption (alanyi adómentesség) threshold is HUF 20M from 1 January 2026 (HUF 18M in 2025), rising to HUF 22M in 2027 and HUF 24M in 2028. B2B services abroad are reverse-charged. PIT is a flat 15% plus 18.5% social security and 13% social contribution."
+    },
+    "foreignCurrency": {
+      "capitalControls": "none",
+      "notes": "EU member with no controls; Wise, PayPal and Payoneer work."
+    },
+    "sources": [
+      "https://nav.gov.hu",
+      "https://www.e-cegjegyzek.hu",
+      "https://nav.gov.hu/ado/afa/Emelkedik_az_alanyi_adomentesseg_ertekhatara",
+      "https://taxsummaries.pwc.com/hungary/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "RS",
+    "country": "Serbia",
+    "currency": "RSD",
+    "soleProprietor": {
+      "registrationRequired": "optional",
+      "thresholdNote": "Individuals with foreign-source freelance income can self-assess quarterly (PPDG-1S) without registering. Registering as a 'preduzetnik' with APR is optional, unless running a business.",
+      "registrationCostUsd": 15,
+      "annualCostUsd": 300,
+      "timeDays": 2,
+      "onlinePossible": true,
+      "registerUrl": "https://www.apr.gov.rs",
+      "notes": "'Preduzetnik' (entrepreneur). Lump-sum taxation (paušal) is available up to RSD 6M turnover, subject to an independence test. Freelancers without registration pay 20% income tax plus contributions on income above a standardised deduction."
+    },
+    "company": {
+      "type": "Društvo sa ograničenom odgovornošću (DOO)",
+      "formationCostUsd": 49,
+      "typicalAllInFormationCostUsd": 300,
+      "minimumCapitalUsd": 1,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.apr.gov.rs",
+      "notes": "Minimum capital RSD 100. APR registration fee about RSD 4,900. eRegistration is possible with a qualified e-signature. Accountant costs about EUR 100-150/month."
+    },
+    "tax": {
+      "corporateRatePercent": 15,
+      "personalTopRatePercent": 20,
+      "smallBusinessRegime": "Paušal (lump-sum) taxation for preduzetnik up to RSD 6M; flat-rate VAT exemption below RSD 8M",
+      "vatRatePercent": 20,
+      "vatRegistrationThresholdUsd": 80000,
+      "digitalServicesNote": "Services supplied to foreign clients are usually outside the scope of Serbian VAT. Unregistered freelancers pay 20% plus pension and health contributions."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Foreign currency must flow through a Serbian bank FX account. PayPal receiving and Payoneer are commonly used; conversion is free. Export-related payments are reported by banks."
+    },
+    "sources": [
+      "https://www.apr.gov.rs",
+      "https://www.purs.gov.rs",
+      "https://taxsummaries.pwc.com/serbia/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "BR",
+    "country": "Brazil",
+    "currency": "BRL",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "MEI registration (free, online via gov.br) is needed to issue invoices. MEI caps annual revenue at BRL 81,000; above that you must migrate to an ME under Simples Nacional.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 185,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.gov.br/empresas-e-negocios/pt-br/empreendedor",
+      "notes": "'MEI' (Microempreendedor Individual): monthly DAS of about BRL 80-86 (5% of minimum wage for INSS plus ISS/ICMS). Many intellectual professions (developers, consultants) are not eligible and must open an ME/SLU."
+    },
+    "company": {
+      "type": "Sociedade Limitada Unipessoal (SLU) / LTDA",
+      "formationCostUsd": 150,
+      "typicalAllInFormationCostUsd": 500,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.gov.br/empresas-e-negocios/pt-br/redesim",
+      "notes": "Junta Comercial plus municipal fees are about BRL 500-1,000. A contador is effectively mandatory (~BRL 400-800/month). No minimum capital. The administrator must be resident in Brazil."
+    },
+    "tax": {
+      "corporateRatePercent": 34,
+      "personalTopRatePercent": 27.5,
+      "smallBusinessRegime": "Simples Nacional up to BRL 4.8M (services from ~6% of revenue, Annex III/V with Fator R); MEI fixed monthly fee up to BRL 81,000",
+      "vatRatePercent": 0,
+      "vatRegistrationThresholdUsd": null,
+      "digitalServicesNote": "No single VAT yet. ISS (2-5%) plus PIS/COFINS apply, but exported services are exempt from ISS and PIS/COFINS. CBS/IBS dual VAT is being phased in from 2026 (test rates) through 2033. The 34% CIT is IRPJ 15% + 10% surtax + CSLL 9%."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "FX goes through authorised institutions with IOF tax. Inbound transfers are freely received; Wise, Payoneer and PayPal withdrawals work."
+    },
+    "sources": [
+      "https://www.gov.br/empresas-e-negocios/pt-br/empreendedor",
+      "https://www.gov.br/receitafederal",
+      "https://taxsummaries.pwc.com/brazil/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "KR",
+    "country": "South Korea",
+    "currency": "KRW",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Business registration with NTS (Hometax) within 20 days of starting. Freelancers providing personal services without premises can instead receive income with 3.3% withholding and no registration.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 0,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.hometax.go.kr",
+      "notes": "'Gaein saeopja' (sole proprietor). Simplified taxpayer (간이과세자) status below KRW 104M annual sales pays VAT at 1.5-4% of sales, with exemption below KRW 48M."
+    },
+    "company": {
+      "type": "Jusik Hoesa (stock company, 주식회사)",
+      "formationCostUsd": 100,
+      "typicalAllInFormationCostUsd": 700,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 2000,
+      "timeDays": 7,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.startbiz.go.kr",
+      "notes": "Registration licence tax of 0.4% of capital (minimum ~KRW 112,500) plus 20% local education tax; tripled for incorporation in the Seoul metropolitan area. Minimum capital KRW 100. Online formation is possible via startbiz.go.kr with a digital certificate."
+    },
+    "tax": {
+      "corporateRatePercent": 10,
+      "personalTopRatePercent": 49.5,
+      "smallBusinessRegime": "Simplified VAT taxpayer (1.5-4% of sales) below KRW 104M; progressive CIT for 2026: 10% up to KRW 200M, 20% to KRW 20bn, 22% to KRW 300bn, 25% above (plus 10% local income tax)",
+      "vatRatePercent": 10,
+      "vatRegistrationThresholdUsd": 0,
+      "digitalServicesNote": "CIT is progressive: 10/20/22/25% for fiscal years from 2026 (9/19/21/24% through 2025), plus local income tax of 10% of the CIT rate. The top personal rate is 45% plus 4.5% local tax. Certain services supplied to foreign entities for FX are zero-rated."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Under the Foreign Exchange Transactions Act, banks may ask for supporting documents for large inbound amounts (over ~USD 50,000). PayPal, Payoneer and Wise are used."
+    },
+    "sources": [
+      "https://www.hometax.go.kr",
+      "https://www.startbiz.go.kr",
+      "https://www.nts.go.kr/english/main.do",
+      "https://taxsummaries.pwc.com/republic-of-korea/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/republic-of-korea/individual/taxes-on-personal-income",
+      "https://taxsummaries.pwc.com/republic-of-korea/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "GH",
+    "country": "Ghana",
+    "currency": "GHS",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Business names must be registered with the Office of the Registrar of Companies (ORC); the Ghana Card PIN serves as TIN with GRA; no threshold.",
+      "registrationCostUsd": 10,
+      "annualCostUsd": 30,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "registerUrl": "https://orc.gov.gh",
+      "notes": "Sole proprietorship (business name registration). Annual renewal of the business name is required. Small businesses can use the Modified Taxation Scheme (presumptive turnover-based tax)."
+    },
+    "company": {
+      "type": "Private company limited by shares (Ltd)",
+      "formationCostUsd": 100,
+      "typicalAllInFormationCostUsd": 500,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 10,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": true,
+      "registerUrl": "https://orc.gov.gh",
+      "notes": "No minimum capital for Ghanaian-owned companies (foreign participation needs GIPC minimum USD 200k-500k). At least one director must be ordinarily resident in Ghana, and a qualified company secretary is required."
+    },
+    "tax": {
+      "corporateRatePercent": 25,
+      "personalTopRatePercent": 35,
+      "smallBusinessRegime": "Modified Taxation Scheme: ~3% of turnover for small businesses (below ~GHS 500,000)",
+      "vatRatePercent": 20,
+      "vatRegistrationThresholdUsd": 64205,
+      "digitalServicesNote": "The VAT Act, 2025 (Act 1151), effective 1 January 2026, keeps VAT at 15% plus NHIL 2.5% and GETFund levy 2.5% (20% total), abolished the 1% COVID-19 levy, decoupled the levies from the VAT base, removed the 3% and 5% flat-rate schemes, and raised the goods registration threshold from GHS 200,000 to GHS 750,000. GRA does not state a separate threshold for service providers (verify with GRA). Exported services are zero-rated."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Bank of Ghana FX rules apply: inward remittances via banks and mobile money are permitted and can be held in FX accounts. Payoneer is widely used; PayPal receiving is limited."
+    },
+    "sources": [
+      "https://orc.gov.gh",
+      "https://gra.gov.gh",
+      "https://gra.gov.gh/domestic-tax/tax-types/vat/",
+      "https://taxsummaries.pwc.com/ghana/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "CO",
+    "country": "Colombia",
+    "currency": "COP",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Must obtain a RUT from DIAN (free, online) before invoicing. Merchants (comerciantes) must also register with the Cámara de Comercio. Electronic invoicing is mandatory for VAT-responsible persons.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 50,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.dian.gov.co",
+      "notes": "'Persona natural' (independiente). Not VAT-responsible below 3,500 UVT gross income (COP ~183M in 2026 at UVT COP 52,374; ~USD 57,000). Can opt into the Régimen Simple de Tributación (RST)."
+    },
+    "company": {
+      "type": "Sociedad por Acciones Simplificada (SAS)",
+      "formationCostUsd": 150,
+      "typicalAllInFormationCostUsd": 500,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1500,
+      "timeDays": 5,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.vue.gov.co",
+      "notes": "Formed by private document at the Cámara de Comercio. Costs are the departmental registration tax (~0.7% of capital) plus matrícula mercantil (scaled by assets). No minimum capital. Annual renewal of the matrícula is due by 31 March."
+    },
+    "tax": {
+      "corporateRatePercent": 35,
+      "personalTopRatePercent": 39,
+      "smallBusinessRegime": "Régimen Simple de Tributación (RST): unified 1.2-8.3% of gross income by activity, up to 100,000 UVT",
+      "vatRatePercent": 19,
+      "vatRegistrationThresholdUsd": 57332,
+      "digitalServicesNote": "Exported services can be VAT-exempt with documentation. Payments abroad carry withholding; incoming foreign payments to residents are taxable."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Service-export proceeds can be received via the free market. Large FX operations are declared to the Banco de la República through banks. PayPal withdrawals to Colombian banks and Payoneer work."
+    },
+    "sources": [
+      "https://www.dian.gov.co",
+      "https://www.vue.gov.co",
+      "https://taxsummaries.pwc.com/colombia/corporate/other-taxes",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  },
+  {
+    "iso2": "EC",
+    "country": "Ecuador",
+    "currency": "USD",
+    "soleProprietor": {
+      "registrationRequired": "before earning",
+      "thresholdNote": "Must obtain a RUC from SRI (free, online) before invoicing; no threshold.",
+      "registrationCostUsd": 0,
+      "annualCostUsd": 60,
+      "timeDays": 1,
+      "onlinePossible": true,
+      "registerUrl": "https://www.sri.gob.ec",
+      "notes": "'Persona natural' under RIMPE: 'negocio popular' (revenue ≤ USD 20,000, fixed annual quota from ~USD 60) or 'emprendedor' (≤ USD 300,000). Electronic invoicing applies."
+    },
+    "company": {
+      "type": "Sociedad por Acciones Simplificada (SAS)",
+      "formationCostUsd": 0,
+      "typicalAllInFormationCostUsd": 400,
+      "minimumCapitalUsd": 0,
+      "annualComplianceCostUsd": 1200,
+      "timeDays": 3,
+      "onlinePossible": true,
+      "foreignerCanOwn100Percent": true,
+      "localDirectorRequired": false,
+      "registerUrl": "https://www.supercias.gob.ec",
+      "notes": "Online formation at the Superintendencia de Compañías with no notary, free government fee and no minimum capital (Cía. Ltda. requires USD 400 and S.A. USD 800). An annual Superintendencia contribution and accountant are required."
+    },
+    "tax": {
+      "corporateRatePercent": 25,
+      "personalTopRatePercent": 37,
+      "smallBusinessRegime": "RIMPE: negocios populares (fixed quota) and emprendedores (reduced rates) up to USD 300,000",
+      "vatRatePercent": 15,
+      "vatRegistrationThresholdUsd": 0,
+      "digitalServicesNote": "IVA is 15% since April 2024. Exported services can be zero-rated with documentation. A 5% ISD (capital outflow tax) applies to outgoing transfers."
+    },
+    "foreignCurrency": {
+      "capitalControls": "reporting only",
+      "notes": "Dollarised economy, so no conversion is needed. The 5% ISD applies to outbound payments. PayPal withdrawals to local banks are limited; Payoneer is commonly used."
+    },
+    "sources": [
+      "https://www.sri.gob.ec",
+      "https://www.supercias.gob.ec",
+      "https://taxsummaries.pwc.com/ecuador/corporate/taxes-on-corporate-income",
+      "https://taxsummaries.pwc.com/quick-charts/corporate-income-tax-cit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/personal-income-tax-pit-rates",
+      "https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates"
+    ],
+    "confidence": "estimated",
+    "lastChecked": "2026-11-03"
+  }
+]

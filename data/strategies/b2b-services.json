@@ -1,0 +1,2005 @@
+[
+  {
+    "id": "grant-writing-service",
+    "name": "Grant writing and grant research for nonprofits and startups (flat fee)",
+    "category": "services",
+    "summary": "Research matching grants and draft applications (narratives, budgets justifications, LOIs) for nonprofits, researchers and startups at a flat or hourly fee.",
+    "howItWorks": "Nonprofits, labs and startups pay because applications are long and deadline-driven. You track public RFPs, use an LLM to draft narratives from the client's own facts, and edit to each funder's rubric. Charge per application or retainer, not a % of the award (commission pricing is considered unethical and often barred from grant funds). Clients reapply every cycle.",
+    "platforms": [
+      "Upwork",
+      "Fiverr",
+      "direct (Candid/Grants.gov research + Stripe/Wise invoices)"
+    ],
+    "payout": {
+      "methods": [
+        "Upwork -> local bank/ACH/Payoneer",
+        "Fiverr -> PayPal/Payoneer -> bank"
+      ],
+      "minimumPayout": "Fiverr: $1 PayPal / $20 bank transfer via Payoneer / $10 Payoneer account; Upwork: per withdrawal method",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Upwork help center (Learn about the Freelancer Service Fee, checked in a browser Nov 2026): the fee ranges from 0% to 15% per contract, is shown on the offer/proposal and is fixed once the contract starts; Enterprise clients typically 10%, Any Hire contracts 0%. Fiverr help center (checked in a browser Nov 2026): freelancers earn 80% of the purchase amount including extras and tips (20% fee); earnings become withdrawable 14 days after the order completes (shorter for Top Rated, Seller Plus and Pro; Early Payout skips clearance for a 1% fee). Fiverr withdrawal minimums/fees: PayPal $1 (no fee, ~24 h), bank transfer via Payoneer $20 ($1 fee, 1-7 business days), Payoneer account $10 ($3 fee); max $5,000 per withdrawal."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 400,
+      "high": 6000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Never fabricate data, outcomes or letters of support; the applicant signs and is responsible for submissions.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "platform AI/misrepresentation rules",
+        "flat/hourly fees, no award contingency (GPA/AFP ethics-code norm; both sites blocked fetch, unconfirmed)",
+        "truthful applications only"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork/Fiverr pay out in nearly all reference countries via Payoneer/bank."
+    },
+    "automationPlan": [
+      "RFP/funder-deadline monitoring feeds",
+      "LLM first drafts from a client fact sheet",
+      "rubric checklists and word-count validation"
+    ],
+    "manualSteps": [
+      "discovery call to gather true facts",
+      "editing for funder fit",
+      "client sign-off and submission by client"
+    ],
+    "fullCycle": [
+      "Create profile with 2 sample applications",
+      "Win first small fixed-price job",
+      "Draft + edit + deliver",
+      "Convert to per-cycle retainer",
+      "Withdraw/invoice to bank"
+    ],
+    "risks": [
+      "awards outside your control drive client churn",
+      "low-budget nonprofits haggle on price",
+      "AI-sounding generic drafts get rejected"
+    ],
+    "evidence": "Grant writing is a standing Upwork/Fiverr category; rates and success rates not verified.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://www.grants.gov/",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65",
+      "https://help.fiverr.com/hc/en-us/articles/9234443621137-Your-earnings-page",
+      "https://help.fiverr.com/hc/en-us/articles/34069565843985-How-Fiverr-works-for-freelancers",
+      "https://support.upwork.com/hc/en-us/articles/211062538-Learn-about-the-Freelancer-Service-Fee"
+    ],
+    "tags": ["freelance", "b2b", "nonprofit", "writing"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "LLM chat plan (~$20/mo)",
+          "Grants.gov and public funder databases (free)",
+          "Google Docs/Sheets"
+        ],
+        "skills": [
+          "persuasive long-form writing",
+          "reading funder rubrics",
+          "basic budget justification"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "Wise Business or Stripe account for invoicing (KYC)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per application",
+        "typicalPriceUsd": {
+          "low": 300,
+          "median": 1200,
+          "high": 5000
+        },
+        "costPerUnitUsd": 5,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 90,
+        "hoursPerUnit": 20,
+        "notes": "Estimate: freelance grant writers commonly charge $50-$100/h or $1,000-$5,000 per full application; fee ~10% Upwork blended with direct invoices. Fiverr's 20% fee and Upwork's 0-15% per-contract fee are confirmed on their help centers (Nov 2026); the 10% blend is an estimate."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 28,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 5000
+        },
+        "notes": "Nonprofit and startup demand is steady, but US federal grant cuts and reshuffles in 2025-2026 shrank some funding pools, and many nonprofits now draft with AI in-house. Clients judge you by awards won, which takes months to show. Writers with a sector track record (health, education, SBIR) win; newcomers struggle to land the first paid application."
+      },
+      "pricingStrategy": "Offer LOIs and grant research at low fixed prices to start, then flat fees per full application and annual retainers; never a percentage of the award.",
+      "profitPath": [
+        "Month 0: 2 sample proposals, funder research templates (cost $0)",
+        "Month 1-3: first LOI/research gigs, expected $100-$500",
+        "Month 3-6: first full applications; collect results",
+        "Month 6-12: 1-3 retainers tied to grant cycles"
+      ],
+      "sources": [
+        "https://www.grants.gov/",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "pitch-deck-financial-model",
+    "name": "Pitch-deck design and startup financial models",
+    "category": "services",
+    "summary": "Productized pitch decks (story + design) and 3-statement/SaaS financial models for founders raising money.",
+    "howItWorks": "Founders pay to look credible to investors. You sell fixed packages: deck rewrite + redesign (10-20 slides), and a driver-based financial model in Google Sheets/Excel. LLMs draft the narrative, market-size math and slide copy; templates and AI image tools speed design; a model template covers most SaaS/marketplace cases. You review numbers with the founder; projections are the founder's assumptions, not advice.",
+    "platforms": ["Upwork", "Fiverr (incl. Fiverr Pro)", "Contra", "direct"],
+    "payout": {
+      "methods": [
+        "Upwork -> local bank/ACH/Payoneer",
+        "Fiverr -> PayPal/Payoneer -> bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Do not give investment or securities advice or help solicit investors; label projections as client assumptions.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "platform AI/misrepresentation rules",
+        "no securities/investment advice",
+        "NDA on client data"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork/Fiverr pay out in nearly all reference countries via Payoneer/bank."
+    },
+    "automationPlan": [
+      "deck outline + copy generation from a founder questionnaire",
+      "slide template library with brand-color auto-apply",
+      "model template with input tab and auto charts"
+    ],
+    "manualSteps": [
+      "founder interview",
+      "design polish",
+      "sanity-check model logic"
+    ],
+    "fullCycle": [
+      "Build 3 sample decks + 1 model template",
+      "List fixed packages",
+      "Deliver first orders",
+      "Upsell model + investor-update templates",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "crowded low-end market",
+      "fundraising downturns cut demand",
+      "scope creep in revisions"
+    ],
+    "evidence": "Slidebean publicly prices pitch-deck design at $799 (4 business days, up to 20 slides) and strategy+deck sprints from $6,000, showing founders pay for this. Contra states it is commission-free for freelancers. Freelance price levels not verified.",
+    "sources": [
+      "https://slidebean.com/pitch-deck-design",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://contra.com/pricing",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+    ],
+    "tags": ["freelance", "b2b", "startups", "design", "productized"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 25,
+        "tools": [
+          "Google Slides/Pitch free tier",
+          "LLM chat plan (~$20/mo)",
+          "AI image tool credits (~$5/mo)",
+          "Google Sheets model template"
+        ],
+        "skills": [
+          "startup storytelling",
+          "slide design",
+          "3-statement/SaaS financial modeling"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "Contra profile",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per deck or model package",
+        "typicalPriceUsd": {
+          "low": 150,
+          "median": 600,
+          "high": 3000
+        },
+        "costPerUnitUsd": 5,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 84,
+        "hoursPerUnit": 10,
+        "notes": "Estimate: freelance deck/model packages $150-$3,000, below Slidebean's public $799 design tier; fee blends Fiverr 20% and Upwork/Contra 0-15%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 25,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 6000
+        },
+        "notes": "AI deck generators (Gamma, Pitch, Canva) let founders produce passable decks alone, so paid work shifts to narrative, investor-ready modeling and design polish. Demand tracks startup funding cycles; the 2025-2026 AI funding boom supports demand in AI-related startups. Failure modes: price competition and founders who never raise."
+      },
+      "pricingStrategy": "Start with a deck-review/redesign tier for reviews, then package deck + model at a premium and add investor-update templates.",
+      "profitPath": [
+        "Month 0: 2 sample decks + 1 SaaS model template (cost $0)",
+        "Month 1-2: first 1-2 packages at $150-$300, expected $150-$500",
+        "Month 3-6: model + deck bundles, accelerator community outreach",
+        "Month 6-12: 2-5 packages/month"
+      ],
+      "sources": [
+        "https://slidebean.com/pitch-deck-design",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://contra.com/pricing",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "cad-drafting-3d-rendering",
+    "name": "CAD/BIM drafting, 3D product rendering and architectural visualization",
+    "category": "services",
+    "summary": "Convert sketches/PDFs to CAD, model products for manufacturing or e-commerce renders, and produce architectural visualizations.",
+    "howItWorks": "Inventors, product firms, architects and developers pay for drafting and photoreal renders, via Cad Crowd (vetted; contests, private and hourly jobs) and Upwork. Free tools (FreeCAD/Blender) plus AI textures, upscaling and scripting save hours, but accurate modeling is skilled work. Stamped drawings need licensed professionals; you deliver drafting and visuals only.",
+    "platforms": ["Cad Crowd", "Upwork", "Fiverr"],
+    "payout": {
+      "methods": [
+        "Cad Crowd -> PayPal (USD) -> bank; Payoneer only arranged manually via support",
+        "Upwork -> bank/Payoneer",
+        "Fiverr -> PayPal/Payoneer"
+      ],
+      "minimumPayout": "Cad Crowd: none stated; Fiverr $1 PayPal / $20 Payoneer (unconfirmed)",
+      "frequency": "on request after security hold (Cad Crowd fixed-rate 5 days; hourly billed weekly)",
+      "typicalDelayDays": 14,
+      "notes": "Cad Crowd: 20% service fee on hourly and fixed-rate job earnings; no fee on contest prizes. PayPal is the default payout (name must match verified profile), usually available 1 business day after request. Fixed-rate milestones have a 5-day security hold; hourly funds become withdrawable about 10 days after the billing week ends. Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 600,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 7,
+      "incomePotential": 7,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 88
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; taxable. Sealed engineering/architectural drawings require a locally licensed engineer or architect; drafting support does not.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "platform AI/misrepresentation rules",
+        "no stamping or implying licensure",
+        "client IP assignment/NDA"
+      ]
+    },
+    "availability": {
+      "notes": "Cad Crowd states no country restriction, but pays via PayPal, which cannot receive payments in some reference countries (e.g. Bangladesh); there Payoneer must be arranged manually. Upwork/Fiverr cover nearly all reference countries."
+    },
+    "automationPlan": [
+      "Blender/CAD scripting for repetitive parts and lighting rigs",
+      "AI texture/background generation for renders",
+      "batch render queues"
+    ],
+    "manualSteps": [
+      "skilled modeling",
+      "client clarification of dimensions/tolerances",
+      "Cad Crowd probation: new designers are approved or denied after at least 20 admin-reviewed contest entries"
+    ],
+    "fullCycle": [
+      "Build 5 portfolio pieces",
+      "Apply to Cad Crowd and Upwork",
+      "Win small drafting jobs",
+      "Move up to rendering packages",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "skill barrier is real",
+      "vetting may reject newcomers",
+      "competition from low-cost studios"
+    ],
+    "evidence": "Cad Crowd runs contests, private and hourly projects with a 20% job fee and PayPal payouts. paymentProbability lowered 4->3: real modeling skill is required and Cad Crowd's probation needs 20+ reviewed contest entries before approval, so many newcomers will not land a paid job within 6 months.",
+    "sources": [
+      "https://www.cadcrowd.com/designers",
+      "https://www.cadcrowd.com/help/designers/service-fees/",
+      "https://www.cadcrowd.com/help/designers/paypal-payouts/",
+      "https://www.cadcrowd.com/help/designers/fixed-rate-payouts/",
+      "https://www.cadcrowd.com/help/designers/hourly-payouts/",
+      "https://www.cadcrowd.com/page/designer-questions",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+    ],
+    "tags": ["freelance", "b2b", "3d", "skilled"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "FreeCAD (free)",
+          "Blender (free)",
+          "AI texture/upscale tools (free tiers)"
+        ],
+        "skills": [
+          "accurate parametric CAD modeling",
+          "rendering/lighting",
+          "reading technical drawings"
+        ],
+        "equipment": ["laptop/desktop with a capable GPU", "3-button mouse"],
+        "accounts": [
+          "Cad Crowd designer application (probation with 20+ contest entries)",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "PayPal linked to bank"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per billable hour",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 35,
+          "high": 80
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: Upwork/Cad Crowd CAD and rendering rates ~$15-$80/h; fee = Cad Crowd 20% on jobs (Upwork 0-15%). Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026. Cad Crowd 20% confirmed on its service-fees page."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Commercial tools (SolidWorks, 3ds Max) are not assumed."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 22,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 5000
+        },
+        "notes": "Skilled CAD/rendering work holds price because AI cannot yet produce accurate engineering geometry, but global competition is strong and Cad Crowd's probation slows entry. E-commerce product renders face some AI-image substitution. People who already have CAD skills succeed; learning from zero takes months."
+      },
+      "pricingStrategy": "Win the first jobs with contest entries and small fixed-price conversions, then switch to hourly with a minimum and a premium for rush/photoreal work.",
+      "profitPath": [
+        "Month 0: portfolio of 5-10 models/renders (cost $0)",
+        "Month 1-3: Cad Crowd contests and small Upwork jobs, expected $0-$300",
+        "Month 3-6: first repeat client (inventor/firm)",
+        "Month 6-12: 20-60 billable hours/month"
+      ],
+      "sources": [
+        "https://www.cadcrowd.com/help/designers/service-fees/",
+        "https://www.cadcrowd.com/help/designers/paypal-payouts/",
+        "https://www.cadcrowd.com/page/designer-questions",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "patent-technical-illustration",
+    "name": "Patent drawings and technical illustration",
+    "category": "services",
+    "summary": "Produce USPTO/EPO-compliant patent drawings and exploded/technical illustrations for patent attorneys, inventors and manuals.",
+    "howItWorks": "Patent firms and inventors need black-and-white line drawings meeting strict office rules. You turn CAD exports, photos or sketches into compliant vector figures; scripts handle numbering and sheet layout, you ensure accuracy. Firms pay per sheet and repeat. Claim drafting is regulated legal work; you only illustrate.",
+    "platforms": ["Upwork", "Fiverr", "Cad Crowd", "direct to IP law firms"],
+    "payout": {
+      "methods": [
+        "Upwork -> local bank/ACH/Payoneer",
+        "Fiverr -> PayPal/Payoneer -> bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Patent prosecution and claim drafting are reserved to registered practitioners in many countries; drawings by draftspersons are commonly outsourced.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "platform AI/misrepresentation rules",
+        "confidentiality of unpublished inventions (NDA)",
+        "no legal advice on patentability"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork/Fiverr pay out in nearly all reference countries via Payoneer/bank."
+    },
+    "automationPlan": [
+      "photo/CAD-to-vector conversion",
+      "auto reference-numeral placement and figure labels",
+      "sheet-layout and margin checks"
+    ],
+    "manualSteps": [
+      "accuracy review against invention",
+      "attorney revision rounds",
+      "client confidentiality setup"
+    ],
+    "fullCycle": [
+      "Make 3 sample sheets per office spec",
+      "List per-sheet pricing",
+      "Win first attorney client",
+      "Deliver and get repeat work",
+      "Withdraw/invoice to bank"
+    ],
+    "risks": [
+      "office rejections if rules missed",
+      "small niche; relationship-driven",
+      "confidentiality liability"
+    ],
+    "evidence": "USPTO MPEP 608 sets detailed paper/drawing standards (A4 or 8.5x11 sheets, high-contrast black lines), which is why firms outsource to specialists. Demand volume not quantified.",
+    "sources": [
+      "https://www.uspto.gov/web/offices/pac/mpep/s608.html",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+    ],
+    "tags": ["freelance", "b2b", "legal-adjacent", "illustration"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Inkscape (free)",
+          "FreeCAD/LibreCAD (free)",
+          "scripts for reference numbering"
+        ],
+        "skills": [
+          "precise line drawing",
+          "knowledge of USPTO/EPO drawing rules (MPEP 608)",
+          "reading patent specifications"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per drawing sheet",
+        "typicalPriceUsd": {
+          "low": 25,
+          "median": 60,
+          "high": 120
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 85,
+        "hoursPerUnit": 1,
+        "notes": "Estimate: patent drawing services commonly charge ~$25-$120 per sheet; fee blends Fiverr 20% and Upwork 0-15%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. No fixed costs."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 28,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 3000
+        },
+        "notes": "Patent filings are steady and drawings must meet strict office rules, so firms keep outsourcing to reliable illustrators; AI tools help with tracing but cannot guarantee compliance. Established drafting firms and offshore studios set low prices. Winning requires accuracy and repeat relationships with law firms; marketplace-only sellers see sporadic orders."
+      },
+      "pricingStrategy": "Quote per sheet with a free compliance check and fast turnaround; offer firm-level volume pricing once a law firm sends repeat work.",
+      "profitPath": [
+        "Month 0: 5 sample sheets to USPTO standard, gigs published (cost $0)",
+        "Month 1-3: first inventor orders, expected $50-$300",
+        "Month 3-6: pitch small IP law firms directly",
+        "Month 6-12: 1-3 firm clients with recurring sheets"
+      ],
+      "sources": [
+        "https://www.uspto.gov/web/offices/pac/mpep/s608.html",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "marketplace-listing-optimization",
+    "name": "Amazon/Etsy listing optimization and A+ content",
+    "category": "services",
+    "summary": "Rewrite titles, bullets, backend keywords and build A+ (enhanced brand content) modules and infographic images for marketplace sellers.",
+    "howItWorks": "Sellers pay because listing copy and images drive conversion. You audit a listing, research keywords from marketplace autocomplete and the seller's own data, rewrite copy with an LLM within each marketplace's style rules, and design A+ modules and infographics. Brand owners add you as a Brand Registry user rather than sharing logins. Sell per-ASIN packages and monthly catalog retainers.",
+    "platforms": ["Upwork", "Fiverr", "direct (Amazon/Etsy sellers)"],
+    "payout": {
+      "methods": [
+        "Upwork -> local bank/ACH/Payoneer",
+        "Fiverr -> PayPal/Payoneer -> bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 400,
+      "high": 6000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; taxable. Must not create fake reviews, keyword-stuff against style guides, or make unsubstantiated product claims.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "platform AI/misrepresentation rules",
+        "Amazon/Etsy listing policies",
+        "no review manipulation"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork/Fiverr pay out in nearly all reference countries via Payoneer/bank."
+    },
+    "automationPlan": [
+      "keyword clustering from seller search-term reports",
+      "LLM copy within character limits",
+      "infographic templates auto-filled from spec sheets"
+    ],
+    "manualSteps": [
+      "seller onboarding and access invite",
+      "image design polish",
+      "compliance check of claims"
+    ],
+    "fullCycle": [
+      "Offer per-listing package",
+      "Deliver first audits",
+      "Upsell A+ and image sets",
+      "Monthly catalog retainer",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "results depend on product and ads",
+      "many low-cost competitors",
+      "policy changes to listing rules"
+    ],
+    "evidence": "Amazon says Basic A+ Content can raise sales up to 8% and well-implemented Premium A+ up to 20% (Amazon internal data); brands can add agents as Brand Registry users.",
+    "sources": [
+      "https://sell.amazon.com/brand-registry",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+    ],
+    "tags": ["freelance", "ecommerce", "copywriting", "productized"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 12,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "LLM chat plan (~$20/mo)",
+          "Canva free for infographics/A+ modules",
+          "marketplace autocomplete + seller's own search-term data"
+        ],
+        "skills": [
+          "conversion copywriting",
+          "Amazon/Etsy listing rules",
+          "simple infographic design"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per listing (ASIN/Etsy product)",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 120,
+          "high": 500
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 83,
+        "hoursPerUnit": 2,
+        "notes": "Estimate from listing-optimization gig tiers ($30 copy-only to $500 full A+ with images); fee blends Fiverr 20% and Upwork 0-15%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 38,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 4000
+        },
+        "notes": "Amazon and Etsy now offer built-in AI listing generators, which shrink demand for copy-only work, but sellers still pay for A+ modules, images and keyword strategy tied to measured conversion. Many sellers manage dozens of SKUs, so catalog retainers are realistic. Failure modes: promising rankings you cannot control, and the crowded copy-only tier."
+      },
+      "pricingStrategy": "Start with a low-priced single-listing audit + rewrite, then sell multi-SKU packs and monthly catalog retainers with A+ design.",
+      "profitPath": [
+        "Month 0: 3 before/after listing samples (cost $0)",
+        "Month 1-2: first 3-6 listings, expected $100-$300",
+        "Month 3-6: A+ content and image packs; seller referrals",
+        "Month 6-12: 1-3 catalog retainers plus per-listing work"
+      ],
+      "sources": [
+        "https://sell.amazon.com/brand-registry",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "smb-ppc-ads-management",
+    "name": "Google/Meta ads management for small businesses",
+    "category": "services",
+    "summary": "Set up and manage search, Performance Max and Meta campaigns for SMBs for a monthly fee; the client pays the ad spend directly.",
+    "howItWorks": "Local and e-commerce SMBs pay a monthly management fee (often flat or % of spend) for campaign setup, tracking, creatives and optimization. Ad spend is billed to the client's own card in their own ad account; you get manager-account access. AI generates ad copy/creatives and reports; scripts flag waste. Google Partner status needs $10k 90-day managed spend, so start without it.",
+    "platforms": [
+      "Upwork",
+      "Fiverr",
+      "direct",
+      "Google Ads manager account",
+      "Meta Business Manager"
+    ],
+    "payout": {
+      "methods": [
+        "Stripe invoice -> bank",
+        "Wise",
+        "Payoneer",
+        "PayPal -> bank"
+      ],
+      "minimumPayout": "none (direct invoices)",
+      "frequency": "per milestone or monthly retainer",
+      "typicalDelayDays": 14,
+      "notes": "Net-7 to net-30 invoices; take 30-50% deposits. Stripe missing in many reference countries; Wise/Payoneer cover most. Never front ad spend yourself."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; taxable. Advertising law (truthful ads, special categories like health/finance/housing) and platform ad policies apply.",
+      "complianceRequirements": [
+        "tax reporting",
+        "client owns ad accounts and pays spend",
+        "Google/Meta ad policies",
+        "conversion tracking consent (cookie banners in EU/UK)",
+        "no guaranteed results claims"
+      ]
+    },
+    "availability": {
+      "notes": "Direct invoicing works almost everywhere; Google/Meta ads available in nearly all reference countries."
+    },
+    "automationPlan": [
+      "Google Ads scripts for budget/waste alerts",
+      "AI ad copy and creative variants",
+      "automated weekly Looker Studio reports"
+    ],
+    "manualSteps": [
+      "client onboarding and account access",
+      "strategy calls",
+      "policy disapproval fixes"
+    ],
+    "fullCycle": [
+      "Get Google Ads Search certification (free)",
+      "Win first client via Upwork/local outreach",
+      "Set up tracking + campaigns",
+      "Monthly optimization + report",
+      "Invoice to bank"
+    ],
+    "risks": [
+      "clients churn if ROAS disappoints",
+      "ad account suspensions",
+      "agency competition"
+    ],
+    "evidence": "Google runs a Partners program whose badge requires 70% optimization score, $10,000 90-day spend across managed accounts and certifications, showing a large agency ecosystem around SMB ad management.",
+    "sources": [
+      "https://support.google.com/google-ads/answer/9702452",
+      "https://support.google.com/google-ads/answer/9029201"
+    ],
+    "tags": ["agency", "b2b", "recurring", "marketing"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Google Ads manager account (free)",
+          "Meta Business Manager (free)",
+          "Looker Studio (free)",
+          "LLM plan (~$20/mo)"
+        ],
+        "skills": [
+          "campaign structure and bidding",
+          "conversion tracking (GA4, tags)",
+          "reporting ROI to owners"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Google Ads manager account",
+          "Meta Business account",
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Wise Business or Stripe account for invoicing (KYC)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per client-month",
+        "typicalPriceUsd": {
+          "low": 200,
+          "median": 500,
+          "high": 2000
+        },
+        "costPerUnitUsd": 10,
+        "platformFeePercent": 3,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 8,
+        "notes": "Estimate: SMB management fees usually $250-$2,000/month or 10-20% of spend; fee = fee ~3% = card/transfer processing on direct invoices (Stripe/Wise). Stripe confirmed at 2.9% + 30c per US card payment."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Ad spend is paid by the client, never fronted."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 28,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 8000
+        },
+        "notes": "Google Performance Max and Meta Advantage+ automate much of targeting and bidding, which reduces the value of manual tweaking and tempts SMBs to self-serve. Freelancers who win prove ROI with clean tracking and own a vertical (e.g. dentists, local trades). Churn is high when results dip, and a first client usually needs a track record."
+      },
+      "pricingStrategy": "Offer a paid audit or reduced first-month fee with a 3-month minimum, then move to flat fee tiers by spend band.",
+      "profitPath": [
+        "Month 0: Google Ads/Meta certifications (free), demo account and audit template (cost $0)",
+        "Month 1-3: 1 client from audits/networking, expected $0-$400",
+        "Month 3-6: case study; 2-3 clients",
+        "Month 6-12: 3-8 clients on retainers"
+      ],
+      "sources": [
+        "https://support.google.com/google-ads/answer/9702452",
+        "https://support.google.com/google-ads/answer/9029201",
+        "https://stripe.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "compliant-b2b-outbound-lead-gen",
+    "name": "Compliant B2B cold-email lead generation service",
+    "category": "services",
+    "summary": "Run opt-out-compliant B2B outbound email campaigns that book sales meetings for clients, paid per month or per qualified meeting.",
+    "howItWorks": "B2B firms pay for booked meetings. You define the ideal customer, source business contacts from licensed data vendors, personalize emails with an LLM, and send low-volume campaigns from client domains with unsubscribe link and postal address. Replies are triaged and meetings booked. Honor opt-outs (US: 10 business days) and consent rules of each recipient country.",
+    "platforms": ["Upwork", "direct", "licensed contact-data vendors"],
+    "payout": {
+      "methods": [
+        "Stripe invoice -> bank",
+        "Wise",
+        "Payoneer",
+        "PayPal -> bank"
+      ],
+      "minimumPayout": "none (direct invoices)",
+      "frequency": "per milestone or monthly retainer",
+      "typicalDelayDays": 14,
+      "notes": "Net-7 to net-30 invoices; take 30-50% deposits. Stripe is not offered in many reference countries (stripe.com/global, Nov 2026: absent in e.g. the Philippines, Colombia, Argentina, Ukraine, Georgia, Armenia, Sri Lanka, Tunisia, Ecuador, Serbia; Nigeria, Kenya, Ghana and South Africa only via its extended network); Payoneer covers 190+ countries and territories."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 7,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 88,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [
+        "Germany (recipients: UWG s.7(2) no.2 requires prior express consent for email ads to any addressee, incl. businesses)",
+        "Netherlands (recipients: Telecommunicatiewet art. 11.7(1) consent also applies to legal persons)",
+        "Canada (recipients: CASL consent; implied only for conspicuously published addresses relevant to the recipient's role)"
+      ],
+      "notes": "Restrictions are on recipients located in these countries, not on where the operator lives. US: CAN-SPAM has no B2B exception but is opt-out (honor within 10 business days). UK: ICO confirms PECR email consent rule does not cover corporate subscribers (companies, LLPs, Scottish partnerships); sole traders and some partnerships need consent or soft opt-in. Germany and Canada verified from statute; Netherlands from secondary sources (statute page not parsed). Other likely opt-in recipient markets (Italy, South Korea, Japan partially) not verified, so coverage kept at 88 (~44/50) rather than 94. Never email consumers or use scraped lists.",
+      "complianceRequirements": [
+        "CAN-SPAM: honest headers, postal address, opt-out in 10 business days",
+        "GDPR/PECR legitimate-interest assessment",
+        "CASL where applicable",
+        "licensed data only",
+        "no LinkedIn automation bots"
+      ]
+    },
+    "availability": {
+      "notes": "Direct invoicing works almost everywhere; legality depends on recipient country, not operator country."
+    },
+    "automationPlan": [
+      "ICP filtering and enrichment from licensed data",
+      "LLM personalization per prospect",
+      "suppression-list sync and opt-out processing"
+    ],
+    "manualSteps": [
+      "client ICP workshop",
+      "domain/DNS authentication setup",
+      "legal review per target country"
+    ],
+    "fullCycle": [
+      "Pick a niche with US/UK B2B targets",
+      "Win pilot client (pay-per-meeting)",
+      "Run compliant campaigns",
+      "Convert to monthly retainer",
+      "Invoice to bank"
+    ],
+    "risks": [
+      "deliverability and domain reputation",
+      "fines (US up to $53,088 per violating email)",
+      "clients dispute meeting quality"
+    ],
+    "evidence": "FTC CAN-SPAM guide: no B2B exception, opt-out within 10 business days, penalties up to $53,088 per email, so compliant outbound agencies operate legally in the US; ICO confirms UK corporate subscribers can be emailed without prior consent.",
+    "sources": [
+      "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+      "https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/business-to-business-marketing/",
+      "https://www.gesetze-im-internet.de/uwg_2004/__7.html",
+      "https://laws-lois.justice.gc.ca/eng/acts/E-1.6/page-2.html",
+      "https://wetten.overheid.nl/BWBR0009950/",
+      "https://stripe.com/global",
+      "https://www.payoneer.com/about/"
+    ],
+    "tags": ["agency", "b2b", "sales", "compliance-heavy"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 30,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 100,
+        "tools": [
+          "cold-email sending tool (~$40/mo)",
+          "licensed B2B contact database (~$50/mo)",
+          "secondary sending domain (~$10/mo amortised)",
+          "LLM plan"
+        ],
+        "skills": [
+          "ICP definition and copywriting",
+          "email deliverability (SPF/DKIM/DMARC)",
+          "CAN-SPAM/GDPR/PECR compliance"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Wise Business or Stripe account for invoicing (KYC)",
+          "data-vendor account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per client-month",
+        "typicalPriceUsd": {
+          "low": 500,
+          "median": 1500,
+          "high": 4000
+        },
+        "costPerUnitUsd": 150,
+        "platformFeePercent": 3,
+        "grossMarginPercent": 87,
+        "hoursPerUnit": 15,
+        "notes": "Estimate: appointment-setting retainers $1,000-$4,000/month or $100-$300 per booked meeting; cost = client-specific inboxes/data; fee = fee ~3% = card/transfer processing on direct invoices (Stripe/Wise). Stripe confirmed at 2.9% + 30c per US card payment."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 100,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Your own prospecting stack costs ~$100/month before the first client."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 6000
+        },
+        "notes": "AI-written cold email flooded inboxes in 2024-2026, and Google/Yahoo/Microsoft bulk-sender rules plus stricter spam filtering cut reply rates sharply. Agencies that win run small, highly targeted campaigns in niches they know and charge for meetings that convert. Most new agencies fail to book meetings for their first client and lose them within 2-3 months."
+      },
+      "pricingStrategy": "Start with a pilot priced per qualified meeting to reduce client risk, then convert to a monthly retainer plus a per-meeting bonus.",
+      "profitPath": [
+        "Month 0: domain, deliverability setup, prospecting your own clients (cost ~$100/month)",
+        "Month 1-3: 1 pilot client, expected $0-$800",
+        "Month 3-6: retain if meetings convert; add a second niche client",
+        "Month 6-12: 2-4 retainers for the minority who prove results"
+      ],
+      "sources": [
+        "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+        "https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/business-to-business-marketing/",
+        "https://support.google.com/a/answer/81126",
+        "https://stripe.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "split-fee-recruiting-marketplaces",
+    "name": "Split-fee recruiting on Paraform and BountyJobs",
+    "category": "services",
+    "summary": "Independent recruiters fill open roles posted on recruiting marketplaces and earn a share of the employer's placement fee.",
+    "howItWorks": "Employers post roles with a fixed fee or % of salary. You source candidates with AI-assisted search and outreach, submit those who consent, and are paid after hire and guarantee. Paraform pays the listed per-role reward (its recruiter page shows an 80% success-fee split example); BountyJobs vets agencies by niche. Closing candidates stays human work.",
+    "platforms": ["Paraform", "BountyJobs (incl. CoSource split-fee)"],
+    "payout": {
+      "methods": [
+        "Paraform -> Stripe payout to recruiter's chosen method (bank)",
+        "BountyJobs -> payout method not published"
+      ],
+      "minimumPayout": "per placement (no stated minimum)",
+      "frequency": "per placement: Paraform in thirds at 30/60/90 days after start; BountyJobs after employer pays + 60 days",
+      "typicalDelayDays": 60,
+      "notes": "Paraform Recruiting Agreement: reward is fixed or % of first-year salary; paid 1/3 at 30, 60 and 90 days after the candidate's start date via Stripe; 90-day guarantee with repayment/clawback if no replacement search. BountyJobs FAQ (re-checked in a browser Nov 2026): earnings stay pending until the employer pays and 60 days of employment elapse; 60-day guarantee (fixed fees or <20% of salary) or 90-day (>=20%). BountyJobs Terms of Use (employer agreement): employers pay BountyJobs a subscription fee plus the Bounty Award, invoiced within 30 days of the start date. Unconfirmed: the method BountyJobs uses to pay agencies and whether it deducts any share of the Bounty Award (neither the recruiter FAQ nor the terms state it)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 15000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 7,
+      "incomePotential": 9,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 90,
+      "platformAvailabilityPercent": 50
+    },
+    "legality": {
+      "restrictedIn": [
+        "Japan (placement license)",
+        "South Korea (placement registration)",
+        "Philippines (overseas placement license)"
+      ],
+      "notes": "Legal; some countries license fee-charging placement (Japan: MHLW permission under the Employment Security Act; South Korea: registration under its Employment Security Act; Philippines: DOLE/DMW licensing). These generally bite when placing candidates in or from those countries; listed from legal knowledge, government pages not re-fetched (search budget exhausted). Candidate data is personal data; consent required before submission.",
+      "complianceRequirements": [
+        "candidate consent before submission (Paraform terms)",
+        "data-protection compliance for candidate data",
+        "local recruiting license where required",
+        "non-discrimination laws",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Roles mostly US. Paraform has active UK recruiters and its agreement covers international Stripe transfers, but no country list is published; BountyJobs states no country rule and vets agencies (niche or preferred-vendor) within 72h. ~50% payout availability is an estimate. Recruiter.com dropped: it now sells flat-fee on-demand recruiting, not a split-fee marketplace."
+    },
+    "automationPlan": [
+      "AI boolean/semantic sourcing",
+      "personalized outreach drafts",
+      "AI screening summaries"
+    ],
+    "manualSteps": [
+      "marketplace application/vetting",
+      "candidate calls and closing",
+      "reference checks"
+    ],
+    "fullCycle": [
+      "Apply to Paraform/BountyJobs",
+      "Pick roles in your niche",
+      "Source and submit consenting candidates",
+      "Candidate hired; wait out guarantee",
+      "Payout to bank"
+    ],
+    "risks": [
+      "long, lumpy payouts; many zero months",
+      "fee clawback if hire leaves early",
+      "vetting excludes newcomers; mostly US roles"
+    ],
+    "evidence": "BountyJobs FAQ documents bounty payouts, 60/90-day guarantees and agency vetting; Paraform's Recruiting Agreement documents 30/60/90-day installment payouts. paymentProbability 2 kept: a first payout needs vetting, a hire, and 30+ days of employment.",
+    "sources": [
+      "https://www.paraform.com/recruiters",
+      "https://www.paraform.com/recruiting-agreement",
+      "https://www.paraform.com/terms",
+      "https://www.bountyjobs.com/recruiter-faq",
+      "https://www.bountyjobs.com/terms-of-use"
+    ],
+    "tags": ["b2b", "recruiting", "high-ticket", "lumpy", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 100,
+        "tools": [
+          "LinkedIn premium/recruiter-lite tier (~$100+/mo, estimate)",
+          "email finder free tier",
+          "ATS/CRM spreadsheet"
+        ],
+        "skills": [
+          "sourcing and screening candidates",
+          "closing offers and candidate management",
+          "role-specific domain knowledge (tech/sales)"
+        ],
+        "equipment": ["laptop", "phone for candidate calls"],
+        "accounts": [
+          "Paraform recruiter application + Stripe payout",
+          "BountyJobs agency vetting",
+          "Wise Business or Stripe account for invoicing (KYC)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per placement",
+        "typicalPriceUsd": {
+          "low": 3000,
+          "median": 10000,
+          "high": 30000
+        },
+        "costPerUnitUsd": 100,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 79,
+        "hoursPerUnit": 80,
+        "notes": "Estimate: Paraform/BountyJobs roles list rewards of a fixed fee or ~15-25% of first-year salary; fee 20% follows Paraform's 80% recruiter-split example; paid in installments over 30-90 days. LinkedIn Recruiter Lite cost (~$100+/mo) is estimated: LinkedIn shows only a free-trial button, no price. Paraform 80% split is from an example on its recruiter page."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 100,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. A single placement covers a year of fixed costs, but cash arrives 30-90 days after the hire starts."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 12000
+        },
+        "notes": "The 2024-2026 tech hiring slowdown and AI sourcing tools have increased recruiter supply relative to open roles, and marketplace roles often have many recruiters competing. Experienced agency recruiters with candidate networks win; newcomers often submit dozens of candidates without a hire. Guarantees and clawbacks add risk, and Paraform availability is limited outside the US."
+      },
+      "pricingStrategy": "Choose roles where you already know candidates; focus on fewer roles with deep pipelines rather than many shallow submissions.",
+      "profitPath": [
+        "Month 0: get vetted, pick 2-3 roles in a familiar niche (cost ~$100/month tools)",
+        "Month 1-4: submit qualified candidates; expected $0",
+        "Month 4-8: first hire; first installment ~30 days after start",
+        "Month 8-12: 0-2 placements for most who persist"
+      ],
+      "sources": [
+        "https://www.paraform.com/recruiters",
+        "https://www.paraform.com/recruiting-agreement",
+        "https://www.bountyjobs.com/recruiter-faq"
+      ]
+    }
+  },
+  {
+    "id": "real-estate-virtual-staging",
+    "name": "Real-estate virtual staging and listing photo editing",
+    "category": "services",
+    "summary": "AI-assisted virtual staging, day-to-dusk, decluttering and floor-plan redraws for agents and photographers.",
+    "howItWorks": "Agents pay per image to make empty or messy rooms sell. Generative inpainting and staging tools do most of the work; you fix perspective, lighting and artifacts and keep structural features truthful. Market to agents and real-estate photographers who batch orders weekly. Staged images must be disclosed as virtually staged in listings.",
+    "platforms": ["Upwork", "Fiverr", "direct to agents/photographers"],
+    "payout": {
+      "methods": [
+        "Upwork -> local bank/ACH/Payoneer",
+        "Fiverr -> PayPal/Payoneer -> bank"
+      ],
+      "minimumPayout": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch. Fiverr: 20% seller fee and 14-day clearance (7 days for Top Rated) are widely reported but Fiverr's help center blocked fetch, so not confirmed from the official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 400,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 8,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; taxable. Do not alter permanent features (views, damage, room size); many MLS and consumer-protection rules require disclosing virtual staging.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "platform AI/misrepresentation rules",
+        "label images 'virtually staged'",
+        "no concealment of defects"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork/Fiverr pay out in nearly all reference countries via Payoneer/bank."
+    },
+    "automationPlan": [
+      "AI staging/declutter pipelines with style presets",
+      "batch HDR/day-to-dusk edits",
+      "auto watermark 'virtually staged'"
+    ],
+    "manualSteps": [
+      "artifact QA per image",
+      "agent relationship building",
+      "revision requests"
+    ],
+    "fullCycle": [
+      "Make before/after portfolio",
+      "List per-image packages",
+      "Win photographers with batch pricing",
+      "Weekly recurring batches",
+      "Withdraw/invoice to bank"
+    ],
+    "risks": [
+      "agents adopting self-serve AI tools",
+      "price pressure (big vendors $30/image)",
+      "misrepresentation complaints"
+    ],
+    "evidence": "BoxBrownie, a large vendor, publicly prices virtual staging at $30/image (48h) and edits from $2, showing steady paid demand; AI cuts delivery cost far below that.",
+    "sources": [
+      "https://www.boxbrownie.com/",
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+    ],
+    "tags": ["freelance", "real-estate", "ai-heavy", "productized"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 12,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 30,
+        "tools": [
+          "AI virtual-staging/inpainting tool (~$20-$30/mo)",
+          "GIMP/Photopea (free)",
+          "LLM free tier"
+        ],
+        "skills": [
+          "photo retouching (perspective, lighting)",
+          "interior styling sense",
+          "honest-disclosure discipline"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per image",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 25,
+          "high": 60
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 81,
+        "hoursPerUnit": 0.3,
+        "notes": "Estimate anchored on BoxBrownie's public $30/image staging price; freelancers sell $10-$40; fee blends Fiverr 20% and Upwork 0-15%. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 30,
+        "unitsPerMonthToBreakEven": 2,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 90,
+          "high": 4000
+        },
+        "notes": "AI staging apps now sell directly to agents for a few dollars per image, which caps freelance prices, but agents and photographers still pay for realistic, artifact-free results and batch reliability. Demand follows housing transaction volumes, which remained subdued in 2025-2026 in several markets. Winners partner with real-estate photographers who resell staging to many agents."
+      },
+      "pricingStrategy": "Offer a free first image to photographers and agents, then volume pricing per image with 24h turnaround and photographer reseller discounts.",
+      "profitPath": [
+        "Month 0: 10 before/after samples, gigs and a simple price sheet (cost $0)",
+        "Month 1-2: first batches, expected $50-$200",
+        "Month 3-6: 1-3 photographer partners sending weekly batches",
+        "Month 6-12: 40-150 images/month"
+      ],
+      "sources": [
+        "https://www.boxbrownie.com/",
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "video-repurposing-thumbnail-agency",
+    "name": "YouTube editing, thumbnails and short-form repurposing for creators and brands",
+    "category": "services",
+    "summary": "Turn long videos/podcasts into edited uploads, Shorts/Reels/TikToks with captions, and click-worthy (non-misleading) thumbnails on retainer.",
+    "howItWorks": "Creators, coaches and B2B companies with long-form video pay for consistent output. AI clipping finds highlights, auto-captions and reframes to vertical; you finish edits, pacing and thumbnails. Sell monthly packages (e.g. 4 long edits + 20 shorts). You only edit footage the client owns; posting happens from the client's accounts.",
+    "platforms": ["Upwork", "Fiverr", "Contra", "direct"],
+    "payout": {
+      "methods": [
+        "Upwork -> local bank/ACH/Payoneer",
+        "Fiverr -> PayPal/Payoneer -> bank"
+      ],
+      "minimumPayout": "Fiverr: $1 PayPal / $20 bank transfer via Payoneer / $10 Payoneer account; Upwork: per withdrawal method",
+      "frequency": "on demand after clearance",
+      "typicalDelayDays": 16,
+      "notes": "Upwork help center (Learn about the Freelancer Service Fee, checked in a browser Nov 2026): the fee ranges from 0% to 15% per contract, is shown on the offer/proposal and is fixed once the contract starts; Enterprise clients typically 10%, Any Hire contracts 0%. Fiverr help center (checked in a browser Nov 2026): freelancers earn 80% of the purchase amount including extras and tips (20% fee); earnings become withdrawable 14 days after the order completes (shorter for Top Rated, Seller Plus and Pro; Early Payout skips clearance for a 1% fee). Fiverr withdrawal minimums/fees: PayPal $1 (no fee, ~24 h), bank transfer via Payoneer $20 ($1 fee, 1-7 business days), Payoneer account $10 ($3 fee); max $5,000 per withdrawal."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 600,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 3,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; taxable. Use licensed music/assets only; no misleading thumbnails or fake engagement.",
+      "complianceRequirements": [
+        "tax reporting",
+        "platform ID check",
+        "platform AI/misrepresentation rules",
+        "licensed music and stock",
+        "client-owned footage only"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork/Fiverr pay out in nearly all reference countries via Payoneer/bank."
+    },
+    "automationPlan": [
+      "AI highlight detection and auto-reframe",
+      "auto captions and translations",
+      "thumbnail template variants"
+    ],
+    "manualSteps": [
+      "creative edit decisions",
+      "client feedback rounds",
+      "thumbnail concepting"
+    ],
+    "fullCycle": [
+      "Build 3 sample edits from own/CC footage",
+      "Offer trial pack",
+      "Convert to monthly retainer",
+      "Add editors as volume grows",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "clients churn when channels stall",
+      "AI tools let creators self-serve",
+      "unpaid revisions"
+    ],
+    "evidence": "Video editing and short-form repurposing are large, persistent Fiverr/Upwork categories; Contra is commission-free for freelancers. Volume figures not verified.",
+    "sources": [
+      "https://help.fiverr.com/hc/en-us/articles/360010530058",
+      "https://contra.com/pricing",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65",
+      "https://help.fiverr.com/hc/en-us/articles/9234443621137-Your-earnings-page",
+      "https://help.fiverr.com/hc/en-us/articles/34069565843985-How-Fiverr-works-for-freelancers",
+      "https://support.upwork.com/hc/en-us/articles/211062538-Learn-about-the-Freelancer-Service-Fee"
+    ],
+    "tags": ["freelance", "creators", "video", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 35,
+        "tools": [
+          "DaVinci Resolve/CapCut (free)",
+          "AI clipping tool (~$15-$30/mo)",
+          "Photopea/Canva free for thumbnails",
+          "Whisper captions (free)"
+        ],
+        "skills": [
+          "video editing and pacing",
+          "thumbnail design",
+          "understanding short-form platform conventions"
+        ],
+        "equipment": [
+          "laptop/desktop able to edit 1080p-4K video",
+          "external storage"
+        ],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "Contra profile",
+          "PayPal or Payoneer linked to a bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per client-month",
+        "typicalPriceUsd": {
+          "low": 150,
+          "median": 600,
+          "high": 2500
+        },
+        "costPerUnitUsd": 20,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 87,
+        "hoursPerUnit": 20,
+        "notes": "Estimate from editing retainers on Upwork/Contra ($400-$2,500/month) with entry packages ~$150; fee ~10% blended Upwork/Contra/direct. Fiverr's 20% fee and Upwork's 0-15% per-contract fee are confirmed on their help centers (Nov 2026); the 10% blend is an estimate."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 35,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 42,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 90,
+          "high": 6000
+        },
+        "notes": "Short-form video remains the main growth channel for creators and B2B brands, so demand for consistent editors is strong; AI clipping speeds delivery but clients still pay for taste, hooks and reliability. The bottom tier is crowded and AI auto-clippers sold directly to creators undercut simple clip packages. Editors who retain 2-4 clients reach meaningful income within a year."
+      },
+      "pricingStrategy": "Do one discounted trial edit, then sell monthly packages (e.g. 4 long edits + 20 shorts) with a 3-month commitment; raise rates as client channels grow.",
+      "profitPath": [
+        "Month 0: edit 5 sample shorts from public-domain/own footage (cost $0)",
+        "Month 1-2: first client at $150-$400/month",
+        "Month 3-6: 2-3 clients, templates and AI clipping to cut hours",
+        "Month 6-12: 3-5 retainers"
+      ],
+      "sources": [
+        "https://help.fiverr.com/hc/en-us/articles/360010530058",
+        "https://contra.com/pricing",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  },
+  {
+    "id": "corporate-elearning-scorm-production",
+    "name": "Corporate e-learning production (slides, quizzes, SCORM packages)",
+    "category": "services",
+    "summary": "Convert a company's SOPs, slide decks and subject-matter-expert notes into LMS-ready SCORM/xAPI courses with quizzes and narration.",
+    "howItWorks": "L&D teams and training firms pay per course or per finished learning-minute. You restructure source material with an LLM into objectives, modules and assessments, build in an authoring tool or open-source exporters, add AI narration with commercial rights, and package as SCORM 1.2/xAPI for the client's LMS. Compliance and onboarding training recur yearly.",
+    "platforms": ["Upwork", "direct to L&D teams and training vendors"],
+    "payout": {
+      "methods": [
+        "Stripe invoice -> bank",
+        "Wise",
+        "Payoneer",
+        "PayPal -> bank"
+      ],
+      "minimumPayout": "none (direct invoices)",
+      "frequency": "per milestone or monthly retainer",
+      "typicalDelayDays": 14,
+      "notes": "Net-7 to net-30 invoices; take 30-50% deposits. Stripe missing in many reference countries; Wise/Payoneer cover most."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 9000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; taxable. Content accuracy remains the SME's responsibility; regulated training (safety, medical) needs client sign-off.",
+      "complianceRequirements": [
+        "tax reporting",
+        "client IP/NDA",
+        "licensed AI voices and media",
+        "accessibility (captions, WCAG) where required"
+      ]
+    },
+    "availability": {
+      "notes": "Direct invoicing (Wise/Payoneer) and Upwork pay out in nearly all reference countries."
+    },
+    "automationPlan": [
+      "LLM course outlines and quiz generation from SOPs",
+      "AI narration and captions",
+      "scripted SCORM packaging and LMS test uploads (e.g. SCORM Cloud)"
+    ],
+    "manualSteps": [
+      "SME review sessions",
+      "instructional-design decisions",
+      "LMS-specific troubleshooting"
+    ],
+    "fullCycle": [
+      "Build 1 demo SCORM course",
+      "Win pilot from Upwork or training vendor",
+      "Deliver + revise",
+      "Annual refresh/translation retainer",
+      "Invoice to bank"
+    ],
+    "risks": [
+      "long B2B sales cycles",
+      "authoring-tool license costs (free/open-source options exist)",
+      "LMS compatibility issues"
+    ],
+    "evidence": "Rustici (SCORM vendor) states SCORM appears in the vast majority of training-content RFPs and every major LMS supports SCORM 1.2.",
+    "sources": [
+      "https://scorm.com/scorm-explained/",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+    ],
+    "tags": ["b2b", "education", "productized", "ai-heavy"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 30,
+        "tools": [
+          "open-source authoring (Adapt Learning) or free tiers",
+          "AI narration with commercial rights (~$10-$20/mo)",
+          "LLM plan",
+          "SCORM Cloud free tier for testing"
+        ],
+        "skills": [
+          "instructional design",
+          "authoring tool use and SCORM/xAPI packaging",
+          "working with subject-matter experts"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Wise Business or Stripe account for invoicing (KYC)",
+          "LinkedIn profile for L&D outreach"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per course (~30 min of finished learning)",
+        "typicalPriceUsd": {
+          "low": 500,
+          "median": 2500,
+          "high": 10000
+        },
+        "costPerUnitUsd": 30,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 94,
+        "hoursPerUnit": 40,
+        "notes": "Estimate: freelance e-learning developers charge ~$50-$150/h or per finished minute; fee ~5% blended Upwork/direct invoicing. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 30,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order. Commercial authoring tools (e.g. Articulate 360) cost ~$1,000+/year and are not assumed."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 40,
+          "high": 7000
+        },
+        "notes": "L&D teams are adopting AI course generators built into LMSs and authoring tools, which shortens projects and pressures per-course prices, but they still need instructional designers to structure, review and package content. Most work comes via training vendors and corporate networks; marketplace leads are scarce. Without a portfolio of SCORM courses, first contracts take months."
+      },
+      "pricingStrategy": "Start with a fixed-price conversion of an existing slide deck to SCORM, then price per finished learning-minute and offer yearly compliance-course refresh retainers.",
+      "profitPath": [
+        "Month 0: 2 demo SCORM courses tested in SCORM Cloud (cost $0)",
+        "Month 1-3: outreach to training vendors; first small project, expected $0-$800",
+        "Month 3-6: subcontract for 1-2 vendors",
+        "Month 6-12: 1-2 courses/month"
+      ],
+      "sources": [
+        "https://scorm.com/scorm-explained/",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65",
+        "https://www.adaptlearning.org/"
+      ]
+    }
+  },
+  {
+    "id": "wcag-accessibility-audit-remediation",
+    "name": "WCAG accessibility audits and remediation",
+    "category": "services",
+    "summary": "Audit websites/apps/PDFs against WCAG 2.1/2.2 AA, deliver prioritized reports and fix code or documents.",
+    "howItWorks": "Companies and public bodies pay as accessibility laws tighten (US ADA Title II rule; EU Accessibility Act covers e-commerce). Scanners find part of the issues; you add keyboard/screen-reader testing, write the report with LLM help, and fix code or tag PDFs. Monitoring retainers follow.",
+    "platforms": ["Upwork", "Fiverr", "direct"],
+    "payout": {
+      "methods": [
+        "Stripe invoice -> bank",
+        "Wise",
+        "Payoneer",
+        "PayPal -> bank"
+      ],
+      "minimumPayout": "none (direct invoices)",
+      "frequency": "per milestone or monthly retainer",
+      "typicalDelayDays": 14,
+      "notes": "Net-7 to net-30 invoices; take 30-50% deposits. Stripe missing in many reference countries; Wise/Payoneer cover most."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 600,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; taxable. Audits are opinions, not legal advice; avoid 'guaranteed compliant' or certification claims.",
+      "complianceRequirements": [
+        "tax reporting",
+        "no legal-advice or certification claims",
+        "authorized testing on client properties only",
+        "professional indemnity insurance advisable"
+      ]
+    },
+    "availability": {
+      "notes": "Direct invoicing works almost everywhere; demand concentrated in US/EU/UK/Canada/Australia clients."
+    },
+    "automationPlan": [
+      "axe/Lighthouse/Pa11y crawls on schedule",
+      "LLM-written issue descriptions and fix snippets",
+      "PDF auto-tagging first pass"
+    ],
+    "manualSteps": [
+      "screen-reader and keyboard testing",
+      "remediation coding",
+      "client walkthroughs"
+    ],
+    "fullCycle": [
+      "Audit 3 public sites as samples",
+      "Sell fixed-price audit",
+      "Remediate",
+      "Monthly monitoring retainer",
+      "Invoice to bank"
+    ],
+    "risks": [
+      "automated tools find only part of issues, so skill matters",
+      "liability if client is sued",
+      "price competition from overlay vendors"
+    ],
+    "evidence": "WebAIM Million 2026 (Feb 2026): 95.9% of top home pages had detected WCAG 2 failures, avg 56.1 errors. DOJ Title II rule (WCAG 2.1 AA): compliance dates extended by an April 20, 2026 interim final rule to April 26, 2027 (pop. 50k+) and April 26, 2028 (smaller). EU Accessibility Act covers e-commerce.",
+    "sources": [
+      "https://webaim.org/projects/million/",
+      "https://www.ada.gov/resources/2024-03-08-web-rule/",
+      "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/union-equality-strategy-rights-persons-disabilities-2021-2030/european-accessibility-act_en"
+    ],
+    "tags": ["b2b", "compliance", "developer", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "axe DevTools/WAVE/Lighthouse (free)",
+          "NVDA screen reader (free) + VoiceOver",
+          "LLM plan (~$20/mo)",
+          "PDF tagging tools (free tiers)"
+        ],
+        "skills": [
+          "WCAG 2.1/2.2 AA criteria",
+          "manual keyboard and screen-reader testing",
+          "front-end HTML/ARIA fixes"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Fiverr seller account + ID verification",
+          "Wise Business or Stripe account for invoicing (KYC)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per audit",
+        "typicalPriceUsd": {
+          "low": 300,
+          "median": 1200,
+          "high": 5000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 12,
+        "notes": "Estimate: small-site manual WCAG audits commonly $500-$5,000; entry gigs ~$300; fee ~5% blended Upwork/direct. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "medium",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 28,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 7000
+        },
+        "notes": "Regulation drives demand: the European Accessibility Act applied from June 2025 and the US DOJ Title II deadlines (2027/2028) push public bodies and vendors. Overlay widgets and automated scanners compete at the low end, but they do not satisfy manual testing requirements. Credentials (e.g. IAAP CPACC/WAS) help win buyers; without them first sales are slow."
+      },
+      "pricingStrategy": "Sell a fixed-price quick audit of key templates first, then remediation hours and quarterly monitoring retainers.",
+      "profitPath": [
+        "Month 0: learn WCAG checks, audit 3 public sites as samples (cost $0)",
+        "Month 1-3: first audit, expected $0-$500",
+        "Month 3-6: remediation work and PDF tagging",
+        "Month 6-12: 1-3 audits/month plus monitoring retainers"
+      ],
+      "sources": [
+        "https://webaim.org/projects/million/",
+        "https://www.ada.gov/resources/2024-03-08-web-rule/",
+        "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/union-equality-strategy-rights-persons-disabilities-2021-2030/european-accessibility-act_en"
+      ]
+    }
+  },
+  {
+    "id": "smb-security-questionnaires-awareness",
+    "name": "Security questionnaires, policies and authorized phishing-awareness programs for SMBs",
+    "category": "services",
+    "summary": "Answer vendor security questionnaires (SIG/CAIQ-style), draft security policies and run authorized phishing simulations and awareness training for small companies.",
+    "howItWorks": "SMBs selling to larger firms face long security questionnaires and need written policies. An LLM drafts answers from the client's verified control inventory. You also run phishing-awareness simulations with Gophish (free, open-source) or a commercial platform, only under signed authorization for the client's own staff and domains. Packages renew yearly.",
+    "platforms": [
+      "Upwork",
+      "direct",
+      "Gophish (free open-source phishing-simulation framework)",
+      "commercial phishing-simulation platforms (partner programs for MSPs/consultants, e.g. KnowBe4)"
+    ],
+    "payout": {
+      "methods": [
+        "Stripe invoice -> bank",
+        "Wise",
+        "Payoneer",
+        "PayPal -> bank"
+      ],
+      "minimumPayout": "none (direct invoices)",
+      "frequency": "per milestone or monthly retainer",
+      "typicalDelayDays": 14,
+      "notes": "Net-7 to net-30 invoices; take 30-50% deposits. Stripe is not offered in many reference countries (stripe.com/global, Nov 2026: absent in e.g. the Philippines, Colombia, Argentina, Ukraine, Georgia, Armenia, Sri Lanka, Tunisia, Ecuador, Serbia; Nigeria, Kenya, Ghana and South Africa only via its extended network); Payoneer covers 190+ countries and territories."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 21,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 400,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal with written authorization; unauthorized phishing/testing is a crime nearly everywhere. Answers must be truthful and attested by the client.",
+      "complianceRequirements": [
+        "signed scope/authorization letter for simulations",
+        "client employees only; no credential harvesting kept",
+        "truthful questionnaire answers signed by client",
+        "data-protection notice to employees where required (EU/UK works councils)",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Direct invoicing (Wise/Payoneer) and Upwork pay out in nearly all reference countries."
+    },
+    "automationPlan": [
+      "LLM answer drafting from control inventory + answer library",
+      "policy templates mapped to ISO 27001/SOC 2 controls",
+      "scheduled simulation campaigns and reports"
+    ],
+    "manualSteps": [
+      "control interviews with client",
+      "authorization paperwork",
+      "evidence review"
+    ],
+    "fullCycle": [
+      "Build answer library and policy pack",
+      "Win first SMB via Upwork/MSPs",
+      "Deliver questionnaire + policies",
+      "Add quarterly simulations",
+      "Invoice to bank"
+    ],
+    "risks": [
+      "liability for inaccurate answers",
+      "trust barrier without certifications",
+      "simulation complaints from staff"
+    ],
+    "evidence": "Security questionnaires are routine in B2B procurement. Gophish is free and open-source, so simulations need no capital. KnowBe4 runs a partner program for VARs, MSPs and consultants but publishes no margins, minimums or entity requirements (unverified). Demand figures unverified.",
+    "sources": [
+      "https://getgophish.com/",
+      "https://www.knowbe4.com/partners",
+      "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65",
+      "https://stripe.com/global",
+      "https://www.payoneer.com/about/"
+    ],
+    "tags": ["b2b", "security", "compliance"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Gophish (free, open-source)",
+          "policy templates (free/open frameworks)",
+          "LLM plan (~$20/mo)",
+          "small VPS for simulations (~$5/mo, optional)"
+        ],
+        "skills": [
+          "security fundamentals (ISO 27001/SOC 2 concepts)",
+          "mapping controls to questionnaire answers truthfully",
+          "running authorized simulations with signed scope"
+        ],
+        "equipment": ["laptop", "reliable internet"],
+        "accounts": [
+          "Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each)",
+          "Wise Business or Stripe account for invoicing (KYC)",
+          "LinkedIn profile for outreach"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per questionnaire or policy pack",
+        "typicalPriceUsd": {
+          "low": 300,
+          "median": 1000,
+          "high": 4000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 10,
+        "notes": "Estimate: consultants charge ~$75-$200/h; a questionnaire or policy pack takes 5-20 h; fee ~5% blended Upwork/direct. Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only; startup cash is not amortised. Months include ramp-up to the first order."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 18,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 6000
+        },
+        "notes": "Questionnaire volume keeps growing, but trust-center and compliance-automation platforms now auto-answer questionnaires with AI, compressing the freelance niche. Buyers prefer credentialed consultants (CISSP/ISO lead auditor), so newcomers find it hard to close. Liability for wrong answers is a real failure mode; work only from verified client evidence."
+      },
+      "pricingStrategy": "Start with a fixed-price questionnaire completion and policy starter pack, then sell an annual package with policy updates and quarterly awareness simulations.",
+      "profitPath": [
+        "Month 0: policy template library and Gophish lab (cost $0)",
+        "Month 1-3: outreach to SaaS startups and MSPs, expected $0-$300",
+        "Month 3-6: first 1-2 clients via MSP referrals",
+        "Month 6-12: 2-4 annual packages for those with credentials"
+      ],
+      "sources": [
+        "https://getgophish.com/",
+        "https://www.knowbe4.com/partners",
+        "https://investors.upwork.com/static-files/468fcdc3-31a4-4432-9d1e-f8b50122dd65"
+      ]
+    }
+  }
+]

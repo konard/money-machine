@@ -1,0 +1,1959 @@
+[
+  {
+    "id": "bank-account-signup-bonuses",
+    "name": "Bank account sign-up and switching bonuses",
+    "category": "finance",
+    "summary": "Collect cash bonuses banks pay for opening a new current/checking account and meeting a direct-deposit or switch requirement.",
+    "howItWorks": "Offers are country-specific and change monthly. Examples checked Nov 2026: in the US, Chase pays $400 for a new Total Checking account with $1,000+ of direct deposits within 90 days (offer ends 27 Jan 2027, paid within 15 days); in the UK, CASS switch bonuses range GBP 175-300 (Barclays up to GBP 300, Santander GBP 240, HSBC GBP 220, First Direct GBP 210, Lloyds/NatWest GBP 200). Canada and Germany run similar but smaller offers. You open the account, route a payroll or qualifying deposit, meet card/debit conditions, receive the bonus, then keep or close the account after the clawback window. Banks pay because customer lifetime value exceeds the bonus.",
+    "platforms": [
+      "Chase/Wells Fargo/SoFi (US)",
+      "UK CASS switching offers",
+      "Canadian big-5 banks",
+      "German direct banks",
+      "Doctor of Credit / MoneySavingExpert trackers"
+    ],
+    "payout": {
+      "methods": ["bonus credited to the new bank account"],
+      "minimumPayout": "Fixed bonus per offer (e.g. US $400 Chase; UK GBP 175-300)",
+      "frequency": "one-off per offer",
+      "typicalDelayDays": 90,
+      "notes": "Chase pays within 15 days of meeting requirements; UK switch bonuses typically within weeks of the switch. Many banks claw back if the account is closed within ~6 months. Requires an existing salary/pay-in of roughly $1,000-$2,000 to route (not spent), hence capitalRequiredUsd 0."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 150
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 600
+    },
+    "scores": {
+      "paymentProbability": 8,
+      "automation": 5,
+      "setupEffort": 2,
+      "ongoingEffort": 2,
+      "incomePotential": 3,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 16
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere (standard retail promotion); bonuses are usually taxable interest income.",
+      "complianceRequirements": [
+        "KYC with real identity",
+        "meet direct-deposit terms honestly",
+        "report bonus income for tax",
+        "avoid excessive ChexSystems/credit inquiries"
+      ]
+    },
+    "availability": {
+      "notes": "Country-specific: meaningful recurring offers exist mainly in the US, UK, Canada, Germany and Australia (~5-8 of 50 reference countries). Residency, a local address and often a salary paid in are required. Examples above are dated Nov 2026 and expire; always check the bank's own offer page."
+    },
+    "automationPlan": [
+      "Scrape/RSS-monitor public bonus trackers (Doctor of Credit, MSE) and filter by eligibility",
+      "Calendar automation for direct-deposit dates, minimum-balance and earliest-close dates"
+    ],
+    "manualSteps": [
+      "Identity verification and account opening",
+      "Changing payroll/direct deposit",
+      "Closing accounts after the hold period"
+    ],
+    "fullCycle": [
+      "Pick an eligible offer",
+      "Open account with KYC",
+      "Meet deposit/activity terms",
+      "Receive bonus",
+      "Move funds to main bank"
+    ],
+    "risks": [
+      "Clawback if closed early",
+      "Bonus terms changes",
+      "Credit/ChexSystems inquiries",
+      "Tax liability",
+      "Each bank pays a given person once"
+    ],
+    "evidence": "Chase's official offer page (Nov 2026) lists a $400 new-checking bonus; MoneySavingExpert (updated 30 Oct 2026) lists seven UK switch bonuses of GBP 175-300.",
+    "sources": [
+      "https://account.chase.com/consumer/banking/seo",
+      "https://www.moneysavingexpert.com/banking/compare-best-bank-accounts/",
+      "https://www.doctorofcredit.com/best-bank-account-bonuses/"
+    ],
+    "tags": ["capital-light", "one-off", "country-limited", "low-risk"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Doctor of Credit / MoneySavingExpert bonus trackers (free)",
+          "spreadsheet or calendar for deadlines (free)"
+        ],
+        "skills": [
+          "reading bonus terms (direct-deposit, hold period, clawback)",
+          "basic cash-flow planning; AI can summarise terms but cannot open accounts"
+        ],
+        "equipment": ["smartphone", "laptop"],
+        "accounts": [
+          "new bank account per offer + KYC",
+          "existing salary/direct-deposit source that can be redirected"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per bonus collected",
+        "typicalPriceUsd": {
+          "low": 100,
+          "median": 300,
+          "high": 700
+        },
+        "costPerUnitUsd": 10,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 97,
+        "hoursPerUnit": 2,
+        "notes": "US offers $200-$900 (Chase ~$300-400), UK switch offers GBP 175-300; cost covers occasional monthly fees or lost interest on minimum balances (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost; first bonus typically posts 45-150 days after opening."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 75,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 100,
+          "high": 500
+        },
+        "notes": "Banks still pay to acquire primary-account customers, so offers persist, but only residents of a few countries (US, UK, CA, DE) with a payroll deposit can play. Supply of fresh offers per person is finite (once-per-lifetime or 12-24 month rules), so income is lumpy and runs out. Failure modes: clawback for early closure, missed direct-deposit requirement, ChexSystems denials. Likelihood here means any positive net within 12 months for eligible residents; a steady $100/month is only reached by people churning 4+ offers a year."
+      },
+      "pricingStrategy": "Not priced by you: rank open offers by bonus per required deposit and hold time, and take the easiest high-value offers first.",
+      "profitPath": [
+        "Month 0: pick 1-2 eligible offers from a tracker and open accounts (cost $0)",
+        "Month 1-2: route direct deposit, meet requirements; nothing paid yet",
+        "Month 3-6: first bonuses post (expected $200-$600 total); start the next offers",
+        "Month 6-12: close only after clawback windows; repeat with new banks (expected $100-$150/month averaged)"
+      ],
+      "sources": [
+        "https://account.chase.com/consumer/banking/seo",
+        "https://www.moneysavingexpert.com/banking/compare-best-bank-accounts/",
+        "https://www.doctorofcredit.com/best-bank-account-bonuses/"
+      ]
+    }
+  },
+  {
+    "id": "credit-card-signup-rewards",
+    "name": "Credit card sign-up bonuses and rewards optimisation",
+    "category": "finance",
+    "summary": "Earn welcome bonuses (cash or points) by meeting minimum-spend on new credit cards using normal expenses, paid off in full monthly.",
+    "howItWorks": "Offers are country-specific. Example checked Nov 2026: the US Capital One Venture card gives 75,000 miles (about $750 in travel) after $4,000 of purchases in the first 3 months, with a $95 annual fee. UK, Canadian and Australian issuers offer smaller points packages. You route only existing spending through the card and pay the full statement each month, so there is no interest. Points/cashback are redeemed as statement credit, bank transfer or travel. Issuers pay because interchange fees and future revolving balances from the average customer fund it.",
+    "platforms": [
+      "US issuers (Chase, Amex, Capital One, Citi)",
+      "UK Amex/Barclaycard",
+      "Canadian and Australian card issuers"
+    ],
+    "payout": {
+      "methods": [
+        "statement credit",
+        "direct deposit to bank",
+        "points redeemed for cash/travel"
+      ],
+      "minimumPayout": "Fixed bonus after minimum spend",
+      "frequency": "per card",
+      "typicalDelayDays": 90,
+      "notes": "Bonus usually posts 1-2 statement cycles after meeting minimum spend. Minimum spend (e.g. $4,000 in 3 months) must come from normal expenses, so capitalRequiredUsd is 0 only if you already spend that much."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 150
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 80,
+      "high": 400
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 4,
+      "setupEffort": 2,
+      "ongoingEffort": 2,
+      "incomePotential": 3,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 18
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; in the US cash rewards from spending are generally treated as rebates (not income), bank-account-style bonuses may be taxable.",
+      "complianceRequirements": [
+        "good credit history",
+        "never carry a balance",
+        "honest income declaration on applications",
+        "follow issuer 'once per lifetime' rules"
+      ]
+    },
+    "availability": {
+      "notes": "Country-specific: lucrative bonuses are concentrated in the US, Canada, UK and Australia; elsewhere card rewards are small. Requires a credit file, so new arrivals and thin-file applicants are usually declined. Offers change frequently; check issuer pages."
+    },
+    "automationPlan": [
+      "Track spend progress and deadlines automatically via bank export/APIs",
+      "Autopay full balance",
+      "Monitor public offer trackers for elevated bonuses"
+    ],
+    "manualSteps": [
+      "Credit application and identity checks",
+      "Card activation",
+      "Redeeming points"
+    ],
+    "fullCycle": [
+      "Choose offer matched to normal spend",
+      "Apply and get approved",
+      "Hit minimum spend with regular expenses",
+      "Bonus posts",
+      "Redeem as cash to bank"
+    ],
+    "risks": [
+      "Interest and debt if balance not paid",
+      "Credit score dips from hard pulls",
+      "Annual fees",
+      "Account shutdowns for gaming (manufactured spend)"
+    ],
+    "evidence": "Capital One's official Venture page (Nov 2026) lists 75,000 bonus miles for $4,000 spend in 3 months; Doctor of Credit tracks current US offers.",
+    "sources": [
+      "https://www.capitalone.com/credit-cards/venture/",
+      "https://www.doctorofcredit.com/best-current-credit-card-sign-up-bonuses/",
+      "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
+    ],
+    "tags": ["country-limited", "one-off", "requires-credit-history"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 4,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Doctor of Credit / issuer comparison pages (free)",
+          "autopay pay-in-full (free)"
+        ],
+        "skills": [
+          "credit discipline: pay every statement in full",
+          "tracking minimum-spend windows and issuer rules (e.g. 5/24)"
+        ],
+        "equipment": ["smartphone", "laptop"],
+        "accounts": [
+          "good credit file in US/UK/CA/AU",
+          "checking account for autopay"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per card welcome bonus",
+        "typicalPriceUsd": {
+          "low": 150,
+          "median": 400,
+          "high": 1000
+        },
+        "costPerUnitUsd": 50,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 3,
+        "notes": "Cash-equivalent value of typical welcome offers ($200 cash to 60-75k points valued ~1c); cost = average annual fee not waived (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost if you choose no-fee or first-year-waived cards; bonus posts 1-2 statement cycles after minimum spend."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 60,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 70,
+          "high": 350
+        },
+        "notes": "Issuers keep paying large bonuses in US/UK/CA/AU, but 2025-2026 rules (once-per-lifetime language, 5/24, family restrictions) keep tightening. Winners already have organic spend of $1,500+/month and perfect repayment habits. One month of carried balance at 20-30% APR wipes out the bonus; outside the four core markets bonuses are small or absent."
+      },
+      "pricingStrategy": "Not priced by you: only apply for cards whose minimum spend you can meet from normal expenses, ranking by bonus value minus annual fee.",
+      "profitPath": [
+        "Month 0: check credit report, choose one no-fee or fee-waived card (cost $0)",
+        "Month 1-3: meet minimum spend with normal bills, pay in full",
+        "Month 3-6: first bonus posts (expected $200-$600); apply for the next card after 3-6 months",
+        "Month 6-12: 2-3 bonuses a year, about $50-$100/month averaged; downgrade fee cards before renewal"
+      ],
+      "sources": [
+        "https://www.capitalone.com/credit-cards/venture/",
+        "https://www.doctorofcredit.com/best-current-credit-card-sign-up-bonuses/",
+        "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
+      ]
+    }
+  },
+  {
+    "id": "brokerage-signup-transfer-bonuses",
+    "name": "Brokerage sign-up, free-share and transfer bonuses",
+    "category": "finance",
+    "summary": "Receive free shares or cash from investment apps for opening/funding an account or transferring an existing portfolio.",
+    "howItWorks": "Brokers such as Robinhood, Webull, moomoo, Tiger Brokers, Trading 212 and Public give new customers free fractional shares, cash vouchers or 1-3% match on transferred assets. You open an account, deposit or transfer the qualifying amount, hold it for the required period (often 30-365 days), then sell the free shares and withdraw to your bank. The broker pays to acquire assets under management. Rewards are usually securities; some need capital at market risk.",
+    "platforms": [
+      "Robinhood",
+      "Webull",
+      "moomoo",
+      "Tiger Brokers",
+      "Trading 212",
+      "Public.com",
+      "Interactive Brokers referrals"
+    ],
+    "payout": {
+      "methods": ["sell shares -> withdraw to bank"],
+      "minimumPayout": "Varies; free share often $5-$200",
+      "frequency": "one-off per offer",
+      "typicalDelayDays": 45,
+      "notes": "Free shares often locked 2-30 days; many free-share offers require a funded deposit ($1-$100+), and transfer matches require thousands held for 1-5 years or are clawed back. Specific current offers could not be confirmed on official pages in Nov 2026 (broker sites blocked automated reads)."
+    },
+    "capitalRequiredUsd": 100,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 300
+    },
+    "scores": {
+      "paymentProbability": 8,
+      "automation": 4,
+      "setupEffort": 2,
+      "ongoingEffort": 1,
+      "incomePotential": 2,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 88,
+      "platformAvailabilityPercent": 35
+    },
+    "legality": {
+      "restrictedIn": [
+        "Bangladesh",
+        "Nepal",
+        "Tunisia",
+        "Morocco",
+        "Libya",
+        "Iraq"
+      ],
+      "notes": "Owning shares via a licensed broker is legal everywhere, but these bonuses come from foreign brokers, which conflict with capital controls in the 6 listed countries (6/50 = 12% restricted, so 88%).",
+      "complianceRequirements": [
+        "KYC",
+        "tax on share value at receipt and capital gains",
+        "W-8BEN for non-US residents"
+      ]
+    },
+    "availability": {
+      "notes": "Country-specific: offers exist in US, UK, EU, Canada, Australia, Singapore, Malaysia, Japan, Hong Kong, some LatAm (moomoo/Tiger/Webull footprint). Roughly a third of reference countries. Offer amounts change often; check the broker's own promotion terms."
+    },
+    "automationPlan": [
+      "Watch broker promo pages and trackers",
+      "Calendar the hold periods and sell automatically after unlock via broker API (IBKR/Alpaca)",
+      "Auto-withdraw to bank"
+    ],
+    "manualSteps": [
+      "Account opening and KYC",
+      "Funding transfers",
+      "Tax forms"
+    ],
+    "fullCycle": [
+      "Pick offer",
+      "Open and fund account",
+      "Receive free share/cash",
+      "Wait hold period",
+      "Sell and withdraw to bank"
+    ],
+    "risks": [
+      "Market loss on required deposits",
+      "Clawback on early transfer-out",
+      "Small value per offer",
+      "Tax paperwork"
+    ],
+    "evidence": "Robinhood, Webull and moomoo publish ongoing free-stock/transfer promotions; Doctor of Credit tracks brokerage bonuses.",
+    "sources": [
+      "https://www.doctorofcredit.com/best-brokerage-bonuses/",
+      "https://www.moomoo.com/",
+      "https://www.trading212.com/"
+    ],
+    "tags": ["one-off", "capital-light", "investing"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 100,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Doctor of Credit brokerage bonus list (free)"],
+        "skills": [
+          "reading lock-up and clawback terms",
+          "basic understanding of market risk on deposited funds"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": ["broker account + KYC and tax ID", "linked bank account"]
+      },
+      "unitEconomics": {
+        "unit": "per bonus collected",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 30,
+          "high": 300
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 97,
+        "hoursPerUnit": 1,
+        "notes": "Free-share offers usually $5-$50; transfer/deposit matches reach $100-$300 but need thousands held for months to years; cost covers FX/transfer fees (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). The $100 deposit is kept (it is an asset, not an expense), so there is nothing to recover beyond market risk."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 70,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 150
+        },
+        "notes": "Retail brokers still pay acquisition bonuses, but free-share values have shrunk and bigger offers now require large transfers and multi-year holds. Profit is small but near-certain for eligible residents; offers run out after a handful of brokers. Failure modes: clawback for early withdrawal, losses on the required deposit, account freezes on KYC."
+      },
+      "pricingStrategy": "Not priced by you: take the offers with the smallest required deposit and shortest lock-up first.",
+      "profitPath": [
+        "Month 0: open 1-2 brokers with free-share offers, deposit the minimum (cash $100 kept)",
+        "Month 1: free shares arrive (expected $10-$60)",
+        "Month 2-6: sell after lock-up, move to the next eligible offer",
+        "Month 6-12: offers dry up; consider transfer bonuses only if you already hold investments"
+      ],
+      "sources": [
+        "https://www.doctorofcredit.com/best-brokerage-bonuses/",
+        "https://www.moomoo.com/",
+        "https://www.trading212.com/"
+      ]
+    }
+  },
+  {
+    "id": "high-yield-savings-mmf-tbills",
+    "name": "High-yield savings, money-market funds and government bills",
+    "category": "finance",
+    "summary": "Earn near-risk-free interest on idle cash via high-yield deposit accounts, money-market funds or treasury bills.",
+    "howItWorks": "You move cash from a zero-interest account into an insured high-yield savings account, a government money-market fund, or buy short-dated government bills directly (TreasuryDirect, Tesouro Direto, NS&I, Singapore T-bills, Nigerian/Kenyan T-bill auctions). The bank or government pays interest because it is borrowing your money. Returns scale with capital; a baseline, not a business.",
+    "platforms": [
+      "Online banks (Marcus, Ally, Chase UK, Trade Republic)",
+      "TreasuryDirect",
+      "Tesouro Direto",
+      "Vanguard/Fidelity MMFs",
+      "local T-bill auctions"
+    ],
+    "payout": {
+      "methods": ["interest credited to account", "maturity proceeds to bank"],
+      "minimumPayout": "None",
+      "frequency": "monthly interest or at maturity",
+      "typicalDelayDays": 30,
+      "notes": "Savings interest posts monthly; T-bills pay at maturity (4-52 weeks)."
+    },
+    "capitalRequiredUsd": 1000,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 3,
+      "median": 30,
+      "high": 400
+    },
+    "scores": {
+      "paymentProbability": 10,
+      "automation": 9,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 2,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 100
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; Islamic equivalents (profit-sharing deposits, sukuk) exist.",
+      "complianceRequirements": [
+        "KYC",
+        "report interest as taxable income",
+        "stay under deposit-insurance limits per bank"
+      ]
+    },
+    "availability": {
+      "notes": "Some interest-bearing option exists in every reference country. USD rates checked Nov 2026: US Treasury bill auctions in Oct 2026 cleared at about 4.1-4.35% (13-week ~4.15-4.2%); the FDIC national average savings rate is only 0.38% (Oct 2026), so you must pick an online high-yield account or MMF. Local-currency rates are much higher in Brazil, Nigeria, Kenya, Argentina but with inflation/FX risk. Income = capital x rate (e.g. $10k at 4% = ~$33/month); capital is required and $1,000 yields only ~$3/month."
+    },
+    "automationPlan": [
+      "Auto-sweep idle balances above a threshold into HYSA/MMF",
+      "Auto-roll T-bill ladders (TreasuryDirect auto-reinvest)",
+      "Rate-monitoring script to switch banks when rates drop"
+    ],
+    "manualSteps": ["Account opening/KYC", "Linking bank accounts"],
+    "fullCycle": [
+      "Open HYSA or MMF/T-bill account",
+      "Transfer savings",
+      "Interest accrues",
+      "Maturity/withdrawal",
+      "Funds to bank"
+    ],
+    "risks": [
+      "Inflation exceeding rate",
+      "Rate cuts",
+      "Bank failure above insurance limits",
+      "Currency devaluation in emerging markets"
+    ],
+    "evidence": "Interest is contractually paid; TreasuryDirect/Fiscal Data auction results (Oct 2026 bills ~4.1-4.35%) and FDIC national rates (savings avg 0.38%, rate cap 4.63%, Oct 2026) document yields.",
+    "sources": [
+      "https://www.fdic.gov/resources/bankers/national-rates/",
+      "https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/",
+      "https://www.treasurydirect.gov/marketable-securities/treasury-bills/",
+      "https://www.tesourodireto.com.br/"
+    ],
+    "tags": ["passive", "capital-required", "low-risk", "recurring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 1000,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "online high-yield savings account, money-market fund or TreasuryDirect (free)"
+        ],
+        "skills": ["none beyond comparing rates and deposit-insurance limits"],
+        "equipment": ["smartphone"],
+        "accounts": ["bank or broker account + KYC", "linked current account"]
+      },
+      "unitEconomics": {
+        "unit": "per $1,000 deposited, per year",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 40,
+          "high": 45
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0,
+        "notes": "Annual interest on $1,000: ~2% in euro accounts (ECB deposit rate 2.50% since 16 Sep 2026), ~3.5% in GBP accounts (Bank Rate 3.75%, Sep 2026), ~4.0-4.3% in USD T-bills/HYSA (Oct 2026 auctions 4.1-4.35%), so $20-$45. Emerging-market local rates are higher but carry FX/inflation risk. Profit depends on capital, not effort: $1,000 earns ~$3/month; ~$30,000 is needed for $100/month."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost. The deposit is not spent and can be withdrawn, so startup recovery is not applicable; first interest posts within ~30 days."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 95,
+        "typicalNetProfitMonth12Usd": {
+          "low": 3,
+          "median": 30,
+          "high": 400
+        },
+        "notes": "Profit is almost certain in nominal terms because interest is contractual and deposits are insured up to limits, but it scales only with the capital you bring, not with effort or skill. USD rates have been drifting down with policy cuts; after inflation the real return is near zero. Likelihood is for any positive net return; reaching $100/month needs roughly $30,000 at 4%."
+      },
+      "pricingStrategy": "Not priced by you: move cash to the best insured rate and re-check quarterly; ladder T-bills to lock rates if cuts are expected.",
+      "profitPath": [
+        "Month 0: open an online HYSA/MMF and move idle cash (capital $1,000+, kept)",
+        "Month 1: first interest (~$3 per $1,000)",
+        "Month 3-6: automate a monthly sweep of surplus cash; income grows only with deposits",
+        "Month 6-12: optional T-bill ladder; expect ~$40 per $1,000 per year"
+      ],
+      "sources": [
+        "https://www.fdic.gov/resources/bankers/national-rates/",
+        "https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/",
+        "https://www.treasurydirect.gov/marketable-securities/treasury-bills/",
+        "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
+        "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
+      ]
+    }
+  },
+  {
+    "id": "robo-advisor-index-dividends",
+    "name": "Dividend index investing via robo-advisors or index funds",
+    "category": "finance",
+    "summary": "Invest regularly in diversified index ETFs via a robo-advisor and collect dividends plus long-run growth.",
+    "howItWorks": "Robo-advisors (Betterment, Wealthfront, Nutmeg, Scalable Capital, StashAway, Syfe, Wahed, Bamboo/Risevest, Groww) automatically buy and rebalance low-cost index ETFs for a 0.25-0.75% fee. Companies in the index pay dividends (~1.5-4% yield), which you can withdraw or reinvest. Income is passive but scales with capital and carries market risk; it is not a quick money maker.",
+    "platforms": [
+      "Betterment",
+      "Wealthfront",
+      "Nutmeg",
+      "Scalable Capital",
+      "StashAway",
+      "Syfe",
+      "Wahed",
+      "local index funds"
+    ],
+    "payout": {
+      "methods": ["dividend cash -> withdraw to bank", "sell units -> bank"],
+      "minimumPayout": "Usually none; some platforms $1-$100 minimum withdrawal",
+      "frequency": "dividends quarterly; withdrawals 2-5 days",
+      "typicalDelayDays": 90,
+      "notes": "First dividend arrives at next quarterly distribution. Betterment (Nov 2026): 0.25%/year with $200+/month deposits or $24k+ balance, otherwise $5/month, which eats small balances."
+    },
+    "capitalRequiredUsd": 500,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 2,
+      "median": 20,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 9,
+      "automation": 10,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 3,
+      "aiLeverage": 1,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [
+        "Bangladesh",
+        "Nepal",
+        "Tunisia",
+        "Morocco",
+        "Libya",
+        "Iraq"
+      ],
+      "notes": "Investing in domestic funds is legal everywhere (hence 100%). The listed countries restrict only the foreign robo-advisor route under capital controls - use domestic or Sharia-compliant funds there.",
+      "complianceRequirements": [
+        "KYC and suitability questionnaire",
+        "dividend and capital-gains tax",
+        "W-8BEN/withholding treaties"
+      ]
+    },
+    "availability": {
+      "notes": "Local robo-advisors or index funds exist in most reference countries; the global platforms cover US/UK/EU/SG/MY/AU. Wahed operates in several Muslim-majority countries."
+    },
+    "automationPlan": [
+      "Recurring auto-deposit from salary",
+      "Auto-rebalance and dividend reinvest/withdraw settings",
+      "Script yearly tax-lot export"
+    ],
+    "manualSteps": ["KYC/risk profile", "Linking bank", "Annual tax filing"],
+    "fullCycle": [
+      "Open robo account",
+      "Set recurring deposit",
+      "ETFs bought automatically",
+      "Dividends paid quarterly",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Market drawdowns of 30-50%",
+      "Currency risk",
+      "Fees on small balances",
+      "Platform shutdowns (assets are custodied, but transfers take time)"
+    ],
+    "evidence": "S&P SPIVA scorecards show most active funds underperform indices over 10-15 years; robo platforms publish dividend distributions and AUM.",
+    "sources": [
+      "https://www.spglobal.com/spdji/en/research-insights/spiva/",
+      "https://www.betterment.com/pricing",
+      "https://www.stashaway.sg/"
+    ],
+    "tags": ["passive", "capital-required", "recurring", "long-term"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 500,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "robo-advisor (e.g. Betterment 0.25%/yr with $200+/month deposits or a $24,000+ balance, else $5/month) or a zero-fee broker with index ETFs"
+        ],
+        "skills": [
+          "understanding volatility and long horizons; no stock picking needed"
+        ],
+        "equipment": ["smartphone"],
+        "accounts": [
+          "investment account + KYC and tax ID",
+          "linked bank account for automatic deposits"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per $1,000 invested, per year",
+        "typicalPriceUsd": {
+          "low": -200,
+          "median": 70,
+          "high": 250
+        },
+        "costPerUnitUsd": 3,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 96,
+        "hoursPerUnit": 0,
+        "notes": "Total return per $1,000 per year: long-run equity average ~7% ($70) of which dividends ~1.5% ($15); a bad year can be -20%. Cost = 0.25% management fee ($2.50). Profit depends on capital, not effort: $1,000 yields ~$1/month in dividends; a $5/month flat fee on small balances eats most of it."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost if you avoid flat-fee plans. Capital is invested, not spent, so startup recovery is not applicable (but the balance can fall)."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 70,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 15,
+          "high": 1200
+        },
+        "notes": "Low-cost index investing keeps winning against active funds (SPIVA), and robo-advisors have cut fees, but returns depend entirely on capital and market direction. Over any single 12-month window equities are positive roughly 3 years in 4, so likelihood is ~70% for any net gain; cash dividends of $100/month need ~$80,000 invested. Failure modes: selling in a drawdown, flat monthly fees on tiny balances, currency risk."
+      },
+      "pricingStrategy": "Not priced by you: choose the lowest total expense (fund OER + platform fee) and automate monthly deposits.",
+      "profitPath": [
+        "Month 0: open a robo/index account and invest $500-$1,000 (kept as an asset)",
+        "Month 1-3: set up automatic monthly deposits; first quarterly dividend",
+        "Month 3-6: reinvest dividends; ignore volatility",
+        "Month 6-12: expected ~$70 per $1,000 per year in total return, highly variable"
+      ],
+      "sources": [
+        "https://www.spglobal.com/spdji/en/research-insights/spiva/",
+        "https://www.betterment.com/pricing",
+        "https://www.stashaway.sg/"
+      ]
+    }
+  },
+  {
+    "id": "cashback-portals",
+    "name": "Cashback portals and shopping rebates",
+    "category": "finance",
+    "summary": "Earn a percentage back on online purchases you would make anyway by clicking through cashback portals first.",
+    "howItWorks": "Cashback sites (Rakuten, TopCashback, Quidco, ShopBack, iGraal, Cashrewards) earn affiliate commissions from merchants and pass most of it to you. You install the browser extension, shop through it, the merchant confirms the order after the return window, and the portal pays you by PayPal or bank. Earnings depend on your own spending (typically 1-10% back) plus referral bonuses for inviting friends. Not a business, but a near-automatic rebate.",
+    "platforms": [
+      "Rakuten",
+      "TopCashback",
+      "Quidco",
+      "ShopBack",
+      "iGraal",
+      "Cashrewards"
+    ],
+    "payout": {
+      "methods": [
+        "PayPal",
+        "bank transfer/ACH",
+        "Venmo",
+        "check",
+        "gift cards"
+      ],
+      "minimumPayout": "Rakuten US $5 confirmed cash back; TopCashback US no stated minimum; ShopBack ~S$10 (unverified)",
+      "frequency": "Rakuten quarterly (15 Feb/May/Aug/Nov); TopCashback on demand once available",
+      "typicalDelayDays": 90,
+      "notes": "Cashback is pending 30-90 days until the merchant confirms (TopCashback: varies per retailer). Rakuten balances under $5 roll to the next quarter. ShopBack minimum not confirmed on an official page."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 2,
+      "median": 15,
+      "high": 150
+    },
+    "scores": {
+      "paymentProbability": 8,
+      "automation": 9,
+      "setupEffort": 1,
+      "ongoingEffort": 1,
+      "incomePotential": 1,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 45
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; in most jurisdictions purchase rebates are not taxable income (referral bonuses may be).",
+      "complianceRequirements": [
+        "one account per person",
+        "no self-referrals or fake referrals"
+      ]
+    },
+    "availability": {
+      "notes": "Major portals serve US, UK, Canada, Germany, France, Japan (Rakuten points), Australia, Singapore, Malaysia, Philippines, Thailand, Taiwan, Indonesia, South Korea (ShopBack); thinner in Africa/Central Asia."
+    },
+    "automationPlan": [
+      "Browser extension auto-activates cashback",
+      "Price-comparison script checks best portal rate",
+      "Auto-track pending vs paid cashback"
+    ],
+    "manualSteps": ["Account sign-up", "Linking PayPal/bank"],
+    "fullCycle": [
+      "Sign up and install extension",
+      "Shop through portal",
+      "Cashback pending",
+      "Confirmed after return window",
+      "Withdraw to PayPal/bank"
+    ],
+    "risks": [
+      "Tracking failures (claims needed)",
+      "Overspending to chase cashback",
+      "Long pending periods"
+    ],
+    "evidence": "Rakuten advertises billions in cumulative cash back paid to members; TopCashback and ShopBack publish member payout totals.",
+    "sources": [
+      "https://www.rakuten.com/help/article/when-will-i-get-paid-360002117667",
+      "https://www.topcashback.com/help/receive-cash-back/",
+      "https://www.shopback.com/"
+    ],
+    "tags": ["passive", "recurring", "low-effort"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 1,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Rakuten / TopCashback / Quidco / ShopBack (free)",
+          "portal browser extension (free)"
+        ],
+        "skills": [
+          "remembering to click through before buying; extension automates it"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": ["portal account", "PayPal or bank for withdrawal"]
+      },
+      "unitEconomics": {
+        "unit": "per $100 of purchases routed through a portal",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 3,
+          "high": 10
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.05,
+        "notes": "Typical retailer rates 1-10% of purchase value; $3 per $100 is a median blend (estimate). Pays only on spending you would make anyway."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost; first payout waits for 30-90 day merchant confirmation and quarterly payout cycles."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "low",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 85,
+        "typicalNetProfitMonth12Usd": {
+          "low": 2,
+          "median": 12,
+          "high": 120
+        },
+        "notes": "Portals keep paying because merchants pay them affiliate commissions, but rates have been trimmed and tracking is fragile (ad blockers, cookie loss). Profit is tiny but nearly certain; $100/month requires ~$3,000/month of routed spending. The real failure mode is buying things you did not need to chase cashback."
+      },
+      "pricingStrategy": "Not priced by you: compare portals per purchase and stack with card rewards.",
+      "profitPath": [
+        "Month 0: join 1-2 portals, install the extension (cost $0)",
+        "Month 1-3: cashback pending until merchants confirm",
+        "Month 3-6: first quarterly payout (expected $10-$40)",
+        "Month 6-12: steady $5-$20/month on normal spending"
+      ],
+      "sources": [
+        "https://www.rakuten.com/help/article/when-will-i-get-paid-360002117667",
+        "https://www.topcashback.com/help/receive-cash-back/",
+        "https://www.shopback.com/"
+      ]
+    }
+  },
+  {
+    "id": "amazon-ebay-online-arbitrage",
+    "name": "Online and retail arbitrage on Amazon FBA and eBay",
+    "category": "marketplaces",
+    "summary": "Buy discounted branded products (clearance, online deals) and resell them at higher prices on Amazon FBA or eBay.",
+    "howItWorks": "Using tools like Keepa and SellerAmp you find products whose Amazon/eBay sell price exceeds retail-clearance or online-deal cost by enough to cover fees (Amazon US referral 15% in most categories, 8% electronics, FBA fees, $39.99/mo Professional plan or $0.99/item Individual; eBay ~13.6% + $0.30-0.40/order). You buy units, ship them to an Amazon warehouse (FBA) or list on eBay, and Amazon handles fulfillment. Amazon pays out every ~14 days. Margins are thin (~15-30% ROI).",
+    "platforms": [
+      "Amazon Seller Central (FBA)",
+      "eBay",
+      "Keepa",
+      "SellerAmp",
+      "Tactical Arbitrage"
+    ],
+    "payout": {
+      "methods": [
+        "Amazon disbursement to bank (direct or via Payoneer)",
+        "eBay managed payments to bank"
+      ],
+      "minimumPayout": "No minimum",
+      "frequency": "Amazon every 14 days; eBay daily/weekly",
+      "typicalDelayDays": 14,
+      "notes": "Amazon disburses roughly every 14 days and may hold funds for new accounts (delivery-date-based reserve); disbursement cadence could not be confirmed on a public official page (Seller Central help requires login)."
+    },
+    "capitalRequiredUsd": 1000,
+    "timeToFirstDollarDays": {
+      "min": 21,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 8000
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 5,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Reselling genuine goods is legal (first-sale/exhaustion doctrine); some brands gated, counterfeits prohibited.",
+      "complianceRequirements": [
+        "Amazon seller identity verification",
+        "sales tax/VAT registration where required",
+        "keep supplier invoices",
+        "product safety rules (EU GPSR)"
+      ]
+    },
+    "availability": {
+      "notes": "Amazon lists ~27 store countries and accepts sellers from many more (needs an internationally chargeable card and a bank account; Payoneer for unsupported banks); exact registration-country list not confirmed. Works best for residents of US/UK/EU/CA/JP/AU. PHYSICAL STEP: buying and shipping inventory."
+    },
+    "automationPlan": [
+      "Automated deal scanning (Keepa API, Tactical Arbitrage)",
+      "Repricer software",
+      "AI listing/compliance checks",
+      "Prep-center outsourcing for shipping",
+      "Auto profit/inventory reporting"
+    ],
+    "manualSteps": [
+      "Seller identity verification",
+      "Buying and receiving goods",
+      "Packing/shipping to FBA (or paying prep center)",
+      "Handling ungating and IP complaints"
+    ],
+    "fullCycle": [
+      "Register seller account",
+      "Scan for profitable deals",
+      "Buy inventory",
+      "Ship to FBA/list on eBay",
+      "Sale -> 14-day disbursement to bank"
+    ],
+    "risks": [
+      "Account suspension/IP complaints",
+      "Inventory stuck unsold",
+      "Fee increases",
+      "Cash tied up"
+    ],
+    "evidence": "Jungle Scout's annual State of the Amazon Seller survey reports most sellers are profitable, with many earning $1k-$25k/month; Amazon reports millions of active third-party sellers.",
+    "sources": [
+      "https://sell.amazon.com/pricing",
+      "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364",
+      "https://www.junglescout.com/resources/reports/amazon-seller-report/",
+      "https://keepa.com/"
+    ],
+    "tags": ["physical-step", "capital-required", "scalable"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 1000,
+        "recurringMonthlyUsd": 80,
+        "tools": [
+          "Amazon Professional seller ($39.99/mo)",
+          "SellerAmp or Tactical Arbitrage (~$20-$60/mo)",
+          "Keepa (~$20/mo)"
+        ],
+        "skills": [
+          "product research and ROI maths",
+          "Amazon category/brand gating rules",
+          "prep and shipping to FBA; AI helps with listing but not sourcing judgement"
+        ],
+        "equipment": [
+          "laptop",
+          "smartphone with scanner app",
+          "label printer and boxes"
+        ],
+        "accounts": [
+          "Amazon Seller Central + identity verification",
+          "eBay seller account",
+          "bank account for disbursements"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per unit sold",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 30,
+          "high": 80
+        },
+        "costPerUnitUsd": 20,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 18,
+        "hoursPerUnit": 0.3,
+        "notes": "Median $30 sale: ~$15 cost of goods + ~$5 FBA fulfilment/prep/inbound; Amazon referral fee ~15%; gives ~$5.50 contribution (~30% ROI target)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 80,
+        "unitsPerMonthToBreakEven": 15,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 13,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Startup cash is inventory that turns over; recovery assumes ~$80/month median net (inventory cash keeps turning over)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": -150,
+          "median": 80,
+          "high": 5000
+        },
+        "notes": "Experienced sellers with good sourcing software and ungated categories still profit, but deal-finding tools are commoditised so margins compress within weeks. 2025-2026 changes (inbound placement fees, low-inventory fees, stricter brand/IP enforcement) hurt beginners most. Common failures: IP complaints and suspensions, stuck inventory, underestimating fees and returns. Verifier: median month-12 net lowered from $150 to $80 so it agrees with a 30% chance of reaching $100/month; Professional plan $39.99/mo and 15% referral fee confirmed on sell.amazon.com/pricing."
+      },
+      "pricingStrategy": "Buy only at 30%+ ROI after all fees; price at or just below the Buy Box and reprice automatically, raising when competitors stock out.",
+      "profitPath": [
+        "Month 0: open seller accounts and subscribe to tools ($80/mo), buy first $300-$500 of test inventory",
+        "Month 1-2: first sales; expect break-even to -$100 while learning fees",
+        "Month 3-6: reinvest profit, get ungated in 1-2 categories, ~150-300 units/month",
+        "Month 6-12: $100-$500/month net for those who survive; add wholesale accounts"
+      ],
+      "sources": [
+        "https://sell.amazon.com/pricing",
+        "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364",
+        "https://www.junglescout.com/resources/reports/amazon-seller-report/"
+      ]
+    }
+  },
+  {
+    "id": "used-goods-reselling",
+    "name": "Selling used goods online (eBay, Vinted, Mercari, local classifieds)",
+    "category": "marketplaces",
+    "summary": "Sell items you own or source cheaply (thrift, garage sales) on second-hand marketplaces such as eBay, Vinted, Mercari or Facebook Marketplace.",
+    "howItWorks": "Start by decluttering your own items for immediate cash, then optionally source underpriced goods from thrift stores, estate sales or free listings. AI can write titles/descriptions and price from sold comps. Buyers pay through the platform; you ship (or meet locally) and the platform releases funds after delivery. Vinted charges the buyer a protection fee so sellers keep the item price; eBay US charges 13.6% + $0.30-0.40 per order in most categories (250 free listings/month); Mercari US fees have changed repeatedly, so check its current fee page.",
+    "platforms": [
+      "eBay",
+      "Vinted",
+      "Mercari",
+      "Poshmark",
+      "Depop",
+      "Facebook Marketplace",
+      "OLX",
+      "Jiji",
+      "Carousell"
+    ],
+    "payout": {
+      "methods": ["platform balance -> bank", "PayPal", "cash for local deals"],
+      "minimumPayout": "Typically none to $1",
+      "frequency": "on demand / daily payouts",
+      "typicalDelayDays": 5,
+      "notes": "Funds released after delivery/buyer confirmation (Vinted ~2 days after delivery, unverified). Mercari US: free direct deposit once per day or Instant Pay to debit card for $3 (max $600/month). eBay payout timing not confirmed on an official page (help page blocked)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 3,
+      "max": 21
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 20,
+      "median": 150,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 9,
+      "automation": 4,
+      "setupEffort": 1,
+      "ongoingEffort": 5,
+      "incomePotential": 5,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling your own used goods is legal everywhere. Regular resale is a business; tax above thresholds (DAC7, 1099-K).",
+      "complianceRequirements": [
+        "declare income above thresholds (DAC7/1099-K)",
+        "no counterfeit or prohibited items",
+        "honest item condition"
+      ]
+    },
+    "availability": {
+      "notes": "eBay operates in ~190 markets; regional platforms (Vinted EU/UK, Mercari US/JP, Carousell SEA, OLX/Jiji Africa/Asia/LatAm) cover almost every reference country. PHYSICAL STEP: photographing and shipping items."
+    },
+    "automationPlan": [
+      "AI photo cleanup and listing generation from photos",
+      "Auto-pricing from sold comps",
+      "Cross-listing tools (Vendoo, List Perfectly)",
+      "Auto relist/offer-to-likers"
+    ],
+    "manualSteps": [
+      "Photographing items",
+      "Packing and shipping or local handover",
+      "Sourcing trips"
+    ],
+    "fullCycle": [
+      "Gather items",
+      "Photograph and list (AI-assisted)",
+      "Sell",
+      "Ship",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Scams/returns abuse",
+      "Time cost per item",
+      "Low margins on cheap items",
+      "Tax reporting thresholds"
+    ],
+    "evidence": "Vinted reports tens of millions of members; eBay has ~130M active buyers; full-time resellers document $2k-$10k/month publicly.",
+    "sources": [
+      "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364",
+      "https://www.mercari.com/us/help_center/topics/payouts/guides/getting-paid/",
+      "https://www.vinted.com/how_it_works"
+    ],
+    "tags": ["physical-step", "fast-cash", "zero-capital-start"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "eBay / Vinted / Mercari / Facebook Marketplace apps (free)",
+          "AI listing generator from photos (free tiers)"
+        ],
+        "skills": [
+          "photographing items",
+          "pricing from sold comps",
+          "packing and shipping (PHYSICAL)"
+        ],
+        "equipment": ["smartphone", "packing supplies", "kitchen scale"],
+        "accounts": [
+          "marketplace accounts + seller verification",
+          "bank account for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per item sold",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 25,
+          "high": 150
+        },
+        "costPerUnitUsd": 5,
+        "platformFeePercent": 13,
+        "grossMarginPercent": 67,
+        "hoursPerUnit": 0.5,
+        "notes": "Median $25 item; cost $5 covers thrift sourcing and packing (items you already own cost $0); eBay final-value fee ~13% + $0.40, Vinted charges buyers not sellers, Mercari ~10%."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost; first sale usually within days."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 85,
+        "typicalNetProfitMonth12Usd": {
+          "low": 20,
+          "median": 120,
+          "high": 2500
+        },
+        "notes": "Second-hand demand keeps growing and AI listing tools (photo-to-listing) cut time per item sharply in 2025-2026. Decluttering your own home is almost always profitable; scaling via thrift sourcing works for people with good eyes for brands. Failure modes: running out of stock to sell, low-value items that are not worth the time, returns and scam buyers."
+      },
+      "pricingStrategy": "Price at the median of recent sold listings to sell within a week; use offers/auction for slow items and raise prices on fast-selling categories.",
+      "profitPath": [
+        "Month 0: list 20-30 items you own (cost $0)",
+        "Month 1-2: first sales; expected $100-$300",
+        "Month 3-6: source from thrift/garage sales in 1-2 categories that sold fastest",
+        "Month 6-12: $100-$500/month net at 5-10 hours/week"
+      ],
+      "sources": [
+        "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364",
+        "https://www.mercari.com/us/help_center/topics/payouts/guides/getting-paid/",
+        "https://www.vinted.com/how_it_works"
+      ]
+    }
+  },
+  {
+    "id": "shopify-dropshipping",
+    "name": "Dropshipping store (Shopify + AliExpress/CJ/print-on-demand)",
+    "category": "marketplaces",
+    "summary": "Run an online store where a supplier ships products directly to customers; you handle marketing and customer service.",
+    "howItWorks": "You build a Shopify (or WooCommerce) store, import products from AliExpress, CJ Dropshipping, Zendrop or print-on-demand suppliers like Printful, and drive traffic with paid ads, TikTok or SEO. When a customer orders, you pay the supplier who ships directly. Honest expectations: most new stores lose money on ads and close within months; profitable operators typically test many products and have strong creative.",
+    "platforms": [
+      "Shopify",
+      "AliExpress",
+      "CJ Dropshipping",
+      "Printful",
+      "Meta/TikTok Ads"
+    ],
+    "payout": {
+      "methods": ["Shopify Payments -> bank", "PayPal", "Stripe"],
+      "minimumPayout": "No minimum",
+      "frequency": "Shopify Payments every 1-3 business days",
+      "typicalDelayDays": 3,
+      "notes": "PayPal/Stripe may hold funds for new merchants with long delivery times."
+    },
+    "capitalRequiredUsd": 300,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": -200,
+      "median": 0,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; consumer law applies (delivery times, EU 14-day refunds, GPSR, no counterfeits).",
+      "complianceRequirements": [
+        "business/tax registration as revenue grows",
+        "VAT/sales tax",
+        "consumer-protection and refund compliance",
+        "ad platform policies"
+      ]
+    },
+    "availability": {
+      "notes": "Shopify sells in 175+ countries; Shopify Payments works in ~23 countries, elsewhere PayPal/Stripe/local gateways. Suppliers ship globally."
+    },
+    "automationPlan": [
+      "AI product research and store copy",
+      "AI-generated ad creatives",
+      "Auto order routing to supplier (DSers/CJ apps)",
+      "AI customer-support chatbot",
+      "Automated tracking emails"
+    ],
+    "manualSteps": [
+      "Store/payment KYC",
+      "Ad account setup and budget decisions",
+      "Handling disputes and chargebacks"
+    ],
+    "fullCycle": [
+      "Create Shopify store",
+      "Import products",
+      "Run ads/content",
+      "Orders auto-forwarded to supplier",
+      "Payouts to bank"
+    ],
+    "risks": [
+      "Ad spend losses (most common outcome)",
+      "Long shipping -> chargebacks and payment holds",
+      "Supplier quality issues",
+      "Ad account bans"
+    ],
+    "evidence": "Shopify hosts millions of merchants; industry surveys commonly estimate only ~10-20% of dropshipping stores become profitable.",
+    "sources": [
+      "https://www.shopify.com/pricing",
+      "https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries",
+      "https://cjdropshipping.com/"
+    ],
+    "tags": ["capital-required", "high-failure-rate", "ai-friendly"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 300,
+        "recurringMonthlyUsd": 49,
+        "tools": [
+          "Shopify Basic (~$29/mo billed yearly, $39 monthly)",
+          "dropshipping/apps (~$20/mo)",
+          "Meta/TikTok ads (variable)",
+          "AI for copy and creatives"
+        ],
+        "skills": [
+          "paid-ads testing and creative production",
+          "product selection",
+          "customer service and refunds; AI drafts copy and creatives"
+        ],
+        "equipment": ["laptop", "smartphone"],
+        "accounts": [
+          "Shopify + Shopify Payments/PayPal KYC",
+          "supplier account (CJ/AliExpress)",
+          "ad accounts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per order",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 35,
+          "high": 80
+        },
+        "costPerUnitUsd": 27,
+        "platformFeePercent": 4,
+        "grossMarginPercent": 19,
+        "hoursPerUnit": 0.2,
+        "notes": "Median $35 order: ~$12 product+shipping plus ~$15 ad cost per purchase; payment processing ~2.9% + $0.30 (~4%). Shopify Basic price varies by region (the pricing page showed $19/mo yearly, $25 monthly for the fetcher's region vs ~$29/$39 in the US); fixed cost kept as an estimate."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 49,
+        "unitsPerMonthToBreakEven": 8,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 6,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Startup cash is ad-testing budget; recovery figure applies only to the minority who reach profit; the median starter never recovers it."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -300,
+          "median": -50,
+          "high": 3000
+        },
+        "notes": "Winners are operators with strong creative testing, branded products and faster shipping (US/EU warehouses), not generic AliExpress stores. Rising ad costs, de minimis import changes in the US (2025) and shoppers comparing on Temu/TikTok Shop squeeze margins. Most beginners burn their ad budget on product tests and quit."
+      },
+      "pricingStrategy": "Price at 2.5-3x landed cost so ad cost per purchase fits; raise prices with bundles and branding once a product converts.",
+      "profitPath": [
+        "Month 0: build store with AI copy, pick 3-5 test products ($300 incl. first ads)",
+        "Month 1-2: ad tests, mostly losses (-$100 to -$300)",
+        "Month 3-6: kill losers, scale one winner if found; move to faster-shipping supplier",
+        "Month 6-12: either $500+/month on a winner or close the store"
+      ],
+      "sources": [
+        "https://www.shopify.com/pricing",
+        "https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries",
+        "https://cjdropshipping.com/"
+      ]
+    }
+  },
+  {
+    "id": "domain-flipping-parking",
+    "name": "Domain name investing (flipping) and parking",
+    "category": "marketplaces",
+    "summary": "Register or buy brandable/keyword domains and resell them to businesses through Buy-Now listings on Afternic and Sedo.",
+    "howItWorks": "You register available domains (~$10/year) or buy expiring ones, list them with Buy-Now prices on Afternic (GoDaddy network; Dan.com is being folded into it) and Sedo, and wait for an end user to buy. Annual sell-through for typical portfolios is ~0.5-2%, so you need hundreds of names and years of renewals; a single sale can be $500-$5,000. Parking revenue has collapsed (Google changed AdSense-for-domains defaults), so treat parking as negligible.",
+    "platforms": [
+      "Afternic",
+      "Sedo",
+      "Atom",
+      "GoDaddy Auctions",
+      "NameBio (comps)"
+    ],
+    "payout": {
+      "methods": ["marketplace payout via bank wire/PayPal/Payoneer"],
+      "minimumPayout": "Per sale after escrow; Afternic minimum commission $15",
+      "frequency": "per sale",
+      "typicalDelayDays": 30,
+      "notes": "Escrow and domain transfer take 1-4 weeks. Commissions: Afternic 15% (Basic) or 20% (Boost) with GoDaddy Aftermarket nameservers, otherwise 25%/30%; Sedo 10% (parked Buy Now), 15% (offers/auctions/unparked), 20% via SedoMLS partners."
+    },
+    "capitalRequiredUsd": 500,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 720
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": -50,
+      "median": 0,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 3,
+      "incomePotential": 5,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 95
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Domain trading is legal everywhere; registering names containing others' trademarks is cybersquatting (UDRP/ACPA) and must be avoided.",
+      "complianceRequirements": [
+        "trademark screening",
+        "registrar KYC",
+        "tax on sale gains"
+      ]
+    },
+    "availability": {
+      "notes": "Registrars and marketplaces accept customers from nearly all reference countries; payouts via wire, PayPal or Payoneer."
+    },
+    "automationPlan": [
+      "AI brainstorming and trademark screening of names",
+      "Drop-catch/expired-domain filters via API",
+      "Auto-listing and price updates on Afternic/Sedo",
+      "Renewal pruning script based on inquiries"
+    ],
+    "manualSteps": [
+      "Choosing what to keep/renew",
+      "Negotiating inbound offers",
+      "Approving transfers"
+    ],
+    "fullCycle": [
+      "Register/buy domains",
+      "List with Buy-Now prices",
+      "Wait for buyer",
+      "Escrow and transfer",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Renewal costs exceed sales",
+      "Trademark disputes",
+      "Very long time to first sale",
+      "Market saturated with AI-generated names"
+    ],
+    "evidence": "NameBio records thousands of public sales weekly; established investors report 1% annual sell-through with 10-30x markup.",
+    "sources": [
+      "https://www.afternic.com/sell-domains",
+      "https://sedo.com/us/sell-domains/it-pays-to-sell-at-sedo/",
+      "https://namebio.com/",
+      "https://www.icann.org/resources/pages/help/dndr/udrp-en"
+    ],
+    "tags": ["long-tail", "lottery-like", "capital-light"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 500,
+        "recurringMonthlyUsd": 45,
+        "tools": [
+          "registrar (~$11/yr per .com)",
+          "Afternic/Sedo listings (free)",
+          "NameBio comps (free)",
+          "AI name generators"
+        ],
+        "skills": [
+          "valuing names against comparable sales",
+          "negotiating with inbound buyers"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "registrar account",
+          "Afternic/Sedo seller accounts + tax forms",
+          "PayPal or bank for payouts"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per domain sold",
+        "typicalPriceUsd": {
+          "low": 500,
+          "median": 2000,
+          "high": 10000
+        },
+        "costPerUnitUsd": 50,
+        "platformFeePercent": 20,
+        "grossMarginPercent": 78,
+        "hoursPerUnit": 3,
+        "notes": "Aftermarket sales of small investors cluster at $500-$5,000 (NameBio); cost = acquisition of the sold name; commission 15-30% on Afternic (25% Basic, 30% Boost, 15-20% with GoDaddy nameservers; $15 minimum) and 10-20% on Sedo. Sell-through is only ~1-2% of a portfolio per year."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 45,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 24,
+        "monthsToRecoverStartup": 24,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost is renewal of ~50 domains (~$45/month); one sale covers ~3 years of renewals, but the first sale often takes 1-2 years."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": -100,
+          "median": -45,
+          "high": 2500
+        },
+        "notes": "Profits concentrate among portfolio investors holding thousands of names bought years ago. AI startups create some demand for brandables, but AI name generators flood marketplaces and buyers increasingly pick available alternatives. Parking revenue is negligible. Failure mode: paying renewals for years on names that never sell."
+      },
+      "pricingStrategy": "List with Buy Now prices in the $1,000-$3,000 band for brandables (fast lane on Afternic), accept offers above 3x acquisition cost, and drop names that get no inquiries after two renewals.",
+      "profitPath": [
+        "Month 0: hand-register or buy 30-50 names (~$500)",
+        "Month 1-6: list on Afternic/Sedo with Buy Now prices; no sales expected",
+        "Month 6-12: prune non-performers before renewal; first inquiries",
+        "Month 12-24: first sale (if any) $500-$3,000"
+      ],
+      "sources": [
+        "https://www.afternic.com/sell-domains",
+        "https://sedo.com/us/sell-domains/it-pays-to-sell-at-sedo/",
+        "https://namebio.com/"
+      ]
+    }
+  },
+  {
+    "id": "website-newsletter-flipping",
+    "name": "Building and flipping content websites and newsletters",
+    "category": "marketplaces",
+    "summary": "Build (or buy and improve) a small content site or newsletter with traffic/revenue, then sell it on Flippa or Empire Flippers.",
+    "howItWorks": "Buyers pay roughly 25-45x monthly profit for established sites/newsletters. You build a niche site or newsletter (AI-assisted), grow it to verifiable revenue over 6-24 months, then list it on Flippa (small deals) or Empire Flippers (larger, vetted). Proceeds move through escrow to your bank. Alternatively buy undervalued sites and improve them, which needs capital. Starter sites without revenue sell for little.",
+    "platforms": [
+      "Flippa",
+      "Empire Flippers",
+      "Motion Invest",
+      "Duuce (newsletters)",
+      "Escrow.com"
+    ],
+    "payout": {
+      "methods": ["Escrow.com/platform escrow -> bank wire"],
+      "minimumPayout": "Per sale; Flippa self-service 10% success fee + listing fee from $29; Empire Flippers flat $10,000 commission up to ~$66.7k sale price, 15% up to $700k",
+      "frequency": "per sale",
+      "typicalDelayDays": 30,
+      "notes": "Escrow and asset migration typically 2-6 weeks; earn-outs possible. Empire Flippers' $10k minimum commission makes it unsuitable for small sites; use Flippa below ~$70k."
+    },
+    "capitalRequiredUsd": 100,
+    "timeToFirstDollarDays": {
+      "min": 180,
+      "max": 730
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 5,
+      "setupEffort": 7,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling a website/digital business is legal everywhere; misrepresenting traffic or revenue is fraud.",
+      "complianceRequirements": [
+        "accurate financial disclosure",
+        "verified analytics",
+        "tax on capital gains/business income",
+        "platform KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Flippa and Empire Flippers accept sellers from almost all countries; escrow pays by international wire."
+    },
+    "automationPlan": [
+      "AI content production and SEO",
+      "Automated newsletter publishing",
+      "Automated P&L and traffic reporting for buyers"
+    ],
+    "manualSteps": [
+      "Due diligence calls with buyers",
+      "Asset transfer and handover",
+      "Escrow/KYC"
+    ],
+    "fullCycle": [
+      "Build site/newsletter",
+      "Grow to stable revenue",
+      "List on Flippa/EF",
+      "Negotiate and escrow",
+      "Transfer and receive wire"
+    ],
+    "risks": [
+      "Google updates crushing AI content sites",
+      "No buyer at desired price",
+      "Long build time",
+      "Escrow scams outside platform"
+    ],
+    "evidence": "Flippa reports thousands of completed deals annually; Empire Flippers publishes sold-listing data with multiples.",
+    "sources": [
+      "https://flippa.com/pricing",
+      "https://empireflippers.com/commission-calculator/",
+      "https://flippa.com/",
+      "https://empireflippers.com/"
+    ],
+    "tags": ["exit", "lumpy", "ai-friendly"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 150,
+        "cashUsd": 100,
+        "recurringMonthlyUsd": 25,
+        "tools": [
+          "WordPress/Ghost/Beehiiv hosting (~$10-$25/mo)",
+          "AI writing tools",
+          "Flippa listing ($29+)"
+        ],
+        "skills": [
+          "SEO and content strategy",
+          "audience growth",
+          "documenting P&L for buyers"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "hosting and domain",
+          "Flippa / Empire Flippers account + KYC",
+          "Escrow.com"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per site or newsletter sold",
+        "typicalPriceUsd": {
+          "low": 500,
+          "median": 3000,
+          "high": 30000
+        },
+        "costPerUnitUsd": 300,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 80,
+        "hoursPerUnit": 200,
+        "notes": "Small content sites sell for ~30-40x monthly profit; a $100/month site sells for ~$3,000. Cost = domain, hosting and listing fee; Flippa self-service success fee 10% plus $29+ listing fee."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 25,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 18,
+        "monthsToRecoverStartup": 18,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Startup cash is recovered only at sale; ongoing hosting/tools ~$25/month."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 8,
+        "typicalNetProfitMonth12Usd": {
+          "low": -50,
+          "median": -25,
+          "high": 3000
+        },
+        "notes": "Google's 2024-2026 core updates and AI Overviews cut traffic to small content sites, so buyers pay lower multiples and demand verified traffic. Newsletters with engaged lists hold value better. Most builders never reach the $100/month needed to sell at a meaningful price."
+      },
+      "pricingStrategy": "Ask ~35x verified monthly profit, accept 25-30x for a quick sale; seed buyers by sharing transparent analytics.",
+      "profitPath": [
+        "Month 0: launch a niche site or newsletter ($100 + $25/mo)",
+        "Month 1-6: publish 50+ pieces, grow list; revenue near $0",
+        "Month 6-12: monetise to $50-$200/month",
+        "Month 12-18: list on Flippa at ~30x monthly profit"
+      ],
+      "sources": [
+        "https://flippa.com/pricing",
+        "https://empireflippers.com/commission-calculator/",
+        "https://flippa.com/"
+      ]
+    }
+  },
+  {
+    "id": "micro-saas-app-flipping",
+    "name": "Building and selling micro-SaaS products and apps (Acquire.com)",
+    "category": "marketplaces",
+    "summary": "Build a small SaaS, browser extension or mobile app to modest recurring revenue, then sell it to an acquirer.",
+    "howItWorks": "Acquire.com (formerly MicroAcquire) and Flippa connect founders with buyers of small software businesses, typically valued at 2-4x annual profit/ARR. With AI coding agents you build a focused tool, get to a few hundred dollars MRR, and sell when the buyer pool values it. Distinct from content-site flipping because buyers price recurring software revenue, churn and code quality. Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.",
+    "platforms": ["Acquire.com", "Flippa", "Tiny Acquisitions", "Escrow.com"],
+    "payout": {
+      "methods": ["Escrow.com -> bank wire"],
+      "minimumPayout": "Per sale",
+      "frequency": "per sale",
+      "typicalDelayDays": 30,
+      "notes": "Closing fee 6-8% due only if the sale completes."
+    },
+    "capitalRequiredUsd": 100,
+    "timeToFirstDollarDays": {
+      "min": 180,
+      "max": 730
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 6,
+      "setupEffort": 7,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 9,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling a software business is legal everywhere; sanctions screening applies to buyers.",
+      "complianceRequirements": [
+        "accurate MRR/churn disclosure",
+        "IP assignment contract",
+        "tax on proceeds",
+        "Stripe/App Store account transfer rules"
+      ]
+    },
+    "availability": {
+      "notes": "Acquire.com and Flippa accept global sellers; payout by escrow wire."
+    },
+    "automationPlan": [
+      "AI coding agents build and maintain product",
+      "Automated billing/metrics dashboards (Stripe, ChartMogul)",
+      "AI-generated listing and data room"
+    ],
+    "manualSteps": [
+      "Buyer negotiations",
+      "Legal APA signing",
+      "Transferring accounts and code"
+    ],
+    "fullCycle": [
+      "Build micro-SaaS",
+      "Reach recurring revenue",
+      "List on Acquire",
+      "Negotiate and escrow",
+      "Transfer and get paid"
+    ],
+    "risks": [
+      "No traction -> nothing to sell",
+      "Low multiples for tiny MRR",
+      "Long diligence",
+      "Deal falls through"
+    ],
+    "evidence": "Acquire.com states it has facilitated thousands of acquisitions; its help page (updated Nov 2024, checked Nov 2026) confirms a 6-8% closing fee payable only on sale and a $25-100/month listing fee.",
+    "sources": [
+      "https://help.acquire.com/how-much-does-it-cost-to-sell",
+      "https://acquire.com/",
+      "https://flippa.com/"
+    ],
+    "tags": ["exit", "developer", "ai-friendly"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 200,
+        "cashUsd": 100,
+        "recurringMonthlyUsd": 40,
+        "tools": [
+          "AI coding agent subscription (~$20/mo)",
+          "hosting/serverless free tiers",
+          "Stripe",
+          "Acquire.com listing"
+        ],
+        "skills": [
+          "shipping software (AI covers much of the coding)",
+          "finding a paying niche",
+          "basic SaaS metrics"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "Stripe + KYC",
+          "cloud hosting",
+          "Acquire.com/Flippa seller account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per business sold",
+        "typicalPriceUsd": {
+          "low": 2000,
+          "median": 15000,
+          "high": 150000
+        },
+        "costPerUnitUsd": 600,
+        "platformFeePercent": 8,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 400,
+        "notes": "Micro-SaaS sells at ~2-4x annual profit; a $500/month MRR app sells for ~$10-$20k. Cost = infra and tools amortised; Acquire.com closing fee 6-8% plus a $25-$100/month listing fee while listed (included in cost)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 40,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 24,
+        "monthsToRecoverStartup": 24,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost ~$40/month for tools and hosting; startup cash recovered at sale."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 6,
+        "typicalNetProfitMonth12Usd": {
+          "low": -40,
+          "median": -40,
+          "high": 4000
+        },
+        "notes": "AI coding agents made building cheap, so supply of tiny apps exploded in 2025-2026 and acquirers now want proven MRR and low churn. Winners pick boring B2B niches with distribution. Most projects never reach $500 MRR, which is the minimum that sells."
+      },
+      "pricingStrategy": "Launch with a low price ($9-$19/month) to get first customers, raise for new users once retention is proven; sell at 3x annual profit.",
+      "profitPath": [
+        "Month 0: build an MVP with AI coding agents ($100 + $40/mo)",
+        "Month 1-6: launch, first 5-20 paying users",
+        "Month 6-18: grow toward $500+ MRR",
+        "Month 18-24: list on Acquire.com at 2-4x annual profit"
+      ],
+      "sources": [
+        "https://help.acquire.com/how-much-does-it-cost-to-sell",
+        "https://acquire.com/",
+        "https://flippa.com/"
+      ]
+    }
+  },
+  {
+    "id": "royalty-stream-trading",
+    "name": "Selling or buying royalty income streams (Royalty Exchange, SongVest)",
+    "category": "finance",
+    "summary": "Creators sell a slice of future music/book/IP royalties for a lump sum; investors buy royalty streams for periodic payouts.",
+    "howItWorks": "Royalty Exchange and SongVest run auctions and offerings where owners sell a share or term of their royalty income (music publishing, master, book, film). Sellers need at least three years of royalty statements; Royalty Exchange charges no listing fee and takes a commission agreed before listing (rate not published; third parties report ~12-15%). Buyers receive royalty distributions in proportion to the share bought. SongVest sells fractional 'SongShares' under SEC Regulation A. Without royalties you can only participate as an investor (capital, decay risk).",
+    "platforms": ["Royalty Exchange", "SongVest"],
+    "payout": {
+      "methods": ["bank transfer (ACH/wire)"],
+      "minimumPayout": "Auction proceeds; investor distributions with no stated minimum",
+      "frequency": "per sale / quarterly distributions",
+      "typicalDelayDays": 60,
+      "notes": "Royalty Exchange buyers wire funds into escrow within two business days of signing; funds are released to the seller after rights transfer. Investors are paid as the platform collects royalties. Seller commission and investor minimums are not published (unverified)."
+    },
+    "capitalRequiredUsd": 1000,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 10,
+      "high": 500
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 8,
+      "setupEffort": 4,
+      "ongoingEffort": 2,
+      "incomePotential": 3,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 90,
+      "platformAvailabilityPercent": 55
+    },
+    "legality": {
+      "restrictedIn": ["Bangladesh", "Nepal", "Tunisia", "Morocco", "Libya"],
+      "notes": "Royalty contracts are legal everywhere; buying foreign assets may need approval under capital controls in the 5 listed countries (5/50 = 10% restricted, so 90%).",
+      "complianceRequirements": [
+        "KYC/AML",
+        "tax on royalty income and sale proceeds",
+        "clear rights ownership documentation"
+      ]
+    },
+    "availability": {
+      "notes": "US-based platforms; international users can participate subject to KYC and US tax forms. Sellers need existing royalty assets."
+    },
+    "automationPlan": [
+      "Automated tracking of royalty statements",
+      "Valuation modelling (decay curves) for listings",
+      "Auto-transfer distributions to bank"
+    ],
+    "manualSteps": [
+      "Rights verification and contracts",
+      "Bidding decisions",
+      "KYC"
+    ],
+    "fullCycle": [
+      "Have or buy a royalty asset",
+      "List/bid at auction",
+      "Close and transfer rights",
+      "Collect distributions or sale proceeds",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Royalty decay",
+      "Illiquidity",
+      "Platform risk",
+      "Seller selling below fair value"
+    ],
+    "evidence": "Royalty Exchange describes itself as the largest royalty marketplace and publishes completed auctions; it explains sellers can sell a portion and retain copyright.",
+    "sources": [
+      "https://royaltyexchange.com/how-auctions-work-sellers",
+      "https://royaltyexchange.com/resources/creators/frequently-asked-questions-about-selling-royalties",
+      "https://www.songvest.com/"
+    ],
+    "tags": ["capital-required", "creator-asset", "illiquid"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 1000,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Royalty Exchange / SongVest accounts (free to browse)",
+          "spreadsheet for decay modelling"
+        ],
+        "skills": [
+          "reading royalty statements and decay curves",
+          "judging catalogue age and term (10-year vs life-of-rights)"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "platform account + KYC (some offerings need accredited-investor status)",
+          "bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per $1,000 invested, per year",
+        "typicalPriceUsd": {
+          "low": 60,
+          "median": 120,
+          "high": 180
+        },
+        "costPerUnitUsd": 50,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 58,
+        "hoursPerUnit": 0,
+        "notes": "Annual distributions per $1,000 at typical 6-10x purchase multiples ($60-$180). Cost = estimated annual decay/amortisation of the purchase price because royalties decline and term deals expire. Profit depends on capital, not effort. Distributions and decay are estimated; investor-side fees are not published on the Royalty Exchange or SongVest FAQs (SongVest refers to its Offering Circular)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 100,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Purchase price is consumed as the stream decays; $1,000 at ~$10/month takes ~100 months to recover in cash (resale on the platform may shorten this)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "rising",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 5,
+          "high": 400
+        },
+        "notes": "Institutional catalog buyers pushed multiples up in 2021-2024, leaving retail auctions with older or smaller catalogues. AI-generated music and streaming payout reforms add downside risk to royalty growth. Profit depends on capital and purchase price, not effort: distributions start quickly, but net of decay many buyers barely break even. Cross-catalog calibration: profitLikelihoodPercent lowered from 45 to 30. Capital-return peers (savings 95, robo-advisor 70, brokerage bonuses 70) have paymentProbability 8-10, while this one has 3 (auction pricing, catalogue decay, platform risk), so its odds must sit well below theirs."
+      },
+      "pricingStrategy": "Bid no more than ~7x trailing 12-month royalties for decaying catalogues; for creators selling, set a reserve near 8-10x LTM earnings.",
+      "profitPath": [
+        "Month 0: study 5-10 past auctions and buy one small stream ($1,000)",
+        "Month 1-3: first quarterly distribution (~$25-$40)",
+        "Month 3-12: track decay versus model",
+        "Month 12+: expect ~$120 per $1,000 per year gross, ~$70 net of decay"
+      ],
+      "sources": [
+        "https://royaltyexchange.com/how-auctions-work-sellers",
+        "https://royaltyexchange.com/resources/creators/frequently-asked-questions-about-selling-royalties",
+        "https://www.songvest.com/",
+        "https://royaltyexchange.com/faq",
+        "https://www.songvest.com/faq"
+      ]
+    }
+  }
+]

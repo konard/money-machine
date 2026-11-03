@@ -1,0 +1,1477 @@
+[
+  {
+    "id": "outschool-live-kids-classes",
+    "name": "Live small-group classes for kids on Outschool",
+    "category": "education",
+    "summary": "Design and teach live or self-paced classes for ages 3-18; parents pay per class and Outschool keeps 30%.",
+    "howItWorks": "You list a class (one-off, multi-week, ongoing weekly or self-paced) on a topic kids or homeschooling parents want, set the price and group size, and teach live over Outschool's video tool. Parents find classes through Outschool search and pay up front. Outschool takes a 30% teacher fee and pays you 70%; parents also pay a separate marketplace fee. Ongoing weekly classes create recurring income once a class gets reviews.",
+    "platforms": ["Outschool"],
+    "payout": {
+      "methods": [
+        "PayPal (USD) -> bank",
+        "Stripe -> local bank (migration in progress)"
+      ],
+      "minimumPayout": "No minimum stated",
+      "frequency": "per class / weekly batches",
+      "typicalDelayDays": 10,
+      "notes": "Outschool keeps 30% and pays 70% of the class price, always in USD. Upfront fixed-length classes pay 7-8 days after the start date; weekly classes are processed on Sundays 7-13 days after the meetings; self-paced pay-in-full pays 7-8 days after enrollment. No minimum payout is stated. As of Nov 2026 the move to Stripe is still rolling out: Outschool says payouts 'continue through PayPal for now', with no fixed end date for PayPal. Stripe payouts will go to banks in the approved teaching countries."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 4,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 12
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Teaching children online is legal everywhere; child-safeguarding rules and Outschool's background check apply.",
+      "complianceRequirements": [
+        "Outschool background check / identity verification",
+        "child-safeguarding and privacy rules",
+        "report income for tax"
+      ]
+    },
+    "availability": {
+      "notes": "Teachers must be full-time residents of the US, Mexico, Canada, Australia, New Zealand, South Korea, Spain or the UK. Of the 50 reference countries only US, CA, MX, UK, AU and KR qualify (about 12%)."
+    },
+    "automationPlan": [
+      "Use AI to draft class outlines, slides, worksheets and listing copy",
+      "Template class listings and auto-reply messages to parents",
+      "Self-paced classes reuse recorded lessons with no live time"
+    ],
+    "manualSteps": [
+      "Application, identity and background check",
+      "Teaching every live session on camera",
+      "Parent communication and safeguarding"
+    ],
+    "fullCycle": [
+      "Apply and pass background check",
+      "Publish 3-5 classes",
+      "Teach first sections and collect reviews",
+      "Add ongoing weekly classes",
+      "Get paid via PayPal (Stripe once migrated) to bank"
+    ],
+    "risks": [
+      "Only 8 eligible countries",
+      "New listings get little search traffic",
+      "Fee cut is 30%",
+      "Kids' class demand is seasonal (school breaks)"
+    ],
+    "evidence": "Outschool's help center sets out the 70/30 split and the payout schedules for each enrollment type. It is a large US kids' class marketplace with many full-time educators.",
+    "sources": [
+      "https://support.outschool.com/en/articles/2382129-educator-earnings-and-payments",
+      "https://support.outschool.com/en/articles/16057-prospective-teacher-faq",
+      "https://support.outschool.com/en/articles/14846423-transitioning-payouts-to-stripe"
+    ],
+    "tags": ["live", "kids", "recurring", "regional"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Outschool classroom (built-in video)",
+          "Google Slides / Canva free tier",
+          "LLM free tier for lesson plans"
+        ],
+        "skills": [
+          "teaching kids aged 3-18 live",
+          "designing a 4-8 week class outline (AI can draft)",
+          "classroom management on video"
+        ],
+        "equipment": ["laptop with webcam", "headset", "stable broadband"],
+        "accounts": [
+          "Outschool educator account + ID verification + background check",
+          "PayPal (Stripe as it rolls out)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per learner per class meeting",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 15,
+          "high": 25
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 30,
+        "grossMarginPercent": 70,
+        "hoursPerUnit": 0.25,
+        "notes": "Typical Outschool listings charge about $10-25 per learner per 45-55 min meeting (estimate from listings); Outschool keeps 30%. Hours assume ~4 learners per meeting plus prep."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; 'break-even' is the first paid class, usually 1-2 months after approval because new listings get little search traffic."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 3000
+        },
+        "notes": "Demand has fallen from the 2020-21 peak and established teachers with hundreds of reviews and ongoing weekly classes take most bookings. Only 8 teaching countries are eligible. AI helps with prep but does not replace a live adult teacher for kids. Main failure mode: classes that never fill past 1-2 learners and get cancelled. Fact-check: median month-12 net lowered from $250 to $80 so it agrees with the 30% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Launch at or slightly below the category median (about $10-12 per meeting) with a one-time intro class to collect reviews, then raise to $15-20 and push learners into ongoing weekly classes.",
+      "profitPath": [
+        "Month 0: approval, background check and 3 class listings (cost $0)",
+        "Month 1-2: first one-time classes with 1-3 learners, about $50-150/month",
+        "Month 3-6: convert best-reviewed topic into an ongoing weekly class; $200-400/month",
+        "Month 6-12: add sections at peak times and a self-paced version; $300-1,000/month for those who stick"
+      ],
+      "sources": [
+        "https://support.outschool.com/en/articles/2382129-educator-earnings-and-payments",
+        "https://support.outschool.com/en/articles/16057-prospective-teacher-faq"
+      ]
+    }
+  },
+  {
+    "id": "lessonface-music-arts-lessons",
+    "name": "Live music, art and language lessons on Lessonface",
+    "category": "education",
+    "summary": "Teach live online lessons and group classes in music, arts and languages through a lessons marketplace that charges a low fee for students you bring yourself.",
+    "howItWorks": "Lessonface is a public-benefit marketplace for live online lessons, mostly music (voice, guitar, violin, piano), plus art, dance and language. You set your own rates and schedule. Students found by Lessonface cost 15%, students you refer cost 5%, and group classes, self-paced courses and downloadables cost up to 30%. Its booking, payments and video room make it a full back office for your own students, while the marketplace adds new ones.",
+    "platforms": ["Lessonface"],
+    "payout": {
+      "methods": [
+        "PayPal -> bank",
+        "US direct deposit (existing teachers only)"
+      ],
+      "minimumPayout": "No minimum stated",
+      "frequency": "weekly (Fridays)",
+      "typicalDelayDays": 7,
+      "notes": "Lessonface's Teacher Payments page says PayPal payouts go out weekly on Fridays, and the teacher pays PayPal's fees. The first payment takes about a week, then usually 2-3 days. Direct deposit is for US bank accounts only and is closed to new teachers. Lessons not acknowledged within 4 weeks are forfeited (third-party report). Fees: 15% for students Lessonface finds, 5% for students you bring, up to 30% for classes, courses and downloadables sold to Lessonface-referred students. These Lessonface pages block automated fetches; the figures come from their indexed text."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 200,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 3,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 60
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Teaching is legal everywhere; a background check applies.",
+      "complianceRequirements": [
+        "teaching experience (2+ years) or 5 years professional experience",
+        "interview and background check",
+        "report income for tax"
+      ]
+    },
+    "availability": {
+      "notes": "Payouts run through PayPal, so they reach most reference countries where PayPal can receive money (not e.g. Bangladesh, Iraq, Libya or Tunisia). Lessonface lists teachers outside the US, but it has no official list of countries it accepts teachers from."
+    },
+    "automationPlan": [
+      "AI-generated practice sheets, lesson notes and progress summaries",
+      "Automated booking reminders and package renewals",
+      "Reuse recorded material as self-paced courses"
+    ],
+    "manualSteps": [
+      "Application, interview, background check",
+      "Teaching every lesson live",
+      "Recording audition or demo video"
+    ],
+    "fullCycle": [
+      "Apply and pass interview",
+      "Build profile and set rates",
+      "Move existing students on (5% fee)",
+      "Teach and mark lessons complete",
+      "Receive weekly PayPal payout and withdraw to bank"
+    ],
+    "risks": [
+      "Small marketplace with limited inbound demand",
+      "Payout only via PayPal for new teachers (PayPal fees, no PayPal receiving in some countries)",
+      "Music-teaching niche needs real skill"
+    ],
+    "evidence": "Lessonface's teaching and recruiting pages give 15% fees for marketplace students, 5% for teacher-referred students and up to 30% for classes and courses. Its Teacher Payments page documents weekly PayPal payouts. Its 2020 year-in-review describes an active teacher base.",
+    "sources": [
+      "https://www.lessonface.com/teach",
+      "https://lessonface.com/recruit",
+      "https://www.lessonface.com/node/98589",
+      "https://lessonface.com/fees"
+    ],
+    "tags": ["live", "music"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 8,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Lessonface booking and video room",
+          "free notation/recording apps"
+        ],
+        "skills": [
+          "teaching an instrument, voice, art or language at a real level",
+          "running a 1:1 lesson online"
+        ],
+        "equipment": [
+          "laptop with webcam",
+          "decent microphone or headset",
+          "your instrument"
+        ],
+        "accounts": [
+          "Lessonface teacher profile",
+          "PayPal (teacher pays PayPal fees)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 45-60 min private lesson",
+        "typicalPriceUsd": {
+          "low": 30,
+          "median": 45,
+          "high": 80
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 81,
+        "hoursPerUnit": 1,
+        "notes": "Rates are set by the teacher; $30-80 per lesson matches Lessonface music listings (estimate). 15% fee for Lessonface-found students (5% for your own), plus ~$2 PayPal fee. Fee figures are estimated: lessonface.com/fees is bot-blocked and could not be re-checked."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; first paid lesson usually arrives in 1-3 months because the marketplace is small."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 2500
+        },
+        "notes": "Online music lessons are a steady niche; teachers who already have students and use Lessonface as their back office (5% fee) earn the most. Inbound demand from the marketplace is limited, so most newcomers get only a few students. AI apps compete for beginners but not for skilled feedback on technique. Fact-check: median month-12 net lowered from $150 to $60 so it agrees with the 25% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Offer a discounted first lesson and 4-lesson package near $35-40, then move to $45-60 once you have reviews; bring existing students in to pay only 5%.",
+      "profitPath": [
+        "Month 0: profile, intro video, rate card (cost $0)",
+        "Month 1-3: first 1-3 students, about $50-200/month",
+        "Month 3-6: packages plus your own students moved onto the 5% tier; $200-500/month",
+        "Month 6-12: group classes or downloadables; $300-1,000/month for active teachers"
+      ],
+      "sources": [
+        "https://lessonface.com/fees",
+        "https://www.lessonface.com/teach"
+      ]
+    }
+  },
+  {
+    "id": "superprof-lead-gen-tutoring",
+    "name": "Lead-generation tutoring listings (Superprof, Apprentus) with direct student payment",
+    "category": "education",
+    "summary": "List free on a tutor directory where students pay the platform for access and you collect lesson fees yourself, with 0-10% commission.",
+    "howItWorks": "Unlike commission marketplaces, Superprof charges students a 'Student Pass' to contact tutors and lets tutors list for free. Tutors set their price and either take payment directly (bank transfer, PayPal, Wise; 0% commission) or through Superprof (10% commission, or 0% on a paid Premium account). Apprentus works the same way in Europe, with a fee on the first lesson. You get a lead, run a trial, then keep the student long-term on your own terms.",
+    "platforms": ["Superprof", "Apprentus"],
+    "payout": {
+      "methods": [
+        "direct from student: bank transfer / PayPal / Wise",
+        "Superprof in-platform payment -> PayPal"
+      ],
+      "minimumPayout": "N/A for direct payment; in-platform balance pays out to PayPal at $30",
+      "frequency": "per lesson or package",
+      "typicalDelayDays": 1,
+      "notes": "With direct payment you control the timing. Superprof's tutor help center (Nov 2026): in-platform payments carry a 10% commission (0% with Premium), the amount shows in your balance 24 hours after the lesson, and the balance moves to PayPal within 3 working days once it is at least $30; packs pay 50% after the first lesson. The Premium price is not stated there."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 3,
+      "setupEffort": 2,
+      "ongoingEffort": 6,
+      "incomePotential": 5,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Private tutoring is legal everywhere. Some countries require registering as self-employed or for VAT above thresholds.",
+      "complianceRequirements": [
+        "self-employment / tax registration",
+        "safeguarding when tutoring minors",
+        "issue invoices or receipts"
+      ]
+    },
+    "availability": {
+      "notes": "Superprof runs local sites in dozens of countries (e.g. .com, .co.uk, .fr, .com.br, .com.mx, .co.in, .ca, .com.au). Students pay you directly, so payout works almost anywhere."
+    },
+    "automationPlan": [
+      "AI-drafted profile, lesson plans and homework",
+      "Booking via Calendly/Cal.com and invoicing via Stripe/Wise",
+      "Auto-reply templates for incoming leads"
+    ],
+    "manualSteps": [
+      "Profile with photo and ID verification",
+      "Teaching each lesson live",
+      "Chasing payment from students directly"
+    ],
+    "fullCycle": [
+      "Create free profile",
+      "Answer student requests",
+      "Teach a trial lesson",
+      "Agree price and payment method",
+      "Get paid directly to bank/PayPal"
+    ],
+    "risks": [
+      "Students pay a pass, so lead volume can be thin",
+      "Collecting payment yourself carries non-payment risk",
+      "Rival platforms say Superprof has hidden fees; read the terms for your country"
+    ],
+    "evidence": "Superprof's own blog says listing is free, gives the 10% commission (0% with Premium or off-platform payment), and says it has millions of registered tutors.",
+    "sources": [
+      "https://www.superprof.com.au/blog/charges-payments-superprof",
+      "https://www.superprof.com/",
+      "https://www.apprentus.com/",
+      "https://www.superprof.com/help/tutors/tutor-payment/how-to-get-paid/68/",
+      "https://www.superprof.com/help/tutors/tutor-payment/lesson-pack-payment-deadlines/71/"
+    ],
+    "tags": ["live", "tutoring", "direct-pay"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 4,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Superprof / Apprentus free listing",
+          "Google Meet or Zoom free",
+          "Google Docs / whiteboard"
+        ],
+        "skills": [
+          "subject expertise (school maths, languages, music, etc.)",
+          "tutoring 1:1",
+          "collecting payment from private clients"
+        ],
+        "equipment": ["laptop with webcam", "headset"],
+        "accounts": [
+          "Superprof and Apprentus tutor profiles",
+          "PayPal / Wise / bank for direct payment"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1-hour lesson",
+        "typicalPriceUsd": {
+          "low": 15,
+          "median": 30,
+          "high": 60
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 97,
+        "hoursPerUnit": 1.2,
+        "notes": "Tutors set rates; $15-60/hour reflects typical Superprof listings across countries (estimate). Direct payment = 0% commission; in-platform payment is 10%. Cost covers payment fees. Superprof confirms 10% on in-platform payments and 0% with a Premium account."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; first student often within 2-8 weeks, but lead volume varies sharply by country and subject."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 2500
+        },
+        "notes": "Exam-prep and language tutors with strong reviews keep winning; homework-help demand is being eroded by free AI tutors since 2024-25. Superprof's student pass limits leads, and many listings compete on the same subject. Failure modes: no contacts for weeks, and students who stop after 2-3 lessons or do not pay. Fact-check: median month-12 net lowered from $250 to $80 so it agrees with the 35% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Offer a free or discounted first lesson (common on Superprof) at about 20% below the local median, then raise rates after 10 reviews and sell prepaid 5-10 lesson packages.",
+      "profitPath": [
+        "Month 0: listings on Superprof and Apprentus, set direct-payment terms (cost $0)",
+        "Month 1-2: first 1-2 students, about $100-200/month",
+        "Month 3-6: 4-6 regular students via reviews and referrals; $300-600/month",
+        "Month 6-12: raise rates, sell packages; $400-1,500/month for those who stick"
+      ],
+      "sources": [
+        "https://www.superprof.com.au/blog/charges-payments-superprof",
+        "https://www.apprentus.com/"
+      ]
+    }
+  },
+  {
+    "id": "agency-assigned-tutoring-contractor",
+    "name": "Agency-assigned tutoring as a contractor (GoStudent, Varsity Tutors)",
+    "category": "education",
+    "summary": "Tutor school students that a tutoring company matches to you, at a per-session rate the company sets. The company handles acquisition, parents and billing.",
+    "howItWorks": "Tutoring companies sell lesson subscriptions to parents and assign the students to freelance tutors. You don't market yourself or set prices. You take students in your subjects, teach on the company's classroom tool and log sessions. GoStudent (Europe) pays a base rate of up to GBP 16 per 50-minute lesson, with volume raises (+1.00 per lesson after 150 lessons in 6 months, +1.50 after 300). Varsity Tutors (US) reportedly pays per session twice a week (third-party reports, unverified).",
+    "platforms": ["GoStudent", "Varsity Tutors"],
+    "payout": {
+      "methods": [
+        "transfer to bank account (GoStudent)",
+        "direct deposit (Varsity Tutors, unverified)"
+      ],
+      "minimumPayout": "No minimum (GoStudent); Varsity Tutors not stated",
+      "frequency": "monthly (GoStudent) / twice weekly (Varsity)",
+      "typicalDelayDays": 30,
+      "notes": "GoStudent's tutor help center: base rate up to GBP 16 per 50-minute session, depending on availability, subjects and monthly sessions completed. Earnings are paid in full the next month with no minimum, between the 12th and 17th; transfers can take up to 7 days to arrive. Session feedback must be submitted within 24 hours or the session is not paid. No-shows pay a flat 6.50. Volume raises: +1.00 per lesson after 150 lessons in 6 months, +1.50 after 300. Varsity Tutors' twice-weekly pay and USD 15-40/hr come only from third-party sources; its tutor pages return 403 even in a real browser (Nov 2026), so Varsity's payment method and frequency stay unconfirmed."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 60
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 100,
+      "median": 600,
+      "high": 2500
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 2,
+      "setupEffort": 3,
+      "ongoingEffort": 7,
+      "incomePotential": 5,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 20
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; you are an independent contractor and handle your own tax.",
+      "complianceRequirements": [
+        "contractor tax registration",
+        "background check for minors",
+        "subject test and onboarding"
+      ]
+    },
+    "availability": {
+      "notes": "GoStudent runs sites for the UK, DE, AT, FR, IT, ES, TR, PL, NL and GR and says anyone over 18 can apply, but it names no residence rule. Varsity Tutors contracts with US residents only and reportedly excludes several US states (unverified)."
+    },
+    "automationPlan": [
+      "AI-prepared lesson plans and practice sets per student",
+      "Session-notes templates",
+      "Calendar automation"
+    ],
+    "manualSteps": [
+      "Onboarding, subject test, interviews",
+      "Teaching every session live",
+      "Logging and correcting session records"
+    ],
+    "fullCycle": [
+      "Apply and pass subject test",
+      "Complete onboarding course",
+      "Accept assigned students",
+      "Teach and log lessons",
+      "Receive monthly or twice-weekly pay"
+    ],
+    "risks": [
+      "Low per-hour pay compared with independent tutoring",
+      "Reported fines for missed lessons",
+      "Regional eligibility",
+      "Contractor-classification disputes"
+    ],
+    "evidence": "GoStudent's tutor help center documents the base rate, the monthly pay cycle with no minimum and the volume raises. Varsity Tutors is run by a public company (Nerdy) with many contractor postings, but its pay terms could not be checked on an official page.",
+    "sources": [
+      "https://tutors.gostudent.org/help-with-earnings/",
+      "https://tutors.gostudent.org/everything-you-need-to-know-about-payments",
+      "https://www.gostudent.org/en-gb/become-a-tutor",
+      "https://www.varsitytutors.com/tutoring-jobs"
+    ],
+    "tags": ["live", "contractor", "regional", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "agency classroom platform (provided)",
+          "agency lesson materials"
+        ],
+        "skills": [
+          "school-level subject expertise",
+          "passing a demo lesson and interview",
+          "reliable scheduling"
+        ],
+        "equipment": ["laptop with webcam", "headset", "stable broadband"],
+        "accounts": [
+          "GoStudent or Varsity Tutors contractor account",
+          "bank account for transfers"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 50-60 min session",
+        "typicalPriceUsd": {
+          "low": 12,
+          "median": 18,
+          "high": 30
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1.2,
+        "notes": "Agency sets pay: GoStudent up to GBP 16 per 50-min session (about $21) plus volume bonuses; Varsity Tutors $15-40/hr is third-party reported. Agency margin is already deducted."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; first pay arrives the month after your first sessions (GoStudent pays the 12th-17th)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 450,
+          "high": 2000
+        },
+        "notes": "The agency finds and assigns students, so accepted tutors almost always get paid; the limit is low hourly pay and eligibility in only a few countries. AI homework help reduces demand for basic subjects, while exam prep holds up. Failure modes: unpaid sessions after missed feedback deadlines, fines for no-shows, and few assigned students in low-demand subjects."
+      },
+      "pricingStrategy": "Pay is fixed by the agency; maximise it by offering peak evening slots, high-demand subjects and enough volume to hit the 150/300-lesson bonuses.",
+      "profitPath": [
+        "Month 0: apply, interview, demo lesson, onboarding (cost $0)",
+        "Month 1-2: first assigned students, about $100-300/month",
+        "Month 3-6: 15-25 sessions/month, about $300-500/month",
+        "Month 6-12: volume bonus tier and more students; $500-1,000/month part-time"
+      ],
+      "sources": [
+        "https://tutors.gostudent.org/help-with-earnings/",
+        "https://tutors.gostudent.org/everything-you-need-to-know-about-payments"
+      ]
+    }
+  },
+  {
+    "id": "fixed-rate-language-school-freelance",
+    "name": "Freelance teacher at an online language school with a set curriculum (Lingoda)",
+    "category": "education",
+    "summary": "Teach small-group or 1:1 language classes from a school's ready-made curriculum for a fixed per-class fee. The school supplies the students and materials.",
+    "howItWorks": "Online language schools such as Lingoda sell subscriptions and need certified teachers to run scheduled Zoom classes from their CEFR-aligned materials. You choose time slots, the school fills them, and you teach without writing a curriculum or finding students. Unlike Preply or italki you don't set prices or compete on a marketplace. Lingoda wants C2 language level, a teaching certificate and 2-3 years of experience, and runs on freelance contracts.",
+    "platforms": ["Lingoda"],
+    "payout": {
+      "methods": [
+        "SEPA bank transfer (IBAN + BIC/Swift; up to 10 working days)",
+        "PayPal (faster)"
+      ],
+      "minimumPayout": "None stated (whole monthly invoice is paid)",
+      "frequency": "monthly (invoice generated on the last day of the month)",
+      "typicalDelayDays": 30,
+      "notes": "Lingoda Teacher Support Centre (Nov 2026): an invoice is generated on the last day of each month and paid within 30 days (excluding German weekends/holidays) by SEPA bank transfer or PayPal; intermediary-bank transfers are not supported. Still unconfirmed: the per-class pay rate, which sits in the account-only Remuneration Structure document (third-party sources report about USD 8-13 per hour or EUR 11 per class)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 75
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 100,
+      "median": 500,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 6,
+      "automation": 2,
+      "setupEffort": 4,
+      "ongoingEffort": 7,
+      "incomePotential": 4,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; freelancers must be legally able to invoice in their country.",
+      "complianceRequirements": [
+        "freelance/self-employed registration",
+        "teaching certificate (TEFL/CELTA/DaF)",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Job listings say 'Remote - all countries' as long as you can legally freelance. Some languages require native-level skill."
+    },
+    "automationPlan": [
+      "AI-generated warm-ups and extra practice",
+      "Reusable class notes",
+      "Calendar sync for slot booking"
+    ],
+    "manualSteps": [
+      "Application, demo lesson, certificate check",
+      "Teaching every class live",
+      "Invoicing (if required)"
+    ],
+    "fullCycle": [
+      "Apply with certificate",
+      "Pass demo lesson",
+      "Open time slots",
+      "Teach booked classes",
+      "Get paid monthly to bank"
+    ],
+    "risks": [
+      "Low hourly pay",
+      "Class cancellations",
+      "Requires certification and experience",
+      "Pay rate set by school"
+    ],
+    "evidence": "Lingoda's official jobs page confirms the freelance model and requirements and describes a teacher-relations team that 'ensures every teacher is paid on time'.",
+    "sources": [
+      "https://www.lingoda.com/jobs",
+      "https://www.tefl.org/teach-english-online/lingoda/",
+      "https://www.lingoda.com/en/teach/",
+      "https://lingodateachers.elevio.help/en/articles/133-how-are-payments-sent-out-to-teachers",
+      "https://lingodateachers.elevio.help/en/articles/345-invoice-information"
+    ],
+    "tags": ["live", "language", "contractor"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 15,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["school-provided Zoom classes and CEFR materials"],
+        "skills": [
+          "C2/native level in the language",
+          "recognised teaching certificate (CELTA/TEFL etc.)",
+          "2-3 years teaching experience"
+        ],
+        "equipment": ["laptop with webcam", "headset", "stable broadband"],
+        "accounts": [
+          "Lingoda freelance contract",
+          "bank account (method unverified)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 60-min group class",
+        "typicalPriceUsd": {
+          "low": 8,
+          "median": 11,
+          "high": 13
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1.1,
+        "notes": "Lingoda does not publish pay (its jobs page gives no rate); TEFL.org reports about $8-13 (GBP 6.33-10.30) per hour-long class, so $8-13 is estimated and unverified."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. Assumes you already hold the required certificate; if not, a TEFL course costs $150-1,500 and should be counted as startup cash."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 40,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 90,
+          "high": 1400
+        },
+        "notes": "For qualified teachers this is reliable but low-paid work. AI conversation apps and cheaper marketplace tutors pressure language-school subscriptions in 2025-26, which reduces open slots. Failure modes: rejection for missing credentials, class cancellations and slots not filling. Fact-check: median month-12 net lowered from $400 to $90 so it agrees with the 40% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "No pricing control; increase income by offering popular time slots, multiple levels and high reliability scores.",
+      "profitPath": [
+        "Month 0: application, demo, contract (cost $0 if already certified)",
+        "Month 1-2: first classes, about $100-300/month",
+        "Month 3-6: 30-40 classes/month, about $350-500/month",
+        "Month 6-12: steady part-time schedule; $400-1,000/month"
+      ],
+      "sources": [
+        "https://www.lingoda.com/jobs",
+        "https://www.tefl.org/teach-english-online/lingoda/"
+      ]
+    }
+  },
+  {
+    "id": "curated-publisher-video-courses",
+    "name": "Author a produced course for a curated publisher (LinkedIn Learning, Pluralsight, Domestika)",
+    "category": "education",
+    "summary": "Pitch and audition to make a course that the platform produces and distributes. You get paid by the publisher through fees and/or royalties, not per student sale.",
+    "howItWorks": "Curated course publishers recruit experts by application. LinkedIn Learning wants a teaching video sample and proposal. Pluralsight asks for an audition video, and its video-course pay is partly based on viewership, paid quarterly. Domestika covers production for creative courses and pays via PayPal. Once accepted, the publisher handles editing, marketing and enterprise distribution. That's different from self-publishing on Udemy or Skillshare.",
+    "platforms": ["LinkedIn Learning", "Pluralsight", "Domestika"],
+    "payout": {
+      "methods": [
+        "PayPal (Domestika)",
+        "per contract (LinkedIn Learning/Pluralsight; method not published)"
+      ],
+      "minimumPayout": "Not published",
+      "frequency": "quarterly royalties (Pluralsight) / per contract",
+      "typicalDelayDays": 90,
+      "notes": "Pluralsight's teach page says video-course pay is 'partially based on viewership' and paid quarterly. Domestika's page says you need a verified PayPal account and that it covers production costs. LinkedIn Learning's instructor page says only 'earn extra income'. None of the three publish royalty percentages, upfront fees or minimums; terms are set in the individual contract. Domestika's Teachers Hub (Nov 2026) likewise refers teachers to their contract for commission rates (sales via the teacher's promo URL earn a higher commission). Unconfirmed: royalty percentages, upfront fees and any minimum payout on all three."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 90,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 3,
+      "setupEffort": 7,
+      "ongoingEffort": 3,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; you sign an IP license/assignment contract.",
+      "complianceRequirements": [
+        "contract with IP assignment or license",
+        "tax forms (W-8BEN for non-US)",
+        "PayPal/bank KYC"
+      ]
+    },
+    "availability": {
+      "notes": "Applications are open worldwide (LinkedIn teaching languages: EN, DE, ES, FR, JA, PT-BR, ZH). Acceptance is selective and favors recognized experts."
+    },
+    "automationPlan": [
+      "AI-drafted outlines, scripts and exercise files",
+      "Automated screen-recording and caption cleanup",
+      "Pitch templates for multiple publishers"
+    ],
+    "manualSteps": [
+      "Application and audition video",
+      "Recording on camera/voice",
+      "Revisions with the publisher's producers"
+    ],
+    "fullCycle": [
+      "Apply with proposal and sample video",
+      "Sign contract",
+      "Script and record with producer",
+      "Course launches",
+      "Receive fee/royalties"
+    ],
+    "risks": [
+      "Low acceptance rate",
+      "Opaque royalty terms",
+      "Exclusivity clauses",
+      "Catalog refreshes retire old courses"
+    ],
+    "evidence": "Official instructor pages for LinkedIn Learning, Pluralsight (quarterly viewership payments) and Domestika (PayPal, production covered) confirm the programs are open to apply.",
+    "sources": [
+      "https://business.linkedin.com/learn/instructors",
+      "https://www.pluralsight.com/teach",
+      "https://www.domestika.org/en/teachers",
+      "https://teachershub.domestika.org/hc/en-us/articles/42873063969041-Promotional-URL-and-its-benefits"
+    ],
+    "tags": ["royalties", "invite-only", "semi-passive", "needs-verification"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "screen recorder (OBS, free)",
+          "publisher's production team after acceptance",
+          "LLM for outline drafts"
+        ],
+        "skills": [
+          "recognised expertise in a business, tech or creative topic",
+          "on-camera teaching",
+          "writing a course proposal and audition video"
+        ],
+        "equipment": ["laptop", "USB microphone", "webcam or camera"],
+        "accounts": [
+          "LinkedIn Learning / Pluralsight / Domestika instructor application",
+          "PayPal (Domestika) or contract payee setup"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per published course (first-year earnings)",
+        "typicalPriceUsd": {
+          "low": 1000,
+          "median": 3000,
+          "high": 15000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 120,
+        "notes": "Publishers do not publish rates; $1k-15k per course in the first year is an estimate from instructor accounts (upfront fee and/or royalties). Figures are author receipts after the publisher's share."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; most applicants are not accepted, and accepted authors usually wait 6-12 months from proposal to first payment."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 2000
+        },
+        "notes": "Enterprise learning libraries have cut new commissions and refreshed catalogues as AI-generated and AI-assisted training spreads in 2025-26. Known experts with existing audiences get accepted; average applicants are not. Failure modes: rejection, exclusivity clauses and courses retired after a few years."
+      },
+      "pricingStrategy": "Terms are set by contract; negotiate a higher upfront fee where available and keep rights to repurpose material elsewhere.",
+      "profitPath": [
+        "Month 0: proposal and audition video to 2-3 publishers (cost $0)",
+        "Month 1-4: if accepted, script and record with publisher (no pay yet)",
+        "Month 5-9: course published; first fee or quarterly royalty, $500-3,000",
+        "Month 9-12: pitch a second course or update; most earn $0-200/month averaged"
+      ],
+      "sources": [
+        "https://www.pluralsight.com/teach",
+        "https://www.domestika.org/en/teachers",
+        "https://business.linkedin.com/learn/instructors"
+      ]
+    }
+  },
+  {
+    "id": "exam-board-examiner-marking",
+    "name": "Paid online exam marking for international exam boards (IB, Cambridge International)",
+    "category": "education",
+    "summary": "Qualified teachers mark scanned exam scripts online during exam sessions, paid per script or component by the exam board.",
+    "howItWorks": "International exam boards hire seasonal examiners to mark IB Diploma, IGCSE and A Level papers. Scripts are scanned and marked on screen (e.g. RM Assessor), so you can work from home in many countries. You pass standardization, mark your allocation by the deadline and get paid per script. Experienced examiners move up to team leader, setter, item writer or moderator roles. The payer is the exam board, not students.",
+    "platforms": [
+      "International Baccalaureate",
+      "Cambridge International (Cambridge University Press & Assessment)"
+    ],
+    "payout": {
+      "methods": [
+        "bank transfer (IB: bank details in My IB)",
+        "bank transfer via Cambridge University Press & Assessment payroll (Cambridge/OCR)"
+      ],
+      "minimumPayout": "None stated (marking claims are paid automatically)",
+      "frequency": "IB: monthly, quarterly (default) or 6-monthly, examiner's choice; Cambridge group: monthly",
+      "typicalDelayDays": 60,
+      "notes": "IB Examiner Instructions 2027 (Payments): pay is per marked live response (rates shown only in IBIS once targets are released), plus one qualification fee per session; claims are paid automatically by bank transfer monthly, quarterly (default: Mar/Jun/Sep/Dec) or 6-monthly. Cambridge International's examiner FAQ gives GBP 1.00-5.00 per script; the payout timing comes from the guide of its sister board OCR (same Cambridge payroll): fees received by month end are paid in the next month's payrun (UK: on the 28th; non-UK: mid-month). IB per-response rates are not public."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 240
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 1500
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 2,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 4,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; contractor fees are taxable.",
+      "complianceRequirements": [
+        "subject teaching qualification/experience",
+        "confidentiality agreement",
+        "tax and bank details"
+      ]
+    },
+    "availability": {
+      "notes": "Recruitment is worldwide for many subjects; some roles require teaching the syllabus. Unverified per country."
+    },
+    "automationPlan": [
+      "Keep mark schemes and standardization notes organized",
+      "Calendar reminders for marking windows"
+    ],
+    "manualSteps": [
+      "Application with teaching credentials",
+      "Standardization training",
+      "Marking every script by hand (AI marking is not allowed)"
+    ],
+    "fullCycle": [
+      "Apply via exam-board assessor portal",
+      "Complete training and standardization",
+      "Mark allocation in session",
+      "Pass quality checks",
+      "Receive fee to bank"
+    ],
+    "risks": [
+      "Seasonal, deadline-heavy work",
+      "Needs subject teaching background",
+      "Pay per script can be low",
+      "Confidentiality breaches end the contract"
+    ],
+    "evidence": "Cambridge International publicly recruits assistant examiners, team leaders, setters, item writers and moderators via assessors.cambridge.org, and its FAQ gives GBP 1-5 per script. The IB runs a global examiner network.",
+    "sources": [
+      "https://www.cambridgeinternational.org/about-us/examiners/frequently-asked-questions",
+      "https://www.cambridgeinternational.org/examiners",
+      "https://www.ibo.org/jobs-and-careers/",
+      "https://ibpublishing.ibo.org/exinst/apps/exinst/index.html?doc=EX_instructions_2027_e&part=7&chapter=1",
+      "https://www.ocr.org.uk/Images/16464-assessment-specialist-expenses-information.pdf"
+    ],
+    "tags": ["seasonal", "teachers", "contractor"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 12,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "RM Assessor or board's on-screen marking tool (provided)",
+          "mark schemes (provided)"
+        ],
+        "skills": [
+          "degree and teaching background in the subject",
+          "applying a mark scheme consistently",
+          "meeting tight deadlines"
+        ],
+        "equipment": [
+          "laptop or desktop with large screen",
+          "stable broadband"
+        ],
+        "accounts": [
+          "examiner contract with Cambridge International or IB",
+          "bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per marked script",
+        "typicalPriceUsd": {
+          "low": 1,
+          "median": 4,
+          "high": 7
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 0.2,
+        "notes": "Cambridge International pays GBP 1-5 per script (about $1.3-6.5) depending on syllabus; IB fees are unverified. Roughly 5 scripts/hour for mid-length papers."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; income comes in two seasonal bursts (May/June and Oct/Nov), so first pay can be 2-8 months after applying."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 1200
+        },
+        "notes": "Boards regularly recruit examiners, and qualified teachers who pass standardisation are reliably paid. Income is lumpy: a session can pay $500-2,000, which averages to $100-300/month. AI-assisted marking is being trialled but does not yet replace human examiners. Failure modes: no allocation in your subject, failing standardisation, and burnout at deadline time. Fact-check: median month-12 net lowered from $250 to $60 so it agrees with the 25% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Fees are fixed; raise earnings by taking larger allocations, marking several syllabuses and moving up to team leader or setter roles.",
+      "profitPath": [
+        "Month 0: apply to Cambridge and IB with subject credentials (cost $0)",
+        "Month 1-6: training and standardisation before the next session",
+        "First session: mark 300-500 scripts, $1,000-2,000 paid after the session",
+        "Month 6-12: second session plus senior-role applications; averages $150-300/month"
+      ],
+      "sources": [
+        "https://www.cambridgeinternational.org/about-us/examiners/frequently-asked-questions",
+        "https://www.ibo.org/jobs-and-careers/"
+      ]
+    }
+  },
+  {
+    "id": "hotmart-course-affiliate-network",
+    "name": "Sell an online course through Hotmart's built-in affiliate network",
+    "category": "education",
+    "summary": "Publish a course or digital training on Hotmart and let its marketplace of affiliates promote it for a commission you set.",
+    "howItWorks": "Hotmart is a Brazil-born creator platform for courses and digital products, strongest in Latin America and Europe. You host the course in its member area, set the price and an affiliate commission, and list it in the affiliate marketplace. There, thousands of affiliates choose products to promote with their own traffic. That differs from Teachable or Udemy because sales can come from other people's marketing. Hotmart charges 9.9% plus a fixed USD/EUR 1.00 per sale (no monthly fee) and handles checkout, local payment methods and installments.",
+    "platforms": ["Hotmart"],
+    "payout": {
+      "methods": ["bank transfer (local currency)", "international transfer"],
+      "minimumPayout": "A minimum applies; amount set in the Help Center (not confirmed)",
+      "frequency": "on request after 30-day release (or automatic monthly transfer)",
+      "typicalDelayDays": 30,
+      "notes": "Hotmart's payments policy: 9.9% service fee plus a fixed USD 1.00 / EUR 1.00 / BRL 2.49 per sale (20% and no fixed fee on products up to BRL 10). Balances are released 30 days after payment approval by default; eligible creators outside Brazil can take a paid cash advance within 2 business days. Each manual withdrawal has a fee and a minimum amount, given only in the Help Center, which could not be read. Automatic monthly transfers carry no withdrawal fee. Transactions are in BRL (Brazil), EUR (EU) or USD (everyone else)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 100,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 6,
+      "ongoingEffort": 4,
+      "incomePotential": 7,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling courses is legal everywhere. Courses on regulated topics (finance, health) need care to avoid unlicensed advice.",
+      "complianceRequirements": [
+        "Hotmart KYC",
+        "consumer-law refund rules (Hotmart offers a guarantee period)",
+        "tax/VAT reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Strong in Brazil, Spanish-speaking LATAM and Europe. Hotmart publishes no list of payout countries; withdrawals go to a bank account in your own name."
+    },
+    "automationPlan": [
+      "AI-drafted course scripts, slides and sales page",
+      "Affiliate swipe files and email sequences generated once",
+      "Automated checkout and member-area delivery"
+    ],
+    "manualSteps": [
+      "KYC and bank linking",
+      "Recording the course",
+      "Recruiting and vetting top affiliates"
+    ],
+    "fullCycle": [
+      "Create Hotmart account and verify",
+      "Upload course and set price and commission",
+      "Open to affiliate marketplace",
+      "Sales by you and affiliates",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Affiliates may use aggressive marketing that hurts your brand",
+      "Refund guarantee window",
+      "Withdrawal fee and minimum not published in the policy text"
+    ],
+    "evidence": "Hotmart is one of the largest course platforms in LATAM. Its pricing page confirms per-sale fees with no monthly fee, and its payments policy sets out the 9.9% + fixed fee and the 30-day release.",
+    "sources": [
+      "https://hotmart.com/en/legal/payments-policy",
+      "https://hotmart.com/en/pricing",
+      "https://hotmart.com/en/legal/terms-of-use"
+    ],
+    "tags": ["courses", "affiliate", "semi-passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 60,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Hotmart members area and checkout (no monthly fee)",
+          "OBS / phone video",
+          "LLM for scripts and sales page copy",
+          "free email tool tier"
+        ],
+        "skills": [
+          "subject expertise",
+          "course design and recording (AI covers drafts)",
+          "writing a sales page",
+          "recruiting and supporting affiliates"
+        ],
+        "equipment": ["laptop", "microphone", "smartphone or webcam"],
+        "accounts": [
+          "Hotmart producer account + KYC",
+          "bank account for withdrawals"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per course sale",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 50,
+          "high": 200
+        },
+        "costPerUnitUsd": 13,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 64,
+        "hoursPerUnit": 0.1,
+        "notes": "Hotmart fee 9.9% + $1 per sale. Cost assumes about half of sales come via affiliates at ~50% commission (about $12.50) plus the $1 fixed fee. Typical LatAm infoproduct prices $20-200."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "No fixed monthly cost. No cash outlay; the course takes 1-2 months to build and affiliates rarely promote a product with no sales history."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 50,
+          "high": 4000
+        },
+        "notes": "Hotmart's affiliate marketplace is crowded with courses; top affiliates pick products with proven conversion and high commissions. Producers with their own audience win; newcomers rarely get affiliate traffic. AI makes course creation cheap, flooding the market and pushing buyers toward free AI tutoring. Failure modes: zero affiliate interest, refunds within the guarantee window."
+      },
+      "pricingStrategy": "Launch a low-ticket course ($20-30) with a generous 50-60% affiliate commission to attract promoters, then add a higher-priced tier or upsell once conversion data exists.",
+      "profitPath": [
+        "Month 0-1: build a 1-2 hour course and sales page (cost $0)",
+        "Month 2-3: first sales from own network, $50-200 total",
+        "Month 3-6: list in affiliate marketplace, recruit 5-10 affiliates; $50-300/month",
+        "Month 6-12: optimise funnel, add upsell; most stay under $100/month, top cases $1k+"
+      ],
+      "sources": [
+        "https://hotmart.com/en/legal/payments-policy",
+        "https://hotmart.com/en/pricing"
+      ]
+    }
+  },
+  {
+    "id": "instructional-design-elearning-freelance",
+    "name": "Freelance instructional design and e-learning module building for companies",
+    "category": "education",
+    "summary": "Build training courses (SCORM modules, onboarding courses, quizzes) for companies' Learning & Development teams as a freelancer.",
+    "howItWorks": "Companies, NGOs and course creators need their knowledge turned into structured training: learning objectives, storyboards, interactive modules (Articulate Rise/Storyline, iSpring) and assessments exported as SCORM for their LMS. You take fixed-price projects on Upwork or win direct clients. LLMs draft outlines, scripts, quiz banks and voiceovers, and you design, QA and package. The payer is a business, not a learner, so budgets are larger than tutoring rates.",
+    "platforms": ["Upwork", "Contra", "direct clients"],
+    "payout": {
+      "methods": ["Upwork -> bank/Payoneer/PayPal", "Stripe/Wise invoices"],
+      "minimumPayout": "Upwork: USD 1+ PayPal / varies by method",
+      "frequency": "per milestone",
+      "typicalDelayDays": 10,
+      "notes": "Upwork releases fixed-price milestones after a 5-day security period and charges a variable 0-15% fee."
+    },
+    "capitalRequiredUsd": 50,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 800,
+      "high": 6000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 6,
+      "setupEffort": 5,
+      "ongoingEffort": 6,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 92
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; a services business.",
+      "complianceRequirements": [
+        "tax/self-employment registration",
+        "client NDA/IP assignment",
+        "accessibility (WCAG) where required"
+      ]
+    },
+    "availability": {
+      "notes": "Upwork pays out almost everywhere in the reference set. Authoring tools such as Articulate have trials, and free tools (Adapt, H5P) work too."
+    },
+    "automationPlan": [
+      "LLM storyboard and script generation",
+      "AI voiceover and quiz-bank drafting",
+      "Template SCORM packages reused across clients"
+    ],
+    "manualSteps": [
+      "Discovery calls with subject-matter experts",
+      "Design QA and LMS testing",
+      "Client revisions"
+    ],
+    "fullCycle": [
+      "Build 2-3 portfolio modules",
+      "Publish Upwork profile/specialized gigs",
+      "Win first fixed-price project",
+      "Deliver SCORM and get review",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "Competition from in-house L&D",
+      "Authoring-tool license costs",
+      "Scope creep"
+    ],
+    "evidence": "Upwork lists instructional design and e-learning development as standing categories with ongoing job posts. Corporate training is a large market.",
+    "sources": [
+      "https://www.upwork.com/hire/instructional-designers/",
+      "https://golance.com/blogs/upwork-fees-explained-2026"
+    ],
+    "tags": ["freelance", "b2b", "ai-assisted"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 25,
+        "cashUsd": 50,
+        "recurringMonthlyUsd": 20,
+        "tools": [
+          "Upwork Connects (~$0.15 each)",
+          "LLM subscription ($20/mo)",
+          "free authoring: Adapt Learning, H5P, iSpring Free (Articulate 360 optional, ~$1,000+/yr)",
+          "Canva free tier"
+        ],
+        "skills": [
+          "instructional design (ADDIE, learning objectives)",
+          "storyboarding and assessment writing (AI drafts)",
+          "e-learning authoring and SCORM export",
+          "client management"
+        ],
+        "equipment": ["laptop", "headset/microphone for voiceover"],
+        "accounts": [
+          "Upwork / Contra profiles",
+          "Stripe or Wise for direct invoices",
+          "Payoneer/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per billable hour",
+        "typicalPriceUsd": {
+          "low": 25,
+          "median": 45,
+          "high": 100
+        },
+        "costPerUnitUsd": 1,
+        "platformFeePercent": 10,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 1,
+        "notes": "Upwork instructional-design rates mostly $25-100/hr; Upwork fee is 0-15% (10% used). Cost covers Connects and AI credits per hour billed. Upwork's variable fee is estimated at 10% (official fee page bot-blocked)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 20,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurring $20/mo (startup cash not amortised). One or two billed hours a month covers the $20 AI subscription; break-even in months means first paid milestone, typically 1-3 months."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 30,
+        "typicalNetProfitMonth12Usd": {
+          "low": -20,
+          "median": 80,
+          "high": 5500
+        },
+        "notes": "Companies still buy SCORM modules and training rewrites, and specialists with portfolios in compliance, software onboarding or healthcare win. AI tools have made storyboards and voiceovers fast, so clients expect lower prices and generalist low-end gigs are shrinking. Failure modes: no portfolio, scope creep on fixed-price projects, and expensive authoring licenses. Fact-check: median month-12 net lowered from $600 to $80 so it agrees with the 30% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Win first clients with fixed-price small modules ($200-500) using free tools, then quote per finished minute or per project at $40-70/hr equivalent once you have 3-5 portfolio pieces.",
+      "profitPath": [
+        "Month 0: portfolio of 2 sample modules, Upwork profile (cost $50)",
+        "Month 1-2: first small project, $200-500",
+        "Month 3-6: 2-3 repeat clients, $500-1,500/month",
+        "Month 6-12: direct retainers and higher rates; $800-3,000/month for those who stick"
+      ],
+      "sources": [
+        "https://www.upwork.com/hire/instructional-designers/",
+        "https://golance.com/blogs/upwork-fees-explained-2026"
+      ]
+    }
+  },
+  {
+    "id": "independent-online-tutoring-practice",
+    "name": "Independent online tutoring practice with your own booking and payments",
+    "category": "education",
+    "summary": "Run tutoring under your own brand with your own booking page, payment links and local SEO, keeping 100% minus card fees.",
+    "howItWorks": "Instead of paying a marketplace commission, you get students through a Google Business Profile, a simple site, school/parent networks and referrals. Then you sell lesson packages through a booking tool (Cal.com/Calendly or tutoring software like TutorBird/Teachworks) with Stripe or PayPal checkout. Packages paid in advance make income steady and cut no-shows. Marketplaces can still be a lead source, but repeat students stay direct where terms allow. Note that Preply and italki forbid moving their students off-platform.",
+    "platforms": [
+      "Stripe",
+      "PayPal",
+      "Cal.com/Calendly",
+      "Google Business Profile"
+    ],
+    "payout": {
+      "methods": ["Stripe -> bank", "PayPal -> bank", "Wise"],
+      "minimumPayout": "Stripe: no minimum",
+      "frequency": "rolling (2-7 days)",
+      "typicalDelayDays": 4,
+      "notes": "Stripe pays out on a 2-7 day rolling schedule where supported. Elsewhere use PayPal or Wise invoices."
+    },
+    "capitalRequiredUsd": 20,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 500,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 5,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 6,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere. You may need to register as a sole trader; some countries require child-safeguarding checks for tutoring minors.",
+      "complianceRequirements": [
+        "self-employment/tax registration",
+        "safeguarding for minors",
+        "consumer refund terms",
+        "do not poach students from marketplaces that forbid it"
+      ]
+    },
+    "availability": {
+      "notes": "Stripe is unavailable in parts of the reference list (e.g. several African and South Asian countries); PayPal/Wise cover most of the gaps."
+    },
+    "automationPlan": [
+      "Automated booking, reminders and package renewals",
+      "AI lesson plans, homework and progress reports",
+      "Review-request and referral emails"
+    ],
+    "manualSteps": [
+      "Teaching each lesson live",
+      "Building initial local reputation",
+      "Payment-provider KYC"
+    ],
+    "fullCycle": [
+      "Pick subject and price",
+      "Set up booking + payment links",
+      "Publish Google Business Profile and site",
+      "Teach first students and get referrals",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Slow client acquisition without a marketplace",
+      "Chargebacks and no-shows",
+      "You handle all admin"
+    ],
+    "evidence": "Many independent tutors run direct practices. Tutoring-software vendors (TutorBird, Teachworks) exist because of this market.",
+    "sources": [
+      "https://stripe.com/global",
+      "https://www.tutorbird.com/",
+      "https://cal.com/"
+    ],
+    "tags": ["live", "direct-pay", "tutoring"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 20,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Cal.com free tier",
+          "Stripe / PayPal checkout",
+          "Google Business Profile (free)",
+          "simple website (domain $12-20/yr)",
+          "Google Meet / Zoom free"
+        ],
+        "skills": [
+          "subject expertise and tutoring",
+          "local marketing and referral building",
+          "admin: invoicing, scheduling, cancellation policy"
+        ],
+        "equipment": [
+          "laptop with webcam",
+          "headset",
+          "drawing tablet optional"
+        ],
+        "accounts": [
+          "Stripe account + KYC",
+          "PayPal or Wise",
+          "Google Business Profile"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per 1-hour lesson",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 40,
+          "high": 80
+        },
+        "costPerUnitUsd": 2,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 1.2,
+        "notes": "Private online tutoring rates of $20-80/hour (estimate from local market rates); cost is Stripe/PayPal processing (~3% + $0.30). No marketplace commission."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 1,
+        "notes": "No fixed monthly cost. Startup cash is the domain/site; one or two lessons recover it."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 35,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 80,
+          "high": 4500
+        },
+        "notes": "Tutors with a niche (exam prep, specific curricula, adult professionals) and referral networks keep full schedules; generic homework help faces AI substitutes. Acquisition is slower than on a marketplace, but every lesson keeps ~97%. Failure modes: no inbound leads for months, no-shows without prepaid packages. Fact-check: median month-12 net lowered from $400 to $80 so it agrees with the 35% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot)."
+      },
+      "pricingStrategy": "Start near the local marketplace median with a free 20-minute consultation, sell prepaid 5- and 10-lesson packages, and raise rates for new students every 6 months once the schedule is full.",
+      "profitPath": [
+        "Month 0: site, booking page, Google profile, tell school and parent networks (cost $20)",
+        "Month 1-2: first 2-3 students via referrals, $150-400/month",
+        "Month 3-6: 6-10 regular students, $400-1,000/month",
+        "Month 6-12: waitlist, higher rates, small groups; $500-2,000/month"
+      ],
+      "sources": [
+        "https://stripe.com/pricing",
+        "https://cal.com/",
+        "https://stripe.com/global"
+      ]
+    }
+  }
+]

@@ -1,0 +1,1774 @@
+[
+  {
+    "id": "patreon-memberships",
+    "name": "Patreon membership tiers for an existing audience",
+    "category": "community",
+    "summary": "Fans pay a monthly (or per-creation) subscription for exclusive posts, early access, downloads or community perks.",
+    "howItWorks": "Publish a Patreon page with 2-4 tiers and post exclusive content (files, tutorials, early access) on a schedule. Patrons are existing followers of your free work who pay to support you. Without an audience conversion is near zero; typically 1-5% of engaged followers convert.",
+    "platforms": ["Patreon"],
+    "payout": {
+      "methods": ["PayPal", "Payoneer", "Stripe direct deposit to bank"],
+      "minimumPayout": "Low/none (exact payout minimum not re-confirmed; PayPal payout fee ~1%)",
+      "frequency": "monthly (auto or manual withdrawal)",
+      "typicalDelayDays": 7,
+      "notes": "Current standard plan: 10% platform fee plus payment processing, currency conversion and payout fees (patreon.com/pricing). Pages launched before Aug 2025 may keep legacy 5-12% plans. Payout minimums/fees per method could not be re-fetched (help center blocks automated access)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 40,
+      "high": 3000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 5,
+      "setupEffort": 3,
+      "ongoingEffort": 5,
+      "incomePotential": 6,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere in the reference set; income taxable.",
+      "complianceRequirements": ["tax form (W-9/W-8BEN)", "report income"]
+    },
+    "availability": {
+      "notes": "Payouts via PayPal/Payoneer in most countries; Stripe deposit where supported."
+    },
+    "automationPlan": [
+      "AI-draft exclusive posts from public work",
+      "Schedule tier-gated drops",
+      "Patreon API -> Discord roles/welcome DMs",
+      "Auto MRR/churn digest"
+    ],
+    "manualSteps": [
+      "KYC and tax interview",
+      "Link payout account",
+      "Build the audience that feeds the page",
+      "Make the core creative work patrons pay for"
+    ],
+    "fullCycle": [
+      "Sign up + tax info",
+      "Design tiers",
+      "Announce to audience",
+      "Post on schedule",
+      "Withdraw to bank"
+    ],
+    "risks": [
+      "10% fee for new pages",
+      "Monthly churn",
+      "Needs external audience"
+    ],
+    "evidence": "Patreon has paid creators billions since 2013; many creators earn $1k-$100k+/mo, but the median page earns little.",
+    "sources": [
+      "https://www.patreon.com/pricing",
+      "https://support.patreon.com/hc/en-us/articles/11111747095181-Creator-fees"
+    ],
+    "tags": ["recurring", "audience-dependent", "subscription"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Patreon (free to start; 10% fee on standard plan)",
+          "AI for drafting posts and perks"
+        ],
+        "skills": [
+          "consistently producing exclusive content",
+          "converting an existing audience into members"
+        ],
+        "equipment": ["laptop", "smartphone"],
+        "accounts": [
+          "Patreon creator account + tax forms",
+          "PayPal or bank (Stripe/Payoneer)"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per patron per month",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 6,
+          "high": 25
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 18,
+        "grossMarginPercent": 82,
+        "hoursPerUnit": 0.1,
+        "notes": "Common tiers $3-$10; 10% platform fee plus payment processing (~5-8% on small pledges) gives ~18% total."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 30,
+          "high": 2500
+        },
+        "notes": "Patreon rewards creators who already have an engaged audience (YouTube, podcasts, webcomics); typical conversion is ~1-5% of active fans. New creators without traffic rarely get past a handful of patrons. The 2025 move to a single 10% plan raised fees for new pages, and Apple in-app pricing changes added friction."
+      },
+      "pricingStrategy": "Launch with a low $3-$5 tier plus one higher tier with tangible perks; raise prices for new patrons and add annual billing once churn stabilises.",
+      "profitPath": [
+        "Month 0: set up page and 2-3 tiers (cost $0)",
+        "Month 1-2: announce to existing audience; first 5-20 patrons",
+        "Month 3-6: regular exclusive posts, reduce churn",
+        "Month 6-12: $30-$300/month for creators with 5k+ engaged followers"
+      ],
+      "sources": [
+        "https://www.patreon.com/pricing",
+        "https://support.patreon.com/hc/en-us/articles/11111747095181-Creator-fees"
+      ]
+    }
+  },
+  {
+    "id": "kofi-buymeacoffee-tips",
+    "name": "Tip jar and lightweight memberships on Ko-fi / Buy Me a Coffee",
+    "category": "community",
+    "summary": "One-off tips plus optional monthly memberships, commissions and a small shop, paid directly into your PayPal/Stripe.",
+    "howItWorks": "Create a Ko-fi or Buy Me a Coffee page and link it from READMEs, videos, blogs and bios. Readers tip $3-$10 or subscribe monthly. Ko-fi takes 0% on donations (5% on memberships/shop unless Gold) and pays into your PayPal/Stripe; Buy Me a Coffee takes 5% (no monthly fee) and pays out to your bank via Stripe/Wise in 44 countries.",
+    "platforms": ["Ko-fi", "Buy Me a Coffee"],
+    "payout": {
+      "methods": [
+        "Ko-fi: PayPal/Stripe -> bank",
+        "Buy Me a Coffee: Stripe/Wise -> bank"
+      ],
+      "minimumPayout": "$0 platform minimum (Ko-fi pays straight to PayPal/Stripe; BMC states none)",
+      "frequency": "instant per transaction; Stripe/PayPal withdrawal schedule",
+      "typicalDelayDays": 2,
+      "notes": "BMC: 5% transaction fee, creators keep 95%, payouts via Stripe and Wise in 44 countries (buymeacoffee.com/faq). Processor ~3% + $0.30 on top. Ko-fi fee terms not re-fetched this run (help center blocks automated access)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 15,
+      "high": 800
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 7,
+      "setupEffort": 1,
+      "ongoingEffort": 2,
+      "incomePotential": 4,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Voluntary tips are legal in all reference countries; taxable income.",
+      "complianceRequirements": ["report income for tax", "PayPal/Stripe KYC"]
+    },
+    "availability": {
+      "notes": "Ko-fi works wherever PayPal can receive or Stripe operates; PayPal receiving is unavailable or restricted in a few reference countries (e.g. Bangladesh, Lebanon, Libya, Iraq). BMC pays out in 44 countries via Stripe/Wise."
+    },
+    "automationPlan": [
+      "Template tip links into all READMEs/posts",
+      "Webhook thank-yous and file delivery",
+      "AI supporter-only updates"
+    ],
+    "manualSteps": [
+      "Connect PayPal/Stripe and pass KYC",
+      "Produce the free content that motivates tips"
+    ],
+    "fullCycle": [
+      "Create Ko-fi/BMC page",
+      "Connect PayPal or Stripe",
+      "Place links in all content",
+      "Receive tips/memberships",
+      "Withdraw from PayPal/Stripe to bank"
+    ],
+    "risks": [
+      "Very small typical amounts",
+      "Income tracks your free-content traffic",
+      "PayPal account limitations/holds"
+    ],
+    "evidence": "Ko-fi's help center documents 0% fees on donations and direct-to-PayPal/Stripe payments; many open-source maintainers and artists publicly show Ko-fi supporters.",
+    "sources": [
+      "https://buymeacoffee.com/faq",
+      "https://help.ko-fi.com/hc/en-us/articles/360002506494-Does-Ko-fi-Take-a-Fee",
+      "https://www.ruzuku.com/learn/articles/ko-fi-pricing"
+    ],
+    "tags": ["tips", "low-effort", "passive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Ko-fi (free, 0% on donations) or Buy Me a Coffee (5% fee)",
+          "link-in-bio placement"
+        ],
+        "skills": [
+          "producing work people want to thank you for (open source, art, guides)"
+        ],
+        "equipment": ["laptop or smartphone"],
+        "accounts": ["Ko-fi/BMC account", "PayPal or Stripe"]
+      },
+      "unitEconomics": {
+        "unit": "per supporter payment",
+        "typicalPriceUsd": {
+          "low": 3,
+          "median": 5,
+          "high": 50
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 12,
+        "grossMarginPercent": 88,
+        "hoursPerUnit": 0,
+        "notes": "Most tips are $3-$5; processor ~3% + $0.30 plus 0% (Ko-fi donations) or 5% (Buy Me a Coffee) platform fee gives ~12% on a $5 tip."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 12,
+          "high": 700
+        },
+        "notes": "Tips flow to people with visible, useful free work and a clear ask; most pages receive nothing without an audience. Zero cost makes any tip pure profit, but amounts stay small. Failure mode: no traffic to the page. Verifier: likelihood lowered from 25 to 10 to sit below Patreon (15), since tips convert less often than memberships and most pages get nothing."
+      },
+      "pricingStrategy": "Set a default 'coffee' unit ($3-$5) and add a monthly membership or small digital shop for higher-value supporters.",
+      "profitPath": [
+        "Month 0: create page, add link to README/bio (cost $0)",
+        "Month 1-3: first tips if audience exists ($5-$30)",
+        "Month 3-6: add memberships/commissions",
+        "Month 6-12: $10-$100/month for active creators"
+      ],
+      "sources": [
+        "https://buymeacoffee.com/faq",
+        "https://help.ko-fi.com/hc/en-us/articles/360002506494-Does-Ko-fi-Take-a-Fee",
+        "https://www.ruzuku.com/learn/articles/ko-fi-pricing"
+      ]
+    }
+  },
+  {
+    "id": "paid-chat-community",
+    "name": "Paid Discord/Telegram or Skool community (Whop, LaunchPass, Skool)",
+    "category": "community",
+    "summary": "Charge a monthly fee for access to a gated chat community or Skool group around a niche skill or interest.",
+    "howItWorks": "Run a focused community (interview prep, niche hobby, language practice) where members pay monthly for access, resources and your presence. Whop/LaunchPass bill via Stripe and auto-grant Discord/Telegram roles; Skool bundles forum, courses and gamification. Trading/betting 'signals' groups are excluded.",
+    "platforms": ["Whop", "LaunchPass", "Skool", "Discord", "Telegram"],
+    "payout": {
+      "methods": [
+        "Stripe -> bank",
+        "Whop payouts (bank, PayPal, Coinbase; options vary by country)"
+      ],
+      "minimumPayout": "Whop: $10 minimum withdrawal; Stripe-based tools: Stripe default",
+      "frequency": "Whop instant/daily/weekly; Stripe rolling",
+      "typicalDelayDays": 7,
+      "notes": "Whop processing 2.7% + $0.30 (+1.5% intl cards, +1% FX); payout fees: next-day ACH $2.50, wire $23, instant 4% + $2.50 (Whop's fees page lists no separate platform fee, as modelled in the unit economics; the ~3% fee in older guides is not applied). LaunchPass Premium $29/mo + 3.5% + Stripe (free tier $0/mo). Skool Hobby $9/mo + 10% or Pro $99/mo + 2.9%."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 150,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 6,
+      "setupEffort": 4,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal; avoid unlicensed financial signals/gambling. Auto-renewal/cancellation laws apply.",
+      "complianceRequirements": [
+        "clear cancellation/refund terms",
+        "income/VAT reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Whop pays out to 200+ countries (excluding sanctioned/restricted ones) via bank, PayPal or Coinbase; Skool/LaunchPass rely on Stripe and only pay out in Stripe countries (~35-40% of reference list)."
+    },
+    "automationPlan": [
+      "Bot role gating + onboarding DMs",
+      "AI weekly digests",
+      "Scheduled challenges/auto-moderation",
+      "MRR/churn dashboard"
+    ],
+    "manualSteps": [
+      "Seed initial members and be personally present",
+      "Live calls/AMAs",
+      "Moderation decisions",
+      "KYC for payouts"
+    ],
+    "fullCycle": [
+      "Pick niche and promise",
+      "Create Discord/Telegram/Skool space",
+      "Connect Whop/LaunchPass/Skool billing",
+      "Launch to audience",
+      "Run weekly engagement",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Churn when engagement drops",
+      "Needs an existing audience",
+      "Reputational risk of 'guru' niches",
+      "Stripe availability limits"
+    ],
+    "evidence": "Skool's public leaderboard shows communities with thousands of paying members; Whop, Skool and LaunchPass publish official fee and payout docs. Availability raised to 75 because Whop's payout docs list 200+ countries.",
+    "sources": [
+      "https://docs.whop.com/manage-your-business/manage-payouts/set-up-payouts",
+      "https://docs.whop.com/fees",
+      "https://www.skool.com/pricing",
+      "https://help.launchpass.com/en/articles/1745573-step-3-select-your-launchpass-plan-complete-pricing-guide"
+    ],
+    "tags": ["recurring", "community", "subscription"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Discord or Telegram (free)",
+          "Whop (processing 2.7% + $0.30, no platform fee) or LaunchPass ($29/mo) or Skool ($9-$99/mo)"
+        ],
+        "skills": [
+          "subject-matter expertise",
+          "community moderation and engagement",
+          "audience building; AI helps with content and moderation"
+        ],
+        "equipment": ["laptop", "smartphone"],
+        "accounts": ["Whop/Stripe + KYC", "Discord/Telegram admin account"]
+      },
+      "unitEconomics": {
+        "unit": "per member per month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 20,
+          "high": 99
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 5,
+        "grossMarginPercent": 95,
+        "hoursPerUnit": 0.2,
+        "notes": "Niche paid communities commonly $10-$50/month; Whop charges no separate platform fee, only processing 2.7% + $0.30 (+1.5% international cards), ~5% on a $20 membership."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost on Whop + Discord; Skool/LaunchPass add $9-$99/month."
+      },
+      "marketConditions": {
+        "demandTrend": "growing",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 8500
+        },
+        "notes": "Creators with an audience in high-value niches (trading education, career skills, AI tooling) monetise via Skool/Whop; Skool's marketing push in 2024-2026 brought many copycat communities and buyer fatigue. Without an existing audience, member acquisition is the bottleneck, and churn of 10-20%/month is normal. Verifier: Whop fee corrected from ~10% to ~5% (docs.whop.com/fees); median month-12 net lowered from $120 to $60 to agree with a 15% chance of reaching $100/month."
+      },
+      "pricingStrategy": "Launch a founding-member price (~50% off) for the first 20-50 members, then raise the price for new members as content and testimonials accumulate.",
+      "profitPath": [
+        "Month 0: set up Discord + Whop and a clear promise (cost $0)",
+        "Month 1-2: founding members from your audience; expected $50-$300",
+        "Month 3-6: weekly events, testimonials, raise price",
+        "Month 6-12: $100-$1,000/month for niches with demand"
+      ],
+      "sources": [
+        "https://docs.whop.com/manage-your-business/manage-payouts/set-up-payouts",
+        "https://docs.whop.com/fees",
+        "https://www.skool.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "gated-membership-site",
+    "name": "Membership site with gated content (Ghost, Memberful)",
+    "category": "community",
+    "summary": "Own-domain Ghost or WordPress + Memberful site where paying members unlock articles, videos, downloads and a members-only area, billed via Stripe.",
+    "howItWorks": "Run an own-domain site on Ghost or WordPress + Memberful where premium posts, archives, templates or videos require a paid Stripe membership. You own the domain and email list. Ghost takes 0% of revenue (Ghost(Pro) Publisher $29/mo billed yearly, or self-host on a cheap VPS); Memberful Standard charges $49/mo plus 4.9%.",
+    "platforms": ["Ghost", "Memberful", "Stripe"],
+    "payout": {
+      "methods": ["Stripe -> bank"],
+      "minimumPayout": "Stripe default (no platform minimum)",
+      "frequency": "Stripe rolling (2-7 days)",
+      "typicalDelayDays": 7,
+      "notes": "Ghost: no Ghost transaction fee, Stripe fees apply; paid subscriptions need Ghost(Pro) Publisher ($29/mo yearly; Starter $18 excludes them) or self-hosting. Memberful Standard $49/mo + 4.9%."
+    },
+    "capitalRequiredUsd": 10,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 50,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 7,
+      "setupEffort": 5,
+      "ongoingEffort": 5,
+      "incomePotential": 7,
+      "aiLeverage": 8,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 40
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; digital VAT/GST rules apply in EU/UK/AU.",
+      "complianceRequirements": [
+        "Stripe KYC",
+        "digital VAT/GST handling",
+        "privacy policy/GDPR for member data"
+      ]
+    },
+    "availability": {
+      "notes": "Requires Stripe in your country (~35-40% of the reference list); otherwise use Patreon/Whop instead."
+    },
+    "automationPlan": [
+      "AI-assisted drafting and SEO of free posts that funnel to paid",
+      "Scheduled premium content releases",
+      "Automated welcome/onboarding email sequences",
+      "Ghost/Stripe webhooks for churn analytics"
+    ],
+    "manualSteps": [
+      "Create the premium content library",
+      "Stripe KYC",
+      "Domain/hosting setup"
+    ],
+    "fullCycle": [
+      "Install Ghost or Memberful",
+      "Connect Stripe",
+      "Publish free + gated content",
+      "Drive traffic (SEO/social)",
+      "Convert to members",
+      "Stripe payouts to bank"
+    ],
+    "risks": [
+      "Slow audience growth without an existing following",
+      "Stripe country limits",
+      "Hosting cost before revenue"
+    ],
+    "evidence": "Ghost publishes that its creators collectively earn tens of millions per year (e.g. 404 Media, Platformer run on Ghost memberships).",
+    "sources": ["https://ghost.org/pricing/", "https://memberful.com/pricing/"],
+    "tags": ["recurring", "owned-audience", "subscription"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 40,
+        "cashUsd": 10,
+        "recurringMonthlyUsd": 29,
+        "tools": [
+          "Ghost(Pro) Publisher ($29/mo billed yearly) or self-hosted Ghost (~$6/mo VPS)",
+          "Stripe",
+          "AI writing aids"
+        ],
+        "skills": [
+          "producing premium content consistently",
+          "SEO/newsletter growth",
+          "basic site setup"
+        ],
+        "equipment": ["laptop"],
+        "accounts": ["Ghost(Pro) or VPS", "Stripe + KYC", "domain registrar"]
+      },
+      "unitEconomics": {
+        "unit": "per member per month",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 8,
+          "high": 30
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 7,
+        "grossMarginPercent": 93,
+        "hoursPerUnit": 0.1,
+        "notes": "Typical memberships $5-$10/month; Ghost takes 0%, Stripe ~2.9% + $0.30 (~7% on $8)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 29,
+        "unitsPerMonthToBreakEven": 4,
+        "typicalMonthsToBreakEven": 8,
+        "monthsToRecoverStartup": 1,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = Ghost(Pro) Publisher ($29/month); self-hosting cuts it to ~$6."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 10,
+        "typicalNetProfitMonth12Usd": {
+          "low": -30,
+          "median": 20,
+          "high": 4900
+        },
+        "notes": "Independent publishers with a niche expertise and an email list (often from social media) succeed; generic content competes with free AI answers. Subscription fatigue rose in 2025-2026. Most new sites never cover the hosting fee."
+      },
+      "pricingStrategy": "Start with a free tier to build the list and a $5-$8 paid tier; add annual plans (2 months free) and raise prices once open rates and retention are strong.",
+      "profitPath": [
+        "Month 0: launch Ghost site with free newsletter ($10 + $29/mo)",
+        "Month 1-6: grow free list to 1,000+",
+        "Month 6-9: open paid tier; 2-5% of list converts",
+        "Month 9-12: $50-$300/month for disciplined publishers"
+      ],
+      "sources": [
+        "https://ghost.org/pricing/",
+        "https://memberful.com/pricing/"
+      ]
+    }
+  },
+  {
+    "id": "tutoring-marketplaces",
+    "name": "1-to-1 online tutoring on Preply, italki or Wyzant",
+    "category": "education",
+    "summary": "Teach languages or academic subjects over video to students the marketplace sends you, at your own hourly rate.",
+    "howItWorks": "Create a tutor profile with intro video and set an hourly rate. Students find you via search, book a trial, then buy packages. Preply keeps the trial and 18-33% after; italki ~15%; Wyzant (US) 25%. Strongest demand: English, native languages, exam prep, math.",
+    "platforms": ["Preply", "italki", "Wyzant"],
+    "payout": {
+      "methods": ["Payoneer", "Wise", "PayPal", "Skrill", "bank via Payoneer"],
+      "minimumPayout": "Preply: Wise $10, Payoneer $20-23, PayPal $0; italki: $30",
+      "frequency": "on request / weekly",
+      "typicalDelayDays": 3,
+      "notes": "italki minimum withdrawal $30; Payoneer flat $3. Wyzant pays to US bank accounts only. Commission and withdrawal figures for Preply/italki/Wyzant could not be re-fetched this run (help centers block automated access); treat as approximate."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 45
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 100,
+      "median": 600,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 7,
+      "automation": 2,
+      "setupEffort": 3,
+      "ongoingEffort": 7,
+      "incomePotential": 6,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 85
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; contractor income. Wyzant tutors must be US residents.",
+      "complianceRequirements": ["identity verification", "tax reporting"]
+    },
+    "availability": {
+      "notes": "Preply and italki accept tutors from most countries and pay via Payoneer/PayPal/Wise; Wyzant is US-only."
+    },
+    "automationPlan": [
+      "AI-generated lesson plans, homework and level tests",
+      "Auto-scheduled reminders and post-lesson summaries",
+      "AI feedback on student writing before lessons"
+    ],
+    "manualSteps": [
+      "Teaching live lessons (fully manual)",
+      "Profile video",
+      "KYC and payout setup"
+    ],
+    "fullCycle": [
+      "Apply as tutor and pass verification",
+      "Record intro video, set rate",
+      "Accept trial lessons",
+      "Teach regular lessons",
+      "Withdraw to Payoneer/Wise/PayPal -> bank"
+    ],
+    "risks": [
+      "Trial lessons unpaid on Preply",
+      "Low rates in competitive languages",
+      "Time-for-money, no scaling",
+      "Algorithm-dependent visibility"
+    ],
+    "evidence": "Preply and italki each host tens of thousands of active tutors; Wyzant support docs specify tutors keep 75% of their rate.",
+    "sources": [
+      "https://help.preply.com/en/articles/4178971-how-to-withdraw-your-earnings",
+      "https://support.italki.com/hc/en-us/articles/210002367-How-do-I-get-paid-and-what-s-the-withdrawal-fee",
+      "https://support.wyzant.com/?p=589"
+    ],
+    "tags": ["tutoring", "active-income", "high-payment-probability"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 6,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Preply / italki / Wyzant (free to join)",
+          "Zoom or platform classroom",
+          "AI for lesson materials"
+        ],
+        "skills": [
+          "fluent subject or language knowledge",
+          "teaching and lesson planning"
+        ],
+        "equipment": ["laptop with webcam", "headset", "stable internet"],
+        "accounts": [
+          "marketplace tutor profile + ID verification",
+          "Payoneer/Wise/PayPal"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per lesson hour",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 22,
+          "high": 60
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 25,
+        "grossMarginPercent": 75,
+        "hoursPerUnit": 1.3,
+        "notes": "Median marketplace rates ~$15-$30/hour; commission ~15% (italki) to 18-33% (Preply, plus 100% of trial lessons) and 25% (Wyzant). Hours include prep. Commissions are estimated (Preply, italki and Wyzant help pages bot-blocked)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 2,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 50,
+          "median": 400,
+          "high": 3000
+        },
+        "notes": "Tutors with niche specialisms (exam prep, business English, rare languages) and strong reviews fill calendars; generalists compete with thousands of low-priced tutors. AI conversation tools (ChatGPT voice, Duolingo Max) reduced demand for casual practice in 2025-2026. Failure modes: no trial conversions early, trial lessons paid at 0% on Preply."
+      },
+      "pricingStrategy": "Start 20-30% below comparable tutors to win first reviews, then raise rates for new students every 10-20 reviews.",
+      "profitPath": [
+        "Month 0: create profile with intro video (cost $0)",
+        "Month 1-2: first trial lessons and regular students; expected $100-$300",
+        "Month 3-6: 10-15 hours/week, raise rates",
+        "Month 6-12: $400-$1,000/month net"
+      ],
+      "sources": [
+        "https://help.preply.com/en/articles/4178971-how-to-withdraw-your-earnings",
+        "https://support.italki.com/hc/en-us/articles/210002367-How-do-I-get-paid-and-what-s-the-withdrawal-fee",
+        "https://support.wyzant.com/?p=589"
+      ]
+    }
+  },
+  {
+    "id": "cambly-on-demand-conversation",
+    "name": "On-demand English conversation tutoring on Cambly",
+    "category": "education",
+    "summary": "Platform-set per-minute pay for chatting with English learners whenever you go online; no lesson prep required.",
+    "howItWorks": "Cambly connects English learners to tutors for on-demand or scheduled conversation calls. You are paid a fixed $0.17/minute ($10.20/hour), or $0.20/minute for Cambly Kids, only for minutes actually spent in calls. Students pay Cambly a subscription; you do not set prices or market yourself. Fluency in English is the main requirement; native-speaker preference varies.",
+    "platforms": ["Cambly", "Cambly Kids"],
+    "payout": {
+      "methods": [
+        "direct deposit",
+        "PayPal/Payoneer (other methods; not re-confirmed)"
+      ],
+      "minimumPayout": "No platform minimum stated on official tutor page",
+      "frequency": "weekly",
+      "typicalDelayDays": 7,
+      "notes": "Official tutor page: $0.17/min ($10.20/h), Cambly Kids $0.20/min ($12/h), weekly pay via direct deposit 'and more'."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 7,
+      "max": 30
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 50,
+      "median": 300,
+      "high": 1200
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 1,
+      "setupEffort": 2,
+      "ongoingEffort": 7,
+      "incomePotential": 4,
+      "aiLeverage": 2,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; independent contractor income.",
+      "complianceRequirements": [
+        "independent-contractor tax reporting",
+        "identity verification"
+      ]
+    },
+    "availability": {
+      "notes": "Open to fluent English speakers globally, but Cambly's official tutor page says it is 'temporarily limiting the number of new tutors' and processing may be slower."
+    },
+    "automationPlan": [
+      "AI conversation topic lists and vocabulary sheets",
+      "Auto-tracking of minutes/earnings"
+    ],
+    "manualSteps": [
+      "Every minute of tutoring is live human work",
+      "Application/approval",
+      "Payout setup"
+    ],
+    "fullCycle": [
+      "Apply as tutor",
+      "Get approved",
+      "Go online / accept bookings",
+      "Talk with learners",
+      "Weekly payout by direct deposit to bank"
+    ],
+    "risks": [
+      "Low fixed pay",
+      "Waiting time unpaid",
+      "Sign-up freezes",
+      "No scaling"
+    ],
+    "evidence": "Cambly's official tutor page lists $0.17/min and $0.20/min (Kids) and weekly direct-deposit pay. paymentProbability lowered 6->5 because the same page says new-tutor intake is currently limited.",
+    "sources": [
+      "https://www.cambly.com/english/tutors",
+      "https://support.cambly.com/hc/en-us/articles/360055993652-Prospective-Tutors-FAQs"
+    ],
+    "tags": ["tutoring", "beginner-friendly", "active-income"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 3,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Cambly tutor app (free)"],
+        "skills": ["fluent English and patient conversation"],
+        "equipment": ["laptop with webcam", "headset", "stable internet"],
+        "accounts": ["Cambly tutor account + ID", "PayPal or direct deposit"]
+      },
+      "unitEconomics": {
+        "unit": "per hour on calls",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 10,
+          "high": 12
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 1,
+        "notes": "Official pay $0.17/min ($10.20/hour) adult, $0.20/min ($12/hour) Cambly Kids; platform cut is already deducted."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 1,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "saturated",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 50,
+        "typicalNetProfitMonth12Usd": {
+          "low": 50,
+          "median": 250,
+          "high": 1100
+        },
+        "notes": "Pay is certain per minute once accepted, but tutor supply is high and waiting online unpaid is common. AI English conversation partners reduce demand. Works best as filler income in low-cost countries or for tutors with scheduled regular students. Cross-catalog calibration: profitLikelihoodPercent lowered from 55 to 50 to match esl-company-tutoring and tutoring-marketplaces (same declining/saturated ESL market) given paymentProbability 5 and long unpaid waiting."
+      },
+      "pricingStrategy": "Not priced by you; maximise paid minutes by keeping priority hours and building regular students.",
+      "profitPath": [
+        "Month 0: apply and pass review (cost $0)",
+        "Month 1: first calls; expected $50-$150",
+        "Month 2-6: priority hours and regular students",
+        "Month 6-12: $200-$400/month at 5-10 hours/week"
+      ],
+      "sources": [
+        "https://www.cambly.com/english/tutors",
+        "https://support.cambly.com/hc/en-us/articles/360055993652-Prospective-Tutors-FAQs"
+      ]
+    }
+  },
+  {
+    "id": "cohort-courses-maven",
+    "name": "Live cohort-based courses on Maven",
+    "category": "education",
+    "summary": "Teach a multi-week live course to a cohort of paying students; Maven provides storefront, payments and discovery.",
+    "howItWorks": "You design a 2-6 week live course or a short workshop on a professional skill (e.g. product management, applied AI, data engineering) and list it on Maven. Students (often reimbursed by employers) pay $200-$2,000 per seat. Maven keeps 10% as platform fee (Stripe fees on top) and may promote strong courses in its marketplace. You teach live over Zoom with assignments and peer discussion; recordings can be re-sold as later cohorts.",
+    "platforms": ["Maven", "Zoom", "Stripe"],
+    "payout": {
+      "methods": ["Stripe Connect -> bank"],
+      "minimumPayout": "Stripe default",
+      "frequency": "after cohort payments clear / Stripe schedule",
+      "typicalDelayDays": 14,
+      "notes": "Maven keeps 10% of each paid enrollment; Stripe fees come out first (e.g. $1,000 -> ~$873.60 to you). Payout schedule set in your Stripe account; Stripe-supported country required."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 1000,
+      "high": 30000
+    },
+    "scores": {
+      "paymentProbability": 3,
+      "automation": 4,
+      "setupEffort": 6,
+      "ongoingEffort": 5,
+      "incomePotential": 8,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 40
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Education services are legal everywhere; avoid regulated topics (licensed financial/medical advice).",
+      "complianceRequirements": ["Stripe KYC", "tax reporting", "refund policy"]
+    },
+    "availability": {
+      "notes": "Maven pays via Stripe Connect, limiting instructors to Stripe-supported countries."
+    },
+    "automationPlan": [
+      "AI-drafted curriculum, slides and exercises",
+      "Automated reminders, recordings and feedback forms",
+      "Email sequences for waitlist conversion"
+    ],
+    "manualSteps": [
+      "Live teaching",
+      "Building credibility/audience",
+      "Stripe KYC"
+    ],
+    "fullCycle": [
+      "Apply/create Maven course page",
+      "Build waitlist",
+      "Run cohort live",
+      "Collect payments",
+      "Stripe payout to bank"
+    ],
+    "risks": [
+      "Requires recognized expertise and audience",
+      "Low enrollment for first cohorts",
+      "Live time commitment"
+    ],
+    "evidence": "Maven's help center states the 10% platform fee and Stripe Connect payouts; Maven (a16z-backed) publicizes instructors earning six figures per cohort.",
+    "sources": [
+      "https://help.maven.com/en/articles/5593804-getting-paid",
+      "https://help.maven.com/en/articles/12240853-maven-instructor-policy-guidebook",
+      "https://techcrunch.com/?p=2155328"
+    ],
+    "tags": ["courses", "live", "high-ticket"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 80,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 15,
+        "tools": [
+          "Maven (free to list; 10% of enrollments)",
+          "Zoom Pro (~$15/mo)",
+          "AI for curriculum and slides"
+        ],
+        "skills": [
+          "recognised expertise with proof",
+          "teaching live and designing exercises",
+          "marketing to an audience"
+        ],
+        "equipment": ["laptop", "good microphone and webcam"],
+        "accounts": [
+          "Maven instructor account",
+          "Stripe + KYC in a supported country"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per enrolled student",
+        "typicalPriceUsd": {
+          "low": 200,
+          "median": 500,
+          "high": 2000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 13,
+        "grossMarginPercent": 87,
+        "hoursPerUnit": 2,
+        "notes": "Maven cohorts commonly $300-$1,500; Maven 10% plus Stripe (~$1,000 -> $873.60 to you, ~13%). Hours = cohort prep and teaching per student for ~15 students."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 15,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 5,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = Zoom Pro."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": -15,
+          "median": 0,
+          "high": 25000
+        },
+        "notes": "Instructors with an existing professional audience (LinkedIn, newsletter) fill cohorts; Maven's discovery rarely fills a newcomer's first cohort. Free AI tutoring and cheap recorded courses pressure prices, while live accountability still sells to companies with L&D budgets. Verifier: median month-12 net lowered from $700 to $0 because only ~12% of starters fill a paid cohort in their first year; Maven 10% + Stripe confirmed."
+      },
+      "pricingStrategy": "Run a beta cohort at ~50% off for testimonials, then raise to market price and add company/team pricing.",
+      "profitPath": [
+        "Month 0: design curriculum and Maven page (cost $15/mo)",
+        "Month 1-3: pre-sell beta cohort of 5-15 students",
+        "Month 3-6: teach, gather testimonials, raise price",
+        "Month 6-12: one cohort per quarter, $500-$3,000/month averaged"
+      ],
+      "sources": [
+        "https://help.maven.com/en/articles/5593804-getting-paid",
+        "https://help.maven.com/en/articles/12240853-maven-instructor-policy-guidebook",
+        "https://techcrunch.com/?p=2155328"
+      ]
+    }
+  },
+  {
+    "id": "paid-webinars-workshops",
+    "name": "Paid one-off webinars and live workshops (Luma/Zoom + Stripe)",
+    "category": "education",
+    "summary": "Sell tickets to 60-180 minute live workshops on a practical topic via Luma, Eventbrite or a Stripe payment link, then sell the recording.",
+    "howItWorks": "You pick a narrowly useful topic (e.g. 'Automate your invoicing with n8n', 'Résumé review for junior devs'), create a ticketed event on Luma, Eventbrite or a Stripe payment link, and run it on Zoom/Google Meet. Attendees pay $20-$100 per seat (premium workshops up to ~$300). Luma's free plan takes 5% plus Stripe fees (0% on Luma Plus). Recordings are later sold as an on-demand product.",
+    "platforms": ["Luma", "Eventbrite", "Zoom", "Stripe Payment Links"],
+    "payout": {
+      "methods": ["Stripe -> bank"],
+      "minimumPayout": "Stripe default",
+      "frequency": "Stripe rolling (~2 days US)",
+      "typicalDelayDays": 3,
+      "notes": "Luma: 5% platform fee on free plan, 0% on Luma Plus ($59/mo billed annually); Stripe ~2.9% + $0.30 on top."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 90
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 200,
+      "high": 5000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 5,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 45
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; consumer refund rules apply to ticket sales.",
+      "complianceRequirements": [
+        "Stripe KYC",
+        "refund policy",
+        "sales tax/VAT on digital services where applicable"
+      ]
+    },
+    "availability": {
+      "notes": "Luma and Stripe payouts limited to Stripe countries; Eventbrite payouts cover more countries."
+    },
+    "automationPlan": [
+      "AI-generated slides, worksheets and promo copy",
+      "Auto-created event pages and reminder emails",
+      "Auto-transcribe/edit recordings into a paid replay"
+    ],
+    "manualSteps": [
+      "Deliver the live session",
+      "Promote to an audience",
+      "Stripe KYC"
+    ],
+    "fullCycle": [
+      "Choose topic",
+      "Create ticketed event",
+      "Promote",
+      "Host live",
+      "Sell replay",
+      "Payout to bank"
+    ],
+    "risks": ["Low turnout", "Audience dependency", "Refund requests"],
+    "evidence": "Luma's help center documents paid events with direct Stripe payouts used by many tech community organisers.",
+    "sources": [
+      "https://help.luma.com/p/understanding-payouts-and-event-proceeds",
+      "https://luma.com/pricing"
+    ],
+    "tags": ["live", "events", "one-off"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 15,
+        "tools": [
+          "Luma (free plan 5% fee)",
+          "Zoom Pro (~$15/mo) or Google Meet",
+          "Stripe Payment Links"
+        ],
+        "skills": [
+          "practical expertise",
+          "presenting live",
+          "promoting events on social media or newsletter"
+        ],
+        "equipment": ["laptop", "microphone and webcam"],
+        "accounts": ["Luma/Eventbrite", "Stripe + KYC"]
+      },
+      "unitEconomics": {
+        "unit": "per ticket",
+        "typicalPriceUsd": {
+          "low": 20,
+          "median": 49,
+          "high": 300
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 9,
+        "grossMarginPercent": 91,
+        "hoursPerUnit": 0.3,
+        "notes": "Practical workshops sell at $20-$100; Luma free plan 5% + Stripe ~2.9% + $0.30 (~9% on $49). Hours = prep and delivery per attendee at ~10-20 attendees."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 15,
+        "unitsPerMonthToBreakEven": 1,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). Fixed cost = Zoom Pro (free alternatives exist)."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 20,
+        "typicalNetProfitMonth12Usd": {
+          "low": -15,
+          "median": 40,
+          "high": 4500
+        },
+        "notes": "Workshops convert when the host already has an audience and a concrete outcome (e.g. a tool tutorial); generic webinars lost value as free AI tutorials and YouTube content grew. Recordings resold as products extend revenue. Most first events sell only a few tickets. Verifier: median month-12 net lowered from $150 to $40 to agree with a 20% chance of reaching $100/month; Luma free-plan 5% fee confirmed."
+      },
+      "pricingStrategy": "Launch at $20-$30 with early-bird discounts, then raise to $50-$100 and sell recordings and bundles.",
+      "profitPath": [
+        "Month 0: plan one workshop and landing page (cost $15/mo)",
+        "Month 1: first event with 5-15 attendees; expected $100-$400",
+        "Month 2-6: monthly events, sell recordings",
+        "Month 6-12: $150-$1,000/month"
+      ],
+      "sources": [
+        "https://help.luma.com/p/understanding-payouts-and-event-proceeds",
+        "https://luma.com/pricing"
+      ]
+    }
+  },
+  {
+    "id": "mentorship-marketplace",
+    "name": "Paid mentorship subscriptions on MentorCruise",
+    "category": "education",
+    "summary": "Mentees pay a monthly fee for ongoing career/technical mentorship (chat + calls) via a curated marketplace.",
+    "howItWorks": "You apply as a mentor (typically software, design, data, product or career experience) and publish monthly plans, e.g. $150/month for async chat plus 2 calls. Mentees discover you via MentorCruise search and pay a subscription; MentorCruise adds a ~20% markup on top (min $20, capped at $100 for $100-$800 plans; one-off sessions carry a $9-$39 flat fee). Example: $100 plan -> mentee pays $120, mentor gets $100 minus card fees (~$96.40). Payouts via Stripe Connect or bank transfer.",
+    "platforms": ["MentorCruise"],
+    "payout": {
+      "methods": [
+        "Stripe Connect -> bank",
+        "Direct bank transfer (Borderless)"
+      ],
+      "minimumPayout": "No stated minimum",
+      "frequency": "Stripe: usually within 7 days; bank transfer: monthly (~4th, for prior month)",
+      "typicalDelayDays": 7,
+      "notes": "Card fees ~2.9-3.5% + $0.30; bank-transfer (Borderless) route adds ~2% (min $4-8)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 120
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 300,
+      "high": 4000
+    },
+    "scores": {
+      "paymentProbability": 4,
+      "automation": 3,
+      "setupEffort": 3,
+      "ongoingEffort": 4,
+      "incomePotential": 6,
+      "aiLeverage": 4,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 70
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Legal everywhere; avoid licensed-profession advice.",
+      "complianceRequirements": ["identity verification", "tax reporting"]
+    },
+    "availability": {
+      "notes": "Stripe Connect where available; direct bank transfer for other countries."
+    },
+    "automationPlan": [
+      "AI-drafted feedback on mentee code/CVs",
+      "Templated progress plans and check-ins",
+      "Automated scheduling"
+    ],
+    "manualSteps": [
+      "Mentor application and approval",
+      "Live calls and personal advice"
+    ],
+    "fullCycle": [
+      "Apply as mentor",
+      "Publish plans",
+      "Accept mentees",
+      "Deliver mentorship",
+      "Payout to bank"
+    ],
+    "risks": [
+      "Selective acceptance",
+      "Competition from free mentoring (ADPList)",
+      "Time-for-money"
+    ],
+    "evidence": "MentorCruise's help center documents payout mechanics with worked fee examples.",
+    "sources": [
+      "https://help.mentorcruise.com/article/45-payout",
+      "https://help.mentorcruise.com/articles/what-fees-does-mentorcruise-take/"
+    ],
+    "tags": ["coaching", "recurring", "expertise"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 6,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "MentorCruise (free to apply)",
+          "calendar and video call tools (free)"
+        ],
+        "skills": [
+          "senior professional experience (engineering, design, product)",
+          "coaching and accountability"
+        ],
+        "equipment": ["laptop with webcam"],
+        "accounts": [
+          "MentorCruise mentor profile (application approval)",
+          "Stripe or bank transfer"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per mentee per month",
+        "typicalPriceUsd": {
+          "low": 80,
+          "median": 200,
+          "high": 500
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 17,
+        "grossMarginPercent": 83,
+        "hoursPerUnit": 4,
+        "notes": "Mentee-paid plans commonly $100-$300/month; MentorCruise adds its fee on top of the mentor price (a $100 plan is shown as $120) for a ~16.6% average take rate, $20/month minimum, capped at $100 for $100-$800 plans."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 3,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 25,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 60,
+          "high": 3500
+        },
+        "notes": "Mentors with recognisable employers or niche skills (FAANG, staff engineers, product leaders) attract mentees; generic profiles wait months. Tech layoffs in 2023-2025 increased both demand and mentor supply. AI coaching tools pressure entry-level demand. Verifier: fee corrected from ~23% to ~17% (MentorCruise help page); median month-12 net lowered from $220 to $60 to agree with a 25% chance of reaching $100/month."
+      },
+      "pricingStrategy": "Start below comparable mentors to get first reviews, then raise as your waitlist grows.",
+      "profitPath": [
+        "Month 0: apply and build profile (cost $0)",
+        "Month 1-3: first mentee; expected $100-$200",
+        "Month 3-6: 2-4 mentees, collect reviews",
+        "Month 6-12: $200-$800/month net"
+      ],
+      "sources": [
+        "https://help.mentorcruise.com/article/45-payout",
+        "https://help.mentorcruise.com/articles/what-fees-does-mentorcruise-take/"
+      ]
+    }
+  },
+  {
+    "id": "per-minute-expert-calls",
+    "name": "Per-minute expert phone calls on Clarity.fm",
+    "category": "education",
+    "summary": "Founders and professionals book short paid calls with you on Clarity.fm at a per-minute rate you set; Clarity keeps 15% and pays via PayPal.",
+    "howItWorks": "You list your expertise (marketing, fundraising, SaaS, engineering) on Clarity.fm and set an hourly rate that is displayed per minute. Callers are billed per minute; Clarity keeps 15%. Bookings come from Clarity search and, more often, from links you place on your site or social profiles.",
+    "platforms": ["Clarity.fm"],
+    "payout": {
+      "methods": ["PayPal -> bank"],
+      "minimumPayout": "No stated minimum (manual export to PayPal)",
+      "frequency": "every ~14-15 days",
+      "typicalDelayDays": 15,
+      "notes": "Clarity takes 15% per completed call."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 30,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 2000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 2,
+      "setupEffort": 2,
+      "ongoingEffort": 2,
+      "incomePotential": 5,
+      "aiLeverage": 3,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 75
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Consulting is legal; regulated advice (legal/medical/investment) needs licensing.",
+      "complianceRequirements": ["PayPal account", "tax reporting"]
+    },
+    "availability": {
+      "notes": "Pays via PayPal only, so limited where PayPal cannot receive."
+    },
+    "automationPlan": [
+      "Auto-generated call summaries and follow-up notes",
+      "Embed booking widget in content automatically"
+    ],
+    "manualSteps": ["Every call is live", "Building reputation"],
+    "fullCycle": [
+      "Create expert profile",
+      "Set rate",
+      "Share booking link",
+      "Take calls",
+      "Export to PayPal -> bank"
+    ],
+    "risks": [
+      "Low marketplace demand; ageing platform",
+      "Requires visible expertise"
+    ],
+    "evidence": "Clarity.fm's official expert page (still live, accepting expert applications via LinkedIn) states the 15% fee and PayPal payouts every 15 days; marketplace activity level is unclear.",
+    "sources": [
+      "https://clarity.fm/expert",
+      "https://clarity.fm/help/topics/6/payments-fees"
+    ],
+    "tags": ["consulting", "expertise", "low-setup"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 2,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["Clarity.fm (free to list)"],
+        "skills": [
+          "recognisable expertise founders will pay for",
+          "concise advice on calls"
+        ],
+        "equipment": ["smartphone or laptop"],
+        "accounts": ["Clarity.fm expert profile", "PayPal"]
+      },
+      "unitEconomics": {
+        "unit": "per hour of calls",
+        "typicalPriceUsd": {
+          "low": 60,
+          "median": 120,
+          "high": 600
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 18,
+        "grossMarginPercent": 82,
+        "hoursPerUnit": 1,
+        "notes": "Experts set $1-$10/minute; Clarity keeps 15% plus PayPal fees (~3%)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "medium",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 1800
+        },
+        "notes": "Clarity traffic is far below its 2010s peak, so calls come mostly from experts' own audiences. AI assistants now answer many quick founder questions. Profit is near-certain per call but bookings are rare."
+      },
+      "pricingStrategy": "Start at $1-$2/minute to earn reviews, then raise as your profile ranks.",
+      "profitPath": [
+        "Month 0: create profile (cost $0)",
+        "Month 1-6: share the booking link with your audience; first calls rare",
+        "Month 6-12: a few calls a month for experts with visibility"
+      ],
+      "sources": [
+        "https://clarity.fm/expert",
+        "https://clarity.fm/help/topics/6/payments-fees"
+      ]
+    }
+  },
+  {
+    "id": "study-notes-stuvia",
+    "name": "Sell study notes and exam prep on Stuvia / Docsity",
+    "category": "education",
+    "summary": "Upload your own original lecture notes, summaries and practice questions to Stuvia or Docsity; earn per download, withdrawable from EUR/USD/GBP 10.",
+    "howItWorks": "Students and professionals upload original study notes, summaries and exam-prep guides. Buyers searching for a course or exam pay per document; Stuvia takes a per-sale commission (shown when you set the price; reviews put it near 30%) and lets you withdraw once your wallet reaches EUR/USD/GBP 10. Docsity uses a points system convertible to cash. Only sell notes you wrote; reproducing textbooks, professors' slides or exam papers violates copyright and university rules.",
+    "platforms": ["Stuvia", "Docsity"],
+    "payout": {
+      "methods": ["bank transfer"],
+      "minimumPayout": "Stuvia: EUR 10 / $10 / GBP 10 / R200",
+      "frequency": "Stuvia: requests before Sunday 23:59 CET processed the following Monday",
+      "typicalDelayDays": 7,
+      "notes": "Stuvia: arrives 2-4 business days after Monday processing (1-2 in South Africa); payout via Tipalti. Exact commission not published (~30% per reviews). Docsity points/payout rules not re-verified (site blocks automated access)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 14,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 30,
+      "high": 800
+    },
+    "scores": {
+      "paymentProbability": 5,
+      "automation": 7,
+      "setupEffort": 3,
+      "ongoingEffort": 2,
+      "incomePotential": 4,
+      "aiLeverage": 7,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 80
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Selling your own notes is legal; some universities prohibit selling notes from their lectures.",
+      "complianceRequirements": [
+        "original content only",
+        "respect university policies",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Stuvia and Docsity accept sellers internationally; bank payout."
+    },
+    "automationPlan": [
+      "AI-structured summaries from your own notes",
+      "Auto-generated practice questions",
+      "SEO-optimized titles/descriptions"
+    ],
+    "manualSteps": ["Creating the original notes", "Bank details"],
+    "fullCycle": [
+      "Sign up",
+      "Upload original notes",
+      "Price documents",
+      "Earn per sale",
+      "Weekly bank payout"
+    ],
+    "risks": [
+      "Copyright issues if not original",
+      "Seasonal demand",
+      "Low per-document earnings"
+    ],
+    "evidence": "Stuvia's help center documents the 10-unit minimum and weekly Monday payout processing; reviews report average earnings per sale of $4-9.",
+    "sources": [
+      "https://help.stuvia.com/en/articles/10079901-what-is-the-minimum-amount-to-withdraw-money",
+      "https://help.stuvia.com/en/articles/13311540-when-does-stuvia-pay-out-withdrawn-funds",
+      "https://help.stuvia.com/en/articles/10079842-how-much-do-i-earn-per-document-sold-on-stuvia"
+    ],
+    "tags": ["passive", "digital-products", "students"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 10,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Stuvia / Docsity (free)",
+          "AI for formatting and practice questions"
+        ],
+        "skills": ["writing clear, original course summaries"],
+        "equipment": ["laptop"],
+        "accounts": ["Stuvia seller account", "bank via Tipalti"]
+      },
+      "unitEconomics": {
+        "unit": "per document sold",
+        "typicalPriceUsd": {
+          "low": 5,
+          "median": 10,
+          "high": 20
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 30,
+        "grossMarginPercent": 70,
+        "hoursPerUnit": 0.2,
+        "notes": "Notes sell for ~EUR/USD 5-15; Stuvia only says it takes \"a small commission per sale\" and shows earnings at pricing time, so ~30% is estimated from reviews. Hours = writing time spread over expected sales."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 4,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost."
+      },
+      "marketConditions": {
+        "demandTrend": "declining",
+        "competition": "high",
+        "aiImpact": "headwind",
+        "pricePressure": "falling",
+        "profitLikelihoodPercent": 12,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 20,
+          "high": 700
+        },
+        "notes": "Best sellers cover large first-year courses at big universities (NL, UK, ZA) with exam-season peaks. Students increasingly ask AI for summaries, lowering demand for generic notes. Sales are seasonal and concentrated. Verifier: likelihood lowered from 25 to 12 because $100/month needs ~15 sales a month year-round, which few sellers sustain outside exam peaks."
+      },
+      "pricingStrategy": "Price slightly below the course's top-rated notes, bundle multiple modules, and raise prices before exam season.",
+      "profitPath": [
+        "Month 0: upload notes for 3-5 courses (cost $0)",
+        "Month 1-3: first sales around exams",
+        "Month 3-6: add bundles and practice exams",
+        "Month 6-12: $20-$100/month averaged, peaking at exams"
+      ],
+      "sources": [
+        "https://help.stuvia.com/en/articles/10079901-what-is-the-minimum-amount-to-withdraw-money",
+        "https://help.stuvia.com/en/articles/13311540-when-does-stuvia-pay-out-withdrawn-funds",
+        "https://help.stuvia.com/en/articles/10079842-how-much-do-i-earn-per-document-sold-on-stuvia"
+      ]
+    }
+  },
+  {
+    "id": "crowdfunding-creative-projects",
+    "name": "Crowdfunding a creative/digital project (Kickstarter, Indiegogo)",
+    "category": "community",
+    "summary": "Pre-sell a digital game, book, tool or course to backers on Kickstarter or Indiegogo; Kickstarter pays out only if the goal is met, minus 5% plus processing.",
+    "howItWorks": "You build a campaign page with a video, reward tiers (digital copies, early access, credits) and a funding goal. Backers pledge; on Kickstarter you only collect if the goal is met (5% platform fee + 3-5% processing). Indiegogo allows flexible funding. Digital rewards avoid shipping costs.",
+    "platforms": ["Kickstarter", "Indiegogo"],
+    "payout": {
+      "methods": ["direct deposit to bank (Kickstarter via Stripe)"],
+      "minimumPayout": "N/A (lump sum after campaign)",
+      "frequency": "once after campaign ends",
+      "typicalDelayDays": 21,
+      "notes": "Kickstarter: 5% of funds + Stripe ~3-5%, only if funded. Payout starts 14 days after campaign ends and lands 3-14 business days later."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 45,
+      "max": 180
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 20000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 4,
+      "setupEffort": 7,
+      "ongoingEffort": 6,
+      "incomePotential": 8,
+      "aiLeverage": 6,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 30
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Reward-based crowdfunding is legal; equity crowdfunding excluded. Must deliver promised rewards.",
+      "complianceRequirements": [
+        "deliver rewards",
+        "consumer protection",
+        "tax reporting"
+      ]
+    },
+    "availability": {
+      "notes": "Kickstarter creators must reside in one of 25 countries (AU, AT, BE, CA, DK, FR, DE, GR, HK, IE, IT, JP, LU, MX, NL, NZ, NO, PL, SG, SI, ES, SE, CH, UK, US) with local ID and bank account: only 10 of the ~50 reference countries. Indiegogo accepts more countries (not re-verified)."
+    },
+    "automationPlan": [
+      "AI-drafted campaign copy and update posts",
+      "Automated backer surveys and digital reward delivery"
+    ],
+    "manualSteps": [
+      "Video production",
+      "Pre-launch audience",
+      "Delivering the product"
+    ],
+    "fullCycle": [
+      "Prepare project",
+      "Build pre-launch list",
+      "Launch campaign",
+      "Reach goal",
+      "Receive funds",
+      "Deliver rewards"
+    ],
+    "risks": [
+      "All-or-nothing failure",
+      "Delivery obligations",
+      "Audience needed"
+    ],
+    "evidence": "Kickstarter has raised billions for creative projects; fee structure documented in help center.",
+    "sources": [
+      "https://help.kickstarter.com/en-us/articles/16236650-who-can-use-kickstarter",
+      "https://help.kickstarter.com/en-us/articles/16236674-what-are-the-fees",
+      "https://help.kickstarter.com/en-us/articles/16236545-if-my-project-is-successfully-funded-how-do-i-receive-my-funds"
+    ],
+    "tags": ["crowdfunding", "pre-sales"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 150,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": [
+          "Kickstarter / Indiegogo (5% + processing if funded)",
+          "pre-launch page and email list tools (free tiers)",
+          "AI for video scripts and art"
+        ],
+        "skills": [
+          "product creation",
+          "campaign marketing and video",
+          "fulfilment planning"
+        ],
+        "equipment": ["laptop", "camera/smartphone for video"],
+        "accounts": [
+          "Kickstarter account in an eligible country + Stripe",
+          "bank account"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per backer pledge",
+        "typicalPriceUsd": {
+          "low": 10,
+          "median": 40,
+          "high": 250
+        },
+        "costPerUnitUsd": 10,
+        "platformFeePercent": 9,
+        "grossMarginPercent": 66,
+        "hoursPerUnit": 0.2,
+        "notes": "Median pledge ~$30-$50; Kickstarter 5% + processing 3-5%; cost = digital reward delivery plus pre-launch ads per backer (estimate)."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 6,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost; revenue arrives as one lump sum ~2-4 weeks after a successful campaign."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "tailwind",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 15,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 15000
+        },
+        "notes": "About 4 in 10 Kickstarter projects reach their goal, but first-timers without a pre-launch email list mostly fail, and funded projects often spend the money on delivery. Games and tabletop dominate; AI-generated art is controversial with backers."
+      },
+      "pricingStrategy": "Set a low funding goal you can deliver on, offer early-bird tiers 20-30% off retail, and add higher tiers with collectible extras.",
+      "profitPath": [
+        "Month 0-2: build prototype and pre-launch list of 500+ (cost $0-$500)",
+        "Month 3: run 30-day campaign",
+        "Month 4: receive funds (if funded)",
+        "Month 4-12: deliver rewards; sell post-campaign via late pledges"
+      ],
+      "sources": [
+        "https://help.kickstarter.com/en-us/articles/16236650-who-can-use-kickstarter",
+        "https://help.kickstarter.com/en-us/articles/16236674-what-are-the-fees",
+        "https://help.kickstarter.com/en-us/articles/16236545-if-my-project-is-successfully-funded-how-do-i-receive-my-funds"
+      ]
+    }
+  },
+  {
+    "id": "grants-fellowships",
+    "name": "Apply for open-source and creator grants/fellowships (FLOSS/fund, NLnet, Sovereign Tech, Emergent Ventures)",
+    "category": "community",
+    "summary": "Write short applications to foundations that pay maintainers and talented individuals to build public-good work.",
+    "howItWorks": "Funders award non-dilutive grants for open-source maintenance or ambitious individual projects. FLOSS/fund (Zerodha, up to $1M/yr) gives $10k-$100k per project per year to established projects that publish a funding.json manifest, reviewed quarterly; NLnet gives EUR 5k-50k first grants via recurring calls (Restack, CodeSupply open with a 3 Nov 2026 deadline) to projects with a strong European dimension; Sovereign Tech Agency funds critical OSS infrastructure globally (Fund minimum EUR 50k of work) plus Fellowship/Standards programs; Emergent Ventures offers micro-grants. Payment is by bank transfer after selection and contracting.",
+    "platforms": [
+      "FLOSS/fund",
+      "NLnet",
+      "Sovereign Tech Agency",
+      "Emergent Ventures"
+    ],
+    "payout": {
+      "methods": ["bank transfer", "wire"],
+      "minimumPayout": "N/A",
+      "frequency": "per grant / milestone",
+      "typicalDelayDays": 60,
+      "notes": "STA contracts follow a compliance review of up to 8 weeks; FLOSS/fund requires tax-residency paperwork before disbursing. Emergent Ventures terms not re-verified (site blocks automated access)."
+    },
+    "capitalRequiredUsd": 0,
+    "timeToFirstDollarDays": {
+      "min": 60,
+      "max": 365
+    },
+    "typicalMonthlyIncomeUsd": {
+      "low": 0,
+      "median": 0,
+      "high": 10000
+    },
+    "scores": {
+      "paymentProbability": 2,
+      "automation": 5,
+      "setupEffort": 5,
+      "ongoingEffort": 3,
+      "incomePotential": 7,
+      "aiLeverage": 5,
+      "legalCoveragePercent": 100,
+      "platformAvailabilityPercent": 90
+    },
+    "legality": {
+      "restrictedIn": [],
+      "notes": "Receiving grants is legal; may be subject to sanctions screening.",
+      "complianceRequirements": ["grant reporting", "tax reporting"]
+    },
+    "availability": {
+      "notes": "FLOSS/fund and Sovereign Tech Fund invest globally; NLnet's EU-funded calls require a strong European dimension (applicants usually from Horizon Europe-eligible countries); Emergent Ventures historically global."
+    },
+    "automationPlan": [
+      "AI-assisted research of calls and budget drafting (NLnet requires the proposal itself to be human-written)",
+      "Publishing funding.json via repo automation",
+      "Tracking deadlines"
+    ],
+    "manualSteps": [
+      "Writing applications",
+      "Building a credible project",
+      "Contracts and bank details"
+    ],
+    "fullCycle": [
+      "Identify program",
+      "Prepare project/proposal",
+      "Submit application",
+      "Get selected",
+      "Receive bank transfer",
+      "Report progress"
+    ],
+    "risks": ["Very selective", "Long timelines", "Program funding changes"],
+    "evidence": "FLOSS/fund allocated $1M in 2025 to projects like Blender, FFmpeg, KDE; NLnet and Sovereign Tech Agency publish open calls and funded-project lists.",
+    "sources": [
+      "https://floss.fund/faq/",
+      "https://nlnet.nl/propose/",
+      "https://www.sovereign.tech/programs/fund",
+      "https://mercatus.org/emergentventures/application",
+      "https://www.opensourceforu.com/2025/10/zerodha-announces-final-675000-tranche-for-global-open-source-projects-advocates-sovereign-foss-fund/"
+    ],
+    "tags": ["grants", "open-source", "non-dilutive"],
+    "businessPlan": {
+      "startupResources": {
+        "timeHoursToLaunch": 20,
+        "cashUsd": 0,
+        "recurringMonthlyUsd": 0,
+        "tools": ["grant programme pages (free)", "AI for drafting proposals"],
+        "skills": [
+          "track record of public-good work",
+          "clear proposal writing and budgeting"
+        ],
+        "equipment": ["laptop"],
+        "accounts": [
+          "programme portals",
+          "bank account able to receive EUR/USD wires",
+          "tax-residency documentation"
+        ]
+      },
+      "unitEconomics": {
+        "unit": "per grant awarded",
+        "typicalPriceUsd": {
+          "low": 5000,
+          "median": 25000,
+          "high": 50000
+        },
+        "costPerUnitUsd": 0,
+        "platformFeePercent": 0,
+        "grossMarginPercent": 100,
+        "hoursPerUnit": 60,
+        "notes": "NLnet awards ~EUR 5k-50k, FLOSS/fund $10k-$100k, Emergent Ventures $1k-$50k; hours = application effort per award at ~10-20% success (estimate). Grant money pays for the work you then must deliver."
+      },
+      "breakEven": {
+        "monthlyFixedCostUsd": 0,
+        "unitsPerMonthToBreakEven": 0,
+        "typicalMonthsToBreakEven": 9,
+        "monthsToRecoverStartup": 0,
+        "notes": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised). No fixed cost; grants pay in milestones over months."
+      },
+      "marketConditions": {
+        "demandTrend": "stable",
+        "competition": "high",
+        "aiImpact": "neutral",
+        "pricePressure": "stable",
+        "profitLikelihoodPercent": 5,
+        "typicalNetProfitMonth12Usd": {
+          "low": 0,
+          "median": 0,
+          "high": 8000
+        },
+        "notes": "Funders favour maintainers with existing adoption and credible plans; AI-assisted applications increased volume in 2025-2026, lowering acceptance rates. Grant money is compensation for deliverables, so true profit is modest. Most applicants receive nothing in a given year."
+      },
+      "pricingStrategy": "Budget at your real hourly rate for clearly scoped milestones; start with small asks to build a funding track record.",
+      "profitPath": [
+        "Month 0: identify 3-5 matching programmes, draft proposals (cost $0)",
+        "Month 1-4: submit and wait for review",
+        "Month 4-9: first award (if any) and first milestone payment",
+        "Month 9-12: deliver and reapply with track record"
+      ],
+      "sources": [
+        "https://floss.fund/faq/",
+        "https://nlnet.nl/propose/",
+        "https://www.sovereign.tech/programs/fund"
+      ]
+    }
+  }
+]
