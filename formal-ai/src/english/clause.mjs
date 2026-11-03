@@ -9,6 +9,7 @@
 
 import { clause } from './clause-node.mjs';
 import { earlierVerb, subjectPhrases } from './subject-phrases.mjs';
+import { reducedPassive } from './reduced-passive.mjs';
 import { leadingPhraseAhead, parseLeading } from './leading.mjs';
 import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
@@ -601,7 +602,7 @@ function parseDeclarative(c, ctx) {
       c.i = start;
       return parseDeclarative(c, { ...ctx, retried: true, stopAt });
     });
-  return better || result;
+  return better || reducedPassive(c, result, ctx.lexicon);
 }
 
 /** A noun phrase with its prepositional phrases: "direct deposit to bank". */

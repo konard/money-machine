@@ -586,6 +586,16 @@ export function renderRelation(m, ctx) {
   if (rel === 'rel.by' && e?.action && ctx.renderAction) {
     return `, ${ctx.renderAction(e, 'ins', { ...ctx, adverbialAction: true })}`;
   }
+  // "before relying on it": a clause conjunction with an infinitive
+  if (
+    rel === 'rel.before' &&
+    e?.action &&
+    !e.nominalization &&
+    ctx.renderAction
+  ) {
+    const text = ctx.renderAction(e, 'nom', { ...ctx, afterPrep: false });
+    return `, прежде чем ${text}`;
+  }
   // at home / to home
   if (
     (e?.concept === 'home' || e?.concept === 'home.adv') &&

@@ -40,3 +40,13 @@ test('"as": equatives, roles and a clause link', () => {
   assert.equal(ru('The book itself is cheap.'), 'Сама книга дешёвая.');
   assert.match(ru('As I said, the price is low.'), /^Как я \S+л, цена/);
 });
+
+test('a headline participle is a passive; "before doing" is «прежде чем»', () => {
+  assert.match(ru('No money sent.'), /^Деньги не отправл/);
+  assert.match(ru('All books sent.'), /^Все книги отправл/);
+  assert.match(ru('Tom sent.'), /отправил\.$/);
+  assert.equal(
+    ru('Read the book before paying.'),
+    'Прочитайте книгу, прежде чем платить.'
+  );
+});
