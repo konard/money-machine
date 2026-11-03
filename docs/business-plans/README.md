@@ -8,8 +8,8 @@ Entries marked ⚠ have at least one payout figure that could not be confirmed o
 
 ## Tiers
 
-- **S (70+)** — start here: proven payouts, high automation, low effort.
-- **A (60–69)** — strong second wave.
+- **S (70+ and profit odds of at least 25%)** — start here: proven payouts, high automation, low effort.
+- **A (60–69, or 70+ with profit odds under 25%)** — strong second wave.
 - **B (50–59)** — viable, needs more effort or has lower odds.
 - **C (<50)** — long shots or labor-heavy; included for completeness.
 

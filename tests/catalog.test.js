@@ -17,6 +17,7 @@ import {
   computePriorityScore,
   tierFor,
   validateStrategy,
+  TIER_S_MIN_PROFIT_LIKELIHOOD,
   LEGAL_COVERAGE_THRESHOLD,
   WEIGHTS,
 } from '../scripts/build-catalog.mjs';
@@ -211,7 +212,7 @@ describe('Business plans', () => {
   it('every tier S plan has decent profit odds', () => {
     for (const s of strategies.filter((x) => x.tier === 'S')) {
       assert.ok(
-        s.profitLikelihoodPercent >= 25,
+        s.profitLikelihoodPercent >= TIER_S_MIN_PROFIT_LIKELIHOOD,
         `${s.id}: tier S with only ${s.profitLikelihoodPercent}% profit odds`
       );
     }
