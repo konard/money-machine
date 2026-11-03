@@ -20,6 +20,8 @@ export function degreeForm(entry, degree, agree) {
     lesser: 'менее',
     greatest: adjective ? declineAdjective('самый', agree) : 'наиболее',
     least: 'наименее',
+    // "as tall as" → «такой же высокий», "as fast as" → «так же быстро»
+    equal: adjective ? `${declineAdjective('такой', agree)} же` : 'так же',
   }[degree];
   const base = adjective ? declineAdjective(lemma, agree) : lemma;
   return [prefix, base].filter(Boolean).join(' ');

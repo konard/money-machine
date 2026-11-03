@@ -141,3 +141,14 @@ test('resolved public prepositional predicates render their argument instead of 
   assert.match(output, /Мэри/);
   assert.doesNotMatch(output, /для/);
 });
+
+test('a Russian definition «на что-либо» gives the English marker its preposition', () => {
+  const russian =
+    '= {{-ru-}} =\n==== Значение ====\n# [[доверяться]] кому-либо или надеяться на что-либо {{пример|{{выдел|полагалась}} на деньги}}\n';
+  const result = verbGovernment('', russian, { lemma: 'rely' });
+  assert.deepEqual(result.markerGovernment.on, {
+    preposition: 'на',
+    case: 'acc',
+  });
+  assert.equal(result.markerGovernment.about, undefined);
+});

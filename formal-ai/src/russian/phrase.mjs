@@ -174,6 +174,11 @@ export function renderEntity(e, kase, ctx) {
   if (!e) {
     return '';
   }
+  if (e.emphatic && e.name && !e.concept) {
+    const f = features(e, ctx);
+    const word = emphaticWord({ ...f, number: f.number, case: kase });
+    return `${word} ${renderEntity({ ...e, emphatic: false }, kase, ctx)}`;
+  }
   if (e.bound) {
     const { bound, rangeFrom, ...rest } = e;
     const upper = renderEntity(rest, 'gen', ctx);
@@ -384,6 +389,9 @@ function renderNoun(e, entry, kase, ctx) {
       : { gender: entry.gender };
   const agree = { ...g, case: adjCase, animate: animate && adjCase === 'acc' };
   const words = [];
+  if (e.emphatic) {
+    words.push(emphaticWord(agree));
+  }
   if (quantifierWord) {
     words.push(quantifierWord);
   }
@@ -703,4 +711,20 @@ export function renderRelation(m, ctx) {
   }
   const first = np.split(' ')[0] || '';
   return `${euphony(prep, first)} ${np}`;
+}
+
+// «сам платёж», «сама плата»: the emphatic pronoun, a closed paradigm
+const SAM = {
+  m: ['сам', 'самого', 'самому', 'сам', 'самим', 'самом'],
+  f: ['сама', 'самой', 'самой', 'саму', 'самой', 'самой'],
+  n: ['само', 'самого', 'самому', 'само', 'самим', 'самом'],
+  pl: ['сами', 'самих', 'самим', 'сами', 'самими', 'самих'],
+};
+function emphaticWord(agree) {
+  const forms = SAM[agree.number === 'pl' ? 'pl' : agree.gender || 'm'];
+  const i = ['nom', 'gen', 'dat', 'acc', 'ins', 'prep'].indexOf(agree.case);
+  if (agree.case === 'acc' && agree.animate && forms !== SAM.f) {
+    return forms[1];
+  }
+  return forms[Math.max(i, 0)];
 }

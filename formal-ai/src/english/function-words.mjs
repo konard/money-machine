@@ -200,6 +200,7 @@ export const SUBORDINATORS = {
   so: 'conj.so',
   that: 'conj.that',
   where: 'conj.where',
+  as: 'conj.as',
 };
 
 export const COORDINATORS = {

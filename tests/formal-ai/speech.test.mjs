@@ -33,3 +33,10 @@ test('a given name tells its sex from public data', () => {
   assert.equal(givenNameGender(item('Q12308941')), 'm');
   assert.equal(givenNameGender(null), null);
 });
+
+test('"as": equatives, roles and a clause link', () => {
+  assert.match(ru('Tom is as tall as Mary.'), /такой же высокий, как Мэри\.$/);
+  assert.match(ru('Tom himself wrote the letter.'), /^Сам \S+ написал письмо/);
+  assert.equal(ru('The book itself is cheap.'), 'Сама книга дешёвая.');
+  assert.match(ru('As I said, the price is low.'), /^Как я \S+л, цена/);
+});

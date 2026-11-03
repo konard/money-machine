@@ -148,6 +148,9 @@ function entity(np, lexicon) {
   if (np.pps) {
     e.relations = np.pps.map((m) => modifier(m, lexicon));
   }
+  if (np.emphatic) {
+    e.emphatic = true;
+  }
   if (np.label) {
     e.label = np.label;
   }
@@ -193,10 +196,14 @@ function modifierCore(m, lexicon) {
       comparison: m.comparison,
     };
   }
+  if (m.type === 'role') {
+    return { kind: 'role', entity: entity(m.np, lexicon) };
+  }
   if (m.type === 'quantity' || m.type === 'comparison') {
     return {
       kind: m.type,
       comparison: m.comparison,
+      equal: m.equal || undefined,
       entity: m.np ? entity(m.np, lexicon) : undefined,
     };
   }

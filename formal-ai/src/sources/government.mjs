@@ -24,6 +24,21 @@ const QUESTIONS = {
   чего: 'gen',
   кем: 'ins',
   чем: 'ins',
+  ком: 'prep',
+  чём: 'prep',
+};
+// English argument markers and the Russian prepositions they correspond to
+// (a closed grammatical correspondence): "rely on" ~ «на что-либо»
+const MARKERS = {
+  on: ['на'],
+  upon: ['на'],
+  in: ['в'],
+  into: ['в'],
+  about: ['о', 'об'],
+  with: ['с'],
+  from: ['от', 'из'],
+  for: ['за', 'для'],
+  to: ['к'],
 };
 const plain = (s) =>
   unstress(s)
@@ -242,6 +257,27 @@ function russianNotes(text) {
   }
   const theme = args.find((a) => a.case === 'acc' && !a.preposition);
   const result = args.length ? { government: theme || args[0] } : {};
+  // «надеяться на что-либо» in a definition: the preposition the verb
+  // governs, matched to the English marker it corresponds to
+  const markerGovernment = {};
+  for (const line of section.split(/^==\s*\{\{з\|II/m)[0].split('\n')) {
+    if (!/^#[^#*:]/.test(line)) {
+      continue;
+    }
+    const definition = plain(line.split('{{пример')[0]);
+    for (const m of definition.matchAll(
+      /(?<![а-яё])(на|за|с|к|о|об|от|в|из|для)\s+(кого|чего|кому|чему|кем|чем|ком|чём|что)-(?:либо|нибудь|то)(?![а-яё])/g
+    )) {
+      for (const [marker, preps] of Object.entries(MARKERS)) {
+        if (preps.includes(m[1]) && !markerGovernment[marker]) {
+          markerGovernment[marker] = gov(QUESTIONS[m[2]], m[1]);
+        }
+      }
+    }
+  }
+  if (Object.keys(markerGovernment).length) {
+    result.markerGovernment = markerGovernment;
+  }
   if (args.some((a) => a.case === 'dat' && !a.preposition)) {
     result.recipient = 'dat';
   }
@@ -260,7 +296,15 @@ function exampleRecipient(text) {
 
 /** Choose evidence for this English meaning of a Russian lemma. */
 export function verbGovernment(english, russian, sense) {
-  const result = { ...russianNotes(russian), ...englishFrame(english, sense) };
+  const notes = russianNotes(russian);
+  const frame = englishFrame(english, sense);
+  const result = { ...notes, ...frame };
+  if (notes.markerGovernment || frame.markerGovernment) {
+    result.markerGovernment = {
+      ...notes.markerGovernment,
+      ...frame.markerGovernment,
+    };
+  }
   if (exampleRecipient(russian)) {
     result.recipient ||= 'dat';
     result.classGovernment ||= { person: gov('dat') };

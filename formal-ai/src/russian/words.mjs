@@ -311,6 +311,7 @@ export const CONJUNCTIONS = {
   'conj.if': { text: 'если', comma: true },
   'conj.when': { text: 'когда', comma: true },
   'conj.while': { text: 'пока', comma: true },
+  'conj.as': { text: 'как', comma: true },
   'conj.although': { text: 'хотя', comma: true },
   'conj.before': { text: 'прежде чем', comma: true },
   'conj.after': { text: 'после того как', comma: true },

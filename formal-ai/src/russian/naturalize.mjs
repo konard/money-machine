@@ -503,7 +503,10 @@ export function renderModifiers(mods, ctx, entry) {
     } else if (m.kind === 'quantity') {
       after.push(quantityWord(m.comparison));
     } else if (m.kind === 'comparison') {
-      after.push(`, чем ${renderEntity(m.entity, 'nom', ctx)}`);
+      const word = m.equal ? 'как' : 'чем';
+      after.push(`, ${word} ${renderEntity(m.entity, 'nom', ctx)}`);
+    } else if (m.kind === 'role') {
+      after.push(`как ${renderEntity(m.entity, 'nom', ctx)}`);
     } else if (m.kind === 'time') {
       const e = m.entity;
       const head = lexEntry(ctx, e.concept)?.ru;
