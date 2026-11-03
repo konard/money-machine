@@ -370,6 +370,7 @@ export function matchingDefinition(gloss, definitions) {
   const want = contentWords(gloss);
   let best = null;
   let bestScore = 0;
+  let bestShared = 0;
   for (const raw of definitions) {
     const text = plain(raw.split('\n')[0]);
     const have = contentWords(text);
@@ -387,6 +388,7 @@ export function matchingDefinition(gloss, definitions) {
     ) {
       best = { raw, text };
       bestScore = score;
+      bestShared = shared;
     }
   }
   if (!best || bestScore < 0.5) {
@@ -394,9 +396,10 @@ export function matchingDefinition(gloss, definitions) {
   }
   // a loose match ("period between sunrise and sunset" ~ "a 24-hour
   // period beginning at sunrise", labelled meteorology) is no ground for
-  // carrying the definition's field or usage labels over to the sense
+  // carrying the definition's field or usage labels over to the sense,
+  // nor is one shared word ("animal" ~ an obsolete "…animal…" sense)
   const labels =
-    bestScore < 0.75
+    bestScore < 0.75 || bestShared < 2
       ? []
       : templates(best.raw.split('\n')[0], 'lb|label|lbl').flatMap((t) =>
           t.positional.slice(1).filter((x) => !/^[_&]$|^(?:and|or)$/.test(x))

@@ -2,6 +2,7 @@
  * Morphology, sense selection and the formal (Links Notation) layer.
  */
 
+import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { loadLexicon } from '../../formal-ai/src/lexicon.mjs';

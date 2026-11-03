@@ -3,6 +3,7 @@
  * adapters, request parsing and the read → translate → write tool loop.
  */
 
+import './setup.mjs';
 import { test } from 'node:test';
 import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
@@ -243,7 +244,10 @@ test(
   async (t) => {
     const dir = mkdtempSync(join(tmpdir(), 'formal-ai-cache-'));
     const previousCache = process.env.FORMAL_AI_CACHE;
+    const previousOffline = process.env.FORMAL_AI_OFFLINE;
     process.env.FORMAL_AI_CACHE = dir;
+    // the mocked global fetch stands in for the network
+    process.env.FORMAL_AI_OFFLINE = '';
     const nativeFetch = globalThis.fetch;
     const lookups = [];
     const diagnostics = [];
@@ -279,6 +283,7 @@ test(
       } else {
         process.env.FORMAL_AI_CACHE = previousCache;
       }
+      process.env.FORMAL_AI_OFFLINE = previousOffline ?? '';
       rmSync(dir, { recursive: true, force: true });
     }
   }

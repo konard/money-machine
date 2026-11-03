@@ -1,4 +1,5 @@
 /** Offline checks of compounds, regular entries, verb forms and clause frames. */
+import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { loadLexicon } from '../../formal-ai/src/lexicon.mjs';

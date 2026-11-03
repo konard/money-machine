@@ -2,6 +2,7 @@
  * Whole-document translation: structure, code and links are preserved.
  */
 
+import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {

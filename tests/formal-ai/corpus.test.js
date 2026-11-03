@@ -3,6 +3,7 @@
  * change in output is either a fix (update the pair) or a regression.
  */
 
+import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { translateDocument } from '../../formal-ai/src/document.mjs';

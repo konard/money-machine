@@ -1,5 +1,6 @@
 /* eslint-disable require-await -- Offline fetch fixtures implement the async Fetch interface. */
 /** Nonfinite grammar is tested with bundled words and offline Wiktionary replies. */
+import './setup.mjs';
 import { rncFixture } from './rnc-fixture.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

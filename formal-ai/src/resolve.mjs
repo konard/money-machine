@@ -5,10 +5,23 @@ import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
 import { readings, tokenize } from './english/analyze.mjs';
 import { completeForms, sameFormPasts } from './forms.mjs';
 import { compoundCandidates } from './compounds.mjs';
+import {
+  phraseCandidates,
+  publicEntries,
+  learnPhrases,
+  givenNameLabel,
+  markGivenName,
+  isGivenName,
+} from './public-expressions.mjs';
 import { russianIndeclinables } from './sources/indeclinable.mjs';
 import { russianFrequencies } from './sources/frequency.mjs';
 import { contextFrequencies } from './sources/context-frequency.mjs';
-import { borrowGenus, genus, usagePenalty } from './sources/sense-data.mjs';
+import {
+  borrowGenus,
+  genus,
+  senseClasses,
+  usagePenalty,
+} from './sources/sense-data.mjs';
 import {
   russianCorpusRanks,
   normalizeLemma,
@@ -18,8 +31,8 @@ import { compoundNoun, regularEntry, russianEntry } from './russian-entry.mjs';
 
 export { compoundNoun, regularEntry };
 import { chunks, getJson, pool } from './sources/fetch.mjs';
+import { governmentPages, governmentResolver } from './sources/government.mjs';
 import {
-  englishEntries,
   fetchPages,
   matchingDefinition,
   renderRussian,
@@ -85,6 +98,30 @@ export function unknownWords(text, lexicon = loadLexicon()) {
   return [...out];
 }
 
+/**
+ * Words written with a capital inside sentences that the lexicon does not
+ * know: names mostly, but also months and weekdays ("in January").
+ */
+export function capitalizedWords(text, lexicon = loadLexicon()) {
+  const out = new Set();
+  for (const line of text.replace(/```[\s\S]*?```|`[^`]*`/g, ' ').split('\n')) {
+    const tokens = tokenize(line);
+    for (const [i, t] of tokens.entries()) {
+      if (
+        i > 0 &&
+        t.kind === 'word' &&
+        /^\p{Lu}\p{Ll}+$/u.test(t.text) &&
+        !/^[.!?:#*\-–—|>"(]$/.test(tokens[i - 1].text) &&
+        !lexicon.lookup('noun', t.lower).length &&
+        !lexicon.asked?.(t.lower)
+      ) {
+        out.add(t.lower);
+      }
+    }
+  }
+  return [...out];
+}
+
 const WIKIDATA = 'https://www.wikidata.org/w/api.php';
 /** Capitalized words and acronyms that may be names (PayPal, Google, KYC). */
 export function nameCandidates(text, lexicon = loadLexicon()) {
@@ -125,7 +162,13 @@ export function nameCandidates(text, lexicon = loadLexicon()) {
  */
 export async function resolveNames(
   names,
-  { lexicon = loadLexicon(), fetchImpl, cache = true, topic = '' } = {}
+  {
+    lexicon = loadLexicon(),
+    fetchImpl,
+    cache = true,
+    topic = '',
+    givenOnly = new Set(),
+  } = {}
 ) {
   const options = { fetchImpl, cache, bucket: 'wikidata' };
   const hits = new Map();
@@ -164,11 +207,12 @@ export async function resolveNames(
     const ids = candidates.filter((id) => {
       const e = entities[id];
       return (
-        verified.get(name)?.has(id) ||
-        Object.values(e?.labels || {}).some((a) => a.value === name) ||
-        Object.values(e?.aliases || {})
-          .flat()
-          .some((a) => a.value === name)
+        (!givenOnly.has(name) || isGivenName(e)) &&
+        (verified.get(name)?.has(id) ||
+          Object.values(e?.labels || {}).some((a) => a.value === name) ||
+          Object.values(e?.aliases || {})
+            .flat()
+            .some((a) => a.value === name))
       );
     });
     if (!ids.length) {
@@ -185,11 +229,15 @@ export async function resolveNames(
         : 0;
     const id = [...ids].sort(
       (a, b) =>
+        Number(isGivenName(entities[b])) - Number(isGivenName(entities[a])) ||
         overlap(b, name) - overlap(a, name) ||
         labelled(b) - labelled(a) ||
         links(b) - links(a)
     )[0];
     hits.set(name, id);
+    if (isGivenName(entities[id])) {
+      markGivenName(lexicon, name);
+    }
     const ru =
       (/^[A-Z]{2,5}$/.test(name) &&
         (entities[id]?.aliases?.ru || []).find((a) =>
@@ -250,6 +298,9 @@ async function declineNames(hits, { lexicon, fetchImpl, cache }) {
       ? regularEntry('noun', { word: label })
       : null;
     if (entry) {
+      if (lexicon.givenNames?.has(name)) {
+        entry.animate = true;
+      }
       lexicon.setNameEntry(name, entry);
     }
   });
@@ -328,6 +379,8 @@ export async function resolveText(
   const entries = new Map(); // lemma → english entries
   const forms = []; // {form, lemma, kind, pos}
   const capitalOf = new Map(); // "Monday" → "monday"
+  const phrases = only ? [] : phraseCandidates(text);
+  const dictionaryNames = new Map();
   // two-word terms are asked for too; most such titles do not exist
   let queue = [
     ...new Set([
@@ -335,29 +388,78 @@ export async function resolveText(
       ...hyphenatedTitles(words),
     ]),
   ];
+  // a capitalized word inside a sentence is learned only as a time word
+  // ("in January"); as anything else it is a name
+  const timeOnly = new Set(
+    only
+      ? []
+      : capitalizedWords(text, lexicon).filter((w) => !queue.includes(w))
+  );
+  for (const w of timeOnly) {
+    const upper = w[0].toUpperCase() + w.slice(1);
+    capitalOf.set(upper, w);
+    queue.push(upper);
+  }
+  // "monday", "march", "english": the page titled with a capital too
+  for (const w of [...queue]) {
+    const upper = w[0].toUpperCase() + w.slice(1);
+    if (/^\p{Ll}[\p{Ll}-]*$/u.test(w) && !queue.includes(upper)) {
+      capitalOf.set(upper, w);
+      queue.push(upper);
+    }
+  }
+  // a word asked under its capital title ("January") is no phrase
+  const phraseOnly = new Set(
+    phrases.filter((p) => !queue.includes(p) && !timeOnly.has(p))
+  );
+  queue.push(...phrases.filter((p) => !queue.includes(p) && !lexicon.asked(p)));
   for (let round = 0; round < 3 && queue.length; round += 1) {
     const pages = await fetchPages(queue, options);
     queue.forEach((q) => done.add(q));
     const next = new Set();
     for (const title of queue) {
       const page = pages.get(title);
-      const list = page ? englishEntries(page) : [];
-      // "monday", "russian": the word's page is titled with a capital
-      const upper = title[0].toUpperCase() + title.slice(1);
-      if (!list.length && upper !== title && !done.has(upper)) {
-        capitalOf.set(upper, title);
-        next.add(upper);
+      const key = capitalOf.get(title) || title;
+      if (page && /^[A-Z][a-z]+$/.test(title)) {
+        const label = givenNameLabel(page);
+        if (label) {
+          lexicon.setNameLabel(title, label);
+          markGivenName(lexicon, title);
+          dictionaryNames.set(title, null);
+        }
       }
+      // a capitalized page ("January", "English" the language) holds the
+      // word's proper-noun meanings; they stand beside the word's own
+      const list = (page ? publicEntries(page) : [])
+        .filter(
+          (e) =>
+            // "January" is a month and also a given name: only an entry
+            // that is nothing but a given name is left to names
+            !e.rawDefinitions.length ||
+            !e.rawDefinitions.every((d) =>
+              /\{\{given name\|en(?:\||\}\})/.test(d)
+            )
+        )
+        .map((e) =>
+          key === title
+            ? e
+            : { ...e, pos: e.pos === 'propn' ? 'noun' : e.pos, capital: true }
+        );
       if (!page) {
         continue;
       }
-      const key = capitalOf.get(title) || title;
-      if (key !== title && entries.get(key)?.length) {
-        continue;
-      }
-      entries.set(key, list);
+      entries.set(key, [...(entries.get(key) || []), ...list]);
       for (const e of list) {
+        if (phraseOnly.has(title) && !['intj', 'phrase'].includes(e.pos)) {
+          continue;
+        }
+        const promote = (target) => {
+          if (!phraseOnly.has(title) && phraseOnly.delete(target)) {
+            next.add(target);
+          }
+        };
         for (const f of e.formOf) {
+          promote(f.lemma);
           forms.push({ form: key, lemma: f.lemma, kind: f.kind, pos: e.pos });
           // a variant ("doc" ← "document") borrows the target's senses,
           // so the target page is needed even when the lexicon knows it
@@ -370,6 +472,7 @@ export async function resolveText(
           }
         }
         for (const s of e.see) {
+          promote(s.page);
           if (!done.has(s.page)) {
             next.add(s.page);
           }
@@ -406,11 +509,15 @@ export async function resolveText(
       ),
     }));
     const chunks = [...own.filter((e) => e.pos === pos), ...subSenses];
+    // "march" the walk before "March" the month; "january" has only that
+    const lower = chunks.some((e) => !e.capital && e.senses.length);
     // "phone" (the device): its entry's only translations are those of
     // "telephone" — the word's own meaning; "pen" (the feather) with
     // tables of its own and a pointer to "wing" — a side meaning
     return chunks.flatMap((e) => [
-      ...e.senses,
+      ...(e.capital && lower
+        ? e.senses.map((x) => ({ ...x, side: true }))
+        : e.senses),
       ...e.see.flatMap((s) =>
         (entries.get(s.page) || [])
           .filter((x) => x.pos === pos)
@@ -438,6 +545,7 @@ export async function resolveText(
     for (const e of list) {
       if (
         !POS_RU[e.pos] ||
+        phraseOnly.has(title) ||
         e.rare ||
         (e.pos !== 'verb' && lexicon.lookup(e.pos, title).length)
       ) {
@@ -466,6 +574,11 @@ export async function resolveText(
       own.set(
         `${e.pos}:${title}`,
         sensesOf(title, e.pos)
+          .filter(
+            (s) =>
+              !timeOnly.has(title) ||
+              (e.pos === 'noun' && senseClasses(s).includes('time'))
+          )
           .filter(
             (s) =>
               !known ||
@@ -570,6 +683,15 @@ export async function resolveText(
     options
   );
   partnerPages.forEach((v, k) => ruPages.set(k, v));
+  const government = await governmentPages(
+    plans
+      .filter((p) => p.pos === 'verb')
+      .flatMap((p) =>
+        p.senses.flatMap((s) => s.russian.slice(0, 3).map((c) => c.word))
+      )
+      .concat([...partners]),
+    options
+  );
 
   const rendered = new Map();
   const want = [];
@@ -635,10 +757,7 @@ export async function resolveText(
     }
     const r = rendered.get(`${pos}:${word}`);
     if (r) {
-      const entry = {
-        ...russianEntry(pos, word, r.result, r.entry.headword),
-        ...(r.entry.government ? { government: r.entry.government } : {}),
-      };
+      const entry = russianEntry(pos, word, r.result, r.entry.headword);
       if (entry.pos === 'noun' && candidate) {
         // the translation's own marks: машина|f, деньги|f-p
         if (!r.result.gender && candidate.gender) {
@@ -662,24 +781,13 @@ export async function resolveText(
       : null;
   };
 
-  // imperfective lemma with its perfective partner, governing accusative
-  const finishVerb = (ru) => {
-    const partner = ru.partner ? russian(ru.partner, 'verb') : null;
-    if (ru.aspect === 'perf' && partner) {
-      Object.assign(ru, {
-        ...partner,
-        perfective: { ...ru, perfective: undefined },
-      });
-    } else if (partner) {
-      ru.perfective = { ...partner, aspect: 'perf' };
-    }
-    ru.government ||= { preposition: null, case: 'acc' };
-    ru.markerGovernment = {};
-    ru.classGovernment = {};
-    ru.recipient = 'dat';
-    return ru;
-  };
-  const resolved = [];
+  const { choose, finish: finishVerb } = governmentResolver({
+    russian,
+    ruPages,
+    government,
+    lexicon,
+  });
+  const resolved = learnPhrases(phrases, entries, sensesOf, lexicon);
   for (const plan of plans) {
     let rank = 0;
     const ownSenses = plan.senses.some(
@@ -693,21 +801,21 @@ export async function resolveText(
         .map((s) => s.languages || 0)
     );
     plan.senses.forEach((s, i) => {
-      const ru =
-        s.russian
-          .map((c) => russian(c.word, POS_RU[plan.pos], c, true))
-          .find(Boolean) ||
-        s.russian
-          .map((c) => russian(c.word, POS_RU[plan.pos], c))
-          .find(Boolean);
+      const sense = { ...s, lemma: plan.lemma };
+      const ru = choose(s.russian, POS_RU[plan.pos], sense);
       if (!ru) {
         return;
       }
       if (ru.pos === 'verb') {
-        finishVerb(ru);
+        finishVerb(ru, sense);
         // a -ся verb takes no direct object: keep a transitive
         // alternative for clauses with one ("try this" → пробовать)
-        if (/ся$/.test(ru.lemma)) {
+        if (
+          /ся$/.test(ru.lemma) &&
+          !ru.experiencer &&
+          !ru.government.preposition &&
+          ru.government.case === 'acc'
+        ) {
           const transitive = s.russian
             .map((c) => russian(c.word, 'verb'))
             .find(
@@ -715,7 +823,7 @@ export async function resolveText(
                 x && !/ся$/.test(x.lemma) && x.lemma !== ru.perfective?.lemma
             );
           if (transitive) {
-            ru.transitive = finishVerb(transitive);
+            ru.transitive = finishVerb(transitive, sense);
           }
         }
       }
@@ -731,7 +839,7 @@ export async function resolveText(
         related: s.side || undefined,
         grounding: null,
         excludedGroundings: [],
-        classes: [],
+        classes: plan.pos === 'noun' ? senseClasses(s) : [],
         genus:
           s.borrowed && plan.pos === 'noun' ? genus(s.definition) : undefined,
         cues: glossWords(`${s.gloss} ${s.definition || ''}`, plan.lemma),
@@ -755,7 +863,7 @@ export async function resolveText(
             ? 0.4 / Math.sqrt(rank + 1) +
               0.6 * Math.sqrt(Math.min(1, (s.languages || 0) / most))
             : 1 / Math.sqrt(rank + 1)) *
-          (s.rare ? 0.3 : 1),
+          (s.rare && !(most && (s.languages || 0) >= most) ? 0.3 : 1),
         variant: s.variant || undefined,
         en: [
           {
@@ -819,22 +927,28 @@ export async function resolveText(
         (r) => r.pos !== 'propn'
       )
   );
-  const names = nameCandidates(text, lexicon).filter(
-    (n) =>
-      n.includes(' ') ||
-      /[.-]/.test(n) ||
-      /^[A-Z][A-Z0-9]+s?$/.test(n) ||
-      !readings(
-        {
-          text: n.toLowerCase(),
-          lower: n.toLowerCase(),
-          kind: 'word',
-          first: true,
-        },
-        lexicon
-      ).length
+  const names = nameCandidates(text, lexicon);
+  const givenOnly = new Set(
+    names.filter(
+      (n) =>
+        !(
+          n.includes(' ') ||
+          /[.-]/.test(n) ||
+          /^[A-Z][A-Z0-9]+s?$/.test(n) ||
+          !readings(
+            {
+              text: n.toLowerCase(),
+              lower: n.toLowerCase(),
+              kind: 'word',
+              first: true,
+            },
+            lexicon
+          ).length
+        )
+    )
   );
-  await resolveNames(names, { lexicon, fetchImpl, cache, topic });
+  await resolveNames(names, { lexicon, fetchImpl, cache, topic, givenOnly });
+  await declineNames(dictionaryNames, { lexicon, fetchImpl, cache });
   if (!only) {
     const phrasal = phrasalCandidates(text, lexicon).filter(
       (p) => !lexicon.asked(p)

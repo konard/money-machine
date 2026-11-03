@@ -1,4 +1,5 @@
 /** Offline dictionary forms exercise fragments and degree through the pipeline. */
+import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { loadLexicon } from '../../formal-ai/src/lexicon.mjs';

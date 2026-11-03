@@ -13,11 +13,14 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseLino, childrenNamed, field, words } from './lino.mjs';
 
-// FORMAL_AI_DATA points at another vocabulary (e.g. an empty one, so that
-// every content word comes from public sources)
+// Content words come from public sources (Wiktionary, Wikidata) while the
+// translator runs; `data/overrides/` holds only corrections of that data,
+// and an override concept takes the place of what public data says about
+// its word. FORMAL_AI_DATA points at another vocabulary (the tests use a
+// fixed hand-written one).
 export const DATA_DIR =
   globalThis.process?.env?.FORMAL_AI_DATA ||
-  join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
+  join(dirname(fileURLToPath(import.meta.url)), '..', 'data', 'overrides');
 
 const unquote = (text) => text.replace(/^"(.*)"$/s, '$1');
 

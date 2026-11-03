@@ -67,7 +67,8 @@ export async function getJson(
     memory.set(key, value);
     return value;
   }
-  if (cache && process.env.FORMAL_AI_OFFLINE) {
+  // offline, only the network is out of reach: a stand-in fetch still runs
+  if (process.env.FORMAL_AI_OFFLINE && fetchImpl === globalThis.fetch) {
     throw Object.assign(
       new Error(`offline: no recorded response for ${url} ${body}`.trim()),
       { fatal: true, offline: true }

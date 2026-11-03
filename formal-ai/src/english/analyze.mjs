@@ -254,10 +254,16 @@ function contentReadings(token, lexicon, add) {
     return;
   }
   const capitalized = /^\p{Lu}/u.test(token.text);
-  // a capitalized word with a known name label is that name (Google, Apple)
+  // a capitalized word with a known name label is that name (Google,
+  // Apple) — unless it names a time: "January" is a given name too
+  const timeWord = lexicon
+    .lookup('noun', w)
+    .some((id) => lexicon.get(id)?.classes?.includes('time'));
   if (
     capitalized &&
-    ((!token.first && lexicon.nameLabel?.(token.text)) ||
+    !timeWord &&
+    ((lexicon.givenNames?.has(token.text) && lexicon.nameLabel?.(token.text)) ||
+      (!token.first && lexicon.nameLabel?.(token.text)) ||
       (token.first &&
         lexicon.documentNames?.has(token.text) &&
         !(token.nominalStart && lexicon.lookup('adj', w).length) &&

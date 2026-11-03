@@ -1,4 +1,5 @@
 /** Offline public-API fixtures for context and productive compound modifiers. */
+import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { loadLexicon } from '../../formal-ai/src/lexicon.mjs';

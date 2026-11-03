@@ -123,7 +123,7 @@ function infinitiveOf(lexicon) {
 function matchPhrase(tokens, lexicon) {
   const wordsOnly = tokens
     .filter((t) => !isPunct(t))
-    .map((t) => t.lower.replace(/^'/, ''));
+    .flatMap((t) => t.lower.replace(/^'/, '').split(/\s+/));
   for (const p of lexicon.phrases) {
     if (
       p.words.length === wordsOnly.length &&
@@ -175,6 +175,7 @@ export function parseSentence(sentence, lexicon) {
   };
   const whole = matchPhrase(body, lexicon);
   if (whole) {
+    result.unknown = [];
     result.clauses.push({ type: 'phrase', concept: whole });
     return result;
   }

@@ -1,4 +1,5 @@
 /** Public-data fixtures: names, brand boundaries and noun declension. */
+import './setup.mjs';
 import { rncFixture } from './rnc-fixture.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

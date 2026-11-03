@@ -1,5 +1,6 @@
 /** Offline Wiktionary parsing, word resolution, names and missing forms. */
 
+import './setup.mjs';
 import { rncFixture } from './rnc-fixture.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -84,7 +85,7 @@ function stub(steps) {
   return { fetchImpl, done: () => assert.equal(next, steps.length) };
 }
 
-function pageRequest(title, content) {
+function pageRequest(title, content, requestedTitles = title) {
   return {
     host: WIKTIONARY,
     params: {
@@ -95,7 +96,7 @@ function pageRequest(title, content) {
       rvprop: 'content',
       rvslots: 'main',
       redirects: '1',
-      titles: title,
+      titles: requestedTitles,
     },
     response: {
       query: {
@@ -254,7 +255,8 @@ test('resolveText follows an English inflection and learns rendered Russian form
   const api = stub([
     pageRequest(
       'quokkas',
-      '==English==\n===Noun===\n# {{plural of|en|quokka}}'
+      '==English==\n===Noun===\n# {{plural of|en|quokka}}',
+      'quokkas|Quokkas'
     ),
     pageRequest('quokka', english),
     pageRequest('квокка', russian),

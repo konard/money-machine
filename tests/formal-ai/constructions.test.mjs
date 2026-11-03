@@ -1,4 +1,5 @@
 /* eslint-disable require-await -- Offline fixtures implement Fetch. */
+import './setup.mjs';
 import { rncFixture } from './rnc-fixture.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

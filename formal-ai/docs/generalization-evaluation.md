@@ -385,3 +385,16 @@ The full baseline review makes the overlapping counts reproducible. Codes: S sen
 | 14096336   | P            |       32.90 |      32.90 |
 | 14082998   | P, S, A      |       30.94 |      30.94 |
 | 14079410   | S            |       50.32 |      50.32 |
+
+## Validation and remaining limits
+
+- `npx prettier --write` ran on the changed harness, grammar files, tests and evaluation artifacts.
+- `npx eslint formal-ai tests` passed.
+- `npm run check:file-size` passed; all added files are also below 1,000 lines.
+- `node --test --test-timeout=60000 tests/` passed: **226 tests, zero failures**. Server tests need local loopback access, so the final full run used the approved execution environment.
+- Offline fixtures verify chrF arithmetic (including clipped repeats and Unicode), seeded selection, direct-link and length filtering, API pagination/deduplication/spacing/User-Agent, reference isolation, max-over-references scoring, finite complements, wh-complements, and preservation of objects and controlled infinitives.
+- The final isolated offline Tatoeba replay matched all previously measured after outputs exactly; the 30 website control outputs remained identical.
+
+Remaining problems include name/common-noun and word-sense selection, 30 bracketed records, perfect and stacked auxiliaries, conditional mood, case government, literal idioms, and noun-subject or elliptical embedded clauses. The public search window and sometimes imperfect references limit the conclusion. This run demonstrates measurable improvement on an out-of-domain sample while exposing substantial generalization failures.
+
+This task issued no commit command. A concurrent workspace process created commit `7a59cdb`, which includes the evaluation and grammar files; the final validation notes were added afterward and remain uncommitted.
