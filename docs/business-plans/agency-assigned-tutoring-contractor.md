@@ -105,7 +105,7 @@ _Business-plan sources:_
 - **Minimum payout:** No minimum (GoStudent); Varsity Tutors not stated
 - **Frequency:** monthly (GoStudent) / twice weekly (Varsity)
 - **Typical delay:** 30 days
-- **Notes:** GoStudent's tutor help center: base rate up to GBP 16 per 50-minute session, depending on availability, subjects and monthly sessions completed. Earnings are paid in full the next month with no minimum, between the 12th and 17th; transfers can take up to 7 days to arrive. Session feedback must be submitted within 24 hours or the session is not paid. No-shows pay a flat 6.50. Volume raises: +1.00 per lesson after 150 lessons in 6 months, +1.50 after 300. Varsity Tutors' twice-weekly pay and USD 15-40/hr come only from third-party sources; its tutor pages block automated fetches.
+- **Notes:** GoStudent's tutor help center: base rate up to GBP 16 per 50-minute session, depending on availability, subjects and monthly sessions completed. Earnings are paid in full the next month with no minimum, between the 12th and 17th; transfers can take up to 7 days to arrive. Session feedback must be submitted within 24 hours or the session is not paid. No-shows pay a flat 6.50. Volume raises: +1.00 per lesson after 150 lessons in 6 months, +1.50 after 300. Varsity Tutors' twice-weekly pay and USD 15-40/hr come only from third-party sources; its tutor pages return 403 even in a real browser (Nov 2026), so Varsity's payment method and frequency stay unconfirmed.
 
 ## Full cycle (setup → earn → bank account)
 

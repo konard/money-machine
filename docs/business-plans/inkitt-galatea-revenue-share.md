@@ -100,11 +100,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** unverified (contracted royalties)
+- **Methods:** Tipalti: local bank transfer (SEPA/ACH/BACS), eCheck, international wire, or PayPal
 - **Minimum payout:** unverified
 - **Frequency:** unverified
 - **Typical delay:** 90 days
-- **Notes:** inkitt.com returned 403 again (Nov 2026) and galatea.com shows no author terms; revenue-share percentages, advances and payout rails remain unverified. Read contract rights clauses carefully.
+- **Notes:** Inkitt help center (Nov 2026): Galatea royalties are paid through Tipalti by the method chosen at onboarding, sent at the end of the month and arriving within up to 12 business days; German withholding tax (Quellensteuer) is deducted unless exempted. Still unconfirmed: the royalty percentages, advances, the royalty payment period (linked article is on the login-only Galatea author help center) and any minimum payout. Read contract rights clauses carefully.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -146,6 +146,7 @@ Galatea sells many Inkitt-sourced titles; terms not publicly posted.
 
 - <https://www.galatea.com/>
 - <https://www.inkitt.com/>
+- <https://inkitt.zendesk.com/hc/en-us/articles/12756836931090-Galatea-Royalty-Payments-through-Tipalti>
 
 _Tags: fiction, invite-only, needs-verification_
 

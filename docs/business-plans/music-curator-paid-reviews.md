@@ -20,8 +20,6 @@ Owners of music blogs, playlists, radio shows or channels get paid per submissio
 | Time to first dollar | 30–180 d |
 | Typical monthly income (low / median / high) | $0 / $100 / $1,500 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$100 per month** in the first year; the high figure of $1,500 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **3/10**. Expect the first payment after 30–180 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** PayPal -> bank, Wise bank transfer (Groover)
-- **Minimum payout:** Groover: €20 first withdrawal, then €50; SubmitHub: not published
+- **Methods:** PayPal -> bank (Groover, SubmitHub), Wise bank transfer (Groover, SubmitHub)
+- **Minimum payout:** Groover: €20 first withdrawal, then €50; SubmitHub: $10 cash-out request
 - **Frequency:** on request (Groover: one free withdrawal per 30 days)
 - **Typical delay:** 5 days
-- **Notes:** Groover (help center): Grooviz withdraw by Wise bank transfer (IBAN/local; some territories such as Brazil and India may be restricted) or PayPal; minimum €20 for the first request, then €50; processed within 72 working hours; one free withdrawal per 30 days, then €2 each, plus a fixed €2 PayPal fee. SubmitHub curators cash out to a PayPal email (in-app). Per-review earnings for both platforms are not published, and SubmitHub's minimum is unknown. Unconfirmed: SubmitHub's curator cash-out minimum and fees (submithub.com/apply and /help do not state them).
+- **Notes:** Groover (help center): Grooviz withdraw by Wise bank transfer (IBAN/local; some territories such as Brazil and India may be restricted) or PayPal; minimum €20 for the first request, then €50; processed within 72 working hours; one free withdrawal per 30 days, then €2 each, plus a fixed €2 PayPal fee. SubmitHub help (Nov 2026): curators request a cash-out at $10 and are paid via PayPal or Wise; SubmitHub's cash-out fees are not stated. Per-review earnings for both platforms are not published.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,8 +147,10 @@ Groover's help center documents curator Grooviz withdrawals to bank or PayPal an
 - <https://help.groover.co/en/articles/2975306-how-to-transfer-withdraw-my-grooviz-in>
 - <https://help.groover.co/en/articles/2975308-how-to-become-a-music-curator-pro-on-groover>
 - <https://www.submithub.com/apply>
+- <https://www.submithub.com/help/57mq4Ltzm5ajqYpcy>
+- <https://www.submithub.com/help/ArM3YB654vxyTJPDf>
 
-_Tags: music, curation, needs-verification_
+_Tags: music, curation_
 
 ---
 

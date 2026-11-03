@@ -12221,13 +12221,13 @@
       ],
       "payout": {
         "methods": [
-          "bank transfer (IBG) -> local bank",
-          "ShopeePay (small amounts, Indonesia)"
+          "bank transfer (IBG in Malaysia) -> local bank",
+          "ShopeePay (Indonesia, alongside bank transfer)"
         ],
-        "minimumPayout": "Not published on the official help pages read (MY, SG); Indonesia reportedly pays sums under Rp1,000,000 to ShopeePay (unverified)",
-        "frequency": "weekly (local individuals) or twice-monthly consolidation",
+        "minimumPayout": "None stated for local affiliates in MY, SG, ID and PH; Philippines USD 500 for cross-border payees; Brazil sets a variable minimum shown in the affiliate dashboard",
+        "frequency": "weekly (MY/SG/ID local individuals) or monthly (PH, BR, enterprises)",
         "typicalDelayDays": 30,
-        "notes": "Malaysia (official FAQ): IBG bank transfer on Fridays; local individuals have 7 days of bills consolidated and paid within 14 days; local enterprise and overseas affiliates are consolidated on the 8th and 23rd and paid 21 days later; bills not validated within 12 months are forfeited. Singapore (official help): non-GST individuals paid weekly (Thursdays), tax-registered individuals/enterprises monthly. Indonesia, Philippines and Brazil affiliate portals render only via JavaScript, so their minimums and schedules are unconfirmed. Re-checked Nov 2026: affiliate.shopee.co.id and the ID/PH help portals still render only via JavaScript. Unconfirmed: minimum payout and schedule for Indonesia (including the ShopeePay rule), the Philippines and Brazil."
+        "notes": "Malaysia (official FAQ): IBG bank transfer on Fridays; local individuals have 7 days of bills consolidated and paid within 14 days; local enterprise and overseas affiliates are consolidated on the 8th and 23rd and paid 21 days later; bills not validated within 12 months are forfeited. Singapore (official help): non-GST individuals paid weekly (Thursdays), tax-registered individuals/enterprises monthly. Indonesia (official affiliate help, read in a browser Nov 2026): commission is paid weekly by ShopeePay and bank transfer to the registered account; daily reports issued Mon-Wed are paid on Wednesday of the following week and Thu-Sun reports on Friday of the following week; no minimum is stated; a valid bank account and NPWP are required. Philippines (Shopee Affiliate Program Terms and Conditions): balance paid monthly within 90 days of system approval; a USD 500 minimum applies only to affiliates outside the Philippines needing a cross-border transfer; VAT-registered affiliates must issue an invoice. Brazil (Programa de Afiliados Termos e Condições): balance paid monthly within 60 days of system approval; the minimum payout is set by Shopee from time to time and shown in the affiliate dashboard (no fixed amount published); companies must issue a Nota Fiscal."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -12287,15 +12287,17 @@
       "sources": [
         "https://help.shopee.com.my/portal/10/article/177403-[ENG]-Payment-Frequently-Asked-Questions-[FAQ]",
         "https://help.shopee.sg/portal/10/article/191693",
-        "https://affiliate.shopee.ph/"
+        "https://affiliate.shopee.ph/",
+        "https://help.shopee.co.id/portal/10/article/72049",
+        "https://help.shopee.ph/portal/4/article/77295",
+        "https://help.shopee.com.br/portal/10/article/124094"
       ],
       "tags": [
         "affiliate",
         "southeast-asia",
         "brazil",
         "social",
-        "global-south",
-        "needs-verification"
+        "global-south"
       ],
       "businessPlan": {
         "startupResources": {
@@ -12367,7 +12369,7 @@
       },
       "sourceFile": "global-south.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 15,
@@ -12391,12 +12393,13 @@
       "payout": {
         "methods": [
           "PayPal -> bank",
-          "Payoneer (reported for Creative Fabrica)"
+          "Payoneer -> bank",
+          "bank transfer (Creative Fabrica, $20 fee)"
         ],
-        "minimumPayout": "Unverified (sites block automated fetch)",
-        "frequency": "monthly",
+        "minimumPayout": "Creative Fabrica: none for PayPal ($0.50 fee under $10), $100 for Payoneer or bank transfer; Design Bundles: none stated",
+        "frequency": "on request (Creative Fabrica, paid within 7-10 days) / monthly (Design Bundles)",
         "typicalDelayDays": 30,
-        "notes": "Revenue-share percentages, subscription-pool formula and minimum payouts still unverified: Creative Fabrica (site and help center), Design Bundles and So Fontsy all returned 403/429 to fetches in Nov 2026; commonly reported ~50% share of individual sales."
+        "notes": "Creative Fabrica (official open-store page and help center, read in a browser Nov 2026): designers earn 50% of single sales Creative Fabrica refers and 75% of sales they refer, plus recurring subscription-download earnings; payouts on request to PayPal (no minimum, $0.50 fee under $10, paid within 7 days), Payoneer (minimum $100, within 10 days) or bank transfer (minimum $100 plus $20 fee). Design Bundles Designer Terms: royalties paid monthly to a linked PayPal or Payoneer account; membership royalties come from a Partner Fund of 50% of net membership income split by downloads; the single-sale commission rate and any minimum are not stated. So Fontsy terms not re-checked."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -12457,15 +12460,15 @@
       ],
       "evidence": "Creative Fabrica and Design Bundles host tens of thousands of independent designers; payouts are widely documented by crafter-designers but terms were not verifiable here.",
       "sources": [
-        "https://www.creativefabrica.com/designer-program/",
-        "https://www.designbundles.net/sell-your-designs",
-        "https://sofontsy.com/pages/become-a-designer"
+        "https://sofontsy.com/pages/become-a-designer",
+        "https://www.creativefabrica.com/open-store",
+        "https://help.creativefabrica.com/hc/en-us/articles/360029930872-How-do-I-make-a-payout-of-my-earnings",
+        "https://designbundles.net/designer-termsconditions"
       ],
       "tags": [
         "craft",
         "svg",
-        "subscription-pool",
-        "needs-verification"
+        "subscription-pool"
       ],
       "businessPlan": {
         "startupResources": {
@@ -12502,7 +12505,7 @@
           "platformFeePercent": 50,
           "grossMarginPercent": 50,
           "hoursPerUnit": 0,
-          "notes": "Median $3 cut file; designer share ~50% is estimated (Creative Fabrica and Design Bundles pages bot-blocked). Subscription-pool earnings per download are a few cents and not modelled."
+          "notes": "Median $3 cut file; designer share 50% on marketplace-referred sales is Creative Fabrica's published rate (75% on self-referred sales). Subscription-pool earnings per download are a few cents and not modelled."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -12538,7 +12541,7 @@
       },
       "sourceFile": "maker-craft.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 12,
@@ -13075,13 +13078,14 @@
       ],
       "payout": {
         "methods": [
-          "PayPal/Payoneer -> bank (Creative Fabrica)",
+          "Creative Fabrica: PayPal / Payoneer / bank -> bank",
+          "LoveCrafts: monthly PayPal payout",
           "Payhip PayPal/Stripe instant"
         ],
-        "minimumPayout": "Marketplace minimums unverified; Payhip none (instant)",
+        "minimumPayout": "Creative Fabrica: PayPal none ($0.50 fee under $10), Payoneer $100, bank $100 (+$20 fee); LoveCrafts none stated; Payhip none (instant)",
         "frequency": "monthly / instant",
         "typicalDelayDays": 20,
-        "notes": "Payhip terms confirmed (5% fee on free plan, instant PayPal/Stripe deposit). Creative Fabrica and LoveCrafts shares/minimums unverified (pages return 403/429)."
+        "notes": "Confirmed Nov 2026: Creative Fabrica pays 50% on CF-referred and 75% on self-referred sales, PayPal payouts within 7 days (Payoneer within 10); LoveCrafts pays a month in arrears on the 25th to PayPal after a 4% + $0.35 transaction cost and a 5% selling fee on monthly sales between $40 and the cap; Payhip takes 5% on the free plan with instant PayPal/Stripe deposit."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -13138,15 +13142,16 @@
       ],
       "evidence": "Creative Fabrica and LoveCrafts list thousands of independent embroidery and cross-stitch designs; Pattern Keeper compatibility is a common selling point.",
       "sources": [
-        "https://www.creativefabrica.com/designer-program/",
         "https://payhip.com/pricing",
-        "https://inkstitch.org/"
+        "https://inkstitch.org/",
+        "https://www.creativefabrica.com/open-store",
+        "https://help.creativefabrica.com/hc/en-us/articles/360029930872-How-do-I-make-a-payout-of-my-earnings",
+        "https://www.lovecrafts.com/en-us/pages/designer-handbook-payment-pricing-taxes"
       ],
       "tags": [
         "craft",
         "embroidery",
-        "passive",
-        "needs-verification"
+        "passive"
       ],
       "businessPlan": {
         "startupResources": {
@@ -13218,7 +13223,7 @@
       },
       "sourceFile": "maker-craft.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 14,
@@ -19204,7 +19209,7 @@
         "minimumPayout": "Unverified",
         "frequency": "monthly (unverified)",
         "typicalDelayDays": 45,
-        "notes": "Royalty rate, payout method and minimum are not published: the become-an-artist, artist-application, register-as-an-artists and marketplace pages (checked Nov 2026) show only sign-up links. Cricut artist licensing terms are private contracts."
+        "notes": "Royalty rate, payout method and minimum are not published: the become-an-artist, artist-application, register-as-an-artists and marketplace pages and the Silhouette support 'Design Store Artist Program' article (checked Nov 2026) show only application steps. Cricut artist licensing terms are private contracts."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -19261,7 +19266,8 @@
       "evidence": "Silhouette Design Store publicly lists 500+ artists and an artist application page.",
       "sources": [
         "https://www.silhouettedesignstore.com/artists",
-        "https://www.silhouettedesignstore.com/become-an-artist"
+        "https://www.silhouettedesignstore.com/become-an-artist",
+        "https://silhouetteamerica.freshdesk.com/support/solutions/articles/35000280283-programs"
       ],
       "tags": [
         "craft",
@@ -20369,12 +20375,12 @@
       "payout": {
         "methods": [
           "direct from student: bank transfer / PayPal / Wise",
-          "Superprof in-platform payment"
+          "Superprof in-platform payment -> PayPal"
         ],
-        "minimumPayout": "N/A (paid directly by students)",
+        "minimumPayout": "N/A for direct payment; in-platform balance pays out to PayPal at $30",
         "frequency": "per lesson or package",
         "typicalDelayDays": 1,
-        "notes": "With direct payment you control the timing. Superprof's own blog confirms the 10% commission on in-platform payments (0% with Premium) but gives no Premium price and no in-platform payout method or timing. A complaint-forum post says earnings show about 24 hours after a lesson and reach PayPal in about 3 days; this is unverified. Official Superprof help and FAQ pages block automated fetches."
+        "notes": "With direct payment you control the timing. Superprof's tutor help center (Nov 2026): in-platform payments carry a 10% commission (0% with Premium), the amount shows in your balance 24 hours after the lesson, and the balance moves to PayPal within 3 working days once it is at least $30; packs pay 50% after the first lesson. The Premium price is not stated there."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -20434,13 +20440,14 @@
       "sources": [
         "https://www.superprof.com.au/blog/charges-payments-superprof",
         "https://www.superprof.com/",
-        "https://www.apprentus.com/"
+        "https://www.apprentus.com/",
+        "https://www.superprof.com/help/tutors/tutor-payment/how-to-get-paid/68/",
+        "https://www.superprof.com/help/tutors/tutor-payment/lesson-pack-payment-deadlines/71/"
       ],
       "tags": [
         "live",
         "tutoring",
-        "direct-pay",
-        "needs-verification"
+        "direct-pay"
       ],
       "businessPlan": {
         "startupResources": {
@@ -20513,7 +20520,7 @@
       },
       "sourceFile": "teaching.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 35,
@@ -21036,13 +21043,13 @@
       ],
       "payout": {
         "methods": [
-          "PayPal -> bank (reported)",
-          "cheque (reported)"
+          "PayPal on the 1st of the month -> bank",
+          "check on the 15th of the month"
         ],
-        "minimumPayout": "Unverified",
-        "frequency": "monthly (on request; reported ~$1 withdrawal fee)",
+        "minimumPayout": "PayPal: publisher-selected minimum (royalties below it roll forward); check: $100",
+        "frequency": "monthly",
         "typicalDelayDays": 30,
-        "notes": "50% DMs Guild split confirmed only via press/creator sources; DriveThruRPG royalty (creator comments cite 65% non-exclusive / 70% exclusive) and payout rules unverified (dmsguild.com, drivethrurpg.com and its help center return 403). AI policy (per Gizmodo/EN World 2023 coverage): since 31 Jul 2023 products made primarily of AI-written text are not accepted, standalone AI-art products are barred and AI-generated art must be labelled; buyers can filter 'Handcrafted' vs 'Contains AI'. Community programs (DMs Guild, Chaosium's Miskatonic Repository) set their own stricter rules - Chaosium removed 40+ community titles over AI text in Oct 2026."
+        "notes": "Confirmed on the DriveThru Partners help center (Nov 2026): royalties are paid on the 1st by PayPal or the 15th by check; earnings become payable 15 days after sale for verified publishers (30 days unverified). Own-IP digital sales earn >65% (non-exclusive) or >70% (exclusive); on community content programs such as DMs Guild DriveThru keeps 30% and most rights holders give the creator 50%. AI policy (per Gizmodo/EN World 2023 coverage): since 31 Jul 2023 products made primarily of AI-written text are not accepted, standalone AI-art products are barred and AI-generated art must be labelled; buyers can filter 'Handcrafted' vs 'Contains AI'. Community programs (DMs Guild, Chaosium's Miskatonic Repository) set their own stricter rules - Chaosium removed 40+ community titles over AI text in Oct 2026."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -21106,13 +21113,15 @@
         "https://gnomestew.com/getting-started-on-the-dms-guild-part-1-your-first-product/",
         "https://gizmodo.com/drivethrurpg-ai-generated-art-writing-dmsguild-1850673912",
         "https://letsdatascience.com/news/chaosium-removes-40-community-titles-over-ai-generated-text-70ccf45e",
-        "https://www.dmsguild.com/"
+        "https://www.dmsguild.com/",
+        "https://help.drivethrupartners.com/hc/en-us/articles/12780762436759-How-We-Pay-Your-Royalties",
+        "https://help.drivethrupartners.com/hc/en-us/articles/12780816206871-Exclusive-vs-Non-Exclusive-Partner-Accounts",
+        "https://help.drivethrupartners.com/hc/en-us/articles/12780762689431-Set-up-a-Community-Content-Program-for-your-RPG"
       ],
       "tags": [
         "tabletop",
         "writing",
-        "royalties",
-        "needs-verification"
+        "royalties"
       ],
       "businessPlan": {
         "startupResources": {
@@ -21148,7 +21157,7 @@
           "platformFeePercent": 50,
           "grossMarginPercent": 50,
           "hoursPerUnit": 0,
-          "notes": "Median $5 adventure; DMs Guild pays 50% royalty, DriveThruRPG ~65-70% for own IP (estimated, from reports)."
+          "notes": "Median $5 adventure; DMs Guild pays 50% royalty, DriveThruRPG >65% (non-exclusive) or >70% (exclusive) for own IP, per the DriveThru Partners help center (Nov 2026)."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -21183,7 +21192,7 @@
       },
       "sourceFile": "maker-craft.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 14,
@@ -21207,10 +21216,10 @@
         "methods": [
           "Mercado Pago -> local bank"
         ],
-        "minimumPayout": "Unverified: Brazilian guides report R$80 with at least three distinct buyers",
-        "frequency": "monthly cycle (unverified)",
-        "typicalDelayDays": 45,
-        "notes": "Official program and help pages (mercadolivre.com.br, mercadolibre.com.mx) return 403 to automated fetching. 2026 third-party guides report: commission credited to Mercado Pago about 45–60 days after the sale once the monthly cycle closes; category rates up to ~16%; 18+ with CPF/CNPJ and active Mercado Livre and Mercado Pago accounts; no links on home, search, category or daily-deal pages. Unconfirmed: the R$80 minimum, the three-buyer rule and the monthly cycle (mercadolivre.com.br, mercadolibre.com.mx and .com.ar still return 403 on re-check)."
+        "minimumPayout": "R$30 (balance rolls over until reached)",
+        "frequency": "monthly cycle, paid 2 months after the R$30 minimum is passed",
+        "typicalDelayDays": 75,
+        "notes": "Mercado Livre help (read in a browser Nov 2026): earnings are credited to your Mercado Pago account 2 months after your balance passes the R$30 minimum; below that it rolls over (example: R$35 accumulated over January and February is paid in May). Commission counts for direct and indirect sales within 24 hours of the click, only on approved sales; cancelled, returned or fraudulent orders earn nothing. Earlier third-party claims of an R$80 minimum with three distinct buyers are not on the official pages. 2026 third-party guides also report category rates up to ~16%, 18+ with CPF/CNPJ and active Mercado Livre and Mercado Pago accounts, and no links on home, search, category or daily-deal pages (not re-checked; the afiliados landing page requires login)."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -21269,12 +21278,13 @@
       "sources": [
         "https://www.mercadolivre.com.br/l/afiliados-home",
         "https://www.mercadolivre.com.br/ajuda/33544",
-        "https://canaltech.com.br/internet/mercado-livre-lanca-programa-de-afiliados-para-criadores-de-conteudo-261989/"
+        "https://canaltech.com.br/internet/mercado-livre-lanca-programa-de-afiliados-para-criadores-de-conteudo-261989/",
+        "https://www.mercadolivre.com.br/ajuda/32116",
+        "https://www.mercadolivre.com.br/ajuda/como-ganar-comisiones-afiliados_45554"
       ],
       "tags": [
         "affiliate",
         "latam",
-        "needs-verification",
         "global-south"
       ],
       "businessPlan": {
@@ -21346,7 +21356,7 @@
       },
       "sourceFile": "global-south.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 10,
@@ -25734,15 +25744,15 @@
       ],
       "payout": {
         "methods": [
-          "Cults3D: PayPal/bank (unverified)",
+          "Cults3D: Hyperwallet by PayPal (bank, debit card, PayPal, Venmo) or Payoneer bank transfer",
           "Printables: Stripe -> bank",
           "Thangs: Stripe Express -> bank (monthly)",
           "MakerWorld: Exclusive Points cash withdrawal -> bank (via payout provider; users report Airwallex wire)"
         ],
-        "minimumPayout": "Cults3D: threshold exists but amount unverified; Printables/Thangs: none stated (Stripe); MakerWorld: $100 of Exclusive Points per withdrawal",
-        "frequency": "Cults3D on request (unverified); Thangs monthly; Printables per Stripe schedule; MakerWorld on request (manual review ~1 week)",
+        "minimumPayout": "Cults3D: EUR 5 (Hyperwallet) / US$7 (Payoneer); Printables/Thangs: none stated (Stripe); MakerWorld: $100 of Exclusive Points per withdrawal",
+        "frequency": "Cults3D on request; Thangs monthly; Printables per Stripe schedule; MakerWorld on request (manual review ~1 week)",
         "typicalDelayDays": 30,
-        "notes": "Thangs fees and Stripe-only payout confirmed on its help center (Stripe payout fee 0.25% + $0.25, currency conversion 2% non-US). Printables 20% fee / $5 minimum price confirmed on Prusa blog. MakerWorld cash rules confirmed on Bambu Lab blog (Oct 2024); regular MakerWorld points are NOT cash (points store only), and Printables Prusameters are NOT cash. Cults3D share/minimum/methods unverified (site returns 403)."
+        "notes": "Thangs fees and Stripe-only payout confirmed on its help center (Stripe payout fee 0.25% + $0.25, currency conversion 2% non-US). Printables 20% fee / $5 minimum price confirmed on Prusa blog. MakerWorld cash rules confirmed on Bambu Lab blog (Oct 2024); regular MakerWorld points are NOT cash (points store only), and Printables Prusameters are NOT cash. Cults3D (official upload and payout-methods pages, read in a browser Nov 2026): designers receive 80% of the net selling price excluding VAT (Cults 15%, banking fees 5%); payouts via Hyperwallet by PayPal (bank transfer, debit card, PayPal or Venmo; minimum EUR 5; ~EUR 1.70 per payout locally, EUR 3.50 international, 2% FX) or Payoneer bank transfer (minimum US$7, US$2 fee); 250 countries. Cults3D does not state a holding period on these pages."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -25807,13 +25817,15 @@
         "https://thangs.com/resources/help-center-articles/do-i-have-to-use-stripe-as-a-payment-processor",
         "https://thangs.com/resources/help-center-articles/what-countries-are-currently-supported-for-thangs-memberships",
         "https://blog.bambulab.com/exclusive-model-program-cash-rewards-and-copyright-support/",
-        "https://cults3d.com/fr/ajouter"
+        "https://cults3d.com/fr/ajouter",
+        "https://cults3d.com/en/upload",
+        "https://cults3d.com/en/payouts/methods",
+        "https://cults3d.com/en/payouts/methods/hyperwallet"
       ],
       "tags": [
         "3d-printing",
         "maker",
-        "passive",
-        "needs-verification"
+        "passive"
       ],
       "businessPlan": {
         "startupResources": {
@@ -25886,7 +25898,7 @@
       },
       "sourceFile": "maker-craft.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 12,
@@ -27265,7 +27277,7 @@
         "minimumPayout": "Unverified: third-party guides report ₦5,000 in Nigeria (some say ₦10,000; older ones ₦2,500); about USD 10–50 equivalent elsewhere",
         "frequency": "monthly",
         "typicalDelayDays": 45,
-        "notes": "Official KOL pages (jumia.com.ng/sp-kol, jumia.co.ke/sp-kol) return 403 to automated fetching and no archived copy could be read (Nov 2026). Third-party guides report category commissions of about 1–11% (some say up to 13%), payment between the 15th and 25th of the following month, and balances below the minimum rolling over. Unconfirmed: the minimum payout in every country (the Wayback Machine was also unreachable on re-check)."
+        "notes": "Official KOL pages (jumia.com.ng/sp-kol, jumia.co.ke/sp-kol) return 403 to automated fetching and, in a real browser (Nov 2026), stop at a Cloudflare 'Just a moment' bot check; no archived copy could be read. Third-party guides report category commissions of about 1–11% (some say up to 13%), payment between the 15th and 25th of the following month, and balances below the minimum rolling over. Unconfirmed: the minimum payout in every country."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -27425,14 +27437,14 @@
       ],
       "payout": {
         "methods": [
-          "Roll20: payout (method unverified)",
+          "Roll20: PayPal (required) -> bank",
           "Foundry Marketplace: unverified",
           "Own store via Stripe/PayPal or Patreon"
         ],
-        "minimumPayout": "Unverified",
-        "frequency": "monthly (unverified)",
+        "minimumPayout": "Roll20: none stated; Foundry unverified",
+        "frequency": "monthly (Roll20 pays on or before the 7th for the previous month)",
         "typicalDelayDays": 30,
-        "notes": "Roll20 revenue share and payout rules not verifiable: help center returns 403 and the 'Become a Creator' page linked from marketplace.roll20.net (pages.roll20.net/marketplace-creators) returned 404 in Nov 2026. Foundry Marketplace creator terms are not public."
+        "notes": "Roll20 Partner Help Center (Nov 2026): partners keep 70% of sales (Roll20 keeps 30%, 50/50 for DMsGuild-supporting content), paid via PayPal on or before the 7th for the prior month; minimum list price $4.99 and no exclusivity. Foundry Marketplace creator terms are not public."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -27491,12 +27503,12 @@
       "sources": [
         "https://marketplace.roll20.net/",
         "https://foundryvtt.com/article/premium-content/",
-        "https://foundryvtt.com/packages/"
+        "https://foundryvtt.com/packages/",
+        "https://roll20partners.zendesk.com/hc/en-us/articles/10844424110999-Who-Can-Sell-on-the-Roll20-Marketplace"
       ],
       "tags": [
         "tabletop",
-        "vtt",
-        "needs-verification"
+        "vtt"
       ],
       "businessPlan": {
         "startupResources": {
@@ -27528,10 +27540,10 @@
             "high": 30
           },
           "costPerUnitUsd": 0,
-          "platformFeePercent": 50,
-          "grossMarginPercent": 50,
+          "platformFeePercent": 30,
+          "grossMarginPercent": 70,
           "hoursPerUnit": 0,
-          "notes": "Median $10 map/token pack; Roll20 creator share estimated at 50% (Roll20 help and wiki pages bot-blocked, unverified)."
+          "notes": "Median $10 map/token pack; Roll20 partners keep 70% (30% fee), confirmed on the Roll20 Partner Help Center (Nov 2026)."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -27551,7 +27563,7 @@
             "median": 25,
             "high": 1500
           },
-          "notes": "Battlemap and token creators who already run Patreon audiences dominate sales; Foundry VTT's official Marketplace (2025) and continued online play support demand. AI-generated battlemaps flooded the market in 2024-2026, pushing pack prices down, and Roll20's creator revenue share is not published (50% assumed). Typical failure mode: packs listed with no audience get almost no marketplace visibility."
+          "notes": "Battlemap and token creators who already run Patreon audiences dominate sales; Foundry VTT's official Marketplace (2025) and continued online play support demand. AI-generated battlemaps flooded the market in 2024-2026, pushing pack prices down, while Roll20 partners keep 70% of each sale (30% fee, confirmed on the Roll20 Partner Help Center, Nov 2026). Typical failure mode: packs listed with no audience get almost no marketplace visibility."
         },
         "pricingStrategy": "Give away a free sample pack to build followers, price map/token packs at $5-15 and offer $25-30 bundles; add premium Foundry modules with automation at higher prices.",
         "profitPath": [
@@ -27567,7 +27579,7 @@
       },
       "sourceFile": "maker-craft.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 8,
@@ -27596,7 +27608,7 @@
         "minimumPayout": "per accepted puzzle",
         "frequency": "per acceptance",
         "typicalDelayDays": 90,
-        "notes": "Pay rates (often quoted around $500-$750 daily, $2,000+ Sunday for NYT) still unverified: nytimes.com and xwordinfo.com block our fetcher (Nov 2026)."
+        "notes": "NYT submission page (Nov 2026) confirms pay: Mon-Sat 15x15 $500 for a constructor's 1st-2nd published puzzle and $750 from the 3rd; Sunday 21x21 $1,500 and $2,250 respectively; submissions go through Submittable. Payment method and timing are not published (check/bank transfer assumed)."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -27657,8 +27669,7 @@
       ],
       "tags": [
         "per-piece",
-        "puzzles",
-        "needs-verification"
+        "puzzles"
       ],
       "businessPlan": {
         "startupResources": {
@@ -27694,7 +27705,7 @@
           "platformFeePercent": 0,
           "grossMarginPercent": 100,
           "hoursPerUnit": 15,
-          "notes": "NYT pays $500 for daily (Mon-Sat) and $2,250 for Sunday puzzles; other outlets pay ~$100-$400 (estimates for non-NYT). Hours per unit include rejected attempts. NYT rates not re-verified (nytimes.com blocks automated fetches)."
+          "notes": "NYT pays $500 for a daily (Mon-Sat) puzzle ($750 after 2 published) and $1,500 for Sunday ($2,250 after 2), per its submission page (Nov 2026); other outlets pay ~$100-$400 (estimates for non-NYT). Hours per unit include rejected attempts."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -27728,7 +27739,7 @@
       },
       "sourceFile": "writing-publishing.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 3,
@@ -27929,7 +27940,7 @@
         "minimumPayout": "No minimum (GoStudent); Varsity Tutors not stated",
         "frequency": "monthly (GoStudent) / twice weekly (Varsity)",
         "typicalDelayDays": 30,
-        "notes": "GoStudent's tutor help center: base rate up to GBP 16 per 50-minute session, depending on availability, subjects and monthly sessions completed. Earnings are paid in full the next month with no minimum, between the 12th and 17th; transfers can take up to 7 days to arrive. Session feedback must be submitted within 24 hours or the session is not paid. No-shows pay a flat 6.50. Volume raises: +1.00 per lesson after 150 lessons in 6 months, +1.50 after 300. Varsity Tutors' twice-weekly pay and USD 15-40/hr come only from third-party sources; its tutor pages block automated fetches."
+        "notes": "GoStudent's tutor help center: base rate up to GBP 16 per 50-minute session, depending on availability, subjects and monthly sessions completed. Earnings are paid in full the next month with no minimum, between the 12th and 17th; transfers can take up to 7 days to arrive. Session feedback must be submitted within 24 hours or the session is not paid. No-shows pay a flat 6.50. Volume raises: +1.00 per lesson after 150 lessons in 6 months, +1.50 after 300. Varsity Tutors' twice-weekly pay and USD 15-40/hr come only from third-party sources; its tutor pages return 403 even in a real browser (Nov 2026), so Varsity's payment method and frequency stay unconfirmed."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -28267,7 +28278,7 @@
         "minimumPayout": "Engoo: Payoneer requires a USD 20 minimum transfer (reported); others unpublished",
         "frequency": "monthly (Engoo on the 20th, per job postings); others unverified",
         "typicalDelayDays": 20,
-        "notes": "NativeCamp's tutor portal shows 430 NCC per booked class and 192 NCC per 25-minute instant lesson, plus a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks; it says applications from some countries are paused. Engoo pays per 25-minute lesson at nationality-dependent rates; Engoo's Payoneer-only rule and 51Talk's rates and methods could not be confirmed on a fetchable official page. Unconfirmed: Engoo's Payoneer payout, its USD 20 minimum and the 20th-of-month pay date (engoo.com/tutors, /faq, /support and /app/teach publish no pay terms), and 51Talk's and NativeCamp's payout method, minimum and schedule."
+        "notes": "NativeCamp's tutor portal shows 430 NCC per booked class and 192 NCC per 25-minute instant lesson, plus a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks; it says applications from some countries are paused. NativeCamp's tutor FAQ (read in a browser Nov 2026) says pay depends on your tutor rank, shown only after you sign the contract, and the payment method is set by country and told to you once hired. 51Talk's public teacher FAQ says per-lesson rates rise with its Teacher Leveling System but gives no amounts; its fee and remittance pages are on a login-only Teacher Guide portal. Engoo pays per 25-minute lesson at nationality-dependent rates; its tutor help center is login-only. Unconfirmed: Engoo's Payoneer payout, its USD 20 minimum and the 20th-of-month pay date, and 51Talk's and NativeCamp's payout method, minimum and schedule (all behind tutor logins)."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -28327,7 +28338,10 @@
         "https://engoo.com/app/teach",
         "https://engoo.com/tutors",
         "https://51talk.ph/",
-        "https://nativecamp.net/teacher/"
+        "https://nativecamp.net/teacher/",
+        "https://nativecamp.net/tutors/faq/45",
+        "https://nativecamp.net/tutors/faq/46",
+        "https://51talk.ph/faqs"
       ],
       "tags": [
         "tutoring",
@@ -28429,12 +28443,13 @@
       ],
       "payout": {
         "methods": [
-          "bank transfer (unverified)"
+          "SEPA bank transfer (IBAN + BIC/Swift; up to 10 working days)",
+          "PayPal (faster)"
         ],
-        "minimumPayout": "Unverified",
-        "frequency": "monthly (teacher invoice)",
+        "minimumPayout": "None stated (whole monthly invoice is paid)",
+        "frequency": "monthly (invoice generated on the last day of the month)",
         "typicalDelayDays": 30,
-        "notes": "Lingoda's jobs page confirms the freelance model and says teachers are 'paid on time'; its teacher-referral page (Nov 2026) confirms teachers are paid via a monthly teaching invoice. Still unconfirmed: the per-class pay rate (third-party sources report about USD 8-13 per hour or EUR 11 per class), the payment method (bank transfer assumed) and any minimum payout."
+        "notes": "Lingoda Teacher Support Centre (Nov 2026): an invoice is generated on the last day of each month and paid within 30 days (excluding German weekends/holidays) by SEPA bank transfer or PayPal; intermediary-bank transfers are not supported. Still unconfirmed: the per-class pay rate, which sits in the account-only Remuneration Structure document (third-party sources report about USD 8-13 per hour or EUR 11 per class)."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -28495,13 +28510,14 @@
       "sources": [
         "https://www.lingoda.com/jobs",
         "https://www.tefl.org/teach-english-online/lingoda/",
-        "https://www.lingoda.com/en/teach/"
+        "https://www.lingoda.com/en/teach/",
+        "https://lingodateachers.elevio.help/en/articles/133-how-are-payments-sent-out-to-teachers",
+        "https://lingodateachers.elevio.help/en/articles/345-invoice-information"
       ],
       "tags": [
         "live",
         "language",
-        "contractor",
-        "needs-verification"
+        "contractor"
       ],
       "businessPlan": {
         "startupResources": {
@@ -28573,7 +28589,7 @@
       },
       "sourceFile": "teaching.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 40,
@@ -30972,12 +30988,13 @@
       ],
       "payout": {
         "methods": [
-          "bank transfer (unverified)"
+          "bank transfer (IB: bank details in My IB)",
+          "bank transfer via Cambridge University Press & Assessment payroll (Cambridge/OCR)"
         ],
-        "minimumPayout": "Unverified",
-        "frequency": "per exam session (May/June, Oct/Nov)",
+        "minimumPayout": "None stated (marking claims are paid automatically)",
+        "frequency": "IB: monthly, quarterly (default) or 6-monthly, examiner's choice; Cambridge group: monthly",
         "typicalDelayDays": 60,
-        "notes": "Cambridge International's examiner FAQ says assessment specialists are usually paid GBP 1.00-5.00 per script, depending on syllabus and script type, and that travel to required meetings is reimbursed. It does not state payment method or timing. IB pages block automated fetches, so IB fees, payment method and timing are unverified."
+        "notes": "IB Examiner Instructions 2027 (Payments): pay is per marked live response (rates shown only in IBIS once targets are released), plus one qualification fee per session; claims are paid automatically by bank transfer monthly, quarterly (default: Mar/Jun/Sep/Dec) or 6-monthly. Cambridge International's examiner FAQ gives GBP 1.00-5.00 per script; the payout timing comes from the guide of its sister board OCR (same Cambridge payroll): fees received by month end are paid in the next month's payrun (UK: on the 28th; non-UK: mid-month). IB per-response rates are not public."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -31037,13 +31054,14 @@
       "sources": [
         "https://www.cambridgeinternational.org/about-us/examiners/frequently-asked-questions",
         "https://www.cambridgeinternational.org/examiners",
-        "https://www.ibo.org/jobs-and-careers/"
+        "https://www.ibo.org/jobs-and-careers/",
+        "https://ibpublishing.ibo.org/exinst/apps/exinst/index.html?doc=EX_instructions_2027_e&part=7&chapter=1",
+        "https://www.ocr.org.uk/Images/16464-assessment-specialist-expenses-information.pdf"
       ],
       "tags": [
         "seasonal",
         "teachers",
-        "contractor",
-        "needs-verification"
+        "contractor"
       ],
       "businessPlan": {
         "startupResources": {
@@ -31115,7 +31133,7 @@
       },
       "sourceFile": "teaching.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 25,
@@ -31474,10 +31492,10 @@
           "PayPal (direct) -> bank",
           "Stripe Connect -> bank"
         ],
-        "minimumPayout": "None (paid at time of sale); commission invoiced monthly when owed > $5",
+        "minimumPayout": "None (buyer pays you at time of sale); PayPal-sale commission invoiced monthly once owed > $5",
         "frequency": "per sale",
         "typicalDelayDays": 3,
-        "notes": "Commission tiers and $5 invoice threshold from Rebrickable help pages seen via search snippets; live help/plans pages returned 403 to fetches in Nov 2026, so still unverified."
+        "notes": "Confirmed on Rebrickable's Premium MOC Fees help page (last modified Oct 2026): the buyer pays the designer directly; Stripe sales have the commission auto-deducted, PayPal sales are invoiced at month end once $5 is owed. Commission: 10%/15%/20% for $1-2.99/$3-19.99/$20+ on Free/Pro (8%/13%/18% on the $9.90/month Designer Plan), plus PayPal/Stripe ~30c + 2.9-3.6%."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -31541,8 +31559,7 @@
       "tags": [
         "hobby",
         "lego",
-        "passive",
-        "needs-verification"
+        "passive"
       ],
       "businessPlan": {
         "startupResources": {
@@ -31574,10 +31591,10 @@
             "high": 30
           },
           "costPerUnitUsd": 0.91,
-          "platformFeePercent": 13,
-          "grossMarginPercent": 79,
+          "platformFeePercent": 15,
+          "grossMarginPercent": 77,
           "hoursPerUnit": 0,
-          "notes": "Median $12 MOC; Rebrickable commission ~13% at that band (estimated; Rebrickable fee page bot-blocked), plus PayPal ~3.49% + $0.49."
+          "notes": "Median $12 MOC; Rebrickable commission 15% at the $3-19.99 band on the Free/Pro plan (13% on the Designer Plan), confirmed on its fee page (Nov 2026), plus PayPal ~3.49% + $0.49."
         },
         "breakEven": {
           "monthlyFixedCostUsd": 0,
@@ -31613,7 +31630,7 @@
       },
       "sourceFile": "maker-craft.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 10,
@@ -32143,12 +32160,12 @@
         "methods": [
           "Ravelry: buyer pays your PayPal directly -> bank",
           "Ribblr: Stripe Connect -> bank",
-          "LoveCrafts: platform payout (method unverified)"
+          "LoveCrafts: monthly PayPal payout (GBP/USD/EUR) -> bank"
         ],
-        "minimumPayout": "Ravelry: none (instant to PayPal); Ribblr: none stated (Stripe); LoveCrafts unverified",
-        "frequency": "instant (Ravelry, Ribblr per Stripe); monthly (LoveCrafts, unverified)",
+        "minimumPayout": "Ravelry: none (direct to PayPal); Ribblr: none stated (Stripe); LoveCrafts: none stated",
+        "frequency": "instant (Ravelry, Ribblr per Stripe); monthly on the 25th for the prior month's sales (LoveCrafts)",
         "typicalDelayDays": 2,
-        "notes": "Ribblr fees and Stripe Connect requirement confirmed in its Payments Policy. Ravelry fee figures come from designer blogs (fee table is behind login; help pages return login/500). LoveCrafts designer handbook returned 429; share unverified."
+        "notes": "Ravelry help (Nov 2026): sale money goes directly to the designer's PayPal (the only processor) and a fee applies only above $30/month in sales; the fee rate (~3.5%, from designer blogs) sits on a login-only Fees page. LoveCrafts designer handbook: paid a month in arrears on the 25th to PayPal; 4% + $0.35 transaction cost per sale plus a 5% selling fee on monthly sales between $40 and the cap. Ribblr fees and Stripe Connect requirement confirmed in its Payments Policy."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -32208,15 +32225,14 @@
       "sources": [
         "https://ribblr.com/paymentspolicy",
         "https://ribblr.com/fordesigners",
-        "https://lovecrafts.com/en-gb/c/article/designer-handbook-payment-pricing-taxes",
-        "https://www.ravelry.com/help/sellers",
-        "https://payhip.com/PatternDesignCircle/blog/pattern-design-circle-blog/where-to-sell-knitting-patterns-online-a-summary-of-online-platforms-for-selling-knitting-patterns"
+        "https://payhip.com/PatternDesignCircle/blog/pattern-design-circle-blog/where-to-sell-knitting-patterns-online-a-summary-of-online-platforms-for-selling-knitting-patterns",
+        "https://www.lovecrafts.com/en-us/pages/designer-handbook-payment-pricing-taxes",
+        "https://www.ravelry.com/help/search?query=selling+patterns+on+ravelry+paypal"
       ],
       "tags": [
         "craft",
         "fiber-arts",
-        "passive",
-        "needs-verification"
+        "passive"
       ],
       "businessPlan": {
         "startupResources": {
@@ -32290,7 +32306,7 @@
       },
       "sourceFile": "maker-craft.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 15,
@@ -32316,7 +32332,7 @@
         "minimumPayout": "unverified (historically ~$20)",
         "frequency": "on request when threshold met",
         "typicalDelayDays": 7,
-        "notes": "Historical figures: ~$3.80 per 1,000 reads (free) and ~$6 (Vocal+); still not verified: vocal.media returned 403 to every fetch in Nov 2026 and web-search budget was exhausted."
+        "notes": "Historical figures: ~$3.80 per 1,000 reads (free) and ~$6 (Vocal+), with a ~$20 Stripe cash-out minimum, all from third-party reviews. Still unconfirmed: the read rates and the payout minimum, because vocal.media geo-blocks this location ('Service Not Available in Your Location', 403) even in a real browser (Nov 2026)."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -32645,7 +32661,7 @@
         "minimumPayout": "KDP: none for direct deposit; 100 USD (or 100 local currency, 10,000 JPY, 1,000 MXN) for wire/check; Patreon: payout fees vary",
         "frequency": "monthly",
         "typicalDelayDays": 60,
-        "notes": "KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Still unconfirmed: Royal Road's own author-pay and AI-labelling rules (royalroad.com and its blog return 403)."
+        "notes": "KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Royal Road knowledge base (Nov 2026): Royal Road pays authors nothing itself; authors add PayPal/Patreon donation links, of which Royal Road takes no percentage (donations are disabled for fanfiction); AI-assisted or AI-generated stories must carry the matching tag."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -32708,13 +32724,14 @@
         "https://kdp.amazon.com/en_US/help/topic/G201541130",
         "https://www.royalroad.com/",
         "https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ",
-        "https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46"
+        "https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46",
+        "https://www.royalroad.com/support/knowledgebase/107",
+        "https://www.royalroad.com/support/knowledgebase/114"
       ],
       "tags": [
         "recurring",
         "fiction",
-        "serial",
-        "needs-verification"
+        "serial"
       ],
       "businessPlan": {
         "startupResources": {
@@ -32789,7 +32806,7 @@
       },
       "sourceFile": "writing-publishing.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 15,
@@ -34457,13 +34474,13 @@
       ],
       "payout": {
         "methods": [
-          "PayPal -> bank",
-          "Wise bank transfer (Groover)"
+          "PayPal -> bank (Groover, SubmitHub)",
+          "Wise bank transfer (Groover, SubmitHub)"
         ],
-        "minimumPayout": "Groover: €20 first withdrawal, then €50; SubmitHub: not published",
+        "minimumPayout": "Groover: €20 first withdrawal, then €50; SubmitHub: $10 cash-out request",
         "frequency": "on request (Groover: one free withdrawal per 30 days)",
         "typicalDelayDays": 5,
-        "notes": "Groover (help center): Grooviz withdraw by Wise bank transfer (IBAN/local; some territories such as Brazil and India may be restricted) or PayPal; minimum €20 for the first request, then €50; processed within 72 working hours; one free withdrawal per 30 days, then €2 each, plus a fixed €2 PayPal fee. SubmitHub curators cash out to a PayPal email (in-app). Per-review earnings for both platforms are not published, and SubmitHub's minimum is unknown. Unconfirmed: SubmitHub's curator cash-out minimum and fees (submithub.com/apply and /help do not state them)."
+        "notes": "Groover (help center): Grooviz withdraw by Wise bank transfer (IBAN/local; some territories such as Brazil and India may be restricted) or PayPal; minimum €20 for the first request, then €50; processed within 72 working hours; one free withdrawal per 30 days, then €2 each, plus a fixed €2 PayPal fee. SubmitHub help (Nov 2026): curators request a cash-out at $10 and are paid via PayPal or Wise; SubmitHub's cash-out fees are not stated. Per-review earnings for both platforms are not published."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -34524,12 +34541,13 @@
       "sources": [
         "https://help.groover.co/en/articles/2975306-how-to-transfer-withdraw-my-grooviz-in",
         "https://help.groover.co/en/articles/2975308-how-to-become-a-music-curator-pro-on-groover",
-        "https://www.submithub.com/apply"
+        "https://www.submithub.com/apply",
+        "https://www.submithub.com/help/57mq4Ltzm5ajqYpcy",
+        "https://www.submithub.com/help/ArM3YB654vxyTJPDf"
       ],
       "tags": [
         "music",
-        "curation",
-        "needs-verification"
+        "curation"
       ],
       "businessPlan": {
         "startupResources": {
@@ -34600,7 +34618,7 @@
       },
       "sourceFile": "music-audio.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 10,
@@ -35828,7 +35846,7 @@
         "minimumPayout": "Not published",
         "frequency": "quarterly royalties (Pluralsight) / per contract",
         "typicalDelayDays": 90,
-        "notes": "Pluralsight's teach page says video-course pay is 'partially based on viewership' and paid quarterly. Domestika's page says you need a verified PayPal account and that it covers production costs. LinkedIn Learning's instructor page says only 'earn extra income'. None of the three publish royalty percentages, upfront fees or minimums; terms are set in the individual contract."
+        "notes": "Pluralsight's teach page says video-course pay is 'partially based on viewership' and paid quarterly. Domestika's page says you need a verified PayPal account and that it covers production costs. LinkedIn Learning's instructor page says only 'earn extra income'. None of the three publish royalty percentages, upfront fees or minimums; terms are set in the individual contract. Domestika's Teachers Hub (Nov 2026) likewise refers teachers to their contract for commission rates (sales via the teacher's promo URL earn a higher commission). Unconfirmed: royalty percentages, upfront fees and any minimum payout on all three."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -35889,7 +35907,8 @@
       "sources": [
         "https://business.linkedin.com/learn/instructors",
         "https://www.pluralsight.com/teach",
-        "https://www.domestika.org/en/teachers"
+        "https://www.domestika.org/en/teachers",
+        "https://teachershub.domestika.org/hc/en-us/articles/42873063969041-Promotional-URL-and-its-benefits"
       ],
       "tags": [
         "royalties",
@@ -36167,7 +36186,7 @@
         "minimumPayout": "Unverified",
         "frequency": "monthly (unverified)",
         "typicalDelayDays": 30,
-        "notes": "Cuemath's recruiting pages (checked Nov 2026) publish no per-class rate, payout method or schedule, only 'transparent payouts' and top earnings above ₹1,00,000 a month; joining is free with no deposits or set-up fees. Unconfirmed: per-class rate, payout method, schedule and minimum payout (re-checked Nov 2026)."
+        "notes": "Cuemath's recruiting pages (checked Nov 2026) publish no per-class rate, payout method or schedule, only 'transparent payouts' and top earnings above ₹1,00,000 a month; joining is free with no deposits or set-up fees. Its tutor-application site (tutorhiring.cuemath.com) and older teacher-jobs FAQ (a fee-share 'Teacher Partner' model, up to ₹40K a month) also give no payout terms (read in a browser Nov 2026). Unconfirmed: per-class rate, payout method, schedule and minimum payout."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -38333,12 +38352,13 @@
       ],
       "payout": {
         "methods": [
-          "platform payout (PayPal typical; unverified)"
+          "WEBTOON CANVAS: PayPal or Patreon",
+          "Tapas: PayPal cash-out"
         ],
-        "minimumPayout": "unverified",
-        "frequency": "monthly",
+        "minimumPayout": "WEBTOON CANVAS: $100 (paid in $100 increments, remainder carries over); Tapas: $25",
+        "frequency": "monthly (WEBTOON); on request once the balance reaches $25 (Tapas)",
         "typicalDelayDays": 45,
-        "notes": "Eligibility thresholds re-verified Nov 2026 on both official creator pages (WEBTOON: 50% of static and video ad revenue, 1,000 subscribers + 40,000 monthly page views; Super Likes at 500 likes. Tapas: ad program at 100 subscribers, Ink support at 250, 18+). Payout minimums, rails and supported countries are only in the help centers (webtooncanvas.zendesk.com, help.tapas.io), which returned 403."
+        "notes": "Eligibility thresholds re-verified Nov 2026 on both official creator pages (WEBTOON: 50% of static and video ad revenue, 1,000 subscribers + 40,000 monthly page views; Super Likes at 500 likes. Tapas: ad program at 100 subscribers, Ink support at 250, 18+). WEBTOON CANVAS help center: ad revenue posts monthly on the 21st of the following month and is paid by the 15th of the next month once the balance reaches $100, via PayPal or Patreon. Tapas help center: creators can cash out via PayPal once the balance reaches $25."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -38396,12 +38416,14 @@
       "evidence": "Official WEBTOON and Tapas creator pages describe the programs and thresholds.",
       "sources": [
         "https://creators.webtoon.com/en/make-money",
-        "https://creators.tapas.io/earning-money"
+        "https://creators.tapas.io/earning-money",
+        "https://webtooncanvas.zendesk.com/hc/en-us/articles/18557456817684-How-are-payments-processed",
+        "https://webtooncanvas.zendesk.com/hc/en-us/articles/18557276307604-Can-I-change-my-Payment-Method",
+        "https://help.tapas.io/hc/en-us/articles/360007605774-How-do-I-make-money-on-Tapas"
       ],
       "tags": [
         "comics",
-        "fiction",
-        "needs-verification"
+        "fiction"
       ],
       "businessPlan": {
         "startupResources": {
@@ -38475,7 +38497,7 @@
       },
       "sourceFile": "writing-publishing.json",
       "physical": false,
-      "needsVerification": true,
+      "needsVerification": false,
       "startupCashUsd": 0,
       "recurringMonthlyUsd": 0,
       "profitLikelihoodPercent": 4,
@@ -38497,12 +38519,12 @@
       ],
       "payout": {
         "methods": [
-          "unverified (contracted royalties)"
+          "Tipalti: local bank transfer (SEPA/ACH/BACS), eCheck, international wire, or PayPal"
         ],
         "minimumPayout": "unverified",
         "frequency": "unverified",
         "typicalDelayDays": 90,
-        "notes": "inkitt.com returned 403 again (Nov 2026) and galatea.com shows no author terms; revenue-share percentages, advances and payout rails remain unverified. Read contract rights clauses carefully."
+        "notes": "Inkitt help center (Nov 2026): Galatea royalties are paid through Tipalti by the method chosen at onboarding, sent at the end of the month and arriving within up to 12 business days; German withholding tax (Quellensteuer) is deducted unless exempted. Still unconfirmed: the royalty percentages, advances, the royalty payment period (linked article is on the login-only Galatea author help center) and any minimum payout. Read contract rights clauses carefully."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {
@@ -38559,7 +38581,8 @@
       "evidence": "Galatea sells many Inkitt-sourced titles; terms not publicly posted.",
       "sources": [
         "https://www.galatea.com/",
-        "https://www.inkitt.com/"
+        "https://www.inkitt.com/",
+        "https://inkitt.zendesk.com/hc/en-us/articles/12756836931090-Galatea-Royalty-Payments-through-Tipalti"
       ],
       "tags": [
         "fiction",
@@ -38659,7 +38682,7 @@
         "minimumPayout": "unverified",
         "frequency": "unverified",
         "typicalDelayDays": 60,
-        "notes": "Program status confirmed via TechCrunch (Oct 2023) and Wattpad's Sept 2024 BusinessWire release; revenue-share %, payout method, minimum and frequency still unverified because wattpad.com and support.wattpad.com fail TLS from this environment and the Wayback Machine is blocked."
+        "notes": "Program status confirmed via TechCrunch (Oct 2023) and Wattpad's Sept 2024 BusinessWire release; revenue-share %, payout method, minimum and frequency still unverified because wattpad.com, support.wattpad.com, creators.wattpad.com and company.wattpad.com all fail TLS from this network even in a real browser (certificate for another domain served, Nov 2026) and the Wayback Machine is blocked."
       },
       "capitalRequiredUsd": 0,
       "timeToFirstDollarDays": {

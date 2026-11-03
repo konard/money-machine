@@ -303,12 +303,12 @@
     "payout": {
       "methods": [
         "direct from student: bank transfer / PayPal / Wise",
-        "Superprof in-platform payment"
+        "Superprof in-platform payment -> PayPal"
       ],
-      "minimumPayout": "N/A (paid directly by students)",
+      "minimumPayout": "N/A for direct payment; in-platform balance pays out to PayPal at $30",
       "frequency": "per lesson or package",
       "typicalDelayDays": 1,
-      "notes": "With direct payment you control the timing. Superprof's own blog confirms the 10% commission on in-platform payments (0% with Premium) but gives no Premium price and no in-platform payout method or timing. A complaint-forum post says earnings show about 24 hours after a lesson and reach PayPal in about 3 days; this is unverified. Official Superprof help and FAQ pages block automated fetches."
+      "notes": "With direct payment you control the timing. Superprof's tutor help center (Nov 2026): in-platform payments carry a 10% commission (0% with Premium), the amount shows in your balance 24 hours after the lesson, and the balance moves to PayPal within 3 working days once it is at least $30; packs pay 50% after the first lesson. The Premium price is not stated there."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -368,9 +368,11 @@
     "sources": [
       "https://www.superprof.com.au/blog/charges-payments-superprof",
       "https://www.superprof.com/",
-      "https://www.apprentus.com/"
+      "https://www.apprentus.com/",
+      "https://www.superprof.com/help/tutors/tutor-payment/how-to-get-paid/68/",
+      "https://www.superprof.com/help/tutors/tutor-payment/lesson-pack-payment-deadlines/71/"
     ],
-    "tags": ["live", "tutoring", "direct-pay", "needs-verification"],
+    "tags": ["live", "tutoring", "direct-pay"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 4,
@@ -453,7 +455,7 @@
       "minimumPayout": "No minimum (GoStudent); Varsity Tutors not stated",
       "frequency": "monthly (GoStudent) / twice weekly (Varsity)",
       "typicalDelayDays": 30,
-      "notes": "GoStudent's tutor help center: base rate up to GBP 16 per 50-minute session, depending on availability, subjects and monthly sessions completed. Earnings are paid in full the next month with no minimum, between the 12th and 17th; transfers can take up to 7 days to arrive. Session feedback must be submitted within 24 hours or the session is not paid. No-shows pay a flat 6.50. Volume raises: +1.00 per lesson after 150 lessons in 6 months, +1.50 after 300. Varsity Tutors' twice-weekly pay and USD 15-40/hr come only from third-party sources; its tutor pages block automated fetches."
+      "notes": "GoStudent's tutor help center: base rate up to GBP 16 per 50-minute session, depending on availability, subjects and monthly sessions completed. Earnings are paid in full the next month with no minimum, between the 12th and 17th; transfers can take up to 7 days to arrive. Session feedback must be submitted within 24 hours or the session is not paid. No-shows pay a flat 6.50. Volume raises: +1.00 per lesson after 150 lessons in 6 months, +1.50 after 300. Varsity Tutors' twice-weekly pay and USD 15-40/hr come only from third-party sources; its tutor pages return 403 even in a real browser (Nov 2026), so Varsity's payment method and frequency stay unconfirmed."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -592,11 +594,14 @@
     "howItWorks": "Online language schools such as Lingoda sell subscriptions and need certified teachers to run scheduled Zoom classes from their CEFR-aligned materials. You choose time slots, the school fills them, and you teach without writing a curriculum or finding students. Unlike Preply or italki you don't set prices or compete on a marketplace. Lingoda wants C2 language level, a teaching certificate and 2-3 years of experience, and runs on freelance contracts.",
     "platforms": ["Lingoda"],
     "payout": {
-      "methods": ["bank transfer (unverified)"],
-      "minimumPayout": "Unverified",
-      "frequency": "monthly (teacher invoice)",
+      "methods": [
+        "SEPA bank transfer (IBAN + BIC/Swift; up to 10 working days)",
+        "PayPal (faster)"
+      ],
+      "minimumPayout": "None stated (whole monthly invoice is paid)",
+      "frequency": "monthly (invoice generated on the last day of the month)",
       "typicalDelayDays": 30,
-      "notes": "Lingoda's jobs page confirms the freelance model and says teachers are 'paid on time'; its teacher-referral page (Nov 2026) confirms teachers are paid via a monthly teaching invoice. Still unconfirmed: the per-class pay rate (third-party sources report about USD 8-13 per hour or EUR 11 per class), the payment method (bank transfer assumed) and any minimum payout."
+      "notes": "Lingoda Teacher Support Centre (Nov 2026): an invoice is generated on the last day of each month and paid within 30 days (excluding German weekends/holidays) by SEPA bank transfer or PayPal; intermediary-bank transfers are not supported. Still unconfirmed: the per-class pay rate, which sits in the account-only Remuneration Structure document (third-party sources report about USD 8-13 per hour or EUR 11 per class)."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -657,9 +662,11 @@
     "sources": [
       "https://www.lingoda.com/jobs",
       "https://www.tefl.org/teach-english-online/lingoda/",
-      "https://www.lingoda.com/en/teach/"
+      "https://www.lingoda.com/en/teach/",
+      "https://lingodateachers.elevio.help/en/articles/133-how-are-payments-sent-out-to-teachers",
+      "https://lingodateachers.elevio.help/en/articles/345-invoice-information"
     ],
-    "tags": ["live", "language", "contractor", "needs-verification"],
+    "tags": ["live", "language", "contractor"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 15,
@@ -738,7 +745,7 @@
       "minimumPayout": "Not published",
       "frequency": "quarterly royalties (Pluralsight) / per contract",
       "typicalDelayDays": 90,
-      "notes": "Pluralsight's teach page says video-course pay is 'partially based on viewership' and paid quarterly. Domestika's page says you need a verified PayPal account and that it covers production costs. LinkedIn Learning's instructor page says only 'earn extra income'. None of the three publish royalty percentages, upfront fees or minimums; terms are set in the individual contract."
+      "notes": "Pluralsight's teach page says video-course pay is 'partially based on viewership' and paid quarterly. Domestika's page says you need a verified PayPal account and that it covers production costs. LinkedIn Learning's instructor page says only 'earn extra income'. None of the three publish royalty percentages, upfront fees or minimums; terms are set in the individual contract. Domestika's Teachers Hub (Nov 2026) likewise refers teachers to their contract for commission rates (sales via the teacher's promo URL earn a higher commission). Unconfirmed: royalty percentages, upfront fees and any minimum payout on all three."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -799,7 +806,8 @@
     "sources": [
       "https://business.linkedin.com/learn/instructors",
       "https://www.pluralsight.com/teach",
-      "https://www.domestika.org/en/teachers"
+      "https://www.domestika.org/en/teachers",
+      "https://teachershub.domestika.org/hc/en-us/articles/42873063969041-Promotional-URL-and-its-benefits"
     ],
     "tags": ["royalties", "invite-only", "semi-passive", "needs-verification"],
     "businessPlan": {
@@ -881,11 +889,14 @@
       "Cambridge International (Cambridge University Press & Assessment)"
     ],
     "payout": {
-      "methods": ["bank transfer (unverified)"],
-      "minimumPayout": "Unverified",
-      "frequency": "per exam session (May/June, Oct/Nov)",
+      "methods": [
+        "bank transfer (IB: bank details in My IB)",
+        "bank transfer via Cambridge University Press & Assessment payroll (Cambridge/OCR)"
+      ],
+      "minimumPayout": "None stated (marking claims are paid automatically)",
+      "frequency": "IB: monthly, quarterly (default) or 6-monthly, examiner's choice; Cambridge group: monthly",
       "typicalDelayDays": 60,
-      "notes": "Cambridge International's examiner FAQ says assessment specialists are usually paid GBP 1.00-5.00 per script, depending on syllabus and script type, and that travel to required meetings is reimbursed. It does not state payment method or timing. IB pages block automated fetches, so IB fees, payment method and timing are unverified."
+      "notes": "IB Examiner Instructions 2027 (Payments): pay is per marked live response (rates shown only in IBIS once targets are released), plus one qualification fee per session; claims are paid automatically by bank transfer monthly, quarterly (default: Mar/Jun/Sep/Dec) or 6-monthly. Cambridge International's examiner FAQ gives GBP 1.00-5.00 per script; the payout timing comes from the guide of its sister board OCR (same Cambridge payroll): fees received by month end are paid in the next month's payrun (UK: on the 28th; non-UK: mid-month). IB per-response rates are not public."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -945,9 +956,11 @@
     "sources": [
       "https://www.cambridgeinternational.org/about-us/examiners/frequently-asked-questions",
       "https://www.cambridgeinternational.org/examiners",
-      "https://www.ibo.org/jobs-and-careers/"
+      "https://www.ibo.org/jobs-and-careers/",
+      "https://ibpublishing.ibo.org/exinst/apps/exinst/index.html?doc=EX_instructions_2027_e&part=7&chapter=1",
+      "https://www.ocr.org.uk/Images/16464-assessment-specialist-expenses-information.pdf"
     ],
-    "tags": ["seasonal", "teachers", "contractor", "needs-verification"],
+    "tags": ["seasonal", "teachers", "contractor"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 12,

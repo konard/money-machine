@@ -105,7 +105,7 @@ _Business-plan sources:_
 - **Minimum payout:** Unverified: third-party guides report ₦5,000 in Nigeria (some say ₦10,000; older ones ₦2,500); about USD 10–50 equivalent elsewhere
 - **Frequency:** monthly
 - **Typical delay:** 45 days
-- **Notes:** Official KOL pages (jumia.com.ng/sp-kol, jumia.co.ke/sp-kol) return 403 to automated fetching and no archived copy could be read (Nov 2026). Third-party guides report category commissions of about 1–11% (some say up to 13%), payment between the 15th and 25th of the following month, and balances below the minimum rolling over. Unconfirmed: the minimum payout in every country (the Wayback Machine was also unreachable on re-check).
+- **Notes:** Official KOL pages (jumia.com.ng/sp-kol, jumia.co.ke/sp-kol) return 403 to automated fetching and, in a real browser (Nov 2026), stop at a Cloudflare 'Just a moment' bot check; no archived copy could be read. Third-party guides report category commissions of about 1–11% (some say up to 13%), payment between the 15th and 25th of the following month, and balances below the minimum rolling over. Unconfirmed: the minimum payout in every country.
 
 ## Full cycle (setup → earn → bank account)
 

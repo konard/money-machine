@@ -104,7 +104,7 @@ _Business-plan sources:_
 - **Minimum payout:** unverified
 - **Frequency:** unverified
 - **Typical delay:** 60 days
-- **Notes:** Program status confirmed via TechCrunch (Oct 2023) and Wattpad's Sept 2024 BusinessWire release; revenue-share %, payout method, minimum and frequency still unverified because wattpad.com and support.wattpad.com fail TLS from this environment and the Wayback Machine is blocked.
+- **Notes:** Program status confirmed via TechCrunch (Oct 2023) and Wattpad's Sept 2024 BusinessWire release; revenue-share %, payout method, minimum and frequency still unverified because wattpad.com, support.wattpad.com, creators.wattpad.com and company.wattpad.com all fail TLS from this network even in a real browser (certificate for another domain served, Nov 2026) and the Wayback Machine is blocked.
 
 ## Full cycle (setup → earn → bank account)
 

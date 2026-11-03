@@ -20,8 +20,6 @@ Design original LEGO models (MOCs) and sell PDF instructions plus parts lists as
 | Time to first dollar | 30–180 d |
 | Typical monthly income (low / median / high) | $0 / $40 / $3,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$40 per month** in the first year; the high figure of $3,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **4/10**. Expect the first payment after 30–180 d.
@@ -53,11 +51,11 @@ You build a model digitally in BrickLink Studio (free), generate step-by-step in
 | Unit | per instruction sale |
 | Typical price per unit (low / median / high) | $5 / $12 / $30 |
 | Direct cost per unit | $0.91 |
-| Platform fee | 13% |
-| Gross margin (median case) | 79% |
+| Platform fee | 15% |
+| Gross margin (median case) | 77% |
 | Human hours per unit after automation | 0 |
 
-Median $12 MOC; Rebrickable commission ~13% at that band (estimated; Rebrickable fee page bot-blocked), plus PayPal ~3.49% + $0.49.
+Median $12 MOC; Rebrickable commission 15% at the $3-19.99 band on the Free/Pro plan (13% on the Designer Plan), confirmed on its fee page (Nov 2026), plus PayPal ~3.49% + $0.49.
 
 ### Break-even
 
@@ -102,10 +100,10 @@ _Business-plan sources:_
 ## Payout path
 
 - **Methods:** PayPal (direct) -> bank, Stripe Connect -> bank
-- **Minimum payout:** None (paid at time of sale); commission invoiced monthly when owed > $5
+- **Minimum payout:** None (buyer pays you at time of sale); PayPal-sale commission invoiced monthly once owed > $5
 - **Frequency:** per sale
 - **Typical delay:** 3 days
-- **Notes:** Commission tiers and $5 invoice threshold from Rebrickable help pages seen via search snippets; live help/plans pages returned 403 to fetches in Nov 2026, so still unverified.
+- **Notes:** Confirmed on Rebrickable's Premium MOC Fees help page (last modified Oct 2026): the buyer pays the designer directly; Stripe sales have the commission auto-deducted, PayPal sales are invoiced at month end once $5 is owed. Commission: 10%/15%/20% for $1-2.99/$3-19.99/$20+ on Free/Pro (8%/13%/18% on the $9.90/month Designer Plan), plus PayPal/Stripe ~30c + 2.9-3.6%.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,7 +147,7 @@ Rebrickable's founder interview and help pages describe the Premium MOC marketpl
 - <https://rebrickable.com/help/mocs-fees/>
 - <https://brickset.com/article/111720/interview-with-nathan-thom-founder-of-rebrickable>
 
-_Tags: hobby, lego, passive, needs-verification_
+_Tags: hobby, lego, passive_
 
 ---
 

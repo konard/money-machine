@@ -104,7 +104,7 @@ _Business-plan sources:_
 - **Minimum payout:** Unverified
 - **Frequency:** monthly (unverified)
 - **Typical delay:** 45 days
-- **Notes:** Royalty rate, payout method and minimum are not published: the become-an-artist, artist-application, register-as-an-artists and marketplace pages (checked Nov 2026) show only sign-up links. Cricut artist licensing terms are private contracts.
+- **Notes:** Royalty rate, payout method and minimum are not published: the become-an-artist, artist-application, register-as-an-artists and marketplace pages and the Silhouette support 'Design Store Artist Program' article (checked Nov 2026) show only application steps. Cricut artist licensing terms are private contracts.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -146,6 +146,7 @@ Silhouette Design Store publicly lists 500+ artists and an artist application pa
 
 - <https://www.silhouettedesignstore.com/artists>
 - <https://www.silhouettedesignstore.com/become-an-artist>
+- <https://silhouetteamerica.freshdesk.com/support/solutions/articles/35000280283-programs>
 
 _Tags: craft, royalties, needs-verification_
 

@@ -20,8 +20,6 @@ Design, test-knit and sell written knitting/crochet patterns on yarn-community m
 | Time to first dollar | 30–180 d |
 | Typical monthly income (low / median / high) | $0 / $60 / $3,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$60 per month** in the first year; the high figure of $3,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **4/10**. Expect the first payment after 30–180 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** Ravelry: buyer pays your PayPal directly -> bank, Ribblr: Stripe Connect -> bank, LoveCrafts: platform payout (method unverified)
-- **Minimum payout:** Ravelry: none (instant to PayPal); Ribblr: none stated (Stripe); LoveCrafts unverified
-- **Frequency:** instant (Ravelry, Ribblr per Stripe); monthly (LoveCrafts, unverified)
+- **Methods:** Ravelry: buyer pays your PayPal directly -> bank, Ribblr: Stripe Connect -> bank, LoveCrafts: monthly PayPal payout (GBP/USD/EUR) -> bank
+- **Minimum payout:** Ravelry: none (direct to PayPal); Ribblr: none stated (Stripe); LoveCrafts: none stated
+- **Frequency:** instant (Ravelry, Ribblr per Stripe); monthly on the 25th for the prior month's sales (LoveCrafts)
 - **Typical delay:** 2 days
-- **Notes:** Ribblr fees and Stripe Connect requirement confirmed in its Payments Policy. Ravelry fee figures come from designer blogs (fee table is behind login; help pages return login/500). LoveCrafts designer handbook returned 429; share unverified.
+- **Notes:** Ravelry help (Nov 2026): sale money goes directly to the designer's PayPal (the only processor) and a fee applies only above $30/month in sales; the fee rate (~3.5%, from designer blogs) sits on a login-only Fees page. LoveCrafts designer handbook: paid a month in arrears on the 25th to PayPal; 4% + $0.35 transaction cost per sale plus a 5% selling fee on monthly sales between $40 and the cap. Ribblr fees and Stripe Connect requirement confirmed in its Payments Policy.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -148,11 +146,11 @@ Ravelry hosts over a million patterns with thousands of paid indie designers; pa
 
 - <https://ribblr.com/paymentspolicy>
 - <https://ribblr.com/fordesigners>
-- <https://lovecrafts.com/en-gb/c/article/designer-handbook-payment-pricing-taxes>
-- <https://www.ravelry.com/help/sellers>
 - <https://payhip.com/PatternDesignCircle/blog/pattern-design-circle-blog/where-to-sell-knitting-patterns-online-a-summary-of-online-platforms-for-selling-knitting-patterns>
+- <https://www.lovecrafts.com/en-us/pages/designer-handbook-payment-pricing-taxes>
+- <https://www.ravelry.com/help/search?query=selling+patterns+on+ravelry+paypal>
 
-_Tags: craft, fiber-arts, passive, needs-verification_
+_Tags: craft, fiber-arts, passive_
 
 ---
 

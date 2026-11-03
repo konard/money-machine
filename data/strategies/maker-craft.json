@@ -13,15 +13,15 @@
     ],
     "payout": {
       "methods": [
-        "Cults3D: PayPal/bank (unverified)",
+        "Cults3D: Hyperwallet by PayPal (bank, debit card, PayPal, Venmo) or Payoneer bank transfer",
         "Printables: Stripe -> bank",
         "Thangs: Stripe Express -> bank (monthly)",
         "MakerWorld: Exclusive Points cash withdrawal -> bank (via payout provider; users report Airwallex wire)"
       ],
-      "minimumPayout": "Cults3D: threshold exists but amount unverified; Printables/Thangs: none stated (Stripe); MakerWorld: $100 of Exclusive Points per withdrawal",
-      "frequency": "Cults3D on request (unverified); Thangs monthly; Printables per Stripe schedule; MakerWorld on request (manual review ~1 week)",
+      "minimumPayout": "Cults3D: EUR 5 (Hyperwallet) / US$7 (Payoneer); Printables/Thangs: none stated (Stripe); MakerWorld: $100 of Exclusive Points per withdrawal",
+      "frequency": "Cults3D on request; Thangs monthly; Printables per Stripe schedule; MakerWorld on request (manual review ~1 week)",
       "typicalDelayDays": 30,
-      "notes": "Thangs fees and Stripe-only payout confirmed on its help center (Stripe payout fee 0.25% + $0.25, currency conversion 2% non-US). Printables 20% fee / $5 minimum price confirmed on Prusa blog. MakerWorld cash rules confirmed on Bambu Lab blog (Oct 2024); regular MakerWorld points are NOT cash (points store only), and Printables Prusameters are NOT cash. Cults3D share/minimum/methods unverified (site returns 403)."
+      "notes": "Thangs fees and Stripe-only payout confirmed on its help center (Stripe payout fee 0.25% + $0.25, currency conversion 2% non-US). Printables 20% fee / $5 minimum price confirmed on Prusa blog. MakerWorld cash rules confirmed on Bambu Lab blog (Oct 2024); regular MakerWorld points are NOT cash (points store only), and Printables Prusameters are NOT cash. Cults3D (official upload and payout-methods pages, read in a browser Nov 2026): designers receive 80% of the net selling price excluding VAT (Cults 15%, banking fees 5%); payouts via Hyperwallet by PayPal (bank transfer, debit card, PayPal or Venmo; minimum EUR 5; ~EUR 1.70 per payout locally, EUR 3.50 international, 2% FX) or Payoneer bank transfer (minimum US$7, US$2 fee); 250 countries. Cults3D does not state a holding period on these pages."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -86,9 +86,12 @@
       "https://thangs.com/resources/help-center-articles/do-i-have-to-use-stripe-as-a-payment-processor",
       "https://thangs.com/resources/help-center-articles/what-countries-are-currently-supported-for-thangs-memberships",
       "https://blog.bambulab.com/exclusive-model-program-cash-rewards-and-copyright-support/",
-      "https://cults3d.com/fr/ajouter"
+      "https://cults3d.com/fr/ajouter",
+      "https://cults3d.com/en/upload",
+      "https://cults3d.com/en/payouts/methods",
+      "https://cults3d.com/en/payouts/methods/hyperwallet"
     ],
-    "tags": ["3d-printing", "maker", "passive", "needs-verification"],
+    "tags": ["3d-printing", "maker", "passive"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
@@ -322,11 +325,15 @@
     "howItWorks": "Cricut/Silhouette/laser and embroidery hobbyists buy files individually or via all-access subscriptions. Designers are paid per individual sale plus a share of the subscription pool weighted by downloads, so a large catalogue earns small recurring amounts. Unlike Etsy you pay no listing fees and the marketplace brings its own traffic. Bundle deals and freebies feature designers to new buyers.",
     "platforms": ["Creative Fabrica", "Design Bundles", "So Fontsy"],
     "payout": {
-      "methods": ["PayPal -> bank", "Payoneer (reported for Creative Fabrica)"],
-      "minimumPayout": "Unverified (sites block automated fetch)",
-      "frequency": "monthly",
+      "methods": [
+        "PayPal -> bank",
+        "Payoneer -> bank",
+        "bank transfer (Creative Fabrica, $20 fee)"
+      ],
+      "minimumPayout": "Creative Fabrica: none for PayPal ($0.50 fee under $10), $100 for Payoneer or bank transfer; Design Bundles: none stated",
+      "frequency": "on request (Creative Fabrica, paid within 7-10 days) / monthly (Design Bundles)",
       "typicalDelayDays": 30,
-      "notes": "Revenue-share percentages, subscription-pool formula and minimum payouts still unverified: Creative Fabrica (site and help center), Design Bundles and So Fontsy all returned 403/429 to fetches in Nov 2026; commonly reported ~50% share of individual sales."
+      "notes": "Creative Fabrica (official open-store page and help center, read in a browser Nov 2026): designers earn 50% of single sales Creative Fabrica refers and 75% of sales they refer, plus recurring subscription-download earnings; payouts on request to PayPal (no minimum, $0.50 fee under $10, paid within 7 days), Payoneer (minimum $100, within 10 days) or bank transfer (minimum $100 plus $20 fee). Design Bundles Designer Terms: royalties paid monthly to a linked PayPal or Payoneer account; membership royalties come from a Partner Fund of 50% of net membership income split by downloads; the single-sale commission rate and any minimum are not stated. So Fontsy terms not re-checked."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -387,11 +394,12 @@
     ],
     "evidence": "Creative Fabrica and Design Bundles host tens of thousands of independent designers; payouts are widely documented by crafter-designers but terms were not verifiable here.",
     "sources": [
-      "https://www.creativefabrica.com/designer-program/",
-      "https://www.designbundles.net/sell-your-designs",
-      "https://sofontsy.com/pages/become-a-designer"
+      "https://sofontsy.com/pages/become-a-designer",
+      "https://www.creativefabrica.com/open-store",
+      "https://help.creativefabrica.com/hc/en-us/articles/360029930872-How-do-I-make-a-payout-of-my-earnings",
+      "https://designbundles.net/designer-termsconditions"
     ],
-    "tags": ["craft", "svg", "subscription-pool", "needs-verification"],
+    "tags": ["craft", "svg", "subscription-pool"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 30,
@@ -421,7 +429,7 @@
         "platformFeePercent": 50,
         "grossMarginPercent": 50,
         "hoursPerUnit": 0,
-        "notes": "Median $3 cut file; designer share ~50% is estimated (Creative Fabrica and Design Bundles pages bot-blocked). Subscription-pool earnings per download are a few cents and not modelled."
+        "notes": "Median $3 cut file; designer share 50% on marketplace-referred sales is Creative Fabrica's published rate (75% on self-referred sales). Subscription-pool earnings per download are a few cents and not modelled."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -471,7 +479,7 @@
       "minimumPayout": "Unverified",
       "frequency": "monthly (unverified)",
       "typicalDelayDays": 45,
-      "notes": "Royalty rate, payout method and minimum are not published: the become-an-artist, artist-application, register-as-an-artists and marketplace pages (checked Nov 2026) show only sign-up links. Cricut artist licensing terms are private contracts."
+      "notes": "Royalty rate, payout method and minimum are not published: the become-an-artist, artist-application, register-as-an-artists and marketplace pages and the Silhouette support 'Design Store Artist Program' article (checked Nov 2026) show only application steps. Cricut artist licensing terms are private contracts."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -528,7 +536,8 @@
     "evidence": "Silhouette Design Store publicly lists 500+ artists and an artist application page.",
     "sources": [
       "https://www.silhouettedesignstore.com/artists",
-      "https://www.silhouettedesignstore.com/become-an-artist"
+      "https://www.silhouettedesignstore.com/become-an-artist",
+      "https://silhouetteamerica.freshdesk.com/support/solutions/articles/35000280283-programs"
     ],
     "tags": ["craft", "royalties", "needs-verification"],
     "businessPlan": {
@@ -602,12 +611,12 @@
       "methods": [
         "Ravelry: buyer pays your PayPal directly -> bank",
         "Ribblr: Stripe Connect -> bank",
-        "LoveCrafts: platform payout (method unverified)"
+        "LoveCrafts: monthly PayPal payout (GBP/USD/EUR) -> bank"
       ],
-      "minimumPayout": "Ravelry: none (instant to PayPal); Ribblr: none stated (Stripe); LoveCrafts unverified",
-      "frequency": "instant (Ravelry, Ribblr per Stripe); monthly (LoveCrafts, unverified)",
+      "minimumPayout": "Ravelry: none (direct to PayPal); Ribblr: none stated (Stripe); LoveCrafts: none stated",
+      "frequency": "instant (Ravelry, Ribblr per Stripe); monthly on the 25th for the prior month's sales (LoveCrafts)",
       "typicalDelayDays": 2,
-      "notes": "Ribblr fees and Stripe Connect requirement confirmed in its Payments Policy. Ravelry fee figures come from designer blogs (fee table is behind login; help pages return login/500). LoveCrafts designer handbook returned 429; share unverified."
+      "notes": "Ravelry help (Nov 2026): sale money goes directly to the designer's PayPal (the only processor) and a fee applies only above $30/month in sales; the fee rate (~3.5%, from designer blogs) sits on a login-only Fees page. LoveCrafts designer handbook: paid a month in arrears on the 25th to PayPal; 4% + $0.35 transaction cost per sale plus a 5% selling fee on monthly sales between $40 and the cap. Ribblr fees and Stripe Connect requirement confirmed in its Payments Policy."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -667,11 +676,11 @@
     "sources": [
       "https://ribblr.com/paymentspolicy",
       "https://ribblr.com/fordesigners",
-      "https://lovecrafts.com/en-gb/c/article/designer-handbook-payment-pricing-taxes",
-      "https://www.ravelry.com/help/sellers",
-      "https://payhip.com/PatternDesignCircle/blog/pattern-design-circle-blog/where-to-sell-knitting-patterns-online-a-summary-of-online-platforms-for-selling-knitting-patterns"
+      "https://payhip.com/PatternDesignCircle/blog/pattern-design-circle-blog/where-to-sell-knitting-patterns-online-a-summary-of-online-platforms-for-selling-knitting-patterns",
+      "https://www.lovecrafts.com/en-us/pages/designer-handbook-payment-pricing-taxes",
+      "https://www.ravelry.com/help/search?query=selling+patterns+on+ravelry+paypal"
     ],
-    "tags": ["craft", "fiber-arts", "passive", "needs-verification"],
+    "tags": ["craft", "fiber-arts", "passive"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 80,
@@ -895,13 +904,14 @@
     "platforms": ["Creative Fabrica", "LoveCrafts", "Payhip"],
     "payout": {
       "methods": [
-        "PayPal/Payoneer -> bank (Creative Fabrica)",
+        "Creative Fabrica: PayPal / Payoneer / bank -> bank",
+        "LoveCrafts: monthly PayPal payout",
         "Payhip PayPal/Stripe instant"
       ],
-      "minimumPayout": "Marketplace minimums unverified; Payhip none (instant)",
+      "minimumPayout": "Creative Fabrica: PayPal none ($0.50 fee under $10), Payoneer $100, bank $100 (+$20 fee); LoveCrafts none stated; Payhip none (instant)",
       "frequency": "monthly / instant",
       "typicalDelayDays": 20,
-      "notes": "Payhip terms confirmed (5% fee on free plan, instant PayPal/Stripe deposit). Creative Fabrica and LoveCrafts shares/minimums unverified (pages return 403/429)."
+      "notes": "Confirmed Nov 2026: Creative Fabrica pays 50% on CF-referred and 75% on self-referred sales, PayPal payouts within 7 days (Payoneer within 10); LoveCrafts pays a month in arrears on the 25th to PayPal after a 4% + $0.35 transaction cost and a 5% selling fee on monthly sales between $40 and the cap; Payhip takes 5% on the free plan with instant PayPal/Stripe deposit."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -952,11 +962,13 @@
     ],
     "evidence": "Creative Fabrica and LoveCrafts list thousands of independent embroidery and cross-stitch designs; Pattern Keeper compatibility is a common selling point.",
     "sources": [
-      "https://www.creativefabrica.com/designer-program/",
       "https://payhip.com/pricing",
-      "https://inkstitch.org/"
+      "https://inkstitch.org/",
+      "https://www.creativefabrica.com/open-store",
+      "https://help.creativefabrica.com/hc/en-us/articles/360029930872-How-do-I-make-a-payout-of-my-earnings",
+      "https://www.lovecrafts.com/en-us/pages/designer-handbook-payment-pricing-taxes"
     ],
-    "tags": ["craft", "embroidery", "passive", "needs-verification"],
+    "tags": ["craft", "embroidery", "passive"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 30,
@@ -1027,10 +1039,10 @@
     "platforms": ["Rebrickable"],
     "payout": {
       "methods": ["PayPal (direct) -> bank", "Stripe Connect -> bank"],
-      "minimumPayout": "None (paid at time of sale); commission invoiced monthly when owed > $5",
+      "minimumPayout": "None (buyer pays you at time of sale); PayPal-sale commission invoiced monthly once owed > $5",
       "frequency": "per sale",
       "typicalDelayDays": 3,
-      "notes": "Commission tiers and $5 invoice threshold from Rebrickable help pages seen via search snippets; live help/plans pages returned 403 to fetches in Nov 2026, so still unverified."
+      "notes": "Confirmed on Rebrickable's Premium MOC Fees help page (last modified Oct 2026): the buyer pays the designer directly; Stripe sales have the commission auto-deducted, PayPal sales are invoiced at month end once $5 is owed. Commission: 10%/15%/20% for $1-2.99/$3-19.99/$20+ on Free/Pro (8%/13%/18% on the $9.90/month Designer Plan), plus PayPal/Stripe ~30c + 2.9-3.6%."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -1091,7 +1103,7 @@
       "https://rebrickable.com/help/mocs-fees/",
       "https://brickset.com/article/111720/interview-with-nathan-thom-founder-of-rebrickable"
     ],
-    "tags": ["hobby", "lego", "passive", "needs-verification"],
+    "tags": ["hobby", "lego", "passive"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 60,
@@ -1114,10 +1126,10 @@
           "high": 30
         },
         "costPerUnitUsd": 0.91,
-        "platformFeePercent": 13,
-        "grossMarginPercent": 79,
+        "platformFeePercent": 15,
+        "grossMarginPercent": 77,
         "hoursPerUnit": 0,
-        "notes": "Median $12 MOC; Rebrickable commission ~13% at that band (estimated; Rebrickable fee page bot-blocked), plus PayPal ~3.49% + $0.49."
+        "notes": "Median $12 MOC; Rebrickable commission 15% at the $3-19.99 band on the Free/Pro plan (13% on the Designer Plan), confirmed on its fee page (Nov 2026), plus PayPal ~3.49% + $0.49."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -1160,11 +1172,14 @@
     "howItWorks": "On DMs Guild you may use official D&D IP (Forgotten Realms etc.) under the Community Content Program and earn a reported 50% royalty. On DriveThruRPG you sell your own-IP or 5e-SRD (CC-BY) products for a higher reported share. Customers are GMs looking for ready-to-run content; bestseller medals (Copper/Silver/etc.) drive visibility. Bundles and print-on-demand versions add revenue. Text must be human-written: the marketplaces do not accept products written primarily by AI.",
     "platforms": ["DMs Guild", "DriveThruRPG"],
     "payout": {
-      "methods": ["PayPal -> bank (reported)", "cheque (reported)"],
-      "minimumPayout": "Unverified",
-      "frequency": "monthly (on request; reported ~$1 withdrawal fee)",
+      "methods": [
+        "PayPal on the 1st of the month -> bank",
+        "check on the 15th of the month"
+      ],
+      "minimumPayout": "PayPal: publisher-selected minimum (royalties below it roll forward); check: $100",
+      "frequency": "monthly",
       "typicalDelayDays": 30,
-      "notes": "50% DMs Guild split confirmed only via press/creator sources; DriveThruRPG royalty (creator comments cite 65% non-exclusive / 70% exclusive) and payout rules unverified (dmsguild.com, drivethrurpg.com and its help center return 403). AI policy (per Gizmodo/EN World 2023 coverage): since 31 Jul 2023 products made primarily of AI-written text are not accepted, standalone AI-art products are barred and AI-generated art must be labelled; buyers can filter 'Handcrafted' vs 'Contains AI'. Community programs (DMs Guild, Chaosium's Miskatonic Repository) set their own stricter rules - Chaosium removed 40+ community titles over AI text in Oct 2026."
+      "notes": "Confirmed on the DriveThru Partners help center (Nov 2026): royalties are paid on the 1st by PayPal or the 15th by check; earnings become payable 15 days after sale for verified publishers (30 days unverified). Own-IP digital sales earn >65% (non-exclusive) or >70% (exclusive); on community content programs such as DMs Guild DriveThru keeps 30% and most rights holders give the creator 50%. AI policy (per Gizmodo/EN World 2023 coverage): since 31 Jul 2023 products made primarily of AI-written text are not accepted, standalone AI-art products are barred and AI-generated art must be labelled; buyers can filter 'Handcrafted' vs 'Contains AI'. Community programs (DMs Guild, Chaosium's Miskatonic Repository) set their own stricter rules - Chaosium removed 40+ community titles over AI text in Oct 2026."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -1228,9 +1243,12 @@
       "https://gnomestew.com/getting-started-on-the-dms-guild-part-1-your-first-product/",
       "https://gizmodo.com/drivethrurpg-ai-generated-art-writing-dmsguild-1850673912",
       "https://letsdatascience.com/news/chaosium-removes-40-community-titles-over-ai-generated-text-70ccf45e",
-      "https://www.dmsguild.com/"
+      "https://www.dmsguild.com/",
+      "https://help.drivethrupartners.com/hc/en-us/articles/12780762436759-How-We-Pay-Your-Royalties",
+      "https://help.drivethrupartners.com/hc/en-us/articles/12780816206871-Exclusive-vs-Non-Exclusive-Partner-Accounts",
+      "https://help.drivethrupartners.com/hc/en-us/articles/12780762689431-Set-up-a-Community-Content-Program-for-your-RPG"
     ],
-    "tags": ["tabletop", "writing", "royalties", "needs-verification"],
+    "tags": ["tabletop", "writing", "royalties"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
@@ -1263,7 +1281,7 @@
         "platformFeePercent": 50,
         "grossMarginPercent": 50,
         "hoursPerUnit": 0,
-        "notes": "Median $5 adventure; DMs Guild pays 50% royalty, DriveThruRPG ~65-70% for own IP (estimated, from reports)."
+        "notes": "Median $5 adventure; DMs Guild pays 50% royalty, DriveThruRPG >65% (non-exclusive) or >70% (exclusive) for own IP, per the DriveThru Partners help center (Nov 2026)."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -1442,14 +1460,14 @@
     ],
     "payout": {
       "methods": [
-        "Roll20: payout (method unverified)",
+        "Roll20: PayPal (required) -> bank",
         "Foundry Marketplace: unverified",
         "Own store via Stripe/PayPal or Patreon"
       ],
-      "minimumPayout": "Unverified",
-      "frequency": "monthly (unverified)",
+      "minimumPayout": "Roll20: none stated; Foundry unverified",
+      "frequency": "monthly (Roll20 pays on or before the 7th for the previous month)",
       "typicalDelayDays": 30,
-      "notes": "Roll20 revenue share and payout rules not verifiable: help center returns 403 and the 'Become a Creator' page linked from marketplace.roll20.net (pages.roll20.net/marketplace-creators) returned 404 in Nov 2026. Foundry Marketplace creator terms are not public."
+      "notes": "Roll20 Partner Help Center (Nov 2026): partners keep 70% of sales (Roll20 keeps 30%, 50/50 for DMsGuild-supporting content), paid via PayPal on or before the 7th for the prior month; minimum list price $4.99 and no exclusivity. Foundry Marketplace creator terms are not public."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -1505,9 +1523,10 @@
     "sources": [
       "https://marketplace.roll20.net/",
       "https://foundryvtt.com/article/premium-content/",
-      "https://foundryvtt.com/packages/"
+      "https://foundryvtt.com/packages/",
+      "https://roll20partners.zendesk.com/hc/en-us/articles/10844424110999-Who-Can-Sell-on-the-Roll20-Marketplace"
     ],
-    "tags": ["tabletop", "vtt", "needs-verification"],
+    "tags": ["tabletop", "vtt"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
@@ -1533,10 +1552,10 @@
           "high": 30
         },
         "costPerUnitUsd": 0,
-        "platformFeePercent": 50,
-        "grossMarginPercent": 50,
+        "platformFeePercent": 30,
+        "grossMarginPercent": 70,
         "hoursPerUnit": 0,
-        "notes": "Median $10 map/token pack; Roll20 creator share estimated at 50% (Roll20 help and wiki pages bot-blocked, unverified)."
+        "notes": "Median $10 map/token pack; Roll20 partners keep 70% (30% fee), confirmed on the Roll20 Partner Help Center (Nov 2026)."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,
@@ -1556,7 +1575,7 @@
           "median": 25,
           "high": 1500
         },
-        "notes": "Battlemap and token creators who already run Patreon audiences dominate sales; Foundry VTT's official Marketplace (2025) and continued online play support demand. AI-generated battlemaps flooded the market in 2024-2026, pushing pack prices down, and Roll20's creator revenue share is not published (50% assumed). Typical failure mode: packs listed with no audience get almost no marketplace visibility."
+        "notes": "Battlemap and token creators who already run Patreon audiences dominate sales; Foundry VTT's official Marketplace (2025) and continued online play support demand. AI-generated battlemaps flooded the market in 2024-2026, pushing pack prices down, while Roll20 partners keep 70% of each sale (30% fee, confirmed on the Roll20 Partner Help Center, Nov 2026). Typical failure mode: packs listed with no audience get almost no marketplace visibility."
       },
       "pricingStrategy": "Give away a free sample pack to build followers, price map/token packs at $5-15 and offer $25-30 bundles; add premium Foundry modules with automation at higher prices.",
       "profitPath": [

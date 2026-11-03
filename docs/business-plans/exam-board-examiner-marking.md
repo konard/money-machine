@@ -20,8 +20,6 @@ Qualified teachers mark scanned exam scripts online during exam sessions, paid p
 | Time to first dollar | 60–240 d |
 | Typical monthly income (low / median / high) | $0 / $300 / $1,500 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$300 per month** in the first year; the high figure of $1,500 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **5/10**. Expect the first payment after 60–240 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** bank transfer (unverified)
-- **Minimum payout:** Unverified
-- **Frequency:** per exam session (May/June, Oct/Nov)
+- **Methods:** bank transfer (IB: bank details in My IB), bank transfer via Cambridge University Press & Assessment payroll (Cambridge/OCR)
+- **Minimum payout:** None stated (marking claims are paid automatically)
+- **Frequency:** IB: monthly, quarterly (default) or 6-monthly, examiner's choice; Cambridge group: monthly
 - **Typical delay:** 60 days
-- **Notes:** Cambridge International's examiner FAQ says assessment specialists are usually paid GBP 1.00-5.00 per script, depending on syllabus and script type, and that travel to required meetings is reimbursed. It does not state payment method or timing. IB pages block automated fetches, so IB fees, payment method and timing are unverified.
+- **Notes:** IB Examiner Instructions 2027 (Payments): pay is per marked live response (rates shown only in IBIS once targets are released), plus one qualification fee per session; claims are paid automatically by bank transfer monthly, quarterly (default: Mar/Jun/Sep/Dec) or 6-monthly. Cambridge International's examiner FAQ gives GBP 1.00-5.00 per script; the payout timing comes from the guide of its sister board OCR (same Cambridge payroll): fees received by month end are paid in the next month's payrun (UK: on the 28th; non-UK: mid-month). IB per-response rates are not public.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,8 +147,10 @@ Cambridge International publicly recruits assistant examiners, team leaders, set
 - <https://www.cambridgeinternational.org/about-us/examiners/frequently-asked-questions>
 - <https://www.cambridgeinternational.org/examiners>
 - <https://www.ibo.org/jobs-and-careers/>
+- <https://ibpublishing.ibo.org/exinst/apps/exinst/index.html?doc=EX_instructions_2027_e&part=7&chapter=1>
+- <https://www.ocr.org.uk/Images/16464-assessment-specialist-expenses-information.pdf>
 
-_Tags: seasonal, teachers, contractor, needs-verification_
+_Tags: seasonal, teachers, contractor_
 
 ---
 

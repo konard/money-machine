@@ -20,8 +20,6 @@ Serialize genre fiction free on Royal Road, sell early chapters on Patreon, then
 | Time to first dollar | 60–365 d |
 | Typical monthly income (low / median / high) | $0 / $150 / $10,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$150 per month** in the first year; the high figure of $10,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **3/10**. Expect the first payment after 60–365 d.
@@ -106,7 +104,7 @@ _Business-plan sources:_
 - **Minimum payout:** KDP: none for direct deposit; 100 USD (or 100 local currency, 10,000 JPY, 1,000 MXN) for wire/check; Patreon: payout fees vary
 - **Frequency:** monthly
 - **Typical delay:** 60 days
-- **Notes:** KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Still unconfirmed: Royal Road's own author-pay and AI-labelling rules (royalroad.com and its blog return 403).
+- **Notes:** KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Royal Road knowledge base (Nov 2026): Royal Road pays authors nothing itself; authors add PayPal/Patreon donation links, of which Royal Road takes no percentage (donations are disabled for fanfiction); AI-assisted or AI-generated stories must carry the matching tag.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -153,8 +151,10 @@ KDP reports $69.3M total KDP Select author earnings for September 2026; Royal Ro
 - <https://www.royalroad.com/>
 - <https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ>
 - <https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46>
+- <https://www.royalroad.com/support/knowledgebase/107>
+- <https://www.royalroad.com/support/knowledgebase/114>
 
-_Tags: recurring, fiction, serial, needs-verification_
+_Tags: recurring, fiction, serial_
 
 ---
 

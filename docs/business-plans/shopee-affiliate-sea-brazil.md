@@ -20,8 +20,6 @@ Share Shopee product links on social media, chat groups or content and earn comm
 | Time to first dollar | 20–90 d |
 | Typical monthly income (low / median / high) | $0 / $60 / $1,500 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$60 per month** in the first year; the high figure of $1,500 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **5/10**. Expect the first payment after 20–90 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** bank transfer (IBG) -> local bank, ShopeePay (small amounts, Indonesia)
-- **Minimum payout:** Not published on the official help pages read (MY, SG); Indonesia reportedly pays sums under Rp1,000,000 to ShopeePay (unverified)
-- **Frequency:** weekly (local individuals) or twice-monthly consolidation
+- **Methods:** bank transfer (IBG in Malaysia) -> local bank, ShopeePay (Indonesia, alongside bank transfer)
+- **Minimum payout:** None stated for local affiliates in MY, SG, ID and PH; Philippines USD 500 for cross-border payees; Brazil sets a variable minimum shown in the affiliate dashboard
+- **Frequency:** weekly (MY/SG/ID local individuals) or monthly (PH, BR, enterprises)
 - **Typical delay:** 30 days
-- **Notes:** Malaysia (official FAQ): IBG bank transfer on Fridays; local individuals have 7 days of bills consolidated and paid within 14 days; local enterprise and overseas affiliates are consolidated on the 8th and 23rd and paid 21 days later; bills not validated within 12 months are forfeited. Singapore (official help): non-GST individuals paid weekly (Thursdays), tax-registered individuals/enterprises monthly. Indonesia, Philippines and Brazil affiliate portals render only via JavaScript, so their minimums and schedules are unconfirmed. Re-checked Nov 2026: affiliate.shopee.co.id and the ID/PH help portals still render only via JavaScript. Unconfirmed: minimum payout and schedule for Indonesia (including the ShopeePay rule), the Philippines and Brazil.
+- **Notes:** Malaysia (official FAQ): IBG bank transfer on Fridays; local individuals have 7 days of bills consolidated and paid within 14 days; local enterprise and overseas affiliates are consolidated on the 8th and 23rd and paid 21 days later; bills not validated within 12 months are forfeited. Singapore (official help): non-GST individuals paid weekly (Thursdays), tax-registered individuals/enterprises monthly. Indonesia (official affiliate help, read in a browser Nov 2026): commission is paid weekly by ShopeePay and bank transfer to the registered account; daily reports issued Mon-Wed are paid on Wednesday of the following week and Thu-Sun reports on Friday of the following week; no minimum is stated; a valid bank account and NPWP are required. Philippines (Shopee Affiliate Program Terms and Conditions): balance paid monthly within 90 days of system approval; a USD 500 minimum applies only to affiliates outside the Philippines needing a cross-border transfer; VAT-registered affiliates must issue an invoice. Brazil (Programa de Afiliados Termos e Condições): balance paid monthly within 60 days of system approval; the minimum payout is set by Shopee from time to time and shown in the affiliate dashboard (no fixed amount published); companies must issue a Nota Fiscal.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,8 +147,11 @@ Shopee's Malaysia and Singapore help centers (checked Nov 2026) publish weekly/m
 - <https://help.shopee.com.my/portal/10/article/177403-[ENG]-Payment-Frequently-Asked-Questions-[FAQ]>
 - <https://help.shopee.sg/portal/10/article/191693>
 - <https://affiliate.shopee.ph/>
+- <https://help.shopee.co.id/portal/10/article/72049>
+- <https://help.shopee.ph/portal/4/article/77295>
+- <https://help.shopee.com.br/portal/10/article/124094>
 
-_Tags: affiliate, southeast-asia, brazil, social, global-south, needs-verification_
+_Tags: affiliate, southeast-asia, brazil, social, global-south_
 
 ---
 

@@ -105,7 +105,7 @@ _Business-plan sources:_
 - **Minimum payout:** Engoo: Payoneer requires a USD 20 minimum transfer (reported); others unpublished
 - **Frequency:** monthly (Engoo on the 20th, per job postings); others unverified
 - **Typical delay:** 20 days
-- **Notes:** NativeCamp's tutor portal shows 430 NCC per booked class and 192 NCC per 25-minute instant lesson, plus a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks; it says applications from some countries are paused. Engoo pays per 25-minute lesson at nationality-dependent rates; Engoo's Payoneer-only rule and 51Talk's rates and methods could not be confirmed on a fetchable official page. Unconfirmed: Engoo's Payoneer payout, its USD 20 minimum and the 20th-of-month pay date (engoo.com/tutors, /faq, /support and /app/teach publish no pay terms), and 51Talk's and NativeCamp's payout method, minimum and schedule.
+- **Notes:** NativeCamp's tutor portal shows 430 NCC per booked class and 192 NCC per 25-minute instant lesson, plus a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks; it says applications from some countries are paused. NativeCamp's tutor FAQ (read in a browser Nov 2026) says pay depends on your tutor rank, shown only after you sign the contract, and the payment method is set by country and told to you once hired. 51Talk's public teacher FAQ says per-lesson rates rise with its Teacher Leveling System but gives no amounts; its fee and remittance pages are on a login-only Teacher Guide portal. Engoo pays per 25-minute lesson at nationality-dependent rates; its tutor help center is login-only. Unconfirmed: Engoo's Payoneer payout, its USD 20 minimum and the 20th-of-month pay date, and 51Talk's and NativeCamp's payout method, minimum and schedule (all behind tutor logins).
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,6 +149,9 @@ Engoo's tutor page lists requirements and a 5-step process; NativeCamp's tutor p
 - <https://engoo.com/tutors>
 - <https://51talk.ph/>
 - <https://nativecamp.net/teacher/>
+- <https://nativecamp.net/tutors/faq/45>
+- <https://nativecamp.net/tutors/faq/46>
+- <https://51talk.ph/faqs>
 
 _Tags: tutoring, esl, philippines, global-south, needs-verification_
 

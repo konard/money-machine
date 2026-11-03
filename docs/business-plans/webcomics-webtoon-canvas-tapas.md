@@ -20,8 +20,6 @@ Self-publish a webcomic or illustrated serial and earn ad-revenue share and read
 | Time to first dollar | 90–540 d |
 | Typical monthly income (low / median / high) | $0 / $30 / $2,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$30 per month** in the first year; the high figure of $2,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **2/10**. Expect the first payment after 90–540 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** platform payout (PayPal typical; unverified)
-- **Minimum payout:** unverified
-- **Frequency:** monthly
+- **Methods:** WEBTOON CANVAS: PayPal or Patreon, Tapas: PayPal cash-out
+- **Minimum payout:** WEBTOON CANVAS: $100 (paid in $100 increments, remainder carries over); Tapas: $25
+- **Frequency:** monthly (WEBTOON); on request once the balance reaches $25 (Tapas)
 - **Typical delay:** 45 days
-- **Notes:** Eligibility thresholds re-verified Nov 2026 on both official creator pages (WEBTOON: 50% of static and video ad revenue, 1,000 subscribers + 40,000 monthly page views; Super Likes at 500 likes. Tapas: ad program at 100 subscribers, Ink support at 250, 18+). Payout minimums, rails and supported countries are only in the help centers (webtooncanvas.zendesk.com, help.tapas.io), which returned 403.
+- **Notes:** Eligibility thresholds re-verified Nov 2026 on both official creator pages (WEBTOON: 50% of static and video ad revenue, 1,000 subscribers + 40,000 monthly page views; Super Likes at 500 likes. Tapas: ad program at 100 subscribers, Ink support at 250, 18+). WEBTOON CANVAS help center: ad revenue posts monthly on the 21st of the following month and is paid by the 15th of the next month once the balance reaches $100, via PayPal or Patreon. Tapas help center: creators can cash out via PayPal once the balance reaches $25.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -147,8 +145,11 @@ Official WEBTOON and Tapas creator pages describe the programs and thresholds.
 
 - <https://creators.webtoon.com/en/make-money>
 - <https://creators.tapas.io/earning-money>
+- <https://webtooncanvas.zendesk.com/hc/en-us/articles/18557456817684-How-are-payments-processed>
+- <https://webtooncanvas.zendesk.com/hc/en-us/articles/18557276307604-Can-I-change-my-Payment-Method>
+- <https://help.tapas.io/hc/en-us/articles/360007605774-How-do-I-make-money-on-Tapas>
 
-_Tags: comics, fiction, needs-verification_
+_Tags: comics, fiction_
 
 ---
 

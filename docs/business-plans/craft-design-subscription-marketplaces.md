@@ -20,8 +20,6 @@ Upload SVG cut files, laser-cut templates, embroidery files and craft fonts to c
 | Time to first dollar | 30–120 d |
 | Typical monthly income (low / median / high) | $0 / $50 / $2,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$50 per month** in the first year; the high figure of $2,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **4/10**. Expect the first payment after 30–120 d.
@@ -57,7 +55,7 @@ Cricut/Silhouette/laser and embroidery hobbyists buy files individually or via a
 | Gross margin (median case) | 50% |
 | Human hours per unit after automation | 0 |
 
-Median $3 cut file; designer share ~50% is estimated (Creative Fabrica and Design Bundles pages bot-blocked). Subscription-pool earnings per download are a few cents and not modelled.
+Median $3 cut file; designer share 50% on marketplace-referred sales is Creative Fabrica's published rate (75% on self-referred sales). Subscription-pool earnings per download are a few cents and not modelled.
 
 ### Break-even
 
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** PayPal -> bank, Payoneer (reported for Creative Fabrica)
-- **Minimum payout:** Unverified (sites block automated fetch)
-- **Frequency:** monthly
+- **Methods:** PayPal -> bank, Payoneer -> bank, bank transfer (Creative Fabrica, $20 fee)
+- **Minimum payout:** Creative Fabrica: none for PayPal ($0.50 fee under $10), $100 for Payoneer or bank transfer; Design Bundles: none stated
+- **Frequency:** on request (Creative Fabrica, paid within 7-10 days) / monthly (Design Bundles)
 - **Typical delay:** 30 days
-- **Notes:** Revenue-share percentages, subscription-pool formula and minimum payouts still unverified: Creative Fabrica (site and help center), Design Bundles and So Fontsy all returned 403/429 to fetches in Nov 2026; commonly reported ~50% share of individual sales.
+- **Notes:** Creative Fabrica (official open-store page and help center, read in a browser Nov 2026): designers earn 50% of single sales Creative Fabrica refers and 75% of sales they refer, plus recurring subscription-download earnings; payouts on request to PayPal (no minimum, $0.50 fee under $10, paid within 7 days), Payoneer (minimum $100, within 10 days) or bank transfer (minimum $100 plus $20 fee). Design Bundles Designer Terms: royalties paid monthly to a linked PayPal or Payoneer account; membership royalties come from a Partner Fund of 50% of net membership income split by downloads; the single-sale commission rate and any minimum are not stated. So Fontsy terms not re-checked.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -148,11 +146,12 @@ Creative Fabrica and Design Bundles host tens of thousands of independent design
 
 ## Sources
 
-- <https://www.creativefabrica.com/designer-program/>
-- <https://www.designbundles.net/sell-your-designs>
 - <https://sofontsy.com/pages/become-a-designer>
+- <https://www.creativefabrica.com/open-store>
+- <https://help.creativefabrica.com/hc/en-us/articles/360029930872-How-do-I-make-a-payout-of-my-earnings>
+- <https://designbundles.net/designer-termsconditions>
 
-_Tags: craft, svg, subscription-pool, needs-verification_
+_Tags: craft, svg, subscription-pool_
 
 ---
 

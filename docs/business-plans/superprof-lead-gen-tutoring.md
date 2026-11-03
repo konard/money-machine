@@ -20,8 +20,6 @@ List free on a tutor directory where students pay the platform for access and yo
 | Time to first dollar | 7–60 d |
 | Typical monthly income (low / median / high) | $0 / $300 / $3,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$300 per month** in the first year; the high figure of $3,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **5/10**. Expect the first payment after 7–60 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** direct from student: bank transfer / PayPal / Wise, Superprof in-platform payment
-- **Minimum payout:** N/A (paid directly by students)
+- **Methods:** direct from student: bank transfer / PayPal / Wise, Superprof in-platform payment -> PayPal
+- **Minimum payout:** N/A for direct payment; in-platform balance pays out to PayPal at $30
 - **Frequency:** per lesson or package
 - **Typical delay:** 1 days
-- **Notes:** With direct payment you control the timing. Superprof's own blog confirms the 10% commission on in-platform payments (0% with Premium) but gives no Premium price and no in-platform payout method or timing. A complaint-forum post says earnings show about 24 hours after a lesson and reach PayPal in about 3 days; this is unverified. Official Superprof help and FAQ pages block automated fetches.
+- **Notes:** With direct payment you control the timing. Superprof's tutor help center (Nov 2026): in-platform payments carry a 10% commission (0% with Premium), the amount shows in your balance 24 hours after the lesson, and the balance moves to PayPal within 3 working days once it is at least $30; packs pay 50% after the first lesson. The Premium price is not stated there.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,8 +147,10 @@ Superprof's own blog says listing is free, gives the 10% commission (0% with Pre
 - <https://www.superprof.com.au/blog/charges-payments-superprof>
 - <https://www.superprof.com/>
 - <https://www.apprentus.com/>
+- <https://www.superprof.com/help/tutors/tutor-payment/how-to-get-paid/68/>
+- <https://www.superprof.com/help/tutors/tutor-payment/lesson-pack-payment-deadlines/71/>
 
-_Tags: live, tutoring, direct-pay, needs-verification_
+_Tags: live, tutoring, direct-pay_
 
 ---
 

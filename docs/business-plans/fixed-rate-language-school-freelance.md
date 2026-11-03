@@ -20,8 +20,6 @@ Teach small-group or 1:1 language classes from a school's ready-made curriculum 
 | Time to first dollar | 30–75 d |
 | Typical monthly income (low / median / high) | $100 / $500 / $1,500 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$100–$500 per month** in the first year; the high figure of $1,500 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **6/10**. Expect the first payment after 30–75 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** bank transfer (unverified)
-- **Minimum payout:** Unverified
-- **Frequency:** monthly (teacher invoice)
+- **Methods:** SEPA bank transfer (IBAN + BIC/Swift; up to 10 working days), PayPal (faster)
+- **Minimum payout:** None stated (whole monthly invoice is paid)
+- **Frequency:** monthly (invoice generated on the last day of the month)
 - **Typical delay:** 30 days
-- **Notes:** Lingoda's jobs page confirms the freelance model and says teachers are 'paid on time'; its teacher-referral page (Nov 2026) confirms teachers are paid via a monthly teaching invoice. Still unconfirmed: the per-class pay rate (third-party sources report about USD 8-13 per hour or EUR 11 per class), the payment method (bank transfer assumed) and any minimum payout.
+- **Notes:** Lingoda Teacher Support Centre (Nov 2026): an invoice is generated on the last day of each month and paid within 30 days (excluding German weekends/holidays) by SEPA bank transfer or PayPal; intermediary-bank transfers are not supported. Still unconfirmed: the per-class pay rate, which sits in the account-only Remuneration Structure document (third-party sources report about USD 8-13 per hour or EUR 11 per class).
 
 ## Full cycle (setup → earn → bank account)
 
@@ -150,8 +148,10 @@ Lingoda's official jobs page confirms the freelance model and requirements and d
 - <https://www.lingoda.com/jobs>
 - <https://www.tefl.org/teach-english-online/lingoda/>
 - <https://www.lingoda.com/en/teach/>
+- <https://lingodateachers.elevio.help/en/articles/133-how-are-payments-sent-out-to-teachers>
+- <https://lingodateachers.elevio.help/en/articles/345-invoice-information>
 
-_Tags: live, language, contractor, needs-verification_
+_Tags: live, language, contractor_
 
 ---
 

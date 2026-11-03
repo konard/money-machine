@@ -20,8 +20,6 @@ Design functional or decorative 3D-printable models and sell the files per downl
 | Time to first dollar | 14–180 d |
 | Typical monthly income (low / median / high) | $0 / $30 / $2,500 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$30 per month** in the first year; the high figure of $2,500 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **4/10**. Expect the first payment after 14–180 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** Cults3D: PayPal/bank (unverified), Printables: Stripe -> bank, Thangs: Stripe Express -> bank (monthly), MakerWorld: Exclusive Points cash withdrawal -> bank (via payout provider; users report Airwallex wire)
-- **Minimum payout:** Cults3D: threshold exists but amount unverified; Printables/Thangs: none stated (Stripe); MakerWorld: $100 of Exclusive Points per withdrawal
-- **Frequency:** Cults3D on request (unverified); Thangs monthly; Printables per Stripe schedule; MakerWorld on request (manual review ~1 week)
+- **Methods:** Cults3D: Hyperwallet by PayPal (bank, debit card, PayPal, Venmo) or Payoneer bank transfer, Printables: Stripe -> bank, Thangs: Stripe Express -> bank (monthly), MakerWorld: Exclusive Points cash withdrawal -> bank (via payout provider; users report Airwallex wire)
+- **Minimum payout:** Cults3D: EUR 5 (Hyperwallet) / US$7 (Payoneer); Printables/Thangs: none stated (Stripe); MakerWorld: $100 of Exclusive Points per withdrawal
+- **Frequency:** Cults3D on request; Thangs monthly; Printables per Stripe schedule; MakerWorld on request (manual review ~1 week)
 - **Typical delay:** 30 days
-- **Notes:** Thangs fees and Stripe-only payout confirmed on its help center (Stripe payout fee 0.25% + $0.25, currency conversion 2% non-US). Printables 20% fee / $5 minimum price confirmed on Prusa blog. MakerWorld cash rules confirmed on Bambu Lab blog (Oct 2024); regular MakerWorld points are NOT cash (points store only), and Printables Prusameters are NOT cash. Cults3D share/minimum/methods unverified (site returns 403).
+- **Notes:** Thangs fees and Stripe-only payout confirmed on its help center (Stripe payout fee 0.25% + $0.25, currency conversion 2% non-US). Printables 20% fee / $5 minimum price confirmed on Prusa blog. MakerWorld cash rules confirmed on Bambu Lab blog (Oct 2024); regular MakerWorld points are NOT cash (points store only), and Printables Prusameters are NOT cash. Cults3D (official upload and payout-methods pages, read in a browser Nov 2026): designers receive 80% of the net selling price excluding VAT (Cults 15%, banking fees 5%); payouts via Hyperwallet by PayPal (bank transfer, debit card, PayPal or Venmo; minimum EUR 5; ~EUR 1.70 per payout locally, EUR 3.50 international, 2% FX) or Payoneer bank transfer (minimum US$7, US$2 fee); 250 countries. Cults3D does not state a holding period on these pages.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -154,8 +152,11 @@ Prusa's Dec-2023 blog post documents the Printables Store (20% fee, Stripe, $5 m
 - <https://thangs.com/resources/help-center-articles/what-countries-are-currently-supported-for-thangs-memberships>
 - <https://blog.bambulab.com/exclusive-model-program-cash-rewards-and-copyright-support/>
 - <https://cults3d.com/fr/ajouter>
+- <https://cults3d.com/en/upload>
+- <https://cults3d.com/en/payouts/methods>
+- <https://cults3d.com/en/payouts/methods/hyperwallet>
 
-_Tags: 3d-printing, maker, passive, needs-verification_
+_Tags: 3d-printing, maker, passive_
 
 ---
 

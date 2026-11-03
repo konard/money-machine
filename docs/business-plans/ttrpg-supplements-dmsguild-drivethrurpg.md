@@ -20,8 +20,6 @@ Write and sell PDF adventures, monsters, maps and rules supplements for D&D and 
 | Time to first dollar | 14–90 d |
 | Typical monthly income (low / median / high) | $5 / $60 / $3,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$5–$60 per month** in the first year; the high figure of $3,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **5/10**. Expect the first payment after 14–90 d.
@@ -57,7 +55,7 @@ On DMs Guild you may use official D&D IP (Forgotten Realms etc.) under the Commu
 | Gross margin (median case) | 50% |
 | Human hours per unit after automation | 0 |
 
-Median $5 adventure; DMs Guild pays 50% royalty, DriveThruRPG ~65-70% for own IP (estimated, from reports).
+Median $5 adventure; DMs Guild pays 50% royalty, DriveThruRPG >65% (non-exclusive) or >70% (exclusive) for own IP, per the DriveThru Partners help center (Nov 2026).
 
 ### Break-even
 
@@ -100,11 +98,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** PayPal -> bank (reported), cheque (reported)
-- **Minimum payout:** Unverified
-- **Frequency:** monthly (on request; reported ~$1 withdrawal fee)
+- **Methods:** PayPal on the 1st of the month -> bank, check on the 15th of the month
+- **Minimum payout:** PayPal: publisher-selected minimum (royalties below it roll forward); check: $100
+- **Frequency:** monthly
 - **Typical delay:** 30 days
-- **Notes:** 50% DMs Guild split confirmed only via press/creator sources; DriveThruRPG royalty (creator comments cite 65% non-exclusive / 70% exclusive) and payout rules unverified (dmsguild.com, drivethrurpg.com and its help center return 403). AI policy (per Gizmodo/EN World 2023 coverage): since 31 Jul 2023 products made primarily of AI-written text are not accepted, standalone AI-art products are barred and AI-generated art must be labelled; buyers can filter 'Handcrafted' vs 'Contains AI'. Community programs (DMs Guild, Chaosium's Miskatonic Repository) set their own stricter rules - Chaosium removed 40+ community titles over AI text in Oct 2026.
+- **Notes:** Confirmed on the DriveThru Partners help center (Nov 2026): royalties are paid on the 1st by PayPal or the 15th by check; earnings become payable 15 days after sale for verified publishers (30 days unverified). Own-IP digital sales earn >65% (non-exclusive) or >70% (exclusive); on community content programs such as DMs Guild DriveThru keeps 30% and most rights holders give the creator 50%. AI policy (per Gizmodo/EN World 2023 coverage): since 31 Jul 2023 products made primarily of AI-written text are not accepted, standalone AI-art products are barred and AI-generated art must be labelled; buyers can filter 'Handcrafted' vs 'Contains AI'. Community programs (DMs Guild, Chaosium's Miskatonic Repository) set their own stricter rules - Chaosium removed 40+ community titles over AI text in Oct 2026.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -152,8 +150,11 @@ DMs Guild launched 2016 with a 50/50 split reported by Kotaku and others; many c
 - <https://gizmodo.com/drivethrurpg-ai-generated-art-writing-dmsguild-1850673912>
 - <https://letsdatascience.com/news/chaosium-removes-40-community-titles-over-ai-generated-text-70ccf45e>
 - <https://www.dmsguild.com/>
+- <https://help.drivethrupartners.com/hc/en-us/articles/12780762436759-How-We-Pay-Your-Royalties>
+- <https://help.drivethrupartners.com/hc/en-us/articles/12780816206871-Exclusive-vs-Non-Exclusive-Partner-Accounts>
+- <https://help.drivethrupartners.com/hc/en-us/articles/12780762689431-Set-up-a-Community-Content-Program-for-your-RPG>
 
-_Tags: tabletop, writing, royalties, needs-verification_
+_Tags: tabletop, writing, royalties_
 
 ---
 

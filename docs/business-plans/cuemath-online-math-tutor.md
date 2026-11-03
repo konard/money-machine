@@ -105,7 +105,7 @@ _Business-plan sources:_
 - **Minimum payout:** Unverified
 - **Frequency:** monthly (unverified)
 - **Typical delay:** 30 days
-- **Notes:** Cuemath's recruiting pages (checked Nov 2026) publish no per-class rate, payout method or schedule, only 'transparent payouts' and top earnings above ₹1,00,000 a month; joining is free with no deposits or set-up fees. Unconfirmed: per-class rate, payout method, schedule and minimum payout (re-checked Nov 2026).
+- **Notes:** Cuemath's recruiting pages (checked Nov 2026) publish no per-class rate, payout method or schedule, only 'transparent payouts' and top earnings above ₹1,00,000 a month; joining is free with no deposits or set-up fees. Its tutor-application site (tutorhiring.cuemath.com) and older teacher-jobs FAQ (a fee-share 'Teacher Partner' model, up to ₹40K a month) also give no payout terms (read in a browser Nov 2026). Unconfirmed: per-class rate, payout method, schedule and minimum payout.
 
 ## Full cycle (setup → earn → bank account)
 

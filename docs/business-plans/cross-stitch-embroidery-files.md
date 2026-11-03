@@ -20,8 +20,6 @@ Sell cross-stitch charts (PDF + Pattern Keeper-compatible) and machine-embroider
 | Time to first dollar | 30–150 d |
 | Typical monthly income (low / median / high) | $0 / $50 / $2,500 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$50 per month** in the first year; the high figure of $2,500 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **4/10**. Expect the first payment after 30–150 d.
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** PayPal/Payoneer -> bank (Creative Fabrica), Payhip PayPal/Stripe instant
-- **Minimum payout:** Marketplace minimums unverified; Payhip none (instant)
+- **Methods:** Creative Fabrica: PayPal / Payoneer / bank -> bank, LoveCrafts: monthly PayPal payout, Payhip PayPal/Stripe instant
+- **Minimum payout:** Creative Fabrica: PayPal none ($0.50 fee under $10), Payoneer $100, bank $100 (+$20 fee); LoveCrafts none stated; Payhip none (instant)
 - **Frequency:** monthly / instant
 - **Typical delay:** 20 days
-- **Notes:** Payhip terms confirmed (5% fee on free plan, instant PayPal/Stripe deposit). Creative Fabrica and LoveCrafts shares/minimums unverified (pages return 403/429).
+- **Notes:** Confirmed Nov 2026: Creative Fabrica pays 50% on CF-referred and 75% on self-referred sales, PayPal payouts within 7 days (Payoneer within 10); LoveCrafts pays a month in arrears on the 25th to PayPal after a 4% + $0.35 transaction cost and a 5% selling fee on monthly sales between $40 and the cap; Payhip takes 5% on the free plan with instant PayPal/Stripe deposit.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -145,11 +143,13 @@ Creative Fabrica and LoveCrafts list thousands of independent embroidery and cro
 
 ## Sources
 
-- <https://www.creativefabrica.com/designer-program/>
 - <https://payhip.com/pricing>
 - <https://inkstitch.org/>
+- <https://www.creativefabrica.com/open-store>
+- <https://help.creativefabrica.com/hc/en-us/articles/360029930872-How-do-I-make-a-payout-of-my-earnings>
+- <https://www.lovecrafts.com/en-us/pages/designer-handbook-payment-pricing-taxes>
 
-_Tags: craft, embroidery, passive, needs-verification_
+_Tags: craft, embroidery, passive_
 
 ---
 

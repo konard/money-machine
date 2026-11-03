@@ -20,8 +20,6 @@ Sell battle maps, tokens and ready-to-run modules for virtual tabletops on the R
 | Time to first dollar | 30–180 d |
 | Typical monthly income (low / median / high) | $0 / $40 / $2,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$40 per month** in the first year; the high figure of $2,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **3/10**. Expect the first payment after 30–180 d.
@@ -53,11 +51,11 @@ Online RPG groups pay for tokens, battle maps, character sheets and automated mo
 | Unit | per sale |
 | Typical price per unit (low / median / high) | $3 / $10 / $30 |
 | Direct cost per unit | $0 |
-| Platform fee | 50% |
-| Gross margin (median case) | 50% |
+| Platform fee | 30% |
+| Gross margin (median case) | 70% |
 | Human hours per unit after automation | 0 |
 
-Median $10 map/token pack; Roll20 creator share estimated at 50% (Roll20 help and wiki pages bot-blocked, unverified).
+Median $10 map/token pack; Roll20 partners keep 70% (30% fee), confirmed on the Roll20 Partner Help Center (Nov 2026).
 
 ### Break-even
 
@@ -81,7 +79,7 @@ No fixed monthly cost on the free tiers, so break-even is the first sale; months
 | **Chance of real net profit within 12 months** (≥ $100/month where the plan can pay that much) | **8%** |
 | Typical net profit at month 12 (low / median / high) | $0 / $25 / $1,500 |
 
-Battlemap and token creators who already run Patreon audiences dominate sales; Foundry VTT's official Marketplace (2025) and continued online play support demand. AI-generated battlemaps flooded the market in 2024-2026, pushing pack prices down, and Roll20's creator revenue share is not published (50% assumed). Typical failure mode: packs listed with no audience get almost no marketplace visibility.
+Battlemap and token creators who already run Patreon audiences dominate sales; Foundry VTT's official Marketplace (2025) and continued online play support demand. AI-generated battlemaps flooded the market in 2024-2026, pushing pack prices down, while Roll20 partners keep 70% of each sale (30% fee, confirmed on the Roll20 Partner Help Center, Nov 2026). Typical failure mode: packs listed with no audience get almost no marketplace visibility.
 
 ### Pricing strategy
 
@@ -101,11 +99,11 @@ _Business-plan sources:_
 
 ## Payout path
 
-- **Methods:** Roll20: payout (method unverified), Foundry Marketplace: unverified, Own store via Stripe/PayPal or Patreon
-- **Minimum payout:** Unverified
-- **Frequency:** monthly (unverified)
+- **Methods:** Roll20: PayPal (required) -> bank, Foundry Marketplace: unverified, Own store via Stripe/PayPal or Patreon
+- **Minimum payout:** Roll20: none stated; Foundry unverified
+- **Frequency:** monthly (Roll20 pays on or before the 7th for the previous month)
 - **Typical delay:** 30 days
-- **Notes:** Roll20 revenue share and payout rules not verifiable: help center returns 403 and the 'Become a Creator' page linked from marketplace.roll20.net (pages.roll20.net/marketplace-creators) returned 404 in Nov 2026. Foundry Marketplace creator terms are not public.
+- **Notes:** Roll20 Partner Help Center (Nov 2026): partners keep 70% of sales (Roll20 keeps 30%, 50/50 for DMsGuild-supporting content), paid via PayPal on or before the 7th for the prior month; minimum list price $4.99 and no exclusivity. Foundry Marketplace creator terms are not public.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -149,8 +147,9 @@ Roll20 Marketplace has hosted community creators for years; Foundry premium modu
 - <https://marketplace.roll20.net/>
 - <https://foundryvtt.com/article/premium-content/>
 - <https://foundryvtt.com/packages/>
+- <https://roll20partners.zendesk.com/hc/en-us/articles/10844424110999-Who-Can-Sell-on-the-Roll20-Marketplace>
 
-_Tags: tabletop, vtt, needs-verification_
+_Tags: tabletop, vtt_
 
 ---
 

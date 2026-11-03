@@ -103,7 +103,7 @@ _Business-plan sources:_
 - **Minimum payout:** unverified (historically ~$20)
 - **Frequency:** on request when threshold met
 - **Typical delay:** 7 days
-- **Notes:** Historical figures: ~$3.80 per 1,000 reads (free) and ~$6 (Vocal+); still not verified: vocal.media returned 403 to every fetch in Nov 2026 and web-search budget was exhausted.
+- **Notes:** Historical figures: ~$3.80 per 1,000 reads (free) and ~$6 (Vocal+), with a ~$20 Stripe cash-out minimum, all from third-party reviews. Still unconfirmed: the read rates and the payout minimum, because vocal.media geo-blocks this location ('Service Not Available in Your Location', 403) even in a real browser (Nov 2026).
 
 ## Full cycle (setup → earn → bank account)
 

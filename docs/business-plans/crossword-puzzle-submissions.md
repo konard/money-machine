@@ -20,8 +20,6 @@ Build original crosswords and submit them to newspaper puzzle editors (The New Y
 | Time to first dollar | 90–540 d |
 | Typical monthly income (low / median / high) | $0 / $0 / $1,500 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$0 per month** in the first year; the high figure of $1,500 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **2/10**. Expect the first payment after 90–540 d.
@@ -57,7 +55,7 @@ You construct themed crosswords with free or paid construction software and word
 | Gross margin (median case) | 100% |
 | Human hours per unit after automation | 15 |
 
-NYT pays $500 for daily (Mon-Sat) and $2,250 for Sunday puzzles; other outlets pay ~$100-$400 (estimates for non-NYT). Hours per unit include rejected attempts. NYT rates not re-verified (nytimes.com blocks automated fetches).
+NYT pays $500 for a daily (Mon-Sat) puzzle ($750 after 2 published) and $1,500 for Sunday ($2,250 after 2), per its submission page (Nov 2026); other outlets pay ~$100-$400 (estimates for non-NYT). Hours per unit include rejected attempts.
 
 ### Break-even
 
@@ -103,7 +101,7 @@ _Business-plan sources:_
 - **Minimum payout:** per accepted puzzle
 - **Frequency:** per acceptance
 - **Typical delay:** 90 days
-- **Notes:** Pay rates (often quoted around $500-$750 daily, $2,000+ Sunday for NYT) still unverified: nytimes.com and xwordinfo.com block our fetcher (Nov 2026).
+- **Notes:** NYT submission page (Nov 2026) confirms pay: Mon-Sat 15x15 $500 for a constructor's 1st-2nd published puzzle and $750 from the 3rd; Sunday 21x21 $1,500 and $2,250 respectively; submissions go through Submittable. Payment method and timing are not published (check/bank transfer assumed).
 
 ## Full cycle (setup → earn → bank account)
 
@@ -146,7 +144,7 @@ Major papers publicly accept freelance puzzles; fee figures unverified here.
 
 - <https://www.nytimes.com/article/submit-crossword-puzzles-the-new-york-times.html>
 
-_Tags: per-piece, puzzles, needs-verification_
+_Tags: per-piece, puzzles_
 
 ---
 

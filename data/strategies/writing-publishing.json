@@ -165,7 +165,7 @@
       "minimumPayout": "KDP: none for direct deposit; 100 USD (or 100 local currency, 10,000 JPY, 1,000 MXN) for wire/check; Patreon: payout fees vary",
       "frequency": "monthly",
       "typicalDelayDays": 60,
-      "notes": "KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Still unconfirmed: Royal Road's own author-pay and AI-labelling rules (royalroad.com and its blog return 403)."
+      "notes": "KDP payment help (checked Nov 2026) confirms royalties are paid monthly, about 60 days after the end of the month of sale, with no minimum for direct deposit and a 100-unit minimum for wire/check. KENP earnings follow the same schedule once the monthly KDP Select Global Fund is announced. Royal Road knowledge base (Nov 2026): Royal Road pays authors nothing itself; authors add PayPal/Patreon donation links, of which Royal Road takes no percentage (donations are disabled for fanfiction); AI-assisted or AI-generated stories must carry the matching tag."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -228,9 +228,11 @@
       "https://kdp.amazon.com/en_US/help/topic/G201541130",
       "https://www.royalroad.com/",
       "https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ",
-      "https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46"
+      "https://kdp.amazon.com/en_US/help/topic/GJD7DFFX6X88AK46",
+      "https://www.royalroad.com/support/knowledgebase/107",
+      "https://www.royalroad.com/support/knowledgebase/114"
     ],
-    "tags": ["recurring", "fiction", "serial", "needs-verification"],
+    "tags": ["recurring", "fiction", "serial"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
@@ -315,7 +317,7 @@
       "minimumPayout": "unverified",
       "frequency": "unverified",
       "typicalDelayDays": 60,
-      "notes": "Program status confirmed via TechCrunch (Oct 2023) and Wattpad's Sept 2024 BusinessWire release; revenue-share %, payout method, minimum and frequency still unverified because wattpad.com and support.wattpad.com fail TLS from this environment and the Wayback Machine is blocked."
+      "notes": "Program status confirmed via TechCrunch (Oct 2023) and Wattpad's Sept 2024 BusinessWire release; revenue-share %, payout method, minimum and frequency still unverified because wattpad.com, support.wattpad.com, creators.wattpad.com and company.wattpad.com all fail TLS from this network even in a real browser (certificate for another domain served, Nov 2026) and the Wayback Machine is blocked."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -451,7 +453,7 @@
       "minimumPayout": "unverified (historically ~$20)",
       "frequency": "on request when threshold met",
       "typicalDelayDays": 7,
-      "notes": "Historical figures: ~$3.80 per 1,000 reads (free) and ~$6 (Vocal+); still not verified: vocal.media returned 403 to every fetch in Nov 2026 and web-search budget was exhausted."
+      "notes": "Historical figures: ~$3.80 per 1,000 reads (free) and ~$6 (Vocal+), with a ~$20 Stripe cash-out minimum, all from third-party reviews. Still unconfirmed: the read rates and the payout minimum, because vocal.media geo-blocks this location ('Service Not Available in Your Location', 403) even in a real browser (Nov 2026)."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -570,11 +572,13 @@
     "howItWorks": "You upload complete or ongoing genre novels (romance, fantasy, werewolf) to Inkitt. Inkitt uses reader data to pick stories and offers authors contracts to publish them in Galatea, a pay-per-episode reading app, paying a revenue share or royalties. There is no open monetization; payment needs selection and a signed contract.",
     "platforms": ["Inkitt", "Galatea"],
     "payout": {
-      "methods": ["unverified (contracted royalties)"],
+      "methods": [
+        "Tipalti: local bank transfer (SEPA/ACH/BACS), eCheck, international wire, or PayPal"
+      ],
       "minimumPayout": "unverified",
       "frequency": "unverified",
       "typicalDelayDays": 90,
-      "notes": "inkitt.com returned 403 again (Nov 2026) and galatea.com shows no author terms; revenue-share percentages, advances and payout rails remain unverified. Read contract rights clauses carefully."
+      "notes": "Inkitt help center (Nov 2026): Galatea royalties are paid through Tipalti by the method chosen at onboarding, sent at the end of the month and arriving within up to 12 business days; German withholding tax (Quellensteuer) is deducted unless exempted. Still unconfirmed: the royalty percentages, advances, the royalty payment period (linked article is on the login-only Galatea author help center) and any minimum payout. Read contract rights clauses carefully."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -622,7 +626,11 @@
     ],
     "risks": ["Selection is rare", "Broad rights grants", "Opaque terms"],
     "evidence": "Galatea sells many Inkitt-sourced titles; terms not publicly posted.",
-    "sources": ["https://www.galatea.com/", "https://www.inkitt.com/"],
+    "sources": [
+      "https://www.galatea.com/",
+      "https://www.inkitt.com/",
+      "https://inkitt.zendesk.com/hc/en-us/articles/12756836931090-Galatea-Royalty-Payments-through-Tipalti"
+    ],
     "tags": ["fiction", "invite-only", "needs-verification"],
     "businessPlan": {
       "startupResources": {
@@ -690,11 +698,14 @@
     "howItWorks": "You publish episodes on WEBTOON CANVAS and/or Tapas. WEBTOON pays 50% of ad revenue once a series has 1,000 subscribers and 40,000 global monthly page views, and fans can send paid Super Likes once a series has 500 likes. Tapas shares about 70% of ad revenue from 100 subscribers and passes on 100% of Ink tips (after third-party fees) from 250 subscribers; creators must be 18+. Writers without drawing skill can partner with an artist; the platforms' AI-art rules should be checked first.",
     "platforms": ["WEBTOON CANVAS", "Tapas"],
     "payout": {
-      "methods": ["platform payout (PayPal typical; unverified)"],
-      "minimumPayout": "unverified",
-      "frequency": "monthly",
+      "methods": [
+        "WEBTOON CANVAS: PayPal or Patreon",
+        "Tapas: PayPal cash-out"
+      ],
+      "minimumPayout": "WEBTOON CANVAS: $100 (paid in $100 increments, remainder carries over); Tapas: $25",
+      "frequency": "monthly (WEBTOON); on request once the balance reaches $25 (Tapas)",
       "typicalDelayDays": 45,
-      "notes": "Eligibility thresholds re-verified Nov 2026 on both official creator pages (WEBTOON: 50% of static and video ad revenue, 1,000 subscribers + 40,000 monthly page views; Super Likes at 500 likes. Tapas: ad program at 100 subscribers, Ink support at 250, 18+). Payout minimums, rails and supported countries are only in the help centers (webtooncanvas.zendesk.com, help.tapas.io), which returned 403."
+      "notes": "Eligibility thresholds re-verified Nov 2026 on both official creator pages (WEBTOON: 50% of static and video ad revenue, 1,000 subscribers + 40,000 monthly page views; Super Likes at 500 likes. Tapas: ad program at 100 subscribers, Ink support at 250, 18+). WEBTOON CANVAS help center: ad revenue posts monthly on the 21st of the following month and is paid by the 15th of the next month once the balance reaches $100, via PayPal or Patreon. Tapas help center: creators can cash out via PayPal once the balance reaches $25."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -742,9 +753,12 @@
     "evidence": "Official WEBTOON and Tapas creator pages describe the programs and thresholds.",
     "sources": [
       "https://creators.webtoon.com/en/make-money",
-      "https://creators.tapas.io/earning-money"
+      "https://creators.tapas.io/earning-money",
+      "https://webtooncanvas.zendesk.com/hc/en-us/articles/18557456817684-How-are-payments-processed",
+      "https://webtooncanvas.zendesk.com/hc/en-us/articles/18557276307604-Can-I-change-my-Payment-Method",
+      "https://help.tapas.io/hc/en-us/articles/360007605774-How-do-I-make-money-on-Tapas"
     ],
-    "tags": ["comics", "fiction", "needs-verification"],
+    "tags": ["comics", "fiction"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 80,
@@ -1478,7 +1492,7 @@
       "minimumPayout": "per accepted puzzle",
       "frequency": "per acceptance",
       "typicalDelayDays": 90,
-      "notes": "Pay rates (often quoted around $500-$750 daily, $2,000+ Sunday for NYT) still unverified: nytimes.com and xwordinfo.com block our fetcher (Nov 2026)."
+      "notes": "NYT submission page (Nov 2026) confirms pay: Mon-Sat 15x15 $500 for a constructor's 1st-2nd published puzzle and $750 from the 3rd; Sunday 21x21 $1,500 and $2,250 respectively; submissions go through Submittable. Payment method and timing are not published (check/bank transfer assumed)."
     },
     "capitalRequiredUsd": 0,
     "timeToFirstDollarDays": {
@@ -1529,7 +1543,7 @@
     "sources": [
       "https://www.nytimes.com/article/submit-crossword-puzzles-the-new-york-times.html"
     ],
-    "tags": ["per-piece", "puzzles", "needs-verification"],
+    "tags": ["per-piece", "puzzles"],
     "businessPlan": {
       "startupResources": {
         "timeHoursToLaunch": 40,
@@ -1562,7 +1576,7 @@
         "platformFeePercent": 0,
         "grossMarginPercent": 100,
         "hoursPerUnit": 15,
-        "notes": "NYT pays $500 for daily (Mon-Sat) and $2,250 for Sunday puzzles; other outlets pay ~$100-$400 (estimates for non-NYT). Hours per unit include rejected attempts. NYT rates not re-verified (nytimes.com blocks automated fetches)."
+        "notes": "NYT pays $500 for a daily (Mon-Sat) puzzle ($750 after 2 published) and $1,500 for Sunday ($2,250 after 2), per its submission page (Nov 2026); other outlets pay ~$100-$400 (estimates for non-NYT). Hours per unit include rejected attempts."
       },
       "breakEven": {
         "monthlyFixedCostUsd": 0,

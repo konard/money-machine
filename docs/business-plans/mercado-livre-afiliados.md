@@ -20,8 +20,6 @@ Share Mercado Livre/Libre product links and earn commission credited to a Mercad
 | Time to first dollar | 30–120 d |
 | Typical monthly income (low / median / high) | $0 / $40 / $1,000 |
 
-> ⚠ **Some figures unverified.** At least one payout rule, fee or rate in this entry could not be confirmed on an official page at the time of writing. Check the notes and sources before relying on it.
-
 ## Realistic expectations
 
 Most people who try this earn around **$0–$40 per month** in the first year; the high figure of $1,000 is a ceiling for a focused solo operator, not a typical outcome. The chance of receiving at least one real payout within six months is rated **4/10**. Expect the first payment after 30–120 d.
@@ -102,10 +100,10 @@ _Business-plan sources:_
 ## Payout path
 
 - **Methods:** Mercado Pago -> local bank
-- **Minimum payout:** Unverified: Brazilian guides report R$80 with at least three distinct buyers
-- **Frequency:** monthly cycle (unverified)
-- **Typical delay:** 45 days
-- **Notes:** Official program and help pages (mercadolivre.com.br, mercadolibre.com.mx) return 403 to automated fetching. 2026 third-party guides report: commission credited to Mercado Pago about 45–60 days after the sale once the monthly cycle closes; category rates up to ~16%; 18+ with CPF/CNPJ and active Mercado Livre and Mercado Pago accounts; no links on home, search, category or daily-deal pages. Unconfirmed: the R$80 minimum, the three-buyer rule and the monthly cycle (mercadolivre.com.br, mercadolibre.com.mx and .com.ar still return 403 on re-check).
+- **Minimum payout:** R$30 (balance rolls over until reached)
+- **Frequency:** monthly cycle, paid 2 months after the R$30 minimum is passed
+- **Typical delay:** 75 days
+- **Notes:** Mercado Livre help (read in a browser Nov 2026): earnings are credited to your Mercado Pago account 2 months after your balance passes the R$30 minimum; below that it rolls over (example: R$35 accumulated over January and February is paid in May). Commission counts for direct and indirect sales within 24 hours of the click, only on approved sales; cancelled, returned or fraudulent orders earn nothing. Earlier third-party claims of an R$80 minimum with three distinct buyers are not on the official pages. 2026 third-party guides also report category rates up to ~16%, 18+ with CPF/CNPJ and active Mercado Livre and Mercado Pago accounts, and no links on home, search, category or daily-deal pages (not re-checked; the afiliados landing page requires login).
 
 ## Full cycle (setup → earn → bank account)
 
@@ -148,8 +146,10 @@ The program is linked from Mercado Livre's own site footer. Rates and payout rul
 - <https://www.mercadolivre.com.br/l/afiliados-home>
 - <https://www.mercadolivre.com.br/ajuda/33544>
 - <https://canaltech.com.br/internet/mercado-livre-lanca-programa-de-afiliados-para-criadores-de-conteudo-261989/>
+- <https://www.mercadolivre.com.br/ajuda/32116>
+- <https://www.mercadolivre.com.br/ajuda/como-ganar-comisiones-afiliados_45554>
 
-_Tags: affiliate, latam, needs-verification, global-south_
+_Tags: affiliate, latam, global-south_
 
 ---
 

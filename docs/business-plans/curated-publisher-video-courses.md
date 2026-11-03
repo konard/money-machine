@@ -106,7 +106,7 @@ _Business-plan sources:_
 - **Minimum payout:** Not published
 - **Frequency:** quarterly royalties (Pluralsight) / per contract
 - **Typical delay:** 90 days
-- **Notes:** Pluralsight's teach page says video-course pay is 'partially based on viewership' and paid quarterly. Domestika's page says you need a verified PayPal account and that it covers production costs. LinkedIn Learning's instructor page says only 'earn extra income'. None of the three publish royalty percentages, upfront fees or minimums; terms are set in the individual contract.
+- **Notes:** Pluralsight's teach page says video-course pay is 'partially based on viewership' and paid quarterly. Domestika's page says you need a verified PayPal account and that it covers production costs. LinkedIn Learning's instructor page says only 'earn extra income'. None of the three publish royalty percentages, upfront fees or minimums; terms are set in the individual contract. Domestika's Teachers Hub (Nov 2026) likewise refers teachers to their contract for commission rates (sales via the teacher's promo URL earn a higher commission). Unconfirmed: royalty percentages, upfront fees and any minimum payout on all three.
 
 ## Full cycle (setup → earn → bank account)
 
@@ -151,6 +151,7 @@ Official instructor pages for LinkedIn Learning, Pluralsight (quarterly viewersh
 - <https://business.linkedin.com/learn/instructors>
 - <https://www.pluralsight.com/teach>
 - <https://www.domestika.org/en/teachers>
+- <https://teachershub.domestika.org/hc/en-us/articles/42873063969041-Promotional-URL-and-its-benefits>
 
 _Tags: royalties, invite-only, semi-passive, needs-verification_
 
