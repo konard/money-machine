@@ -5,6 +5,7 @@ import {
   hasComplementFrame,
 } from './sources/infinitive-frames.mjs';
 import { learnPrepositions } from './sources/prepositions.mjs';
+import { learnUnitSymbols } from './sources/unit-symbols.mjs';
 import { nameCandidates } from './name-candidates.mjs';
 import {
   translatedCompound,
@@ -346,6 +347,7 @@ export async function resolveText(
   const options = { fetchImpl, cache };
   if (!only) {
     await learnPrepositions(text, lexicon, options);
+    await learnUnitSymbols(text, lexicon, options);
   }
   const words = only || unknownWords(text, lexicon);
   const done = new Set();

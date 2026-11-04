@@ -159,12 +159,10 @@ export function naturalizeRussian(
     } else if (i > 0 && !s.separator && statements[i - 1].trailing !== ',') {
       pieces.push(',');
     }
-    if (statements[i].type === 'phrase' && i < statements.length - 1) {
-      pieces.push(text);
-      pieces.push(',');
-      return;
-    }
     pieces.push(text);
+    if (statements[i].type === 'phrase' && i < statements.length - 1) {
+      pieces.push(',');
+    }
   });
   let text = pieces
     .join(' ')
@@ -181,7 +179,9 @@ export function naturalizeRussian(
     text = `${text}${text ? ' ' : ''}[${formal.leftover.join(' ')}]`;
     notes.add(`untranslated: "${formal.leftover.join(' ')}"`);
   }
-  return { text: text + (formal.punctuation || ''), notes: [...notes] };
+  // «через 3 сут.» + ".": one period
+  text = (text + (formal.punctuation || '')).replace(/(?<!\.)\.\.$/, '.');
+  return { text, notes: [...notes] };
 }
 
 /** Record inanimate nouns as referents for later "it". */
