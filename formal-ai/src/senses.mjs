@@ -797,6 +797,20 @@ function valencyFit(node, clause, concept, next) {
     /\b(?:something|someone|somebody|anything|one's|oneself|(?:a|an|the) [a-z]+)\b/.test(
       concept.gloss.replace(/^to /, '')
     );
+  // "take on a position" is a verb and the object it names: "assumes $20"
+  // is no position
+  const specific = /^[a-z]+(?: [a-z]+)? (?:a|an|the) ([a-z]+)$/.exec(
+    concept.gloss.replace(/^to /, '')
+  )?.[1];
+  const objectLemma = owner.objects?.[0]?.head?.concept?.split(':')[1];
+  if (
+    hasObject &&
+    specific &&
+    !/^(?:thing|object|person|one)$/.test(specific) &&
+    objectLemma !== specific
+  ) {
+    return { score: 0 };
+  }
   if (hasObject === named) {
     return {
       score: 0.3,

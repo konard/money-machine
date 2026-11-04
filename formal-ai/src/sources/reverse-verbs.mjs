@@ -29,15 +29,18 @@ export async function completeReverseVerbs(plans, options, context) {
         text
           .split(/=\s*\{\{-ru-\}\}\s*=/)[1]
           ?.split(/^=\s*\{\{-[a-z]+-\}\}/m)[0] || '';
+      // each comma- or semicolon-separated item is one translation; a word
+      // linked inside a phrase ("have a [[good]] night's sleep") is not
       const translations = [...russian.matchAll(/^\|en=([^\n]*)/gm)].flatMap(
-        (m) => [
-          ...[...m[1].matchAll(/\{\{(?:t|trad|п|перевод)\|en\|([^|}]+)/g)].map(
-            (t) => t[1]
-          ),
-          ...[...m[1].matchAll(/\[\[([^\]|#]+)(?:[^\]]*)\]\]/g)].map(
-            (t) => t[1]
-          ),
-        ]
+        (m) =>
+          m[1].split(/[,;]/).map((item) =>
+            item
+              .replace(/\{\{(?:t|trad|п|перевод)\|en\|([^|}]+)[^}]*\}\}/g, '$1')
+              .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1')
+              .replace(/\([^)]*\)|<!--.*?-->/g, '')
+              .replace(/^\s*to\s+/, '')
+              .trim()
+          )
       );
       if (!translations.includes(plan.lemma)) {
         continue;

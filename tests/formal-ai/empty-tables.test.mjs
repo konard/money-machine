@@ -103,6 +103,26 @@ test('reverse lookup requires an exact English translation in the Russian sectio
   assert.match(api.requests[0].srsearch, /Русские глаголы/);
 });
 
+test('a word linked inside a phrase translation is no translation', async () => {
+  const plans = [
+    { lemma: 'good', pos: 'verb', senses: [sense('To improve.')] },
+  ];
+  const api = fixture(
+    {
+      выспаться:
+        "= {{-ru-}} =\n{{гл ru}}\n|en=[[get]] [[enough]] [[sleep]], [[have]] a [[good]] [[night|night's]] [[sleep]]",
+      годиться: '= {{-ru-}} =\n{{гл ru}}\n|en=[[be fit]] (for); [[good]] (for)',
+    },
+    {},
+    ['выспаться', 'годиться']
+  );
+  await completeReverseVerbs(plans, api, { words: ['good'] });
+  assert.deepEqual(
+    plans[0].senses.flatMap((s) => s.russian),
+    [{ word: 'годиться' }]
+  );
+});
+
 test('adverbs derive from attested adjectives and keep direct translations', async () => {
   const entries = new Map(
     ['lawfully', 'happily', 'directly', 'ghostly'].map((w) => [
