@@ -768,6 +768,13 @@ function renderEvent(s, ctx) {
 
 /** The finite verb, with modal and future auxiliaries. */
 function verbGroup(entry, s, f, ctx) {
+  // "would buy" → купил бы: the past tense with the conditional particle
+  if (s.modality === 'modal.would') {
+    const past = { ...s, modality: undefined, tense: 'past', aspect: 'simple' };
+    const form = verbGroup(entry, past, f, ctx);
+    // был бы опубликован: the particle follows the auxiliary
+    return s.sharedModality ? form : form.replace(/^\S+/, '$& бы');
+  }
   const role = s.modality ? 'infinitive' : 'finite';
   let variant = chooseVerb(
     entry,
@@ -846,7 +853,7 @@ function passiveGroup(entry, s, f, ctx) {
 }
 
 /** мочь / должен / бы. */
-function modalWord(s, f, ctx) {
+function modalWord(s, f) {
   const tense =
     s.tense === 'past' ? 'past' : s.tense === 'future' ? 'future' : 'present';
   const gender = f.number === 'pl' ? undefined : f.gender;
@@ -875,10 +882,6 @@ function modalWord(s, f, ctx) {
         return `${short} ${f.number === 'pl' ? 'были' : BYT_PAST[f.gender || 'm']}`;
       }
       return short;
-    }
-    case 'modal.would': {
-      ctx.notes.add('"would" rendered as past tense + бы');
-      return '';
     }
     default:
       return '';

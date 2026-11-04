@@ -1288,3 +1288,8 @@ concept block
   class text
   en noun block
   ru noun блок m
+
+concept spending
+  gloss "money spent"
+  en noun spending
+  ru noun расход m

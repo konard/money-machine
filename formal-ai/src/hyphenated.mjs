@@ -74,6 +74,10 @@ function compose(parts, lexicon, context) {
   if (last === 1 && n && parts[1] === 'only') {
     return `только для ${declineNoun(n, 'gen')}`;
   }
+  // "non-technical" → нетехнический: the negative prefix joins the adjective
+  if (last === 1 && parts[0] === 'non' && adjective(1)) {
+    return `не${adjective(1).lemma}`;
+  }
   if (last === 1 && n && parts[1] === 'free') {
     return `без ${declineNoun(n, 'gen')}`;
   }

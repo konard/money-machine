@@ -179,6 +179,10 @@ concept cheap
   en adj cheap
   ru adj дешёвый
 
+concept technical
+  en adj technical
+  ru adj технический
+
 concept expensive
   en adj expensive
   ru adj дорогой

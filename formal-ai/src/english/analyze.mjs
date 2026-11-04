@@ -297,6 +297,7 @@ function contentReadings(token, lexicon, add) {
   if (
     capitalized &&
     !timeWord &&
+    !token.notName &&
     // "Edit the JSON": a verb opening a sentence before a determiner is an
     // order, not the given name Edit
     !(
@@ -451,6 +452,24 @@ export function analyze(sentence, lexicon) {
     token.readings = readings(token, lexicon);
     return token;
   });
+  // "Very cheap", "Try to join": a sentence-opening dictionary word that is
+  // also a given name is that name only before a verb ("Rose went home")
+  const opening = out[firstWord];
+  const next = out[firstWord + 1];
+  if (
+    opening?.readings.length === 1 &&
+    opening.readings[0].pos === 'propn' &&
+    contentFound(lexicon, opening.lower) &&
+    next?.readings.length &&
+    !next.readings.some(
+      (r) =>
+        ['be', 'modal', 'have', 'do', 'coord', 'punct'].includes(r.pos) ||
+        (r.pos === 'verb' && /3sg|past/.test(r.features?.form || ''))
+    ) &&
+    next.kind !== 'punct'
+  ) {
+    opening.readings = readings({ ...opening, notName: true }, lexicon);
+  }
   out.forEach((token, i) => {
     const previous = out[i - 1];
     if (token.lower === "'s") {

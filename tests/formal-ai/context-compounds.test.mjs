@@ -130,6 +130,7 @@ test('hyphenated modifiers prefer whole and spaced dictionary entries before com
     print: entry('Noun', 'печать', 'f'),
     demand: entry('Noun', 'требование', 'n'),
     pay: entry('Adjective', 'платный'),
+    technical: entry('Adjective', 'технический'),
     click: entry('Noun', 'щелчок', 'm'),
     service: entry('Noun', 'услуга', 'f'),
     royalty: entry('Noun', 'выплата', 'f'),
@@ -144,7 +145,7 @@ test('hyphenated modifiers prefer whole and spaced dictionary entries before com
     // Russian entries attest candidates; endings alone are no longer enough.
     ...Object.fromEntries(
       [
-        ['Adjective', 'adj', 'полный бесплатный высокий платный'],
+        ['Adjective', 'adj', 'полный бесплатный высокий платный технический'],
         [
           'Noun',
           'noun',
@@ -176,6 +177,7 @@ test('hyphenated modifiers prefer whole and spaced dictionary entries before com
     'high-yield',
     'print-on-demand',
     'pay-per-click',
+    'non-technical',
   ];
   await resolveText('', { words, lexicon, ...api });
   const adjective = (word) =>
@@ -189,6 +191,7 @@ test('hyphenated modifiers prefer whole and spaced dictionary entries before com
   assert.equal(adjective('high-yield'), 'с высоким доходом');
   assert.equal(adjective('print-on-demand'), 'с печатью по требованию');
   assert.equal(adjective('pay-per-click'), 'платный за щелчок');
+  assert.equal(adjective('non-technical'), 'нетехнический');
   assert.equal(
     declineNoun(
       lexicon.get(lexicon.lookup('noun', 'sponsorship')[0]).ru,

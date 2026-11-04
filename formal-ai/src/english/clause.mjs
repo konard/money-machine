@@ -15,6 +15,7 @@ import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
 import { finiteComplementAhead } from './complements.mjs';
+import { isImperativeStart, noteStatement } from './imperative-start.mjs';
 import {
   Cursor,
   has,
@@ -488,6 +489,12 @@ function parseClause(c, ctx, initial) {
     }
     c.i = save;
   }
+  // "Pays only on spending", "Fully passive after install": a note-style
+  // statement whose subject is the thing described
+  const note = initial && noteStatement(c, ctx, tailOptions);
+  if (note) {
+    return note;
+  }
   // imperative
   const imperativeStart = isImperativeStart(c);
   const ambiguous =
@@ -713,9 +720,12 @@ function ellipsis(c, ctx, previous) {
     return null;
   }
   const save = c.i;
-  let vg = parseVerbGroup(c, third ? 'third' : null);
+  // "she can read and write": after a modal the base verb agrees with nothing
+  const agree =
+    third && !previous.modal && previous.tense !== 'future' ? 'third' : null;
+  let vg = parseVerbGroup(c, agree);
   if (!vg && has(c.peek, 'prep')) {
-    const phrases = subjectPhrases(c, third ? 'third' : null);
+    const phrases = subjectPhrases(c, agree);
     if (phrases) {
       subject.pps = phrases.pps;
       vg = phrases.vg;
@@ -750,58 +760,6 @@ function tailOptions(ctx, vg) {
     lexicon: ctx.lexicon,
     finiteComplementAhead: (c) => finiteComplementAhead(c, vg.verb, ctx),
   };
-}
-
-function isImperativeStart(c) {
-  const t = c.peek;
-  if (t.lower === 'please') {
-    return true;
-  }
-  if (has(t, 'do') && has(c.at(1), 'neg') && has(c.at(2), 'verb')) {
-    return true;
-  }
-  if (t.lower === 'let' && c.at(1)?.lower === 'us') {
-    return true;
-  }
-  if (!has(t, 'verb') || has(t, 'pron') || has(t, 'det')) {
-    return false;
-  }
-  const r = reading(t, 'verb');
-  if (r.features.form !== 'base') {
-    return false;
-  }
-  // "Direct sponsorships need no platform": a modifier, a noun and a verb
-  // that agrees with that noun make a subject, not an imperative
-  if ((has(t, 'adj') || has(t, 'noun')) && agreeingSubjectAhead(c)) {
-    return false;
-  }
-  // "Book a table" vs "Books are…": a noun reading wins only before a verb
-  if (
-    has(t, 'noun') &&
-    (has(c.at(1), 'be') || has(c.at(1), 'verb') || has(c.at(1), 'modal'))
-  ) {
-    return false;
-  }
-  return true;
-}
-
-/** "sponsorships need", "fee applies": a noun then a verb agreeing with it. */
-function agreeingSubjectAhead(c) {
-  const noun = c.at(1);
-  const verb = c.at(2);
-  if (!has(noun, 'noun') || !verb || has(verb, 'det') || has(verb, 'prep')) {
-    return false;
-  }
-  const plural = reading(noun, 'noun').features?.number === 'pl';
-  if (has(verb, 'modal') || has(verb, 'be')) {
-    return true;
-  }
-  return (verb.readings || []).some(
-    (r) =>
-      r.pos === 'verb' &&
-      (r.features?.form === 'past' ||
-        r.features?.form === (plural ? 'base' : '3sg'))
-  );
 }
 
 function parseImperative(c, ctx) {

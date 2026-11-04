@@ -13,6 +13,9 @@
 
 import {
   has,
+  contactRelativeAhead,
+  baseAfterSingular,
+  verbLikely,
   reading,
   isPunct,
   head,
@@ -50,7 +53,7 @@ export function parseNP(c, options = {}) {
   if (!t) {
     return null;
   }
-  if (gerundReading(t) && !options.nominal) {
+  if (gerundReading(t) && !options.nominal && !contactRelativeAhead(c)) {
     const r = gerundReading(c.next());
     const tail = parseTail(c, 'event', {
       ...options,
@@ -164,9 +167,7 @@ export function parseNP(c, options = {}) {
     ((quantityDegree(c.peek) && has(c.at(1), 'adj')) ||
       has(c.peek, 'adj') ||
       (participleReading(c.peek) && nounAhead(c, 1)) ||
-      (has(c.peek, 'adv') &&
-        reading(c.peek, 'adv').concepts.some(isDegree) &&
-        has(c.at(1), 'adj')))
+      (degreeAdverb(c.peek) && has(c.at(1), 'adj')))
   ) {
     const degree = quantityDegree(c.peek);
     if (degree && has(c.at(1), 'adj')) {
@@ -486,8 +487,9 @@ function borrowedAdjective(t, lexicon) {
   );
 }
 
-function isDegree(id) {
-  return id === 'very' || id === 'too';
+/** "very", "fully": a word that is only an adverb, before an adjective. */
+function degreeAdverb(t) {
+  return has(t, 'adv') && t.readings.every((r) => r.pos === 'adv');
 }
 
 /** Does a noun follow within the next `k` tokens (adjectives skipped)? */
@@ -514,26 +516,6 @@ function nounAhead(c, k) {
   }
   const t = c.at(j);
   return Boolean(t && (has(t, 'noun') || has(t, 'name') || has(t, 'propn')));
-}
-
-/** "Stripe direct …": a bare base form cannot be the verb of a singular noun. */
-function baseAfterSingular(t, r) {
-  return (
-    r.features.number !== 'pl' &&
-    t.readings.every((x) => x.pos !== 'verb' || x.features.form === 'base')
-  );
-}
-
-/** Is the noun-or-verb token at the cursor more likely a finite verb? */
-function verbLikely(c) {
-  const after = c.at(1);
-  return (
-    !after ||
-    startsNP(after) ||
-    isPunct(after) ||
-    has(after, 'prep') ||
-    has(after, 'adv')
-  );
 }
 
 /** `'s` after a noun is possessive when a noun phrase follows. */
@@ -797,11 +779,7 @@ export function parseTail(c, frame, options = {}) {
         };
         continue;
       }
-      if (
-        has(t, 'adv') &&
-        reading(t, 'adv').concepts.some(isDegree) &&
-        has(c.at(1), 'adj')
-      ) {
+      if (degreeAdverb(t) && has(c.at(1), 'adj')) {
         const degree = head(t, reading(t, 'adv'));
         c.next();
         const a = c.next();

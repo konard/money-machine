@@ -153,3 +153,26 @@ test('"a few", quantifiers in oblique cases, numeral words', () => {
 test('"with" a person is «с», not a bare instrumental', () => {
   assert.match(ru('We work with Tom.'), /^Мы работаем с /);
 });
+
+test('"would" is the past tense with «бы»', () => {
+  assert.match(ru('I would buy a book.'), /^Я купил бы книгу\.$/);
+  assert.match(ru('She would read and write.'), /^Она \S+ бы и \S+ла\.$/);
+  assert.match(ru('She can read and write.'), /^Она может \S+ и \S+ть\.$/);
+});
+
+test('note-style sentences without a subject', () => {
+  assert.equal(ru('Works on any phone.'), 'Работает на телефоне.');
+  assert.equal(ru('Reads books every day.'), 'Читает книги каждый день.');
+  assert.equal(ru('Very good in the morning.'), 'Утром очень хорошо.');
+});
+
+test('an adverb before a predicate adjective is its degree', () => {
+  assert.match(ru('The book is very cheap.'), /^Книга очень дешёв/);
+});
+
+test('a noun before a clause with its own subject takes a relative', () => {
+  assert.match(
+    ru('Mary pays only on spending you would make anyway.'),
+    /на расходе, который вы сделали бы/
+  );
+});

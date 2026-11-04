@@ -1,5 +1,16 @@
 /** Construct the clause structure from parsed verb and argument features. */
 export function clause(mood, vg, parts) {
+  // "is very cheap": an adverb right before the predicate adjective is its
+  // degree, not a clause adverb
+  let adverbs = vg.adverbs || [];
+  let complement = parts.complement || null;
+  const degree = adverbs.find(
+    (a) => complement?.type === 'adj' && a.token === complement.token - 1
+  );
+  if (degree && !complement.degree && !complement.comparison) {
+    adverbs = adverbs.filter((a) => a !== degree);
+    complement = { ...complement, degree };
+  }
   return {
     type: 'clause',
     mood,
@@ -15,9 +26,9 @@ export function clause(mood, vg, parts) {
     verb: vg.verb,
     subject: parts.subject || null,
     objects: parts.objects || [],
-    complement: parts.complement || null,
+    complement,
     mods: [
-      ...(vg.adverbs || []).map((a) => ({ type: 'adv', ...a })),
+      ...adverbs.map((a) => ({ type: 'adv', ...a })),
       ...(parts.mods || []),
     ],
     xcomp: parts.xcomp || null,

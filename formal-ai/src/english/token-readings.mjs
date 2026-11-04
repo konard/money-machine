@@ -60,3 +60,37 @@ export function personLike(np, lexicon) {
       /\b(person|people|someone|who|one that)\b/.test(concept.gloss || ''))
   );
 }
+
+/** "spending you would make": a noun, then a clause with its own subject. */
+export function contactRelativeAhead(c) {
+  const [t, subject, verb] = [c.peek, c.at(1), c.at(2)];
+  return (
+    has(t, 'noun') &&
+    has(subject, 'pron') &&
+    !['me', 'him', 'us', 'them', 'it', 'her'].includes(subject.lower) &&
+    (['modal', 'be', 'have', 'do'].some((p) => has(verb, p)) ||
+      verb?.readings?.some(
+        (r) => r.pos === 'verb' && r.features?.form === 'past'
+      ))
+  );
+}
+
+/** "Stripe direct …": a bare base form cannot be the verb of a singular noun. */
+export function baseAfterSingular(t, r) {
+  return (
+    r.features.number !== 'pl' &&
+    t.readings.every((x) => x.pos !== 'verb' || x.features.form === 'base')
+  );
+}
+
+/** Is the noun-or-verb token at the cursor more likely a finite verb? */
+export function verbLikely(c) {
+  const after = c.at(1);
+  return (
+    !after ||
+    startsNP(after) ||
+    isPunct(after) ||
+    has(after, 'prep') ||
+    has(after, 'adv')
+  );
+}
