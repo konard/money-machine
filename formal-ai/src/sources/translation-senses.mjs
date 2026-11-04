@@ -28,11 +28,45 @@ function reverseMeaning(word, plan, pages) {
     );
 }
 
+/**
+ * A sense whose own translations never name the lemma on their own pages
+ * borrows a sibling sense's translation that does, when that translation's
+ * definition shares a word with this sense's gloss: "expect" (look forward
+ * to, anticipate) has only наде́яться "to hope", while ожида́ть "to expect,
+ * to anticipate", listed under another sense, names both.
+ */
+function siblingTranslation(plan, pages) {
+  const attested = (sense) =>
+    sense.russian.some((c) => reverseMeaning(c.word, plan, pages));
+  const siblings = plan.senses
+    .filter((s) => !s.variant && !s.side)
+    .flatMap((s) => s.russian.slice(0, 1))
+    .map((candidate) => ({
+      candidate,
+      reverse: reverseMeaning(candidate.word, plan, pages),
+    }))
+    .filter((x) => x.reverse && !definitionUsage(x.reverse).rare);
+  return (sense) => {
+    if (!sense.russian.length || attested(sense)) {
+      return sense;
+    }
+    const gloss = glossWords(plain(sense.gloss || ''), plan.lemma);
+    const borrowed = siblings.find(
+      ({ candidate, reverse }) =>
+        !sense.russian.some((c) => c.word === candidate.word) &&
+        reverseHeadWords(reverse).some((w) => gloss.includes(w))
+    );
+    return borrowed
+      ? { ...sense, russian: [borrowed.candidate, ...sense.russian] }
+      : sense;
+  };
+}
+
 export function translationSenses(plan, pages) {
   if (!['noun', 'verb'].includes(plan.pos)) {
     return plan.senses;
   }
-  return plan.senses.flatMap((sense) => {
+  return plan.senses.map(siblingTranslation(plan, pages)).flatMap((sense) => {
     const seen = new Set();
     const alternatives = sense.russian.filter((candidate) => {
       if (seen.has(candidate.word)) {
