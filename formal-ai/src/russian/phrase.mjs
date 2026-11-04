@@ -254,10 +254,21 @@ export function renderEntity(e, kase, ctx) {
   }
   if (e.parenthetical && ctx.renderStatement) {
     const { parenthetical, ...rest } = e;
+    // "income (low, median, high)": adjectives agree with the head noun
+    const f = features(rest, ctx);
+    const agree = f.number === 'pl' ? { number: 'pl' } : { gender: f.gender };
+    const adjective = (st) => {
+      const ru = conceptOf(ctx, st.property.concept)?.ru;
+      return ru?.pos === 'adj'
+        ? declineAdjective(ru.lemma, { ...agree, case: 'nom' })
+        : `[${st.property.text || st.property.concept}]`;
+    };
     const inside = parenthetical
       .map((st) =>
         st.type === 'fragment'
-          ? renderEntity(st.entity, 'nom', { ...ctx, afterPrep: false })
+          ? st.property && !st.entity
+            ? adjective(st)
+            : renderEntity(st.entity, 'nom', { ...ctx, afterPrep: false })
           : ctx.renderStatement(st, { ...ctx, afterPrep: false })
       )
       .join(', ');

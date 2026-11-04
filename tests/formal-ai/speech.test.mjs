@@ -201,3 +201,11 @@ test('a heading wh-clause without inversion is an embedded question', () => {
   assert.equal(ru('What you need'), 'Что вам нужно');
   assert.equal(ru('What do you need?'), 'Что вам нужно?');
 });
+
+test('a list of adjectives stays adjectives and agrees with its noun', () => {
+  assert.equal(ru('cheap, good, expensive'), 'Дешёвый, хороший, дорогой');
+  assert.equal(
+    ru('A book (cheap, good, expensive)'),
+    'Книга (дешёвая, хорошая, дорогая)'
+  );
+});

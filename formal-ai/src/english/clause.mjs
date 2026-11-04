@@ -402,6 +402,20 @@ function parseClauses(tokens, ctx) {
   return result;
 }
 
+/** "low, median, high": every item of the list to its end is an adjective. */
+function adjectiveListAhead(c, k) {
+  const rest = c.tokens.slice(c.i + k);
+  const end = rest.findIndex((x) => [':', ';', '.', ')'].includes(x.text));
+  const list = end < 0 ? rest : rest.slice(0, end);
+  return (
+    list.length > 2 &&
+    list.every((x, i) =>
+      i % 2 ? x.text === ',' || has(x, 'coord') : has(x, 'adj')
+    ) &&
+    list.length % 2 === 1
+  );
+}
+
 /** Parse one clause at the cursor. */
 function parseClause(c, ctx, initial) {
   const t = c.peek;
@@ -412,7 +426,9 @@ function parseClause(c, ctx, initial) {
     !property.readings.some(
       (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
     ) &&
-    (!afterProperty || [':', ';'].includes(afterProperty.text))
+    (!afterProperty ||
+      [':', ';'].includes(afterProperty.text) ||
+      adjectiveListAhead(c, has(t, 'neg') ? 1 : 0))
   ) {
     const negative = has(t, 'neg');
     c.i += negative ? 2 : 1;
