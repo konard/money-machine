@@ -67,6 +67,21 @@ function compose(parts, lexicon, context) {
   const adjective = (i) => found[i]?.find((r) => r.pos === 'adj')?.ru;
   const last = parts.length - 1;
   const n = noun(0);
+  if (last === 1 && parts[0] === 'per' && noun(1)) {
+    return `за ${declineNoun(noun(1), 'acc')}`;
+  }
+  // A self-directed denominal modifier retains its nominal head.
+  if (last === 1 && parts[0] === 'self') {
+    const base = found[1]?.find(
+      (r) => r.pos === 'verb' && /pp|past/.test(r.features.form)
+    )?.lemma;
+    const head =
+      base &&
+      analyses(base, lexicon, context, parts).find((r) => r.pos === 'noun')?.ru;
+    if (head) {
+      return `с ${declineAdjective('собственный', { gender: head.gender, case: 'ins' })} ${declineNoun(head, 'ins')}`;
+    }
+  }
   if (parts.length === 2 && parts[0] === 'all' && parts[1] === 'in') {
     return 'со всем включённым';
   }
@@ -132,6 +147,47 @@ export function learnHyphenated(words, lexicon, topic = '') {
       continue;
     }
     const spaced = word.replaceAll('-', ' ');
+    const parts = word.split('-');
+    const people = parts.map((p) =>
+      analyses(p, lexicon, context, parts).find(
+        (r) => r.pos === 'noun' && r.ru.animate
+      )
+    );
+    if (
+      parts.length === 2 &&
+      people.every(Boolean) &&
+      !lexicon.lookup('noun', word).length
+    ) {
+      const lemma = people.map((r) => r.lemma).join('-');
+      const id = `compound:${lemma}:noun`;
+      if (!lexicon.get(id)) {
+        const forms = {};
+        for (const number of ['sg', 'pl']) {
+          for (const kase of ['nom', 'gen', 'dat', 'acc', 'ins', 'prep']) {
+            forms[`${number}.${kase}`] = people
+              .map((r) => declineNoun(r.ru, kase, number))
+              .join('-');
+          }
+        }
+        lexicon.add({
+          id,
+          en: [{ pos: 'noun', lemma, words: [lemma] }],
+          prior: 0.3,
+          classes: ['person'],
+          ru: {
+            ...people[1].ru,
+            lemma: people.map((r) => r.ru.lemma).join('-'),
+            forms,
+          },
+          source: 'compound',
+        });
+        resolved.push(id);
+      }
+      if (people[1].features?.number === 'pl') {
+        lexicon.addForm(word, { pos: 'noun', lemma, feature: 'plural' });
+      }
+      continue;
+    }
     const dictionary = ['adj', 'noun', 'adv']
       .flatMap((pos) => [word, spaced].flatMap((w) => lexicon.lookup(pos, w)))
       .map((id) => lexicon.get(id));
@@ -162,7 +218,7 @@ export function learnHyphenated(words, lexicon, topic = '') {
         ru: {
           pos: 'adj',
           lemma,
-          postpositive: /^(?:без|только для|с|со) /.test(lemma),
+          postpositive: /^(?:без|только для|с|со|за) /.test(lemma),
         },
         source: 'compound',
       });

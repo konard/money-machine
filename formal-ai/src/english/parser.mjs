@@ -22,8 +22,8 @@ import {
   startsNP,
   gerundReading,
   participleReading,
-  personLike,
 } from './token-readings.mjs';
+import { parseToInfinitive } from './infinitive.mjs';
 import { Cursor } from './cursor.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
 import { countAhead, parseQuantity, quantityDegree } from './quantity.mjs';
@@ -769,43 +769,7 @@ export function parseTail(c, frame, options = {}) {
         continue;
       }
     }
-    const toVerb =
-      t.lower === 'to' &&
-      has(c.at(1), 'verb') &&
-      reading(c.at(1), 'verb').features.form === 'base';
-    // "to wait", "to track sales": a word that is mostly a verb, or one
-    // followed by its own object, is an infinitive after a verb's object
-    // without an object the verb's senses must clearly outnumber the noun's
-    // ("try to join"), so "go to school" keeps its preposition
-    const [verbSenses, nounSenses] = ['verb', 'noun'].map(
-      (p) => toVerb && has(c.at(1), p) && reading(c.at(1), p).concepts.length
-    );
-    const mostlyVerb =
-      toVerb &&
-      has(c.at(1), 'noun') &&
-      (out.objects.length > 0
-        ? verbSenses >= nounSenses || startsNP(c.at(2))
-        : verbSenses > 2 * nounSenses);
-    if (
-      toVerb &&
-      (options.infinitive || !has(c.at(1), 'noun') || mostlyVerb) &&
-      !out.xcomp
-    ) {
-      c.next();
-      const v = c.next();
-      const r = reading(v, 'verb');
-      const sub = parseTail(c, 'event', {
-        ...options,
-        takes: options.takesOf?.(r) || [],
-        infinitive: options.infinitiveOf?.(r),
-      });
-      out.xcomp = { verb: head(v, r), ...sub };
-      // "build ratings to get offers": after a thing, "to" states a goal;
-      // after a person ("ask them to wait") it is what the person does
-      const object = out.objects[out.objects.length - 1];
-      if (object && !personLike(object, options.lexicon)) {
-        out.xcomp.purpose = true;
-      }
+    if (parseToInfinitive(c, frame, out, options, parseTail)) {
       continue;
     }
     // "ask about 3 options": a preposition the verb takes is no bound

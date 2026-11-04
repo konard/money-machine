@@ -38,7 +38,9 @@ export function noteStatement(c, ctx, tailOptions) {
       return passive;
     }
   }
-  return adjectiveStart(c) ? adjectivePredicate(c, ctx, tailOptions) : null;
+  return adjectiveStart(c, ctx)
+    ? adjectivePredicate(c, ctx, tailOptions)
+    : null;
 }
 
 /**
@@ -108,6 +110,26 @@ export function isImperativeStart(c) {
 
 /** "sponsorships need", "fee applies": a noun then a verb agreeing with it. */
 function agreeingSubjectAhead(c) {
+  // A modifier may precede a compound head: "Long development times mean".
+  if (has(c.peek, 'adj')) {
+    for (let k = 2; k < c.tokens.length; k += 1) {
+      const head = c.at(k - 1);
+      if (!has(head, 'noun')) {
+        break;
+      }
+      const plural = reading(head, 'noun').features?.number === 'pl';
+      if (
+        c
+          .at(k)
+          ?.readings.some(
+            (r) =>
+              r.pos === 'verb' && r.features?.form === (plural ? 'base' : '3sg')
+          )
+      ) {
+        return true;
+      }
+    }
+  }
   const noun = c.at(1);
   const verb = c.at(2);
   if (!has(noun, 'noun') || !verb || has(verb, 'det') || has(verb, 'prep')) {
@@ -172,7 +194,7 @@ function subjectlessStart(c) {
  * adjective (after degree adverbs) that modifies no noun is a predicate
  * whose subject is the thing described.
  */
-function adjectiveStart(c) {
+function adjectiveStart(c, ctx) {
   let k = 0;
   while (
     has(c.at(k), 'adv') &&
@@ -186,7 +208,8 @@ function adjectiveStart(c) {
     c.peek?.first &&
     has(a, 'adj') &&
     // "Free to join": a verb reading yields to "to" + infinitive
-    (after?.lower === 'to' ||
+    ((after?.lower === 'to' &&
+      ctx.infinitiveOf?.(reading(a, 'adj')) !== false) ||
       !a.readings.some(
         (r) => r.pos === 'verb' && r.features?.form === 'base'
       )) &&

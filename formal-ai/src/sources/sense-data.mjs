@@ -118,7 +118,10 @@ export function borrowGenus(senses) {
 }
 
 export function usagePenalty(sense) {
-  if (sense.rare) {
+  if (
+    sense.rare ||
+    /^(?:rare|obsolete|archaic|dated):/i.test(sense.gloss || '')
+  ) {
     return 1;
   }
   return 0;
@@ -205,7 +208,7 @@ export function senseClasses(sense) {
 }
 
 const STOP = new Set(
-  'the a an of to in on for and or by with from at as is are be that which who someone something one ones its it their used being made having into out up over than such any some other e g etc especially usually typically'.split(
+  'the a an of to in on for and or by with from at as is are be that which who someone something one ones its it their used being made having into out up over than such any some other e g etc especially usually typically not nor whether but if then this that these those they them was were has have had can may might will would should must all more most very also only'.split(
     ' '
   )
 );

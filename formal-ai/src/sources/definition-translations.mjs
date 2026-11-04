@@ -5,6 +5,10 @@ import { senseDomain } from './sense-data.mjs';
 import { completeVerbDefinitions } from './definition-verbs.mjs';
 import { completeRussianMeanings } from './russian-meanings.mjs';
 import { completeSynonymDefinitions } from './definition-synonyms.mjs';
+import { completeDerivations } from './productive-definitions.mjs';
+import { completeReverseVerbs } from './reverse-verbs.mjs';
+import { completeAdjunctDefinitions } from './definition-adjuncts.mjs';
+import { completeActionDefinitions } from './definition-actions.mjs';
 
 export async function completeDefinitions(
   plans,
@@ -17,6 +21,12 @@ export async function completeDefinitions(
   }
   await completeVerbDefinitions(plans, options);
   await completeSynonymDefinitions(plans, options);
+  await completeReverseVerbs(plans, options, context);
+  if (entries) {
+    await completeActionDefinitions(plans, entries, options, context);
+    await completeAdjunctDefinitions(plans, entries, options);
+    await completeDerivations(plans, entries, options, context);
+  }
   const missing = plans
     .filter((p) => p.pos === 'noun')
     .flatMap((p) =>

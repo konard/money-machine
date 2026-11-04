@@ -5,6 +5,7 @@
  */
 
 import { readings, tokenize } from './english/analyze.mjs';
+import { loadLexicon } from './lexicon.mjs';
 
 const CONTENT = new Set(['noun', 'verb', 'adj', 'adv', 'propn']);
 
@@ -47,4 +48,27 @@ export function compoundCandidates(text, lexicon) {
     out.add(`${a.lower} ${singular ? singular.lemma : b.lower}`);
   }
   return [...out].filter((t) => !lexicon.asked?.(t));
+}
+
+const PARTICLES = new Set(
+  'up out off down over back away about for in on into with through around along'.split(
+    ' '
+  )
+);
+/** "asks for" → "ask for": verb lemma + following particle, as page titles. */
+export function phrasalCandidates(text, lexicon = loadLexicon()) {
+  const tokens = tokenize(text.replace(/```[\s\S]*?```|`[^`]*`/g, ' '));
+  const out = new Set();
+  tokens.forEach((t, i) => {
+    const next = tokens[i + 1];
+    if (t.kind !== 'word' || !next || !PARTICLES.has(next.lower)) {
+      return;
+    }
+    for (const r of readings({ ...t, first: false }, lexicon)) {
+      if (r.pos === 'verb') {
+        out.add(`${r.lemma} ${next.lower}`);
+      }
+    }
+  });
+  return [...out];
 }

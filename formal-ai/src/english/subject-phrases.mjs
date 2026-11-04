@@ -82,12 +82,23 @@ export function verbAmbiguity(t) {
 export function earlierVerb(c, start, verbAt, reparse) {
   const end = c.i;
   const verb = c.tokens[verbAt];
-  // only a past form that may be a participle ("covers fixed cost") gives
-  // way; a present verb agreeing with its subject ("times mean") stands
+  // "says top tutors": an adjective before a noun; "times mean many
+  // writers" keeps its verb before a determiner
+  const after = c.tokens[verbAt + 1];
+  const modifier =
+    verb?.readings.some((r) => r.pos === 'adj') &&
+    verb.readings.some(
+      (r) => r.pos === 'verb' && r.features?.form === 'base'
+    ) &&
+    after?.readings.some((r) => r.pos === 'noun') &&
+    !after.readings.some((r) => ['det', 'pron'].includes(r.pos));
+  // A participle or uninflected adjective/verb may belong to the object
+  // of an earlier finite verb: "says top tutors", "covers fixed cost".
   if (
     !verb?.readings.some(
       (r) => r.pos === 'verb' && /past|pp/.test(r.features?.form || '')
-    )
+    ) &&
+    !modifier
   ) {
     return null;
   }
@@ -95,7 +106,10 @@ export function earlierVerb(c, start, verbAt, reparse) {
     const t = c.tokens[k];
     if (
       !t.readings.some(
-        (r) => r.pos === 'verb' && /3sg|past/.test(r.features?.form || '')
+        (r) =>
+          r.pos === 'verb' &&
+          /3sg|past/.test(r.features?.form || '') &&
+          (!modifier || r.features?.form === '3sg')
       ) ||
       verbAmbiguity(t) >= verbAmbiguity(verb)
     ) {

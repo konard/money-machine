@@ -33,7 +33,7 @@ function compactGovernment(text) {
   }
   return [
     ...text.matchAll(
-      /^={3,5}\s*Управление\s*={3,5}\s*\n[\s\S]*?(?=^=|$(?![\s\S]))|^=+[^\n]*|^#[^#*:][^\n]*|\{\{помета\|[^{}]+\}\}|\{\{пример\|[^\n]*/gm
+      /^={3,5}\s*Управление\s*={3,5}\s*\n[\s\S]*?(?=^=|$(?![\s\S]))|^=+[^\n]*|^#[^#*:][^\n]*|^\|en=[^\n]*|\{\{помета\|[^{}]+\}\}|\{\{пример\|[^\n]*/gm
     ),
   ]
     .map((m) => m[0])
@@ -315,7 +315,9 @@ export function compactResponse(bucket, value) {
                         content:
                           bucket === 'wiktionary-ru'
                             ? compactGovernment(content)
-                            : compactWikitext(content),
+                            : page.title?.startsWith('Appendix:')
+                              ? content
+                              : compactWikitext(content),
                       },
                     },
                   },

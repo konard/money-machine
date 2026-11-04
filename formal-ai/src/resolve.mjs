@@ -1,5 +1,9 @@
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
 
+import {
+  learnInfinitiveFrames,
+  hasComplementFrame,
+} from './sources/infinitive-frames.mjs';
 import { learnPrepositions } from './sources/prepositions.mjs';
 import { nameCandidates } from './name-candidates.mjs';
 import {
@@ -14,7 +18,8 @@ import { entityContext } from './sources/entity-context.mjs';
 import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
 import { readings, tokenize } from './english/analyze.mjs';
 import { completeForms, sameFormPasts } from './forms.mjs';
-import { compoundCandidates } from './compounds.mjs';
+import { compoundCandidates, phrasalCandidates } from './compounds.mjs';
+export { phrasalCandidates } from './compounds.mjs';
 import {
   phraseCandidates,
   publicEntries,
@@ -323,28 +328,6 @@ async function declineNames(hits, { lexicon, fetchImpl, cache }) {
   });
 }
 
-const PARTICLES = new Set(
-  'up out off down over back away about for in on into with through around along'.split(
-    ' '
-  )
-);
-/** "asks for" → "ask for": verb lemma + following particle, as page titles. */
-export function phrasalCandidates(text, lexicon = loadLexicon()) {
-  const tokens = tokenize(text.replace(/```[\s\S]*?```|`[^`]*`/g, ' '));
-  const out = new Set();
-  tokens.forEach((t, i) => {
-    const next = tokens[i + 1];
-    if (t.kind !== 'word' || !next || !PARTICLES.has(next.lower)) {
-      return;
-    }
-    for (const r of readings({ ...t, first: false }, lexicon)) {
-      if (r.pos === 'verb') {
-        out.add(`${r.lemma} ${next.lower}`);
-      }
-    }
-  });
-  return [...out];
-}
 /**
  * Resolve every unknown word of `text` into the lexicon.
  * @returns {Promise<{words: number, resolved: string[], missing: string[]}>}
@@ -511,8 +494,18 @@ export async function resolveText(
       ) {
         continue;
       }
-      // Inflections use the base's senses rather than a lexicalized homonym.
+      // Inflections use the base's senses rather than a lexicalized homonym
+      // — unless the homonym is a mass noun ("data" the information, not
+      // only the plural of "datum"): a plural is never uncountable
+      const mass =
+        !e.formOf.some((f) => FEATURE[f.kind]) &&
+        e.rawDefinitions?.some((d) =>
+          /\{\{(?:lb|lbl|label)\|en\|[^}]*\b(?:collective|uncountable)\b/.test(
+            d
+          )
+        );
       if (
+        !mass &&
         list.some(
           (x) =>
             x.pos === e.pos &&
@@ -539,13 +532,7 @@ export async function resolveText(
               !timeOnly.has(title) ||
               (e.pos === 'noun' && senseClasses(s).includes('time'))
           )
-          .filter(
-            (s) =>
-              !known ||
-              s.frames?.some((f) =>
-                ['object-to', 'to', 'that', 'question', 'about'].includes(f)
-              )
-          )
+          .filter((s) => !known || hasComplementFrame(s))
           .map((s) => ({ ...s, frameOnly: known }))
       );
       // "earn" the verb has senses of its own; "earn" as a spelling of
@@ -738,7 +725,7 @@ export async function resolveText(
     const r = rendered.get(`${pos}:${word}`);
     if (r) {
       const entry = russianEntry(pos, word, r.result, r.entry.headword);
-      if (entry.pos === 'noun' && candidate) {
+      if (entry?.pos === 'noun' && candidate) {
         // the translation's own marks: машина|f, деньги|f-p
         if (!r.result.gender && candidate.gender) {
           entry.gender = candidate.gender;
@@ -804,6 +791,13 @@ export async function resolveText(
       if (!ru) {
         return;
       }
+      if (s.passiveForms) {
+        Object.assign(ru, {
+          passive: true,
+          predicateShort: true,
+          shortForms: s.passiveForms,
+        });
+      }
       if (ru.pos === 'verb') {
         finishVerb(ru, sense);
         // a -ся verb takes no direct object: keep a transitive
@@ -862,13 +856,7 @@ export async function resolveText(
             ? 'degree'
             : null,
         takes: [],
-        // translation tables follow the definitions, which are ordered by
-        // history more than by frequency: a gentle preference only
-        // a variant's senses ("app" ← "appearance") are far less likely
-        // than the word's own ones
-        // and how widely each sense is translated says more about how
-        // common it is ("pen": the enclosure is listed first, the
-        // writing tool is translated into 129 languages, the enclosure 47)
+        // Prefer widely translated own senses over historical order and variants.
         prior:
           (s.variant || s.side ? (ownSenses ? 0.05 : 0.15) : 0.3) *
           (most
@@ -929,6 +917,7 @@ export async function resolveText(
       }
     }
   }
+  await learnInfinitiveFrames(entries, lexicon, options);
   lexicon.markAsked([...words, ...done]);
   if (!only) {
     await sameFormPasts(text, { lexicon, fetchImpl, cache });

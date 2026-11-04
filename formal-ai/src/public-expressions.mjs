@@ -84,6 +84,9 @@ export function publicEntries(page) {
       /^(={3,5})\s*(?:Proverb|Idiom|Saying|Particle)\s*\1\s*$/gm,
       '$1Phrase$1'
     )
+    // Large cardinal units behave as count nouns in Russian. Their
+    // dictionary translations carry noun gender and a noun paradigm.
+    .replace(/^(={3,5})Numeral\1\s*$/gm, '$1Noun$1')
     // Sentence punctuation belongs to the input sentence, not the lexeme.
     .replace(
       /(\{\{tt?\+?\|ru\|)([^{}]*)(\}\})/g,

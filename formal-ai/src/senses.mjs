@@ -683,7 +683,7 @@ function valencyFit(node, clause, concept, next) {
     owner.xcomp && !owner.xcomp.purpose
       ? hasObject
         ? 'object-to'
-        : 'to'
+        : 'to-infinitive'
       : owner.mods?.some((m) => m.prep === 'about') ||
           owner.objects?.some((o) => o.marker === 'about')
         ? 'about'
@@ -697,7 +697,7 @@ function valencyFit(node, clause, concept, next) {
   const compatible =
     observed &&
     (frames.includes(observed) ||
-      (observed === 'object-to' && frames.includes('to')));
+      (observed === 'object-to' && frames.includes('to-infinitive')));
   if (compatible) {
     return { score: 4, reason: `valency ${observed} (+4)` };
   }
@@ -722,7 +722,7 @@ function valencyFit(node, clause, concept, next) {
   if (
     observed &&
     frames.some((f) =>
-      ['object-to', 'to', 'question', 'that', 'about'].includes(f)
+      ['object-to', 'to-infinitive', 'question', 'that', 'about'].includes(f)
     )
   ) {
     return { score: -2, reason: `valency incompatible with ${observed} (-2)` };

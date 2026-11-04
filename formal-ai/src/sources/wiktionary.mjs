@@ -355,7 +355,7 @@ export function englishEntries(wikitext) {
         }))
       );
     }
-    see.push(...synonymReferences(text, senses));
+    see.push(...synonymReferences(text, senses, see.length ? [] : blocks));
     // an entry whose every sense is obsolete or rare ("earn" the eagle)
     // must not compete with the living word
     const rare =
@@ -418,6 +418,10 @@ const contentWords = (text) =>
  * the usage labels ("obsolete", "finance") the gloss leaves out.
  */
 export function matchingDefinition(gloss, definitions) {
+  // An explicit magnitude disambiguates large cardinals whose verbal
+  // definitions mention each other's units ("a thousand milliard").
+  const magnitude = /\b\d{1,3}(?:,\d{3}){2,}\b/.exec(gloss)?.[0];
+  const value = magnitude && Number(magnitude.replaceAll(',', ''));
   const want = contentWords(gloss);
   let best = null;
   let bestScore = 0;
@@ -425,6 +429,10 @@ export function matchingDefinition(gloss, definitions) {
   const head = (text) => [...contentWords(text)][0];
   const sameHead = (text) => head(text) === head(gloss);
   for (const raw of definitions) {
+    const exponent = /\b10<sup>(\d+)<\/sup>/.exec(raw.split('\n')[0])?.[1];
+    if (value && exponent && value !== 10 ** Number(exponent)) {
+      continue;
+    }
     const text = plain(raw.split('\n')[0]);
     const have = contentWords(text);
     const shared = [...want].filter((w) => have.has(w)).length;
@@ -485,13 +493,17 @@ export function matchingDefinition(gloss, definitions) {
 export function russianTemplates(wikitext) {
   const section = languageSection(wikitext, 'Russian');
   return posChunks(section).map(({ pos, text }) => ({
-    pos,
+    // Russian large cardinals have nominal declension, even when their
+    // heading and generic headword template call them numerals.
+    pos: pos === 'num' && /\{\{ru-noun-table\b/.test(text) ? 'noun' : pos,
     ...(pos === 'verb' && russianGovernment(text)
       ? { government: russianGovernment(text) }
       : {}),
     headword:
       templates(text, 'ru-(?:noun\\+?|proper noun\\+?|verb|adj|adv)')[0] ||
-      null,
+      (pos === 'num' && /\{\{ru-noun-table\b/.test(text)
+        ? templates(text, 'head').find((t) => t.positional[0] === 'ru')
+        : null),
     table:
       (text.match(
         /\{\{ru-(?:noun-table|decl-noun[^|]*|decl-adj|conj)\b(?:[^{}]|\{\{[^{}]*\}\})*\}\}/

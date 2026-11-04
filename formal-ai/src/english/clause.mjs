@@ -1,3 +1,4 @@
+import { infinitiveOf } from './infinitive.mjs';
 /**
  * Sentence → clauses in the meta language.
  *
@@ -122,23 +123,18 @@ setRelativeParser((c, np) => {
 /** Union of `en takes` prepositions across a verb reading's concepts. */
 function takesOf(lexicon) {
   return (r) => [
-    ...new Set(r.concepts.flatMap((id) => lexicon.get(id)?.takes || [])),
+    ...new Set(
+      r.concepts.flatMap((id) => {
+        const c = lexicon.get(id);
+        return [
+          ...(c?.takes || []),
+          ...(c?.prepositionalTo || c?.frames?.includes('prep:to')
+            ? ['prep:to']
+            : []),
+        ];
+      })
+    ),
   ];
-}
-
-/** Verbs that take a bare "to"-infinitive complement. */
-function infinitiveOf(lexicon) {
-  return (r) =>
-    r.concepts.some((id) => {
-      const cls = lexicon.get(id)?.classes || [];
-      return (
-        cls.includes('desire') ||
-        cls.includes('aspectual') ||
-        id === 'learn' ||
-        id === 'forget' ||
-        id === 'remember'
-      );
-    });
 }
 
 /** Match a whole fixed phrase ("thank you very much"). */

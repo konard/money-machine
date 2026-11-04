@@ -1,5 +1,7 @@
+import { DETERMINERS, POSSESSIVES } from '../english/function-words.mjs';
+
 /** Grammatical frames stated in dictionary labels, definitions and examples. */
-export function senseFrames(text = '') {
+export function senseFrames(text = '', headword) {
   const frames = new Set();
   const clean = text
     .replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1')
@@ -13,7 +15,7 @@ export function senseFrames(text = '') {
       '$1'
     );
     for (const marker of note.matchAll(
-      /\b(?:with|followed by)\s+["']?(in|on|at|to|from|for|with|by|about)\b/g
+      /\b(?:with|followed by)\s+["']?(in|on|at|to|from|for|with|by|about)\b(?![- ]infinitive)/g
     )) {
       frames.add(`prep:${marker[1]}`);
     }
@@ -27,28 +29,47 @@ export function senseFrames(text = '') {
   ) {
     frames.add('object-to');
   }
-  if (/to-infinitive|catenative|\bpermission\s*\(to\b/i.test(clean)) {
-    frames.add('to');
+  if (
+    /(?:to[- ]infinitive|followed by (?:an? )?infinitive|\(to do (?:something|anything)\))/i.test(
+      clean.split('\n')[0]
+    )
+  ) {
+    frames.add('to-infinitive');
   }
-  // The bold headword in a usage example precedes its complement.
-  for (const m of text.matchAll(/\{\{(?:ux|usex|co)\|en\|([^\n]+)/g)) {
-    const after = m[1]
-      .split(/'''[^']+'''/)
-      .at(-1)
-      .replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1');
-    if (/^\s+[^,.;|]{1,45}?\s+to\s+[a-z]+\b/i.test(after)) {
+  // Inspect every highlighted headword, including quotations and plain #: lines.
+  for (const m of text.matchAll(/'''[^'\n]+'''(?=([^\n]*))/g)) {
+    if (
+      typeof headword === 'string' &&
+      m[0].replace(/'/g, '').trim().toLowerCase() !== headword
+    ) {
+      continue;
+    }
+    const usage = /\{\{(?:ux|usex|co)\|en\|/.test(
+      text.slice(text.lastIndexOf('\n', m.index) + 1, m.index)
+    );
+    const after = m[1].replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1');
+    if (
+      usage &&
+      !/^\s+to\b/i.test(after) &&
+      /^\s+[^,.;|]{1,45}?\s+to\s+[a-z]+\b/i.test(after)
+    ) {
       frames.add('object-to');
     }
     if (/^\s+to\s+[a-z]+\b/i.test(after)) {
-      frames.add('to');
+      frames.add('to-example');
+      const target = /^\s+to\s+([a-z]+)/i.exec(after)[1].toLowerCase();
+      frames.add(`to-example:${target}`);
+      if (DETERMINERS[target] || POSSESSIVES[target]) {
+        frames.add('prep:to');
+      }
     }
-    if (/^\s+(?:whether|if|what|why|how|when|where)\b/i.test(after)) {
+    if (usage && /^\s+(?:whether|if|what|why|how|when|where)\b/i.test(after)) {
       frames.add('question');
     }
-    if (/^\s+(?:\w+\s+)?that\b/i.test(after)) {
+    if (usage && /^\s+(?:\w+\s+)?that\b/i.test(after)) {
       frames.add('that');
     }
-    if (/^\s+about\b/i.test(after)) {
+    if (usage && /^\s+about\b/i.test(after)) {
       frames.add('about');
     }
   }
