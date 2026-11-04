@@ -204,7 +204,13 @@ function property(a) {
 
 function modifier(m, lexicon) {
   const out = modifierCore(m, lexicon);
-  return m.fronted ? { ...out, position: 'front' } : out;
+  if (m.fronted) {
+    return { ...out, position: 'front' };
+  }
+  // "you then fill": an adverb before the English verb precedes the Russian one
+  return m.preverbal && out.kind === 'adverb'
+    ? { ...out, position: 'preverbal' }
+    : out;
 }
 
 function modifierCore(m, lexicon) {

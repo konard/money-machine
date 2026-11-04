@@ -543,3 +543,12 @@ concept twice
 concept unchanged
   en adv unchanged
   ru adv без+изменений
+
+concept then
+  en adv then
+  ru adv тогда
+
+concept then-former
+  gloss "existing at that time"
+  en adj then
+  ru adj тогдашний

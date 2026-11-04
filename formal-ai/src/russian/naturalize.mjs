@@ -493,7 +493,8 @@ export function renderModifiers(mods, ctx, entry) {
       if (ctx.motion && adv.direction) {
         word = adv.direction;
       }
-      (PREVERBAL.has(m.concept) ? before : after).push(word);
+      const preverbal = PREVERBAL.has(m.concept) || m.position === 'preverbal';
+      (preverbal ? before : after).push(word);
     } else if (m.kind === 'quantity') {
       after.push(quantityWord(m.comparison));
     } else if (m.kind === 'comparison') {
@@ -508,12 +509,11 @@ export function renderModifiers(mods, ctx, entry) {
         ['last', 'last.previous', 'next'].includes(p.concept)
       );
       const weekday = lexEntry(ctx, e.concept)?.classes.includes('weekday');
+      // next Friday → в следующую пятницу; next summer → следующим летом
       if (weekday && !e.determiner) {
-        // next Friday → в следующую пятницу
         const np = renderEntity(e, 'acc', ctx);
         after.push(`${euphony('в', np)} ${np}`);
       } else if (lastNext && head?.when && !e.determiner) {
-        // next summer → следующим летом
         after.push(renderEntity(e, 'ins', ctx));
       } else if (lastNext && head && !e.determiner) {
         const prep = head.at === 'на' ? 'на' : 'в';

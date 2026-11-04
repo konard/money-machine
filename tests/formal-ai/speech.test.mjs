@@ -213,3 +213,9 @@ test('a list of adjectives stays adjectives and agrees with its noun', () => {
 test('"never" before a request negates it', () => {
   assert.equal(ru('Never buy books.'), 'Никогда не покупайте книги.');
 });
+
+test('an adverb before the verb stays before it', () => {
+  assert.equal(ru('She then buys a book.'), 'Она тогда покупает книгу.');
+  assert.equal(ru('She quickly buys a book.'), 'Она быстро покупает книгу.');
+  assert.equal(ru('She buys a book quickly.'), 'Она покупает книгу быстро.');
+});

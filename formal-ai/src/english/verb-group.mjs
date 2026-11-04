@@ -35,20 +35,21 @@ function verbGroup(c, subject) {
     adverbs: [],
   };
   let expect = 'finite';
-  const skipAdverbs = () => {
+  const skipAdverbs = (preverbal = false) => {
     while (
       c.peek &&
       has(c.peek, 'adv') &&
       !quantityDegree(c.peek) &&
       !has(c.peek, 'verb') &&
-      !has(c.peek, 'adj') &&
+      // "You then fill": an adverb that may be an adjective, before a verb
+      (!has(c.peek, 'adj') || (has(c.at(1), 'verb') && !has(c.at(1), 'adj'))) &&
       !has(c.peek, 'noun') &&
       !(
         reading(c.peek, 'adv').concepts.some(isDegree) &&
         (has(c.at(1), 'adj') || has(c.at(1), 'adv'))
       )
     ) {
-      vg.adverbs.push(head(c.peek, reading(c.peek, 'adv')));
+      vg.adverbs.push({ ...head(c.peek, reading(c.peek, 'adv')), preverbal });
       c.next();
     }
     while (has(c.peek, 'neg')) {
@@ -66,7 +67,7 @@ function verbGroup(c, subject) {
       c.next();
     }
   };
-  skipAdverbs();
+  skipAdverbs(true);
   for (let guard = 0; guard < 6 && c.peek; guard += 1) {
     const t = c.peek;
     if (expect === 'finite' && has(t, 'modal')) {
