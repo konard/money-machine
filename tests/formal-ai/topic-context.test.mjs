@@ -270,3 +270,27 @@ test('only a paired quantity endpoint becomes до, without mutating the source 
     ['от $5', 'до $50']
   );
 });
+
+test('a word the whole field uses is no topic of one document', () => {
+  const { lexicon, commercial, liberty, node } = fixture();
+  const page = 'Payments arrive monthly. Payments need a bank.';
+  const memory = new DocumentMemory();
+  memory.setField(
+    [
+      page,
+      ...Array.from({ length: 20 }, (_, i) => `Page ${i} about tea.`),
+    ].join('\n')
+  );
+  memory.setTopic(page);
+  memory.profile = topicProfile(page, lexicon);
+  assert.ok(memory.distinctive('payments'));
+  assert.ok(documentTopicContext(node, commercial, lexicon, memory) > 0);
+  // the same page in a field where every page talks about payments
+  const common = new DocumentMemory();
+  common.setField(Array.from({ length: 20 }, () => page).join('\n'));
+  common.setTopic(page);
+  common.profile = memory.profile;
+  assert.equal(common.distinctive('payments'), false);
+  assert.equal(documentTopicContext(node, commercial, lexicon, common), 0);
+  assert.equal(documentTopicContext(node, liberty, lexicon, common), 0);
+});

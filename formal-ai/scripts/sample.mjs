@@ -2,7 +2,8 @@
 /**
  * Random samples of the website's own text for manual quality review.
  *
- *   node formal-ai/scripts/sample.mjs [sentence|paragraph|page] [count] [seed]
+ *   node formal-ai/scripts/sample.mjs [sentence|paragraph|page|top] [count] [seed]
+ *   (top: the most repeated sentence shapes, one instance each)
  *
  * Sources: every prose field of website/strategies.json and the markdown
  * under docs/ that the site pages are built from. The same seed gives the
@@ -125,6 +126,25 @@ function roundTripProblems(translated, lexicon, index) {
     });
 }
 
+/**
+ * The most repeated sentence shapes (code spans and numbers aside), one
+ * instance each: what a fix there changes on the most pages.
+ */
+export function frequent(units, count) {
+  const shape = (t) =>
+    t.replace(/`[^`]*`/g, '`X`').replace(/\d[\d.,/-]*/g, 'N');
+  const groups = new Map();
+  for (const u of units) {
+    const g = groups.get(shape(u.text)) || { unit: u, n: 0 };
+    g.n += 1;
+    groups.set(shape(u.text), g);
+  }
+  return [...groups.values()]
+    .sort((a, b) => b.n - a.n)
+    .slice(0, count)
+    .map((g) => g.unit);
+}
+
 /** Deterministic shuffle (mulberry32). */
 function sample(items, count, seed) {
   let a = seed >>> 0;
@@ -155,7 +175,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         ? all.flatMap(paragraphs)
         : all.flatMap(paragraphs).flatMap(sentences);
   let complete = 0;
-  const picked = sample(units, Number(count), Number(seed));
+  const picked =
+    unit === 'top'
+      ? frequent(units, Number(count))
+      : sample(units, Number(count), Number(seed));
   const lookup = await resolveText(picked.map((u) => u.text).join('\n\n'));
   console.log(
     `resolved ${lookup.resolved.length} senses from public sources; unknown: ${lookup.missing.join(', ') || 'none'}`

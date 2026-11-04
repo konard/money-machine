@@ -45,7 +45,9 @@ export function topicProfile(text, lexicon) {
 }
 
 /** Compare meanings, deduplicating Russian synonyms of the same definition. */
-export function documentTopicContext(node, concept, lexicon, profile) {
+export function documentTopicContext(node, concept, lexicon, memory) {
+  // a bare profile (no field to compare with) or the document memory
+  const profile = memory instanceof Map ? memory : memory?.profile;
   if (!profile?.size || node.uncounted) {
     return 0;
   }
@@ -65,7 +67,12 @@ export function documentTopicContext(node, concept, lexicon, profile) {
       cue !== own &&
       [...alternatives.values()].filter((d) => d.has(cue)).length <=
         alternatives.size / 2 &&
-      [...profile].some(([lemma, terms]) => lemma !== own && terms.has(cue))
+      [...profile].some(
+        ([lemma, terms]) =>
+          lemma !== own &&
+          terms.has(cue) &&
+          (memory?.distinctive?.(lemma) ?? true)
+      )
   );
   // A bounded vote: definitions cannot win simply by being long.
   return Math.min(
