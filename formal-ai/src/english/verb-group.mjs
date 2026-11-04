@@ -317,6 +317,11 @@ function verbGroup(c, subject, subjectNP) {
         }
       }
       const form = r.features.form;
+      // "withdrawals to nostro accounts are": a plural subject never takes
+      // the third-person singular, so "accounts" is no verb here
+      if (expect === 'finite' && form === '3sg' && subject === 'other') {
+        return null;
+      }
       if (expect === 'finite') {
         if (/past/.test(form)) {
           vg.tense = 'past';

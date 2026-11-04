@@ -4,14 +4,16 @@ import { parseFactList, unknownFactWords } from './fact-list.mjs';
 /**
  * Sentence → clauses in the meta language.
  *
- * Handles declaratives, yes/no and wh-questions (by undoing subject–aux
- * inversion), imperatives, existentials ("there is"), possession ("have"),
- * copular clauses, infinitival complements ("want to read") and clause
- * linking by coordinators and subordinators.
+ * Declaratives, questions, imperatives, existentials, possession, copulas,
+ * infinitival complements and clause linking.
  */
 
 import { clause } from './clause-node.mjs';
-import { earlierVerb, subjectPhrases } from './subject-phrases.mjs';
+import {
+  attachPhrases,
+  earlierVerb,
+  subjectPhrases,
+} from './subject-phrases.mjs';
 import { headlineCopula, adjectiveListAhead } from './headline-copula.mjs';
 import { reducedPassive } from './reduced-passive.mjs';
 import { leadingPhraseAhead, parseLeading } from './leading.mjs';
@@ -600,23 +602,23 @@ function parseDeclarative(c, ctx) {
     ? subject.pronoun.person === 3 && subject.number === 'sg'
     : subject.number !== 'pl' && !subject.coord;
   const afterSubject = c.i;
-  let vg = parseVerbGroup(c, third ? 'third' : null, subject);
+  let vg = parseVerbGroup(c, third ? 'third' : 'other', subject);
   // "Marketplaces like Etsy charge fees": a preposition before a verb
   if (vg && has(c.tokens[afterSubject], 'prep') && !subject.pronoun) {
     const verbEnd = c.i;
     c.i = afterSubject;
-    const phrases = subjectPhrases(c, third ? 'third' : null);
+    const phrases = subjectPhrases(c, third ? 'third' : 'other');
     if (phrases) {
-      subject.pps = phrases.pps;
+      attachPhrases(subject, phrases.pps);
       vg = phrases.vg;
     } else {
       c.i = verbEnd;
     }
   }
   if (!vg && has(c.peek, 'prep')) {
-    const phrases = subjectPhrases(c, third ? 'third' : null);
+    const phrases = subjectPhrases(c, third ? 'third' : 'other');
     if (phrases) {
-      subject.pps = phrases.pps;
+      attachPhrases(subject, phrases.pps);
       vg = phrases.vg;
     }
   }
@@ -751,7 +753,7 @@ function ellipsis(c, ctx, previous) {
   if (!vg && has(c.peek, 'prep')) {
     const phrases = subjectPhrases(c, agree);
     if (phrases) {
-      subject.pps = phrases.pps;
+      attachPhrases(subject, phrases.pps);
       vg = phrases.vg;
     }
   }

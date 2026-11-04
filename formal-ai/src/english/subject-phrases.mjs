@@ -123,3 +123,8 @@ export function earlierVerb(c, start, verbAt, reparse) {
   c.i = end;
   return null;
 }
+
+/** "Payoneer and Wise withdrawals to local accounts": the nearest conjunct. */
+export function attachPhrases(subject, pps) {
+  (subject.coord ? subject.items.at(-1) : subject).pps = pps;
+}
