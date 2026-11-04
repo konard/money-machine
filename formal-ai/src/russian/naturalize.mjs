@@ -374,8 +374,7 @@ function lasting(s) {
 
 /** Conjugate the predicate verb (handles future of imperfectives). */
 function finiteVerb(variant, s, f, _ctx) {
-  // "I have sent" is a completed action: Russian says it in the past;
-  // "we have lived here for ten years" still lasts: живём
+  // "I have sent" is done: past; "have lived here for ten years": живём
   const tense =
     s.tense === 'future'
       ? 'future'
@@ -639,7 +638,9 @@ function renderEvent(s, ctx) {
       ...(s.complementClause
         ? infinitiveClause(s.complementClause, s, ctx)
         : [
-            renderEntity(objects[0], 'nom', { ...ctx, isSubject: true }),
+            objects[0].question && !objects[0].concept
+              ? ''
+              : renderEntity(objects[0], 'nom', { ...ctx, isSubject: true }),
             ...renderObjects(objects.slice(1), entry, ctx),
           ])
     );
@@ -927,7 +928,7 @@ function questionWord(s, ctx, entry) {
       entry?.government || { preposition: null, case: 'acc' },
       ctx
     );
-    if (entry?.experiencer) {
+    if (entry?.experiencer || (entry?.datPredicate && !s.modality)) {
       return PRONOUN_WORDS[q][0];
     }
     const kase = gov.case;

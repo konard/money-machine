@@ -188,3 +188,16 @@ test('an adjective with an infinitive is a predicative adverb', () => {
   // the lifeless subject is what the infinitive acts on
   assert.equal(ru('The book is easy to read.'), 'Книгу легко читать.');
 });
+
+test('a heading word without an object names rather than orders', () => {
+  assert.equal(ru('Book'), 'Книга');
+  assert.equal(ru('Work in the morning'), 'Работа утром');
+  assert.equal(ru('Work in the morning.'), 'Работайте утром.');
+  assert.equal(ru('Book a table'), 'Забронируйте стол');
+});
+
+test('a heading wh-clause without inversion is an embedded question', () => {
+  assert.equal(ru('How it works'), 'Как оно работает');
+  assert.equal(ru('What you need'), 'Что вам нужно');
+  assert.equal(ru('What do you need?'), 'Что вам нужно?');
+});

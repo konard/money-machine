@@ -236,7 +236,16 @@ export function parseSentence(sentence, lexicon) {
         )) ||
       (!punctuation &&
         fragments.leftover.length === clauses.leftover.length &&
-        fragments.list.some((x) => x.np?.participles))
+        fragments.list.some((x) => x.np?.participles)) ||
+      // a heading "Value" or "Time to first dollar" names, it does not order
+      (!punctuation &&
+        fragments.leftover.length <= clauses.leftover.length &&
+        clauses.list.length === 1 &&
+        clauses.list[0].mood === 'imperative' &&
+        !clauses.list[0].objects.length &&
+        !clauses.list[0].complement &&
+        !clauses.list[0].xcomp &&
+        has(tokens[clauses.list[0].verb?.token], 'noun'))
     ) {
       Object.assign(clauses, fragments);
     }
@@ -872,7 +881,13 @@ function parseWhQuestion(c, ctx) {
     token: t.index,
     text: t.text,
   };
-  if (ctx.embedded) {
+  // "How it works": a heading without inversion is an embedded question
+  const heading =
+    !ctx.question &&
+    r.features.role !== 'determiner' &&
+    startsNP(c.peek) &&
+    !AUX.some((p) => has(c.peek, p));
+  if (ctx.embedded || heading) {
     const embedded = parseDeclarative(c, { ...ctx, question: false });
     if (!embedded || embedded.type !== 'clause') {
       return null;
