@@ -27,6 +27,8 @@ export function startsNP(token) {
       'adj',
       'indef',
     ].some((p) => has(token, p)) ||
+    // "the 5th and 20th": a numeric ordinal names a day
+    token?.kind === 'ordinal' ||
     Boolean(gerundReading(token) || participleReading(token))
   );
 }

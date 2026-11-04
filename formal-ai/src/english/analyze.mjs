@@ -110,6 +110,21 @@ export function tokenize(sentence) {
       (measure[4].match(WORD) || []).forEach((p) => push(p, 'punct'));
       continue;
     }
+    // "5th", "21st": a numeric ordinal is one token
+    const ordinal = /^([^\p{L}\d]*)(\d+)(st|nd|rd|th)([^\p{L}\d-]*)$/iu.exec(
+      raw
+    );
+    if (ordinal) {
+      (ordinal[1].match(WORD) || []).forEach((p) => push(p, 'punct'));
+      out.push({
+        text: ordinal[2] + ordinal[3],
+        lower: (ordinal[2] + ordinal[3]).toLowerCase(),
+        kind: 'ordinal',
+        value: Number(ordinal[2]),
+      });
+      (ordinal[4].match(WORD) || []).forEach((p) => push(p, 'punct'));
+      continue;
+    }
     // "2026-11-03" (ISO 8601) is the date "3 November 2026"
     const dated = /^([^\p{L}\d-]*)(\d{4}-\d{2}-\d{2})([^\p{L}\d-]*)$/u.exec(
       raw

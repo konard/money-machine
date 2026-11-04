@@ -7,6 +7,7 @@
 import { degreeForm, quantityWord } from './degree.mjs';
 import { bindRelative } from './relative.mjs';
 import { shortFrom } from './copula.mjs';
+import { calendarRelation, renderCalendar } from './calendar.mjs';
 import {
   declineNoun,
   declineAdjective,
@@ -30,38 +31,11 @@ import {
   NEAR,
 } from './words.mjs';
 
+import { localizeQuantity } from './quantity-notation.mjs';
+
 const CASE_INDEX = Object.fromEntries(CASES.map((c, i) => [c, i]));
 const GENDER = { masculine: 'm', feminine: 'f', neuter: 'n' };
 const TIME_CLASSES = new Set(['time', 'season']);
-
-const SCALE = {
-  k: 'тыс.',
-  K: 'тыс.',
-  m: 'млн',
-  M: 'млн',
-  b: 'млрд',
-  B: 'млрд',
-};
-
-/**
- * Russian notation of a quantity: "$1k–$20k" → "$1 тыс.–$20 тыс.",
- * "2,000.5" → "2 000,5", "~$50" → "≈$50".
- */
-export function localizeQuantity(text) {
-  return text
-    .replace(/^~/, '≈')
-    .replace(/([\dkKmMbB%])-(?=[\p{Sc}~]?\d)/gu, '$1–')
-    .replace(/\d+(?:,\d{2,3})+(?:\.\d+)?|\d+\.\d+/g, (n) =>
-      n
-        .replace(/,/g, '')
-        .split('.')
-        .map((part, i) =>
-          i ? part : part.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')
-        )
-        .join(',')
-    )
-    .replace(/(\d)([kKmMbB])(?![a-z])/g, (_, d, s) => `${d}\u00a0${SCALE[s]}`);
-}
 
 /** Grammatical features of an entity for agreement. */
 export function features(e, ctx) {
@@ -227,12 +201,13 @@ export function renderEntity(e, kase, ctx) {
   if (!e) {
     return '';
   }
+  // "yours" → ваш/ваши: the possessive agrees with what it stands for
+  if (e.pronoun?.independent) {
+    const agree = ctx.agree || { number: 'sg', gender: 'm' };
+    return possessiveWord(e, null, { ...agree, case: kase }, ctx);
+  }
   if (e.calendar) {
-    const { calendar, ...month } = e;
-    const word = renderEntity(month, calendar.day ? 'gen' : kase, ctx);
-    return [calendar.day, word, calendar.year && `${calendar.year} г.`]
-      .filter(Boolean)
-      .join(' ');
+    return renderCalendar(e, kase, ctx, renderEntity);
   }
   if (e.floatingQuantifier) {
     const { floatingQuantifier, ...rest } = e;
@@ -822,6 +797,10 @@ export function renderRelation(m, ctx) {
     const { bound: _bound, ...rest } = e;
     return `${near} ${renderRelation({ ...m, entity: rest }, ctx)}`;
   }
+  const offset = m.offset && RELATIONS[m.relation]?.offset;
+  if (offset) {
+    return `${offset[0]} ${renderEntity(e, offset[1], { ...ctx, afterPrep: true })}`;
+  }
   if (m.measure) {
     return `на ${renderEntity(e, 'acc', { ...ctx, afterPrep: true })}`;
   }
@@ -850,8 +829,9 @@ export function renderRelation(m, ctx) {
     const text = ctx.renderAction(e, 'nom', { ...ctx, afterPrep: false });
     return `, прежде чем ${text}`;
   }
-  if (e?.calendar?.day && ['rel.in', 'rel.on', 'rel.at'].includes(rel)) {
-    return renderEntity(e, 'gen', ctx);
+  const dated = calendarRelation(e, rel, ctx, renderEntity);
+  if (dated) {
+    return dated;
   }
   // at home / to home
   if (

@@ -68,6 +68,9 @@ function entity(np, lexicon) {
     if (p.case === 'refl') {
       e.pronoun.reflexive = true;
     }
+    if (p.case === 'poss') {
+      e.pronoun.independent = true;
+    }
     if (np.implicit) {
       e.implicit = true;
     }
@@ -269,6 +272,9 @@ function modifierCore(m, lexicon) {
   }
   if (m.postposition) {
     out.postposition = true;
+  }
+  if (m.offset) {
+    out.offset = true;
   }
   if (m.np) {
     out.entity = entity(m.np, lexicon);

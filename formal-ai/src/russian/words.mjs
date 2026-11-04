@@ -268,8 +268,9 @@ export const RELATIONS = {
   'rel.behind': { place: ['за', 'ins'], goal: ['за', 'acc'] },
   'rel.in-front-of': { place: ['перед', 'ins'] },
   'rel.between': { place: ['между', 'ins'] },
-  'rel.after': { place: ['после', 'gen'] },
-  'rel.before': { place: ['до', 'gen'] },
+  // "2 days after" → через 2 дня после; "2 days before" → за 2 дня до
+  'rel.after': { place: ['после', 'gen'], offset: ['через', 'acc'] },
+  'rel.before': { place: ['до', 'gen'], offset: ['за', 'acc'] },
   'rel.during': { place: ['во время', 'gen'] },
   'rel.through': { place: ['через', 'acc'] },
   'rel.across': { place: ['через', 'acc'] },

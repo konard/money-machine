@@ -17,7 +17,63 @@ export function calendarAhead(c, offset = 0) {
   return Boolean(parseCalendarProbe(c, offset));
 }
 
-export function parseCalendar(c, lexicon) {
+/**
+ * "the 5th", "the 15th of each month", "the 1st of March": a numeric
+ * ordinal standing alone names a day of the month.
+ */
+function parseOrdinalDay(c, lexicon, parseNP) {
+  const k = c.peek?.lower === 'the' ? 1 : 0;
+  const o = c.at(k);
+  const next = c.at(k + 1);
+  if (
+    o?.kind !== 'ordinal' ||
+    o.value < 1 ||
+    o.value > 31 ||
+    // "the 1st payment": an ordinal modifying a noun
+    (next?.readings || []).some((r) => r.pos === 'noun')
+  ) {
+    return null;
+  }
+  c.i += k + 1;
+  const np = {
+    type: 'np',
+    head: null,
+    number: 'sg',
+    adjs: [],
+    def: 'def',
+    calendar: { day: String(o.value), ordinal: true },
+  };
+  if (c.peek?.lower === 'of') {
+    const month = monthReading(c.at(1), lexicon);
+    if (month) {
+      const token = c.at(1);
+      const year = /^\d{4}$/.test(c.at(2)?.text || '') ? c.at(2).text : null;
+      c.i += year ? 3 : 2;
+      return {
+        ...np,
+        // "the 15th of March" is the date "15 March"
+        def: null,
+        head: head(token, month),
+        calendar: { day: np.calendar.day, year },
+      };
+    }
+    const save = c.i;
+    c.i += 1;
+    const of = parseNP?.(c);
+    if (of) {
+      np.of = of;
+    } else {
+      c.i = save;
+    }
+  }
+  return np;
+}
+
+export function parseCalendar(c, lexicon, parseNP) {
+  const ordinal = parseOrdinalDay(c, lexicon, parseNP);
+  if (ordinal) {
+    return ordinal;
+  }
   const day =
     /^\d{1,2}$/.test(c.peek?.text || '') &&
     Number(c.peek.text) >= 1 &&

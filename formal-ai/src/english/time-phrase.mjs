@@ -26,3 +26,39 @@ export function isTimeNP(np) {
     timeNoun(np.head.lemma, np.head.candidates)
   );
 }
+
+/**
+ * "30 days after the sale", "2 weeks before launch": a counted time span
+ * before after/before measures the distance from what follows.
+ */
+export function offsetModifier(c, np) {
+  const relation = reading(c.peek, 'prep')?.concepts?.[0];
+  return ['rel.after', 'rel.before'].includes(relation) &&
+    np?.head &&
+    (np.quantity !== undefined || np.quantityText) &&
+    timeNoun(np.head.lemma, np.head.candidates)
+    ? { type: 'pp', relation, offset: true, np }
+    : null;
+}
+
+/** "is paid 20 days after sale": a counted time span and after/before ahead. */
+export function offsetAhead(c, from) {
+  for (let k = from; k < from + 4 && c.at(k + 1); k += 1) {
+    const t = c.at(k);
+    const r = reading(t, 'noun');
+    if (t.kind === 'punct') {
+      return false;
+    }
+    if (
+      r &&
+      timeNoun(r.lemma, r.concepts) &&
+      c.at(k - 1)?.kind === 'number' &&
+      ['rel.after', 'rel.before'].includes(
+        reading(c.at(k + 1), 'prep')?.concepts?.[0]
+      )
+    ) {
+      return true;
+    }
+  }
+  return false;
+}

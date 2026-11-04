@@ -198,5 +198,45 @@
   {
     "text": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
     "source": "website/strategies.json"
+  },
+  {
+    "text": "Gengo pays on the 5th and 20th.",
+    "source": "docs"
+  },
+  {
+    "text": "Payouts arrive on the 15th of each month.",
+    "source": "docs"
+  },
+  {
+    "text": "It processes at the start of each month and lands by the 15th.",
+    "source": "docs"
+  },
+  {
+    "text": "Sales are paid 20 days after sale.",
+    "source": "docs"
+  },
+  {
+    "text": "Vinted pays about 2 days after delivery.",
+    "source": "docs"
+  },
+  {
+    "text": "A fixed bonus is credited to the new account 30-120 days after the requirements are met.",
+    "source": "docs"
+  },
+  {
+    "text": "Submit it 2 weeks before launch.",
+    "source": "docs"
+  },
+  {
+    "text": "The choice is yours.",
+    "source": "docs"
+  },
+  {
+    "text": "The decision was ours.",
+    "source": "docs"
+  },
+  {
+    "text": "AI helps prepare briefings and research, the answers are yours.",
+    "source": "docs"
   }
 ]

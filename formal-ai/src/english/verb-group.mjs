@@ -1,5 +1,6 @@
 import { eventiveParticiple } from './participle-evidence.mjs';
 import { calendarAhead } from './calendar.mjs';
+import { offsetAhead } from './time-phrase.mjs';
 /** English auxiliary chains and finite verb groups. */
 import { quantityDegree } from './quantity.mjs';
 import { has, reading, startsNP, head } from './parser.mjs';
@@ -282,6 +283,7 @@ function verbGroup(c, subject, subjectNP) {
           !has(after, 'adj') ||
           agent ||
           dated ||
+          offsetAhead(c, 1) ||
           repeated ||
           valued ||
           eventiveParticiple(c, participle, subjectNP))

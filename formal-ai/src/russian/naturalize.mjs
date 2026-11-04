@@ -1,4 +1,5 @@
 import { HABIT, habitualAdverb, chooseAspect, lasting } from './aspect.mjs';
+import { isCalendarDay } from './calendar.mjs';
 import { shortParticiple, passiveFallbackTense } from './passive.mjs';
 export { shortParticiple } from './passive.mjs';
 import { modalWord } from './modal.mjs';
@@ -418,6 +419,7 @@ export function renderModifiers(mods, ctx, entry) {
       if (
         entry?.markerGovernment?.[marker] &&
         !lexEntry(ctx, m.entity?.concept)?.classes?.includes('time') &&
+        !isCalendarDay(m.entity) &&
         // "assumes about $20": an amount keeps the relation's own word
         !/^~?\p{Sc}?\d/u.test(m.entity?.name || '')
       ) {

@@ -20,6 +20,12 @@ const number = (n) =>
   ({ sg: 'singular', pl: 'plural', 'sg|pl': 'singular plural' })[n];
 const gender = (g) => ({ m: 'masculine', f: 'feminine', n: 'neuter' })[g];
 
+/** 1 → 1st, 12 → 12th, 22 → 22nd. */
+function ordinal(n) {
+  const teen = Math.floor(n / 10) % 10 === 1;
+  return `${n}${(!teen && { 1: 'st', 2: 'nd', 3: 'rd' }[n % 10]) || 'th'}`;
+}
+
 export class EnglishRenderer {
   constructor(lexicon) {
     this.lexicon = lexicon;
@@ -106,8 +112,10 @@ export class EnglishRenderer {
         (role === 'possessive' ||
           (p.reflexive
             ? v.case === 'refl'
-            : v.case === 'any' ||
-              v.case === (role === 'subject' ? 'nom' : 'obj')))
+            : p.independent
+              ? v.case === 'poss'
+              : v.case === 'any' ||
+                v.case === (role === 'subject' ? 'nom' : 'obj')))
     );
     return text === 'i' ? 'I' : text || '';
   }
@@ -194,6 +202,10 @@ export class EnglishRenderer {
       this.word(e.concept, 'noun', e.number === 'plural' ? 'plural' : 'base');
     if (e.alternative) {
       head += `/${e.alternative.name || this.word(e.alternative.concept)}`;
+    }
+    // "the 15th": a day of the month, named by its ordinal
+    if (e.calendar?.ordinal) {
+      head = ordinal(e.calendar.day);
     }
     if (e.question && !head) {
       return this.word(e.question);
@@ -303,7 +315,7 @@ export class EnglishRenderer {
     if (e.label) {
       text = join(text, e.label);
     }
-    if (e.calendar) {
+    if (e.calendar && !e.calendar.ordinal) {
       text = join(e.calendar.day, text, e.calendar.year);
     }
     if (e.parenthetical) {
@@ -337,6 +349,10 @@ export class EnglishRenderer {
             }[m.comparison],
         m.entity && join(m.equal ? 'as' : 'than', this.entity(m.entity))
       );
+    }
+    if (m.offset) {
+      // "2 days" before the after/before that follows it
+      return this.entity(m.entity);
     }
     return join(
       this.relation(m.relation),

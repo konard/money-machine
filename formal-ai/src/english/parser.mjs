@@ -41,7 +41,7 @@ import {
   quantityDegree,
 } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
-import { isTimeNP, timeAhead } from './time-phrase.mjs';
+import { isTimeNP, offsetModifier, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
 import {
   coordinatedAdjectives,
@@ -71,9 +71,13 @@ export function parseNP(c, options = {}) {
     return attributed;
   }
   const calendar =
-    parseCalendar(c, options.lexicon) || parseCurrency(c, options.lexicon);
+    parseCalendar(c, options.lexicon, parseNP) ||
+    parseCurrency(c, options.lexicon);
   if (calendar) {
-    return calendar;
+    // "the 5th and 20th": days of a month may be joined
+    return calendar.calendar?.ordinal
+      ? attachOf(c, calendar, options)
+      : calendar;
   }
   if (!options.quantityInner) {
     const quantity = parseQuantity(c, options, parseNP);
@@ -838,7 +842,9 @@ export function parseTail(c, frame, options = {}) {
       !takes.includes(c.peek?.lower) &&
       parseQuantity(c, { ...options, measureOnly: true }, parseNP);
     if (bounded) {
-      if (frame === 'copula' && !out.complement) {
+      if (offsetModifier(c, bounded)) {
+        out.mods.push(offsetModifier(c, bounded));
+      } else if (frame === 'copula' && !out.complement) {
         out.complement = { type: 'np', np: bounded };
       } else {
         out.objects.push(bounded);
@@ -966,6 +972,8 @@ export function parseTail(c, frame, options = {}) {
           postposition: true,
           np,
         });
+      } else if (offsetModifier(c, np)) {
+        out.mods.push(offsetModifier(c, np));
       } else if (frame === 'copula' && !out.complement) {
         out.complement = { type: 'np', np };
       } else if (isTimeNP(np)) {

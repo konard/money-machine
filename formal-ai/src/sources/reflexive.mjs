@@ -131,13 +131,16 @@ export async function reflexivePages(words, ruPages, government, options) {
     candidates.map((w) => `${w}ся`),
     options
   );
-  reverse.forEach((page, word) => {
-    const base = word.slice(0, -2);
-    if (reflexiveOf(base, page)) {
+  // in candidate order: the pages arrive in network order, and the later
+  // batches must not depend on it (a recording replays the same requests)
+  for (const base of candidates) {
+    const word = `${base}ся`;
+    const page = reverse.get(word);
+    if (page !== undefined && reflexiveOf(base, page)) {
       links.set(base, word);
       government.set(word, page);
     }
-  });
+  }
   const pages = await fetchPages(
     [...new Set(links.values())].filter((word) => !ruPages.has(word)),
     options

@@ -154,12 +154,19 @@ export function renderCopula(s, ctx) {
     }
   } else if (c.kind === 'entity') {
     const nominalSubject =
-      subj && !subj.pronoun && !subj.demonstrative && !subj.question;
+      subj &&
+      !subj.pronoun &&
+      !subj.demonstrative &&
+      !subj.question &&
+      !c.entity?.pronoun?.independent;
     if (!be && !negative && nominalSubject && !s.question && !embedded) {
       words.push('—');
     }
     words.push(
-      renderEntity(c.entity, be && !presentational ? 'ins' : 'nom', ctx)
+      renderEntity(c.entity, be && !presentational ? 'ins' : 'nom', {
+        ...ctx,
+        agree: f,
+      })
     );
   } else if (c.kind === 'relation') {
     words.push(renderRelation(c, ctx));

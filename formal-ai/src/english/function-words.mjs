@@ -24,6 +24,12 @@ export const PRONOUNS = {
   itself: { person: 3, number: 'sg', gender: 'n', case: 'refl' },
   ourselves: { person: 1, number: 'pl', case: 'refl' },
   themselves: { person: 3, number: 'pl', case: 'refl' },
+  // "the answers are yours": a possessive standing for its noun
+  mine: { person: 1, number: 'sg', case: 'poss' },
+  yours: { person: 2, number: 'sg|pl', case: 'poss' },
+  hers: { person: 3, number: 'sg', gender: 'f', case: 'poss' },
+  ours: { person: 1, number: 'pl', case: 'poss' },
+  theirs: { person: 3, number: 'pl', case: 'poss' },
 };
 
 /** Indefinite pronouns that head a noun phrase on their own. */
