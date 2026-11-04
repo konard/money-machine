@@ -223,7 +223,8 @@ function verbGroup(c, subject) {
       }
       if (
         has(after, 'verb') &&
-        reading(after, 'verb').features.form === 'ing'
+        reading(after, 'verb').features.form === 'ing' &&
+        !intransitiveAttribute(c)
       ) {
         vg.aspect =
           vg.aspect === 'perfect' ? 'perfect-progressive' : 'progressive';
@@ -337,4 +338,23 @@ function nextNonAdverb(c, k) {
     j += 1;
   }
   return c.at(j);
+}
+
+/**
+ * "is recurring income": an -ing word that is also an adjective, before a
+ * bare noun, is that noun's attribute when its verb takes no object.
+ */
+export function intransitiveAttribute(c) {
+  const [t, next] = [c.peek, c.at(1)];
+  const lexicon = c.grammar?.lexicon;
+  if (!lexicon || !has(t, 'adj') || !has(next, 'noun') || has(next, 'det')) {
+    return false;
+  }
+  const frames = reading(t, 'verb').concepts.map(
+    (id) => lexicon.get(id)?.frames || []
+  );
+  return (
+    frames.some((f) => f.includes('intransitive')) &&
+    !frames.some((f) => f.includes('transitive'))
+  );
 }

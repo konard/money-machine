@@ -82,6 +82,10 @@ function entity(np, lexicon) {
   }
   if (np.head) {
     e.concept = np.head.concept || np.head.candidates?.[0] || null;
+    if (!e.concept) {
+      // an unknown word stays as written
+      e.untranslated = np.head.text;
+    }
     if (np.head.ambiguous) {
       e.ambiguous = np.head.candidates;
     }

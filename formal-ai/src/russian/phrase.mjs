@@ -345,7 +345,7 @@ export function renderEntity(e, kase, ctx) {
     if (e.numeral) {
       return cardinal(e.quantity, kase, ctx.numeralGender || 'm', e.digits);
     }
-    const label = e.concept || '?';
+    const label = e.concept || e.untranslated || '?';
     ctx.notes.add(`no Russian noun for concept ${label}`);
     return `[${label}]`;
   }

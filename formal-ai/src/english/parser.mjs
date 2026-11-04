@@ -34,6 +34,7 @@ import { attachIngRelative } from './ing-relative.mjs';
 import { attachParticiple } from './participle-relative.mjs';
 import { clauseAhead, commaList, parallelVerb } from './lists.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
+import { intransitiveAttribute } from './verb-group.mjs';
 
 /**
  * Parse a noun phrase starting at the cursor.
@@ -53,7 +54,12 @@ export function parseNP(c, options = {}) {
   if (!t) {
     return null;
   }
-  if (gerundReading(t) && !options.nominal && !contactRelativeAhead(c)) {
+  if (
+    gerundReading(t) &&
+    !options.nominal &&
+    !contactRelativeAhead(c) &&
+    !intransitiveAttribute(c)
+  ) {
     const r = gerundReading(c.next());
     const tail = parseTail(c, 'event', {
       ...options,

@@ -176,3 +176,8 @@ test('a noun before a clause with its own subject takes a relative', () => {
     /на расходе, который вы сделали бы/
   );
 });
+
+test('an -ing word after "be" is a progressive, not a compound noun', () => {
+  assert.match(ru('She is writing tables.'), /^Она пишет /);
+  assert.equal(ru('The writing tables are old.'), 'Конторки старые.');
+});

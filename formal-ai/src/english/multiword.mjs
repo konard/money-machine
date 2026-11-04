@@ -108,8 +108,14 @@ export function mergeMultiwords(tokens, lexicon) {
             r.features?.number === 'pl' &&
             r.lemma === entry.words[n - 1]
         );
+      // "is reading books": a progressive verb, not the compound "reading book"
+      const progressive =
+        entry.pos === 'noun' &&
+        /ing$/.test(t.lower) &&
+        tokens[i - 1]?.readings?.some((r) => r.pos === 'be');
       if (
         firstOk &&
+        !progressive &&
         entry.words
           .slice(1)
           .every(

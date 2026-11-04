@@ -1293,3 +1293,8 @@ concept spending
   gloss "money spent"
   en noun spending
   ru noun расход m
+
+concept writing-table
+  gloss "a desk for writing at"
+  en noun writing+table
+  ru noun конторка f
