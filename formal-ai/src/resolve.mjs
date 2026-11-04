@@ -103,8 +103,7 @@ export function unknownWords(text, lexicon = loadLexicon()) {
   const tokens = clean
     .split('\n')
     .flatMap((line) => tokenize(line).map((t, k) => ({ ...t, lineStart: !k })));
-  // a word written only with a capital inside sentences is a name
-  // ("works for Google"), not the common word "google"
+  // a word only ever capitalized inside sentences is a name ("Google")
   const lowercase = new Set(
     tokens.filter((t) => t.text === t.lower).map((t) => t.lower)
   );
@@ -112,7 +111,8 @@ export function unknownWords(text, lexicon = loadLexicon()) {
     const w = token.lower;
     if (
       token.kind !== 'word' ||
-      !/^\p{Ll}[\p{Ll}-]*\p{Ll}$/u.test(w) ||
+      // "e.g." and "i.e." are words too
+      !/^\p{Ll}[\p{Ll}-]*\p{Ll}$|^\p{Ll}(?:\.\p{Ll})+\.$/u.test(w) ||
       w.length < 2
     ) {
       continue;
@@ -221,9 +221,8 @@ export async function resolveNames(
       hits.delete(name);
       continue;
     }
-    // a word is the thing labelled so before one that merely has it as
-    // an alias ("José" the given name, not Saint Joseph); acronyms are
-    // aliases by nature (EU)
+    // the thing labelled so before an alias ("José" the given name, not
+    // Saint Joseph); acronyms are aliases by nature (EU)
     const labelled = (id) =>
       !/^[A-Z0-9]{2,6}s?$/.test(name) &&
       ['en', 'mul'].some((l) => entities[id]?.labels?.[l]?.value === name)
@@ -252,9 +251,8 @@ export async function resolveNames(
     if (isGivenName(entities[id])) {
       markGivenName(lexicon, name, entities[id]);
     }
-    // an abbreviation keeps a Russian abbreviation of the same name
-    // (EU → ЕС, the initials of «Европейский союз»), not an older one
-    // (US → САСШ, a historical name)
+    // an abbreviation keeps a Russian one of the same name (EU → ЕС, of
+    // «Европейский союз»), not an older one (US → САСШ, a historical name)
     const label = entities[id]?.labels?.ru?.value?.split(' / ')[0];
     const initials = (label || '')
       .split(/[\s-]+/)
@@ -267,8 +265,7 @@ export async function resolveNames(
           (a) => /^[А-ЯЁ]{2,5}$/.test(a.value) && a.value === initials
         )?.value) ||
       label;
-    // only a Cyrillic label is a translation; a different Latin label
-    // means the search hit another thing (MRR → a magazine)
+    // only a Cyrillic label translates; a Latin one is another thing (MRR)
     if (ru && !/\(|,/.test(ru) && /[а-яё]/i.test(ru)) {
       lexicon.setNameLabel(name, ru);
     } else {
@@ -363,8 +360,7 @@ export async function resolveText(
       ...hyphenatedTitles(words),
     ]),
   ];
-  // a capitalized word inside a sentence is learned only as a time word
-  // ("in January"); as anything else it is a name
+  // a capital inside a sentence is learned only as a time word ("January")
   const timeOnly = new Set(
     only
       ? []
@@ -545,8 +541,7 @@ export async function resolveText(
           .filter((s) => !known || hasComplementFrame(s))
           .map((s) => ({ ...s, frameOnly: known }))
       );
-      // "earn" the verb has senses of its own; "earn" as a spelling of
-      // "erne" (eagle) in another part of speech would only mislead
+      // "earn" the verb is no spelling of "erne" (eagle) as another POS
       const ownElsewhere = list.some(
         (x) => x.pos !== e.pos && !x.rare && x.senses.length
       );
@@ -557,7 +552,14 @@ export async function resolveText(
       for (const f of e.formOf.filter(
         (x) => /alternative|spelling|form$/.test(x.kind) && !FEATURE[x.kind]
       )) {
-        append(variant, `${e.pos}:${title}`, sensesOf(f.lemma, e.pos));
+        // "e.g." (adverb) ← "for example" (prepositional phrase)
+        const pos = e.pos === 'adv' && / /.test(f.lemma) ? 'prep' : e.pos;
+        const same = sensesOf(f.lemma, e.pos);
+        append(
+          variant,
+          `${e.pos}:${title}`,
+          same.length ? same : sensesOf(f.lemma, pos)
+        );
       }
     }
   }

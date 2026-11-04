@@ -4,7 +4,19 @@ import { shortFrom } from './copula.mjs';
 
 export function renderFragment(s, ctx, renderModifiers) {
   // a heading or list item: the noun phrase and its modifiers
-  const mods = renderModifiers(s.modifiers || [], ctx, null);
+  const all = s.modifiers || [];
+  const mods = renderModifiers(
+    all.filter((m) => m.position !== 'front'),
+    ctx,
+    null
+  );
+  // "e.g. eBay" → например eBay: a fronted adverb stays in front
+  const front = renderModifiers(
+    all.filter((m) => m.position === 'front'),
+    ctx,
+    null
+  );
+  mods.before = [...front.before, ...front.after, ...mods.before];
   const absent = s.entity?.determiner === 'det.no';
   const propertyConcept = s.property && ctx.lexicon.get(s.property.concept);
   const property = propertyConcept?.ru;
@@ -17,7 +29,10 @@ export function renderFragment(s, ctx, renderModifiers) {
     ...mods.before,
     s.negative ? 'не' : '',
     property
-      ? s.negative || periodic
+      ? // "… (optional)" → (необязательно): a remark on the clause
+        s.negative ||
+        periodic ||
+        (s.separator === '(' && !s.entity && property.shortForms?.n)
         ? shortFrom(property, { gender: 'n' })
         : property.lemma
       : '',

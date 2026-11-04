@@ -320,7 +320,18 @@ export function englishEntries(wikitext) {
         ];
       }
       const m = FORM_OF.exec(d);
-      return m ? [{ kind: m[1], lemma: plain(m[2]).split('#')[0] }] : [];
+      if (m) {
+        return [{ kind: m[1], lemma: plain(m[2]).split('#')[0] }];
+      }
+      // "e.g.": {{non-gloss|An initialism …}}: …; [[for example]].
+      const expansion = /initialism|abbreviation|acronym/.test(d)
+        ? /^\{\{non-gloss\|[^\n]*?\}\}:\s.*;\s*\[\[([^\]|#]+)\]\]\.?\s*$/.exec(
+            d
+          )
+        : null;
+      return expansion
+        ? [{ kind: 'alternative form', lemma: expansion[1] }]
+        : [];
     });
     const senses = [];
     const see = [];

@@ -288,7 +288,8 @@ function parseClauses(tokens, ctx) {
   while (!c.done) {
     const t = c.peek;
     if (isPunct(t)) {
-      if ([';', ':', ','].includes(t.text) && result.list.length) {
+      // "(e.g. eBay)": a parenthesis after a clause encloses the next item
+      if ([';', ':', ',', '('].includes(t.text) && result.list.length) {
         link = { ...(link || {}), separator: t.text };
       }
       c.next();
@@ -306,8 +307,7 @@ function parseClauses(tokens, ctx) {
       !demonstrativeThat &&
       !frontedPhrase &&
       ((has(t, 'subord') && !has(t, 'wh')) ||
-        // "When dogs bark, we run": a statement opening with "when" is
-        // a clause link, as it is mid-sentence
+        // "When dogs bark, we run": a clause link, as mid-sentence
         (has(t, 'subord') && has(t, 'wh') && !ctx.question))
     ) {
       const previous = result.list.at(-1);
@@ -352,14 +352,14 @@ function parseClauses(tokens, ctx) {
     if (isPunct(c.at(-1)) && c.at(-1).text === '(' && !ctx.fragments) {
       const fragment = parseFragment(c, ctx);
       if (fragment && (c.done || c.peek.text === ')')) {
-        result.list.push(fragment);
+        result.list.push(link ? { ...fragment, link } : fragment);
+        link = null;
         continue;
       }
       c.i = before;
     }
     const previous = result.list[result.list.length - 1];
-    // "you add tests, write the report, and fix code": a comma series of
-    // verbs closed by "and" shares the first clause's subject
+    // "add tests, write it, and fix code": a series shares the subject
     const series =
       link?.separator === ',' &&
       !link.concept &&
@@ -429,6 +429,8 @@ function parseClause(c, ctx, initial) {
     ) &&
     (!afterProperty ||
       [':', ';'].includes(afterProperty.text) ||
+      // "… is not published (unverified)."
+      (afterProperty.text === ')' && c.at(-1)?.text === '(') ||
       adjectiveListAhead(c, has(t, 'neg') ? 1 : 0))
   ) {
     const negative = has(t, 'neg');
@@ -607,8 +609,7 @@ function parseDeclarative(c, ctx) {
     : subject.number !== 'pl' && !subject.coord;
   const afterSubject = c.i;
   let vg = parseVerbGroup(c, third ? 'third' : null, subject);
-  // "Marketplaces like Etsy charge fees": a verb that is also a
-  // preposition opens a phrase of the subject when a verb follows it
+  // "Marketplaces like Etsy charge fees": a preposition before a verb
   if (vg && has(c.tokens[afterSubject], 'prep') && !subject.pronoun) {
     const verbEnd = c.i;
     c.i = afterSubject;
@@ -669,7 +670,8 @@ function parseDeclarative(c, ctx) {
     return {
       type: 'fragment',
       np: subject,
-      mods: tail.mods,
+      // "…, mostly Canva": a leading adverb stays with the phrase
+      mods: [...leading, ...tail.mods],
       mood: 'declarative',
     };
   }
@@ -730,8 +732,7 @@ function ellipsis(c, ctx, previous) {
   const third = subject.pronoun
     ? subject.pronoun.person === 3 && subject.number === 'sg'
     : subject.number !== 'pl' && !subject.coord;
-  // "we live in London and work in Paris": a base verb shares a plural
-  // or first/second-person subject of a present clause
+  // "we live in London and work in Paris": a base verb shares the subject
   const finite =
     r &&
     (['past', 'past|pp', '3sg'].includes(r.features.form) ||
@@ -832,8 +833,7 @@ function parseImperative(c, ctx) {
     frame: 'event',
     adverbs,
   };
-  // "Open an account and deposit money": a base verb after "and" is a
-  // second request
+  // "Open an account and deposit money": a second request
   const finite = c.finite;
   c.finite = 'base';
   const tail = parseTail(c, 'event', tailOptions(ctx, vg));

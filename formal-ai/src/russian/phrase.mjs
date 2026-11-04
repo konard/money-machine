@@ -268,7 +268,10 @@ export function renderEntity(e, kase, ctx) {
         st.type === 'fragment'
           ? st.property && !st.entity
             ? adjective(st)
-            : renderEntity(st.entity, 'nom', { ...ctx, afterPrep: false })
+            : // "(mostly Canva)": the fragment keeps its adverbs
+              st.modifiers?.length && ctx.renderFragment
+              ? ctx.renderFragment(st, { ...ctx, afterPrep: false })
+              : renderEntity(st.entity, 'nom', { ...ctx, afterPrep: false })
           : ctx.renderStatement(st, { ...ctx, afterPrep: false })
       )
       .join(', ');

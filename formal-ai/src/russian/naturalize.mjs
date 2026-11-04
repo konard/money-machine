@@ -78,6 +78,7 @@ export function naturalizeRussian(
       renderStatement,
       renderAction,
       renderParticiple,
+      renderFragment: (st, c) => renderFragment(st, c, renderModifiers),
     };
     let text;
     if (s.type === 'phrase') {
@@ -123,7 +124,7 @@ export function naturalizeRussian(
       text = renderStatement(adjusted, ctx);
       remember(s, ctx);
     }
-    if (s.separator && i > 0) {
+    if (s.separator && i > 0 && s.separator !== '(') {
       pieces.push(s.separator);
     }
     if (s.link === 'conj.whether') {
@@ -142,7 +143,7 @@ export function naturalizeRussian(
     } else if (i > 0 && !s.separator && statements[i - 1].trailing !== ',') {
       pieces.push(',');
     }
-    pieces.push(text);
+    pieces.push(s.separator === '(' && i > 0 ? `(${text})` : text);
     if (statements[i].type === 'phrase' && i < statements.length - 1) {
       pieces.push(',');
     }
