@@ -145,3 +145,67 @@ export function superlatives(tokens, lexicon) {
   }
   return tokens;
 }
+
+/** A verified currency code next to a number is a unit, on either side. */
+export function parseCurrency(c, lexicon) {
+  const unit = (t) =>
+    t?.readings?.flatMap((r) =>
+      r.concepts
+        .filter((id) => lexicon?.get(id)?.classes?.includes('currency'))
+        .map((id) => ({ ...r, concepts: [id] }))
+    )[0];
+  const before = unit(c.peek);
+  const amount = c.at(before ? 1 : 0);
+  const r = before || unit(c.at(1));
+  if (!r || !/^\d[\d,.]*(?:[–-]\d[\d,.]*)?\+?$/.test(amount?.text || '')) {
+    return null;
+  }
+  const token = c.at(before ? 0 : 1);
+  c.i += 2;
+  return {
+    type: 'np',
+    adjs: [],
+    number: 'pl',
+    head: {
+      token: token.index,
+      text: token.text,
+      lemma: r.lemma,
+      pos: 'noun',
+      candidates: r.concepts,
+      concept: r.concepts[0],
+    },
+    quantity: /[–-]/.test(amount.text)
+      ? 5
+      : Number(amount.text.replaceAll(',', '').replace('+', '')),
+    quantityText: amount.text,
+    ...(/[–-]/.test(amount.text)
+      ? {
+          bound: 'range',
+          rangeFrom: Number(amount.text.split(/[–-]/)[0].replaceAll(',', '')),
+          quantity: Number(amount.text.split(/[–-]/)[1].replaceAll(',', '')),
+          quantityText: amount.text.split(/[–-]/)[1],
+        }
+      : {}),
+  };
+}
+
+/** A verified monetary unit takes precedence over spaced identifier syntax. */
+export function currencyTokens(tokens, lexicon) {
+  return tokens
+    .flatMap((t) => {
+      const m = /^([A-Z]{3}) (\d+)$/.exec(t.text);
+      if (
+        !m ||
+        !lexicon
+          .lookup('noun', m[1].toLowerCase())
+          .some((id) => lexicon.get(id)?.classes.includes('currency'))
+      ) {
+        return [t];
+      }
+      return [
+        { text: m[1], lower: m[1].toLowerCase(), kind: 'word' },
+        { text: m[2], lower: m[2], kind: 'number' },
+      ];
+    })
+    .map((t, index) => ({ ...t, index }));
+}

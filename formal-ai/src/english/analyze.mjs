@@ -7,6 +7,7 @@
  * lemma, features); the parser picks the one that fits the clause.
  */
 
+import { currencyTokens } from './quantity.mjs';
 import { IDENTIFIER, isIdentifier } from './identifiers.mjs';
 
 import {
@@ -214,6 +215,13 @@ export function readings(token, lexicon) {
   }
   if (token.kind === 'number') {
     add('num', w, { value: Number(w.replace(/,/g, '')) });
+    return out;
+  }
+  const currency = lexicon
+    .lookup('noun', w)
+    .filter((id) => lexicon.get(id)?.classes?.includes('currency'));
+  if (currency.length) {
+    add('noun', w, { number: 'sg' }, currency);
     return out;
   }
   // "US", "KYC", "MRR": an acronym is a name, never the pronoun "us"
@@ -458,7 +466,7 @@ function hasIrregularPast(lexicon, ids, lemma) {
  */
 export function analyze(sentence, lexicon) {
   // A spaced plus joins peers; a suffix in "100+" belongs to the count.
-  const tokens = tokenize(sentence).map((t) =>
+  const tokens = currencyTokens(tokenize(sentence), lexicon).map((t) =>
     t.text === '+' && t.kind === 'word' ? { ...t, lower: 'and' } : t
   );
   const firstWord = tokens.findIndex((t) => t.kind !== 'punct');

@@ -1,5 +1,5 @@
 import { renderFragment } from './fragment.mjs';
-import { punctuateParenthetics } from './parenthetic.mjs';
+import { markParenthetic, punctuateParenthetics } from './parenthetic.mjs';
 /** Naturalize meta-language statements into Russian, recording decisions. */
 
 import { periodicAdverb } from './periodic-adverb.mjs';
@@ -157,7 +157,7 @@ export function naturalizeRussian(
     } else if (i > 0 && !s.separator && statements[i - 1].trailing !== ',') {
       pieces.push(',');
     }
-    pieces.push(s.separator === '(' && i > 0 ? `(${text})` : text);
+    pieces.push(s.separator === '(' ? `(${text})` : text);
     if (statements[i].type === 'phrase' && i < statements.length - 1) {
       pieces.push(',');
     }
@@ -169,7 +169,7 @@ export function naturalizeRussian(
     .replace(/\s+/g, ' ')
     .trim()
     .replace(/,$/, '');
-  text = punctuateParenthetics(text, lexicon);
+  text = punctuateParenthetics(text);
   // "eBay", "iPhone" keep their own capitalization
   if (!/^[a-z]+[A-Z]/.test(text)) {
     text = text.charAt(0).toUpperCase() + text.slice(1);
@@ -491,7 +491,7 @@ export function renderModifiers(mods, ctx, entry) {
         word = adv.direction;
       }
       const preverbal = PREVERBAL.has(m.concept) || m.position === 'preverbal';
-      (preverbal ? before : after).push(word);
+      (preverbal ? before : after).push(markParenthetic(word, adv));
     } else if (m.kind === 'quantity') {
       after.push(quantityWord(m.comparison));
     } else if (m.kind === 'comparison') {

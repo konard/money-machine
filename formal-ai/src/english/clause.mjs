@@ -1,3 +1,5 @@
+import { parseFragment } from './fragment.mjs';
+import { calendarPredicate } from './calendar.mjs';
 import { infinitiveOf } from './infinitive.mjs';
 import { preferNominal } from './nominal-evidence.mjs';
 import { parseFactList, unknownFactWords } from './fact-list.mjs';
@@ -292,7 +294,10 @@ function parseClauses(tokens, ctx) {
     const t = c.peek;
     if (isPunct(t)) {
       // "(e.g. eBay)": a parenthesis after a clause encloses the next item
-      if ([';', ':', ',', '('].includes(t.text) && result.list.length) {
+      if (
+        [';', ':', ',', '('].includes(t.text) &&
+        (result.list.length || t.text === '(')
+      ) {
         link = { ...(link || {}), separator: t.text };
       }
       c.next();
@@ -352,7 +357,12 @@ function parseClauses(tokens, ctx) {
     }
     const before = c.i;
     // "(cost $0)", "(e.g. Fiverr)": a parenthesis usually holds a phrase
-    if (isPunct(c.at(-1)) && c.at(-1).text === '(' && !ctx.fragments) {
+    if (
+      isPunct(c.at(-1)) &&
+      c.at(-1).text === '(' &&
+      !ctx.fragments &&
+      calendarPredicate(c) === null
+    ) {
       const fragment = parseFragment(c, ctx);
       if (fragment && (c.done || c.peek.text === ')')) {
         result.list.push(link ? { ...fragment, link } : fragment);
@@ -429,6 +439,13 @@ function parseClause(c, ctx, initial) {
       property: head(property, reading(property, 'adj')),
       negative,
     };
+  }
+  const datedPredicate = has(t, 'noun') ? calendarPredicate(c) : null;
+  if (datedPredicate !== null) {
+    const dated = parseDeclarative(c, { ...ctx, stopAt: datedPredicate });
+    if (dated?.verb) {
+      return dated;
+    }
   }
   if (ctx.fragments) {
     return parseFragment(c, ctx);
@@ -688,36 +705,6 @@ function parseDeclarative(c, ctx) {
       return parseDeclarative(c, { ...ctx, retried: true, stopAt });
     });
   return better || reducedPassive(c, result, ctx.lexicon);
-}
-
-/** A noun phrase with its prepositional phrases: "direct deposit to bank". */
-function parseFragment(c, ctx) {
-  const start = c.i;
-  const leading = parseLeading(c);
-  // in a phrase without a verb, "contracts" is a noun
-  const np = parseNP(c, { fragment: true });
-  if (!np) {
-    // "on demand after clearance": phrases without a head noun
-    const only = has(c.peek, 'prep') && parseTail(c, 'fragment', ctx);
-    if (only?.mods?.length && !only.objects?.length && !only.complement) {
-      return { type: 'fragment', mods: [...leading, ...only.mods] };
-    }
-    c.i = start;
-    return null;
-  }
-  const afterNP = c.i;
-  const tail = parseTail(c, 'fragment', { ...ctx, takes: [] });
-  if (tail.objects.length || tail.complement || tail.xcomp) {
-    // a fragment has no objects: leave those words for the next phrase
-    c.i = afterNP;
-    tail.mods = [];
-  }
-  return {
-    type: 'fragment',
-    np,
-    mods: [...leading, ...tail.mods],
-    mood: 'declarative',
-  };
 }
 
 /**

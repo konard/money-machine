@@ -54,6 +54,31 @@ export async function contextFrequencies(text, lexicon, options = {}) {
         }
       }
     }
+    if (
+      clause?.frame === 'copula' &&
+      clause.subject?.head?.candidates?.length > 1 &&
+      clause.complement?.type === 'adj'
+    ) {
+      const adjectives = (clause.complement.candidates || [])
+        .map((id) => lexicon.get(id)?.ru?.lemma)
+        .filter(Boolean);
+      for (const id of clause.subject.head.candidates) {
+        const c = lexicon.get(id);
+        const head = translationHead(c?.ru);
+        if (!head || !/^[а-яё-]+$/i.test(head)) {
+          continue;
+        }
+        for (const adjective of adjectives) {
+          if (!/^[а-яё-]+$/i.test(adjective)) {
+            continue;
+          }
+          const query = `"${head}" "${adjective}"`;
+          const targets = pairs.get(query) || [];
+          targets.push({ c, noun: adjective, property: true });
+          pairs.set(query, targets);
+        }
+      }
+    }
     if (clause?.xcomp) {
       visit(clause.xcomp);
     }

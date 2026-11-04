@@ -67,7 +67,14 @@ export function publicSenses(entries, title, pos) {
                 matchingDefinition(s.gloss, mainDefinitions).rare,
               gloss: `${s.gloss}: ${sense.gloss}`,
               seeAlso: true,
-              side: !s.synonym && e.senses.length > 0,
+              side:
+                !s.synonym &&
+                e.senses.length > 0 &&
+                !(
+                  pos === 'adj' &&
+                  matchingDefinition(s.gloss, mainDefinitions).definition &&
+                  (x.senses.length === 1 || referenceFits(s.gloss, sense))
+                ),
               referenceMatch:
                 s.synonym ||
                 x.senses.length === 1 ||

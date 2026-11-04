@@ -15,6 +15,7 @@ const KEEP_SECTIONS = ['English', 'Russian'];
 // Item context/types, grammatical gender, sense grounding/translation and
 // lexeme characteristics: all properties read by the public-source callers.
 const CLAIMS = new Set([
+  'P498',
   'P31',
   'P279',
   'P17',

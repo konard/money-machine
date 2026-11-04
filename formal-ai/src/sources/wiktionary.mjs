@@ -189,7 +189,7 @@ const FORM_OF =
 
 // spelling variants and short forms share the senses of their target
 const VARIANTS =
-  'stand sp|standard spelling of|alt sp|alt form|alt sp of|alternative spelling of|alternative form of|alt form of|syn of|synonym of|short for|abbreviation of|clipping of|initialism of|acronym of|ellipsis of|US spelling of|British spelling of|en-US spelling of';
+  'abbr of|clip of|stand sp|standard spelling of|alt sp|alt form|alt sp of|alternative spelling of|alternative form of|alt form of|syn of|synonym of|short for|abbreviation of|clipping of|initialism of|acronym of|ellipsis of|US spelling of|British spelling of|en-US spelling of';
 
 /** `ed-form`, `spast`, `past|part`, `s-verb-form`, `ing-form`, `p` → a kind. */
 function inflectionKind(tags) {
@@ -310,14 +310,14 @@ export function englishEntries(wikitext) {
           },
         ];
       }
-      const variant = templates(d, VARIANTS)[0];
-      if (variant && variant.positional[0] === 'en' && variant.positional[1]) {
-        return [
-          {
-            kind: 'alternative form',
-            lemma: plain(variant.positional[1]).split('#')[0],
-          },
-        ];
+      const variants = templates(d, VARIANTS).filter(
+        (v) => v.positional[0] === 'en' && v.positional[1]
+      );
+      if (variants.length) {
+        return variants.map((v) => ({
+          kind: 'alternative form',
+          lemma: plain(v.positional[1]).split('#')[0],
+        }));
       }
       const m = FORM_OF.exec(d);
       if (m) {

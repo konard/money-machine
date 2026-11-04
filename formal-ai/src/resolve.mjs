@@ -1,3 +1,4 @@
+import { currencyPlans } from './sources/currencies.mjs';
 import { predicateEvidence } from './english/participle-evidence.mjs';
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
 import { rememberPartsOfSpeech } from './english/nominal-evidence.mjs';
@@ -325,7 +326,7 @@ export async function resolveText(
   rememberPartsOfSpeech(entries, lexicon);
 
   // English sense → Russian candidates
-  const plans = [];
+  const plans = only ? [] : await currencyPlans(text, options);
   const sensesOf = (title, pos) => publicSenses(entries, title, pos);
   // one plan per (lemma, pos): the word's own senses first, then those of
   // words it is a variant of ("fee" the payment before "fee" ← "fief")
@@ -400,11 +401,14 @@ export async function resolveText(
       )) {
         // "e.g." (adverb) ← "for example" (prepositional phrase)
         const pos = e.pos === 'adv' && / /.test(f.lemma) ? 'prep' : e.pos;
-        const same = sensesOf(f.lemma, e.pos);
+        const target = capitalOf.get(f.lemma) || f.lemma;
+        const same = sensesOf(target, e.pos);
         append(
           variant,
           `${e.pos}:${title}`,
-          same.length ? same : sensesOf(f.lemma, pos)
+          (same.length ? same : sensesOf(target, pos)).filter(
+            (s) => !timeOnly.has(title) || senseClasses(s).includes('time')
+          )
         );
       }
     }
@@ -627,13 +631,15 @@ export async function resolveText(
     }
     if (
       pos === 'adv' &&
-      word
-        .split(' ')
-        .every(
-          (w) =>
-            languageSection(ruPages.get(w) || '', 'Russian') ||
-            /=\s*\{\{-ru-\}\}\s*=/.test(government.get(w) || '')
-        )
+      (languageSection(ruPages.get(word) || '', 'Russian') ||
+        /=\s*\{\{-ru-\}\}\s*=/.test(government.get(word) || '') ||
+        word
+          .split(' ')
+          .every(
+            (w) =>
+              languageSection(ruPages.get(w) || '', 'Russian') ||
+              /=\s*\{\{-ru-\}\}\s*=/.test(government.get(w) || '')
+          ))
     ) {
       return {
         pos: 'adv',

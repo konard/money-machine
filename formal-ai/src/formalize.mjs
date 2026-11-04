@@ -168,6 +168,9 @@ function entity(np, lexicon) {
   if (np.emphatic) {
     e.emphatic = true;
   }
+  if (np.calendar) {
+    e.calendar = np.calendar;
+  }
   if (np.label) {
     e.label = np.label;
   }

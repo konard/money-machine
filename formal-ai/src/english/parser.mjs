@@ -24,11 +24,18 @@ import {
   participleReading,
 } from './token-readings.mjs';
 import { parseToInfinitive } from './infinitive.mjs';
+import { parseCalendar, calendarAhead } from './calendar.mjs';
 import { Cursor } from './cursor.mjs';
 import { sharedHead } from './shared-head.mjs';
 import { nounFirst, nounModifier } from './nominal-evidence.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
-import { countAhead, parseQuantity, quantityDegree } from './quantity.mjs';
+import { borrowedAdjective, standalone } from './noun-helpers.mjs';
+import {
+  countAhead,
+  parseQuantity,
+  parseCurrency,
+  quantityDegree,
+} from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
@@ -50,6 +57,11 @@ import { intransitiveAttribute } from './verb-group.mjs';
 export function parseNP(c, options = {}) {
   options = { ...c.grammar, ...options };
   const start = c.i;
+  const calendar =
+    parseCalendar(c, options.lexicon) || parseCurrency(c, options.lexicon);
+  if (calendar) {
+    return calendar;
+  }
   if (!options.quantityInner) {
     const quantity = parseQuantity(c, options, parseNP);
     if (quantity) {
@@ -134,7 +146,7 @@ export function parseNP(c, options = {}) {
       ) &&
       !nounAhead(c, 1)
     ) {
-      return standalone(c, np, options);
+      return standalone(c, np, options, attachOf);
     }
   } else if (has(t, 'poss')) {
     const r = reading(t, 'poss');
@@ -282,7 +294,7 @@ export function parseNP(c, options = {}) {
       !adjectives.length &&
       np.quantity === undefined
     ) {
-      return standalone(c, np, options);
+      return standalone(c, np, options, attachOf);
     }
     if (np.quantity !== undefined && !np.det && !np.possessor) {
       np.numeral = true;
@@ -534,20 +546,6 @@ export function parseNP(c, options = {}) {
     c.i = clitic;
   }
   return attachOf(c, np, options);
-}
-
-/**
- * "is here": an adjective whose every sense is borrowed from another word
- * (Wiktionary's "here: [[alive]]") gives way to the word's own adverb.
- */
-function borrowedAdjective(t, lexicon) {
-  const own = (pos) =>
-    (reading(t, pos)?.concepts || []).filter(
-      (id) => !lexicon?.get(id)?.variant
-    );
-  return Boolean(
-    lexicon && has(t, 'adv') && !own('adj').length && own('adv').length
-  );
 }
 
 /** `'s` after a noun is possessive when a noun phrase follows. */
@@ -949,6 +947,10 @@ export function parseTail(c, frame, options = {}) {
       out.mods.push({ type: 'time', np });
       continue;
     }
+    if (calendarAhead(c)) {
+      out.mods.push({ type: 'pp', relation: 'rel.in', np: parseNP(c) });
+      continue;
+    }
     if (startsNP(t) && !(has(t, 'verb') && out.objects.length > 0)) {
       const np = parseNP(c, {
         infinitiveObject: true,
@@ -981,14 +983,3 @@ export function parseTail(c, frame, options = {}) {
 
 export { timeAhead };
 export { Cursor, has, reading, isPunct, startsNP, head, mergeMultiwords };
-
-/** A quantifier as the whole noun phrase: "both", "many of them". */
-function standalone(c, np, options) {
-  const d = c.tokens[c.i - 1];
-  const concept = STANDALONE_DETERMINERS[np.det];
-  np.head = head(d, { pos: 'indef', lemma: d.lower, concepts: [concept] });
-  np.number = np.det === 'det.each' ? 'sg' : 'pl';
-  np.det = null;
-  np.indefinite = true;
-  return attachOf(c, np, options);
-}

@@ -187,6 +187,13 @@ export function renderEntity(e, kase, ctx) {
   if (!e) {
     return '';
   }
+  if (e.calendar) {
+    const { calendar, ...month } = e;
+    const word = renderEntity(month, calendar.day ? 'gen' : kase, ctx);
+    return [calendar.day, word, calendar.year && `${calendar.year} г.`]
+      .filter(Boolean)
+      .join(' ');
+  }
   if (e.floatingQuantifier) {
     const { floatingQuantifier, ...rest } = e;
     const f = features(e, ctx);
@@ -746,6 +753,9 @@ export function renderRelation(m, ctx) {
   ) {
     const text = ctx.renderAction(e, 'nom', { ...ctx, afterPrep: false });
     return `, прежде чем ${text}`;
+  }
+  if (e?.calendar?.day && ['rel.in', 'rel.on', 'rel.at'].includes(rel)) {
+    return renderEntity(e, 'gen', ctx);
   }
   // at home / to home
   if (
