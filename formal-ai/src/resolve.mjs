@@ -74,6 +74,20 @@ const FEATURE = {
   'past participle': 'participle',
   'ed-form': 'past',
 };
+
+/** A grammatical word, never looked up; "like", "there" and "hundred" may
+ * be content words ("went there", "several hundred"). */
+function closedClass(word, lexicon) {
+  const open = ['propn', 'noun', 'verb', 'adj', 'adv', 'name', 'prep', 'there'];
+  return readings(
+    { text: word, lower: word, kind: 'word', first: true },
+    lexicon
+  ).some(
+    (r) =>
+      !open.includes(r.pos) && !(r.pos === 'num' && r.features?.value >= 100)
+  );
+}
+
 /** Words of a text that the lexicon has no reading for. */
 export function unknownWords(text, lexicon = loadLexicon()) {
   const out = new Set();
@@ -103,27 +117,8 @@ export function unknownWords(text, lexicon = loadLexicon()) {
     if (!initial && token.text !== w && !lowercase.has(w)) {
       continue;
     }
-    // a closed-class word is known; a content word is looked up unless
-    // public sources were already asked about it (the built-in lexicon
-    // may know "deposit" as a verb only)
-    const found = readings({ ...token, text: w, first: true }, lexicon);
-    // a preposition may be a content word too ("like", "near", "past"),
-    // and so may "there" ("went there"):
-    // only other grammatical words are never looked up
-    // a round numeral is a noun too: "several hundred" → несколько сотен
-    const closed = found.some(
-      (r) =>
-        ![
-          'propn',
-          'noun',
-          'verb',
-          'adj',
-          'adv',
-          'name',
-          'prep',
-          'there',
-        ].includes(r.pos) && !(r.pos === 'num' && r.features?.value >= 100)
-    );
+    // a content word is looked up unless public sources were asked already
+    const closed = closedClass(w, lexicon);
     if (!closed && !lexicon.asked?.(w)) {
       out.add(w);
     }
@@ -429,8 +424,13 @@ export async function resolveText(
         if (phraseOnly.has(title) && !['intj', 'phrase'].includes(e.pos)) {
           continue;
         }
+        // "@" ← "or" (a conjunction): grammatical words are built in
         const promote = (target) => {
-          if (!phraseOnly.has(title) && phraseOnly.delete(target)) {
+          if (
+            !phraseOnly.has(title) &&
+            !closedClass(target, lexicon) &&
+            phraseOnly.delete(target)
+          ) {
             next.add(target);
           }
         };
@@ -451,6 +451,7 @@ export async function resolveText(
           const variantOf = /alternative|spelling/.test(f.kind);
           if (
             !done.has(f.lemma) &&
+            !closedClass(lemma, lexicon) &&
             (variantOf || !lexicon.lookup(e.pos, lemma).length)
           ) {
             next.add(f.lemma);
