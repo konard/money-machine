@@ -55,9 +55,9 @@ export function nounAhead(c, k) {
   let j = k;
   const nominal = (t) => has(t, 'noun') || has(t, 'name') || has(t, 'propn');
   while (
-    has(c.at(j), 'adj') ||
-    has(c.at(j), 'num') ||
-    participleReading(c.at(j))
+    // "concentrated in popular maintainers": "in" there is a preposition
+    !(has(c.at(j), 'prep') && startsNP(c.at(j + 1))) &&
+    (has(c.at(j), 'adj') || has(c.at(j), 'num') || participleReading(c.at(j)))
   ) {
     // "the high cost": a word that may be a noun ends the phrase when
     // nothing nominal follows it ("cost" is also a participle)

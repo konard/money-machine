@@ -11,6 +11,50 @@ export function mergeMultiwords(tokens, lexicon) {
   for (let i = 0; i < tokens.length; i += 1) {
     const t = tokens[i];
     let merged = false;
+    // An acronym with dictionary-attested foreign words and its abbreviation
+    // aliases is one foreign proper name, with its original spelling.
+    if (/^[A-Z]{2,}$/.test(t.text)) {
+      let end = i + 1;
+      while (tokens[end]?.readings.some((r) => r.features.foreign)) {
+        end += 1;
+      }
+      if (end > i + 1) {
+        if (
+          tokens[end]?.text === '(' &&
+          /^[A-Z]{2,}$/.test(tokens[end + 1]?.text || '') &&
+          tokens[end + 2]?.text === ')'
+        ) {
+          end += 3;
+        }
+        if (
+          tokens[end]?.text === '/' &&
+          /^[A-Z]{2,}$/.test(tokens[end + 1]?.text || '')
+        ) {
+          end += 2;
+        }
+        const name = tokens
+          .slice(i, end)
+          .map((x) => x.text)
+          .join(' ')
+          .replace(/\( /g, '(')
+          .replace(/ \)/g, ')');
+        out.push({
+          ...t,
+          text: name,
+          lower: name.toLowerCase(),
+          readings: [
+            {
+              pos: 'propn',
+              lemma: name,
+              features: { number: 'sg', opaque: true },
+              concepts: [],
+            },
+          ],
+        });
+        i = end - 1;
+        continue;
+      }
+    }
     // Resolved Wikidata labels take priority over common-word readings
     // ("United" and "Kingdom") and over shorter overlapping entities.
     let nameEnd = i;
@@ -108,6 +152,18 @@ export function mergeMultiwords(tokens, lexicon) {
             r.features?.number === 'pl' &&
             r.lemma === entry.words[n - 1]
         );
+      // A coordinated adjective before a shared noun remains compositional;
+      // a secondary entity label must not hide the parallel syntax.
+      if (
+        entry.pos === 'noun' &&
+        ['and', 'or'].includes(tokens[i - 1]?.lower) &&
+        t.readings.some((r) => r.pos === 'adj') &&
+        lexicon
+          .lookup(entry.pos, entry.lemma)
+          .every((id) => lexicon.get(id)?.source === 'wikidata')
+      ) {
+        continue;
+      }
       // "is reading books": a progressive verb, not the compound "reading book"
       const progressive =
         entry.pos === 'noun' &&

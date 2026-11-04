@@ -1,19 +1,20 @@
 /** Parallel label/value items, distinguished by syntax rather than vocabulary. */
 import { Cursor, parseNP, has, head, reading } from './parser.mjs';
 import { countAhead } from './quantity.mjs';
-import { nounFirst } from './nominal-evidence.mjs';
 
 function nominal(tokens, ctx) {
   if (
     tokens.length === 1 &&
     has(tokens[0], 'adj') &&
-    !nounFirst(tokens[0], ctx.lexicon, 'adj')
+    !reading(tokens[0], 'noun')?.concepts.some(
+      (id) => ctx.lexicon?.get(id)?.ru?.animate
+    )
   ) {
     return { property: head(tokens[0], reading(tokens[0], 'adj')) };
   }
   const c = new Cursor(tokens);
   c.grammar = ctx;
-  const np = parseNP(c, { fragment: true, relative: false });
+  const np = parseNP(c, { fragment: true, relative: false, nominal: true });
   if (np && c.done) {
     return { np };
   }
@@ -33,7 +34,14 @@ function fact(tokens, ctx) {
   const colon = tokens.findIndex((t) => t.text === ':');
   if (colon > 0) {
     const label = nominal(tokens.slice(0, colon), ctx);
-    const value = tokens.slice(colon + 1);
+    let value = tokens.slice(colon + 1);
+    const focus =
+      value.at(-1)?.lower === 'only'
+        ? head(value.at(-1), reading(value.at(-1), 'adv'))
+        : undefined;
+    if (focus) {
+      value = value.slice(0, -1);
+    }
     if (!label || !value.length) {
       return null;
     }
@@ -60,7 +68,9 @@ function fact(tokens, ctx) {
       !answer &&
       value.length > 1 &&
       !countAhead(value[0]) &&
-      !countAhead(value[1])
+      !countAhead(value[1]) &&
+      !focus &&
+      !value.some((t) => has(t, 'coord') || t.text === ',')
     ) {
       return null;
     }
@@ -71,6 +81,7 @@ function fact(tokens, ctx) {
         type: 'fragment',
         ...label,
         factValue: parsed.np,
+        factFocus: focus,
         answer,
         valueSeparator: ':',
       }
@@ -97,6 +108,12 @@ function fact(tokens, ctx) {
 }
 
 export function parseFactList(tokens, ctx) {
+  if (tokens.filter((t) => t.text === ':').length === 1) {
+    const whole = fact(tokens, ctx);
+    if (whole?.factValue) {
+      return { list: [whole], leftover: [] };
+    }
+  }
   const items = [[]];
   for (const t of tokens) {
     if (t.text === ',') {

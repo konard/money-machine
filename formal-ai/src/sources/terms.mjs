@@ -93,7 +93,9 @@ export async function supplementTerms(
       ([title, list]) =>
         wanted.has(title) &&
         // "children" is the plural of "child", never a term of its own
-        !forms.some((f) => f.form === title) &&
+        !forms.some(
+          (f) => f.form === title && f.pos === 'noun' && f.kind === 'plural'
+        ) &&
         /^[a-z]+(?: [a-z]+)*$/.test(title) &&
         !lexicon.lookup('noun', title).length &&
         !plans.some(

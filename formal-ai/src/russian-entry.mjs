@@ -1,10 +1,22 @@
 /** Lexicon `ru` entries from rendered Russian Wiktionary words. */
 
-import { unstress } from './sources/wiktionary.mjs';
+import { languageSection, unstress } from './sources/wiktionary.mjs';
+
+/** Dictionary usage marks, restricted to the Russian language section. */
+export function russianParenthetic(page = '') {
+  const text = page.includes('==Russian==')
+    ? languageSection(page, 'Russian')
+    : /=\s*\{\{-ru-\}\}\s*=/.test(page)
+      ? page
+      : '';
+  return /\{\{(?:gloss|gl|lb|label|qualifier|q)\|[^{}]*\bparenthe(?:tic|tical)\b[^{}]*\}\}|вводное\s+слово|(?<![а-яё])вводн\./i.test(
+    text
+  );
+}
 
 const tag = (forms, ...keys) => keys.map((k) => forms.get(k)).find(Boolean);
 /** Lexicon `ru` entry from a rendered Russian word. */
-export function russianEntry(pos, word, rendered, head) {
+export function russianEntry(pos, word, rendered, head, page = '') {
   const { forms } = rendered;
   const comparative = tag(forms, 'comd', 'comparative')?.split(',')[0].trim();
   if (pos === 'noun') {
@@ -84,7 +96,12 @@ export function russianEntry(pos, word, rendered, head) {
       ),
     };
   }
-  return { pos: 'adv', lemma: word, comparative };
+  return {
+    pos: 'adv',
+    lemma: word,
+    comparative,
+    parenthetic: russianParenthetic(page) || undefined,
+  };
 }
 /** Lexicon `ru` entry for a word without a Wiktionary page, by its ending. */
 const ADJECTIVE_FORM = /^[а-яё-]+(?:ый|ий|ой|ая|яя|ое|ее|ые|ие)$/i;

@@ -20,7 +20,8 @@ import {
   translationSyntax,
 } from './sources/translation-senses.mjs';
 import { supplementTerms } from './sources/terms.mjs';
-import { entityContext } from './sources/entity-context.mjs';
+import { resolveNames, declineNames } from './name-resolution.mjs';
+export { resolveNames };
 import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
 import { readings, tokenize } from './english/analyze.mjs';
 import { completeForms, sameFormPasts } from './forms.mjs';
@@ -32,9 +33,7 @@ import {
   learnPhrases,
   givenNameLabel,
   markGivenName,
-  givenRank,
   noteNotGivenFirst,
-  isGivenName,
 } from './public-expressions.mjs';
 import { russianIndeclinables } from './sources/indeclinable.mjs';
 import { russianFrequencies } from './sources/frequency.mjs';
@@ -56,10 +55,15 @@ import {
   normalizeLemma,
 } from './sources/rnc-frequency.mjs';
 import { loadLexicon } from './lexicon.mjs';
-import { compoundNoun, regularEntry, russianEntry } from './russian-entry.mjs';
+import {
+  compoundNoun,
+  regularEntry,
+  russianEntry,
+  russianParenthetic,
+} from './russian-entry.mjs';
 
 export { compoundNoun, regularEntry };
-import { chunks, getJson, pool } from './sources/fetch.mjs';
+import { pool } from './sources/fetch.mjs';
 import { governmentPages, governmentResolver } from './sources/government.mjs';
 import {
   fetchPages,
@@ -153,179 +157,6 @@ export function capitalizedWords(text, lexicon = loadLexicon()) {
 }
 
 export { nameCandidates };
-const WIKIDATA = 'https://www.wikidata.org/w/api.php';
-/**
- * Russian labels of names from Wikidata: the first search hit whose
- * English label or alias is exactly the name.
- */
-export async function resolveNames(
-  names,
-  {
-    lexicon = loadLexicon(),
-    fetchImpl,
-    cache = true,
-    topic = '',
-    givenOnly = new Set(),
-  } = {}
-) {
-  const options = { fetchImpl, cache, bucket: 'wikidata' };
-  const hits = new Map();
-  const verified = new Map();
-  await pool(names, 2, async (name) => {
-    const body = await getJson(
-      `${WIKIDATA}?${new URLSearchParams({ action: 'wbsearchentities', format: 'json', search: name, language: 'en', uselang: 'en', type: 'item', limit: topic ? '50' : '5' })}`,
-      options
-    ).catch(() => ({}));
-    const exact = (body.search || []).filter(
-      (h) => h.label === name || h.match?.text === name
-    );
-    // Search can return an expanded label even for an exact alias (EU).
-    // Fetch aliases to verify those results, never accept a fuzzy match.
-    const candidates = body.search || [];
-    if (candidates.length) {
-      hits.set(
-        name,
-        candidates.map((h) => h.id)
-      );
-      verified.set(name, new Set(exact.map((h) => h.id)));
-    }
-  });
-  // Network completion order must not change entity/declension request batches.
-  const orderedHits = [...hits].sort(([a], [b]) => a.localeCompare(b));
-  hits.clear();
-  orderedHits.forEach(([name, ids]) => hits.set(name, ids));
-  // Fetch descriptions and instance claims before ranking exact aliases.
-  const entities = {};
-  for (const batch of chunks([...new Set([...hits.values()].flat())], 50)) {
-    const body = await getJson(
-      `${WIKIDATA}?${new URLSearchParams({ action: 'wbgetentities', format: 'json', ids: batch.join('|'), props: 'labels|aliases|sitelinks|descriptions|claims', ...(topic ? {} : { languages: 'ru|en|mul' }) })}`,
-      options
-    ).catch(() => ({}));
-    Object.assign(entities, body.entities || {});
-  }
-  const overlap = await entityContext(entities, topic, options);
-  const links = (id) => Object.keys(entities[id]?.sitelinks || {}).length;
-  for (const [name, candidates] of hits) {
-    const ids = candidates.filter((id) => {
-      const e = entities[id];
-      return (
-        (!givenOnly.has(name) || isGivenName(e)) &&
-        (verified.get(name)?.has(id) ||
-          Object.values(e?.labels || {}).some((a) => a.value === name) ||
-          Object.values(e?.aliases || {})
-            .flat()
-            .some((a) => a.value === name))
-      );
-    });
-    if (!ids.length) {
-      hits.delete(name);
-      continue;
-    }
-    // the thing labelled so before an alias ("José" the given name, not
-    // Saint Joseph); acronyms are aliases by nature (EU)
-    const labelled = (id) =>
-      !/^[A-Z0-9]{2,6}s?$/.test(name) &&
-      ['en', 'mul'].some((l) => entities[id]?.labels?.[l]?.value === name)
-        ? 1
-        : 0;
-    const given = (id) => givenRank(lexicon, name, entities[id]);
-    // the English text names what English calls so: "EU" is an English
-    // alias of the European Union, only a Portuguese one of the US
-    const english = (id) =>
-      ['en', 'mul'].some((l) =>
-        [entities[id]?.labels?.[l], ...(entities[id]?.aliases?.[l] || [])].some(
-          (a) => a?.value === name
-        )
-      )
-        ? 1
-        : 0;
-    const id = [...ids].sort(
-      (a, b) =>
-        given(b) - given(a) ||
-        labelled(b) - labelled(a) ||
-        english(b) - english(a) ||
-        overlap(b, name) - overlap(a, name) ||
-        links(b) - links(a)
-    )[0];
-    hits.set(name, id);
-    if (isGivenName(entities[id])) {
-      markGivenName(lexicon, name, entities[id]);
-    }
-    // an abbreviation keeps a Russian one of the same name (EU → ЕС, of
-    // «Европейский союз»), not an older one (US → САСШ, a historical name)
-    const label = entities[id]?.labels?.ru?.value?.split(' / ')[0];
-    const initials = (label || '')
-      .split(/[\s-]+/)
-      .filter((w) => w.length > 2)
-      .map((w) => w[0].toUpperCase())
-      .join('');
-    const ru =
-      (/^[A-Z]{2,5}$/.test(name) &&
-        (entities[id]?.aliases?.ru || []).find(
-          (a) => /^[А-ЯЁ]{2,5}$/.test(a.value) && a.value === initials
-        )?.value) ||
-      label;
-    // only a Cyrillic label translates; a Latin one is another thing (MRR)
-    if (ru && !/\(|,/.test(ru) && /[а-яё]/i.test(ru)) {
-      lexicon.setNameLabel(name, ru);
-    } else {
-      // Exact entities without a Russian label still form one name.
-      lexicon.setNameLabel(name, name);
-    }
-  }
-  await declineNames(hits, { lexicon, fetchImpl, cache });
-  return hits;
-}
-/**
- * Case forms of Russian name labels, from the label's own
- * Wiktionary page (Великобритания → в Великобритании); a word without a
- * page is declined by its ending when that shows a gender.
- */
-async function declineNames(hits, { lexicon, fetchImpl, cache }) {
-  const options = { fetchImpl, cache };
-  const labels = [...hits.keys()]
-    .map((name) => [name, lexicon.nameLabel(name)])
-    .filter(
-      ([, label]) =>
-        label &&
-        /^[А-ЯЁ][А-ЯЁа-яё -]+$/.test(label) &&
-        !/^[А-ЯЁ]{2,5}$/.test(label)
-    );
-  if (!labels.length) {
-    return;
-  }
-  const pages = await fetchPages(
-    [...new Set(labels.map(([, l]) => l))],
-    options
-  );
-  await pool(labels, 4, async ([name, label]) => {
-    const page = pages.get(label);
-    const e = page
-      ? russianTemplates(page).find(
-          (x) => ['noun', 'propn'].includes(x.pos) && x.headword
-        )
-      : null;
-    let entry = null;
-    if (e) {
-      try {
-        const rendered = await renderRussian(label, e, options);
-        entry = russianEntry('noun', label, rendered, e.headword);
-      } catch {
-        entry = null;
-      }
-    }
-    entry ||= /[аяь]$|[бвгджзклмнпрстфхцчшщ]$/.test(label)
-      ? regularEntry('noun', { word: label })
-      : null;
-    if (entry) {
-      if (lexicon.givenNames?.has(name)) {
-        entry.animate = true;
-      }
-      lexicon.setNameEntry(name, entry);
-    }
-  });
-}
-
 /**
  * Resolve every unknown word of `text` into the lexicon.
  * @returns {Promise<{words: number, resolved: string[], missing: string[]}>}
@@ -391,6 +222,14 @@ export async function resolveText(
     for (const title of queue) {
       const page = pages.get(title);
       const key = capitalOf.get(title) || title;
+      if (
+        page &&
+        !languageSection(page, 'English') &&
+        /^==[^=]+==/m.test(page)
+      ) {
+        lexicon.foreignWords ||= new Set();
+        lexicon.foreignWords.add(title);
+      }
       if (page && /^[A-Z][a-z]+$/.test(title)) {
         noteNotGivenFirst(lexicon, title, page);
         const label = givenNameLabel(page);
@@ -470,6 +309,13 @@ export async function resolveText(
           if (key !== title) {
             capitalOf.set(`${title}/translations`, `${key}/translations`);
           }
+        }
+      }
+    }
+    if (!only) {
+      for (const title of compoundCandidates(text, lexicon, forms)) {
+        if (!done.has(title)) {
+          next.add(title);
         }
       }
     }
@@ -604,10 +450,20 @@ export async function resolveText(
       });
     }
   }
+  const adverbPhrases = new Set(
+    plans
+      .filter((p) => p.pos === 'adv')
+      .flatMap((p) => p.senses.flatMap((s) => s.russian.map((c) => c.word)))
+  );
   const ruPages = await fetchPages(
     [...russianWords].filter((w) => !w.includes(' ')),
     options
   );
+  const phrasePages = await fetchPages(
+    [...adverbPhrases].filter((w) => w.includes(' ')),
+    options
+  ).catch(() => new Map());
+  phrasePages.forEach((page, word) => ruPages.set(word, page));
   const ruEntry = (word, pos) => {
     const page = ruPages.get(word);
     const e = page ? russianTemplates(page).find((x) => x.pos === pos) : null;
@@ -670,6 +526,14 @@ export async function resolveText(
     options
   );
 
+  const phraseGovernment = await governmentPages(
+    [...adverbPhrases].filter(
+      (w) =>
+        w.includes(' ') && !languageSection(ruPages.get(w) || '', 'Russian')
+    ),
+    { ...options, russianPhrases: true }
+  ).catch(() => new Map());
+  phraseGovernment.forEach((page, word) => government.set(word, page));
   const rendered = new Map();
   const want = [];
   for (const plan of plans) {
@@ -738,7 +602,13 @@ export async function resolveText(
     }
     const r = rendered.get(`${pos}:${word}`);
     if (r) {
-      const entry = russianEntry(pos, word, r.result, r.entry.headword);
+      const entry = russianEntry(
+        pos,
+        word,
+        r.result,
+        r.entry.headword,
+        ruPages.get(word) || government.get(word)
+      );
       if (entry?.pos === 'noun' && candidate) {
         // the translation's own marks: машина|f, деньги|f-p
         if (!r.result.gender && candidate.gender) {
@@ -765,7 +635,14 @@ export async function resolveText(
             /=\s*\{\{-ru-\}\}\s*=/.test(government.get(w) || '')
         )
     ) {
-      return { pos: 'adv', lemma: word, regular: true };
+      return {
+        pos: 'adv',
+        lemma: word,
+        regular: true,
+        parenthetic:
+          russianParenthetic(ruPages.get(word) || government.get(word)) ||
+          undefined,
+      };
     }
     // Regular morphology needs lexical attestation, not merely a plausible
     // Cyrillic ending. A verified Russian concept label is evidence too.
@@ -864,7 +741,7 @@ export async function resolveText(
         // under a field label ("telephone", labelled telephony)
         domain: senseDomain(s),
         core: Boolean(most && (s.languages || 0) >= most),
-        objectClasses: [],
+        objectClasses: s.objectClasses || [],
         syntax: translationSyntax(plan, s, ru, ruPages),
         takes: [],
         // Prefer widely translated own senses over historical order and variants.

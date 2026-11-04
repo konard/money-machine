@@ -13,7 +13,12 @@
  * - document memory: cue words from earlier sentences, decayed per sentence.
  */
 
-import { dictionaryContext, nounObjectContext } from './sense-context.mjs';
+import {
+  dictionaryContext,
+  nounObjectContext,
+  membershipContext,
+} from './sense-context.mjs';
+import { alternativeTokens } from './english/coordination-context.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
 
 /** Words seen in earlier sentences, with decaying weights. */
@@ -343,12 +348,23 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
       }
       const at = positions.get(node.token);
       const word = tokens.find((t) => t.index === node.token)?.lower;
+      const alternatives = node.uncounted
+        ? alternativeTokens(clause, node)
+        : new Set();
       const scores = {};
       const evidence = {};
       for (const id of node.candidates) {
         const concept = lexicon.get(id);
         let score = 0;
         const why = [];
+        if (
+          node.pos === 'noun' &&
+          node.uncounted &&
+          concept?.labels?.includes('uncountable')
+        ) {
+          score += 0.6;
+          why.push('uncounted shared noun modifier (+0.60)');
+        }
         if (node.pos === 'noun' && concept?.labels?.includes('distributive')) {
           const rate = tokens.some(
             (t) => (t.position ?? t.index) === at - 1 && t.lower === 'per'
@@ -376,6 +392,17 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           why.push(`Russian object association (+${association.toFixed(2)})`);
         }
         const semantic = dictionaryContext(node, concept, heads, lexicon);
+        if (node.pos === 'verb') {
+          const membership = membershipContext(
+            concept,
+            findVerbOwner(clause, node),
+            lexicon
+          );
+          if (membership) {
+            score += membership;
+            why.push(`collective membership argument (+${membership})`);
+          }
+        }
         // When the source explicitly has a direct object, prefer an attested
         // accusative alternative over a reflexive infinitive-controller.
         if (
@@ -424,7 +451,11 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         }
         for (const cue of concept?.cues || []) {
           for (const w of words) {
-            if (w.pos === at || !matchesCue(w.words, cue)) {
+            if (
+              w.pos === at ||
+              alternatives.has(w.token.index) ||
+              !matchesCue(w.words, cue)
+            ) {
               continue;
             }
             const distance = Math.abs(w.pos - at);
@@ -467,14 +498,16 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         }
         // the two most topical gloss words, so long glosses don't win
         // just by having more words
-        const topical = Math.min(
-          1,
-          (concept?.cues || [])
-            .map((cue) => memory.topicWeight(cue, word))
-            .sort((a, b) => b - a)
-            .slice(0, 2)
-            .reduce((sum, w) => sum + w * 0.5, 0)
-        );
+        const topical = node.uncounted
+          ? 0
+          : Math.min(
+              1,
+              (concept?.cues || [])
+                .map((cue) => memory.topicWeight(cue, word))
+                .sort((a, b) => b - a)
+                .slice(0, 2)
+                .reduce((sum, w) => sum + w * 0.5, 0)
+            );
         if (topical > 0) {
           score += topical;
           why.push(`document topic (+${topical.toFixed(2)})`);
@@ -601,6 +634,22 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
             `${concept.ru.lemma} in ${concept.ruFrequency} ruwiki articles (${common >= 0 ? '+' : ''}${common.toFixed(2)})`
           );
         }
+        if (node === clause.subject?.head && concept?.propertyFrequency) {
+          const adjectives = (clause.complement?.candidates || []).map(
+            (id) => lexicon.get(id)?.ru?.lemma
+          );
+          const count = Math.max(
+            0,
+            ...adjectives.map((lemma) => concept.propertyFrequency[lemma] || 0)
+          );
+          const weight = Math.min(0.6, 0.15 * Math.log10(1 + count));
+          score += weight;
+          if (weight) {
+            why.push(
+              `Russian noun–predicate corpus (${count}, +${weight.toFixed(2)})`
+            );
+          }
+        }
         const valency = valencyFit(
           node,
           clause,
@@ -655,7 +704,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
             `dictionary field ${domain} in document (+${weight.toFixed(2)})`
           );
         }
-        if (shared) {
+        if (shared && !node.uncounted) {
           const bonus = Math.min(0.1, 0.05 * shared);
           score += bonus;
           why.push(
@@ -670,7 +719,13 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         scores[id] = Number(score.toFixed(2));
         evidence[id] = why;
       }
-      const ranked = [...node.candidates].sort((a, b) => scores[b] - scores[a]);
+      // A restricted historical reading cannot displace a living dictionary sense.
+      const ranked = [...node.candidates].sort(
+        (a, b) =>
+          Number(Boolean(lexicon.get(a)?.usagePenalty)) -
+            Number(Boolean(lexicon.get(b)?.usagePenalty)) ||
+          scores[b] - scores[a]
+      );
       node.concept = ranked[0];
       node.ambiguous = scores[ranked[0]] === scores[ranked[1]];
       decisions.push({
@@ -861,6 +916,12 @@ function selectionalFit(node, clause, concept, lexicon) {
   const match = concept.objectClasses.find((c) => classes.includes(c));
   if (match) {
     return { score: 4, reason: `object "${objectHead.text}" is ${match} (+4)` };
+  }
+  const described = concept.objectClasses.find((c) =>
+    objectConcepts.some((id) => lexicon.get(id)?.cues?.includes(c))
+  );
+  if (described) {
+    return { score: 1, reason: `object definition mentions ${described} (+1)` };
   }
   // A dictionary cue explicitly naming this object is stronger than an
   // incomplete hypernym inventory. Its contextual bonus is counted above.

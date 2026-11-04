@@ -12,6 +12,7 @@ import { parseFactList, unknownFactWords } from './fact-list.mjs';
 
 import { clause } from './clause-node.mjs';
 import { earlierVerb, subjectPhrases } from './subject-phrases.mjs';
+import { headlineCopula, adjectiveListAhead } from './headline-copula.mjs';
 import { reducedPassive } from './reduced-passive.mjs';
 import { leadingPhraseAhead, parseLeading } from './leading.mjs';
 import { outerVerbAt } from './relative-end.mjs';
@@ -403,20 +404,6 @@ function parseClauses(tokens, ctx) {
   return result;
 }
 
-/** "low, median, high": every item of the list to its end is an adjective. */
-function adjectiveListAhead(c, k) {
-  const rest = c.tokens.slice(c.i + k);
-  const end = rest.findIndex((x) => [':', ';', '.', ')'].includes(x.text));
-  const list = end < 0 ? rest : rest.slice(0, end);
-  return (
-    list.length > 2 &&
-    list.every((x, i) =>
-      i % 2 ? x.text === ',' || has(x, 'coord') : has(x, 'adj')
-    ) &&
-    list.length % 2 === 1
-  );
-}
-
 /** Parse one clause at the cursor. */
 function parseClause(c, ctx, initial) {
   const t = c.peek;
@@ -554,7 +541,12 @@ function parseClause(c, ctx, initial) {
     const sentence =
       declarative &&
       declarative.type !== 'fragment' &&
-      (!bareSingular(declarative.subject) || stopsShort);
+      (!bareSingular(declarative.subject) ||
+        stopsShort ||
+        (declarative.frame === 'copula' &&
+          (declarative.verb?.token === null ||
+            declarative.verb?.token === undefined) &&
+          declarative.subject?.adjs?.length));
     if (sentence && reached > end) {
       return declarative;
     }
@@ -629,7 +621,7 @@ function parseDeclarative(c, ctx) {
     }
   }
   if (!vg) {
-    // "the aggregator forwards royalties": the compound took the verb
+    // "the aggregator forwards royalties: the compound took the verb
     // "Tom's car needs fuel": any noun of the compound may be the verb
     // "Mary said that she…": a participle of the subject may be the verb
     // "The price of the book covers…": a noun inside the subject's phrase
@@ -660,6 +652,11 @@ function parseDeclarative(c, ctx) {
         }
       }
       c.i = end;
+    }
+    // "Prices high": only when no word of the compound is the verb
+    const headline = headlineCopula(c, ctx, subject);
+    if (headline) {
+      return headline;
     }
     const afterNP = c.i;
     const tail = parseTail(c, 'fragment', ctx);

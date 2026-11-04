@@ -212,11 +212,14 @@ function translateOne(sentence, context, report) {
 }
 
 /**
- * Words predominantly capitalized inside sentences: its names ("Stripe pays…" is the company, as "via Stripe"
- * elsewhere shows), even where a sentence starts with them.
+ * Names are predominantly capitalized inside sentences: "via Stripe"
+ * identifies the company even where "Stripe pays…" opens a sentence.
  */
 export function documentNames(text) {
-  const plain = text.replace(/```[\s\S]*?```|`[^`]*`|\]\([^)]*\)/g, ' ');
+  const plain = text.replace(
+    /```[\s\S]*?```|`[^`]*`|\]\([^)]*\)|https?:\/\/\S+|<[^>]+>/g,
+    ' '
+  );
   const lower = new Map();
   for (const word of plain.match(/[\p{L}][\p{L}\d-]*/gu) || []) {
     if (/^[a-z][a-z-]+$/.test(word)) {
@@ -239,8 +242,15 @@ export function documentNames(text) {
 
 /** Words the document writes in lowercase somewhere in its prose. */
 export function documentWords(text) {
-  const plain = text.replace(/```[\s\S]*?```|`[^`]*`|\]\([^)]*\)/g, ' ');
-  return new Set(plain.match(/\b[a-z][a-z-]+\b/g) || []);
+  const plain = text.replace(
+    /```[\s\S]*?```|`[^`]*`|\]\([^)]*\)|https?:\/\/\S+|<[^>]+>/g,
+    ' '
+  );
+  return new Set(
+    (plain.match(/[\p{L}][\p{L}\d-]*/gu) || []).filter((word) =>
+      /^[a-z][a-z-]+$/.test(word)
+    )
+  );
 }
 
 /**
@@ -257,8 +267,11 @@ export function translateDocument(text, options = {}) {
   if (!context.memory.topic) {
     context.memory.setTopic(options.topic || text);
     context.lexicon.setDocumentNames?.(
-      documentNames(options.topic || text),
-      documentWords(options.topic || text)
+      new Set([
+        ...documentNames(options.field || ''),
+        ...documentNames(options.topic || text),
+      ]),
+      documentWords(options.field || options.topic || text)
     );
   }
   const report = { sentences: [] };

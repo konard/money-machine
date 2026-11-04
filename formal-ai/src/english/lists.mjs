@@ -76,6 +76,8 @@ export function parallelVerb(c, k) {
   }
   const after = c.at(k + 1);
   return (
+    !after ||
+    (after.kind === 'punct' && /[.!?;]/.test(after.text)) ||
     ['prep', 'det', 'pron', 'poss', 'to', 'adv', 'num'].some((p) =>
       has(after, p)
     ) ||

@@ -30,6 +30,7 @@ export function publicSenses(entries, title, pos) {
       ...x,
       ...(e.capital && lower ? { side: true } : {}),
       capital: e.capital,
+      rare: e.rare || x.rare,
     })),
     ...e.see.flatMap((s) => {
       const senses = (entries.get(s.page) || [])
@@ -60,6 +61,10 @@ export function publicSenses(entries, title, pos) {
               referenceFits(s.gloss, sense)
                 ? matchingDefinition(s.gloss, mainDefinitions)
                 : {}),
+              rare:
+                e.rare ||
+                sense.rare ||
+                matchingDefinition(s.gloss, mainDefinitions).rare,
               gloss: `${s.gloss}: ${sense.gloss}`,
               seeAlso: true,
               side: !s.synonym && e.senses.length > 0,

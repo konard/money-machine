@@ -26,6 +26,7 @@ function entity(np, lexicon) {
     return {
       coordination: np.coord,
       items: np.items.map((n) => entity(n, lexicon)),
+      floatingQuantifier: np.floatingQuantifier,
       number: 'plural',
     };
   }
@@ -92,6 +93,9 @@ function entity(np, lexicon) {
     if (np.indefinite) {
       e.indefinite = true;
     }
+  }
+  if (np.floatingQuantifier) {
+    e.floatingQuantifier = np.floatingQuantifier;
   }
   if (np.name) {
     e.name = np.name;
@@ -169,6 +173,7 @@ function entity(np, lexicon) {
   }
   if (np.parenthetical) {
     e.parenthetical = np.parenthetical.map((x) => statement(x, lexicon));
+    e.parentheticalFinal = np.parentheticalFinal;
   }
   if (np.marker) {
     e.marker = np.marker;
@@ -283,6 +288,8 @@ function complement(c, lexicon) {
 function predicateClause(x, lexicon) {
   return {
     predicate: x.verb.concept || x.verb.candidates?.[0],
+    subject: x.subject ? entity(x.subject, lexicon) : undefined,
+    voice: x.passive ? 'passive' : undefined,
     objects: x.objects.map((o) => entity(o, lexicon)),
     modifiers: x.mods.map((m) => modifier(m, lexicon)),
     complementClause: x.xcomp ? predicateClause(x.xcomp, lexicon) : undefined,
@@ -303,6 +310,7 @@ export function statement(clause, lexicon) {
         ? entity(clause.factValue, lexicon)
         : undefined,
       answer: clause.answer,
+      factFocus: clause.factFocus ? property(clause.factFocus) : undefined,
       valueSeparator: clause.valueSeparator,
       labelProperty: clause.labelProperty
         ? property(clause.labelProperty)

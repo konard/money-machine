@@ -380,18 +380,27 @@ export function englishEntries(wikitext) {
         )
       );
     // no translations of its own: a definition that is just another word
-    // ("A [[document]], especially…") makes this a synonym of that word
+    // ("A [[document]]") makes this a synonym of that word
     // (translations kept on a subpage, as for "dog", are translations too)
     const subpage = /\{\{see translation subpage/.test(text);
     if (!senses.length && !formOf.length && !subpage) {
+      const equivalents = [];
       for (const d of definitions) {
         const m =
           /^(?:\{\{(?:senseid|lb|label|lbl)\|[^}]*\}\}\s*)*(?:(?:A|An|The)\s+)?\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\](?=[\s,;.]|$)(?!\s+\[\[)/.exec(
             d
           );
-        if (m && /^[a-z][a-z -]*$/.test(m[1])) {
-          formOf.push({ kind: 'alternative form', lemma: m[1] });
+        if (
+          m &&
+          /^[a-z][a-z -]*$/.test(m[1]) &&
+          (!/^(?:\{\{[^}]*\}\}\s*)*(?:A|An|The)\s/.test(d) ||
+            /^\s*[,;.]|^\s*$/.test(d.slice(m[0].length)))
+        ) {
+          equivalents.push({ kind: 'alternative form', lemma: m[1] });
         }
+      }
+      if (equivalents.length === definitions.length) {
+        formOf.push(...equivalents);
       }
     }
     return {

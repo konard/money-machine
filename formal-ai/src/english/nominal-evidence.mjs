@@ -1,6 +1,7 @@
 /** Dictionary POS order is evidence for fragments, never a lexical command list. */
 import { has, reading } from './token-readings.mjs';
 import { publicSenses } from '../sources/sense-data.mjs';
+import { definitionUsage, plain } from '../sources/wiktionary.mjs';
 
 /** Keep the source's section order and definition counts, before translation filtering. */
 export function rememberPartsOfSpeech(entries, lexicon) {
@@ -22,7 +23,19 @@ export function rememberPartsOfSpeech(entries, lexicon) {
         (counts[section.pos] || 0) + (section.rawDefinitions?.length || 0);
     }
     if (order.length) {
-      lexicon.partsOfSpeech.set(lemma, { order, counts });
+      const adjectiveDefinitions = sections
+        .filter((s) => s.pos === 'adj')
+        .flatMap((s) => s.rawDefinitions || []);
+      const relational =
+        adjectiveDefinitions.length > 0 &&
+        adjectiveDefinitions.every(
+          (d) =>
+            definitionUsage(d).labels.length ||
+            /^(?:#+\s*)?(?:of|from|pertaining|relating|related)\b/i.test(
+              plain(d.split('\n')[0])
+            )
+        );
+      lexicon.partsOfSpeech.set(lemma, { order, counts, relational });
     }
     // Overrides retain their translations, but inherit attested grammar.
     const senses = publicSenses(entries, lemma, 'verb');
@@ -54,6 +67,17 @@ export function nounFirst(token, lexicon, competitor = 'verb') {
       data.order.indexOf('noun') < data.order.indexOf(competitor) ||
       data.counts.noun > data.counts[competitor]) &&
     data.counts.noun > 0
+  );
+}
+
+/** Noun-first entries with only relational/labelled adjectives retain noun modifiers. */
+export function nounModifier(token, lexicon) {
+  const noun = reading(token, 'noun');
+  return Boolean(
+    lexicon &&
+    noun &&
+    nounFirst(token, lexicon, 'adj') &&
+    lexicon?.partsOfSpeech?.get(noun.lemma)?.relational
   );
 }
 
@@ -131,6 +155,16 @@ function nominalStart(tokens, lexicon) {
 
 /** Break ties only when the complete alternative is a series of nominal items. */
 export function preferNominal(tokens, clauses, fragments, lexicon) {
+  if (
+    clauses.list.some(
+      (c) =>
+        c.mood === 'imperative' &&
+        c.objects?.some((o) => o.items?.some((np) => np.sharedHead))
+    )
+  ) {
+    return false;
+  }
+
   if (
     fragments.leftover.length ||
     !fragments.list.length ||

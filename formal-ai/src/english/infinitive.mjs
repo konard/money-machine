@@ -27,6 +27,36 @@ export function infinitiveOf(lexicon) {
 export function parseToInfinitive(c, frame, out, options, parseTail) {
   const t = c.peek;
   const takes = options.takes || [];
+  // Passive object-control: "require the files to be checked". The noun
+  // before "to" is the passive clause's subject, not an object of "be".
+  if (t.lower === 'to' && c.at(1)?.lower === 'be' && out.objects.length) {
+    let offset = 2;
+    const adverbs = [];
+    while (has(c.at(offset), 'adv') && !has(c.at(offset), 'verb')) {
+      const token = c.at(offset++);
+      adverbs.push({ type: 'adv', ...head(token, reading(token, 'adv')) });
+    }
+    const token = c.at(offset);
+    const r = token?.readings.find(
+      (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
+    );
+    if (r && !out.xcomp) {
+      c.i += offset + 1;
+      const sub = parseTail(c, 'event', {
+        ...options,
+        nonfinite: true,
+        takes: options.takesOf?.(r) || [],
+      });
+      out.xcomp = {
+        verb: head(token, r),
+        ...sub,
+        subject: out.objects.pop(),
+        passive: true,
+      };
+      out.xcomp.mods.unshift(...adverbs);
+      return true;
+    }
+  }
   const toVerb =
     t.lower === 'to' &&
     has(c.at(1), 'verb') &&
@@ -68,7 +98,7 @@ export function parseToInfinitive(c, frame, out, options, parseTail) {
     // after a person ("ask them to wait") it is what the person does
     const object = out.objects[out.objects.length - 1];
     if (
-      (object && !personLike(object, options.lexicon)) ||
+      (object && infinitive !== true && !personLike(object, options.lexicon)) ||
       (!object && frame === 'event' && infinitive === false)
     ) {
       out.xcomp.purpose = true;

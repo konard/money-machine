@@ -75,10 +75,7 @@ export async function entityContext(entities, topic, options) {
         values(e.labels),
         values(e.descriptions),
         values(e.aliases),
-        ...instances(e).map(
-          (type) =>
-            `${values(types[type]?.labels)} ${values(types[type]?.descriptions)}`
-        ),
+        ...instances(e).map((type) => values(types[type]?.labels)),
       ].join(' ')
     );
     const near = nearby(name);

@@ -25,7 +25,8 @@ import {
 } from './token-readings.mjs';
 import { parseToInfinitive } from './infinitive.mjs';
 import { Cursor } from './cursor.mjs';
-import { nounFirst } from './nominal-evidence.mjs';
+import { sharedHead } from './shared-head.mjs';
+import { nounFirst, nounModifier } from './nominal-evidence.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
 import { countAhead, parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
@@ -180,6 +181,7 @@ export function parseNP(c, options = {}) {
       nounFirst(c.peek, options.lexicon, 'adj') &&
       nounAhead(c, 1)
     ) &&
+    !(nounModifier(c.peek, options.lexicon) && has(c.at(1), 'noun')) &&
     // a conjunction is no adjective ("or", heraldic gold)
     !has(c.peek, 'coord') &&
     ((quantityDegree(c.peek) && has(c.at(1), 'adj')) ||
@@ -305,6 +307,22 @@ export function parseNP(c, options = {}) {
     !(options.stopAt !== undefined && c.i >= options.stopAt)
   ) {
     const t3 = c.peek;
+    // A secondary noun borrowed through a related entry cannot absorb an
+    // ordinary predicate adjective after the subject.
+    if (
+      nouns.length &&
+      has(t3, 'adj') &&
+      !nounAhead(c, 1) &&
+      reading(t3, 'noun')?.concepts.every((id) => {
+        const sense = options.lexicon?.get(id);
+        return sense?.related || sense?.variant;
+      }) &&
+      reading(t3, 'adj').concepts.some(
+        (id) => !options.lexicon?.get(id)?.related
+      )
+    ) {
+      break;
+    }
     // "bought a car yesterday": a word that can be an adverb and ends the
     // clause is no second noun of a compound
     const after = c.at(1);
@@ -334,6 +352,17 @@ export function parseNP(c, options = {}) {
       !options.fragment &&
       !afterAdjective &&
       !bareCompound &&
+      !(
+        options.infinitiveObject &&
+        has(t3, 'noun') &&
+        c.at(1)?.lower === 'to' &&
+        c.at(2)?.lower === 'be' &&
+        c
+          .at(3)
+          ?.readings.some(
+            (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
+          )
+      ) &&
       !baseAfterSingular(t3, nouns[nouns.length - 1].r) &&
       has(t3, 'verb') &&
       !has(c.at(1), 'noun') &&
@@ -564,6 +593,9 @@ function attachParenthesis(c, np) {
       const parsed = inside.length ? parentheticalParser(inside) : null;
       if (parsed && !parsed.leftover.length) {
         np.parenthetical = parsed.list;
+        np.parentheticalFinal = c.tokens
+          .slice(j + 1)
+          .every((t) => /^[.!?;]$/.test(t.text));
         c.i = j + 1;
       }
       return;
@@ -597,6 +629,9 @@ function attachOf(c, np, options = {}) {
     !has(c.peek, 'modal') &&
     !(options.stopAt !== undefined && c.i >= options.stopAt) &&
     (RELATIVES.has(c.peek?.lower) || startsNP(c.peek)) &&
+    !(
+      ['all', 'both', 'each'].includes(c.peek?.lower) && has(c.at(1), 'verb')
+    ) &&
     !np.pronoun &&
     !np.relative
   ) {
@@ -632,7 +667,10 @@ function attachOf(c, np, options = {}) {
       return {
         type: 'np',
         coord,
-        items: [np, ...(other.coord === coord ? other.items : [other])],
+        items: [
+          sharedHead(np, other, options.lexicon),
+          ...(other.coord === coord ? other.items : [other]),
+        ],
         // "a card or a bank": one of them
         number: coord === 'conj.or' ? np.number : 'pl',
       };
@@ -773,6 +811,8 @@ export function parseTail(c, frame, options = {}) {
       if (
         has(t, 'adj') &&
         !nounAhead(c, 1) &&
+        // "are in the pen": a preposition before its noun phrase
+        !(has(t, 'prep') && startsNP(c.at(1))) &&
         !borrowedAdjective(t, options.lexicon)
       ) {
         c.next();
@@ -910,7 +950,9 @@ export function parseTail(c, frame, options = {}) {
       continue;
     }
     if (startsNP(t) && !(has(t, 'verb') && out.objects.length > 0)) {
-      const np = parseNP(c);
+      const np = parseNP(c, {
+        infinitiveObject: true,
+      });
       if (!np) {
         break;
       }

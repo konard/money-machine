@@ -66,7 +66,12 @@ export async function governmentPages(titles, options = {}, english = false) {
   await pool(
     chunks(
       [...new Set(titles)].filter((w) =>
-        (english ? /^[a-z]+(?: [a-z]+)*$/i : /^[а-яё-]+$/i).test(w)
+        (english
+          ? /^[a-z]+(?: [a-z]+)*$/i
+          : options.russianPhrases
+            ? /^[а-яё-]+(?: [а-яё-]+)*$/i
+            : /^[а-яё-]+$/i
+        ).test(w)
       ),
       50
     ),
@@ -257,6 +262,43 @@ function russianNotes(text, sense) {
       ),
   ];
   const args = [];
+  // Align a bilingual translation block to its Russian definition before
+  // borrowing a destination frame from that sense's examples. With в/на,
+  // a feminine -у/-ю object is accusative, never prepositional.
+  if (/\b(?:become|enter)\b/.test(sense.gloss || '')) {
+    const target = words(`${sense.lemma} ${sense.gloss}`);
+    const translations = [
+      ...section.matchAll(/\{\{перев-блок\|([^|}]+)\|([\s\S]*?)\}\}/g),
+    ]
+      .map((m) => ({
+        gloss: plain(m[1]),
+        english: /(?:^|\n)\|en=([^\n]+)/.exec(m[2])?.[1] || '',
+      }))
+      .map((b) => ({
+        ...b,
+        score: [...words(b.english)].filter((w) => target.has(w)).length,
+      }))
+      .sort((a, b) => b.score - a.score);
+    const best = translations[0];
+    if (best?.score >= 2) {
+      const definition = section
+        .split('\n')
+        .find(
+          (line) => /^#[^#*:]/.test(line) && plain(line).includes(best.gloss)
+        );
+      const examples = [
+        ...(definition || '').matchAll(/\{\{пример\|([^|}]+)/g),
+      ];
+      for (const example of examples) {
+        const frame = /(?:^|\s)(в|на)\s+[а-яё]+[ую](?=[\s,.!?;:]|$)/i.exec(
+          plain(example[1])
+        );
+        if (frame) {
+          args.push(gov('acc', frame[1]));
+        }
+      }
+    }
+  }
   for (const note of notes) {
     const clean = plain(note)
       .replace(/кого-чего/g, 'чего')

@@ -36,6 +36,13 @@ function verbGroup(c, subject, subjectNP) {
     adverbs: [],
   };
   let expect = 'finite';
+  if (
+    subjectNP &&
+    ['all', 'both', 'each'].includes(c.peek?.lower) &&
+    has(c.at(1), 'verb')
+  ) {
+    subjectNP.floatingQuantifier = c.next().lower;
+  }
   const skipAdverbs = (preverbal = false) => {
     while (
       c.peek &&

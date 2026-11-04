@@ -122,6 +122,19 @@ function compose(parts, lexicon, context) {
       return `${adverb.ru.lemma} ${participle}`;
     }
   }
+  if (
+    last === 1 &&
+    noun(0) &&
+    noun(1) &&
+    found[0].filter((r) => r.pos === 'adj').length &&
+    found[0]
+      .filter((r) => r.pos === 'adj')
+      .every((r) =>
+        r.concepts.every((id) => lexicon.get(id)?.predicateEvidence?.restricted)
+      )
+  ) {
+    return `с ${declineNoun(noun(1), 'ins')} ${declineNoun(noun(0), 'gen')}`;
+  }
   if (last === 1 && adjective(0) && noun(1)) {
     const head = noun(1);
     return `с ${declineAdjective(adjective(0).lemma, { gender: head.gender, case: 'ins' })} ${declineNoun(head, 'ins')}`;

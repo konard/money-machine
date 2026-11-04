@@ -67,7 +67,9 @@ export function renderFragment(s, ctx, renderModifiers) {
     const value = s.answer
       ? { yes: 'да', no: 'нет' }[s.answer]
       : renderEntity(s.factValue, 'nom', ctx);
-    text += `${s.valueSeparator || ''} ${value}`;
+    const focus =
+      s.factFocus && ctx.lexicon.get(s.factFocus.concept)?.ru?.lemma;
+    text += `${s.valueSeparator || ''} ${focus ? `${focus} ` : ''}${value}`;
   }
   return text;
 }

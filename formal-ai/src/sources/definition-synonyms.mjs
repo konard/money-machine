@@ -90,12 +90,16 @@ export async function completeSynonymDefinitions(plans, options) {
 /** A final bare apposition in a translation gloss names an equivalent noun. */
 async function completeNominalGlosses(plans, options) {
   const missing = plans.flatMap((plan) =>
-    plan.pos === 'noun'
+    ['noun', 'adj'].includes(plan.pos)
       ? plan.senses
           .filter((s) => !s.russian.length && !s.rare && !s.side && !s.variant)
           .map((sense) => ({
             sense,
-            target: /,\s*([a-z]+)$/.exec(sense.gloss)?.[1],
+            pos: plan.pos,
+            target:
+              plan.pos === 'adj'
+                ? /;\s*([a-z]+)[.]?$/.exec(sense.definition || '')?.[1]
+                : /,\s*([a-z]+)$/.exec(sense.gloss)?.[1],
           }))
           .filter(({ target }) => target && target !== plan.lemma)
       : []
@@ -107,12 +111,12 @@ async function completeNominalGlosses(plans, options) {
     [...new Set(missing.map((x) => x.target))],
     options
   );
-  for (const { sense, target } of missing) {
+  for (const { sense, target, pos } of missing) {
     const context = new Set(
       glossWords(`${sense.gloss} ${sense.definition || ''}`, target)
     );
     const candidates = englishEntries(pages.get(target) || '')
-      .filter((e) => e.pos === 'noun' && !e.rare)
+      .filter((e) => e.pos === pos && !e.rare)
       .flatMap((e) => e.senses)
       .filter((s) => s.russian.length && !s.rare)
       .map((other) => ({

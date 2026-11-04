@@ -1,4 +1,5 @@
 import { renderFragment } from './fragment.mjs';
+import { punctuateParenthetics } from './parenthetic.mjs';
 /** Naturalize meta-language statements into Russian, recording decisions. */
 
 import { periodicAdverb } from './periodic-adverb.mjs';
@@ -132,7 +133,20 @@ export function naturalizeRussian(
         pieces.push(',');
       }
     } else if (s.link && CONJUNCTIONS[s.link]) {
-      const conj = CONJUNCTIONS[s.link];
+      const previous = statements[i - 1];
+      const named = (e) => e?.name || e?.coordination;
+      const contrast =
+        s.link === 'conj.while' &&
+        previous &&
+        s.tense === 'present' &&
+        previous.tense === 'present' &&
+        s.aspect === 'simple' &&
+        previous.aspect === 'simple' &&
+        named(s.subject) &&
+        named(previous.subject);
+      const conj = contrast
+        ? { text: 'тогда как', comma: true }
+        : CONJUNCTIONS[s.link];
       text = `${conj.text} ${text}`;
       // "откройте файл и прочитайте": no comma between predicates sharing a subject
       const sharedSubject =
@@ -155,6 +169,7 @@ export function naturalizeRussian(
     .replace(/\s+/g, ' ')
     .trim()
     .replace(/,$/, '');
+  text = punctuateParenthetics(text, lexicon);
   // "eBay", "iPhone" keep their own capitalization
   if (!/^[a-z]+[A-Z]/.test(text)) {
     text = text.charAt(0).toUpperCase() + text.slice(1);

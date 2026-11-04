@@ -86,7 +86,9 @@ export function compactWikitext(text) {
     // Russian Wiktionary uses ={{-ru-}}= rather than ==Russian==.
     // A nonempty page with no usable language must still exist in fetchPages:
     // its presence fixes insertion order before a later spelling supplies data.
-    return /=\s*\{\{-ru-\}\}\s*=/.test(text) ? text : '\n';
+    return /=\s*\{\{-ru-\}\}\s*=/.test(text)
+      ? text
+      : (text.match(/^==[^=]+==\s*$/gm) || []).join('\n') || '\n';
   }
   return kept.map(compactSection).join('');
 }

@@ -16,7 +16,7 @@ const CONTENT = new Set(['noun', 'verb', 'adj', 'adv', 'propn']);
  * @param {import('./lexicon.mjs').Lexicon} lexicon
  * @returns {string[]}
  */
-export function compoundCandidates(text, lexicon) {
+export function compoundCandidates(text, lexicon, forms = []) {
   const out = new Set();
   const clean = text
     .replace(/```[\s\S]*?```|`[^`]*`/g, ' ')
@@ -45,7 +45,12 @@ export function compoundCandidates(text, lexicon) {
     const singular = second.find(
       (r) => r.pos === 'noun' && r.features?.number === 'pl' && r.lemma
     );
-    out.add(`${a.lower} ${singular ? singular.lemma : b.lower}`);
+    const dictionaryForm = forms.find(
+      (f) => f.form === b.lower && f.pos === 'noun' && f.kind === 'plural'
+    );
+    out.add(
+      `${a.lower} ${singular?.lemma || dictionaryForm?.lemma || b.lower}`
+    );
   }
   return [...out].filter((t) => !lexicon.asked?.(t));
 }

@@ -6,6 +6,7 @@ import {
   russianTemplates,
 } from './wiktionary.mjs';
 import { russianEntry } from '../russian-entry.mjs';
+import { publicSenses } from './sense-data.mjs';
 
 const adjectiveTranslation = (s) =>
   s.russian.some((c) => /(?:ый|ий|ой)(?: |$)/.test(c.word));
@@ -42,6 +43,17 @@ export async function completeDerivations(plans, entries, options, context) {
     adverbs.map((a) => a.base),
     options
   );
+  const dictionary = new Map(
+    [...pages].map(([w, p]) => [w, englishEntries(p)])
+  );
+  const references = [...dictionary.values()].flatMap((es) =>
+    es.filter((e) => e.pos === 'adj').flatMap((e) => e.see.map((s) => s.page))
+  );
+  for (const [word, page] of await fetchPages(references, options)) {
+    dictionary.set(word, englishEntries(page));
+  }
+  const adjectiveSenses = (base) =>
+    publicSenses(dictionary, base, 'adj').filter((s) => !s.rare);
   const add = (lemma, pos, senses) => {
     if (!senses.length) {
       return;
@@ -60,21 +72,43 @@ export async function completeDerivations(plans, entries, options, context) {
       plan.senses.push(...senses);
     }
   };
+  const adjectives = adverbs.flatMap(({ base }) =>
+    adjectiveSenses(base).flatMap((s) => s.russian)
+  );
+  const adjectivePages = await fetchPages(
+    adjectives.map((c) => c.word),
+    options
+  );
+  const shortNeuters = new Map();
+  for (const [word, page] of adjectivePages) {
+    const entry = russianTemplates(page).find(
+      (e) => e.pos === 'adj' && e.headword
+    );
+    if (entry) {
+      const rendered = await renderRussian(word, entry, options);
+      const short = russianEntry('adj', word, rendered, entry.headword)
+        .shortForms?.n;
+      if (short) {
+        shortNeuters.set(word, short);
+      }
+    }
+  }
   for (const { word, base } of adverbs) {
-    const senses = englishEntries(pages.get(base) || '')
-      .filter((e) => e.pos === 'adj' && !e.rare)
-      .flatMap((e) => e.senses)
-      .filter((s) => !s.rare)
-      .flatMap((s) =>
-        s.russian
-          .filter((c) => /(?:ный|тый)$/.test(c.word))
-          .slice(0, 1)
-          .map((c) => ({
-            ...s,
-            russian: [{ word: `${c.word.slice(0, -2)}о`, attested: true }],
-            composed: true,
-          }))
-      );
+    const senses = adjectiveSenses(base).flatMap((s) =>
+      s.russian
+        .filter((c) => shortNeuters.has(c.word) || /(?:ный|тый)$/.test(c.word))
+        .slice(0, 1)
+        .map((c) => ({
+          ...s,
+          russian: [
+            {
+              word: shortNeuters.get(c.word) || `${c.word.slice(0, -2)}о`,
+              attested: true,
+            },
+          ],
+          composed: true,
+        }))
+    );
     add(word, 'adv', senses);
   }
   const verbs = forms.flatMap((f) =>

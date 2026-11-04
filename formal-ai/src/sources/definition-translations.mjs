@@ -2,6 +2,7 @@
 import { englishEntries, fetchPages } from './wiktionary.mjs';
 import { declineAdjective } from '../russian/morphology.mjs';
 import { senseDomain } from './sense-data.mjs';
+import { completeRestrictedDefinitions } from './restricted-definitions.mjs';
 import { completeVerbDefinitions } from './definition-verbs.mjs';
 import { completeRussianMeanings } from './russian-meanings.mjs';
 import { completeSynonymDefinitions } from './definition-synonyms.mjs';
@@ -25,6 +26,7 @@ export async function completeDefinitions(
     lexicon: context.lexicon,
   });
   await completeReverseNouns(plans, context, options);
+  await completeRestrictedDefinitions(plans, options);
   await completeVerbDefinitions(plans, options);
   await completeSynonymDefinitions(plans, options);
   await completeReverseVerbs(plans, options, context);

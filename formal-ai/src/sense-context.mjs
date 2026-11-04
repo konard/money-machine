@@ -2,7 +2,31 @@
 const stem = (w) => w.replace(/ies$/, 'y').replace(/s$/, '');
 
 export function dictionaryContext(node, concept, heads, lexicon) {
-  if (!concept?.domain || !concept.cues?.length) {
+  // A membership predicate selects the collective reading of its object,
+  // rather than another homonymous meaning (an activity versus software).
+  if (
+    node.pos === 'noun' &&
+    /\b(?:set|series|collection|group) of\b|\b(?:organization|association|society)\b/.test(
+      concept?.gloss || ''
+    )
+  ) {
+    const membership = heads.some(
+      ({ node: verb, parent }) =>
+        verb.pos === 'verb' &&
+        parent?.objects?.some(
+          (o) => o.head === node || o.items?.some((item) => item.head === node)
+        ) &&
+        verb.candidates.some((id) =>
+          /\b(?:become|be) (?:a )?member of\b/.test(
+            lexicon.get(id)?.gloss || ''
+          )
+        )
+    );
+    if (membership) {
+      return 3;
+    }
+  }
+  if ((!concept?.domain && node.pos !== 'adj') || !concept?.cues?.length) {
     return 0;
   }
   const alternatives = node.candidates.map(
@@ -24,11 +48,17 @@ export function dictionaryContext(node, concept, heads, lexicon) {
     const senses = other.candidates
       .map((id) => lexicon.get(id))
       .filter(Boolean);
-    const representative = senses.find((s) => s.core) || senses[0];
+    const representative =
+      senses.find((s) => s.id === other.concept) ||
+      senses.find((s) => s.core) ||
+      senses[0];
     const cues = new Set((representative?.cues || []).map(stem));
     shared += distinctive.some((cue) => cues.has(cue)) ? 1 : 0;
   }
-  return Math.min(0.4, shared * 0.2);
+  return Math.min(
+    node.pos === 'adj' ? 1.2 : 0.4,
+    shared * (node.pos === 'adj' ? 1.2 : 0.2)
+  );
 }
 
 /** Compare verb–object association per noun occurrence, rather than raw counts. */
@@ -64,4 +94,32 @@ export function nounObjectContext(node, concept, heads, lexicon) {
     }
   }
   return best;
+}
+
+/** Membership predicates select collective objects, using dictionary/entity evidence. */
+export function membershipContext(concept, owner, lexicon) {
+  if (!/\b(?:become|be) (?:a )?member of\b/.test(concept?.gloss || '')) {
+    return 0;
+  }
+  const collective = (np) => {
+    if (np?.items) {
+      return np.items.some(collective);
+    }
+    const entity = lexicon.nameEntities?.get(np?.name || np?.head?.text);
+    const description = entity?.descriptions?.en?.value || '';
+    const senses = (np?.head?.candidates || []).map(
+      (id) => lexicon.get(id)?.gloss || ''
+    );
+    return (
+      /\b(?:organization|company|platform|marketplace|community|association)\b/.test(
+        description
+      ) ||
+      senses.some((gloss) =>
+        /\b(?:set|series|collection|group) of\b|\b(?:organization|association|society)\b/.test(
+          gloss
+        )
+      )
+    );
+  };
+  return owner?.objects?.some(collective) ? 3 : 0;
 }

@@ -102,6 +102,22 @@ export function infinitiveClause(x, parent, ctx) {
     ctx.notes.add(`no Russian verb for ${x.predicate}`);
     return [`[${x.predicate}]`];
   }
+  if (x.voice === 'passive' && x.subject) {
+    return [
+      ',',
+      'чтобы',
+      ctx.renderStatement(
+        {
+          ...x,
+          mood: 'declarative',
+          tense: 'past',
+          aspect: 'simple',
+          polarity: 'positive',
+        },
+        { ...ctx }
+      ),
+    ];
+  }
   const parentEntry = lexEntry(ctx, parent.predicate)?.ru;
   const aspectual = lexEntry(ctx, parent.predicate)?.classes.includes(
     'aspectual'

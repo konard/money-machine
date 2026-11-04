@@ -7,6 +7,8 @@
  * lemma, features); the parser picks the one that fits the clause.
  */
 
+import { IDENTIFIER, isIdentifier } from './identifiers.mjs';
+
 import {
   PRONOUNS,
   POSSESSIVES,
@@ -32,7 +34,7 @@ const QUANTITY = new RegExp(
   'u'
 );
 const WORD = new RegExp(
-  `${AMOUNT}(?:[–-]${AMOUNT})?|\\p{Lu}/\\p{Lu}(?:-\\p{L}+)?(?![\\p{L}\\d])|\\p{Ll}(?:\\.\\p{Ll})+\\.|\\p{L}+(?:\\d+\\p{L}*)*(?:[.-]\\p{L}+(?:\\d+\\p{L}*)*)*|\\d+(?:[.,]\\d+)*|'[a-z]+|[^\\s\\p{L}\\d]`,
+  `${IDENTIFIER}|${AMOUNT}(?:[–-]${AMOUNT})?|\\p{Lu}/\\p{Lu}(?:-\\p{L}+)?(?![\\p{L}\\d])|\\p{Ll}(?:\\.\\p{Ll})+\\.|\\p{L}+(?:\\d+\\p{L}*)*(?:[.-]\\p{L}+(?:\\d+\\p{L}*)*)*|\\d+(?:[.,]\\d+)*|'[a-z]+|[^\\s\\p{L}\\d]`,
   'gu'
 );
 
@@ -72,14 +74,23 @@ export function tokenize(sentence) {
     for (const piece of raw.match(WORD) || []) {
       push(
         piece,
-        QUANTITY.test(piece) && !/^\d+(?:,\d{3})*$/.test(piece)
-          ? 'quantity'
-          : /^\d/.test(piece)
-            ? 'number'
-            : /^[\p{L}']/u.test(piece)
-              ? 'word'
-              : 'punct'
+        isIdentifier(piece)
+          ? 'identifier'
+          : QUANTITY.test(piece) && !/^\d+(?:,\d{3})*$/.test(piece)
+            ? 'quantity'
+            : /^\d/.test(piece)
+              ? 'number'
+              : /^[\p{L}']/u.test(piece)
+                ? 'word'
+                : 'punct'
       );
+    }
+  }
+  // Standards written as an acronym and number form one identifier.
+  for (let i = out.length - 2; i >= 0; i -= 1) {
+    if (/^[A-Z]{2,}$/.test(out[i].text) && out[i + 1].kind === 'number') {
+      const text = `${out[i].text} ${out[i + 1].text}`;
+      out.splice(i, 2, { text, lower: text.toLowerCase(), kind: 'identifier' });
     }
   }
   // "$150-400/month" → "$150-400 per month"; "£6/$6" stays one quantity
@@ -94,15 +105,16 @@ export function tokenize(sentence) {
     } else if (
       // "tax/payment setup": alternatives written with a slash
       out[i].text === '/' &&
-      out[i - 1].kind === 'word' &&
+      ['word', 'identifier'].includes(out[i - 1].kind) &&
       out[i + 1].kind === 'word' &&
       // both common words or both names: "tax/payment", "US/UK"
       // (the first may open the sentence: "Low/none")
-      ((new RegExp(
-        `^[\\p{Ll}${i === 1 ? '\\p{Lu}' : ''}][\\p{Ll}-]+$`,
-        'u'
-      ).test(out[i - 1].text) &&
-        /^\p{Ll}[\p{Ll}-]+$/u.test(out[i + 1].text)) ||
+      (out[i - 1].kind === 'identifier' ||
+        (new RegExp(
+          `^[\\p{Ll}${i === 1 ? '\\p{Lu}' : ''}][\\p{Ll}-]+$`,
+          'u'
+        ).test(out[i - 1].text) &&
+          /^\p{Ll}[\p{Ll}-]+$/u.test(out[i + 1].text)) ||
         (/^\p{Lu}/u.test(out[i - 1].text) &&
           /^\p{Lu}[\p{L}\d]+$/u.test(out[i + 1].text))) &&
       ![out[i - 1].lower, out[i + 1].lower].some((w) =>
@@ -190,6 +202,10 @@ export function readings(token, lexicon) {
     out.push({ pos, lemma, features, concepts });
   if (token.kind === 'punct') {
     add('punct', token.text);
+    return out;
+  }
+  if (token.kind === 'identifier') {
+    add('propn', token.text, { number: 'sg', opaque: true });
     return out;
   }
   if (token.kind === 'quantity') {
@@ -282,6 +298,10 @@ function contentReadings(token, lexicon, add) {
   const w = token.lower;
   if (PLACEHOLDER.test(token.text)) {
     add('propn', token.text, { number: 'sg', opaque: true });
+    return;
+  }
+  if (lexicon.foreignWords?.has(token.text) && !contentFound(lexicon, w)) {
+    add('propn', token.text, { number: 'sg', foreign: true });
     return;
   }
   const capitalized = /^\p{Lu}/u.test(token.text);
@@ -471,6 +491,7 @@ export function analyze(sentence, lexicon) {
     opening?.readings.length === 1 &&
     opening.readings[0].pos === 'propn' &&
     contentFound(lexicon, opening.lower) &&
+    !lexicon.documentNames?.has(opening.text) &&
     next?.readings.length &&
     !next.readings.some(
       (r) =>

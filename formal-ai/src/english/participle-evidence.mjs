@@ -1,5 +1,6 @@
 /** Dictionary evidence for eventive readings of ambiguous participles. */
 import { has, reading } from './token-readings.mjs';
+import { definitionUsage } from '../sources/wiktionary.mjs';
 
 /** Retain evidence from the adjective's own entry, including translation pointers. */
 export function predicateEvidence(entries, plan) {
@@ -23,11 +24,7 @@ export function predicateEvidence(entries, plan) {
       ),
     restricted:
       blocks.length > 0 &&
-      blocks.every((b) =>
-        /\|(?:informal|rare|obsolete|archaic|in combination|attributive)(?:\||\}\})/.test(
-          b.split('\n')[0]
-        )
-      ),
+      blocks.every((b) => definitionUsage(b).labels.length > 0),
     prepositions,
   };
 }

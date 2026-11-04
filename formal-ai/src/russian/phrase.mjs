@@ -6,6 +6,7 @@
 
 import { degreeForm, quantityWord } from './degree.mjs';
 import { bindRelative } from './relative.mjs';
+import { shortFrom } from './copula.mjs';
 import {
   declineNoun,
   declineAdjective,
@@ -186,6 +187,19 @@ export function renderEntity(e, kase, ctx) {
   if (!e) {
     return '';
   }
+  if (e.floatingQuantifier) {
+    const { floatingQuantifier, ...rest } = e;
+    const f = features(e, ctx);
+    const quantifier =
+      floatingQuantifier === 'all'
+        ? DEMONSTRATIVE.all[f.number === 'pl' ? 'pl' : f.gender || 'm'][
+            CASE_INDEX[kase]
+          ]
+        : floatingQuantifier === 'both'
+          ? 'оба'
+          : 'каждый';
+    return `${renderEntity(rest, kase, ctx)} ${quantifier}`;
+  }
   // "the tax/fee" → налог/плату
   if (e.alternative) {
     const { alternative, ...rest } = e;
@@ -259,6 +273,15 @@ export function renderEntity(e, kase, ctx) {
     const agree = f.number === 'pl' ? { number: 'pl' } : { gender: f.gender };
     const adjective = (st) => {
       const ru = conceptOf(ctx, st.property.concept)?.ru;
+      // A final remark after a bare name has no nominal agreement target.
+      if (
+        rest.name &&
+        !rest.concept &&
+        rest.parentheticalFinal &&
+        (ru?.short || ru?.shortForms?.n)
+      ) {
+        return shortFrom(ru, { gender: 'n' });
+      }
       return ru?.pos === 'adj'
         ? declineAdjective(ru.lemma, { ...agree, case: 'nom' })
         : `[${st.property.text || st.property.concept}]`;
@@ -544,6 +567,11 @@ function renderNoun(e, entry, kase, ctx) {
     words.push(localizeQuantity(e.label));
   }
   const modifiers = e.modifiers || [];
+  // A collective activity targets a class of people: a bare singular human
+  // modifier denotes participants, rather than a particular possessor.
+  const collective = /\b(?:set|series|collection|group) of\b/.test(
+    conceptOf(ctx, e.concept)?.gloss || ''
+  );
   for (const m of modifiers.some((x) => x.concept)
     ? [...modifiers].reverse()
     : modifiers) {
@@ -557,7 +585,11 @@ function renderNoun(e, entry, kase, ctx) {
             {
               concept: x.concept,
               name: x.name,
-              number: m.number || 'singular',
+              number:
+                m.number ||
+                (collective && conceptOf(ctx, x.concept)?.ru?.animate
+                  ? 'plural'
+                  : 'singular'),
             },
             'gen',
             { ...ctx, afterPrep: false }
