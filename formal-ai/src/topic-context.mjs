@@ -8,6 +8,33 @@ const words = (text) => new Set(glossWords(text).map(stem));
 const describes = (concept) =>
   words(concept?.definition || concept?.gloss || '');
 
+/**
+ * Definition words of the dictionary itself ("make", "cause", "person"):
+ * in at least 2% of all definitions (and 20 of them), they describe how
+ * definitions are written, not what a sense is about.
+ */
+const general = new WeakMap();
+function generalCues(lexicon) {
+  const size = lexicon.concepts?.size || 0;
+  const known = general.get(lexicon);
+  if (known?.size === size) {
+    return known.cues;
+  }
+  const counts = new Map();
+  for (const concept of lexicon.concepts?.values() || []) {
+    for (const cue of describes(concept)) {
+      counts.set(cue, (counts.get(cue) || 0) + 1);
+    }
+  }
+  const cues = new Set(
+    [...counts]
+      .filter(([, n]) => n >= 20 && n >= 0.02 * size)
+      .map(([cue]) => cue)
+  );
+  general.set(lexicon, { size, cues });
+  return cues;
+}
+
 /** Each source lemma gets one vote; repeated boilerplate cannot dominate. */
 export function topicProfile(text, lexicon) {
   const profile = new Map();
@@ -61,10 +88,12 @@ export function documentTopicContext(node, concept, lexicon, memory) {
     return 0;
   }
   const own = stem(node.lemma || node.text || '');
+  const generic = generalCues(lexicon);
   const description = describes(concept);
   const matches = [...description].filter(
     (cue) =>
       cue !== own &&
+      !generic.has(cue) &&
       [...alternatives.values()].filter((d) => d.has(cue)).length <=
         alternatives.size / 2 &&
       [...profile].some(

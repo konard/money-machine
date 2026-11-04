@@ -23,6 +23,7 @@ import {
   ONE,
   PRONOUN_WORDS,
   QUESTION_ADVERBS,
+  OFFSET_BOUNDS,
   RELATIONS,
   euphony,
   cardinal,
@@ -799,7 +800,16 @@ export function renderRelation(m, ctx) {
   }
   const offset = m.offset && RELATIONS[m.relation]?.offset;
   if (offset) {
-    return `${offset[0]} ${renderEntity(e, offset[1], { ...ctx, afterPrep: true })}`;
+    // "at least 7 days earlier" → не менее чем на 7 дней раньше
+    const { bound, ...span } = e;
+    const limit = OFFSET_BOUNDS[bound];
+    return [
+      limit,
+      offset[0],
+      renderEntity(limit ? span : e, offset[1], { ...ctx, afterPrep: true }),
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
   if (m.measure) {
     return `на ${renderEntity(e, 'acc', { ...ctx, afterPrep: true })}`;

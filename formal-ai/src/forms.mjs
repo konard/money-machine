@@ -209,6 +209,13 @@ async function completeDegrees(text, options) {
     if (!source) {
       continue;
     }
+    // {{ru-adv|ра́но|ра́ньше,+}}: an adverb's headword names its comparative
+    const named =
+      source.headword.name === 'ru-adv' && source.headword.positional[1];
+    if (named && named !== '-') {
+      entry.comparative = unstress(named.split(',')[0]).trim();
+      continue;
+    }
     try {
       const { forms } = await renderRussian(entry.lemma, source, options);
       const comparative = forms.get('comd') || forms.get('comparative');

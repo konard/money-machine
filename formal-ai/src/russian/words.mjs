@@ -256,7 +256,12 @@ export const RELATIONS = {
   'rel.about': { amount: ['около', 'gen'], place: ['о', 'prep'] },
   // "by card", "by the buyer": means and agent are the instrumental;
   // "by the window" (a place) is у + genitive
-  'rel.by': { place: ['', 'ins'], location: ['у', 'gen'] },
+  // "7 days earlier" → на 7 дней раньше
+  'rel.by': {
+    place: ['', 'ins'],
+    location: ['у', 'gen'],
+    offset: ['на', 'acc'],
+  },
   'rel.near': { place: ['рядом с', 'ins'] },
   'rel.next-to': { place: ['рядом с', 'ins'] },
   'rel.under': {
@@ -437,6 +442,14 @@ export function transliterate(name) {
 }
 
 /** Bounds that keep the phrase's own case: «примерно 4 дня», «максимум $20». */
+/** A bounded time offset: «не менее чем за 7 дней». */
+export const OFFSET_BOUNDS = {
+  lower: 'не менее чем',
+  upper: 'не более чем',
+  above: 'более чем',
+  below: 'менее чем',
+};
+
 export const NEAR = {
   approximate: 'примерно',
   almost: 'почти',

@@ -11,6 +11,9 @@ export const head = (token, r) => ({
   pos: r.pos,
   candidates: r.concepts,
   concept: r.concepts.length === 1 ? r.concepts[0] : null,
+  // "faster": a comparative adverb compares by itself
+  ...(r.pos === 'adv' &&
+    r.features?.degree === 'comparative' && { comparison: 'greater' }),
 });
 
 /** Can this token start a noun phrase? */

@@ -29,8 +29,12 @@ function parseOrdinalDay(c, lexicon, parseNP) {
     o?.kind !== 'ordinal' ||
     o.value < 1 ||
     o.value > 31 ||
-    // "the 1st payment": an ordinal modifying a noun
-    (next?.readings || []).some((r) => r.pos === 'noun')
+    // "the 1st payment": an ordinal modifying a noun ("after", a
+    // preposition first, is no noun here)
+    ((next?.readings || []).some((r) => r.pos === 'noun') &&
+      !(next.readings || []).some((r) =>
+        ['prep', 'subord', 'coord', 'punct'].includes(r.pos)
+      ))
   ) {
     return null;
   }

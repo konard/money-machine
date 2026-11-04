@@ -326,7 +326,26 @@ export class EnglishRenderer {
 
   modifier(m) {
     if (m.kind === 'adverb') {
-      return this.word(m.concept, 'adv');
+      const word = this.word(m.concept, 'adv');
+      // "faster", "earlier": a short adverb compares by its ending; a
+      // derived -ly adverb ("more quickly") takes "more"
+      if (
+        m.comparison === 'greater' &&
+        (/^[^aeiou]*[aeiou][^aeiou]*$/i.test(word) || /^.{1,3}ly$/i.test(word))
+      ) {
+        return inflect(this.entry(m.concept, 'adv'), 'comparative');
+      }
+      return m.comparison
+        ? join(
+            {
+              greater: 'more',
+              lesser: 'less',
+              greatest: 'most',
+              least: 'least',
+            }[m.comparison],
+            word
+          )
+        : word;
     }
     if (m.kind === 'conj') {
       return m.conj;

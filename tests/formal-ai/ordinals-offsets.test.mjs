@@ -66,3 +66,13 @@ test('a counted time span before after/before is an offset', () => {
     null
   );
 });
+
+test('a span before a comparative is how much earlier or later', () => {
+  const earlier = {
+    readings: [
+      { pos: 'adv', features: { degree: 'comparative' }, concepts: [] },
+    ],
+  };
+  const days = { head: { lemma: 'day', candidates: [] }, quantity: 7 };
+  assert.equal(offsetModifier(new Cursor([earlier]), days)?.relation, 'rel.by');
+});

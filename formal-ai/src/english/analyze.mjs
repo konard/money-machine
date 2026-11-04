@@ -245,6 +245,10 @@ function stems(word) {
       add(`${base.slice(0, -1)}ie`, 'ing');
     }
   }
+  // "earlier" → early
+  if (word.endsWith('ier') && word.length > 4) {
+    add(`${word.slice(0, -3)}y`, 'er');
+  }
   if (word.endsWith('er') && word.length > 3) {
     const base = word.slice(0, -2);
     add(base, 'er');
@@ -356,7 +360,7 @@ export function readings(token, lexicon) {
   // Capitalization never turns a grammatical negator into a name.
   if (!out.some((r) => r.pos === 'neg')) {
     const grammatical = out.length > 0;
-    contentReadings(token, lexicon, add);
+    contentReadings(token, lexicon, add, out);
     // "Do you…": a grammatical word starting a sentence is no name
     if (grammatical && token.first) {
       return out.filter((r) => r.pos !== 'propn');
@@ -368,7 +372,7 @@ export function readings(token, lexicon) {
 /** Placeholder for inline code, links and URLs kept out of translation. */
 export const PLACEHOLDER = /^Xp[ch][a-j]+Q$/;
 
-function contentReadings(token, lexicon, add) {
+function contentReadings(token, lexicon, add, out = []) {
   const w = token.lower;
   if (PLACEHOLDER.test(token.text)) {
     add('propn', token.text, { number: 'sg', opaque: true });
@@ -490,6 +494,15 @@ function contentReadings(token, lexicon, add) {
       const adjs = lexicon.lookup('adj', lemma);
       if (adjs.length) {
         add('adj', lemma, { degree: 'comparative' }, adjs);
+      }
+      // "works faster", "7 days earlier": a comparative adverb, unless the
+      // word is a function word of its own ("after" is not "aft" + er)
+      const advs = lexicon.lookup('adv', lemma);
+      if (
+        advs.length &&
+        out.every((r) => ['adj', 'adv', 'noun', 'verb'].includes(r.pos))
+      ) {
+        add('adv', lemma, { degree: 'comparative' }, advs);
       }
     }
   }

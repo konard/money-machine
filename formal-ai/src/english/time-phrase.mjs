@@ -1,6 +1,6 @@
 /** Time phrases: "every Monday", "last year", a time noun ahead. */
 
-import { reading } from './token-readings.mjs';
+import { has, reading } from './token-readings.mjs';
 
 const TIME_NOUNS =
   /^(day|week|month|year|morning|evening|night|summer|winter|autumn|spring\.season|time|hour|minute|weekend|monday|tuesday|wednesday|thursday|friday|saturday|sunday|january|february|march|april|may|june|july|august|september|october|november|december)$/;
@@ -32,8 +32,14 @@ export function isTimeNP(np) {
  * before after/before measures the distance from what follows.
  */
 export function offsetModifier(c, np) {
-  const relation = reading(c.peek, 'prep')?.concepts?.[0];
-  return ['rel.after', 'rel.before'].includes(relation) &&
+  // "7 days earlier": the span is how much earlier (by 7 days)
+  const comparative =
+    has(c.peek, 'adv') &&
+    c.peek.readings.some((r) => r.features?.degree === 'comparative');
+  const relation = comparative
+    ? 'rel.by'
+    : reading(c.peek, 'prep')?.concepts?.[0];
+  return ['rel.after', 'rel.before', 'rel.by'].includes(relation) &&
     np?.head &&
     (np.quantity !== undefined || np.quantityText) &&
     timeNoun(np.head.lemma, np.head.candidates)
