@@ -211,8 +211,8 @@ function translateOne(sentence, context, report) {
  * elsewhere shows), even where a sentence starts with them.
  */
 export function documentNames(text) {
+  const lower = documentWords(text);
   const plain = text.replace(/```[\s\S]*?```|`[^`]*`|\]\([^)]*\)/g, ' ');
-  const lower = new Set(plain.match(/\b[a-z][a-z-]+\b/g) || []);
   const names = new Set();
   for (const m of plain.matchAll(/[a-z,;] +([A-Z][a-zA-Z-]+)/g)) {
     if (!lower.has(m[1].toLowerCase())) {
@@ -220,6 +220,12 @@ export function documentNames(text) {
     }
   }
   return names;
+}
+
+/** Words the document writes in lowercase somewhere in its prose. */
+export function documentWords(text) {
+  const plain = text.replace(/```[\s\S]*?```|`[^`]*`|\]\([^)]*\)/g, ' ');
+  return new Set(plain.match(/\b[a-z][a-z-]+\b/g) || []);
 }
 
 /**
@@ -235,7 +241,10 @@ export function translateDocument(text, options = {}) {
   }
   if (!context.memory.topic) {
     context.memory.setTopic(options.topic || text);
-    context.lexicon.setDocumentNames?.(documentNames(options.topic || text));
+    context.lexicon.setDocumentNames?.(
+      documentNames(options.topic || text),
+      documentWords(options.topic || text)
+    );
   }
   const report = { sentences: [] };
   const out = splitBlocks(text).map((block) => {

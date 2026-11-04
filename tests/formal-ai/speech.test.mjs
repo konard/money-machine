@@ -219,3 +219,15 @@ test('an adverb before the verb stays before it', () => {
   assert.equal(ru('She quickly buys a book.'), 'Она быстро покупает книгу.');
   assert.equal(ru('She buys a book quickly.'), 'Она покупает книгу быстро.');
 });
+
+test('adjectives coordinated after "be" all agree with the subject', () => {
+  assert.equal(ru('The car is cheap and fast.'), 'Машина дешёвая и быстрая.');
+  assert.equal(
+    ru('The houses were big, old and very cheap.'),
+    'Дома были большие, старые и очень дешёвые.'
+  );
+  assert.equal(
+    ru('The car is cheap but slow.'),
+    'Машина дешёвая, но медленная.'
+  );
+});

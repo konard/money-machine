@@ -266,6 +266,12 @@ function complement(c, lexicon) {
     if (c.comparative) {
       p.comparative = true;
     }
+    if (c.also) {
+      p.also = c.also.map((x) => ({
+        link: x.link || undefined,
+        ...complement({ type: 'adj', ...x.adjective, degree: x.degree }),
+      }));
+    }
     return p;
   }
   if (c.type === 'np') {

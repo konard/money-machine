@@ -305,7 +305,11 @@ function contentReadings(token, lexicon, add) {
       token.beforeDeterminer &&
       lexicon.lookup('verb', w).length
     ) &&
-    ((lexicon.givenNames?.has(token.text) && lexicon.nameLabel?.(token.text)) ||
+    // "Profit is tiny … the profit": a sentence-opening given name the
+    // document also writes in lowercase is that common word
+    ((lexicon.givenNames?.has(token.text) &&
+      lexicon.nameLabel?.(token.text) &&
+      !(token.first && lexicon.documentWords?.has(w))) ||
       (!token.first && lexicon.nameLabel?.(token.text)) ||
       (token.first &&
         lexicon.documentNames?.has(token.text) &&

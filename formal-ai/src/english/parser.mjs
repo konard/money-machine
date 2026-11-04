@@ -30,6 +30,11 @@ import { countAhead, parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
+import {
+  coordinatedAdjectives,
+  degreeAdverb,
+  nounAhead,
+} from './predicate-adjectives.mjs';
 import { attachIngRelative } from './ing-relative.mjs';
 import { attachParticiple } from './participle-relative.mjs';
 import { clauseAhead, commaList, parallelVerb } from './lists.mjs';
@@ -493,37 +498,6 @@ function borrowedAdjective(t, lexicon) {
   );
 }
 
-/** "very", "fully": a word that is only an adverb, before an adjective. */
-function degreeAdverb(t) {
-  return has(t, 'adv') && t.readings.every((r) => r.pos === 'adv');
-}
-
-/** Does a noun follow within the next `k` tokens (adjectives skipped)? */
-function nounAhead(c, k) {
-  let j = k;
-  const nominal = (t) => has(t, 'noun') || has(t, 'name') || has(t, 'propn');
-  while (
-    has(c.at(j), 'adj') ||
-    has(c.at(j), 'num') ||
-    participleReading(c.at(j))
-  ) {
-    // "the high cost": a word that may be a noun ends the phrase when
-    // nothing nominal follows it ("cost" is also a participle)
-    const next = c.at(j + 1);
-    if (
-      nominal(c.at(j)) &&
-      !nominal(next) &&
-      !has(next, 'adj') &&
-      !participleReading(next)
-    ) {
-      return true;
-    }
-    j += 1;
-  }
-  const t = c.at(j);
-  return Boolean(t && (has(t, 'noun') || has(t, 'name') || has(t, 'propn')));
-}
-
 /** `'s` after a noun is possessive when a noun phrase follows. */
 function possessiveClitic(c) {
   if (c.peek.lower === "'") {
@@ -783,6 +757,7 @@ export function parseTail(c, frame, options = {}) {
           comparative: reading(t, 'adj').features.degree === 'comparative',
           superlative: reading(t, 'adj').features.degree === 'superlative',
         };
+        coordinatedAdjectives(c, out.complement);
         continue;
       }
       if (degreeAdverb(t) && has(c.at(1), 'adj')) {
@@ -790,6 +765,7 @@ export function parseTail(c, frame, options = {}) {
         c.next();
         const a = c.next();
         out.complement = { type: 'adj', ...head(a, reading(a, 'adj')), degree };
+        coordinatedAdjectives(c, out.complement);
         continue;
       }
     }

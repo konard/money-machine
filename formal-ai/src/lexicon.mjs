@@ -276,9 +276,13 @@ export class Lexicon {
     words.forEach((w) => this.askedWords.add(w));
   }
 
-  /** Names of the document being translated (see `documentNames`). */
-  setDocumentNames(names) {
+  /**
+   * Names of the document being translated (see `documentNames`), and the
+   * words it writes in lowercase somewhere.
+   */
+  setDocumentNames(names, words) {
     this.documentNames = names;
+    this.documentWords = words;
   }
 
   /** Russian noun entry of a name label, for its case forms. */

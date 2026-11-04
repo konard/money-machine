@@ -5,7 +5,7 @@
 
 import { degreeForm } from './degree.mjs';
 import { shortAdjective, declineAdjective } from './morphology.mjs';
-import { QUESTION_ADVERBS, PRONOUN_WORDS } from './words.mjs';
+import { CONJUNCTIONS, QUESTION_ADVERBS, PRONOUN_WORDS } from './words.mjs';
 import {
   features,
   renderEntity,
@@ -84,6 +84,7 @@ export function renderCopula(s, ctx) {
     ((subj?.action && !subj.nominalization) ||
       (subj?.pronoun?.gender === 'neuter' && subj.pronoun.person === 3)) &&
     c?.kind === 'property' &&
+    !lexEntry(ctx, c.concept)?.ru?.passive &&
     (WEATHER.has(c.concept) || !ctx.discourse.referents.length)
   ) {
     const adj = lexEntry(ctx, c.concept)?.ru;
@@ -134,27 +135,8 @@ export function renderCopula(s, ctx) {
     return [...words, ...mods.after].filter(Boolean).join(' ');
   }
   if (c.kind === 'property') {
-    const adj = lexEntry(ctx, c.concept)?.ru;
-    if (!adj || adj.pos !== 'adj') {
-      ctx.notes.add(`no Russian adjective for ${c.concept}`);
-      words.push(`[${c.concept}]`);
-    } else {
-      words.push(degreeWord(c, ctx));
-      const agree = f.number === 'pl' ? { number: 'pl' } : { gender: f.gender };
-      if (c.comparison || c.comparative) {
-        words.push(
-          degreeForm(adj, c.comparison || 'greater', { ...agree, case: 'nom' })
-        );
-      } else if (adj.predicateShort || adj.short) {
-        words.push(
-          f.number !== 'pl' && f.gender === 'm' && adj.short
-            ? adj.short
-            : shortFrom(adj, agree)
-        );
-      } else {
-        words.push(declineAdjective(adj.lemma, { ...agree, case: 'nom' }));
-      }
-    }
+    // "cheap, fast and safe" → дешёва, быстра и безопасна
+    words.push(...coordinated(c, ctx, (a) => predicateAdjective(a, f, ctx)));
     // "I am happy to help" → я рад помочь
     if (s.complementClause) {
       words.push(...infinitiveClause(s.complementClause, positive(s), ctx));
@@ -179,6 +161,47 @@ export function renderCopula(s, ctx) {
 }
 
 const positive = (s) => ({ ...s, polarity: 'positive' });
+
+/** A property and the ones coordinated with it, each rendered by `one`. */
+function coordinated(c, ctx, one) {
+  const words = one(c).filter(Boolean);
+  for (const x of c.also || []) {
+    const link = x.link ? CONJUNCTIONS[x.link] : null;
+    if (!['и', 'или'].includes(link?.text)) {
+      words[words.length - 1] += ',';
+    }
+    words.push(...[link?.text, ...one(x)].filter(Boolean));
+  }
+  return words;
+}
+
+/** A predicate adjective agreeing with the subject: short when it has one. */
+function predicateAdjective(c, f, ctx) {
+  const adj = lexEntry(ctx, c.concept)?.ru;
+  if (!adj || adj.pos !== 'adj') {
+    ctx.notes.add(`no Russian adjective for ${c.concept}`);
+    return [`[${c.concept}]`];
+  }
+  const agree = f.number === 'pl' ? { number: 'pl' } : { gender: f.gender };
+  if (c.comparison || c.comparative) {
+    return [
+      degreeWord(c, ctx),
+      degreeForm(adj, c.comparison || 'greater', { ...agree, case: 'nom' }),
+    ];
+  }
+  if (adj.predicateShort || adj.short) {
+    return [
+      degreeWord(c, ctx),
+      f.number !== 'pl' && f.gender === 'm' && adj.short
+        ? adj.short
+        : shortFrom(adj, agree),
+    ];
+  }
+  return [
+    degreeWord(c, ctx),
+    declineAdjective(adj.lemma, { ...agree, case: 'nom' }),
+  ];
+}
 
 /**
  * An adjective with an infinitive is predicative: "it is easy to read" →
@@ -206,8 +229,12 @@ function adjectiveInfinitive(s, mods, ctx) {
     ...mods.before,
     s.polarity === 'negative' ? 'не' : '',
     s.tense === 'past' ? 'было' : s.tense === 'future' ? 'будет' : '',
-    degreeWord(c, ctx),
-    predicativeAdverb(adj.lemma),
+    ...coordinated(c, ctx, (a) => [
+      degreeWord(a, ctx),
+      predicativeAdverb(
+        lexEntry(ctx, a.concept)?.ru?.lemma || `[${a.concept}]`
+      ),
+    ]),
     ...infinitiveClause(x, positive(s), ctx),
     ...mods.after,
   ]
