@@ -36,6 +36,8 @@ export const SOURCES = {
     provides: 'items, labels in both languages, P31/P279 hierarchy, fields',
   },
   'wikidata-lexemes': {
+    enabled: false,
+    status: 'evidence adapter, default off (not measured for translation)',
     api: 'https://www.wikidata.org/w/api.php',
     buckets: ['wikidata-lexemes'],
     license: 'CC0',
@@ -48,25 +50,28 @@ export const SOURCES = {
     provides: 'Russian usage counts and co-occurrence',
   },
   'en.wikipedia': {
+    enabled: false,
     api: 'https://en.wikipedia.org/w/api.php',
     buckets: ['enwiki-langlinks'],
     license: 'CC BY-SA 4.0',
     provides: 'Russian titles of English multiword terms (language links)',
-    status: 'reachable, adapter to do',
+    status: 'evidence adapter, default off (not measured for translation)',
   },
   tatoeba: {
+    enabled: false,
     api: 'https://api.tatoeba.org/unstable/sentences',
     buckets: ['tatoeba'],
     license: 'CC BY 2.0 FR',
     provides: 'English–Russian sentence pairs',
-    status: 'reachable, adapter to do',
+    status: 'evidence adapter, default off (not measured for translation)',
   },
   kaikki: {
+    enabled: false,
     api: 'https://kaikki.org/dictionary/English/meaning/',
     buckets: ['kaikki'],
     license: 'CC BY-SA 4.0 (Wiktionary)',
     provides: 'Wiktionary parsed to JSON: senses, topics, translations',
-    status: 'reachable, adapter to do',
+    status: 'evidence adapter, default off (not measured for translation)',
   },
   'wikidata-sparql': {
     api: 'https://query.wikidata.org/sparql',
@@ -115,5 +120,11 @@ export function bucketEnabled(bucket, switches) {
     return true;
   }
   fromEnv ??= parseSources(process.env.FORMAL_AI_SOURCES || '');
-  return switches?.[name] ?? configured[name] ?? fromEnv[name] ?? true;
+  return (
+    switches?.[name] ??
+    configured[name] ??
+    fromEnv[name] ??
+    SOURCES[name].enabled ??
+    true
+  );
 }

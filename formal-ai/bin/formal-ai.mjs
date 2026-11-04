@@ -5,6 +5,7 @@
  *   formal-ai translate "I read a book."         translate text (sentence,
  *   formal-ai translate --file README.md          paragraph or document)
  *   formal-ai formalize "We sat on the bank."     show the meta-language links
+ *   formal-ai roundtrip "I read a book."          regenerate English + compare links
  *   formal-ai explain "We sat on the bank."       show sense choices + notes
  *   formal-ai serve [--port 8765]                 OpenAI/Anthropic-compatible
  *   formal-ai with claude|codex|agent "…"         run a coding agent on it
@@ -15,6 +16,7 @@
  *   --options 5                                  show coherent context readings
  *   --methods documentTopic=0.5,roundTrip=off    weight or turn off a method
  *   --sources tatoeba=off,ru.wikipedia=off       turn off a public source
+ *   formal-ai links <word>                       inspect merged source links
  *   formal-ai sources                             list the public sources
  */
 
@@ -93,6 +95,38 @@ async function main() {
     configureSources(parseSources(String(args.sources)));
   }
   switch (command) {
+    case 'links': {
+      const word = (await readInput(args)).trim();
+      const lexicon = loadLexicon();
+      const { resolveText } = await import('../src/resolve.mjs');
+      const { loadSourceLinks } =
+        await import('../src/sources/link-adapters.mjs');
+      const { linksConcept } = await import('../src/links/schema.mjs');
+      const { writeLino } = await import('../src/links/write.mjs');
+      if (!args.offline) {
+        const lookup = { ...options(args), lexicon, log: console.error };
+        try {
+          await resolveText('', { ...lookup, words: [word] });
+        } catch (error) {
+          console.error(`public vocabulary: ${error.message}`);
+          await loadSourceLinks(word, lexicon, lookup);
+        }
+      }
+      const links = lexicon.mergedLinks(word);
+      const ids = [...new Set(links.map((link) => link.concept))];
+      process.stdout.write(
+        writeLino(
+          ids.map((id) =>
+            linksConcept(
+              id,
+              links.filter((link) => link.concept === id)
+            )
+          ),
+          { links }
+        )
+      );
+      break;
+    }
     case 'sources': {
       for (const [name, s] of Object.entries(SOURCES)) {
         console.log(
@@ -123,6 +157,37 @@ async function main() {
         }
       }
       process.exitCode = result.stats.incomplete && args.strict ? 2 : 0;
+      return;
+    }
+    case 'roundtrip': {
+      const text = await readInput(args);
+      await resolveForTranslation(text, options(args));
+      const { englishRoundTrip } =
+        await import('../src/english/round-trip.mjs');
+      const lexicon = loadLexicon();
+      for (const sentence of splitSentences(text.replace(/\s+/g, ' '))) {
+        const result = englishRoundTrip(sentence, lexicon, {
+          memory: {
+            methods: options(args).methods,
+            explicitContext: args.context,
+          },
+        });
+        if (args.json) {
+          process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
+        } else {
+          process.stdout.write(`${result.english}\n`);
+          process.stdout.write(
+            result.exact
+              ? 'Exact meta links.\n'
+              : `${JSON.stringify(result.differences, null, 2)}\n`
+          );
+          if (!result.complete) {
+            process.stdout.write(
+              `Incomplete parse: ${JSON.stringify({ before: { unknown: result.before.unknown, leftover: result.before.leftover }, after: { unknown: result.after.unknown, leftover: result.after.leftover } })}\n`
+            );
+          }
+        }
+      }
       return;
     }
     case 'formalize':

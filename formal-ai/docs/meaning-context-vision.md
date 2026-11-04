@@ -29,12 +29,12 @@ same rule in the other direction.
 
 Every direction is checked, and by default every choice tries to keep them:
 
-| trip                                      | invariant                                                                                                                                |
-| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| English → meta → English                  | the regenerated English formalizes to the same meta links                                                                                |
-| Russian → meta → Russian                  | the same, for Russian                                                                                                                    |
-| English → meta → Russian → meta           | the Russian formalizes to the same links (ranges may only narrow where Russian grammar forces a choice, and each forced choice is noted) |
-| English → meta → Russian → meta → English | the full circle returns the same meanings                                                                                                |
+| trip                                      | invariant                                                                                                                                                                                                                                                                |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| English → meta → English                  | the regenerated English formalizes to the same meta links. Measured: 75/76 complete fixture sentences exact, 72/76 regenerate the same text (`scripts/english-round-trip.mjs`, `docs/english-round-trip.md`)                                                             |
+| Russian → meta → Russian                  | the same, for Russian                                                                                                                                                                                                                                                    |
+| English → meta → Russian → meta           | every source link stays readable from the Russian: concept, number, tense, polarity, quantity. Ranges may only narrow where Russian grammar forces a choice, and each forced choice is noted. Measured: 71/76 (`src/russian/read-back.mjs`, `docs/russian-read-back.md`) |
+| English → meta → Russian → meta → English | both of the above for the same sentence. Measured: 70/76                                                                                                                                                                                                                 |
 
 A lost or changed link is a defect, measured by the evaluation harness and
 ranked down in generation. Several translations may be listed; the default
@@ -203,20 +203,37 @@ check is on concepts, not strings.
 
 ## 7. Architecture audit (2026-11-04)
 
-| vision item                                                                           | where                                                                                             | state                                                                                      |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| meaning as a type, ranges                                                             | `formalize.mjs` keeps `ambiguous` candidates for nouns only; predicates take one concept          | partial: a range for every word is to do                                                   |
-| context network (typed links)                                                         | `context-network.mjs`, `data/overrides/contexts.lino`                                             | done                                                                                       |
-| statistical / explicit / positional context, top-5                                    | `context-ranking.mjs`, `senses.mjs`; `--context`, `--options`                                     | done                                                                                       |
-| dependent (inherited) context                                                         | `discourse` referents in `translate.mjs`                                                          | partial: referents only, no context inheritance                                            |
-| surrounding files                                                                     | `options.topic` = whole document                                                                  | partial: no section/directory scopes                                                       |
-| method switches + measurement                                                         | `methods.mjs`, `scripts/evaluate.mjs`                                                             | done: 9 methods, `npm run formal-ai:evaluate --ablate`, `method-evaluation.md`             |
-| lexical round trip                                                                    | `round-trip.mjs` (word level, as sense evidence)                                                  | done                                                                                       |
-| English → meta → English                                                              | —                                                                                                 | missing: needs an English generator                                                        |
-| Russian → meta                                                                        | —                                                                                                 | missing: needs a Russian analyser (Wiktionary morphology is already loaded for generation) |
-| source registry, switchable APIs                                                      | `sources/registry.mjs`                                                                            | done                                                                                       |
-| adapters to unified links, union with overrides                                       | overrides are lino and shadow public concepts in `lexicon.mjs`; public data is held as JS objects | partial: adapters emitting lino links + `formal-ai links` to do                            |
-| Tatoeba, en.wikipedia language links, kaikki, lexeme senses (P5137/P5972/P9488), OEWN | reachable                                                                                         | adapters to do                                                                             |
+| vision item                                                                     | where                                                                                                                           | state                                                                                |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| meaning as a type, ranges                                                       | `formalize.mjs` keeps `ambiguous` candidates for nouns only; predicates take one concept                                        | partial: a range for every word is to do                                             |
+| context network (typed links)                                                   | `context-network.mjs`, `data/overrides/contexts.lino`                                                                           | done                                                                                 |
+| statistical / explicit / positional context, top-5                              | `context-ranking.mjs`, `senses.mjs`; `--context`, `--options`                                                                   | done                                                                                 |
+| dependent (inherited) context                                                   | `discourse` referents in `translate.mjs`                                                                                        | partial: referents only, no context inheritance                                      |
+| surrounding files                                                               | `options.topic` = whole document                                                                                                | partial: no section/directory scopes                                                 |
+| method switches + measurement                                                   | `methods.mjs`, `scripts/evaluate.mjs`                                                                                           | done: 9 methods, `npm run formal-ai:evaluate --ablate`, `method-evaluation.md`       |
+| lexical round trip                                                              | `round-trip.mjs` (word level, as sense evidence)                                                                                | done                                                                                 |
+| English → meta → English                                                        | `english/generate/`, `english/round-trip.mjs`, `formal-ai roundtrip`                                                            | done: 92% of all fixtures exact; remaining defects listed in `english-round-trip.md` |
+| Russian → meta                                                                  | `russian/read-back.mjs`: word-level read-back to ranges of meanings with their grammar                                          | partial: reads links back; a Russian parser for Russian → meta → Russian is to do    |
+| source registry, switchable APIs                                                | `sources/registry.mjs`                                                                                                          | done                                                                                 |
+| adapters to unified links, union with overrides                                 | `links/schema.mjs`, `links/union.mjs` (overrides first, per link, with provenance), `links/write.mjs`, `formal-ai links <word>` | done                                                                                 |
+| Tatoeba, en.wikipedia language links, kaikki, lexeme senses (P5137/P5972/P9488) | `sources/link-adapters.mjs`, through `getJson` and the registry                                                                 | loaded and exposed, off by default; used as evidence once a measurement shows a gain |
+
+### Defects the round trips found (2026-11-04)
+
+- Negation over a coordination is not an explicit link: in "You don't
+  market yourself or set prices" the English generator shares the negation
+  with both verbs, while the Russian one negates only the first
+  («не продаёте себе или кладёте»). The meta language must say which.
+- "Neither homepage names…": the meta has `name` positive; «Также не …»
+  renders a negation the meta does not hold.
+- "…who pay to support you" comes back as "…that pay you to support": the
+  object is attached to the wrong verb.
+- "monthly": the concept's Russian lemma is «месячно» while the generator
+  writes «ежемесячно»; the lexicon and the generator disagree.
+- "Prices range from $5 to $50" → «бродят»: the sense choice itself is
+  wrong (range = wander). Both round trips pass, because each is faithful to
+  the meta; only a range comparison (the Russian word's English range vs
+  the English word's) or a reference catches it.
 
 ## 8. Plan
 

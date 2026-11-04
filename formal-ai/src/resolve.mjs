@@ -8,7 +8,7 @@ import {
   reflexivePartner,
 } from './sources/reflexive.mjs';
 import { learnActionNouns } from './sources/action-nouns.mjs';
-import { populateContexts } from './sources/context-data.mjs';
+import { populateContexts } from './sources/resolve-links.mjs';
 import { currencyPlans } from './sources/currencies.mjs';
 import { predicateEvidence } from './english/participle-evidence.mjs';
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
@@ -177,14 +177,16 @@ export async function resolveText(
     topic = text,
     context,
     methods,
+    sources,
   } = {}
 ) {
-  const options = { fetchImpl, cache };
+  const options = { fetchImpl, cache, sources };
   if (!only) {
     await learnPrepositions(text, lexicon, options);
     await learnUnitSymbols(text, lexicon, options);
   }
   const words = only || unknownWords(text, lexicon);
+  options.words = words;
   const done = new Set();
   const entries = new Map(); // lemma → english entries
   const forms = []; // {form, lemma, kind, pos}

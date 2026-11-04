@@ -118,6 +118,7 @@ export async function fetchPool({
   pages = 40,
   fetchImpl,
   cache = true,
+  sources = { tatoeba: true },
   pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
   log = () => {},
 } = {}) {
@@ -125,7 +126,12 @@ export async function fetchPool({
   const urls = [];
   for (let page = 1; page <= pages; page += 1) {
     const url = `https://tatoeba.org/en/api_v0/search?${new URLSearchParams({ from: 'eng', to: 'rus', query: '', sort: 'created', page: String(page) })}`;
-    const body = await getJson(url, { fetchImpl, cache, bucket: 'tatoeba' });
+    const body = await getJson(url, {
+      fetchImpl,
+      cache,
+      bucket: 'tatoeba',
+      sources,
+    });
     if (!Array.isArray(body.results)) {
       throw new Error('Invalid Tatoeba response (expected results array)');
     }

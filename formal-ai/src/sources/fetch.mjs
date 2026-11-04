@@ -55,7 +55,14 @@ function recordFixture(bucket, key, value) {
  */
 export async function getJson(
   url,
-  { form, fetchImpl = fetch, cache = true, bucket = 'http', sources } = {}
+  {
+    form,
+    fetchImpl = fetch,
+    cache = true,
+    bucket = 'http',
+    sources,
+    jsonLines = false,
+  } = {}
 ) {
   if (!bucketEnabled(bucket, sources)) {
     // a switched-off source has no data (registry.mjs)
@@ -118,7 +125,12 @@ export async function getJson(
           fatal: true,
         });
       }
-      const value = await response.json();
+      const value = jsonLines
+        ? (await response.text())
+            .split(/\r?\n/)
+            .filter((line) => line.trim())
+            .map((line) => JSON.parse(line))
+        : await response.json();
       if (file) {
         mkdirSync(join(file, '..'), { recursive: true });
         writeFileSync(file, JSON.stringify(value));
