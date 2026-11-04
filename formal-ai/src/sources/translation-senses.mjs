@@ -1,5 +1,14 @@
 /** Keep attested synonyms available when their reverse meanings differ. */
 import { definitionUsage, languageSection, plain } from './wiktionary.mjs';
+import { glossWords, hypernym } from './sense-data.mjs';
+
+const reverseHeadWords = (text) =>
+  glossWords(
+    plain(text.split(/\{\{(?:q|qualifier|gl|gloss)\|/)[0]).replace(
+      /\([^)]*\)/g,
+      ''
+    )
+  );
 
 function reverseMeaning(word, plan, pages) {
   const section = languageSection(pages.get(word) || '', 'Russian');
@@ -36,6 +45,35 @@ export function translationSenses(plan, pages) {
       alternatives[0] && reverseMeaning(alternatives[0].word, plan, pages);
     // A normally used, exactly attested noun needs no speculative synonym.
     if (plan.pos === 'noun' && primary && !definitionUsage(primary).rare) {
+      // Functional relative-infinitive glosses explicitly identify a type
+      // ("place in which to sit"). Align that type with a reverse synonym;
+      // broad ordinary glosses alone do not justify changing a noun default.
+      const head = hypernym(sense.gloss);
+      if (
+        head &&
+        /\b(?:in|on|at|for|with|by) which to\b/.test(sense.gloss) &&
+        !reverseHeadWords(primary).includes(head)
+      ) {
+        const precise = alternatives.slice(1).find((candidate) => {
+          const reverse = reverseMeaning(candidate.word, plan, pages);
+          return (
+            reverse &&
+            !definitionUsage(reverse).rare &&
+            reverseHeadWords(reverse).includes(head)
+          );
+        });
+        if (precise) {
+          return [
+            sense,
+            {
+              ...sense,
+              russian: [precise],
+              labels: [...(sense.labels || []), 'distributive'],
+              synonymAlternative: true,
+            },
+          ];
+        }
+      }
       return [sense];
     }
     return [

@@ -4,6 +4,7 @@ import { declineAdjective } from '../russian/morphology.mjs';
 import { senseDomain } from './sense-data.mjs';
 import { completeVerbDefinitions } from './definition-verbs.mjs';
 import { completeRussianMeanings } from './russian-meanings.mjs';
+import { completeSynonymDefinitions } from './definition-synonyms.mjs';
 
 export async function completeDefinitions(
   plans,
@@ -15,6 +16,7 @@ export async function completeDefinitions(
     await completeRussianMeanings(plans, entries, { ...options, ...context });
   }
   await completeVerbDefinitions(plans, options);
+  await completeSynonymDefinitions(plans, options);
   const missing = plans
     .filter((p) => p.pos === 'noun')
     .flatMap((p) =>

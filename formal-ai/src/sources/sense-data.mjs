@@ -223,6 +223,7 @@ export function senseDomain(sense) {
     (l) =>
       /^[a-z][a-z -]{2,24}$/i.test(l) &&
       !USAGE_LABEL.test(l) &&
+      l !== 'distributive' &&
       !/^(?:of|with|in|usually|often|chiefly)\b/i.test(l)
   );
   if (label) {

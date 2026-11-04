@@ -61,7 +61,7 @@ export function senseFrames(text = '') {
   if (/\babout\b/.test(clean)) {
     frames.add('about');
   }
-  if (/\|(?:ambi)?transitive[|}]/.test(text)) {
+  if (/\|(?:ambi|di)?transitive[|}]/.test(text)) {
     frames.add('transitive');
   }
   if (/\|(?:intransitive|ambitransitive)[|}]/.test(text)) {

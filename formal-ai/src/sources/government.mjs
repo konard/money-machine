@@ -171,9 +171,13 @@ function englishFrame(text, sense) {
     const personal = args.find(
       (a) => /someone|somebody|person|whom/.test(a.role) && !a.preposition
     );
-    const theme = args.find(
-      (a) => !a.preposition && /^(?:something|what)\b/.test(a.role)
-    );
+    const theme =
+      args.find(
+        (a) => !a.preposition && /^(?:something|what)\b/.test(a.role)
+      ) ||
+      (args.some((a) => !a.preposition && a.case === 'dat') &&
+        /\{\{\+obj\|ru\|[^{}]*\+[^{}]*\}\}/.test(chosen) &&
+        args.find((a) => !a.preposition && a.case === 'acc'));
     const main = /inf</.test(chosen) && personal ? personal : theme || args[0];
     result.government = gov(main.case, main.preposition);
     const recipient = args.find((a) => a.case === 'dat' && !a.preposition);
@@ -221,17 +225,30 @@ function englishFrame(text, sense) {
 }
 
 /** Explicit Russian case questions; never harvest them from free definitions. */
-function russianNotes(text) {
+function russianNotes(text, sense) {
   const section = (text || '').split(/=\s*\{\{-ru-\}\}\s*=/)[1] || '';
   const management =
     /={3,5}\s*Управление\s*={3,5}\s*\n([\s\S]*?)(?=^=|$(?![\s\S]))/m.exec(
       section
     )?.[1] || '';
+  // An unqualified primary meaning cannot inherit a later meaning's case.
+  // Global management sections and explicitly qualified argument sets apply.
+  const primary =
+    section.split(/^==\s*\{\{з\|II/m)[0].match(/^#[^#*:].*$/m)?.[0] || '';
+  const qualified = /\{\{помета\|/.test(primary)
+    ? section.split(/^==\s*\{\{з\|II/m)[0]
+    : primary;
   const notes = [
     management,
     ...[
-      ...section
-        .split(/^==\s*\{\{з\|II/m)[0]
+      ...qualified
+        .split('\n')
+        .filter(
+          (line) =>
+            !/\{\{(?:устар|редк|прост|обсц)[.|}]/.test(line) &&
+            (!/инф\./u.test(line) || sense.frames?.includes('object-to'))
+        )
+        .join('\n')
         .matchAll(/\{\{помета\|([^{}]+)\}\}/g),
     ]
       .map((m) => m[1])
@@ -299,7 +316,7 @@ function exampleRecipient(text) {
 
 /** Choose evidence for this English meaning of a Russian lemma. */
 export function verbGovernment(english, russian, sense) {
-  const notes = russianNotes(russian);
+  const notes = russianNotes(russian, sense);
   const frame = englishFrame(english, sense);
   const result = { ...notes, ...frame };
   if (notes.markerGovernment || frame.markerGovernment) {
@@ -354,9 +371,12 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
     // Explicit aspect alternatives in this translation table belong to this
     // meaning; a lemma's generic partner can belong to another sense.
     const explicit =
-      ru.aspect === 'perf'
-        ? sense.russian?.find((c) => c.aspect === 'impf' && c.word !== ru.lemma)
-        : null;
+      (ru.aspect === 'perf' || ru.partner) &&
+      sense.russian?.find(
+        (c) =>
+          c.aspect === (ru.aspect === 'perf' ? 'impf' : 'perf') &&
+          c.word !== ru.lemma
+      );
     const partner = explicit
       ? russian(explicit.word, 'verb')
       : ru.partner

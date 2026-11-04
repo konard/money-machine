@@ -154,7 +154,7 @@ export class DocumentMemory {
   }
 
   /** Does the document use this word (or a word of this phrase)? */
-  mentions(phrase) {
+  mentions(phrase, excluding = '') {
     // a field is mentioned by any word of its family: finance ~ financial
     const roots = phrase
       .toLowerCase()
@@ -162,7 +162,9 @@ export class DocumentMemory {
       .filter((w) => w.length > 3)
       .map((w) => stem(w).slice(0, 5));
     return roots.some((root) =>
-      this.topic?.some((s) => [...s].some((w) => w.startsWith(root)))
+      this.topic?.some((s) =>
+        [...s].some((w) => w !== stem(excluding) && w.startsWith(root))
+      )
     );
   }
 
@@ -345,6 +347,17 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         const concept = lexicon.get(id);
         let score = 0;
         const why = [];
+        if (node.pos === 'noun' && concept?.labels?.includes('distributive')) {
+          const rate = tokens.some(
+            (t) => (t.position ?? t.index) === at - 1 && t.lower === 'per'
+          );
+          score += rate ? 1 : -3;
+          why.push(
+            rate
+              ? 'functional unit after distributive per (+1)'
+              : 'functional unit outside distributive phrase (-3)'
+          );
+        }
         if (concept?.synonymAlternative) {
           const owner = node.pos === 'verb' && findVerbOwner(clause, node);
           const object = owner?.passive ? owner.subject : owner?.objects?.[0];
@@ -462,6 +475,23 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           score -= 0.5;
           why.push('related translation page (-0.50)');
         }
+        if (
+          concept?.variant &&
+          concept.domain &&
+          node.candidates.some((other) => {
+            const ordinary = lexicon.get(other);
+            return (
+              !ordinary?.variant &&
+              ordinary?.core &&
+              ordinary.domain === concept.domain
+            );
+          })
+        ) {
+          score -= 2;
+          why.push(
+            'secondary clipping competes with core sense in same field (-2)'
+          );
+        }
         if (concept?.usagePenalty) {
           score -= concept.usagePenalty;
           why.push(
@@ -569,7 +599,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           domain &&
           !semantic &&
           !concept.core &&
-          !memory.mentions(domain) &&
+          !memory.mentions(domain, word) &&
           !(memory.familyWeight(domain) >= 0.4)
         ) {
           score -= 0.2;
@@ -577,7 +607,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         }
         if (
           domain &&
-          memory.mentions(domain) &&
+          memory.mentions(domain, word) &&
           !(
             (concept.cues || []).includes(domain) &&
             memory.topicWeight(domain, word)
@@ -642,6 +672,13 @@ function valencyFit(node, clause, concept, next) {
   }
   const hasObject = (owner.objects || []).some((o) => !o.marker);
   const frames = concept.frames || [];
+  if (
+    hasObject &&
+    frames.includes('intransitive') &&
+    !frames.includes('transitive')
+  ) {
+    return { score: -4, reason: 'intransitive sense with direct object (-4)' };
+  }
   const observed =
     owner.xcomp && !owner.xcomp.purpose
       ? hasObject
@@ -756,12 +793,18 @@ function selectionalFit(node, clause, concept, lexicon) {
     // a name, placeholder or unknown word says nothing about the class
     return { score: 0 };
   }
-  const classes = objectConcepts.flatMap(
-    (id) => lexicon.get(id)?.classes || []
-  );
+  const classes = [
+    objectHead.lemma,
+    ...objectConcepts.flatMap((id) => lexicon.get(id)?.classes || []),
+  ];
   const match = concept.objectClasses.find((c) => classes.includes(c));
   if (match) {
     return { score: 4, reason: `object "${objectHead.text}" is ${match} (+4)` };
+  }
+  // A dictionary cue explicitly naming this object is stronger than an
+  // incomplete hypernym inventory. Its contextual bonus is counted above.
+  if (concept.cues?.includes(objectHead.lemma)) {
+    return { score: 0 };
   }
   return {
     score: -3,
