@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "source": "docs/business-plans/website-newsletter-flipping.md",
+    "english": "_Generated from `data/strategies/finance.json` by `npm run build:catalog`.",
+    "before": "Порождалось из `data/strategies/finance.json` `npm run build:catalog`.",
+    "after": "Порождалось из `data/strategies/finance.json` `npm run build:catalog`.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 2,
+    "source": "strategies.json#developer-marketplaces-code-review",
+    "english": "Coding agents help you reproduce bugs, write fixes and tests quickly, but you stay accountable and must follow each platform's rules on live sessions and original submissions.",
+    "before": "Программировать агенты, которые помощь, вы воспроизводите, устанавливает аппаратуру для подслушивания, закрепления, и пробы быстро, но вы, и фолловинг, который каждый перрон — правила на живых сессиях и первоначальных подачах [write stay accountable must].",
+    "after": "Программировать агенты, которые помощь, вы воспроизводите, устанавливает аппаратуру для подслушивания, закрепления, и пробы быстро, но вы, и фолловинг, который каждый перрон — правила на живых сессиях и первоначальных подачах [write stay accountable must].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 3,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "The corporate secretary must be a Filipino resident.",
+    "before": "Корпоративный министр должен быть дипломатическим представителем Filipino.",
+    "after": "Корпоративный министр должен быть дипломатическим представителем Filipino.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 4,
+    "source": "docs/business-plans/music-streaming-distribution.md",
+    "english": "Own all rights; no voice clones of real artists; AI disclosure where DSP requests (DDEX AI credits); No streaming manipulation",
+    "before": "Завладейте все правы; голос не клонирует недвижимых художников; раскрытие AI, где DSP запрашивает (налоговые вычеты DDEX AI); без манипуляции потокового мультимедиа",
+    "after": "Завладейте все правы; голос не клонирует недвижимых художников; раскрытие AI, где DSP запрашивает (налоговые вычеты DDEX AI); без манипуляции потокового мультимедиа",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 5,
+    "source": "docs/business-plans/outschool-live-kids-classes.md",
+    "english": "Month 3-6: convert best-reviewed topic into an ongoing weekly class; $200-400/month",
+    "before": "Месяц 3–6: конвертируйте; $200–400 в месяц [best-reviewed topic into an ongoing weekly class]",
+    "after": "Месяц 3–6: конвертируйте; $200–400 в месяц [best-reviewed topic into an ongoing weekly class]",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 6,
+    "source": "docs/business-plans/sheet-music-arrangeme.md",
+    "english": "Price at the default $5-6 for single parts, slightly more for ensemble scores; build volume across 50+ titles and seasonal pieces rather than raising prices.",
+    "before": "Цена в дефолте $5–6 для единых партий, для партитур ансамбля; объём сборки через 50+ названий и сезонные кусоки вместо того, чтобы поднимать цены [slightly more].",
+    "after": "Цена в дефолте $5–6 для единых партий, для партитур ансамбля; объём сборки через 50+ названий и сезонные кусоки вместо того, чтобы поднимать цены [slightly more].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 7,
+    "source": "docs/business-plans/generalist-rlhf-ai-training.md",
+    "english": "Do the tasks",
+    "before": "Задания [Do]",
+    "after": "Задания [Do]",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 8,
+    "source": "docs/business-plans/sewing-quilting-pdf-patterns.md",
+    "english": "Month 0-2: develop and test one pattern (cost $0-40)",
+    "before": "Месяц 0–2: развивайтесь и испытайте один узор (расход $0–40)",
+    "after": "Месяц 0–2: развивайтесь и испытайте один узор (расход $0–40)",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 9,
+    "source": "docs/business-plans/online-mystery-shopping.md",
+    "english": "Firms pay 30-60 days after report acceptance.",
+    "before": "Фирмы платят 30–60 деней после акцепта репортажа.",
+    "after": "Фирмы платят 30–60 деней после акцепта репортажа.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 10,
+    "source": "docs/business-plans/second-life-virtual-goods.md",
+    "english": "SL items sell for L$150-1,000 ($0.60-4); Marketplace 10% commission plus 5% LindeX sell fee (fee 15%).",
+    "before": "Предметы SL продают $150–1 000 ($0,60–4) для L; Marketplace (гонорар 15%) [10% commission plus 5% LindeX sell fee].",
+    "after": "Предметы SL продают $150–1 000 ($0,60–4) для L; Marketplace (гонорар 15%) [10% commission plus 5% LindeX sell fee].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 11,
+    "source": "strategies.json#amazon-ebay-online-arbitrage",
+    "english": "Online and retail arbitrage on Amazon FBA and eBay",
+    "before": "Онлайновый и розничный экспорт на Amazon FBA и eBay",
+    "after": "Онлайновый и розничный экспорт на Amazon FBA и eBay",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 12,
+    "source": "docs/research/platform-rules.md",
+    "english": "Keepa, SellerAmp and Tactical Arbitrage are paid research tools, not payers.",
+    "before": "Keepa, SellerAmp и экспорт Tactical — платные инструменты исследования, а не плательщики.",
+    "after": "Keepa, SellerAmp и экспорт Tactical — платные инструменты исследования, а не плательщики.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 13,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "Services supplied to foreign clients are usually outside the scope of Serbian VAT.",
+    "before": "Службы, [wikt:supply:verb:1], обычно внешние.",
+    "after": "Службы, которые снабжают в иностранные клиенты, обычно внешние.",
+    "beforeComplete": false,
+    "afterComplete": true
+  },
+  {
+    "id": 14,
+    "source": "docs/business-plans/cross-stitch-embroidery-files.md",
+    "english": "Test stitch-outs for machine files",
+    "before": "Проба [stitch-outs for machine files]",
+    "after": "Проба [stitch-outs for machine files]",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 15,
+    "source": "docs/business-plans/crowdfunding-creative-projects.md",
+    "english": "N/A (lump sum after campaign)",
+    "before": "N/A (паушальный сумма после кампании)",
+    "after": "N/A (паушальный сумма после кампании)",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 16,
+    "source": "docs/business-plans/interactive-fiction-choice-of-games.md",
+    "english": "_Generated from `data/strategies/writing-publishing.json` by `npm run build:catalog`.",
+    "before": "Порождалось из `data/strategies/writing-publishing.json` `npm run build:catalog`.",
+    "after": "Порождалось из `data/strategies/writing-publishing.json` `npm run build:catalog`.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 17,
+    "source": "docs/legal/reference-countries.md",
+    "english": "175 mosaic requirement.",
+    "before": "175 необходимостей мозаики.",
+    "after": "175 необходимостей мозаики.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 18,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "**Tax.** Corporate 34%, personal top rate 27.5%, VAT 0% (no registration threshold).",
+    "before": "**Налог.** Корпоративный 34%, личная пропорция вершины 27,5%, VAT 0% (никакой порог регистрации).",
+    "after": "**Налог.** Корпоративный 34%, личная пропорция вершины 27,5%, VAT 0% (никакой порог регистрации).",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 19,
+    "source": "strategies.json#high-yield-savings-mmf-tbills",
+    "english": "Finance & capital-light arbitrage",
+    "before": "Финансируйте, экспорт с головным светом",
+    "after": "Финансируйте, экспорт с головным светом",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 20,
+    "source": "docs/business-plans/gated-membership-site.md",
+    "english": "Stripe payouts to bank",
+    "before": "Выплаты Stripe в банк",
+    "after": "Выплаты Stripe в банк",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 21,
+    "source": "docs/research/platform-rules.md",
+    "english": "The seller passes verification and must not sell restricted products.",
+    "before": "Продавец сходит за проверку, и продавец не должен продавать [wikt:restrict:verb:1] продукты.",
+    "after": "Продавец сходит за проверку, и продавец не должен продавать продукты, которые ограничивают.",
+    "beforeComplete": false,
+    "afterComplete": true
+  },
+  {
+    "id": 22,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "**Sole proprietor.** Registration: before earning (No CIPC registration needed; register as a taxpayer with SARS (eFiling) and pay provisional tax.",
+    "before": "**Владелец морского языка.** Регистрация: прежде чем зарабатывать (регистрация CIPC не нуждается); регистрируйтесь как налогоплательщик с SARS (eFiling) и платным временным налогом.",
+    "after": "**Владелец морского языка.** Регистрация: прежде чем зарабатывать (регистрация CIPC не нуждается); регистрируйтесь как налогоплательщик с SARS (eFiling) и платным временным налогом.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 23,
+    "source": "strategies.json#electronics-buyback-sites",
+    "english": "Automate payout logging.",
+    "before": "Автоматизируйте рубку леса выплаты.",
+    "after": "Автоматизируйте рубку леса выплаты.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 24,
+    "source": "docs/business-plans/mobile-apps-iap-ads.md",
+    "english": "Use a free tier with a paywall on one compelling feature and weekly/annual subscription options; test price increases with RevenueCat experiments after 1,000 installs.",
+    "before": "Используйте свободный ярус, и еженедельные/ежегодные опции подписки; испытайте увеличения цены с RevenueCat, после того как 1 000 установок [with a paywall on one compelling feature experiments].",
+    "after": "Используйте свободный ярус, и еженедельные/ежегодные опции подписки; испытайте увеличения цены с RevenueCat, после того как 1 000 установок [with a paywall on one compelling feature experiments].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 25,
+    "source": "docs/business-plans/micro-saas-app-flipping.md",
+    "english": "Acquire charges sellers a $25-100/month listing fee and 6-8% closing fee.",
+    "before": "Acquire взимает продавецам $25–100 за гонорар рекламы месяца и гонорар закрытия 6–8%.",
+    "after": "Acquire взимает продавецам $25–100 за гонорар рекламы месяца и гонорар закрытия 6–8%.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 26,
+    "source": "docs/research/platform-rules.md",
+    "english": "**Accounts**: one AdSense account per payee; many sites can sit under one account.",
+    "before": "Счёты: один счёт AdSense; много местоположений могут сесть под одним счётом [per payee].",
+    "after": "Счёты: один счёт AdSense; много местоположений могут сесть под одним счётом [per payee].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 27,
+    "source": "strategies.json#tutoring-marketplaces",
+    "english": "Teaching live lessons (fully manual)",
+    "before": "Учение (полностью ручный коробка передач) [live lessons]",
+    "after": "Учить уроки (полностью ручный коробка передач) живьём",
+    "beforeComplete": false,
+    "afterComplete": true
+  },
+  {
+    "id": 28,
+    "source": "strategies.json#transcription-work",
+    "english": "Clients upload audio, and platforms split it into jobs that freelancers claim and transcribe or correct.",
+    "before": "Клиенты закачают, и перроны расщепляют его в работы, которые фрилансеры предъявляют претензии, и транскрибируйте или правильный [audio].",
+    "after": "Клиенты закачают, и перроны расщепляют его в работы, которые фрилансеры предъявляют претензии, и транскрибируйте или правильный [audio].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 29,
+    "source": "docs/business-plans/niche-ai-agent-saas.md",
+    "english": "Churn when vertical SaaS adds native AI",
+    "before": "Взбивайте, когда SaaS добавит AI",
+    "after": "Взбивайте, когда SaaS добавит AI",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 30,
+    "source": "docs/business-plans/smb-security-questionnaires-awareness.md",
+    "english": "Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026.",
+    "before": "Fiverr (20%) и Upwork, которого количества гонорара оцениваются, (переменная 0–15% с 2025): их официальные страницы гонорара были, когда их официальные страницы гонорара зарегистрировались в ноябре 2026 г. [bot-blocked].",
+    "after": "Fiverr (20%) и Upwork, которого количества гонорара оцениваются, (переменная 0–15% с 2025): их официальные страницы гонорара были, когда их официальные страницы гонорара зарегистрировались в ноябре 2026 г. [bot-blocked].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 31,
+    "source": "strategies.json#crossword-puzzle-submissions",
+    "english": "NYT submission page (Nov 2026) confirms pay: Mon-Sat 15x15 $500 for a constructor's 1st-2nd published puzzle and $750 from the 3rd; Sunday 21x21 $1,500 and $2,250 respectively; submissions go through Submittable.",
+    "before": "[NYT submission page (Nov 2026) confirms pay: Mon-Sat 15x15 $500 for a constructor's 1st-2nd published puzzle and $750 from the 3rd; Sunday 21x21 $1,500 and $2,250 respectively; submissions go through Submittable.]",
+    "after": "[NYT submission page (Nov 2026) confirms pay: Mon-Sat 15x15 $500 for a constructor's 1st-2nd published puzzle and $750 from the 3rd; Sunday 21x21 $1,500 and $2,250 respectively; submissions go through Submittable.]",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 32,
+    "source": "strategies.json#rent-gpu-vast-ai",
+    "english": "List and price",
+    "before": "Вносите в список и оценивайте",
+    "after": "Вносите в список и оценивайте",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 33,
+    "source": "docs/business-plans/crowd-microtask-platforms.md",
+    "english": "Clickworker per bill run; Mindrift twice monthly (5th and 20th)",
+    "before": "Clickworker за тираж банкноты; Mindrift ежемесячный (5 четвергов и 20 четвергов)",
+    "after": "Clickworker за тираж банкноты; Mindrift ежемесячный (5 четвергов и 20 четвергов)",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 34,
+    "source": "docs/business-plans/wide-ebook-distribution-aggregator.md",
+    "english": "**Rank #52 · Tier B · Priority score 58/100 · Category: Content & media**",
+    "before": "Горизонталь, 52, B, счёт 58/100 Priority, Category: вместимость, средство массовой информации",
+    "after": "Горизонталь, 52, B, счёт 58/100 Priority, Category: вместимость, средство массовой информации",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 35,
+    "source": "strategies.json#bank-account-signup-bonuses",
+    "english": "Collect cash bonuses banks pay for opening a new current/checking account and meeting a direct-deposit or switch requirement.",
+    "before": "Собрайте премии наличныя, которым банки платят за то, чтобы открывать новый морский течение/текущий счёт и собрание или поменяйтесь необходимость [a direct-deposit].",
+    "after": "Собрайте премии наличныя, которым банки платят за то, чтобы открывать новый морский течение/текущий счёт и собрание или поменяйтесь необходимость [a direct-deposit].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 36,
+    "source": "docs/business-plans/webcomics-webtoon-canvas-tapas.md",
+    "english": "Edit the JSON, not this file._",
+    "before": "Отредактируйте JSON, а не эта папка.",
+    "after": "Отредактируйте JSON, а не эта папка.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 37,
+    "source": "docs/business-plans/website-themes-templates.md",
+    "english": "Edit the JSON, not this file._",
+    "before": "Отредактируйте JSON, а не эта папка.",
+    "after": "Отредактируйте JSON, а не эта папка.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 38,
+    "source": "docs/business-plans/receipt-and-shopping-data-apps.md",
+    "english": "The chance of receiving at least one real payout within six months is rated **9/10**.",
+    "before": "Возможность получать не менее одной недвижимой выплаты в пределах шести месяцев оценивается 9/10.",
+    "after": "Возможность получать не менее одной недвижимой выплаты в пределах шести месяцев оценивается 9/10.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 39,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "_Confidence: estimated; last checked 2026-11-03._",
+    "before": "Confidence; длитесь, 3 [estimated checked 2026-11].",
+    "after": "Confidence; длитесь, 3 [estimated checked 2026-11].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 40,
+    "source": "docs/research/zero-capital-strategies.md",
+    "english": "**Legal considerations**: Clear pricing, data privacy, ToS",
+    "before": "Разъясните оценку, уединение данныя, ToS [Legal considerations]",
+    "after": "Разъясните оценку, уединение данныя, ToS [Legal considerations]",
+    "beforeComplete": false,
+    "afterComplete": false
+  }
+]

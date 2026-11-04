@@ -19,10 +19,17 @@ export function parseFragment(c, ctx) {
   }
   const afterNP = c.i;
   const tail = parseTail(c, 'fragment', { ...ctx, takes: [] });
-  if (tail.objects.length || tail.complement || tail.xcomp) {
+  if (
+    tail.objects.length ||
+    tail.complement ||
+    (tail.xcomp && !tail.xcomp.objects.length)
+  ) {
     // a fragment has no objects: leave those words for the next phrase
     c.i = afterNP;
     tail.mods = [];
+  } else if (tail.xcomp) {
+    // "months to recover costs": the infinitive states the noun's purpose.
+    np.purpose = tail.xcomp;
   }
   return {
     type: 'fragment',

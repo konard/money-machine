@@ -24,6 +24,7 @@ import {
   participleReading,
 } from './token-readings.mjs';
 import { parseToInfinitive } from './infinitive.mjs';
+import { attributiveAction } from './attributive-action.mjs';
 import { parseCalendar, calendarAhead } from './calendar.mjs';
 import { Cursor } from './cursor.mjs';
 import { sharedHead } from './shared-head.mjs';
@@ -57,6 +58,10 @@ import { intransitiveAttribute } from './verb-group.mjs';
 export function parseNP(c, options = {}) {
   options = { ...c.grammar, ...options };
   const start = c.i;
+  const attributed = attributiveAction(c, options, parseNP);
+  if (attributed) {
+    return attributed;
+  }
   const calendar =
     parseCalendar(c, options.lexicon) || parseCurrency(c, options.lexicon);
   if (calendar) {
@@ -232,6 +237,7 @@ export function parseNP(c, options = {}) {
     if (
       limited ||
       amountAhead ||
+      (has(t2, 'noun') && participleReading(c.at(1)) && !nounAhead(c, 1)) ||
       (!pair && !nounAhead(c, 1) && !has(c.at(1), 'adj'))
     ) {
       if (has(t2, 'noun') || has(t2, 'name')) {
@@ -749,6 +755,7 @@ export function parseTail(c, frame, options = {}) {
         has(t, 'modal') ||
         (has(t, 'verb') &&
           !has(t, 'noun') &&
+          !(has(t, 'adj') && nounAhead(c, 1)) &&
           !gerundReading(t) &&
           !participleReading(t)))
     ) {

@@ -18,6 +18,7 @@ import {
   nounObjectContext,
   membershipContext,
 } from './sense-context.mjs';
+import { attachmentContext } from './attachment-context.mjs';
 import { alternativeTokens } from './english/coordination-context.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
 
@@ -390,6 +391,14 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         if (association) {
           score += association;
           why.push(`Russian object association (+${association.toFixed(2)})`);
+        }
+        const attached =
+          parsed.leftover?.length || parsed.unknown?.length
+            ? 0
+            : attachmentContext(node, concept, clause, lexicon);
+        if (attached) {
+          score += attached;
+          why.push(`grammatical partner evidence (+${attached.toFixed(2)})`);
         }
         const semantic = dictionaryContext(node, concept, heads, lexicon);
         if (node.pos === 'verb') {
@@ -944,6 +953,9 @@ function findVerbOwner(clause, verbNode) {
   }
   if (clause.xcomp) {
     return findVerbOwner(clause.xcomp, verbNode);
+  }
+  if (clause.np?.purpose) {
+    return findVerbOwner(clause.np.purpose, verbNode);
   }
   return null;
 }

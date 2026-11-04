@@ -1,9 +1,11 @@
 /** Public corpus evidence for a verb and its grammatical object. */
+import { attachmentFrequencies } from './attachment-frequency.mjs';
 import { parseSentence } from '../english/clause.mjs';
 import { getJson, pool } from './fetch.mjs';
 import { translationHead } from './translation-morphology.mjs';
 
 export async function contextFrequencies(text, lexicon, options = {}) {
+  await attachmentFrequencies(text, lexicon, options);
   const pairs = new Map();
   function visit(clause) {
     const verb = clause?.verb;

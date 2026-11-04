@@ -727,6 +727,8 @@ export async function resolveText(
       lexicon.add({
         id,
         gloss: s.gloss,
+        definition: s.definition,
+        examples: s.examples,
         labels: s.labels,
         predicateEvidence: predicateEvidence(entries, plan),
         synonymAlternative: s.synonymAlternative,

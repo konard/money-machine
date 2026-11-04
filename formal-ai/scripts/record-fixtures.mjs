@@ -68,6 +68,14 @@ export const BASIC = [
   'Use trademarked/copyrighted images.',
   'Billed monthly.',
   'You are billed per seat.',
+  'A free plan.',
+  'It is free.',
+  'Free tier available.',
+  'A free trial.',
+  'A free subscription.',
+  'Prices range from $5 to $50.',
+  'edited files',
+  'says only',
 ];
 
 /** Fixed seeded website sample; see fixture-sentences.json for source paths. */

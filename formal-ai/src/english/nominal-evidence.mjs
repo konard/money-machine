@@ -155,6 +155,9 @@ function nominalStart(tokens, lexicon) {
 
 /** Break ties only when the complete alternative is a series of nominal items. */
 export function preferNominal(tokens, clauses, fragments, lexicon) {
+  if (clauses.list.some((c) => c.mood === 'imperative' && c.xcomp)) {
+    return false;
+  }
   if (
     clauses.list.some(
       (c) =>

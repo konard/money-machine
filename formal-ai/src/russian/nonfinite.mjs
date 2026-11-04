@@ -78,6 +78,39 @@ export function renderParticiple(p, agree, ctx) {
     form = passiveOf(other);
   }
   if (!form) {
+    if (
+      entry?.pos === 'verb' &&
+      ctx.renderStatement &&
+      ctx.participleAntecedent
+    ) {
+      // A missing dictionary participle does not preclude an ordinary finite
+      // relative: "products restricted" → "продукты, которые ограничивают".
+      // Reuse object government, including dative recipients ("которым платят").
+      const gap = {
+        relativePronoun: true,
+        antecedent: ctx.participleAntecedent,
+        concept: ctx.participleAntecedent.concept,
+      };
+      const agent = (p.modifiers || []).find((m) => m.relation === 'rel.by');
+      return ctx.renderStatement(
+        {
+          predicate: p.predicate || p.concept,
+          frame: 'event',
+          mood: 'declarative',
+          tense: 'present',
+          aspect: 'simple',
+          polarity: 'positive',
+          subject: agent?.entity || {
+            pronoun: { person: 3, number: 'plural' },
+            implicit: true,
+          },
+          objects: [gap, ...(p.objects || [])],
+          modifiers: (p.modifiers || []).filter((m) => m !== agent),
+          complementClause: p.complementClause,
+        },
+        { ...ctx, afterPrep: false, relativeGaps: [gap], passive: false }
+      );
+    }
     ctx.notes.add(`no Russian participle for ${p.predicate || p.concept}`);
     return `[${p.predicate || p.concept}]`;
   }

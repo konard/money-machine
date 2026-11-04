@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "source": "strategies.json#website-in-a-day",
+    "english": "on demand after clearance",
+    "before": "На требовании после распродажи",
+    "after": "На требовании после распродажи",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 2,
+    "source": "strategies.json#fixed-rate-language-school-freelance",
+    "english": "Job listings say 'Remote - all countries' as long as you can legally freelance.",
+    "before": "Рекламы работы говорят, все страны, как жаждайте, как вы автономные [' Remote '].",
+    "after": "Рекламы работы говорят, все страны, как жаждайте, как вы автономные [' Remote '].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 3,
+    "source": "docs/business-plans/pro-rate-short-fiction-markets.md",
+    "english": "Submission tracker (deadlines, response times)",
+    "before": "Трекер подачи (крайние сроки, времена ответа)",
+    "after": "Трекер подачи (крайние сроки, времена ответа)",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 4,
+    "source": "docs/business-plans/live-streaming-twitch-kick.md",
+    "english": "Twitch Affiliate payouts available in most countries; Kick pays only to Stripe-supported countries.",
+    "before": "Выплаты Twitch Affiliate доступные в большинстве стран; Kick платит только в страны Stripe-supported.",
+    "after": "Выплаты Twitch Affiliate доступные в большинстве стран; Kick платит только в страны Stripe-supported.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 5,
+    "source": "docs/business-plans/overwolf-in-game-apps.md",
+    "english": "_Generated from `data/strategies/games-virtual-worlds.json` by `npm run build:catalog`.",
+    "before": "Порождалось из `data/strategies/games-virtual-worlds.json` `npm run build:catalog`.",
+    "after": "Порождалось из `data/strategies/games-virtual-worlds.json` `npm run build:catalog`.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 6,
+    "source": "docs/business-plans/spreadsheet-templates-calculators.md",
+    "english": "Avoid presenting outputs as personalized financial advice.",
+    "before": "Избежайте представлять производства как адаптированный финансовый совет.",
+    "after": "Избежайте представлять производства как адаптированный финансовый совет.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 7,
+    "source": "strategies.json#outschool-live-kids-classes",
+    "english": "Outschool keeps 30% and pays 70% of the class price, always in USD.",
+    "before": "Outschool держает 30% и зарплаты 70% цены класса, USD.",
+    "after": "Outschool держает 30% и зарплаты 70% цены класса, USD.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 8,
+    "source": "strategies.json#stock-music-sound-effects",
+    "english": "Pond5 contributor portal states 30% music/SFX royalty, $25 minimum and 15th-of-month payouts; Envato author help center documents the flat 50% author fee from July 1, 2026, $50 minimum, 15th payouts and its AI-generated content ban.",
+    "before": "Портал благодетеля Pond5 утверждает музыку 30%, королевский семья SFX, $25 минимума и 15; центр помощи автора Envato документирует бемолю гонорар автора 50% из июля 1, 2026, $50 минимума, 15 выплат четверга и его довольного запрета AI-generated [th-of-month payouts].",
+    "after": "Портал благодетеля Pond5 утверждает музыку 30%, королевский семья SFX, $25 минимума и 15; центр помощи автора Envato документирует бемолю гонорар автора 50% из июля 1, 2026, $50 минимума, 15 выплат четверга и его довольного запрета AI-generated [th-of-month payouts].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 9,
+    "source": "docs/business-plans/README.md",
+    "english": "**#33** [Paid survey panels (Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel)](./paid-survey-panels.md) — median $30/mo, pay prob.",
+    "before": "[Paid survey panels (Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel)](./paid-survey-panels.md), медиана $30 в момент, платите вероятно.",
+    "after": "[Paid survey panels (Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel)](./paid-survey-panels.md), медиана $30 в момент, платите вероятно.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 10,
+    "source": "docs/research/platform-rules.md",
+    "english": "KDP Select (Kindle Unlimited and Kindle+) pays about $4-4.5 per 1,000 KENP pages read (estimated).",
+    "before": "KDP Select (Kindle Unlimited и Kindle) платит примерно $4–4,5 за KENP, которого страницы прочитают [estimated].",
+    "after": "KDP Select (Kindle Unlimited и Kindle) платит примерно $4–4,5 за KENP, которого страницы прочитают [estimated].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 11,
+    "source": "docs/business-plans/kofi-buymeacoffee-tips.md",
+    "english": "One-off tips plus optional monthly memberships, commissions and a small shop, paid directly into your PayPal/Stripe.",
+    "before": "Одноразовые чаевыя плюс необязательные ежемесячные членства, комиссии и маленький магазин, в PayPal/Stripe [paid directly].",
+    "after": "Одноразовые чаевыя плюс необязательные ежемесячные членства, комиссии и маленький магазин, который платят прямо в PayPal/Stripe.",
+    "beforeComplete": false,
+    "afterComplete": true
+  },
+  {
+    "id": 12,
+    "source": "strategies.json#cohort-courses-maven",
+    "english": "Live cohort-based courses on Maven",
+    "before": "Курсы на Maven [Live cohort-based]",
+    "after": "Курсы на Maven [Live cohort-based]",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 13,
+    "source": "strategies.json#dual-license-open-source",
+    "english": "Choosing a valuable niche",
+    "before": "Выбирать ценную нишу",
+    "after": "Выбирать ценную нишу",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 14,
+    "source": "strategies.json#public-domain-derived-works",
+    "english": "Sell new translations/annotated editions of public-domain works",
+    "before": "Продайте переводы вновь или [wikt:annotate:verb:2] издания работ с общественным достоянием",
+    "after": "Продайте переводы вновь или издания работ с общественным достоянием, которые наводят глянец",
+    "beforeComplete": false,
+    "afterComplete": true
+  },
+  {
+    "id": 15,
+    "source": "strategies.json#real-estate-virtual-staging",
+    "english": "Staged images must be disclosed as virtually staged in listings.",
+    "before": "Инсценированные образы должны раскрываться, как инсценированные образы организовали в рекламах [virtually].",
+    "after": "Инсценированные образы должны раскрываться, как инсценированные образы организовали в рекламах [virtually].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 16,
+    "source": "strategies.json#brokerage-signup-transfer-bonuses",
+    "english": "Specific current offers could not be confirmed on official pages in Nov 2026 (broker sites blocked automated reads).",
+    "before": "Явные нынешние предложения не могли подтверждаться на официальных страницах в ноябре 2026 г. (более безденежные сайты, блокированные, автоматизировали) [reads].",
+    "after": "Явные нынешние предложения не могли подтверждаться на официальных страницах в ноябре 2026 г. (более безденежные сайты, блокированные, автоматизировали) [reads].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 17,
+    "source": "docs/business-plans/per-minute-expert-calls.md",
+    "english": "Share booking link",
+    "before": "Ссылка резервирования доли",
+    "after": "Ссылка резервирования доли",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 18,
+    "source": "docs/business-plans/music-curator-paid-reviews.md",
+    "english": "Low-effort AI-only feedback gets curators removed",
+    "before": "Обратный связь с низким усилием AI-only достаёт кураторы, убранные",
+    "after": "Обратный связь с низким усилием AI-only достаёт кураторы, убранные",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 19,
+    "source": "strategies.json#wordpress-freemium-plugins",
+    "english": "AI coding agent builds/maintains plugin and compatibility updates",
+    "before": "Агент кодировки AI строит или агент кодировки AI поддерживает плагин и обновления совместимости",
+    "after": "Агент кодировки AI строит или агент кодировки AI поддерживает плагин и обновления совместимости",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 20,
+    "source": "docs/business-plans/ai-redteam-bounties.md",
+    "english": "Gray Swan states $1M+ rewards paid to 15K+ red-teamers; Anthropic pays up to $35K per novel universal jailbreak (invite via application, NDA).",
+    "before": "Gray Swan утверждает $1 млн+ наград, [wikt:pay:verb:1]; Anthropic платит до $35 тыс. за новый универсальный побег (приглашение через приложение, NDA) [red-teamers].",
+    "after": "Gray Swan утверждает $1 млн+ наград, которые платят в 15 тыс.; Anthropic платит до $35 тыс. за новый универсальный побег (приглашение через приложение, NDA) [red-teamers].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 21,
+    "source": "strategies.json#rent-parking-storage-space",
+    "english": "Neighbor: renter is charged at the start of each rental period and the host payout is sent via Stripe at the end, arriving in 2-3 business days; Neighbor deducts a 4.9% + $0.30 processing fee per host payout.",
+    "before": "Neighbor: собака, и выплата хозяина посылается через Stripe в конеце, доходить через 2–3 рабочих деней; сосед удерживает 4,9% и $0,30 гонорара обработки за выплату хозяина [renter is charged the start of each rental period].",
+    "after": "Neighbor: собака, и выплата хозяина посылается через Stripe в конеце, доходить через 2–3 рабочих деней; сосед удерживает 4,9% и $0,30 гонорара обработки за выплату хозяина [renter is charged the start of each rental period].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 22,
+    "source": "strategies.json#developer-marketplaces-code-review",
+    "english": "Toptal screening interviews",
+    "before": "Интервью отбора Toptal",
+    "after": "Интервью отбора Toptal",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 23,
+    "source": "docs/research/legal-framework.md",
+    "english": "Disclosure must be near affiliate links",
+    "before": "Раскрытие должно быть близкое [affiliate links]",
+    "after": "Раскрытие должно быть близкое [affiliate links]",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 24,
+    "source": "docs/business-plans/saas-recurring-affiliate-tutorials.md",
+    "english": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings.",
+    "before": "Без фиксированного ежемесячного расхода, поэтому комиссия — прибыль; месяцы считаются [ramp-up to the first payable earnings].",
+    "after": "Без фиксированного ежемесячного расхода, поэтому комиссия — прибыль; месяцы считаются [ramp-up to the first payable earnings].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 25,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "Small-business regime: Micro-entrepreneur flat social charges with optional 'versement libératoire' income tax (1-2.2% of turnover); 15% CIT on first EUR 42,500 of profit for SMEs; VAT franchise.",
+    "before": "Режим с маленьким предприятием: плоские социальные цены Micro-entrepreneur (1–2,2% товарооборота); CIT на EUR 42,500 дивиденда для SMEs; франшиза VAT [with optional 'versement libératoire ' income tax].",
+    "after": "Режим с маленьким предприятием: плоские социальные цены Micro-entrepreneur (1–2,2% товарооборота); CIT на EUR 42,500 дивиденда для SMEs; франшиза VAT [with optional 'versement libératoire ' income tax].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 26,
+    "source": "strategies.json#rent-parking-storage-space",
+    "english": "Renting your own space is legal; leases/HOAs/zoning may restrict.",
+    "before": "Ваше собственное пространство законное; аренды, HOAs, засыпать может ограничить [Renting].",
+    "after": "Ваше собственное пространство законное; аренды, HOAs, засыпать может ограничить [Renting].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 27,
+    "source": "strategies.json#lora-model-creator-incentives",
+    "english": "Users run it",
+    "before": "Пользователи, управлянные",
+    "after": "Пользователи, управлянные",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 28,
+    "source": "strategies.json#design-brand-kit-image-gigs",
+    "english": "very crowded category",
+    "before": "Очень переполненная категория",
+    "after": "Очень переполненная категория",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 29,
+    "source": "strategies.json#curated-publisher-video-courses",
+    "english": "Pitch templates for multiple publishers",
+    "before": "Шаблоны тона для многочисленных издателей",
+    "after": "Шаблоны тона для многочисленных издателей",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 30,
+    "source": "strategies.json#website-in-a-day",
+    "english": "Build 5 niche templates",
+    "before": "Постройте 5 шаблонов ниши",
+    "after": "Постройте 5 шаблонов ниши",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 31,
+    "source": "docs/business-plans/academic-research-studies.md",
+    "english": "Prolific: PayPal -> bank, Connect: PayPal, bank transfer",
+    "before": "Prolific: PayPal, банк, Connect: PayPal, денежный перевод",
+    "after": "Prolific: PayPal, банк, Connect: PayPal, денежный перевод",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 32,
+    "source": "docs/research/platform-rules.md",
+    "english": "**ThemeForest and CodeCanyon (Envato Market)** (`envato-code-themes`): $50 minimum (SWIFT higher), paid monthly on the 15th via PayPal, Payoneer or SWIFT.",
+    "before": "ThemeForest и CodeCanyon (Envato Market) (`envato-code-themes`): $50 минимума (SWIFT более высокий), платный ежемесячник на 15 четвергах через PayPal, Payoneer или SWIFT.",
+    "after": "ThemeForest и CodeCanyon (Envato Market) (`envato-code-themes`): $50 минимума (SWIFT более высокий), платный ежемесячник на 15 четвергах через PayPal, Payoneer или SWIFT.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 33,
+    "source": "docs/business-plans/README.md",
+    "english": "**#29** [Resume, cover letter and LinkedIn profile rewriting](./resume-linkedin-rewriting.md) — Rewrite job seekers' resumes and LinkedIn profiles for a target role, using LLMs plus an ATS-keyword checklist. _(score 61, tier A)_",
+    "before": "[Resume, cover letter and LinkedIn profile rewriting](./resume-linkedin-rewriting.md), переписайте ищущие работы, и профили LinkedIn для роли мишени, использовать LLMs плюс ATS-keyword [' resumes checklist]. (получите 61), A",
+    "after": "[Resume, cover letter and LinkedIn profile rewriting](./resume-linkedin-rewriting.md), переписайте ищущие работы, и профили LinkedIn для роли мишени, использовать LLMs плюс ATS-keyword [' resumes checklist]. (получите 61), A",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 34,
+    "source": "docs/business-plans/music-curator-paid-reviews.md",
+    "english": "Payment is for listening/feedback, not guaranteed placement, which keeps it within platform rules and anti-payola norms.",
+    "before": "Плата для слушания/обратного связя, а не плата гарантировала трудоустройство, плата хранит его в пределах правил трибуны [which anti-payola norms].",
+    "after": "Плата для слушания/обратного связя, а не плата гарантировала размещение, плата хранит его в пределах правил трибуны [which anti-payola norms].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 35,
+    "source": "docs/business-plans/fivem-redm-script-marketplace.md",
+    "english": "Most people who try this earn around **$0–$100 per month** in the first year; the high figure of $15,000 is a ceiling for a focused solo operator, not a typical outcome.",
+    "before": "Большинство человеков, которые судят это, зарабатывают примерно $0–$100 в месяц в первом годе; высокая фигура $15 000 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.",
+    "after": "Большинство человеков, которые судят это, зарабатывают примерно $0–$100 в месяц в первом годе; высокая фигура $15 000 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 36,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "_Confidence: estimated; last checked 2026-11-03._",
+    "before": "Confidence; длитесь, 3 [estimated checked 2026-11].",
+    "after": "Confidence; длитесь, 3 [estimated checked 2026-11].",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 37,
+    "source": "docs/business-plans/cad-drafting-3d-rendering.md",
+    "english": "**Rank #198 · Tier C · Priority score 43/100 · Category: Services & freelancing**",
+    "before": "Вонючо, 198, C, счёт 43/100 Priority, категория: обслуживающие программы [freelancing]",
+    "after": "Вонючо, 198, C, счёт 43/100 Priority, категория: обслуживающие программы [freelancing]",
+    "beforeComplete": false,
+    "afterComplete": false
+  },
+  {
+    "id": 38,
+    "source": "docs/business-plans/ai-automation-agency.md",
+    "english": "Software consulting is legal everywhere.",
+    "before": "Программный обеспечение, который консультироваться везде законно.",
+    "after": "Программный обеспечение, который консультироваться везде законно.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 39,
+    "source": "docs/business-plans/direct-ad-space-dev-sites.md",
+    "english": "Building an audience",
+    "before": "Строить публику",
+    "after": "Строить публику",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 40,
+    "source": "strategies.json#nexus-mods-donation-points",
+    "english": "Nexus can change the cash value of a DP at any time.",
+    "before": "Nexus может изменить ценность наличныя DP во времени.",
+    "after": "Nexus может изменить ценность наличныя DP во времени.",
+    "beforeComplete": true,
+    "afterComplete": true
+  }
+]

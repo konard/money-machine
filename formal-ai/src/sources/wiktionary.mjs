@@ -503,8 +503,15 @@ export function matchingDefinition(gloss, definitions) {
       /\n#+\s/.test(raw) &&
       head(plain(raw.split('\n')[0])) === head(best.text)
   );
+  const examples = templates(
+    best.raw.split(/\n#+\s/)[0],
+    'ux|uxi|usex|collocation'
+  )
+    .filter((t) => t.positional[0] === 'en')
+    .map((t) => plain(t.positional[1]));
   return {
     definition: best.text,
+    ...(examples.length ? { examples } : {}),
     ...(parent ? { context: plain(parent.split('\n')[0]) } : {}),
     ...(frames.length ? { frames } : {}),
     labels,

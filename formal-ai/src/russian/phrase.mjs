@@ -249,13 +249,17 @@ export function renderEntity(e, kase, ctx) {
     const { of, partitive: _partitive, ...rest } = e;
     return `${renderEntity(rest, kase, { ...ctx, numeralGender: nounEntry(of, ctx)?.gender })} из ${renderEntity(of, 'gen', ctx)}`;
   }
+  if (e.purpose && ctx.renderAction) {
+    const { purpose, ...rest } = e;
+    return `${renderEntity(rest, kase, ctx)} для того, чтобы ${ctx.renderAction({ action: purpose }, 'nom', { ...ctx, afterPrep: false })}`;
+  }
   if (e.action && ctx.renderAction) {
     return ctx.renderAction(e, kase, ctx);
   }
   if (e.participles && ctx.renderParticiple) {
     const { participles, ...rest } = e;
     const agree = { ...features(e, ctx), case: kase };
-    return `${renderEntity(rest, kase, ctx)}, ${participles.map((p) => ctx.renderParticiple(p, agree, ctx)).join(', ')},`;
+    return `${renderEntity(rest, kase, ctx)}, ${participles.map((p) => ctx.renderParticiple(p, agree, { ...ctx, participleAntecedent: rest })).join(', ')},`;
   }
   if (e.relativePronoun) {
     if (ctx.suppressRelative) {
@@ -519,6 +523,7 @@ function renderNoun(e, entry, kase, ctx) {
     words.push(numeral);
   }
   const postproperties = [];
+  const relatives = [];
   for (const p of e.properties || []) {
     // "low/medium", "raw or unpublished": an alternative property
     const alt = p.alternative && propertyWord(p.alternative, agree, ctx);
@@ -527,7 +532,16 @@ function renderNoun(e, entry, kase, ctx) {
         ? `${word}${p.alternative.join ? ` ${p.alternative.join === 'conj.and' ? 'и' : 'или'} ` : '/'}${alt}`
         : word;
     if (p.participle && ctx.renderParticiple) {
-      words.push(joined(ctx.renderParticiple(p, agree, ctx)));
+      const text = joined(
+        ctx.renderParticiple(p, agree, { ...ctx, participleAntecedent: e })
+      );
+      // Finite paraphrases follow the entire noun phrase; inflected long
+      // participles keep their normal position before the noun.
+      if (/^котор[а-яё]*(?:\s|$)/u.test(text)) {
+        relatives.push(text);
+      } else {
+        words.push(text);
+      }
       continue;
     }
     if (p.degree) {
@@ -625,7 +639,7 @@ function renderNoun(e, entry, kase, ctx) {
       renderRelation(m, { ...ctx, afterPrep: false, locative: false })
     );
   }
-  return words.join(' ');
+  return words.join(' ') + relatives.map((text) => `, ${text},`).join('');
 }
 
 /** One plain property word: an adjective or a participle. */

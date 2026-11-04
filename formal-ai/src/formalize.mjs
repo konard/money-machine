@@ -147,6 +147,9 @@ function entity(np, lexicon) {
   if (np.amount) {
     e.amount = np.amount;
   }
+  if (np.purpose) {
+    e.purpose = predicateClause(np.purpose, lexicon);
+  }
   if (np.quantifier) {
     e.quantifier = np.quantifier;
   }
