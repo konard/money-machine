@@ -70,7 +70,7 @@ export function renderAction(e, kase, ctx) {
 /** Long passive participles share the noun's case, number and gender. */
 // a past passive participle is normally perfective: введённый, not
 // the rare imperfective ввожённый
-const passiveOf = (entry) =>
+export const passiveOf = (entry) =>
   entry?.perfective?.pastPassive ||
   (entry?.aspect !== 'impf' || !entry?.perfective
     ? entry?.pastPassive
@@ -189,8 +189,11 @@ export function infinitiveClause(x, parent, ctx) {
   };
   const savedPredicate = ctx.predicate;
   ctx.predicate = x.predicate;
-  const variant =
-    aspectual || parent.nominalAction || x.purpose
+  const variant = x.russianAspect
+    ? x.russianAspect === 'perf'
+      ? entry.perfective || entry
+      : entry
+    : aspectual || parent.nominalAction || x.purpose
       ? entry
       : parent.mood === 'imperative' && parent.polarity !== 'negative'
         ? entry.perfective || entry

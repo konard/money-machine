@@ -5,6 +5,7 @@
  *   formal-ai translate "I read a book."         translate text (sentence,
  *   formal-ai translate --file README.md          paragraph or document)
  *   formal-ai formalize "We sat on the bank."     show the meta-language links
+ *   formal-ai parse-ru "Я читаю книгу."          analyse Russian; --roundtrip compares links
  *   formal-ai roundtrip "I read a book."          regenerate English + compare links
  *   formal-ai explain "We sat on the bank."       show sense choices + notes
  *   formal-ai serve [--port 8765]                 OpenAI/Anthropic-compatible
@@ -42,7 +43,7 @@ function parseArgs(argv) {
       const [key, inline] = a.slice(2).split('=');
       if (inline !== undefined) {
         args[key] = inline;
-      } else if (key === 'offline') {
+      } else if (key === 'offline' || key === 'roundtrip') {
         args[key] = true;
       } else if (argv[i + 1] && !argv[i + 1].startsWith('--')) {
         args[key] = argv[i + 1];
@@ -95,6 +96,34 @@ async function main() {
     configureSources(parseSources(String(args.sources)));
   }
   switch (command) {
+    case 'parse-ru': {
+      const text = await readInput(args);
+      const lexicon = loadLexicon();
+      const { analyzeRussian, russianRoundTrip } =
+        await import('../src/russian/analyze/index.mjs');
+      const result = args.roundtrip
+        ? russianRoundTrip(text, lexicon)
+        : analyzeRussian(text, lexicon);
+      const formal = args.roundtrip ? result.before : result;
+      if (args.json) {
+        process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
+      } else {
+        process.stdout.write(
+          `# ${text}\n${toLino(formal.statements, lexicon)}\n`
+        );
+        if (args.roundtrip) {
+          process.stdout.write(
+            `${result.russian}\n${result.exact ? 'Exact meta links.' : JSON.stringify(result.differences, null, 2)}\n`
+          );
+        }
+        if (formal.leftover.length || (args.roundtrip && !result.complete)) {
+          process.stdout.write(
+            `# incomplete parse: ${JSON.stringify(formal.leftover)}\n`
+          );
+        }
+      }
+      return;
+    }
     case 'links': {
       const word = (await readInput(args)).trim();
       const lexicon = loadLexicon();

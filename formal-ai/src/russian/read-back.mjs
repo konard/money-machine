@@ -19,7 +19,9 @@ import {
 } from './morphology.mjs';
 import * as WORDS from './words.mjs';
 import { shortParticiple } from './passive.mjs';
+import { shortFrom } from './copula.mjs';
 import { MODAL_FORMS } from './modal.mjs';
+import { passiveOf } from './nonfinite.mjs';
 
 const { PERSONAL, RELATIONS, ONE, cardinal } = WORDS;
 
@@ -79,11 +81,25 @@ const safe = (fn) => {
 
 function indexNoun(index, id, entry) {
   const cells = safe(() => nounParadigm(entry)) || {};
+  if (entry.locative) {
+    push(index, entry.locative, {
+      concept: id,
+      pos: 'noun',
+      number: 'sg',
+      case: 'prep',
+    });
+  }
   for (const [cell, form] of Object.entries(cells)) {
     const [number, kase] = cell.split('.');
     // each word of a multiword lemma (малый бизнес) reads as the concept
     for (const word of form.split(' ')) {
-      push(index, word, { concept: id, pos: 'noun', number, case: kase });
+      push(index, word, {
+        concept: id,
+        pos: 'noun',
+        number,
+        case: kase,
+        gender: number === 'pl' ? undefined : entry.gender,
+      });
     }
   }
 }
@@ -123,7 +139,13 @@ function indexVerb(index, id, original, aspect) {
       return;
     }
     const [head, ...fixed] = form.split(' ');
-    push(index, head, { concept: id, pos: 'verb', aspect, ...features });
+    push(index, head, {
+      concept: id,
+      pos: 'verb',
+      aspect,
+      fixed: [...tail, ...fixed],
+      ...features,
+    });
     fixed.forEach((word) => push(index, word, { concept: id, pos: 'part' }));
     // the reflexive passive of an imperfective (посылается счёт)
     if (aspect === 'impf' && !/с[яь]$/.test(head) && features.tense) {
@@ -132,10 +154,15 @@ function indexVerb(index, id, original, aspect) {
         pos: 'verb',
         aspect,
         voice: 'passive',
+        fixed: [...tail, ...fixed],
         ...features,
       });
     }
   };
+  const derivedPassive = safe(() => passiveOf(original));
+  if (derivedPassive && derivedPassive !== entry.pastPassive) {
+    indexAdjective(index, id, derivedPassive, 'participle');
+  }
   if (entry.pastPassive) {
     // the participle agrees as an adjective, long or short (оплачен)
     indexAdjective(index, id, entry.pastPassive, 'participle');
@@ -146,7 +173,13 @@ function indexVerb(index, id, original, aspect) {
           number: gender === 'pl' ? 'pl' : 'sg',
         })
       );
-      add(form, { mood: 'participle' });
+      add(form, {
+        mood: 'participle',
+        voice: 'passive',
+        tense: 'present',
+        number: gender === 'pl' ? 'pl' : 'sg',
+        gender: gender === 'pl' ? undefined : gender,
+      });
     }
   }
   add(forms.infinitive, { mood: 'infinitive' });
@@ -187,6 +220,8 @@ function indexAdjective(index, id, lemma, pos = 'adj', extra = {}) {
             pos,
             number,
             case: kase,
+            gender: number === 'pl' ? undefined : gender,
+            fixed: lemma.split(' ').slice(1),
             ...extra,
           });
         }
@@ -221,6 +256,24 @@ export function russianFormIndex(lexicon) {
         indexAdjective(index, id, first);
       }
     } else if (ru.pos === 'verb') {
+      if (ru.datPredicate) {
+        for (const gender of [...GENDERS, 'pl']) {
+          const number = gender === 'pl' ? 'pl' : 'sg';
+          push(
+            index,
+            safe(() =>
+              shortFrom({ short: ru.datPredicate }, { gender, number })
+            ),
+            {
+              concept: id,
+              pos: 'verb',
+              tense: 'present',
+              aspect: 'impf',
+              number,
+            }
+          );
+        }
+      }
       // the verb, its aspect partners and its anticausative (началось)
       for (const verb of [ru, ru.intransitive].filter(
         (v) => v && typeof v === 'object'
@@ -235,6 +288,19 @@ export function russianFormIndex(lexicon) {
       }
     } else if (ru.pos === 'adj') {
       indexAdjective(index, id, ru.lemma);
+      if (ru.predicateShort || ru.short || ru.shortForms) {
+        for (const gender of [...GENDERS, 'pl']) {
+          const form = safe(() =>
+            shortFrom(ru, { gender, number: gender === 'pl' ? 'pl' : 'sg' })
+          );
+          push(index, form, {
+            concept: id,
+            pos: 'adj',
+            short: true,
+            number: gender === 'pl' ? 'pl' : 'sg',
+          });
+        }
+      }
       // a predicate adjective is short (нудна); the neuter short form is
       // also the adverb (медленно)
       for (const form of Object.values(ru.shortForms || {})) {
@@ -248,12 +314,21 @@ export function russianFormIndex(lexicon) {
     const person = Number(key[0]) || null;
     const number = /pl$/.test(key) ? 'pl' : 'sg';
     forms.forEach((form, i) => {
-      push(index, form, { pronoun: true, person, number, case: CASES[i] });
+      const gender = key.startsWith('3sg') ? key.at(-1) : undefined;
+      push(index, form, {
+        pronoun: true,
+        person,
+        number,
+        gender,
+        reflexive: key === 'refl' || undefined,
+        case: CASES[i],
+      });
       if (/^[её]/.test(form) || /^(им|ими|ему)$/.test(form)) {
         push(index, `н${form}`, {
           pronoun: true,
           person,
           number,
+          gender,
           case: CASES[i],
         });
       }
@@ -287,16 +362,41 @@ export function russianFormIndex(lexicon) {
       push(index, prep, { relation });
     }
   }
-  for (const [name, label] of lexicon.names || []) {
-    const entry = lexicon.nameEntry?.(name);
-    const forms = entry
-      ? Object.values(safe(() => nounParadigm(entry)) || {})
-      : [];
-    for (const form of new Set([label, name, ...forms])) {
-      push(index, form, { name });
-    }
-  }
+  indexRussianNames(index, lexicon);
   return index;
+}
+
+/** Names may acquire a declension during document translation, after indexing. */
+export function indexRussianNames(index, lexicon) {
+  const add = (form, reading) => {
+    if (!form) {
+      return;
+    }
+    if (
+      !(index.get(lower(form)) || []).some(
+        (r) =>
+          r.name === reading.name &&
+          r.case === reading.case &&
+          r.number === reading.number
+      )
+    ) {
+      push(index, form, reading);
+    }
+  };
+  for (const name of new Set([
+    ...(lexicon.names?.keys() || []),
+    ...(lexicon.nameEntries?.keys() || []),
+  ])) {
+    const label = lexicon.nameLabel?.(name) || name;
+    const entry = lexicon.nameEntry?.(name);
+    const forms = entry ? safe(() => nounParadigm(entry)) || {} : {};
+    for (const [cell, form] of Object.entries(forms)) {
+      const [number, kase] = cell.split('.');
+      add(form, { name, number, case: kase });
+    }
+    add(label, { name, ...(entry ? { case: 'nom' } : {}) });
+    add(name, { name, ...(entry ? { case: 'nom' } : {}) });
+  }
 }
 
 /** The meta links a translation must keep: concepts with their grammar. */

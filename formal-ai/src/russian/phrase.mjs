@@ -220,6 +220,9 @@ const conceptOf = (ctx, id) => ctx.lexicon.get(id);
  * @returns {string}
  */
 export function renderEntity(e, kase, ctx) {
+  if (e?.polarity === 'negative') {
+    return `не ${renderEntity({ ...e, polarity: undefined }, kase, ctx)}`;
+  }
   if (!e) {
     return '';
   }
@@ -609,7 +612,7 @@ function renderNoun(e, entry, kase, ctx) {
       words.push(declineAdjective('самый', agree));
     }
     (adj.postpositive ? postproperties : words).push(
-      joined(declineAdjective(adj.lemma, agree))
+      `${p.polarity === 'negative' ? 'не ' : ''}${joined(declineAdjective(adj.lemma, agree))}`
     );
   }
   if (entry.adjective) {
@@ -700,6 +703,8 @@ function determinerWord(e, entry, agree, _ctx) {
     return pronominalForm(DEMONSTRATIVE.whose, agree);
   }
   switch (e.determiner) {
+    case 'det.indefinite':
+      return `${declineAdjective('какой', agree)}-то`;
     case 'det.this':
     case 'det.that':
       return pronominalForm(DEMONSTRATIVE[e.determiner], agree);
@@ -778,6 +783,9 @@ export function isPerson(e, ctx) {
  * @returns {string}
  */
 export function renderRelation(m, ctx) {
+  if (m.polarity === 'negative') {
+    return `не ${renderRelation({ ...m, polarity: undefined }, ctx)}`;
+  }
   const e = m.entity;
   // "in about 4 days" → «примерно через 4 дня»: the approximation
   // goes before the preposition

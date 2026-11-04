@@ -43,6 +43,11 @@ the lexical Russian `src/round-trip.mjs` are unchanged.
 | Basic sentences with identical links                  |           57/58 |           **58/58** |
 | Website sentences with identical links                |           22/30 |           **23/30** |
 
+After the negation-scope links (`sharedPolarity`, `det.no`/`det.neither`,
+correlative pairs) and the "pay to support you" infinitive fix: **82/88**
+identical links, **76/88** identical with complete parses on both sides —
+every sentence that parses completely now round trips exactly.
+
 `complete` requires at least one statement and no unknown words or leftovers on
 either side. It is a parser diagnostic, not proof of correct interpretation:
 the “Patrons” example below has a complete but incorrect initial parse.
