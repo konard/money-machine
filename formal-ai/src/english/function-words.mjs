@@ -78,6 +78,8 @@ export const DETERMINERS = {
   some: { def: 'indef', det: 'det.some' },
   any: { def: 'indef', det: 'det.any' },
   no: { def: 'indef', det: 'det.no' },
+  // "neither homepage": not one of the two
+  neither: { def: 'def', det: 'det.neither', number: 'sg' },
   every: { def: 'def', det: 'det.every', number: 'sg' },
   each: { def: 'def', det: 'det.each', number: 'sg' },
   all: { def: 'def', det: 'det.all', number: 'pl' },
@@ -219,6 +221,7 @@ export const COORDINATORS = {
   and: 'conj.and',
   but: 'conj.but',
   or: 'conj.or',
+  nor: 'conj.nor',
 };
 
 /** Question words and the role they question. */

@@ -16,6 +16,10 @@ export const METHODS = {
   // decide: kept at 0.5 until the evaluation harness measures it at scale.
   documentTopic: 0.5,
   roundTrip: 1,
+  // Jaccard over dictionary ranges: weight 1 regresses ordinary meanings
+  // (table → таблица, free trial → свободный суд). See meaning-ranges.md.
+  // Retain the evidence as an experiment; no positive weight is proven safe.
+  rangeOverlap: 0,
   domainLabels: 1,
   partners: 1,
   entityContext: 1,

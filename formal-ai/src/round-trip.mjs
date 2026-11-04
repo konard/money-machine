@@ -1,4 +1,5 @@
-import { publicSenses } from './sources/sense-data.mjs';
+import { meaningFeatures } from './meaning-ranges.mjs';
+import { glossWords, publicSenses } from './sources/sense-data.mjs';
 /** Lexical attestation of a meaning, distinct from sentence correctness. */
 import { fetchPages, plain, unstress } from './sources/wiktionary.mjs';
 
@@ -154,6 +155,35 @@ export async function roundTripEvidence(plans, entries, government, options) {
       throw error;
     }
   }
+  // Union all observed English tables listing each Russian lemma, not just
+  // the table that justified the selected concept. Keep Russian polysemy too.
+  const ranges = new Map();
+  for (const plan of plans) {
+    for (const sense of plan.senses) {
+      for (const ru of sense.russian) {
+        const key = `${plan.pos}:${normalize(ru.word)}`;
+        if (!ranges.has(key)) {
+          ranges.set(key, new Set());
+        }
+        const features = meaningFeatures({
+          ...sense,
+          en: [{ lemma: plan.lemma }],
+        });
+        features.forEach((word) => ranges.get(key).add(word));
+      }
+    }
+  }
+  const reverse = new Map();
+  check.range = (plan, ru) => {
+    const key = `${plan.pos}:${normalize(ru.lemma)}`;
+    if (!reverse.has(key)) {
+      const terms = russianTranslations(pages.get(ru.lemma)).flatMap((b) =>
+        b.terms.flatMap((term) => glossWords(term))
+      );
+      reverse.set(key, [...new Set([...(ranges.get(key) || []), ...terms])]);
+    }
+    return reverse.get(key);
+  };
   memo.clear();
   check.meaning = (sense, plan, ru) =>
     check({

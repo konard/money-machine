@@ -80,3 +80,34 @@ test('a gerund may be read back as its verb or as its noun reading', () => {
     ]
   );
 });
+
+test('modality, negative determiners and coordinations are read back', () => {
+  for (const english of [
+    'No cat can fly.',
+    'I cannot read or write.',
+    'He does not read or write.',
+    'Neither the cat nor the dog sleeps.',
+    'Either the cat or the dog sleeps.',
+    'I like neither tea nor coffee.',
+    'Neither answer is correct.',
+  ]) {
+    const result = check(english);
+    assert.ok(result.survives, `${english}: ${JSON.stringify(result.links)}`);
+    assert.deepEqual(result.unread, [], english);
+  }
+  // «может» is "can" or "may": readable, in a wider range
+  assert.equal(statusOf(check('No cat can fly.'), 'fly').status, 'widened');
+});
+
+test('a dropped modal, determiner or coordination is a lost link', () => {
+  const modal = check('No cat can fly.', 'Никакая кошка не летает.');
+  assert.ok(!modal.survives);
+  assert.deepEqual(statusOf(modal, 'fly').changes, ['modality modal.can lost']);
+  const no = check('No cat can fly.', 'Кошка не может лететь.');
+  assert.deepEqual(statusOf(no, 'cat').changes, ['determiner det.no lost']);
+  const nor = check(
+    'Neither the cat nor the dog sleeps.',
+    'Кошка и собака не спят.'
+  );
+  assert.equal(nor.links.find((l) => l.kind === 'coordination').status, 'lost');
+});

@@ -111,7 +111,7 @@ setRelativeParser((c, np) => {
   }
   const subjectVerb = parseVerbGroup(
     c,
-    np.number === 'pl' || np.coord ? null : 'third'
+    np.number === 'pl' || (np.coord && !np.correlative) ? null : 'third'
   );
   if (!subjectVerb) {
     return null;
@@ -382,7 +382,7 @@ function parseClauses(tokens, ctx) {
       ((link?.concept || series) &&
         previous?.subject &&
         (!previous.subject.implicit || previous.elided) &&
-        ellipsis(c, ctx, previous)) ||
+        ellipsis(c, ctx, previous, link)) ||
       parseClause(
         c,
         { ...ctx, embedded: link?.embedded },
@@ -617,7 +617,7 @@ function parseDeclarative(c, ctx) {
   }
   const third = subject.pronoun
     ? subject.pronoun.person === 3 && subject.number === 'sg'
-    : subject.number !== 'pl' && !subject.coord;
+    : subject.number !== 'pl' && (!subject.coord || subject.correlative);
   const afterSubject = c.i;
   let vg = parseVerbGroup(c, third ? 'third' : 'other', subject);
   // "Marketplaces like Etsy charge fees": a preposition before a verb
@@ -711,31 +711,37 @@ function parseDeclarative(c, ctx) {
  * "I came home and went to bed": a finite verb right after a coordinator
  * shares the previous clause's subject.
  */
-function ellipsis(c, ctx, previous) {
+function ellipsis(c, ctx, previous, link) {
   const t = c.peek;
+  // "you don't market yourself or set prices": a negation before "or"/"nor"
+  // covers both predicates, ¬(A ∨ B); before "and" it often does not ("we
+  // don't track you and respect your privacy")
+  const sharesNegation =
+    previous.polarity === 'negative' &&
+    previous.mood === 'declarative' &&
+    ['conj.or', 'conj.nor'].includes(link?.concept);
   const r = reading(t, 'verb');
   const subject = previous.subject;
   const third = subject.pronoun
     ? subject.pronoun.person === 3 && subject.number === 'sg'
-    : subject.number !== 'pl' && !subject.coord;
+    : subject.number !== 'pl' && (!subject.coord || subject.correlative);
+  // a base form shares the previous modal, the future ("they will come and
+  // help") or a do-support negation ("he doesn't read or write"), and then
+  // agrees with nothing ("she can read and write")
+  const bare = previous.modal || previous.tense === 'future' || sharesNegation;
   // "we live in London and work in Paris": a base verb shares the subject
   const finite =
     r &&
     (['past', 'past|pp', '3sg'].includes(r.features.form) ||
       (r.features.form === 'base' &&
         previous.mood === 'declarative' &&
-        // "they will come and help": the base shares the future too
-        (previous.modal ||
-          previous.tense === 'future' ||
-          (!third && previous.tense === 'present'))));
+        (bare || (!third && previous.tense === 'present'))));
   const auxiliary = AUX.some((p) => has(t, p)) && !has(c.at(1), 'pron');
   if (!finite && !auxiliary) {
     return null;
   }
   const save = c.i;
-  // "she can read and write": after a modal the base verb agrees with nothing
-  const agree =
-    third && !previous.modal && previous.tense !== 'future' ? 'third' : null;
+  const agree = third && !bare ? 'third' : null;
   let vg = parseVerbGroup(c, agree);
   if (!vg && has(c.peek, 'prep')) {
     const phrases = subjectPhrases(c, agree);
@@ -752,6 +758,10 @@ function ellipsis(c, ctx, previous) {
     vg.tense = previous.tense;
     vg.modal = previous.modal;
     vg.sharedModal = Boolean(previous.modal);
+    if (sharesNegation) {
+      vg.polarity = 'negative';
+      vg.sharedPolarity = true;
+    }
   }
   const tail = parseTail(c, vg.frame, tailOptions(ctx, vg));
   return {

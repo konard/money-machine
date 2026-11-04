@@ -4,16 +4,17 @@ Offline fixture sentences; occurrence-weighted lexical attestation, not referenc
 
 | Disabled method    | Survives | Another meaning | Unknown | Total | Survival |  Δ pp | Changed Russian | Rebatched requests |
 | ------------------ | -------: | --------------: | ------: | ----: | -------: | ----: | --------------: | -----------------: |
-| None (defaults)    |      208 |               3 |      77 |   288 |   72.22% |  0.00 |               0 |                  0 |
-| documentTopic      |      207 |               3 |      78 |   288 |   71.88% | -0.35 |               6 |                  0 |
-| roundTrip          |      206 |               4 |      78 |   288 |   71.53% | -0.69 |               2 |                  0 |
-| domainLabels       |      209 |               2 |      77 |   288 |   72.57% |  0.35 |               2 |                  0 |
-| partners           |      207 |               4 |      77 |   288 |   71.88% | -0.35 |               5 |                  0 |
-| entityContext      |      208 |               3 |      77 |   288 |   72.22% |  0.00 |               1 |                  0 |
-| ruwikiFrequency    |      208 |               3 |      77 |   288 |   72.22% |  0.00 |               7 |                  0 |
-| statisticalContext |      208 |               3 |      77 |   288 |   72.22% |  0.00 |               1 |                  0 |
-| explicitContext    |      208 |               3 |      77 |   288 |   72.22% |  0.00 |               0 |                  0 |
-| positionalContext  |      208 |               3 |      77 |   288 |   72.22% |  0.00 |               0 |                  0 |
+| None (defaults)    |      199 |               3 |      77 |   279 |   71.33% |  0.00 |               0 |                  0 |
+| documentTopic      |      198 |               3 |      78 |   279 |   70.97% | -0.36 |               6 |                  0 |
+| roundTrip          |      197 |               4 |      78 |   279 |   70.61% | -0.72 |               2 |                  0 |
+| rangeOverlap       |      199 |               3 |      77 |   279 |   71.33% |  0.00 |               0 |                  0 |
+| domainLabels       |      200 |               2 |      77 |   279 |   71.68% |  0.36 |               2 |                  0 |
+| partners           |      198 |               4 |      77 |   279 |   70.97% | -0.36 |               5 |                  0 |
+| entityContext      |      199 |               3 |      77 |   279 |   71.33% |  0.00 |               1 |                  0 |
+| ruwikiFrequency    |      199 |               3 |      77 |   279 |   71.33% |  0.00 |               7 |                  0 |
+| statisticalContext |      199 |               3 |      77 |   279 |   71.33% |  0.00 |               1 |                  0 |
+| positionalContext  |      199 |               3 |      77 |   279 |   71.33% |  0.00 |               0 |                  0 |
+| explicitContext    |      199 |               3 |      77 |   279 |   71.33% |  0.00 |               0 |                  0 |
 
 A positive ablation delta means the enabled method lowers this metric. Defaults are retained; this harness does not silently disable methods.
 
@@ -48,7 +49,7 @@ A positive ablation delta means the enabled method lowers this metric. Defaults 
 - roundTrip off — Each project limits which countries it accepts.
   - Off: Каждые рамки проекта [which countries it accepts].
   - Default: Каждые пределы проекта [which countries it accepts].
-- **domainLabels lowers survival** by 0.35 percentage points.
+- **domainLabels lowers survival** by 0.36 percentage points.
 
 - domainLabels off — Requires sharing location history for many surveys.
   - Off: Требует шарить прошлое положения для многих опросов.

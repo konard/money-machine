@@ -20,6 +20,7 @@ export function clause(mood, vg, parts) {
     polarity: vg.polarity,
     modal: vg.modal,
     ...(vg.sharedModal ? { sharedModal: true } : {}),
+    ...(vg.sharedPolarity ? { sharedPolarity: true } : {}),
     passive: Boolean(vg.passive),
     generic: parts.generic || false,
     labelPredicate: parts.labelPredicate || false,

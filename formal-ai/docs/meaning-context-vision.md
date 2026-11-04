@@ -220,14 +220,28 @@ check is on concepts, not strings.
 
 ### Defects the round trips found (2026-11-04)
 
-- Negation over a coordination is not an explicit link: in "You don't
-  market yourself or set prices" the English generator shares the negation
-  with both verbs, while the Russian one negates only the first
-  («не продаёте себе или кладёте»). The meta language must say which.
-- "Neither homepage names…": the meta has `name` positive; «Также не …»
-  renders a negation the meta does not hold.
+- Fixed: negation over a coordination is an explicit link. "You don't
+  market yourself or set prices" is ¬(A ∨ B): the second statement carries
+  `sharedPolarity`, the English says the negation once, the Russian
+  negates each predicate («не продаёте себе и не кладёте цены»), and a
+  shared modal carries it once («не могу читать или писать»). "and" does
+  not share it ("we don't track you and respect your privacy").
+- Fixed: "Neither homepage names…" keeps `det.neither` and a negative
+  polarity («Ни одна стартовая страница не называет…»); "no X" keeps
+  `det.no` instead of dropping it («Никакая кошка не может…»). A passive's
+  generic patient goes without the quantifier in Russian («Капитал не
+  требуется»), which the read-back accepts.
+- Fixed: correlative pairs. "Neither A nor B" is a `conj.nor` coordination
+  marked `correlative` with negative polarity («Ни A, ни B не …»); "either
+  A or B" agrees with the nearer item in both languages («Либо A, либо B
+  придёт»). Both round trip exactly.
+- Fixed: the Russian read-back now also checks modality («может» reads as
+  the range can/may), negative determiners («никакой», «ни один», «без»,
+  «нет») and the words of a coordination (и, или, ни … ни, либо … либо).
 - "…who pay to support you" comes back as "…that pay you to support": the
   object is attached to the wrong verb.
+- "the recruiter FAQ" → «FAQ»: a noun modifier before an acronym head is
+  dropped by the Russian renderer.
 - "monthly": the concept's Russian lemma is «месячно» while the generator
   writes «ежемесячно»; the lexicon and the generator disagree.
 - "Prices range from $5 to $50" → «бродят»: the sense choice itself is

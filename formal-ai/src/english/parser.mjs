@@ -47,7 +47,7 @@ import {
 } from './predicate-adjectives.mjs';
 import { attachIngRelative } from './ing-relative.mjs';
 import { attachParticiple } from './participle-relative.mjs';
-import { clauseAhead, commaList, parallelVerb } from './lists.mjs';
+import { clauseAhead, commaList, eitherOr, parallelVerb } from './lists.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
 import { intransitiveAttribute } from './verb-group.mjs';
 
@@ -58,6 +58,10 @@ import { intransitiveAttribute } from './verb-group.mjs';
 export function parseNP(c, options = {}) {
   options = { ...c.grammar, ...options };
   const start = c.i;
+  const pair = !options.item && eitherOr(c);
+  if (pair) {
+    return pair;
+  }
   const attributed = attributiveAction(c, options, parseNP);
   if (attributed) {
     return attributed;

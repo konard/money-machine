@@ -56,7 +56,7 @@ export function agreement(subject) {
     person: subject?.pronoun?.person || 3,
     plural:
       subject?.number === 'plural' ||
-      Boolean(subject?.coordination) ||
+      (Boolean(subject?.coordination) && !subject.correlative) ||
       subject?.pronoun?.person === 2,
   };
 }

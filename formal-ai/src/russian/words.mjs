@@ -74,6 +74,17 @@ POSSESSIVE[1].pl = pronominal(
 /** Invariable 3rd-person possessives. */
 export const POSSESSIVE_3 = { m: 'его', n: 'его', f: 'её', pl: 'их' };
 
+/** Past forms of быть: был/была/было/были. */
+export const BYT_PAST = { m: 'был', f: 'была', n: 'было', pl: 'были' };
+
+/** «один»: «ни одна страница» (neither, not one of them). */
+export const ONE = pronominal(
+  'один одного одному один одним одном',
+  'одна одной одной одну одной одной',
+  'одно одного одному одно одним одном',
+  'одни одних одним одни одними одних'
+);
+
 export const DEMONSTRATIVE = {
   'det.this': pronominal(
     'этот этого этому этот этим этом',

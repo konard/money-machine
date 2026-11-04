@@ -162,7 +162,12 @@ export class EnglishRenderer {
     }
     if (e.coordination) {
       return join(
-        e.items.map((x, i) =>
+        e.correlative
+          ? e.coordination === 'conj.nor'
+            ? 'neither'
+            : 'either'
+          : '',
+        ...e.items.map((x, i) =>
           join(
             i ? this.conjunction(e.coordination) || e.coordination : '',
             this.entity(x, role)
@@ -391,10 +396,16 @@ export class EnglishRenderer {
     const imperative = s.mood === 'imperative';
     const invert =
       s.mood === 'question' && s.question?.slot !== 'subject' && !relative;
+    // a shared negation is said once, by the first predicate ("don't X or Y")
     const negative =
+      !s.sharedPolarity &&
       s.polarity === 'negative' &&
       !(s.modifiers || []).some((m) => m.concept === 'never') &&
-      subject?.determiner !== 'det.no' &&
+      !['det.no', 'det.neither'].includes(subject?.determiner) &&
+      // "neither A nor B came", "I like neither tea nor coffee"
+      ![subject, ...(s.objects || [])].some(
+        (e) => e?.coordination === 'conj.nor'
+      ) &&
       !(s.objects || []).some((e) => e.determiner === 'det.no');
     const entry = this.entry(s.predicate, 'verb');
     const lemma =
@@ -430,7 +441,7 @@ export class EnglishRenderer {
     if (modal || (s.tense === 'future' && !s.sharedModality)) {
       chain.unshift(modal || 'will');
       aux = true;
-    } else if (!imperative && !s.sharedModality) {
+    } else if (!imperative && !s.sharedModality && !s.sharedPolarity) {
       if (
         ['be', 'have', 'do'].includes(chain[0]) &&
         (aux || chain[0] === 'be')

@@ -13,6 +13,7 @@
 import { parseSentence } from './english/clause.mjs';
 import { resolveSenses, DocumentMemory, sentenceWords } from './senses.mjs';
 import { quote } from './lino.mjs';
+import { rangeLink } from './meaning-ranges.mjs';
 
 const NUMBER = { sg: 'singular', pl: 'plural', 'sg|pl': 'singular plural' };
 const DEF = { def: 'definite', indef: 'indefinite' };
@@ -25,9 +26,12 @@ function entity(np, lexicon) {
   if (np.coord) {
     return {
       coordination: np.coord,
+      // "neither A nor B": the pair is said with its own words
+      ...(np.correlative ? { correlative: true } : {}),
       items: np.items.map((n) => entity(n, lexicon)),
       floatingQuantifier: np.floatingQuantifier,
-      number: 'plural',
+      // English agreement follows the nearer item of a pair
+      number: np.correlative ? NUMBER[np.number] || 'singular' : 'plural',
     };
   }
   if (np.relativeSubject) {
@@ -82,6 +86,7 @@ function entity(np, lexicon) {
     return e;
   }
   if (np.head) {
+    Object.assign(e, rangeLink(np.head));
     e.concept = np.head.concept || np.head.candidates?.[0] || null;
     if (!e.concept) {
       // an unknown word stays as written
@@ -132,6 +137,7 @@ function entity(np, lexicon) {
   if (np.modifiers?.length) {
     const modifier = (m) => ({
       concept: m.concept || m.candidates?.[0] || null,
+      ...rangeLink(m),
       name: m.concept ? undefined : m.text,
       ...(m.alternative ? { alternative: modifier(m.alternative) } : {}),
       ...(m.plural ? { number: 'plural' } : {}),
@@ -141,6 +147,7 @@ function entity(np, lexicon) {
   if (np.alternative) {
     e.alternative = {
       concept: np.alternative.concept || np.alternative.candidates?.[0] || null,
+      ...rangeLink(np.alternative),
       name: np.alternative.concept ? undefined : np.alternative.text,
     };
   }
@@ -188,7 +195,10 @@ function entity(np, lexicon) {
 }
 
 function property(a) {
-  const p = { concept: a.concept || a.candidates?.[0] || null };
+  const p = {
+    concept: a.concept || a.candidates?.[0] || null,
+    ...rangeLink(a),
+  };
   if (a.participle) {
     p.participle = a.participle;
   }
@@ -200,6 +210,7 @@ function property(a) {
   }
   if (a.degree) {
     p.degree = a.degree.concept || a.degree.candidates?.[0];
+    Object.assign(p, rangeLink(a.degree, 'degreeCandidates'));
   }
   if (a.superlative) {
     p.superlative = true;
@@ -228,6 +239,7 @@ function modifierCore(m, lexicon) {
   if (m.type === 'adv') {
     return {
       kind: 'adverb',
+      ...rangeLink(m),
       concept: m.concept || m.candidates?.[0],
       comparison: m.comparison,
     };
@@ -258,6 +270,7 @@ function modifierCore(m, lexicon) {
   }
   if (m.adv) {
     out.adverb = m.adv.concept || m.adv.candidates?.[0];
+    Object.assign(out, rangeLink(m.adv, 'adverbCandidates'));
   }
   return out;
 }
@@ -267,9 +280,14 @@ function complement(c, lexicon) {
     return null;
   }
   if (c.type === 'adj') {
-    const p = { kind: 'property', concept: c.concept || c.candidates?.[0] };
+    const p = {
+      kind: 'property',
+      concept: c.concept || c.candidates?.[0],
+      ...rangeLink(c),
+    };
     if (c.degree) {
       p.degree = c.degree.concept || c.degree.candidates?.[0];
+      Object.assign(p, rangeLink(c.degree, 'degreeCandidates'));
     }
     if (c.comparison || c.superlative) {
       p.comparison = c.comparison || 'greatest';
@@ -294,6 +312,7 @@ function complement(c, lexicon) {
 function predicateClause(x, lexicon) {
   return {
     predicate: x.verb.concept || x.verb.candidates?.[0],
+    ...rangeLink(x.verb),
     subject: x.subject ? entity(x.subject, lexicon) : undefined,
     voice: x.passive ? 'passive' : undefined,
     objects: x.objects.map((o) => entity(o, lexicon)),
@@ -340,6 +359,11 @@ export function statement(clause, lexicon) {
   if (clause.generic) {
     s.generic = true;
   }
+  if (clause.sharedPolarity) {
+    // "don't market yourself or set prices": the negation is said once and
+    // covers the coordination
+    s.sharedPolarity = true;
+  }
   if (clause.modal) {
     s.modality = clause.modal;
     if (clause.sharedModal) {
@@ -363,17 +387,25 @@ export function statement(clause, lexicon) {
     s.inclusive = true;
   }
   s.predicate = clause.verb.concept || clause.verb.candidates?.[0];
+  Object.assign(s, rangeLink(clause.verb));
   s.subject = entity(clause.subject, lexicon);
-  if (s.subject?.determiner === 'det.no') {
+  // "no homepage names it": both languages negate the verb (negative
+  // concord in Russian: «никакая … не называет»), and the quantifier stays:
+  // "no X" is not "the X"
+  if (
+    ['det.no', 'det.neither'].includes(s.subject?.determiner) ||
+    s.subject?.coordination === 'conj.nor'
+  ) {
     s.polarity = 'negative';
     s.generic = true;
-    s.subject.determiner = undefined;
   }
   if (clause.objects.length) {
     s.objects = clause.objects.map((o) => entity(o, lexicon));
     // "need no platform": Russian negates the verb («не нужна никакая»)
     if (
-      s.objects.some((o) => o?.determiner === 'det.no') &&
+      s.objects.some(
+        (o) => o?.determiner === 'det.no' || o?.coordination === 'conj.nor'
+      ) &&
       s.polarity === 'positive'
     ) {
       s.polarity = 'negative';

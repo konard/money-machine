@@ -1,5 +1,7 @@
 import { shortParticiple, passiveFallbackTense } from './passive.mjs';
 export { shortParticiple } from './passive.mjs';
+import { modalWord } from './modal.mjs';
+export { modalWord } from './modal.mjs';
 import { renderFragment } from './fragment.mjs';
 import { quantityRange } from './quantity-range.mjs';
 import { markParenthetic, punctuateParenthetics } from './parenthetic.mjs';
@@ -153,9 +155,11 @@ export function naturalizeRussian(
         previous.aspect === 'simple' &&
         named(s.subject) &&
         named(previous.subject);
+      // ¬(A ∨ B) = ¬A ∧ ¬B: «не продаёте себя и не назначаете цены»
+      const nor = s.sharedPolarity && !s.sharedModality && s.link === 'conj.or';
       const conj = contrast
         ? { text: 'тогда как', comma: true }
-        : CONJUNCTIONS[s.link];
+        : CONJUNCTIONS[nor ? 'conj.and' : s.link];
       text = `${conj.text} ${text}`;
       // "откройте файл и прочитайте": no comma between predicates sharing a subject
       const sharedSubject =
@@ -586,8 +590,14 @@ function renderEvent(s, ctx) {
     entry = lexEntry(ctx, 'love').ru;
     ctx.notes.add('"like to" + verb rendered with любить');
   }
+  if (s.voice === 'passive' && s.subject?.determiner === 'det.no') {
+    // "no capital is required": «капитал не требуется», no quantifier
+    s = { ...s, subject: { ...s.subject, determiner: undefined } };
+  }
   const mods = renderModifiers(s.modifiers, ctx, entry);
-  const negative = s.polarity === 'negative' || mods.negative;
+  // a shared modal carries the shared negation: «не могу читать или писать»
+  const shared = s.sharedPolarity && s.sharedModality;
+  const negative = (s.polarity === 'negative' && !shared) || mods.negative;
   const words = [];
   const whWord = questionWord(s, ctx, entry);
   if (whWord) {
@@ -849,41 +859,6 @@ function passiveGroup(entry, s, f, ctx) {
     /(\S+)$/,
     (w) => w + (/[аеёиоуыэюя]$/.test(w) ? 'сь' : 'ся')
   );
-}
-
-export function modalWord(s, f) {
-  const tense =
-    s.tense === 'past' ? 'past' : s.tense === 'future' ? 'future' : 'present';
-  const gender = f.number === 'pl' ? undefined : f.gender;
-  switch (s.modality) {
-    case 'modal.can':
-    case 'modal.may': {
-      const moch = {
-        lemma: 'мочь',
-        present: ['могу', 'можешь', 'может', 'можем', 'можете', 'могут'],
-        past: ['мог', 'могла'],
-      };
-      return conjugate(moch, {
-        tense: tense === 'future' ? 'present' : tense,
-        person: f.person,
-        number: f.number,
-        gender,
-      });
-    }
-    case 'modal.must':
-    case 'modal.should': {
-      const short =
-        f.number === 'pl'
-          ? 'должны'
-          : { m: 'должен', f: 'должна', n: 'должно' }[f.gender || 'm'];
-      if (tense === 'past') {
-        return `${short} ${f.number === 'pl' ? 'были' : BYT_PAST[f.gender || 'm']}`;
-      }
-      return short;
-    }
-    default:
-      return '';
-  }
 }
 
 /** The fronted question word of a wh-question, already in its case. */

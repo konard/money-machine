@@ -19,6 +19,7 @@ import {
   POSSESSIVE,
   POSSESSIVE_3,
   DEMONSTRATIVE,
+  ONE,
   PRONOUN_WORDS,
   QUESTION_ADVERBS,
   RELATIONS,
@@ -76,6 +77,10 @@ export function features(e, ctx) {
       number: 'sg',
       gender: (infinitive ? null : actionNounEntry(e, ctx)?.gender) || 'n',
     };
+  }
+  // «либо Том, либо Мария придёт»: an either-or pair agrees with the nearer
+  if (e.coordination && e.correlative && e.coordination === 'conj.or') {
+    return features(e.items.at(-1), ctx);
   }
   if (e.coordination) {
     return { person: 3, number: 'pl', gender: 'pl' };
@@ -360,6 +365,11 @@ export function renderEntity(e, kase, ctx) {
     const items = e.items.map((item, i) =>
       renderEntity(item, kase, { ...ctx, afterPrep: ctx.afterPrep && i === 0 })
     );
+    // "neither A nor B" / "either A or B": «ни A, ни B», «либо A, либо B»
+    if (e.correlative) {
+      const word = e.coordination === 'conj.nor' ? 'ни' : 'либо';
+      return items.map((item) => `${word} ${item}`).join(', ');
+    }
     // "A, B и C": commas between all but the last two
     const word = e.coordination === 'conj.or' ? 'или' : 'и';
     return items.length > 2
@@ -703,6 +713,8 @@ function determinerWord(e, entry, agree, _ctx) {
       return declineAdjective('другой', agree);
     case 'det.no':
       return declineAdjective('никакой', agree);
+    case 'det.neither':
+      return `ни ${pronominalForm(ONE, agree)}`;
     default:
       return '';
   }

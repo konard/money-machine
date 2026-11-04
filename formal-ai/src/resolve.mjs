@@ -797,6 +797,7 @@ export async function resolveText(
       lexicon.add({
         id,
         roundTrip: roundTrip.meaning(s, plan, ru),
+        englishRange: roundTrip.range(plan, ru),
         gloss: s.gloss,
         definition: s.definition,
         examples: s.examples,

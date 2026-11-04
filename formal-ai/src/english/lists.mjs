@@ -3,6 +3,7 @@
 import { Cursor } from './cursor.mjs';
 import { parseNP } from './parser.mjs';
 import { has, reading, startsNP } from './token-readings.mjs';
+import { COORDINATORS } from './function-words.mjs';
 
 /**
  * "Kenya, Nigeria and Ghana", "A, B, or C": a comma list is one
@@ -48,6 +49,33 @@ export function commaList(c, first) {
     coord: word === 'or' ? 'conj.or' : 'conj.and',
     items,
     number: word === 'or' ? first.number : 'pl',
+  };
+}
+
+/**
+ * "neither the FAQ nor the terms", "either a card or a bank": a correlative
+ * pair. The verb agrees with the nearer item ("neither A nor B publishes").
+ */
+export function eitherOr(c) {
+  const pair = { neither: 'nor', either: 'or' }[c.peek?.lower];
+  if (!pair || !startsNP(c.at(1))) {
+    return null;
+  }
+  const save = c.i;
+  c.next();
+  const first = parseItem(c);
+  const joined = first && c.peek?.lower === pair && startsNP(c.at(1));
+  const last = joined && c.next() && parseItem(c);
+  if (!last) {
+    c.i = save;
+    return null;
+  }
+  return {
+    type: 'np',
+    coord: COORDINATORS[pair],
+    correlative: true,
+    items: [first, last],
+    number: last.number,
   };
 }
 

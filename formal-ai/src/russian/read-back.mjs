@@ -19,8 +19,9 @@ import {
 } from './morphology.mjs';
 import * as WORDS from './words.mjs';
 import { shortParticiple } from './passive.mjs';
+import { MODAL_FORMS } from './modal.mjs';
 
-const { PERSONAL, RELATIONS, cardinal } = WORDS;
+const { PERSONAL, RELATIONS, ONE, cardinal } = WORDS;
 
 const NEGATION = new Set(['не', 'нет', 'ни']);
 const FUTURE = new Set(['буду', 'будешь', 'будет', 'будем', 'будете', 'будут']);
@@ -35,13 +36,27 @@ const BYT = {
   ...Object.fromEntries([...FUTURE].map((f) => [f, 'future'])),
 };
 const FRAMES = new Set(['copula', 'possession', 'existence', 'location']);
+// the words a coordination of entities is said with (phrase.mjs)
+const COORDINATION = {
+  'conj.and': { word: 'и', times: 1 },
+  'conj.or': { word: 'или', times: 1 },
+  'conj.nor': { word: 'ни', times: 2 },
+  correlative: { word: 'либо', times: 2 },
+};
 // grammatical words the generator writes outside the word tables
 const GRAMMATICAL =
-  'и или но а что чтобы потому поэтому как также тоже бы ли это так то того без для из от до при через'.split(
+  'и или либо но а что чтобы потому поэтому как также тоже бы ли это так то того без для из от до при через'.split(
     ' '
   );
 
 const lower = (s) => s.toLowerCase().replace(/ё/g, 'е');
+const MODAL_RANGE = new Set(MODAL_FORMS.flatMap(([, modal]) => modal));
+const wordsOf = (v) =>
+  typeof v === 'string'
+    ? v.split(' ')
+    : Object.values(v || {}).flatMap((x) => wordsOf(x));
+// «ни одна страница»: "neither page"
+const ONE_FORMS = new Set(wordsOf(ONE).map(lower));
 const push = (map, key, value) => {
   if (!key) {
     return;
@@ -154,7 +169,7 @@ function indexVerb(index, id, original, aspect) {
   add(forms.imperative.pl, { mood: 'imperative', number: 'pl' });
 }
 
-function indexAdjective(index, id, lemma, pos = 'adj') {
+function indexAdjective(index, id, lemma, pos = 'adj', extra = {}) {
   // «покрытый авторским правом»: the fixed words read as the same meaning
   lemma
     .split(' ')
@@ -172,6 +187,7 @@ function indexAdjective(index, id, lemma, pos = 'adj') {
             pos,
             number,
             case: kase,
+            ...extra,
           });
         }
       }
@@ -256,6 +272,13 @@ export function russianFormIndex(lexicon) {
   GRAMMATICAL.forEach((w) => push(index, w, { closed: true }));
   indexAdjective(index, null, 'который', 'relative');
   indexAdjective(index, null, 'каждый', 'determiner');
+  // «никакая кошка не …»: "no cat"
+  indexAdjective(index, null, 'никакой', 'determiner', {
+    determiner: 'det.no',
+  });
+  for (const [forms, modal] of MODAL_FORMS) {
+    forms.split(' ').forEach((form) => push(index, form, { modal }));
+  }
   for (const [form, tense] of Object.entries(BYT)) {
     push(index, form, { copula: true, tense });
   }
@@ -282,6 +305,7 @@ export function sourceLinks(formal) {
   // a gerund's noun reading is an alternative realization of its action
   // (sharing → делиться or a noun): the Russian may carry either one
   let optional = false;
+  const bare = new WeakSet();
   const visit = (node, statement) => {
     if (!node || typeof node !== 'object') {
       return;
@@ -308,7 +332,16 @@ export function sourceLinks(formal) {
           polarity: node.polarity,
           mood: node.mood,
           frame: node.frame,
+          modality: node.modality,
+          // said once for a coordination: «не могу читать или писать»
+          sharedPolarity: node.sharedPolarity,
+          sharedModality: node.sharedModality,
         });
+      }
+      // "no capital is required": the passive's generic patient may go
+      // without its quantifier, «капитал не требуется»
+      if (node.voice === 'passive' && node.subject) {
+        bare.add(node.subject);
       }
     }
     if (
@@ -319,12 +352,23 @@ export function sourceLinks(formal) {
       // a non-finite action (to reach, sharing): its verb, without tense
       links.push({ kind: 'action', concept: node.predicate, optional });
     }
+    if (node.coordination && Array.isArray(node.items)) {
+      links.push({
+        kind: 'coordination',
+        coordination: node.coordination,
+        correlative: node.correlative,
+        optional: optional || undefined,
+      });
+    }
     if (node.concept && typeof node.concept === 'string') {
       links.push({
         kind: 'entity',
         concept: node.concept,
         number: node.number,
         quantity: node.quantity,
+        ...(['det.no', 'det.neither'].includes(node.determiner)
+          ? { determiner: node.determiner, bare: bare.has(node) || undefined }
+          : {}),
         optional: optional || undefined,
       });
     } else if (node.name && node.untranslated) {
@@ -374,6 +418,9 @@ export function readBack(
       }
       return { ...link, status: i >= 0 ? 'kept' : 'lost' };
     }
+    if (link.kind === 'coordination') {
+      return coordinationLink(link, tokens, used);
+    }
     const at = tokens
       .map((t, i) => ({
         i,
@@ -407,6 +454,13 @@ export function readBack(
         changes.push(`number ${link.number} → ${[...numbers].join('/')}`);
       }
     }
+    if (
+      link.determiner &&
+      !link.bare &&
+      !determinerRead(link.determiner, tokens, used)
+    ) {
+      changes.push(`determiner ${link.determiner} lost`);
+    }
     if (link.quantity) {
       const forms = cardinalForms(link.quantity);
       if (
@@ -430,7 +484,28 @@ export function readBack(
       } else if (check?.narrowed) {
         out.narrowed = check.narrowed;
       }
-      const negated = negatedAt(i) || (link.frame && negatedAt(i - 1));
+      if (MODAL_RANGE.has(link.modality) && !link.sharedModality) {
+        // «может читать»: the modal verb before the infinitive
+        const j = tokens.findIndex(
+          (t, k) => k < i && !used.has(k) && t.readings.some((r) => r.modal)
+        );
+        const modal =
+          j >= 0 ? tokens[j].readings.find((r) => r.modal).modal : [];
+        if (!modal.includes(link.modality)) {
+          changes.push(`modality ${link.modality} lost`);
+        } else {
+          used.add(j);
+          // «может» is "can" or "may": a wider range than the link
+          modal.forEach((m) => range.add(m));
+        }
+      }
+      const negated = Boolean(
+        negatedAt(i) ||
+        (link.frame && negatedAt(i - 1)) ||
+        // a shared negation is said once, before the first predicate
+        (link.sharedPolarity &&
+          tokens.slice(0, i).some((_, k) => is(k, NEGATION)))
+      );
       if ((link.polarity === 'negative') !== negated) {
         changes.push(
           `polarity ${link.polarity} → ${negated ? 'negative' : 'positive'}`
@@ -526,6 +601,53 @@ function frameLink(link, tokens) {
     status: changes.length ? 'changed' : 'kept',
     changes: changes.length ? changes : undefined,
   };
+}
+
+/** "A or B", "neither A nor B": the coordinating words are read back. */
+function coordinationLink(link, tokens, used) {
+  const how =
+    COORDINATION[
+      link.correlative && link.coordination === 'conj.or'
+        ? 'correlative'
+        : link.coordination
+    ];
+  if (!how) {
+    return { ...link, status: 'kept', unchecked: true };
+  }
+  const at = tokens
+    .map((t, i) => i)
+    .filter((i) => !used.has(i) && lower(tokens[i].text) === how.word);
+  if (at.length < how.times) {
+    return { ...link, status: 'lost' };
+  }
+  // «ни» also negates: it stays readable as a negation
+  if (how.word !== 'ни') {
+    at.slice(0, how.times).forEach((i) => used.add(i));
+  }
+  return { ...link, word: how.word, status: 'kept' };
+}
+
+/**
+ * «никакая», «ни одна»: a negative determiner is read back once; "no X" is
+ * also «без X» (a fragment) or «нет X» (absence).
+ */
+function determinerRead(determiner, tokens, used) {
+  const word = (k) => lower(tokens[k]?.text || '');
+  const i = tokens.findIndex((t, k) =>
+    determiner === 'det.no'
+      ? !used.has(k) &&
+        (t.readings.some((r) => r.determiner === determiner) ||
+          ['без', 'нет'].includes(word(k)))
+      : word(k) === 'ни' && !used.has(k + 1) && ONE_FORMS.has(word(k + 1))
+  );
+  if (i < 0) {
+    return false;
+  }
+  used.add(i);
+  if (determiner === 'det.neither') {
+    used.add(i + 1);
+  }
+  return true;
 }
 
 /** Cardinal forms of a number, for quantity links. */

@@ -1,3 +1,4 @@
+import { scoreRanges } from './meaning-ranges.mjs';
 import { methodEvidence } from './sense-methods.mjs';
 /** Context-based sense selection with traceable dictionary and corpus evidence. */
 import { methodWeight } from './methods.mjs';
@@ -731,6 +732,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         scores[id] = Number(score.toFixed(2));
         evidence[id] = why;
       }
+      scoreRanges(node, clause, lexicon, scores, evidence, memory.methods);
       // A restricted historical reading cannot displace a living dictionary sense.
       const ranked = [...node.candidates].sort(
         (a, b) =>
