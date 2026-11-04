@@ -2,8 +2,12 @@
 
 import { learnPrepositions } from './sources/prepositions.mjs';
 import { nameCandidates } from './name-candidates.mjs';
-import { translatedCompound } from './sources/translation-morphology.mjs';
+import {
+  translatedCompound,
+  translationParts,
+} from './sources/translation-morphology.mjs';
 import { completeDefinitions } from './sources/definition-translations.mjs';
+import { translatedPredicate } from './sources/definition-verbs.mjs';
 import { translationSenses } from './sources/translation-senses.mjs';
 import { supplementTerms } from './sources/terms.mjs';
 import { entityContext } from './sources/entity-context.mjs';
@@ -121,10 +125,7 @@ export function unknownWords(text, lexicon = loadLexicon()) {
   return [...out];
 }
 
-/**
- * Words written with a capital inside sentences that the lexicon does not
- * know: names mostly, but also months and weekdays ("in January").
- */
+/** Unknown capitals inside sentences: names, months and weekdays. */
 export function capitalizedWords(text, lexicon = loadLexicon()) {
   const out = new Set();
   for (const line of text.replace(/```[\s\S]*?```|`[^`]*`/g, ' ').split('\n')) {
@@ -590,16 +591,17 @@ export async function resolveText(
     );
   }
 
-  await completeDefinitions(plans, options);
+  await completeDefinitions(plans, options, entries, { words, forms, lexicon });
   // Russian words: fetch pages, keep candidates whose entry has the same POS
   const russianWords = new Set();
   for (const plan of plans) {
     for (const s of plan.senses) {
       s.russian.forEach((c) => {
         russianWords.add(c.word);
-        // the words of «домашняя страница» decline one by one
-        if (['noun', 'adv'].includes(plan.pos) && c.word.includes(' ')) {
-          c.word.split(' ').forEach((w) => russianWords.add(w));
+        if (c.word.includes(' ')) {
+          translationParts(c.word, plan.pos).forEach((w) =>
+            russianWords.add(w)
+          );
         }
       });
     }
@@ -675,8 +677,8 @@ export async function resolveText(
   for (const plan of plans) {
     for (const s of plan.senses) {
       const words = s.russian.flatMap((c) =>
-        plan.pos === 'noun' && c.word.includes(' ')
-          ? c.word.split(' ').map((word) => ({ word }))
+        c.word.includes(' ') && plan.pos !== 'adv'
+          ? translationParts(c.word, plan.pos).map((word) => ({ word }))
           : [c]
       );
       for (const c of words) {
@@ -724,6 +726,9 @@ export async function resolveText(
     );
   const indeclinables = await russianIndeclinables(uncertainNouns, options);
   const russian = (word, pos, candidate, renderedOnly) => {
+    if (['verb', 'adj'].includes(pos) && word.includes(' ')) {
+      return translatedPredicate(word, pos, russian, candidate);
+    }
     if (pos === 'noun' && word.includes(' ')) {
       return translatedCompound(word, russian, lemmaOf);
     }

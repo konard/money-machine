@@ -53,7 +53,7 @@ export function translationSenses(plan, pages) {
             rare: sense.rare || usage.rare,
             reverseDefinition: plain(reverse),
             russian: [candidate],
-            context: `${sense.context || ''} ${plain(reverse)}`,
+            context: `${sense.context || ''} ${plain(reverse).replace(/\([^)]*\)/g, '')}`,
             synonymAlternative: true,
           },
         ];

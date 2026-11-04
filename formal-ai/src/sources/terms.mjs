@@ -114,6 +114,7 @@ export async function supplementTerms(
   );
   const terms = await termSenses([...missingTerms, ...compounds], options);
   for (const plan of terms) {
+    plan.lemma = compoundLemma(plan.lemma, forms);
     const definitions = (entries.get(plan.lemma) || [])
       .filter((e) => e.pos === 'noun')
       .flatMap((e) => e.rawDefinitions);
@@ -131,4 +132,16 @@ export async function supplementTerms(
         ?.some((e) => e.pos === 'noun' && e.rawDefinitions.length) ||
       compoundFits(p, text)
   );
+}
+
+/** A plural surface is an inflection of a compound, not a singular lemma. */
+export function compoundLemma(title, forms) {
+  const parts = title.split(' ');
+  const form = forms.find(
+    (f) => f.form === parts.at(-1) && f.pos === 'noun' && f.kind === 'plural'
+  );
+  if (parts.length > 1 && form) {
+    parts[parts.length - 1] = form.lemma;
+  }
+  return parts.join(' ');
 }

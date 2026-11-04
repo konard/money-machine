@@ -1,9 +1,20 @@
-/** Translate short nominal dictionary glosses when their table is empty. */
+/** Fill empty tables from Russian meanings and compositional English glosses. */
 import { englishEntries, fetchPages } from './wiktionary.mjs';
 import { declineAdjective } from '../russian/morphology.mjs';
 import { senseDomain } from './sense-data.mjs';
+import { completeVerbDefinitions } from './definition-verbs.mjs';
+import { completeRussianMeanings } from './russian-meanings.mjs';
 
-export async function completeDefinitions(plans, options) {
+export async function completeDefinitions(
+  plans,
+  options,
+  entries,
+  context = {}
+) {
+  if (entries) {
+    await completeRussianMeanings(plans, entries, { ...options, ...context });
+  }
+  await completeVerbDefinitions(plans, options);
   const missing = plans
     .filter((p) => p.pos === 'noun')
     .flatMap((p) =>

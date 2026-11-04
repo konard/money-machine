@@ -62,6 +62,12 @@ export const BASIC = [
   'I read a book.',
   'We write a letter.',
   'The children play in the park.',
+  'They trademarked the name.',
+  'Use trademarked images.',
+  'Use copyrighted images.',
+  'Use trademarked/copyrighted images.',
+  'Billed monthly.',
+  'You are billed per seat.',
 ];
 
 /** Fixed seeded website sample; see fixture-sentences.json for source paths. */

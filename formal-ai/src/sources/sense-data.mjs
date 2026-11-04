@@ -295,6 +295,11 @@ export function linkReflexiveSenses(plans, lexicon) {
       .lookup('verb', plan.lemma)
       .map((id) => lexicon.get(id));
     for (const c of concepts) {
+      // An attested intransitive reading already works without an object.
+      // Do not replace it with a different reflexive synonym or register.
+      if (c.frames?.includes('intransitive')) {
+        continue;
+      }
       const reflexive = concepts.find(
         (other) => other.ru?.lemma === `${c.ru?.lemma}ся`
       );

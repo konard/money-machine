@@ -586,7 +586,7 @@ test('domain stems do not collapse a field to a short unrelated prefix', () => {
   assert.equal(memory.mentions('mining'), true);
 });
 
-test('counted nouns prefer an exactly reverse-attested reading over an unsupported process synonym', () => {
+test('counting a noun alone does not favor a reverse-attested synonym', () => {
   const lexicon = new Lexicon();
   concept(lexicon, 'process', { prior: 0.3 });
   concept(lexicon, 'attested', { prior: 0.26, synonymAlternative: true });
@@ -602,7 +602,7 @@ test('counted nouns prefer an exactly reverse-attested reading over an unsupport
     clauses: [{ subject }],
   };
   resolveSenses(parsed, lexicon);
-  assert.equal(head.concept, 'attested');
+  assert.equal(head.concept, 'process');
   subject.number = 'sg';
   resolveSenses(parsed, lexicon);
   assert.equal(head.concept, 'process');

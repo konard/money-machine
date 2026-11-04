@@ -211,7 +211,13 @@ function matchesCue(words, cue) {
     return true;
   }
   const base = cue.match(/^(.{3,}?)(?:ment|ments|er|ers|ance|ence|al)$/)?.[1];
-  return Boolean(base && words.has(base));
+  return Boolean(
+    (base && words.has(base)) ||
+    [...words].some(
+      (w) =>
+        w.match(/^(.{3,}?)(?:ment|ments|er|ers|ance|ence|al)$/)?.[1] === cue
+    )
+  );
 }
 
 /** Crude English stem for topic counts: payments → payment. */
@@ -348,16 +354,6 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           why.push(
             `alternative synonym requires context (-${penalty.toFixed(2)})`
           );
-          if (
-            node.pos === 'noun' &&
-            role === 'head' &&
-            (parent?.number === 'pl' || parent?.quantity !== undefined)
-          ) {
-            score += 0.3;
-            why.push(
-              'exact reverse noun attestation in a counted phrase (+0.30)'
-            );
-          }
         }
         const semantic = dictionaryContext(node, concept, heads, lexicon);
         if (semantic) {
@@ -385,7 +381,30 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
               continue;
             }
             const distance = Math.abs(w.pos - at);
-            const weight = (1 + 2 / distance) * (local.has(w.pos) ? 1 : 0.1);
+            // A reverse definition qualifies a Russian synonym; incidental
+            // notes in it are weaker than the English sense's own cues.
+            const reverseOnly =
+              concept?.synonymAlternative &&
+              node.candidates.some((other) => {
+                const primary = lexicon.get(other);
+                return (
+                  !primary?.synonymAlternative &&
+                  primary?.gloss === concept.gloss &&
+                  !primary?.cues?.includes(cue)
+                );
+              });
+            const weight =
+              (1 + 2 / distance) *
+              (local.has(w.pos) ? 1 : 0.1) *
+              (words.some(
+                (t) =>
+                  t.token.lower === 'than' &&
+                  t.pos > Math.min(at, w.pos) &&
+                  t.pos < Math.max(at, w.pos)
+              )
+                ? 0.1
+                : 1) *
+              (reverseOnly ? 0.2 : 1);
             score += weight;
             why.push(
               `${local.has(w.pos) ? 'cue' : 'other clause cue'} "${cue}" at distance ${distance} (+${weight.toFixed(2)})`

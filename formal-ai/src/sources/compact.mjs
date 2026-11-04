@@ -28,6 +28,9 @@ const CLAIMS = new Set([
 /** Keep case notes, definition-based argument markers, homonym boundaries
  * and highlighted recipient examples in their original order. */
 function compactGovernment(text) {
+  if (/\{\{-en-\}\}/.test(text)) {
+    return text;
+  }
   return [
     ...text.matchAll(
       /^={3,5}\s*Управление\s*={3,5}\s*\n[\s\S]*?(?=^=|$(?![\s\S]))|^=+[^\n]*|^#[^#*:][^\n]*|\{\{помета\|[^{}]+\}\}|\{\{пример\|[^\n]*/gm

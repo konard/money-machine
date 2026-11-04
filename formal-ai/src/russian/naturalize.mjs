@@ -8,7 +8,7 @@ import {
   purposeClause,
   infinitiveClause,
 } from './nonfinite.mjs';
-import { conjugate } from './morphology.mjs';
+import { conjugatePredicate as conjugate } from '../sources/definition-verbs.mjs';
 import {
   CONJUNCTIONS,
   QUESTION_ADVERBS,
@@ -55,14 +55,7 @@ export const BYT_PAST = { m: 'был', f: 'была', n: 'было', pl: 'был
 
 export const lexEntry = (ctx, id) => ctx.lexicon.get(id);
 
-/**
- * Naturalize a formalized sentence into Russian.
- * @param {{statements: object[], punctuation: string}} formal
- * @param {import('../lexicon.mjs').Lexicon} lexicon
- * @param {{you?: string, speakerGender?: string, addresseeGender?: string}} [options]
- * @param {{referents: object[]}} [discourse]
- * @returns {{text: string, notes: string[]}}
- */
+/** Naturalize formalized statements; return Russian text and decision notes. */
 export function naturalizeRussian(
   formal,
   lexicon,
@@ -818,6 +811,19 @@ export function shortParticiple(long, f) {
 
 /** Passive results use short participles; ongoing processes use reflexives. */
 function passiveGroup(entry, s, f, ctx) {
+  if (entry.lexicalHead) {
+    return [
+      passiveGroup(
+        { ...entry.lexicalHead, perfective: entry.perfective?.lexicalHead },
+        s,
+        f,
+        ctx
+      ),
+      entry.definitionTail,
+    ]
+      .filter(Boolean)
+      .join(' ');
+  }
   const perfective = entry.aspect === 'perf' ? entry : entry.perfective;
   // an agent or a repetition makes it a process: оплачивается покупателем
   const ongoing =
@@ -852,7 +858,6 @@ function passiveGroup(entry, s, f, ctx) {
   );
 }
 
-/** мочь / должен / бы. */
 function modalWord(s, f) {
   const tense =
     s.tense === 'past' ? 'past' : s.tense === 'future' ? 'future' : 'present';

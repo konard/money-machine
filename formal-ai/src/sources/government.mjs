@@ -2,6 +2,7 @@
 import { chunks, getJson, pool } from './fetch.mjs';
 import { languageSection, russianTemplates, unstress } from './wiktionary.mjs';
 import { definitionBlocks } from './verb-frames.mjs';
+import { reuseMorphology } from './translation-morphology.mjs';
 
 const CASES = {
   accusative: 'acc',
@@ -60,11 +61,13 @@ const words = (s) =>
 const gov = (kase, preposition = null) => ({ preposition, case: kase });
 
 /** Raw responses use the shared cache and generic User-Agent. */
-export async function governmentPages(titles, options = {}) {
+export async function governmentPages(titles, options = {}, english = false) {
   const out = new Map();
   await pool(
     chunks(
-      [...new Set(titles)].filter((w) => /^[а-яё-]+$/i.test(w)),
+      [...new Set(titles)].filter((w) =>
+        (english ? /^[a-z]+(?: [a-z]+)*$/i : /^[а-яё-]+$/i).test(w)
+      ),
       50
     ),
     2,
@@ -418,7 +421,10 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
 
   const choose = (candidates, pos, sense) => {
     const candidate = (c, renderedOnly) => {
-      const entry = russian(c.word, pos, c, renderedOnly);
+      const entry = reuseMorphology(
+        russian(c.word, pos, c, renderedOnly),
+        lexicon
+      );
       if (!entry) {
         return null;
       }
