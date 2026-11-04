@@ -299,6 +299,14 @@ export function statement(clause, lexicon) {
     return {
       type: 'fragment',
       entity: entity(clause.np, lexicon),
+      factValue: clause.factValue
+        ? entity(clause.factValue, lexicon)
+        : undefined,
+      answer: clause.answer,
+      valueSeparator: clause.valueSeparator,
+      labelProperty: clause.labelProperty
+        ? property(clause.labelProperty)
+        : undefined,
       property: clause.property ? property(clause.property) : undefined,
       negative: clause.negative || undefined,
       modifiers: (clause.mods || []).map((m) => modifier(m, lexicon)),
@@ -419,8 +427,13 @@ function futureInTimeClauses(statements) {
  * @returns {{sentence: string, statements: object[], punctuation: string,
  *   senses: object[], unknown: string[], leftover: string[]}}
  */
-export function formalize(sentence, lexicon, memory = new DocumentMemory()) {
-  const parsed = parseSentence(sentence, lexicon);
+export function formalize(
+  sentence,
+  lexicon,
+  memory = new DocumentMemory(),
+  options = {}
+) {
+  const parsed = parseSentence(sentence, lexicon, options);
   const senses = resolveSenses(parsed, lexicon, memory);
   memory.remember(sentenceWords(parsed));
   const statements = futureInTimeClauses(

@@ -425,6 +425,8 @@ function renderNoun(e, entry, kase, ctx) {
       }
     }
   } else if (e.quantity === 1) {
+    number = 'sg';
+    adjNumber = 'sg';
     numeral = cardinal(1, kase, entry.gender, e.digits);
   }
   // "~190 markets", "50K plays": the amount as written, Russian style
@@ -538,7 +540,12 @@ function renderNoun(e, entry, kase, ctx) {
   if (e.label) {
     words.push(localizeQuantity(e.label));
   }
-  for (const m of e.modifiers || []) {
+  const modifiers = e.modifiers || [];
+  for (const m of modifiers.some((x) => x.concept)
+    ? [...modifiers].reverse()
+    : modifiers) {
+    // English compounds branch to the right: bank account verification →
+    // проверка счёта банка, with the nearest head's modifier first.
     // "tax/payment setup" → установка налога/платежа
     words.push(
       [m, ...(m.alternative ? [m.alternative] : [])]

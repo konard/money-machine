@@ -26,9 +26,9 @@ import {
 } from './function-words.mjs';
 
 // "$1k–$20k", "~$50", "10-15%", "£6": one quantity, kept as written
-const AMOUNT = '~?\\p{Sc}?\\d+(?:[.,]\\d+)*(?:[kKmMbB](?![a-z]))?%?';
+const AMOUNT = '~?\\p{Sc}?\\d+(?:[.,]\\d+)*(?:[kKmMbB](?![a-z]))?%?\\+?';
 const QUANTITY = new RegExp(
-  `^(?:~|\\p{Sc}\\d|\\d+(?:[.,]\\d+)*(?:%|[kKmMbB](?![a-z])|[–-]\\d))`,
+  `^(?:~|\\p{Sc}\\d|\\d+(?:[.,]\\d+)*(?:%|\\+|[kKmMbB](?![a-z])|[–-]\\d))`,
   'u'
 );
 const WORD = new RegExp(
@@ -63,6 +63,10 @@ export function tokenize(sentence) {
       push(m[1], 'word');
       push(m[2].toLowerCase(), 'clitic');
       splitRest(rest, push);
+      continue;
+    }
+    if (raw === '+') {
+      push(raw, 'word');
       continue;
     }
     for (const piece of raw.match(WORD) || []) {
@@ -433,7 +437,10 @@ function hasIrregularPast(lexicon, ids, lemma) {
  * @param {import('../lexicon.mjs').Lexicon} lexicon
  */
 export function analyze(sentence, lexicon) {
-  const tokens = tokenize(sentence);
+  // A spaced plus joins peers; a suffix in "100+" belongs to the count.
+  const tokens = tokenize(sentence).map((t) =>
+    t.text === '+' && t.kind === 'word' ? { ...t, lower: 'and' } : t
+  );
   const firstWord = tokens.findIndex((t) => t.kind !== 'punct');
   // a sentence in capitals is not a row of acronyms
   const letters = tokens.filter(

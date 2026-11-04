@@ -1,5 +1,7 @@
+import { renderFragment } from './fragment.mjs';
 /** Naturalize meta-language statements into Russian, recording decisions. */
 
+import { periodicAdverb } from './periodic-adverb.mjs';
 import { degreeForm, quantityWord } from './degree.mjs';
 import { frontRelative } from './relative.mjs';
 import {
@@ -81,26 +83,7 @@ export function naturalizeRussian(
     if (s.type === 'phrase') {
       text = lexEntry(ctx, s.concept)?.ru?.text || `[${s.concept}]`;
     } else if (s.type === 'fragment') {
-      // a heading or list item: the noun phrase and its modifiers
-      const mods = renderModifiers(s.modifiers || [], ctx, null);
-      const absent = s.entity?.determiner === 'det.no';
-      const property = s.property && lexEntry(ctx, s.property.concept)?.ru;
-      const entity = absent ? { ...s.entity, determiner: undefined } : s.entity;
-      text = [
-        ...mods.before,
-        s.negative ? 'не' : '',
-        property
-          ? s.negative
-            ? shortFrom(property, { gender: 'n' })
-            : property.lemma
-          : '',
-        absent
-          ? `без ${renderEntity(entity, 'gen', ctx)}`
-          : renderEntity(entity, 'nom', ctx),
-        ...mods.after,
-      ]
-        .filter(Boolean)
-        .join(' ');
+      text = renderFragment(s, ctx, renderModifiers);
     } else {
       const adjusted = { ...s };
       if (
@@ -479,7 +462,7 @@ export function renderModifiers(mods, ctx, entry) {
   let negative = false;
   for (const m of mods || []) {
     if (m.kind === 'adverb') {
-      const adv = lexEntry(ctx, m.concept)?.ru;
+      const adv = periodicAdverb(lexEntry(ctx, m.concept), ctx.lexicon);
       if (!adv) {
         ctx.notes.add(`no Russian adverb for ${m.concept}`);
         continue;

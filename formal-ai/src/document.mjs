@@ -101,6 +101,12 @@ const PROTECTED = /(`[^`]*`|https?:\/\/\S+|\[[^\]]*\]\([^)]*\)|<[^>]+>)/g;
  * spans (inline code, links, URLs, HTML) unchanged.
  */
 function translateLine(line, context, report) {
+  if (/^\s*(?:\||#{1,6}\s|[-*+]\s|\d+[.)]\s)/.test(line)) {
+    context = {
+      ...context,
+      options: { ...context.options, fragmentStyle: true },
+    };
+  }
   if (/^\s*\|/.test(line)) {
     return line
       .split('|')
@@ -206,17 +212,26 @@ function translateOne(sentence, context, report) {
 }
 
 /**
- * Words the document writes capitalized inside sentences and never in
- * lowercase: its names ("Stripe pays…" is the company, as "via Stripe"
+ * Words predominantly capitalized inside sentences: its names ("Stripe pays…" is the company, as "via Stripe"
  * elsewhere shows), even where a sentence starts with them.
  */
 export function documentNames(text) {
-  const lower = documentWords(text);
   const plain = text.replace(/```[\s\S]*?```|`[^`]*`|\]\([^)]*\)/g, ' ');
-  const names = new Set();
+  const lower = new Map();
+  for (const word of plain.match(/[\p{L}][\p{L}\d-]*/gu) || []) {
+    if (/^[a-z][a-z-]+$/.test(word)) {
+      lower.set(word, (lower.get(word) || 0) + 1);
+    }
+  }
+  const capital = new Map();
   for (const m of plain.matchAll(/[a-z,;] +([A-Z][a-zA-Z-]+)/g)) {
-    if (!lower.has(m[1].toLowerCase())) {
-      names.add(m[1]);
+    capital.set(m[1], (capital.get(m[1]) || 0) + 1);
+  }
+  const names = new Set();
+  for (const [name, count] of capital) {
+    const common = lower.get(name.toLowerCase()) || 0;
+    if (!common || (count >= 2 && count > 2 * common)) {
+      names.add(name);
     }
   }
   return names;

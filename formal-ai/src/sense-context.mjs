@@ -30,3 +30,38 @@ export function dictionaryContext(node, concept, heads, lexicon) {
   }
   return Math.min(0.4, shared * 0.2);
 }
+
+/** Compare verb–object association per noun occurrence, rather than raw counts. */
+export function nounObjectContext(node, concept, heads, lexicon) {
+  if (node.pos !== 'noun' || !Number.isFinite(concept?.ruFrequency)) {
+    return 0;
+  }
+  const lemma = concept.ru?.compound?.head || concept.ru?.lemma;
+  let best = 0;
+  for (const { node: verb, parent } of heads) {
+    if (verb.pos !== 'verb' || !parent?.objects?.some((o) => o.head === node)) {
+      continue;
+    }
+    const candidates = verb.candidates
+      .map((id) => lexicon.get(id))
+      .filter((c) => c?.core && !c.related && !c.synonymAlternative);
+    for (const c of candidates) {
+      const count = c.objectFrequency?.[lemma];
+      if (!Number.isFinite(count)) {
+        continue;
+      }
+      const supported = Math.max(0, count - Math.sqrt(count));
+      best = Math.max(
+        best,
+        Math.min(
+          0.6,
+          0.2 *
+            Math.log10(
+              1 + (1000 * supported) / Math.max(1, concept.ruFrequency)
+            )
+        )
+      );
+    }
+  }
+  return best;
+}

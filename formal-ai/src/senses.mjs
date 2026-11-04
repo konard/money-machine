@@ -13,7 +13,7 @@
  * - document memory: cue words from earlier sentences, decayed per sentence.
  */
 
-import { dictionaryContext } from './sense-context.mjs';
+import { dictionaryContext, nounObjectContext } from './sense-context.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
 
 /** Words seen in earlier sentences, with decaying weights. */
@@ -240,11 +240,13 @@ function tokenWords(token) {
   if (/^xpc[a-j]+q$/.test(token.lower)) {
     out.add('code');
   }
-  // "$8,000", "20%": a quantity is a cue for number senses
+  // Measured quantities do not independently describe digits or numerals.
   if (token.kind === 'quantity' || token.kind === 'number') {
-    ['number', 'numeral', 'digit', 'sum', 'quantity'].forEach((w) =>
-      out.add(w)
-    );
+    const numeric =
+      token.kind === 'number'
+        ? ['number', 'numeral', 'digit', 'sum', 'quantity']
+        : ['sum', 'quantity'];
+    numeric.forEach((w) => out.add(w));
     // Bare counts can cue numerical values; money/percent/range tokens
     // must not generate repeated generic "value" and "amount" evidence.
     if (token.kind === 'number') {
@@ -368,7 +370,39 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
             `alternative synonym requires context (-${penalty.toFixed(2)})`
           );
         }
+        const association = nounObjectContext(node, concept, heads, lexicon);
+        if (association) {
+          score += association;
+          why.push(`Russian object association (+${association.toFixed(2)})`);
+        }
         const semantic = dictionaryContext(node, concept, heads, lexicon);
+        // When the source explicitly has a direct object, prefer an attested
+        // accusative alternative over a reflexive infinitive-controller.
+        if (
+          node.pos === 'verb' &&
+          /(?:ся|сь)$/.test(concept?.ru?.lemma || '') &&
+          !parsed.leftover?.length &&
+          !parsed.unknown?.length &&
+          !concept.ru.experiencer &&
+          concept.infinitiveComplement &&
+          !concept.frameOnly &&
+          !concept.frames?.includes('intransitive') &&
+          !concept.frames?.includes('transitive') &&
+          !findVerbOwner(clause, node)?.xcomp &&
+          findVerbOwner(clause, node)?.objects?.some((o) => !o.marker) &&
+          node.candidates.some((other) => {
+            const c = lexicon.get(other);
+            return (
+              !c?.related &&
+              !/(?:ся|сь)$/.test(c?.ru?.lemma || '') &&
+              c?.ru?.government?.case === 'acc' &&
+              !c.ru.government.preposition
+            );
+          })
+        ) {
+          score -= 0.5;
+          why.push('direct-object alternative to reflexive controller (-0.50)');
+        }
         if (semantic) {
           score += semantic;
           why.push(`dictionary meanings in context (+${semantic.toFixed(2)})`);
@@ -559,7 +593,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           // Russian frequency supplies only a small default preference;
           // rarity costs more, while English context decides the meaning.
           const common = Math.max(
-            -0.25,
+            node.pos === 'noun' && concept.core && association ? 0 : -0.25,
             Math.min(0.03, 0.1 * (Math.log10(concept.ruFrequency + 1) - 3))
           );
           score += common;
@@ -743,6 +777,19 @@ function valencyFit(node, clause, concept, next) {
   if (!hasObject && frames.includes('intransitive')) {
     return { score: 0.3, reason: 'dictionary intransitive frame (+0.30)' };
   }
+  if (
+    !hasObject &&
+    !owner.mods?.length &&
+    !owner.complement &&
+    !owner.xcomp &&
+    owner.mood === 'imperative' &&
+    (owner.link?.concept === 'conj.and' || next?.mood === 'imperative')
+  ) {
+    return {
+      score: concept.core && !concept.related && !concept.variant ? 0.1 : 0,
+      reason: 'core sense with an omitted list-item object (+0.10)',
+    };
+  }
   if (!concept.gloss || concept.objectClasses?.length) {
     return { score: 0 };
   }
@@ -773,7 +820,7 @@ function selectionalFit(node, clause, concept, lexicon) {
   const object = owner?.passive
     ? owner.subject || owner.labelSubject
     : owner?.objects?.[0];
-  const objectHead = object?.head;
+  const objectHead = object?.head || object?.items?.[0]?.head;
   if (concept.objectLemma) {
     const lemma = lexicon.get(objectHead?.concept)?.ru?.lemma;
     return lemma === concept.objectLemma
@@ -828,9 +875,14 @@ function positionalFit(node, concept, tokens, at) {
     return { score: 0 };
   }
   const next = tokens.find((t) => (t.position ?? t.index) === at + 1);
-  const modifies = next?.readings.some(
+  const modifies = next?.readings?.some(
     (r) => r.pos === 'adj' || (r.pos === 'adv' && r.lemma !== node.lemma)
   );
+  if (concept.syntax === 'parenthetical') {
+    return next?.text === ','
+      ? { score: 0.3, reason: 'parenthetical punctuation (+0.30)' }
+      : { score: -2, reason: 'parenthetical adverb without punctuation (-2)' };
+  }
   if (concept.syntax === 'degree') {
     return modifies
       ? { score: 5, reason: 'precedes an adjective or adverb (+5)' }

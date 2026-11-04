@@ -25,6 +25,7 @@ import {
 } from './token-readings.mjs';
 import { parseToInfinitive } from './infinitive.mjs';
 import { Cursor } from './cursor.mjs';
+import { nounFirst } from './nominal-evidence.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
 import { countAhead, parseQuantity, quantityDegree } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
@@ -173,6 +174,12 @@ export function parseNP(c, options = {}) {
   const adjectives = [];
   while (
     c.peek &&
+    !(
+      options.fragment &&
+      nounFirst(c.peek, options.lexicon) &&
+      nounFirst(c.peek, options.lexicon, 'adj') &&
+      nounAhead(c, 1)
+    ) &&
     // a conjunction is no adjective ("or", heraldic gold)
     !has(c.peek, 'coord') &&
     ((quantityDegree(c.peek) && has(c.at(1), 'adj')) ||
@@ -291,6 +298,7 @@ export function parseNP(c, options = {}) {
     // nor a noun; a preposition before its noun phrase is a preposition
     // ("at month 6", not the @ sign)
     !has(c.peek, 'coord') &&
+    !(nouns.length && has(c.peek, 'modal') && has(c.at(1), 'be')) &&
     !(nouns.length && has(c.peek, 'prep') && startsNP(c.at(1))) &&
     // "Month 3-6": a quantity after a noun names it, it is no compound
     !(nouns.length && c.peek.kind === 'quantity') &&
@@ -307,7 +315,7 @@ export function parseNP(c, options = {}) {
         isPunct(after) ||
         has(after, 'coord') ||
         has(after, 'subord') ||
-        (has(after, 'prep') && !has(after, 'noun')))
+        (has(after, 'prep') && (!has(after, 'noun') || startsNP(c.at(2)))))
     ) {
       break;
     }
@@ -345,8 +353,18 @@ export function parseNP(c, options = {}) {
     }
     c.next();
     afterAdjective = false;
-    const r =
-      reading(t3, 'name') || reading(t3, 'noun') || reading(t3, 'propn');
+    let r = reading(t3, 'name') || reading(t3, 'noun') || reading(t3, 'propn');
+    if (
+      r.pos === 'noun' &&
+      options.lexicon?.massPlurals?.has(r.lemma) &&
+      (np.detNumber === 'pl' ||
+        (!np.detNumber &&
+          c.peek?.readings.some(
+            (x) => x.pos === 'verb' && x.features.form === 'base'
+          )))
+    ) {
+      r = { ...r, features: { ...r.features, number: 'pl' } };
+    }
     const previous = nouns[nouns.length - 1];
     if (
       r.pos === 'propn' &&
@@ -458,6 +476,11 @@ export function parseNP(c, options = {}) {
     np.quantity === undefined &&
     (!c.at(1) ||
       isPunct(c.at(1)) ||
+      c
+        .at(1)
+        ?.readings.some(
+          (r) => r.pos === 'verb' && /past|pp|3sg/.test(r.features.form || '')
+        ) ||
       has(c.at(1), 'prep') ||
       has(c.at(1), 'coord'))
   ) {
@@ -570,6 +593,8 @@ function attachOf(c, np, options = {}) {
   if (
     relativeParser &&
     options.relative !== false &&
+    !(has(c.peek, 'prep') && startsNP(c.at(1))) &&
+    !has(c.peek, 'modal') &&
     !(options.stopAt !== undefined && c.i >= options.stopAt) &&
     (RELATIVES.has(c.peek?.lower) || startsNP(c.peek)) &&
     !np.pronoun &&
@@ -855,7 +880,7 @@ export function parseTail(c, frame, options = {}) {
         isPunct(next) ||
         has(next, 'coord') ||
         has(next, 'subord') ||
-        (has(next, 'prep') && !has(next, 'noun')));
+        (has(next, 'prep') && (!has(next, 'noun') || startsNP(c.at(2)))));
     // "sell new and used books": an adjective coordinated before a noun
     const pairedAdjective =
       has(t, 'adj') &&

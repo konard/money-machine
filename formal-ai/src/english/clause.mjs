@@ -1,4 +1,6 @@
 import { infinitiveOf } from './infinitive.mjs';
+import { preferNominal } from './nominal-evidence.mjs';
+import { parseFactList, unknownFactWords } from './fact-list.mjs';
 /**
  * Sentence → clauses in the meta language.
  *
@@ -169,7 +171,7 @@ function leadingPhrase(tokens, lexicon) {
  * @param {import('../lexicon.mjs').Lexicon} lexicon
  * @returns {{tokens: object[], clauses: object[], punctuation: string, unknown: string[], leftover: string[]}}
  */
-export function parseSentence(sentence, lexicon) {
+export function parseSentence(sentence, lexicon, options = {}) {
   const analyzed = mergeMultiwords(
     superlatives(analyze(sentence, lexicon), lexicon),
     lexicon
@@ -214,17 +216,18 @@ export function parseSentence(sentence, lexicon) {
     question: punctuation === '?',
   };
   const clauses = parseClauses(tokens, ctx);
-  // headings, labels and list items are often noun phrases without a verb:
-  // read them as fragments when that leaves fewer words unparsed
   if (
     clauses.leftover.length > 0 ||
     !clauses.list.length ||
-    !punctuation ||
+    !/[.!?]/.test(punctuation) ||
+    options.fragmentStyle ||
     tokens.some((t) => t.text === ',')
   ) {
     const fragments = parseClauses(tokens, { ...ctx, fragments: true });
     if (
       fragments.leftover.length < clauses.leftover.length ||
+      ((!/[.!?]/.test(punctuation) || options.fragmentStyle) &&
+        preferNominal(tokens, clauses, fragments, lexicon)) ||
       (fragments.leftover.length === clauses.leftover.length &&
         fragments.list.length > 1 &&
         fragments.list.every(
@@ -246,6 +249,7 @@ export function parseSentence(sentence, lexicon) {
       Object.assign(clauses, fragments);
     }
   }
+  Object.assign(clauses, parseFactList(tokens, ctx) || {});
   for (const [i, item] of clauses.list.entries()) {
     if (!item.labelPredicate || clauses.list[i + 1]?.link?.separator !== ':') {
       continue;
@@ -269,6 +273,7 @@ export function parseSentence(sentence, lexicon) {
     }
   }
   result.clauses.push(...clauses.list);
+  result.unknown = unknownFactWords(unknown, clauses.list);
   result.leftover.push(...clauses.leftover);
   return result;
 }
@@ -601,7 +606,7 @@ function parseDeclarative(c, ctx) {
     ? subject.pronoun.person === 3 && subject.number === 'sg'
     : subject.number !== 'pl' && !subject.coord;
   const afterSubject = c.i;
-  let vg = parseVerbGroup(c, third ? 'third' : null);
+  let vg = parseVerbGroup(c, third ? 'third' : null, subject);
   // "Marketplaces like Etsy charge fees": a verb that is also a
   // preposition opens a phrase of the subject when a verb follows it
   if (vg && has(c.tokens[afterSubject], 'prep') && !subject.pronoun) {

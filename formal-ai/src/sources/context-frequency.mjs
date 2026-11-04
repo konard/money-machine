@@ -20,7 +20,7 @@ export async function contextFrequencies(text, lexicon, options = {}) {
         if (!c?.ru || !/^[а-яё-]+$/i.test(c.ru.lemma)) {
           continue;
         }
-        for (const noun of nouns.slice(0, 2)) {
+        for (const noun of nouns.slice(0, 6)) {
           const head = translationHead(noun.ru);
           const query = `"${c.ru.lemma}" "${head}"`;
           const targets = pairs.get(query) || [];

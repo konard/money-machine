@@ -57,7 +57,8 @@ export async function termSenses(titles, options = {}) {
       const names = [e?.labels?.en, ...(e?.aliases?.en || [])];
       const word = e?.labels?.ru?.value;
       if (
-        !e?.claims?.P279?.length ||
+        (!e?.claims?.P279?.length &&
+          !(options.attestedNouns?.has(lemma) && !e?.claims?.P31?.length)) ||
         !names.some((n) => n?.value === lemma) ||
         !word ||
         !/^[а-яё -]+$/i.test(word)
@@ -67,8 +68,9 @@ export async function termSenses(titles, options = {}) {
       return [
         {
           gloss: e.descriptions?.en?.value || e.labels.en.value,
-          russian: [{ word, attested: true }],
+          russian: [{ word: word.toLowerCase(), attested: true }],
           source: 'wikidata',
+          side: e.labels.en.value !== lemma,
           entity: id,
         },
       ];
@@ -85,16 +87,19 @@ export async function supplementTerms(
   text,
   { entries, plans, lexicon, words, forms, options }
 ) {
+  const wanted = new Set([...words, ...forms.map((f) => f.lemma)]);
   const missingTerms = [...entries]
     .filter(
       ([title, list]) =>
-        words.includes(title) &&
+        wanted.has(title) &&
+        // "children" is the plural of "child", never a term of its own
         !forms.some((f) => f.form === title) &&
         /^[a-z]+(?: [a-z]+)*$/.test(title) &&
         !lexicon.lookup('noun', title).length &&
         !plans.some(
           (p) =>
             p.lemma === title &&
+            p.pos === 'noun' &&
             p.senses.some((s) => s.russian.length && !s.variant && !s.side)
         ) &&
         list.some(
@@ -106,13 +111,25 @@ export async function supplementTerms(
         )
     )
     .map(([title]) => title);
-  const compounds = compoundCandidates(text, lexicon).filter(
+  const compounds = compoundCandidates(text, lexicon, forms).filter(
     (title) =>
       !plans.some(
-        (p) => p.lemma === title && p.senses.some((s) => s.russian.length)
+        (p) =>
+          p.lemma === title &&
+          p.senses.some((s) => s.russian.length && !s.variant && !s.side)
       )
   );
-  const terms = await termSenses([...missingTerms, ...compounds], options);
+  const attestedNouns = new Set(
+    [...entries]
+      .filter(([, es]) =>
+        es.some((e) => e.pos === 'noun' && !e.rare && !e.formOf.length)
+      )
+      .map(([w]) => w)
+  );
+  const terms = await termSenses([...missingTerms, ...compounds], {
+    ...options,
+    attestedNouns,
+  });
   for (const plan of terms) {
     plan.lemma = compoundLemma(plan.lemma, forms);
     const definitions = (entries.get(plan.lemma) || [])

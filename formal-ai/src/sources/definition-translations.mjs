@@ -9,6 +9,7 @@ import { completeDerivations } from './productive-definitions.mjs';
 import { completeReverseVerbs } from './reverse-verbs.mjs';
 import { completeAdjunctDefinitions } from './definition-adjuncts.mjs';
 import { completeActionDefinitions } from './definition-actions.mjs';
+import { completeCrossPOS, completeReverseNouns } from './lexical-gaps.mjs';
 
 export async function completeDefinitions(
   plans,
@@ -19,6 +20,11 @@ export async function completeDefinitions(
   if (entries) {
     await completeRussianMeanings(plans, entries, { ...options, ...context });
   }
+  await completeCrossPOS(plans, entries, {
+    ...options,
+    lexicon: context.lexicon,
+  });
+  await completeReverseNouns(plans, context, options);
   await completeVerbDefinitions(plans, options);
   await completeSynonymDefinitions(plans, options);
   await completeReverseVerbs(plans, options, context);

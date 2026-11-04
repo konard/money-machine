@@ -12,10 +12,11 @@ const reverseHeadWords = (text) =>
 
 function reverseMeaning(word, plan, pages) {
   const section = languageSection(pages.get(word) || '', 'Russian');
-  const pattern =
-    plan.pos === 'noun'
-      ? /^={3,5}Noun={3,5}\s*\n([\s\S]*?)(?=^={2,3}[^=]|$(?![\s\S]))/gm
-      : /^={3,5}Verb={3,5}\s*\n([\s\S]*?)(?=^={2,3}[^=]|$(?![\s\S]))/gm;
+  const heading = { noun: 'Noun', verb: 'Verb', adv: 'Adverb' }[plan.pos];
+  const pattern = new RegExp(
+    `^={3,5}${heading}={3,5}\\s*\\n([\\s\\S]*?)(?=^={2,3}[^=]|$(?![\\s\\S]))`,
+    'gm'
+  );
   const definitions = [...section.matchAll(pattern)]
     .map((m) => m[1])
     .join('\n');
@@ -63,7 +64,7 @@ function siblingTranslation(plan, pages) {
 }
 
 export function translationSenses(plan, pages) {
-  if (!['noun', 'verb'].includes(plan.pos)) {
+  if (!['noun', 'verb', 'adv'].includes(plan.pos)) {
     return plan.senses;
   }
   return plan.senses.map(siblingTranslation(plan, pages)).flatMap((sense) => {
@@ -77,6 +78,19 @@ export function translationSenses(plan, pages) {
     });
     const primary =
       alternatives[0] && reverseMeaning(alternatives[0].word, plan, pages);
+    // Adverb synonyms need a syntactic distinction; general interchange of
+    // manner, place and direction synonyms would change ordinary defaults.
+    if (
+      plan.pos === 'adv' &&
+      translationSyntax(
+        plan,
+        sense,
+        { lemma: alternatives[0]?.word },
+        pages
+      ) !== 'parenthetical'
+    ) {
+      return [sense];
+    }
     // A normally used, exactly attested noun needs no speculative synonym.
     if (plan.pos === 'noun' && primary && !definitionUsage(primary).rare) {
       // Functional relative-infinitive glosses explicitly identify a type
@@ -132,4 +146,16 @@ export function translationSenses(plan, pages) {
       }),
     ];
   });
+}
+
+/** Public examples identify parenthetical adverbs by their punctuation. */
+export function translationSyntax(plan, sense, ru, pages) {
+  if (plan.pos !== 'adv') {
+    return null;
+  }
+  if (/(?:form|forming|mark).*comparative/i.test(sense.gloss)) {
+    return 'degree';
+  }
+  const section = languageSection(pages.get(ru.lemma) || '', 'Russian');
+  return /[.:;!?]\s*'''[^'\n]+'''\s*,/.test(section) ? 'parenthetical' : null;
 }

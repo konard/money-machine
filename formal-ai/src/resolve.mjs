@@ -1,4 +1,6 @@
+import { predicateEvidence } from './english/participle-evidence.mjs';
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
+import { rememberPartsOfSpeech } from './english/nominal-evidence.mjs';
 
 import {
   learnInfinitiveFrames,
@@ -13,7 +15,10 @@ import {
 } from './sources/translation-morphology.mjs';
 import { completeDefinitions } from './sources/definition-translations.mjs';
 import { translatedPredicate } from './sources/definition-verbs.mjs';
-import { translationSenses } from './sources/translation-senses.mjs';
+import {
+  translationSenses,
+  translationSyntax,
+} from './sources/translation-senses.mjs';
 import { supplementTerms } from './sources/terms.mjs';
 import { entityContext } from './sources/entity-context.mjs';
 import { learnHyphenated, hyphenatedTitles } from './hyphenated.mjs';
@@ -445,14 +450,15 @@ export async function resolveText(
           if (lemma !== f.lemma) {
             capitalOf.set(f.lemma, lemma);
           }
-          forms.push({ form: key, lemma, kind: f.kind, pos: e.pos });
+          const pos = /past participle|ed-form/.test(f.kind) ? 'verb' : e.pos;
+          forms.push({ form: key, lemma, kind: f.kind, pos });
           // a variant ("doc" ← "document") borrows the target's senses,
           // so the target page is needed even when the lexicon knows it
           const variantOf = /alternative|spelling/.test(f.kind);
           if (
             !done.has(f.lemma) &&
             !closedClass(lemma, lexicon) &&
-            (variantOf || !lexicon.lookup(e.pos, lemma).length)
+            (variantOf || !lexicon.lookup(pos, lemma).length)
           ) {
             next.add(f.lemma);
           }
@@ -474,6 +480,7 @@ export async function resolveText(
     queue = [...next];
   }
   log(`wiktionary: ${words.length} unknown words, ${entries.size} pages`);
+  rememberPartsOfSpeech(entries, lexicon);
 
   // English sense → Russian candidates
   const plans = [];
@@ -582,7 +589,6 @@ export async function resolveText(
   }
 
   await completeDefinitions(plans, options, entries, { words, forms, lexicon });
-  // Russian words: fetch pages, keep candidates whose entry has the same POS
   const russianWords = new Set();
   for (const plan of plans) {
     for (const s of plan.senses) {
@@ -720,7 +726,10 @@ export async function resolveText(
       return translatedPredicate(word, pos, russian, candidate);
     }
     if (pos === 'noun' && word.includes(' ')) {
-      return translatedCompound(word, russian, lemmaOf);
+      const entry = translatedCompound(word, russian, lemmaOf);
+      return entry && candidate?.plural
+        ? { ...entry, pluraliaTantum: true }
+        : entry;
     }
     if (pos === 'noun' && indeclinables.has(word)) {
       return indeclinables.get(word);
@@ -830,6 +839,7 @@ export async function resolveText(
         id,
         gloss: s.gloss,
         labels: s.labels,
+        predicateEvidence: predicateEvidence(entries, plan),
         synonymAlternative: s.synonymAlternative,
         frames: s.frames,
         objectLemma: s.objectLemma,
@@ -853,11 +863,7 @@ export async function resolveText(
         domain: senseDomain(s),
         core: Boolean(most && (s.languages || 0) >= most),
         objectClasses: [],
-        syntax:
-          plan.pos === 'adv' &&
-          /(?:form|forming|mark).*comparative/i.test(s.gloss)
-            ? 'degree'
-            : null,
+        syntax: translationSyntax(plan, s, ru, ruPages),
         takes: [],
         // Prefer widely translated own senses over historical order and variants.
         prior:

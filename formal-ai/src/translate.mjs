@@ -46,7 +46,12 @@ export function translateSentence(
   sentence,
   context = new TranslationContext()
 ) {
-  const formal = formalize(sentence, context.lexicon, context.memory);
+  const formal = formalize(
+    sentence,
+    context.lexicon,
+    context.memory,
+    context.options
+  );
   const ru = naturalizeRussian(
     formal,
     context.lexicon,

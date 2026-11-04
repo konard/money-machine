@@ -14,7 +14,8 @@ const transitive = (verb, lexicon) => {
   // no sense is intransitive only ("arrived", "grew" stay active)
   return (
     frames.length > 0 &&
-    !frames.some((f) => f.includes('intransitive') && !f.includes('transitive'))
+    (frames.some((f) => f.includes('transitive')) ||
+      !frames.some((f) => f.includes('intransitive')))
   );
 };
 
@@ -35,7 +36,7 @@ export function reducedPassive(c, result, lexicon) {
     result.tense !== 'past' ||
     result.objects.length ||
     result.complement ||
-    result.xcomp ||
+    (result.xcomp && !result.mods.some((m) => m.type === 'pp')) ||
     result.finiteLink ||
     !result.subject?.head ||
     result.subject.pronoun ||
@@ -51,5 +52,10 @@ export function reducedPassive(c, result, lexicon) {
   ) {
     return result;
   }
-  return { ...result, passive: true, tense: 'present' };
+  return {
+    ...result,
+    passive: true,
+    tense: 'present',
+    ...(result.xcomp ? { xcomp: { ...result.xcomp, purpose: true } } : {}),
+  };
 }

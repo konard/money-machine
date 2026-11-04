@@ -1,3 +1,4 @@
+import { eventiveParticiple } from './participle-evidence.mjs';
 /** English auxiliary chains and finite verb groups. */
 import { quantityDegree } from './quantity.mjs';
 import { has, reading, startsNP, head } from './parser.mjs';
@@ -8,8 +9,8 @@ const isDegree = (id) => id === 'very' || id === 'too';
  * Parse the verb group at the cursor: auxiliaries, negation, main verb.
  * @returns {object|null} `{tense, aspect, polarity, modal, verb, passive, frame}`
  */
-export function parseVerbGroup(c, subject) {
-  const vg = verbGroup(c, subject);
+export function parseVerbGroup(c, subject, subjectNP) {
+  const vg = verbGroup(c, subject, subjectNP);
   const t = vg?.verb && c.tokens.find((x) => x.index === vg.verb.token);
   const form = t && reading(t, 'verb')?.features.form;
   if (
@@ -25,7 +26,7 @@ export function parseVerbGroup(c, subject) {
   return vg;
 }
 
-function verbGroup(c, subject) {
+function verbGroup(c, subject, subjectNP) {
   const vg = {
     tense: 'present',
     aspect: 'simple',
@@ -266,7 +267,12 @@ function verbGroup(c, subject) {
           /ly$/.test(c.at(1).lower));
       if (
         participle &&
-        (vg.modal || !has(after, 'adj') || agent || repeated || valued)
+        (vg.modal ||
+          !has(after, 'adj') ||
+          agent ||
+          repeated ||
+          valued ||
+          eventiveParticiple(c, participle, subjectNP))
       ) {
         vg.passive = true;
         const v = participle;

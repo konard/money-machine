@@ -2,7 +2,13 @@
  * Adjectives in the predicate: degree adverbs before them, coordinated
  * lists after them, and the test for a noun they would modify instead.
  */
-import { has, head, participleReading, reading } from './token-readings.mjs';
+import {
+  has,
+  head,
+  participleReading,
+  reading,
+  startsNP,
+} from './token-readings.mjs';
 
 /** "very", "fully": a word that is only an adverb, before an adjective. */
 export function degreeAdverb(t) {
@@ -58,7 +64,7 @@ export function nounAhead(c, k) {
     const next = c.at(j + 1);
     if (
       nominal(c.at(j)) &&
-      !nominal(next) &&
+      (!nominal(next) || (has(next, 'prep') && startsNP(c.at(j + 2)))) &&
       !has(next, 'adj') &&
       !participleReading(next)
     ) {
@@ -67,5 +73,9 @@ export function nounAhead(c, k) {
     j += 1;
   }
   const t = c.at(j);
-  return Boolean(t && (has(t, 'noun') || has(t, 'name') || has(t, 'propn')));
+  return Boolean(
+    t &&
+    !(has(t, 'prep') && startsNP(c.at(j + 1))) &&
+    (has(t, 'noun') || has(t, 'name') || has(t, 'propn'))
+  );
 }

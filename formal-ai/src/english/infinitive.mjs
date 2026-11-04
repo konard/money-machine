@@ -46,7 +46,10 @@ export function parseToInfinitive(c, frame, out, options, parseTail) {
       startsNP(c.at(2))) &&
     (out.objects.length > 0
       ? verbSenses >= nounSenses || startsNP(c.at(2))
-      : verbSenses > 2 * nounSenses);
+      : verbSenses > 2 * nounSenses ||
+        // After an adjunct, "to V the NP" supplies a purpose even when
+        // the infinitive also names a thing (a match, a cut, a place).
+        (out.mods.some((m) => m.type === 'pp') && has(c.at(2), 'det')));
   if (
     toVerb &&
     (infinitive || !has(c.at(1), 'noun') || mostlyVerb) &&
