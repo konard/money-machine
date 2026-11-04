@@ -341,6 +341,9 @@ export function statement(clause, lexicon) {
         ? property(clause.labelProperty)
         : undefined,
       property: clause.property ? property(clause.property) : undefined,
+      factProperty: clause.factProperty
+        ? property(clause.factProperty)
+        : undefined,
       negative: clause.negative || undefined,
       modifiers: (clause.mods || []).map((m) => modifier(m, lexicon)),
       link: clause.link?.concept,

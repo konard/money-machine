@@ -64,3 +64,16 @@ concept sorry
 concept never
   en adv never
   ru adv никогда neg
+
+# public data: the sense "most recently" has no Russian translation on
+# English or Russian Wiktionary (https://en.wiktionary.org/wiki/last#Adverb);
+# the second sense keeps the public "after everything else" → после всех
+concept last.recently
+  gloss "most recently"
+  en adv last
+  ru adv в+последний+раз
+
+concept last.finally
+  gloss "after everything else; finally"
+  en adv last
+  ru adv после+всех

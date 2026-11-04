@@ -1,6 +1,8 @@
 /** Render nominal fragments and parallel fact labels. */
 import { renderEntity, features } from './phrase.mjs';
 import { shortFrom } from './copula.mjs';
+import { shortParticiple } from './passive.mjs';
+import { declineAdjective } from './morphology.mjs';
 
 export function renderFragment(s, ctx, renderModifiers) {
   // a heading or list item: the noun phrase and its modifiers
@@ -43,6 +45,13 @@ export function renderFragment(s, ctx, renderModifiers) {
   ]
     .filter(Boolean)
     .join(' ');
+  if (s.factProperty) {
+    // "Confidence: high" → Уверенность: высокая; "…: estimated" → оценена
+    const value = factPropertyWord(s.factProperty, features(entity, ctx), ctx);
+    if (value) {
+      return `${text}${s.valueSeparator || ':'} ${value}`;
+    }
+  }
   if (s.answer || s.factValue) {
     if (s.labelProperty) {
       const adjective = ctx.lexicon.get(s.labelProperty.concept)?.ru;
@@ -72,4 +81,16 @@ export function renderFragment(s, ctx, renderModifiers) {
     text += `${s.valueSeparator || ''} ${focus ? `${focus} ` : ''}${value}`;
   }
   return text;
+}
+
+/** A label's value agrees with the label: высокая, оценена. */
+function factPropertyWord(p, agree, ctx) {
+  const ru = ctx.lexicon.get(p.concept)?.ru;
+  if (p.participle) {
+    const perfective = ru?.aspect === 'perf' ? ru : ru?.perfective;
+    return perfective?.pastPassive
+      ? shortParticiple(perfective.pastPassive, agree)
+      : ctx.renderParticiple?.(p, agree, ctx) || null;
+  }
+  return ru?.pos === 'adj' ? declineAdjective(ru.lemma, agree) : null;
 }

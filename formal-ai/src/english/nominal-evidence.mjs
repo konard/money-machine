@@ -179,7 +179,7 @@ export function preferNominal(tokens, clauses, fragments, lexicon) {
   let item = [];
   for (const token of tokens) {
     if (
-      [',', ';', ':', '+'].includes(token.text) ||
+      [',', ';', ':', '+', '&'].includes(token.text) ||
       (has(token, 'coord') && !token.slash)
     ) {
       if (item.length) {

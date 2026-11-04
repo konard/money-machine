@@ -1,4 +1,5 @@
 import { eventiveParticiple } from './participle-evidence.mjs';
+import { calendarAhead } from './calendar.mjs';
 /** English auxiliary chains and finite verb groups. */
 import { quantityDegree } from './quantity.mjs';
 import { has, reading, startsNP, head } from './parser.mjs';
@@ -272,11 +273,15 @@ function verbGroup(c, subject, subjectNP) {
         (has(c.at(1), 'adv') &&
           !has(c.at(1), 'adj') &&
           /ly$/.test(c.at(1).lower));
+      // "is checked on 3 November 2026": a date marks an event
+      const dated =
+        calendarAhead(c, 1) || (has(c.at(1), 'prep') && calendarAhead(c, 2));
       if (
         participle &&
         (vg.modal ||
           !has(after, 'adj') ||
           agent ||
+          dated ||
           repeated ||
           valued ||
           eventiveParticiple(c, participle, subjectNP))

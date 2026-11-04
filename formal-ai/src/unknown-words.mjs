@@ -39,7 +39,7 @@ export function unknownWords(text, lexicon = loadLexicon()) {
       continue;
     }
     const initial =
-      token.lineStart || /^[.!?:#*\-–—|>"(]$/.test(tokens[i - 1].text);
+      token.lineStart || /^[.!?:#*_\-–—|>"(·•]$/.test(tokens[i - 1].text);
     if (!initial && token.text !== w && !lowercase.has(w)) {
       continue;
     }
@@ -61,7 +61,7 @@ export function capitalizedWords(text, lexicon = loadLexicon()) {
         i > 0 &&
         t.kind === 'word' &&
         /^\p{Lu}\p{Ll}+$/u.test(t.text) &&
-        !/^[.!?:#*\-–—|>"(]$/.test(tokens[i - 1].text) &&
+        !/^[.!?:#*_\-–—|>"(·•]$/.test(tokens[i - 1].text) &&
         !lexicon.lookup('noun', t.lower).length &&
         !lexicon.asked?.(t.lower)
       ) {

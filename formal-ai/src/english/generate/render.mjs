@@ -384,6 +384,8 @@ export class EnglishRenderer {
         this.entity(s.entity),
         s.property && this.property(s.property),
         s.factValue && join(s.valueSeparator || ':', this.entity(s.factValue)),
+        s.factProperty &&
+          join(s.valueSeparator || ':', this.property(s.factProperty)),
         (s.modifiers || []).map((m) => this.modifier(m))
       );
     }

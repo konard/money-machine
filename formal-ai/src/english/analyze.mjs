@@ -44,6 +44,28 @@ const WORD = new RegExp(
  * @param {string} sentence
  * @returns {{text: string, lower: string, index: number, kind: string}[]}
  */
+/** Day, English month name and year of a valid ISO 8601 calendar date. */
+function isoDate(text) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
+  const date = m && new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+  if (
+    !date ||
+    date.getUTCDate() !== +m[3] ||
+    date.getUTCMonth() !== +m[2] - 1
+  ) {
+    return null;
+  }
+  const month = new Intl.DateTimeFormat('en', {
+    month: 'long',
+    timeZone: 'UTC',
+  }).format(date);
+  return [
+    [String(+m[3]), 'number'],
+    [month, 'word'],
+    [m[1], 'number'],
+  ];
+}
+
 export function tokenize(sentence) {
   const text = sentence.replace(/[‘’]/g, "'").replace(/[“”]/g, '"');
   const out = [];
@@ -68,8 +90,22 @@ export function tokenize(sentence) {
       splitRest(rest, push);
       continue;
     }
-    if (raw === '+') {
+    // a spaced "+" or "&" joins peers ("Marketplaces & e-commerce")
+    if (raw === '+' || raw === '&') {
       push(raw, 'word');
+      continue;
+    }
+    // "2026-11-03" (ISO 8601) is the date "3 November 2026"
+    const dated = /^([^\p{L}\d-]*)(\d{4}-\d{2}-\d{2})([^\p{L}\d-]*)$/u.exec(
+      raw
+    );
+    const date = dated && isoDate(dated[2]);
+    if (date) {
+      const marks = (text) =>
+        (text.match(WORD) || []).forEach((p) => push(p, 'punct'));
+      marks(dated[1]);
+      date.forEach(([t, kind]) => push(t, kind));
+      marks(dated[3]);
       continue;
     }
     for (const piece of raw.match(WORD) || []) {
@@ -485,11 +521,18 @@ function hasIrregularPast(lexicon, ids, lemma) {
  * @param {import('../lexicon.mjs').Lexicon} lexicon
  */
 export function analyze(sentence, lexicon) {
-  // A spaced plus joins peers; a suffix in "100+" belongs to the count.
+  // A spaced plus or ampersand joins peers; "100+" belongs to the count.
   const tokens = currencyTokens(tokenize(sentence), lexicon).map((t) =>
-    t.text === '+' && t.kind === 'word' ? { ...t, lower: 'and' } : t
+    /^[+&]$/.test(t.text) && t.kind === 'word' ? { ...t, lower: 'and' } : t
   );
   const firstWord = tokens.findIndex((t) => t.kind !== 'punct');
+  // "Rank #1 · Category: …": each part after a separator starts afresh,
+  // so its capital is no sign of a name
+  const starts = (i) =>
+    i === firstWord ||
+    (i > 0 &&
+      tokens[i - 1].kind === 'punct' &&
+      /^[·•|:]$/.test(tokens[i - 1].text));
   // a sentence in capitals is not a row of acronyms
   const letters = tokens.filter(
     (t) => t.kind === 'word' && /[A-Za-z]{2}/.test(t.text)
@@ -499,7 +542,7 @@ export function analyze(sentence, lexicon) {
   const out = tokens.map((t, i) => {
     const token = {
       ...t,
-      first: i === firstWord,
+      first: starts(i),
       shouting,
       beforeDeterminer: Boolean(
         tokens[i + 1] && DETERMINERS[tokens[i + 1].lower]
@@ -530,6 +573,21 @@ export function analyze(sentence, lexicon) {
   ) {
     opening.readings = readings({ ...opening, notName: true }, lexicon);
   }
+  // "Tier C", "Plan B": a dictionary noun labelled by a letter is that
+  // noun, though a company may share its name
+  out.forEach((token, i) => {
+    const label = out[i + 1];
+    if (
+      token.readings.length === 1 &&
+      token.readings[0].pos === 'propn' &&
+      /^\p{Lu}\p{Ll}+$/u.test(token.text) &&
+      /^[A-Z]$/.test(label?.text || '') &&
+      !label.readings.some((r) => /pron|det/.test(r.pos)) &&
+      lexicon.lookup('noun', token.lower).length
+    ) {
+      token.readings = readings({ ...token, notName: true }, lexicon);
+    }
+  });
   out.forEach((token, i) => {
     const previous = out[i - 1];
     if (token.lower === "'s") {

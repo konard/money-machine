@@ -13,8 +13,8 @@ export function monthReading(token, lexicon) {
   return null;
 }
 
-export function calendarAhead(c) {
-  return Boolean(parseCalendarProbe(c, 0));
+export function calendarAhead(c, offset = 0) {
+  return Boolean(parseCalendarProbe(c, offset));
 }
 
 export function parseCalendar(c, lexicon) {

@@ -27,6 +27,7 @@ import { parseToInfinitive } from './infinitive.mjs';
 import { attributiveAction } from './attributive-action.mjs';
 import { parseCalendar, calendarAhead } from './calendar.mjs';
 import { Cursor } from './cursor.mjs';
+import { letterLabel } from './label-value.mjs';
 import { sharedHead } from './shared-head.mjs';
 import { possessiveClitic } from './possessive.mjs';
 import { nounFirst, nounModifier } from './nominal-evidence.mjs';
@@ -347,6 +348,14 @@ export function parseNP(c, options = {}) {
     ) {
       break;
     }
+    // "Tier C": after a common noun a capital letter labels it (below)
+    if (
+      nouns.length &&
+      nouns[nouns.length - 1].r.pos === 'noun' &&
+      letterLabel(t3)
+    ) {
+      break;
+    }
     // "bought a car yesterday": a word that can be an adverb and ends the
     // clause is no second noun of a compound
     const after = c.at(1);
@@ -522,10 +531,11 @@ export function parseNP(c, options = {}) {
       ...(n.r.features?.number === 'pl' ? { plural: true } : {}),
     }));
   }
-  // "Month 3-6", "Tier 2", "page 5": a number naming the item
+  // "Month 3-6", "Tier 2", "page 5", "Tier C": a number or letter naming
+  // the item
   if (
     last.r.pos === 'noun' &&
-    /quantity|number/.test(c.peek?.kind) &&
+    (/quantity|number/.test(c.peek?.kind) || letterLabel(c.peek)) &&
     np.quantity === undefined &&
     (!c.at(1) ||
       isPunct(c.at(1)) ||

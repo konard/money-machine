@@ -19,11 +19,17 @@ import {
 import { headlineCopula, adjectiveListAhead } from './headline-copula.mjs';
 import { reducedPassive } from './reduced-passive.mjs';
 import { leadingPhraseAhead, parseLeading } from './leading.mjs';
+import { takesOf, matchPhrase, leadingPhrase } from './fixed-phrases.mjs';
+import { participleValue, mergeLabelValues } from './label-value.mjs';
 import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
 import { finiteComplementAhead } from './complements.mjs';
-import { isImperativeStart, noteStatement } from './imperative-start.mjs';
+import {
+  isImperativeStart,
+  noteStatement,
+  nounPairAhead,
+} from './imperative-start.mjs';
 import {
   Cursor,
   has,
@@ -130,49 +136,6 @@ setRelativeParser((c, np) => {
   });
 });
 
-/** Union of `en takes` prepositions across a verb reading's concepts. */
-function takesOf(lexicon) {
-  return (r) => [
-    ...new Set(
-      r.concepts.flatMap((id) => {
-        const c = lexicon.get(id);
-        return [
-          ...(c?.takes || []),
-          ...(c?.prepositionalTo || c?.frames?.includes('prep:to')
-            ? ['prep:to']
-            : []),
-        ];
-      })
-    ),
-  ];
-}
-
-/** Match a whole fixed phrase ("thank you very much"). */
-function matchPhrase(tokens, lexicon) {
-  const wordsOnly = tokens
-    .filter((t) => !isPunct(t))
-    .flatMap((t) => t.lower.replace(/^'/, '').split(/\s+/));
-  for (const p of lexicon.phrases) {
-    if (
-      p.words.length === wordsOnly.length &&
-      p.words.every((w, i) => w === wordsOnly[i])
-    ) {
-      return p.concept;
-    }
-  }
-  return null;
-}
-
-/** Leading phrase followed by a comma: "Hello, John." / "Yes, I do." */
-function leadingPhrase(tokens, lexicon) {
-  const comma = tokens.findIndex((t) => t.text === ',');
-  if (comma <= 0) {
-    return null;
-  }
-  const concept = matchPhrase(tokens.slice(0, comma), lexicon);
-  return concept ? { concept, rest: tokens.slice(comma + 1) } : null;
-}
-
 /**
  * Parse an English sentence into clauses.
  * @param {string} sentence
@@ -258,6 +221,7 @@ export function parseSentence(sentence, lexicon, options = {}) {
     }
   }
   Object.assign(clauses, parseFactList(tokens, ctx) || {});
+  mergeLabelValues(clauses.list);
   for (const [i, item] of clauses.list.entries()) {
     if (!item.labelPredicate || clauses.list[i + 1]?.link?.separator !== ':') {
       continue;
@@ -389,7 +353,8 @@ function parseClauses(tokens, ctx) {
       parseClause(
         c,
         { ...ctx, embedded: link?.embedded },
-        result.list.length === 0
+        // "Confidence: estimated; last checked …": a semicolon starts afresh
+        result.list.length === 0 || link?.separator === ';'
       );
     if (!clause || c.i === before) {
       result.leftover.push(c.next().text);
@@ -460,6 +425,10 @@ function parseClause(c, ctx, initial) {
     return label;
   }
   c.i = labelStart;
+  const value = participleValue(c);
+  if (value) {
+    return value;
+  }
   // Labels allow adverbs and subjectless negative passive predicates.
   if (has(t, 'adv') && (!c.at(1) || [':', ';'].includes(c.at(1)?.text))) {
     c.next();
@@ -542,6 +511,9 @@ function parseClause(c, ctx, initial) {
     !has(t, 'det');
   if (imperativeStart && !ambiguous) {
     return parseImperative(c, ctx);
+  }
+  if (ambiguous && nounPairAhead(c)) {
+    return parseDeclarative(c, ctx);
   }
   if (ambiguous) {
     // "Track orders and payouts" vs "Direct sponsorships need…": the

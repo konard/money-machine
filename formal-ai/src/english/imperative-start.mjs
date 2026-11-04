@@ -12,6 +12,10 @@ import {
   parseTail,
 } from './parser.mjs';
 import { clause } from './clause-node.mjs';
+import { calendarAhead } from './calendar.mjs';
+
+/** The word starts a sentence or a part after a semicolon. */
+const opens = (c) => Boolean(c.peek?.first || c.at(-1)?.text === ';');
 
 const IT = {
   type: 'np',
@@ -32,8 +36,9 @@ export function noteStatement(c, ctx, tailOptions) {
       return clause('declarative', vg, { subject: IT, ...tail });
     }
   }
-  if (participleStart(c)) {
-    const passive = adjectivePredicate(c, ctx, tailOptions, true);
+  const opening = participleStart(c);
+  if (opening) {
+    const passive = adjectivePredicate(c, ctx, tailOptions, opening - 1);
     if (passive) {
       return passive;
     }
@@ -49,22 +54,32 @@ export function noteStatement(c, ctx, tailOptions) {
  * subject, the thing described, goes unsaid.
  */
 function participleStart(c) {
-  const [a, after] = [c.peek, c.at(1)];
-  return Boolean(
-    a?.first &&
-    a.readings.some(
-      (r) => r.pos === 'verb' && /pp/.test(r.features?.form || '')
-    ) &&
-    after &&
-    (has(after, 'prep') || has(after, 'adv')) &&
-    !has(after, 'det') &&
-    // "Used to pay": "to" before a verb is an infinitive
-    !(
-      after.lower === 'to' &&
-      c
-        .at(2)
-        ?.readings.some((r) => r.pos === 'verb' && r.features?.form === 'base')
-    )
+  // "Last checked 3 November 2026": adverbs may come first
+  let k = 0;
+  while (k < 2 && has(c.at(k), 'adv') && !isPunct(c.at(k + 1))) {
+    k += 1;
+  }
+  const [a, after] = [c.at(k), c.at(k + 1)];
+  // how many adverbs open it, plus one; 0 when it is no such start
+  return (
+    Boolean(
+      opens(c) &&
+      a?.readings.some(
+        (r) => r.pos === 'verb' && /pp/.test(r.features?.form || '')
+      ) &&
+      after &&
+      (has(after, 'prep') || has(after, 'adv') || calendarAhead(c, k + 1)) &&
+      !has(after, 'det') &&
+      // "Used to pay": "to" before a verb is an infinitive
+      !(
+        after.lower === 'to' &&
+        c
+          .at(k + 2)
+          ?.readings.some(
+            (r) => r.pos === 'verb' && r.features?.form === 'base'
+          )
+      )
+    ) && k + 1
   );
 }
 
@@ -155,7 +170,7 @@ function agreeingSubjectAhead(c) {
 function subjectlessStart(c) {
   const t = c.peek;
   if (
-    !t?.first ||
+    !opens(c) ||
     has(t, 'pron') ||
     has(t, 'det') ||
     !t.readings.some((r) => r.pos === 'verb' && r.features?.form === '3sg')
@@ -164,6 +179,9 @@ function subjectlessStart(c) {
   }
   if (!has(t, 'noun')) {
     return true;
+  }
+  if (nounPairAhead(c)) {
+    return false;
   }
   for (let k = 1; c.at(k) && !isPunct(c.at(k)); k += 1) {
     const x = c.at(k);
@@ -190,6 +208,26 @@ function subjectlessStart(c) {
 }
 
 /**
+ * "Content & media", "Services and freelancing": a noun joined at once to
+ * another noun or a gerund is the first of two names of things, no verb.
+ */
+export function nounPairAhead(c) {
+  const [t, link, next] = [c.peek, c.at(1), c.at(2)];
+  return (
+    has(t, 'noun') &&
+    has(link, 'coord') &&
+    Boolean(next) &&
+    next.readings.some(
+      (r) =>
+        r.pos === 'noun' || (r.pos === 'verb' && r.features?.form === 'ing')
+    ) &&
+    !next.readings.some(
+      (r) => r.pos === 'verb' && ['base', '3sg'].includes(r.features?.form)
+    )
+  );
+}
+
+/**
  * "Fully passive after install", "Free to join": a sentence opening with an
  * adjective (after degree adverbs) that modifies no noun is a predicate
  * whose subject is the thing described.
@@ -205,7 +243,7 @@ function adjectiveStart(c, ctx) {
   const a = c.at(k);
   const after = c.at(k + 1);
   return Boolean(
-    c.peek?.first &&
+    opens(c) &&
     has(a, 'adj') &&
     // "Free to join": a verb reading yields to "to" + infinitive
     ((after?.lower === 'to' &&
@@ -224,7 +262,9 @@ function adjectiveStart(c, ctx) {
 }
 
 /** "Fully passive after install" → (it is) fully passive after install. */
-function adjectivePredicate(c, ctx, tailOptions, passive = false) {
+function adjectivePredicate(c, ctx, tailOptions, adverbs = false) {
+  // a number: a passive opened by that many adverbs ("Last checked…")
+  const passive = adverbs !== false;
   const be = {
     text: 'is',
     lower: 'is',
@@ -234,7 +274,14 @@ function adjectivePredicate(c, ctx, tailOptions, passive = false) {
       { pos: 'be', lemma: 'be', features: { form: '3sg' }, concepts: ['be'] },
     ],
   };
-  const reordered = new Cursor([be, ...c.tokens.slice(c.i)]);
+  const rest = c.tokens
+    .slice(c.i)
+    .map((t, k) =>
+      k < (adverbs || 0)
+        ? { ...t, readings: t.readings.filter((r) => r.pos === 'adv') }
+        : t
+    );
+  const reordered = new Cursor([be, ...rest]);
   reordered.grammar = ctx;
   const vg = parseVerbGroup(reordered);
   if (!vg) {
