@@ -59,3 +59,8 @@ concept sorry
   en phrase i am sorry
   en phrase excuse me
   ru phrase Извините
+
+# public data: the negator "never" is a closed-class word without a sense
+concept never
+  en adv never
+  ru adv никогда neg

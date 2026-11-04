@@ -800,6 +800,18 @@ function parseImperative(c, ctx) {
     c.next();
     c.next();
   }
+  const adverbs = [];
+  if (reading(c.peek, 'neg')?.lemma === 'never') {
+    polarity = 'negative';
+    adverbs.push({
+      ...head(c.peek, reading(c.peek, 'neg')),
+      pos: 'adv',
+      candidates: ['never'],
+      concept: 'never',
+      fronted: true,
+    });
+    c.next();
+  }
   if (c.peek?.lower === 'let' && c.at(1)?.lower === 'us') {
     inclusive = true;
     c.next();
@@ -817,7 +829,7 @@ function parseImperative(c, ctx) {
     modal: null,
     verb: head(t, r),
     frame: 'event',
-    adverbs: [],
+    adverbs,
   };
   // "Open an account and deposit money": a base verb after "and" is a
   // second request

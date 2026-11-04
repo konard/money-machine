@@ -118,8 +118,9 @@ function translateLine(line, context, report) {
   return prefix + translateProse(body, context, report);
 }
 
-// "**Minimum payout:** $1" — a bold label is a unit of its own
-const LABEL = /(\*\*[^*]+?:\*\*|__[^_]+?:__)/;
+// "**Minimum payout:** $1", "**Tax.** Corporate 22%" — a bold label is a
+// unit of its own, read like a heading
+const LABEL = /(\*\*[^*]+?[:.]\*\*|__[^_]+?[:.]__)/;
 const EMPHASIS = /\*\*|__|(?<![\w*])[*_](?=\S)|(?<=\S)[*_](?![\w*])/g;
 
 function translateProse(text, context, report) {
@@ -127,13 +128,13 @@ function translateProse(text, context, report) {
     return text
       .split(LABEL)
       .map((piece) => {
-        const label = /^(\*\*|__)(.+?):\1$/.exec(piece);
+        const label = /^(\*\*|__)(.+?)([:.])\1$/.exec(piece);
         if (label) {
           const ru = translateProse(label[2], context, report).replace(
             /[.!]$/,
             ''
           );
-          return `${label[1]}${ru}:${label[1]}`;
+          return `${label[1]}${ru}${label[3]}${label[1]}`;
         }
         return piece.trim() ? translateProse(piece, context, report) : piece;
       })

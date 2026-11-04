@@ -40,6 +40,13 @@ export function isImperativeStart(c) {
   if (t.lower === 'please') {
     return true;
   }
+  // "Never share your password"
+  if (
+    reading(t, 'neg')?.lemma === 'never' &&
+    reading(c.at(1), 'verb')?.features.form === 'base'
+  ) {
+    return true;
+  }
   if (has(t, 'do') && has(c.at(1), 'neg') && has(c.at(2), 'verb')) {
     return true;
   }

@@ -209,3 +209,7 @@ test('a list of adjectives stays adjectives and agrees with its noun', () => {
     'Книга (дешёвая, хорошая, дорогая)'
   );
 });
+
+test('"never" before a request negates it', () => {
+  assert.equal(ru('Never buy books.'), 'Никогда не покупайте книги.');
+});

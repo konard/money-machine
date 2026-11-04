@@ -57,3 +57,10 @@ test('a paragraph keeps its context: "it" refers back across sentences', () => {
     'Я положил ключ на стол. Он на кухне.'
   );
 });
+
+test('a bold run-in heading with a period is read like a heading', () => {
+  assert.equal(
+    translateDocument('**Book.** Never buy books.').text,
+    '**Книга.** Никогда не покупайте книги.'
+  );
+});
