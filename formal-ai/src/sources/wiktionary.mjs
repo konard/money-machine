@@ -79,7 +79,10 @@ export async function fetchPages(titles, options = {}) {
 /** The `==Language==` section of a page. */
 export function languageSection(wikitext, language) {
   const parts = wikitext.split(new RegExp(`^==${language}==\\s*$`, 'm'));
-  return parts.length > 1 ? parts[1].split(/^==[^=]/m)[0] : '';
+  // editors' comments are not content: "{{trans-top|…}}<!-- note -->"
+  return parts.length > 1
+    ? parts[1].split(/^==[^=]/m)[0].replace(/<!--[\s\S]*?-->/g, '')
+    : '';
 }
 
 const POS = {
