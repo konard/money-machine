@@ -11,7 +11,11 @@
  *   formal-ai learn <english-noun>                fetch a noun from Wikidata
  *   formal-ai ground                              verify concept groundings
  *   --offline                                    skip translation lookups
+ *   --context commerce                           set an explicit context
+ *   --options 5                                  show coherent context readings
  *   --methods documentTopic=0.5,roundTrip=off    weight or turn off a method
+ *   --sources tatoeba=off,ru.wikipedia=off       turn off a public source
+ *   formal-ai sources                             list the public sources
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -21,6 +25,11 @@ import { loadLexicon } from '../src/lexicon.mjs';
 import { DocumentMemory } from '../src/senses.mjs';
 import { topicProfile } from '../src/topic-context.mjs';
 import { parseMethods } from '../src/methods.mjs';
+import {
+  SOURCES,
+  configureSources,
+  parseSources,
+} from '../src/sources/registry.mjs';
 import { resolveForTranslation } from '../src/translate.mjs';
 
 function parseArgs(argv) {
@@ -61,11 +70,14 @@ async function readInput(args) {
 }
 
 const options = (args) => ({
+  context: args.context,
+  options: args.options ? Number(args.options) : undefined,
   offline: Boolean(args.offline),
   you: args.you === 'ty' ? 'ty' : 'vy',
   speakerGender: args['speaker-gender'] === 'f' ? 'f' : 'm',
   addresseeGender: args['addressee-gender'] === 'f' ? 'f' : 'm',
   ...(args.methods ? { methods: parseMethods(String(args.methods)) } : {}),
+  ...(args.sources ? { sources: parseSources(String(args.sources)) } : {}),
 });
 
 const HELP = readFileSync(new URL(import.meta.url), 'utf8')
@@ -77,20 +89,34 @@ const HELP = readFileSync(new URL(import.meta.url), 'utf8')
 async function main() {
   const [command, ...rest] = process.argv.slice(2);
   const args = parseArgs(rest);
+  if (args.sources) {
+    configureSources(parseSources(String(args.sources)));
+  }
   switch (command) {
+    case 'sources': {
+      for (const [name, s] of Object.entries(SOURCES)) {
+        console.log(
+          `${name}\t${s.status || 'in use'}\t${s.license}\t${s.provides}`
+        );
+      }
+      break;
+    }
     case 'translate': {
       const text = await readInput(args);
       await resolveForTranslation(text, options(args));
       const result = translateDocument(text, { ...options(args), topic: text });
       if (args.json) {
         process.stdout.write(
-          `${JSON.stringify({ text: result.text, stats: result.stats, sentences: result.sentences.map(summary) }, null, 2)}\n`
+          `${JSON.stringify({ text: result.text, stats: result.stats, sentences: result.sentences.map(summary), options: result.options }, null, 2)}\n`
         );
       } else {
+        const output = result.options
+          ? result.options.map((o) => `[${o.context}] ${o.text}`).join('\n')
+          : result.text;
         if (args.out) {
-          writeFileSync(args.out, `${result.text}\n`);
+          writeFileSync(args.out, `${output}\n`);
         } else {
-          process.stdout.write(`${result.text}\n`);
+          process.stdout.write(`${output}\n`);
         }
         if (args.report || result.stats.incomplete) {
           process.stderr.write(`${report(result)}\n`);
@@ -105,6 +131,8 @@ async function main() {
       await resolveForTranslation(text, options(args));
       const lexicon = loadLexicon();
       const memory = new DocumentMemory();
+      memory.methods = options(args).methods;
+      memory.explicitContext = args.context;
       memory.setTopic(text);
       memory.profile = topicProfile(text, lexicon);
       for (const sentence of splitSentences(text.replace(/\s+/g, ' '))) {

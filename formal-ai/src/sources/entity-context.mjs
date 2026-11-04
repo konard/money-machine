@@ -1,3 +1,4 @@
+import { methodWeight } from '../methods.mjs';
 /** Document overlap for ambiguous Wikidata names; bounded evidence complements popularity. */
 import { chunks, getJson } from './fetch.mjs';
 
@@ -109,8 +110,9 @@ export async function entityContext(entities, topic, options) {
         Math.sqrt(Math.max(1, cues.size))
     );
   };
-  const score = (id, name) => evidence(id, name);
-  score.topicEvidence = (id, name) => evidence(id, name, true);
+  const weight = methodWeight(options?.methods, 'entityContext');
+  const score = (id, name) => weight * evidence(id, name);
+  score.topicEvidence = (id, name) => weight * evidence(id, name, true);
   score.organization = (id) => {
     const e = entities[id];
     return /\b(company|business|enterprise|brand|organization|organisation|software|corporation)\b/i.test(
@@ -121,6 +123,7 @@ export async function entityContext(entities, topic, options) {
     );
   };
   score.commercial = (name) =>
+    weight > 0 &&
     [...nearby(name)].some((w) =>
       /^(bank|payment|payout|transfer|account|busines|commercial|developer|pay|invoice|customer|revenue|fee|sale|store)$/.test(
         w

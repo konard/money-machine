@@ -36,7 +36,7 @@ const CLAIMS = new Set([
  * the etymology (its source word attests a reflexive counterpart)
  * and highlighted recipient examples in their original order. */
 function compactGovernment(text) {
-  if (/\{\{-en-\}\}/.test(text)) {
+  if (/\{\{(?:-en-|перев-блок)\|?/.test(text)) {
     return text;
   }
   return [

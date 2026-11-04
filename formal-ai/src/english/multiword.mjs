@@ -143,6 +143,20 @@ export function mergeMultiwords(tokens, lexicon) {
         ? verbLemmas.includes(entry.words[0])
         : entry.words[0] === t.lower;
       const n = entry.words.length;
+      // A subject followed by a finite verb and a determiner starts a
+      // clause, even when its first words also name a dictionary compound.
+      // Preserve that syntactic partner for subsequent sense selection.
+      if (
+        entry.pos === 'noun' &&
+        (i === 0 || tokens[i - 1]?.readings.some((r) => r.pos === 'det')) &&
+        tokens[i + n]?.readings.some((r) => r.pos === 'det') &&
+        tokens[i + n - 1]?.readings.some(
+          (r) =>
+            r.pos === 'verb' && /^(?:3sg|past)$/.test(r.features?.form || '')
+        )
+      ) {
+        continue;
+      }
       // the last word of a compound noun may be plural: "bank accounts"
       const plural =
         entry.pos === 'noun' &&

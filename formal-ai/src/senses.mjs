@@ -1,6 +1,12 @@
+import { methodEvidence } from './sense-methods.mjs';
 /** Context-based sense selection with traceable dictionary and corpus evidence. */
-
 import { methodWeight } from './methods.mjs';
+import {
+  sentenceContext,
+  positionalContext,
+  contextEvidence,
+  contextCandidates,
+} from './context-ranking.mjs';
 import {
   dictionaryContext,
   nounObjectContext,
@@ -10,7 +16,6 @@ import { attachmentContext } from './attachment-context.mjs';
 import { documentTopicContext } from './topic-context.mjs';
 import { alternativeTokens } from './english/coordination-context.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
-
 /** Words seen in earlier sentences, with decaying weights. */
 export class DocumentMemory {
   constructor(decay = 0.6) {
@@ -18,7 +23,6 @@ export class DocumentMemory {
     this.weights = new Map();
     this.referents = [];
   }
-
   /** Age the memory by one sentence and add this sentence's words. */
   remember(words) {
     for (const [w, v] of this.weights) {
@@ -33,11 +37,9 @@ export class DocumentMemory {
       this.weights.set(w, Math.min(1, (this.weights.get(w) || 0) + 1));
     }
   }
-
   weight(word) {
     return this.weights.get(word) || 0;
   }
-
   /**
    * Topic of the whole document, as word co-occurrence: a sense whose gloss
    * words share sentences with the ambiguous word elsewhere in the
@@ -65,7 +67,6 @@ export class DocumentMemory {
       this.setField(text);
     }
   }
-
   /**
    * The field: a larger body of text the document belongs to (the whole
    * site), counted by word family (first five letters) per sentence.
@@ -96,7 +97,6 @@ export class DocumentMemory {
       }
     }
   }
-
   /**
    * How much more often a cue's family appears in the field's sentences
    * that contain the word than in the field at all (0…1). "royalties"
@@ -136,7 +136,6 @@ export class DocumentMemory {
     this.lifts.set(key, weight);
     return weight;
   }
-
   /** How much the document talks about a word's family (0…1). */
   familyWeight(word) {
     const n = word.length > 3 ? this.families?.get(word.slice(0, 5)) || 0 : 0;
@@ -147,7 +146,6 @@ export class DocumentMemory {
       ? Math.max(0, Math.min(1, 1 + Math.log10(share * 30) / 1.5))
       : 0;
   }
-
   /** Does the document use this word (or a word of this phrase)? */
   mentions(phrase, excluding = '') {
     // a field is mentioned by any word of its family: finance ~ financial
@@ -162,7 +160,6 @@ export class DocumentMemory {
       )
     );
   }
-
   topicWeight(cue, word) {
     if (!this.topic || !word) {
       return 0;
@@ -182,14 +179,12 @@ export class DocumentMemory {
     const n = this.cooccur.get(key);
     return n ? Math.min(1, Math.log2(1 + n) / 3) : 0;
   }
-
   /** Note a noun phrase that a later pronoun may refer to. */
   mention(referent) {
     this.referents.unshift(referent);
     this.referents.length = Math.min(this.referents.length, 8);
   }
 }
-
 /** A cue word matches a sentence word or its derivation (pay ~ payment). */
 function matchesCue(words, cue) {
   if (words.has(cue)) {
@@ -205,6 +200,12 @@ function matchesCue(words, cue) {
     participle &&
     [...words].some((w) => w.replace(/e$/, '') === participle)
   ) {
+    return true;
+  }
+  const adjectival = cue
+    .match(/^(.{3,}?)(?:ic|ical)$/)?.[1]
+    ?.replace(/([^aeiou])\1$/, '$1');
+  if (adjectival && words.has(adjectival)) {
     return true;
   }
   const base = cue.match(/^(.{3,}?)(?:ment|ments|er|ers|ance|ence|al)$/)?.[1];
@@ -284,13 +285,7 @@ export function collectHeads(node, out = [], role = null, parent = null) {
   return out;
 }
 
-/**
- * Choose a concept for every ambiguous head in the parsed sentence.
- * @param {object} parsed - result of `parseSentence`
- * @param {import('./lexicon.mjs').Lexicon} lexicon
- * @param {DocumentMemory} [memory]
- * @returns {object[]} decisions with scores and evidence
- */
+/** Choose each ambiguous head's meaning and retain scores and evidence. */
 export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
   const tokens = parsed.tokens;
   const positions = new Map(
@@ -332,6 +327,11 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           delete node.participle;
         }
       }
+      node.candidates = contextCandidates(
+        node.candidates,
+        lexicon,
+        memory.optionContext
+      );
       if (node.candidates.length < 2) {
         node.concept = node.candidates[0];
         continue;
@@ -343,10 +343,24 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         : new Set();
       const scores = {};
       const evidence = {};
+      const statistical = sentenceContext(tokens, lexicon, memory, node.token);
+      const positional = positionalContext(node, heads, clause, lexicon);
       for (const id of node.candidates) {
         const concept = lexicon.get(id);
         let score = 0;
         const why = [];
+        const contextReasons = contextEvidence(
+          concept,
+          lexicon,
+          memory,
+          statistical,
+          positional
+        );
+        for (const reason of contextReasons) {
+          score += reason.weight;
+          why.push(reason.reason);
+        }
+        const typedContext = contextReasons.some((r) => r.weight > 0);
         if (
           node.pos === 'noun' &&
           node.uncounted &&
@@ -384,7 +398,8 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         const attached =
           parsed.leftover?.length || parsed.unknown?.length
             ? 0
-            : attachmentContext(node, concept, clause, lexicon);
+            : attachmentContext(node, concept, clause, lexicon) *
+              methodWeight(memory.methods, 'partners');
         if (attached) {
           score += attached;
           why.push(`grammatical partner evidence (+${attached.toFixed(2)})`);
@@ -638,10 +653,11 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         if (Number.isFinite(concept?.ruFrequency)) {
           // Russian frequency supplies only a small default preference;
           // rarity costs more, while English context decides the meaning.
-          const common = Math.max(
-            node.pos === 'noun' && concept.core && association ? 0 : -0.25,
-            Math.min(0.03, 0.1 * (Math.log10(concept.ruFrequency + 1) - 3))
-          );
+          const common =
+            Math.max(
+              node.pos === 'noun' && concept.core && association ? 0 : -0.25,
+              Math.min(0.03, 0.1 * (Math.log10(concept.ruFrequency + 1) - 3))
+            ) * methodWeight(memory.methods, 'ruwikiFrequency');
           score += common;
           why.push(
             `${concept.ru.lemma} in ${concept.ruFrequency} ruwiki articles (${common >= 0 ? '+' : ''}${common.toFixed(2)})`
@@ -688,35 +704,17 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
                   lexicon.get(other)?.ru?.lemma === lemma
               ).length
             : 0;
-        // "chemistry: a number of a reaction": a specialist sense, unlikely
-        // unless the document is about that field
-        const domain = domainOf(concept);
-        if (
-          domain &&
-          !semantic &&
-          !concept.core &&
-          !memory.mentions(domain, word) &&
-          !(memory.familyWeight(domain) >= 0.4)
-        ) {
-          score -= 0.2;
-          why.push(`specialist sense (${domain}) (-0.20)`);
-        }
-        if (
-          domain &&
-          memory.mentions(domain, word) &&
-          !(topic && concept.cues?.includes(domain)) &&
-          !(
-            (concept.cues || []).includes(domain) &&
-            memory.topicWeight(domain, word)
-          )
-        ) {
-          // A field label already counted as a topical cue is one piece of
-          // evidence, not a second independent vote for this meaning.
-          const weight = 0.3;
-          score += weight;
-          why.push(
-            `dictionary field ${domain} in document (+${weight.toFixed(2)})`
-          );
+        for (const item of methodEvidence(
+          typedContext ? { ...concept, domain: null } : concept,
+          memory,
+          word,
+          semantic,
+          topic
+        )) {
+          score += item.score;
+          if (item.score) {
+            why.push(item.reason);
+          }
         }
         if (shared && !node.uncounted) {
           const bonus = Math.min(0.1, 0.05 * shared);

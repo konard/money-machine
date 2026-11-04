@@ -4,6 +4,42 @@ Status: the target design for sense choice. Every method below is a
 switchable, measured component: one that does not provably improve
 translation is turned off, not deleted.
 
+## 0. Precision: the meta language is exactly as vague as the text
+
+The meta language does not know more than the sentence says, and it does
+not know less. Formalizing must neither add information (commit "bank" to
+the river when the text does not) nor remove it (drop the tense, the
+number, the definiteness, a hedge). Naturalizing (deformalizing) obeys the
+same rule in the other direction.
+
+- A word in the meta language refers to a **range of meanings**: the type
+  that is the union of the senses still compatible with the context
+  (section 1). Context narrows the range; it never jumps to one sense
+  without evidence. A fully decided word has a range of one.
+- A Russian word also has a range: the English meanings it translates. The
+  right Russian word is the one whose range matches the source range best —
+  it covers what the English may mean and adds as little as possible. When
+  no Russian word fits the whole range, the most likely meaning wins and
+  the others are offered as alternatives (up to 5, section 3).
+- Grammatical meaning is part of the range too: an English past simple is
+  a range over Russian perfective and imperfective past; it is narrowed by
+  evidence (completion, repetition), not by habit.
+
+### Round trips are the guarantee
+
+Every direction is checked, and by default every choice tries to keep them:
+
+| trip                                      | invariant                                                                                                                                |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| English → meta → English                  | the regenerated English formalizes to the same meta links                                                                                |
+| Russian → meta → Russian                  | the same, for Russian                                                                                                                    |
+| English → meta → Russian → meta           | the Russian formalizes to the same links (ranges may only narrow where Russian grammar forces a choice, and each forced choice is noted) |
+| English → meta → Russian → meta → English | the full circle returns the same meanings                                                                                                |
+
+A lost or changed link is a defect, measured by the evaluation harness and
+ranked down in generation. Several translations may be listed; the default
+one is the one that survives the round trips best.
+
 ## 1. The core idea: a meaning is a type
 
 The meta language names _concepts_, not words. A concept is a link that
@@ -48,7 +84,7 @@ range of a concept is everything that `IsA` it. Choosing a sense becomes a
 type question: which meaning of the word is compatible with (`IsA`) the
 contexts in force at this position.
 
-## 2. Sources of meanings and contexts (to be double-checked)
+## 2. Sources of meanings and contexts
 
 Every source is public, free, queried as needed, cached, and replayed from
 repository fixtures in tests. Local `.lino` overrides fix bad data. Each
@@ -67,6 +103,37 @@ supplies, its coverage on the site text, and its license.
 | ruwiki search, Russian National Corpus | Russian co-occurrence and frequency                                                                                          | API (in use)                               |
 
 Licenses that forbid our use (e.g. non-commercial BabelNet) are excluded.
+
+### Sources are layers of one link network
+
+Every source is a named, switchable layer (`src/sources/registry.mjs`:
+`--sources tatoeba=off`, `FORMAL_AI_SOURCES`, `options.sources`; a
+disabled source answers as if it had no data). An adapter turns each API
+answer into links of the one meta-language schema, in Links Notation, with
+the source as provenance:
+
+```
+concept wikt:free:adj:2
+  en adj free
+  ru adj бесплатный
+  gloss "without charge"
+  contexts (commerce)
+  source en.wiktionary
+```
+
+The layers are merged on the fly as the translation needs a word, like
+link-cli's `UnionLinksDecorator`: `data/overrides/*.lino` first (they
+shadow), then repository fixtures, the local cache and the live APIs. An
+override fills a gap or corrects a wrong link; it never needs a code
+change. `formal-ai links <word>` prints the merged links of a word with the
+layer each one came from.
+
+Access checked on 2026-11-04 with the project user agent: en/ru Wiktionary,
+Wikidata items, lexemes and SPARQL, en/ru Wikipedia (language links,
+search), Tatoeba (`api.tatoeba.org/unstable/sentences`, needs `sort`),
+kaikki.org per-word JSON, the Open English WordNet release — all answer;
+the Russian National Corpus API answered 500 (its frequency lists are read
+through Wiktionary appendices instead).
 
 ## 3. Context: five sources, one ranking
 
@@ -134,15 +201,39 @@ check is on concepts, not strings.
   improve the score is disabled by default, with the measurement recorded
   next to it.
 
-## 7. Plan
+## 7. Architecture audit (2026-11-04)
+
+| vision item                                                                           | where                                                                                             | state                                                                                      |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| meaning as a type, ranges                                                             | `formalize.mjs` keeps `ambiguous` candidates for nouns only; predicates take one concept          | partial: a range for every word is to do                                                   |
+| context network (typed links)                                                         | `context-network.mjs`, `data/overrides/contexts.lino`                                             | done                                                                                       |
+| statistical / explicit / positional context, top-5                                    | `context-ranking.mjs`, `senses.mjs`; `--context`, `--options`                                     | done                                                                                       |
+| dependent (inherited) context                                                         | `discourse` referents in `translate.mjs`                                                          | partial: referents only, no context inheritance                                            |
+| surrounding files                                                                     | `options.topic` = whole document                                                                  | partial: no section/directory scopes                                                       |
+| method switches + measurement                                                         | `methods.mjs`, `scripts/evaluate.mjs`                                                             | done: 9 methods, `npm run formal-ai:evaluate --ablate`, `method-evaluation.md`             |
+| lexical round trip                                                                    | `round-trip.mjs` (word level, as sense evidence)                                                  | done                                                                                       |
+| English → meta → English                                                              | —                                                                                                 | missing: needs an English generator                                                        |
+| Russian → meta                                                                        | —                                                                                                 | missing: needs a Russian analyser (Wiktionary morphology is already loaded for generation) |
+| source registry, switchable APIs                                                      | `sources/registry.mjs`                                                                            | done                                                                                       |
+| adapters to unified links, union with overrides                                       | overrides are lino and shadow public concepts in `lexicon.mjs`; public data is held as JS objects | partial: adapters emitting lino links + `formal-ai links` to do                            |
+| Tatoeba, en.wikipedia language links, kaikki, lexeme senses (P5137/P5972/P9488), OEWN | reachable                                                                                         | adapters to do                                                                             |
+
+## 8. Plan
 
 1. Reference set + automatic score (chrF and lexical round trip) +
-   per-component on/off switch.
+   per-component on/off switch; source registry.
 2. Context types: load topic labels (Wiktionary `lb`, Wikidata `P921`/
    `P9488`/`P279`) into the type hierarchy; audit the sources.
 3. Statistical context with top-5 coherent readings.
 4. Explicit context option; positional indicators; document/section scopes.
 5. Dependent context through reference resolution.
 6. Tatoeba sentence pairs and Wikidata lexeme translations as evidence.
-7. Russian → meta language analyser for the sentence round trip (reusing
-   the Russian Wiktionary morphology already loaded for generation).
+7. English generator from the meta language: the English round trip as a
+   test invariant over every fixture sentence.
+8. Russian → meta language analyser for the sentence round trip (reusing
+   the Russian Wiktionary morphology already loaded for generation); the
+   full circle in the evaluation harness.
+9. Ranges of meanings for every word in the meta language; Russian word
+   choice by range overlap.
+10. Source adapters emitting lino links, merged as union layers with the
+    overrides; `formal-ai links <word>`.

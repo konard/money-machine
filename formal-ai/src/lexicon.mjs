@@ -12,6 +12,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseLino, childrenNamed, field, words } from './lino.mjs';
+import { ContextNetwork } from './context-network.mjs';
 
 // Content words come from public sources (Wiktionary, Wikidata) while the
 // translator runs; `data/overrides/` holds only corrections of that data,
@@ -167,6 +168,11 @@ function parseConcept(node) {
     grounding: field(node, 'grounded-in') || null,
     excludedGroundings: words(field(node, 'wikidata-exclude')),
     classes: words(field(node, 'class')),
+    domain: field(node, 'domain'),
+    contexts:
+      field(node, 'contexts') === undefined
+        ? undefined
+        : words(field(node, 'contexts')),
     cues: words(field(node, 'cues')).map((w) => w.toLowerCase()),
     objectClasses: words(field(node, 'object-class')),
     syntax: field(node, 'syntax') || null,
@@ -189,6 +195,7 @@ function parseConcept(node) {
 /** In-memory lexicon with English lookup indexes. */
 export class Lexicon {
   constructor() {
+    this.contextNetwork = new ContextNetwork();
     this.concepts = new Map();
     this.byLemma = new Map();
     this.byForm = new Map();
@@ -198,7 +205,14 @@ export class Lexicon {
 
   /** Add every `concept` under a parsed Links Notation root. */
   addTree(root, source = '') {
+    this.contextNetwork.addTree(root);
     for (const node of childrenNamed(root, 'concept')) {
+      if (
+        !childrenNamed(node, 'en').length &&
+        !childrenNamed(node, 'ru').length
+      ) {
+        continue;
+      }
       const concept = parseConcept(node);
       concept.source = source;
       this.add(concept);
@@ -228,6 +242,7 @@ export class Lexicon {
       return;
     }
     this.concepts.set(concept.id, concept);
+    this.contextNetwork.linkConcept(concept);
     for (const en of concept.en) {
       if (en.pos === 'phrase') {
         this.phrases.push({ words: en.words, concept: concept.id });
@@ -260,6 +275,11 @@ export class Lexicon {
 
   get(id) {
     return this.concepts.get(id);
+  }
+
+  /** Dictionary contexts of a meaning (or its id), including ancestors. */
+  contextsOf(concept) {
+    return this.contextNetwork.contextsOf(concept);
   }
 
   /** Russian label of a proper name (from Wikidata), if known. */

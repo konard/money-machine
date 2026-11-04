@@ -10,6 +10,11 @@
 import { parseSentence } from './english/clause.mjs';
 import { translateSentence, TranslationContext } from './translate.mjs';
 import { topicProfile } from './topic-context.mjs';
+import {
+  rankContexts,
+  contextWords,
+  contextHeads,
+} from './context-ranking.mjs';
 
 const ABBREVIATIONS =
   /\b(?:Mr|Mrs|Ms|Dr|Prof|St|vs|etc|e\.g|i\.e|No|Jr|Sr|Inc|Ltd)\.$/i;
@@ -261,11 +266,18 @@ export function documentWords(text) {
  * @returns {{text: string, sentences: object[], stats: object}}
  */
 export function translateDocument(text, options = {}) {
-  const context = options.context || new TranslationContext(options);
+  const context =
+    typeof options.context === 'object' && options.context !== null
+      ? options.context
+      : new TranslationContext(options);
   if (options.field && !context.memory.families) {
     context.memory.setField(options.field);
   }
   context.memory.methods ??= options.methods;
+  context.memory.contextRanking ??= rankContexts(
+    contextWords(options.topic || text, context.lexicon),
+    context.lexicon
+  );
   if (!context.memory.topic) {
     context.memory.setTopic(options.topic || text);
     context.memory.profile = topicProfile(
@@ -306,7 +318,7 @@ export function translateDocument(text, options = {}) {
     return lines.map((l) => translateLine(l, context, report)).join('\n');
   });
   const complete = report.sentences.filter((s) => s.complete).length;
-  return {
+  const result = {
     text: out.join('\n'),
     sentences: report.sentences,
     stats: {
@@ -315,6 +327,51 @@ export function translateDocument(text, options = {}) {
       incomplete: report.sentences.length - complete,
     },
   };
+  if (options.options) {
+    const count = Math.min(5, Math.max(1, Number(options.options) || 1));
+    const heads = contextHeads(text, context.lexicon);
+    let ranked = rankContexts(heads, context.lexicon, { coherent: true });
+    if (
+      !ranked.length &&
+      result.stats.complete === result.stats.sentences &&
+      heads.every(({ candidates }) =>
+        candidates.some(
+          (id) =>
+            !context.lexicon.contextNetwork.contextsOf(context.lexicon.get(id))
+              .size
+        )
+      )
+    ) {
+      ranked = [{ context: 'Context' }];
+    }
+    if (context.memory.explicitContext) {
+      const network = context.lexicon.contextNetwork;
+      const explicit = context.memory.explicitContext;
+      ranked = ranked.filter(
+        ({ context: name }) =>
+          name === 'Context' ||
+          network.isA(name, explicit) ||
+          network.isA(explicit, name)
+      );
+    }
+    if (result.sentences.some((s) => s.unknown.length)) {
+      ranked = [];
+    }
+    result.options = ranked.slice(0, count).map(({ context: name }) => ({
+      context: name,
+      ...translateDocument(text, {
+        ...options,
+        lexicon: context.lexicon,
+        options: undefined,
+        context:
+          typeof options.context === 'string'
+            ? options.context
+            : options.contextName,
+        optionContext: name,
+      }),
+    }));
+  }
+  return result;
 }
 
 /** Translate a single paragraph (sentences share context). */

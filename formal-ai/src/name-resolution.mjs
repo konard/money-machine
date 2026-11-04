@@ -26,10 +26,11 @@ export async function resolveNames(
     fetchImpl,
     cache = true,
     topic = '',
+    methods,
     givenOnly = new Set(),
   } = {}
 ) {
-  const options = { fetchImpl, cache, bucket: 'wikidata' };
+  const options = { fetchImpl, cache, bucket: 'wikidata', methods };
   const hits = new Map();
   const verified = new Map();
   await pool(names, 2, async (name) => {

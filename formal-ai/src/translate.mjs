@@ -7,6 +7,7 @@ import { formalize } from './formalize.mjs';
 import { naturalizeRussian } from './russian/naturalize.mjs';
 import { DocumentMemory } from './senses.mjs';
 import { topicProfile } from './topic-context.mjs';
+import { rankContexts, contextWords } from './context-ranking.mjs';
 
 /** Resolve vocabulary before translating; offline mode skips all lookups. */
 export async function resolveForTranslation(text, options = {}) {
@@ -17,7 +18,9 @@ export async function resolveForTranslation(text, options = {}) {
   try {
     const { resolveText } = await import('./resolve.mjs');
     await resolveText(text, {
+      ...options,
       lexicon: options.lexicon,
+      methods: options.methods,
       topic: options.topic || text,
       log,
     });
@@ -33,6 +36,11 @@ export class TranslationContext {
     this.options = options;
     this.memory = new DocumentMemory();
     this.memory.methods = options.methods;
+    this.memory.explicitContext =
+      typeof options.context === 'string'
+        ? options.context
+        : options.contextName;
+    this.memory.optionContext = options.optionContext;
     this.discourse = { referents: [] };
   }
 }
@@ -55,6 +63,10 @@ export function translateSentence(
       context.lexicon
     );
   }
+  context.memory.contextRanking ??= rankContexts(
+    contextWords(context.options.topic || sentence, context.lexicon),
+    context.lexicon
+  );
   const formal = formalize(
     sentence,
     context.lexicon,

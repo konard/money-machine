@@ -33,6 +33,7 @@
     "formal-ai": "node formal-ai/bin/formal-ai.mjs",
     "formal-ai:site": "node formal-ai/scripts/translate-site.mjs",
     "website:ru": "node scripts/build-website.mjs --lang=ru",
+    "formal-ai:evaluate": "node formal-ai/scripts/evaluate.mjs",
     "formal-ai:record": "node formal-ai/scripts/record-fixtures.mjs"
   },
   "keywords": [

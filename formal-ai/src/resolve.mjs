@@ -1,3 +1,4 @@
+import { roundTripEvidence } from './round-trip.mjs';
 import {
   voiceDictionary,
   englishErgative,
@@ -7,11 +8,11 @@ import {
   reflexivePartner,
 } from './sources/reflexive.mjs';
 import { learnActionNouns } from './sources/action-nouns.mjs';
+import { populateContexts } from './sources/context-data.mjs';
 import { currencyPlans } from './sources/currencies.mjs';
 import { predicateEvidence } from './english/participle-evidence.mjs';
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
 import { rememberPartsOfSpeech } from './english/nominal-evidence.mjs';
-
 import {
   learnInfinitiveFrames,
   hasComplementFrame,
@@ -71,7 +72,6 @@ import {
   russianEntry,
   russianParenthetic,
 } from './russian-entry.mjs';
-
 export { compoundNoun, regularEntry };
 import { pool } from './sources/fetch.mjs';
 import { governmentPages, governmentResolver } from './sources/government.mjs';
@@ -82,7 +82,6 @@ import {
   russianTemplates,
   unstress,
 } from './sources/wiktionary.mjs';
-
 // an English postposition ("two days ago") is a Russian adverb (назад)
 const POS_RU = { noun: 'noun', verb: 'verb', adj: 'adj', adv: 'adv' };
 POS_RU.postp = 'adv';
@@ -93,7 +92,6 @@ const FEATURE = {
   'past participle': 'participle',
   'ed-form': 'past',
 };
-
 /** A grammatical word, never looked up; "like", "there" and "hundred" may
  * be content words ("went there", "several hundred"). */
 function closedClass(word, lexicon) {
@@ -106,7 +104,6 @@ function closedClass(word, lexicon) {
       !open.includes(r.pos) && !(r.pos === 'num' && r.features?.value >= 100)
   );
 }
-
 /** Words of a text that the lexicon has no reading for. */
 export function unknownWords(text, lexicon = loadLexicon()) {
   const out = new Set();
@@ -144,7 +141,6 @@ export function unknownWords(text, lexicon = loadLexicon()) {
   }
   return [...out];
 }
-
 /** Unknown capitals inside sentences: names, months and weekdays. */
 export function capitalizedWords(text, lexicon = loadLexicon()) {
   const out = new Set();
@@ -165,7 +161,6 @@ export function capitalizedWords(text, lexicon = loadLexicon()) {
   }
   return [...out];
 }
-
 export { nameCandidates };
 /**
  * Resolve every unknown word of `text` into the lexicon.
@@ -180,6 +175,8 @@ export async function resolveText(
     log = () => {},
     words: only,
     topic = text,
+    context,
+    methods,
   } = {}
 ) {
   const options = { fetchImpl, cache };
@@ -333,7 +330,6 @@ export async function resolveText(
   }
   log(`wiktionary: ${words.length} unknown words, ${entries.size} pages`);
   rememberPartsOfSpeech(entries, lexicon);
-
   // English sense → Russian candidates
   const plans = only ? [] : await currencyPlans(text, options);
   const sensesOf = (title, pos) => publicSenses(entries, title, pos);
@@ -435,7 +431,6 @@ export async function resolveText(
       plans.push({ lemma: rest.join(':'), pos, senses: expanded });
     }
   }
-
   if (!only) {
     plans.push(
       ...(await supplementTerms(text, {
@@ -448,7 +443,6 @@ export async function resolveText(
       }))
     );
   }
-
   await completeDefinitions(plans, options, entries, { words, forms, lexicon });
   // Seed entries still need voice evidence from their public dictionary pages.
   const voicePlans = [...plans];
@@ -580,7 +574,6 @@ export async function resolveText(
       ),
     options
   );
-
   const reflexives = await reflexivePages(
     voicePlans
       .filter((p) => p.pos === 'verb')
@@ -589,7 +582,6 @@ export async function resolveText(
     government,
     options
   );
-
   const phraseGovernment = await governmentPages(
     [...adverbPhrases].filter(
       (w) =>
@@ -737,7 +729,12 @@ export async function resolveText(
       ? regularEntry(pos, candidate)
       : null;
   };
-
+  const roundTrip = await roundTripEvidence(
+    plans,
+    entries,
+    government,
+    options
+  );
   const { choose, finish: finishVerb } = governmentResolver({
     russian,
     ruPages,
@@ -797,6 +794,7 @@ export async function resolveText(
       }
       lexicon.add({
         id,
+        roundTrip: roundTrip.meaning(s, plan, ru),
         gloss: s.gloss,
         definition: s.definition,
         examples: s.examples,
@@ -970,7 +968,7 @@ export async function resolveText(
         )
     )
   );
-  await resolveNames(names, { lexicon, fetchImpl, cache, topic, givenOnly });
+  await resolveNames(names, { ...options, lexicon, topic, givenOnly, methods });
   await declineNames(dictionaryNames, { lexicon, fetchImpl, cache });
   if (!only) {
     const phrasal = phrasalCandidates(text, lexicon).filter(
@@ -992,5 +990,6 @@ export async function resolveText(
     await learnTimeAdverbs(text, lexicon, options);
   }
   log(`resolved ${resolved.length} senses; still unknown: ${missing.length}`);
+  await populateContexts(lexicon, { ...options, context, text, log });
   return { words: words.length, resolved, missing };
 }

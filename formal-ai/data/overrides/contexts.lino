@@ -1,0 +1,9 @@
+# Context corrections are loaded before public Wikidata fields.
+# Example syntax (use quoted scalars for names containing spaces):
+# context "a field"
+#   extends "a broader field"
+#   extends "another parent"
+#   alias "alternative field label"
+# concept public-sense-id
+#   contexts (field-id)
+# An empty contexts value explicitly makes a meaning context-neutral.

@@ -37,17 +37,22 @@ export async function fetchPages(titles, options = {}) {
   const out = new Map();
   await pool(chunks([...new Set(titles)], 50), 2, async (batch) => {
     const body = await getJson(
-      `${API}?${new URLSearchParams({
-        action: 'query',
-        format: 'json',
-        formatversion: '2',
-        prop: 'revisions',
-        rvprop: 'content',
-        rvslots: 'main',
-        redirects: '1',
-        titles: batch.join('|'),
-      })}`,
-      { ...options, bucket: 'wiktionary' }
+      `${options.language === 'ru' ? API.replace('en.wiktionary', 'ru.wiktionary') : API}?${new URLSearchParams(
+        {
+          action: 'query',
+          format: 'json',
+          formatversion: '2',
+          prop: 'revisions',
+          rvprop: 'content',
+          rvslots: 'main',
+          redirects: '1',
+          titles: batch.join('|'),
+        }
+      )}`,
+      {
+        ...options,
+        bucket: options.language === 'ru' ? 'wiktionary-ru' : 'wiktionary',
+      }
     );
     const alias = new Map();
     for (const step of [

@@ -15,6 +15,17 @@ export const METHODS = {
   // (4 better, 4 worse), 0.3 changes 8 (3 better, 4 worse). Too few to
   // decide: kept at 0.5 until the evaluation harness measures it at scale.
   documentTopic: 0.5,
+  roundTrip: 1,
+  domainLabels: 1,
+  partners: 1,
+  entityContext: 1,
+  ruwikiFrequency: 1,
+  // dictionary context types (context-ranking.mjs). Statistical: on the 30
+  // recorded website sentences weight 1 introduced a chess reading of a
+  // software instruction; 0.5 keeps the legal-register improvement without it.
+  statisticalContext: 0.5,
+  positionalContext: 1,
+  explicitContext: 1,
 };
 
 /** "a=off,b=0.5" → { a: 0, b: 0.5 } */

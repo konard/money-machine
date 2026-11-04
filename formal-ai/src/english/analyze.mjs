@@ -313,6 +313,18 @@ function contentReadings(token, lexicon, add) {
     return;
   }
   const capitalized = /^\p{Lu}/u.test(token.text);
+  // A public proper-noun sense can share its spelling with a common noun.
+  // Keep both available for sense selection instead of hiding them behind
+  // an opaque entity name (a planet and a chemical element, for example).
+  const nounSenses = lexicon.lookup('noun', w).map((id) => lexicon.get(id));
+  // A given name with its own transliteration ("Mary" → Мэри, which reads
+  // back as Mary) stays that name: a namesake's cognate (Мария) would not
+  // survive the round trip.
+  const lexicalAmbiguity =
+    nounSenses.some((s) => s?.capital) &&
+    nounSenses.some((s) => s && !s.capital) &&
+    new Set(nounSenses.map((s) => s?.ru?.lemma).filter(Boolean)).size > 1 &&
+    !(lexicon.givenNames?.has(token.text) && lexicon.nameLabel?.(token.text));
   // a capitalized word with a known name label is that name (Google,
   // Apple) — unless it names a time: "January" is a given name too
   const timeWord = [
@@ -329,6 +341,7 @@ function contentReadings(token, lexicon, add) {
   if (
     capitalized &&
     !timeWord &&
+    !lexicalAmbiguity &&
     !token.notName &&
     // "Edit the JSON": a verb opening a sentence before a determiner is an
     // order, not the given name Edit

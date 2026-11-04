@@ -11,6 +11,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { compactResponse } from './compact.mjs';
+import { bucketEnabled } from './registry.mjs';
 
 export const USER_AGENT =
   'formal-ai-translator/0.1 (https://github.com/konard/money-machine)';
@@ -50,12 +51,16 @@ function recordFixture(bucket, key, value) {
 /**
  * GET (or POST with `form`) a JSON API, with an on-disk cache.
  * @param {string} url
- * @param {{form?: object, fetchImpl?: Function, cache?: boolean, bucket?: string}} options
+ * @param {{form?: object, fetchImpl?: Function, cache?: boolean, bucket?: string, sources?: object}} options
  */
 export async function getJson(
   url,
-  { form, fetchImpl = fetch, cache = true, bucket = 'http' } = {}
+  { form, fetchImpl = fetch, cache = true, bucket = 'http', sources } = {}
 ) {
+  if (!bucketEnabled(bucket, sources)) {
+    // a switched-off source has no data (registry.mjs)
+    return {};
+  }
   const body = form ? new URLSearchParams(form).toString() : '';
   const key = createHash('sha1').update(`${url}\n${body}`).digest('hex');
   const memoryKey = `${cacheDir(bucket)}\n${process.env.FORMAL_AI_FIXTURES || ''}\n${key}`;
