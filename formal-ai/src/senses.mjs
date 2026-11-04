@@ -448,6 +448,10 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         if (concept?.capital && token?.text === token?.lower) {
           score -= 3;
           why.push('capitalized dictionary entry for lowercase token (-3)');
+        } else if (concept?.capital && /^\p{Lu}\p{Ll}/u.test(token?.text)) {
+          // "China is large": the capitalized page names the country
+          score += 1;
+          why.push('capitalized dictionary entry for capitalized token (+1)');
         }
         for (const cue of concept?.cues || []) {
           for (const w of words) {

@@ -470,8 +470,12 @@ export async function resolveText(
   phrasePages.forEach((page, word) => ruPages.set(word, page));
   const ruEntry = (word, pos) => {
     const page = ruPages.get(word);
-    const e = page ? russianTemplates(page).find((x) => x.pos === pos) : null;
-    return e?.headword ? e : null;
+    const list = page ? russianTemplates(page) : [];
+    // a country name (Испания) is a proper noun with the same declension
+    const e =
+      list.find((x) => x.pos === pos) ||
+      (pos === 'noun' && list.find((x) => x.pos === 'propn'));
+    return e?.headword ? { ...e, pos } : null;
   };
   // a candidate that is only a form of another word stands for that word
   const lemmaOf = new Map();
@@ -657,7 +661,7 @@ export async function resolveText(
       (candidate.attested ||
         /=\s*\{\{-ru-\}\}\s*=/.test(government.get(word) || '') ||
         russianTemplates(ruPages.get(word) || '').some(
-          (e) => e.pos === POS_RU[pos]
+          (e) => e.pos === POS_RU[pos] || (pos === 'noun' && e.pos === 'propn')
         ))
       ? regularEntry(pos, candidate)
       : null;
@@ -841,6 +845,8 @@ export async function resolveText(
       (n) =>
         !(
           internal.has(n) ||
+          // "Kenya is…": a page that is first of all a country, not a name
+          lexicon.notGivenFirst?.has(n) ||
           n.includes(' ') ||
           /[.-]/.test(n) ||
           /^[A-Z][A-Z0-9]+s?$/.test(n) ||

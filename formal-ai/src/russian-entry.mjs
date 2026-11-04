@@ -41,7 +41,7 @@ export function russianEntry(pos, word, rendered, head, page = '') {
     return {
       pos: 'noun',
       lemma: pluralOnly ? cells['pl.nom'] || word : word,
-      gender: rendered.gender || 'm',
+      gender: rendered.gender || formGender(word, cells),
       animate: Boolean(rendered.animate),
       pluraliaTantum: Boolean(pluralOnly),
       at: 'в',
@@ -206,4 +206,17 @@ export function regularEntry(
     };
   }
   return null;
+}
+
+/**
+ * A declension table without a gender tag (Великобритания): the forms show
+ * it. -а/-я is feminine, -о/-е neuter, a consonant masculine; -ь is
+ * feminine when its instrumental is -ью (тетрадью), else masculine.
+ */
+function formGender(word, cells) {
+  const nom = cells['sg.nom'] || word;
+  if (/ь$/.test(nom)) {
+    return /ью$/.test(cells['sg.ins'] || '') ? 'f' : 'm';
+  }
+  return /[ая]$/.test(nom) ? 'f' : /[оеё]$/.test(nom) ? 'n' : 'm';
 }
