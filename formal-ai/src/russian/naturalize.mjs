@@ -648,7 +648,6 @@ function renderEvent(s, ctx) {
     return words.filter(Boolean).join(' ');
   }
   if (entry.experiencer && objects.length) {
-    // "I like tea" → мне нравится чай
     subjectText =
       s.question?.slot === 'subject' ? '' : renderEntity(s.subject, 'dat', ctx);
     const theme = objects[0];
