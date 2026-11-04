@@ -1,6 +1,7 @@
 /** Dictionary-derived evidence shared by the resolver and sense scorer. */
 import { matchingDefinition } from './wiktionary.mjs';
 import { PREPOSITIONS } from '../english/function-words.mjs';
+import { changeOfState } from './reflexive.mjs';
 
 export function publicSenses(entries, title, pos) {
   const own = entries.get(title) || [];
@@ -303,24 +304,52 @@ export function collocationSenses(senses) {
 }
 
 /** Link only reflexive counterparts attested for this English predicate. */
-export function linkReflexiveSenses(plans, lexicon) {
-  // Reflexive counterparts must be attested in this English verb's own
-  // translation tables; never manufacture a Russian lemma by suffix alone.
+export function linkReflexiveSenses(plans, lexicon, attested = () => null) {
+  // Evidence comes from English translations or Russian dictionary links.
   for (const plan of plans.filter((p) => p.pos === 'verb')) {
+    const frames = plans
+      .filter((p) => p.lemma === plan.lemma)
+      .flatMap(
+        (p) => p.voiceFrames || p.senses?.flatMap((s) => s.frames || []) || []
+      );
+    const middleOnly = !frames.includes('intransitive');
+    // a counterpart known only from the Russian dictionary may be a meaning
+    // of its own (платиться "to pay for it"): it needs an English verb whose
+    // subject undergoes the event, or a middle use of a transitive-only one
+    const undergoes =
+      middleOnly || plans.some((p) => p.lemma === plan.lemma && p.ergative);
+
     const concepts = lexicon
       .lookup('verb', plan.lemma)
       .map((id) => lexicon.get(id));
     for (const c of concepts) {
-      // An attested intransitive reading already works without an object.
-      // Do not replace it with a different reflexive synonym or register.
-      if (c.frames?.includes('intransitive')) {
+      if (!c.ru || /с[яь]$/.test(c.ru.lemma)) {
+        continue;
+      }
+      if (
+        c.frames?.includes('intransitive') &&
+        !c.frames.includes('transitive')
+      ) {
         continue;
       }
       const reflexive = concepts.find(
         (other) => other.ru?.lemma === `${c.ru?.lemma}ся`
       );
-      if (reflexive) {
-        c.ru.intransitive = reflexive.ru;
+      const middle =
+        c.frames?.includes('transitive') && !c.frames.includes('intransitive');
+      const counterpart =
+        reflexive?.ru || (undergoes || middle ? attested(c.ru, plan) : null);
+      if (counterpart) {
+        c.ru.intransitive = counterpart;
+        c.ru.intransitiveMiddleOnly = middleOnly || middle;
+        c.ru.intransitiveRussian = !reflexive;
+        // the same meaning in another voice, or a change of state ("to come
+        // to an end"), happens to a thing; a reflexive meaning of its own
+        // ("to gather": встречаться) is done by people as well
+        c.ru.anticausative =
+          !reflexive ||
+          reflexive.gloss === c.gloss ||
+          changeOfState(reflexive.definition || reflexive.gloss);
       }
     }
   }

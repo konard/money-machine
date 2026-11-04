@@ -1,3 +1,12 @@
+import {
+  voiceDictionary,
+  englishErgative,
+  englishVoiceFrames,
+  reflexivePages,
+  reflexiveAspect,
+  reflexivePartner,
+} from './sources/reflexive.mjs';
+import { learnActionNouns } from './sources/action-nouns.mjs';
 import { currencyPlans } from './sources/currencies.mjs';
 import { predicateEvidence } from './english/participle-evidence.mjs';
 /** Resolve vocabulary, senses and Russian forms from public dictionaries. */
@@ -441,8 +450,46 @@ export async function resolveText(
   }
 
   await completeDefinitions(plans, options, entries, { words, forms, lexicon });
+  // Seed entries still need voice evidence from their public dictionary pages.
+  const voicePlans = [...plans];
+  const voiceLemmas = new Set([
+    ...entries.keys(),
+    ...tokenize(text).flatMap((token) =>
+      readings(token, lexicon)
+        .filter((r) => r.pos === 'verb')
+        .map((r) => r.lemma)
+    ),
+  ]);
+  for (const title of voiceLemmas) {
+    if (title && lexicon.lookup('verb', title).length) {
+      voicePlans.push({
+        lemma: title,
+        pos: 'verb',
+        senses: [
+          {
+            russian: lexicon.lookup('verb', title).flatMap((id) => {
+              const ru = lexicon.get(id)?.ru;
+              return [ru?.lemma, ru?.perfective?.lemma]
+                .filter(Boolean)
+                .map((word) => ({ word }));
+            }),
+          },
+        ],
+      });
+    }
+  }
+  const voiceEvidence = await voiceDictionary(
+    voiceLemmas,
+    entries,
+    lexicon,
+    options
+  );
+  for (const plan of voicePlans) {
+    plan.voiceFrames = englishVoiceFrames(voiceEvidence, plan.lemma);
+    plan.ergative = englishErgative(voiceEvidence, plan.lemma);
+  }
   const russianWords = new Set();
-  for (const plan of plans) {
+  for (const plan of voicePlans) {
     for (const s of plan.senses) {
       s.russian.forEach((c) => {
         russianWords.add(c.word);
@@ -522,7 +569,7 @@ export async function resolveText(
   );
   partnerPages.forEach((v, k) => ruPages.set(k, v));
   const government = await governmentPages(
-    plans
+    voicePlans
       .filter((p) => p.pos === 'verb')
       .flatMap((p) => p.senses.flatMap((s) => s.russian.map((c) => c.word)))
       .concat(
@@ -531,6 +578,15 @@ export async function resolveText(
           (w) => !languageSection(ruPages.get(w) || '', 'Russian')
         )
       ),
+    options
+  );
+
+  const reflexives = await reflexivePages(
+    voicePlans
+      .filter((p) => p.pos === 'verb')
+      .flatMap((p) => p.senses.flatMap((s) => s.russian.map((c) => c.word))),
+    ruPages,
+    government,
     options
   );
 
@@ -544,7 +600,7 @@ export async function resolveText(
   phraseGovernment.forEach((page, word) => government.set(word, page));
   const rendered = new Map();
   const want = [];
-  for (const plan of plans) {
+  for (const plan of voicePlans) {
     for (const s of plan.senses) {
       const words = s.russian.flatMap((c) =>
         c.word.includes(' ') && plan.pos !== 'adv'
@@ -566,6 +622,21 @@ export async function resolveText(
               want.push([p, pe]);
             }
           }
+        }
+      }
+    }
+  }
+  for (const word of new Set(reflexives.values())) {
+    const e = ruEntry(word, 'verb');
+    if (e) {
+      want.push([word, e]);
+      for (const p of [e.headword?.named?.pf, e.headword?.named?.impf].filter(
+        Boolean
+      )) {
+        const partner = unstress(p.split(',')[0]).trim();
+        const pe = ruEntry(partner, 'verb');
+        if (pe) {
+          want.push([partner, pe]);
         }
       }
     }
@@ -779,7 +850,39 @@ export async function resolveText(
       resolved.push(id);
     });
   }
-  linkReflexiveSenses(plans, lexicon);
+  linkReflexiveSenses(voicePlans, lexicon, (entry, plan) => {
+    const word =
+      reflexives.get(entry.lemma) || reflexives.get(entry.perfective?.lemma);
+    const ru =
+      word &&
+      russian(word, 'verb', {
+        word,
+        attested: true,
+        aspect: reflexiveAspect(government.get(word)),
+      });
+    if (!ru) {
+      return null;
+    }
+    const partner = reflexivePartner(government.get(word));
+    if (ru.aspect === 'perf' && partner) {
+      const imperfective = russian(partner, 'verb', {
+        word: partner,
+        attested: true,
+      });
+      if (imperfective) {
+        return { ...imperfective, perfective: ru };
+      }
+    }
+    const perfectiveWord = reflexives.get(entry.perfective?.lemma) || partner;
+    if (ru.aspect === 'impf' && perfectiveWord) {
+      ru.perfective = russian(perfectiveWord, 'verb', {
+        word: perfectiveWord,
+        attested: true,
+        aspect: 'pf',
+      });
+    }
+    return finishVerb(ru, { lemma: plan.lemma, gloss: '' });
+  });
   // how common each candidate translation is, where a word has several
   const ambiguous = resolved
     .map((id) => lexicon.get(id))
@@ -818,6 +921,7 @@ export async function resolveText(
     }
   }
   await learnInfinitiveFrames(entries, lexicon, options);
+  await learnActionNouns(text, lexicon, options);
   lexicon.markAsked([...words, ...done]);
   if (!only) {
     await sameFormPasts(text, { lexicon, fetchImpl, cache });
@@ -836,7 +940,9 @@ export async function resolveText(
         (r) => r.pos !== 'propn'
       )
   );
-  const names = nameCandidates(text, lexicon);
+  const names = [
+    ...new Set([...nameCandidates(text, lexicon), ...dictionaryNames.keys()]),
+  ];
   const internal = new Set(
     [...text.matchAll(/\b[a-z][a-z'-]*[,;(]?\s+([A-Z][a-z]+)\b/g)].map(
       (m) => m[1]

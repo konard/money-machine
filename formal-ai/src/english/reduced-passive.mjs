@@ -11,12 +11,9 @@ const transitive = (verb, lexicon) => {
   const frames = (verb.candidates || []).map(
     (id) => lexicon?.get(id)?.frames || []
   );
-  // no sense is intransitive only ("arrived", "grew" stay active)
-  return (
-    frames.length > 0 &&
-    (frames.some((f) => f.includes('transitive')) ||
-      !frames.some((f) => f.includes('intransitive')))
-  );
+  // An attested objectless reading wins for a non-person subject:
+  // "Prices increased" stays past even when other senses take an object.
+  return frames.length > 0 && !frames.some((f) => f.includes('intransitive'));
 };
 
 // headlines drop articles: "Payment received", "No fee charged"; "The bank

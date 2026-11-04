@@ -342,6 +342,8 @@ function contentReadings(token, lexicon, add) {
     ((lexicon.givenNames?.has(token.text) &&
       lexicon.nameLabel?.(token.text) &&
       !(token.first && lexicon.documentWords?.has(w))) ||
+      (lexicon.entityNames?.has(token.text) &&
+        lexicon.nameLabel?.(token.text)) ||
       (!token.first && lexicon.nameLabel?.(token.text)) ||
       (token.first &&
         lexicon.documentNames?.has(token.text) &&
@@ -373,7 +375,12 @@ function contentReadings(token, lexicon, add) {
       add('noun', irr.lemma, { number: 'pl' }, concepts);
     } else if (irr.feature === 'past') {
       add('verb', irr.lemma, { form: 'past' }, concepts);
-    } else if (irr.feature === 'participle') {
+    } else if (
+      irr.feature === 'participle' &&
+      // "visited" listed only as a participle is still the regular -ed form,
+      // simple past as well: the stem analysis below reads it as past|pp
+      !stems(w).some((s) => s.feature === 'ed' && s.lemma === irr.lemma)
+    ) {
       add('verb', irr.lemma, { form: 'pp' }, concepts);
     }
   }

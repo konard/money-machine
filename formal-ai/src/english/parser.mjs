@@ -99,10 +99,9 @@ export function parseNP(c, options = {}) {
         type: 'np',
         number: 'sg',
         action: { verb: head(t, r), ...tail },
-        nominalization:
-          has(t, 'noun') && !tail.objects.length && !tail.mods.length
-            ? { type: 'np', head: head(t, reading(t, 'noun')), number: 'sg' }
-            : null,
+        nominalization: has(t, 'noun')
+          ? { type: 'np', head: head(t, reading(t, 'noun')), number: 'sg' }
+          : null,
       },
       options
     );

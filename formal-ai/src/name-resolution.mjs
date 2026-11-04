@@ -12,12 +12,12 @@ import {
   russianTemplates,
   renderRussian,
 } from './sources/wiktionary.mjs';
-import { russianEntry, regularEntry } from './russian-entry.mjs';
+import { russianEntry, regularEntry, compoundNoun } from './russian-entry.mjs';
 
 const WIKIDATA = 'https://www.wikidata.org/w/api.php';
 /**
- * Russian labels of names from Wikidata: the first search hit whose
- * English label or alias is exactly the name.
+ * Rank exact Wikidata labels and aliases using popularity and document
+ * evidence; only the selected entity supplies the Russian name.
  */
 export async function resolveNames(
   names,
@@ -67,10 +67,12 @@ export async function resolveNames(
   const overlap = await entityContext(entities, topic, options);
   const links = (id) => Object.keys(entities[id]?.sitelinks || {}).length;
   for (const [name, candidates] of hits) {
+    const commercialEntity = (id) =>
+      overlap.organization(id) && overlap.commercial(name);
     const ids = candidates.filter((id) => {
       const e = entities[id];
       return (
-        (!givenOnly.has(name) || isGivenName(e)) &&
+        (!givenOnly.has(name) || isGivenName(e) || commercialEntity(id)) &&
         !unrelatedPerson(name, e) &&
         (verified.get(name)?.has(id) ||
           Object.values(e?.labels || {}).some((a) => a.value === name) ||
@@ -83,15 +85,31 @@ export async function resolveNames(
       hits.delete(name);
       continue;
     }
-    // a word is the thing labelled so before one that merely has it as
-    // an alias ("José" the given name, not Saint Joseph); acronyms are
-    // aliases by nature (EU)
+    // An exact label supplies a modest prior over a matching alias;
+    // acronyms are aliases by nature.
     const labelled = (id) =>
       !/^[A-Z0-9]{2,6}s?$/.test(name) &&
       ['en', 'mul'].some((l) => entities[id]?.labels?.[l]?.value === name)
         ? 1
         : 0;
-    const given = (id) => givenRank(lexicon, name, entities[id]);
+    const personal = (id) =>
+      isGivenName(entities[id]) ||
+      (entities[id]?.claims?.P31 || []).some((c) =>
+        ['Q5', 'Q101352'].includes(c.mainsnak?.datavalue?.value?.id)
+      );
+    // Contextual evidence for a non-person entity can disambiguate a
+    // capitalized common word from its given-name or surname namesake.
+    const contextualEntity = ids.some(
+      (id) => !personal(id) && commercialEntity(id)
+    );
+    const given = (id) =>
+      contextualEntity ? 0 : givenRank(lexicon, name, entities[id]);
+    const score = (id) =>
+      Math.log1p(links(id)) +
+      Math.log1p(overlap(id, name)) +
+      0.5 * labelled(id) +
+      (contextualEntity && commercialEntity(id) ? 3 : 0) -
+      (contextualEntity && personal(id) ? 8 : 0);
     // the English text names what English calls so: "EU" is an English
     // alias of the European Union, only a Portuguese one of the US
     const english = (id) =>
@@ -105,14 +123,22 @@ export async function resolveNames(
     const id = [...ids].sort(
       (a, b) =>
         given(b) - given(a) ||
-        labelled(b) - labelled(a) ||
+        (contextualEntity ? Number(personal(a)) - Number(personal(b)) : 0) ||
         english(b) - english(a) ||
-        overlap(b, name) - overlap(a, name) ||
+        score(b) - score(a) ||
         links(b) - links(a)
     )[0];
     hits.set(name, id);
     lexicon.nameEntities ||= new Map();
     lexicon.nameEntities.set(name, entities[id]);
+    // A previously learned dictionary/name paradigm belongs to the old entity.
+    lexicon.nameEntries?.delete(name);
+    lexicon.entityNames?.delete(name);
+    if (commercialEntity(id) && !personal(id)) {
+      (lexicon.entityNames ||= new Set()).add(name);
+      lexicon.givenNames?.delete(name);
+      lexicon.nameGenders?.delete(name);
+    }
     if (isGivenName(entities[id])) {
       markGivenName(lexicon, name, entities[id]);
     }
@@ -133,11 +159,27 @@ export async function resolveNames(
       label;
     // only a Cyrillic label is a translation; a different Latin label
     // means the search hit another thing (MRR → a magazine)
-    // An appended subtype does not translate the acronym itself.
-    const subtype =
+    // A descriptive label retaining the Latin name does not translate
+    // the name itself (a product, video or edition of that brand).
+    const subtype = ru?.includes(name) && ru !== name;
+    const unsupportedExpansion =
+      topic &&
       /^[A-Z0-9]{2,6}$/.test(name) &&
-      [`${name}-`, `${name} `].some((prefix) => ru?.startsWith(prefix));
-    if (ru && !subtype && !/\(|,/.test(ru) && /[а-яё]/i.test(ru)) {
+      !(
+        /^[А-ЯЁ]{2,6}$/.test(ru || '') &&
+        ((!entities[id]?.descriptions && !entities[id]?.claims) ||
+          links(id) >= 100)
+      ) &&
+      !entities[id]?.claims?.P297?.length &&
+      !entities[id]?.claims?.P298?.length &&
+      !overlap.topicEvidence(id, name);
+    if (
+      ru &&
+      !unsupportedExpansion &&
+      !subtype &&
+      !/\(|,/.test(ru) &&
+      /[а-яё]/i.test(ru)
+    ) {
       lexicon.setNameLabel(name, ru);
     } else {
       // Exact entities without a Russian label still form one name.
@@ -185,6 +227,7 @@ export async function declineNames(hits, { lexicon, fetchImpl, cache }) {
         entry = null;
       }
     }
+    entry ||= compoundNoun(label, (word) => regularEntry('noun', { word }));
     entry ||= /[аяь]$|[бвгджзклмнпрстфхцчшщ]$/.test(label)
       ? regularEntry('noun', { word: label })
       : null;

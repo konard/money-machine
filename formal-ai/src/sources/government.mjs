@@ -1,7 +1,7 @@
 /** Russian argument frames from public dictionary annotations and examples. */
 import { chunks, getJson, pool } from './fetch.mjs';
 import { languageSection, russianTemplates, unstress } from './wiktionary.mjs';
-import { definitionBlocks } from './verb-frames.mjs';
+import { definitionBlocks, exampleInstrumental } from './verb-frames.mjs';
 import { reuseMorphology } from './translation-morphology.mjs';
 
 const CASES = {
@@ -170,7 +170,9 @@ function englishFrame(text, sense) {
   const best = blocks.sort((a, b) => score(b) - score(a))[0];
   const chosen = best && (blocks.length === 1 || score(best) > 0) ? best : '';
   const args = atoms(chosen);
-  const result = {};
+  const result = /\{\{\+obj\|ru\|[^{}]*(?:^|[| +])inf(?:[<| }])/.test(chosen)
+    ? { infinitiveComplement: true }
+    : {};
   if (args.length) {
     // An infinitive controller outranks a topic or an instrument.
     const personal = args.find(
@@ -251,14 +253,18 @@ function russianNotes(text, sense) {
         .filter(
           (line) =>
             !/\{\{(?:устар|редк|прост|обсц)[.|}]/.test(line) &&
-            (!/инф\./u.test(line) || sense.frames?.includes('object-to'))
+            (!/инф\./u.test(line) ||
+              /\{\{помета\|/.test(line) ||
+              sense.frames?.includes('object-to'))
         )
         .join('\n')
         .matchAll(/\{\{помета\|([^{}]+)\}\}/g),
     ]
       .map((m) => m[1])
       .filter((s) =>
-        /^(?:кого|кому|чего|чему|кем|чем|что|на |с |к |о |за )/.test(s)
+        /^(?:кого|кому|чего|чему|кем|чем|что|инф\.|с инфинитивом|на |с |к |о |за )/.test(
+          s
+        )
       ),
   ];
   const args = [];
@@ -319,6 +325,9 @@ function russianNotes(text, sense) {
   }
   const theme = args.find((a) => a.case === 'acc' && !a.preposition);
   const result = args.length ? { government: theme || args[0] } : {};
+  if (notes.some((note) => /инф\.|инфинитив/.test(note))) {
+    result.infinitiveComplement = true;
+  }
   // «надеяться на что-либо» in a definition: the preposition the verb
   // governs, matched to the English marker it corresponds to
   const markerGovernment = {};
@@ -361,6 +370,9 @@ export function verbGovernment(english, russian, sense) {
   const notes = russianNotes(russian, sense);
   const frame = englishFrame(english, sense);
   const result = { ...notes, ...frame };
+  if (!result.government && exampleInstrumental(russian)) {
+    result.government = gov('ins');
+  }
   if (notes.markerGovernment || frame.markerGovernment) {
     result.markerGovernment = {
       ...notes.markerGovernment,

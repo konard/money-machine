@@ -11,6 +11,7 @@
  *   formal-ai learn <english-noun>                fetch a noun from Wikidata
  *   formal-ai ground                              verify concept groundings
  *   --offline                                    skip translation lookups
+ *   --methods documentTopic=0.5,roundTrip=off    weight or turn off a method
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -18,6 +19,8 @@ import { translateDocument, splitSentences } from '../src/document.mjs';
 import { formalize, toLino } from '../src/formalize.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
 import { DocumentMemory } from '../src/senses.mjs';
+import { topicProfile } from '../src/topic-context.mjs';
+import { parseMethods } from '../src/methods.mjs';
 import { resolveForTranslation } from '../src/translate.mjs';
 
 function parseArgs(argv) {
@@ -62,6 +65,7 @@ const options = (args) => ({
   you: args.you === 'ty' ? 'ty' : 'vy',
   speakerGender: args['speaker-gender'] === 'f' ? 'f' : 'm',
   addresseeGender: args['addressee-gender'] === 'f' ? 'f' : 'm',
+  ...(args.methods ? { methods: parseMethods(String(args.methods)) } : {}),
 });
 
 const HELP = readFileSync(new URL(import.meta.url), 'utf8')
@@ -101,6 +105,8 @@ async function main() {
       await resolveForTranslation(text, options(args));
       const lexicon = loadLexicon();
       const memory = new DocumentMemory();
+      memory.setTopic(text);
+      memory.profile = topicProfile(text, lexicon);
       for (const sentence of splitSentences(text.replace(/\s+/g, ' '))) {
         const formal = formalize(sentence, lexicon, memory);
         process.stdout.write(

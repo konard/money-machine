@@ -1,0 +1,439 @@
+{
+  "method": {
+    "date": "2026-11-04",
+    "baseline": "Same source snapshot with this task’s gerund changes removed; other concurrent changes preserved.",
+    "sources": "Cached and recorded public Wiktionary pages merged by title; recorded inflection, frequency and entity responses reused by request hash. Missing responses stayed missing. Three Russian raw pages were verified live using the required generic User-Agent.",
+    "publicPages": [
+      "https://ru.wiktionary.org/wiki/наслаждаться",
+      "https://ru.wiktionary.org/wiki/отслеживание",
+      "https://ru.wiktionary.org/wiki/продажа"
+    ],
+    "execution": "Temporary source copies with stub fetch; request pacing disabled only in those copies. Runtime fetch.mjs unchanged.",
+    "selection": "Seven task examples, twelve seeded website suffix candidates (including non-gerund controls), two selected website sentences; separate 30 website sentences from sample.mjs sentence 30 20261104.",
+    "limits": "Completeness means parser/render coverage, not translation quality. Missing lexical responses and existing sense/parse problems limit these controlled runs."
+  },
+  "targeted": {
+    "count": 21,
+    "changed": 11,
+    "completeBefore": 13,
+    "completeAfter": 13,
+    "sentences": [
+      {
+        "source": "task example",
+        "english": "I enjoy reading books.",
+        "before": "Я получаю удовольствие читать книги.",
+        "after": "Я наслаждаюсь чтением книг.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "task example",
+        "english": "Reading books is fun.",
+        "before": "Читать книги забавно.",
+        "after": "Чтение книг забавно.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "task example",
+        "english": "Selling templates takes time.",
+        "before": "Продавать шаблоны, которые взятия хронометрируют.",
+        "after": "Продажа шаблонов, которые взятия хронометрируют.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "task example",
+        "english": "I work without tracking.",
+        "before": "Я работаю без того, чтобы отслеживать.",
+        "after": "Я работаю без отслеживания.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "task example",
+        "english": "I think about reading books.",
+        "before": "Я думаю о том, чтобы читать книги.",
+        "after": "Я думаю о чтении книг.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "task example",
+        "english": "I continue reading books.",
+        "before": "Я продолжаю читать книги.",
+        "after": "Я продолжаю чтение книг.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "task example",
+        "english": "I work while reading books.",
+        "before": "Я работаю, пока читать тома.",
+        "after": "Я работаю, читая тома.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "strategies.json#lessonface-music-arts-lessons",
+        "english": "Recording audition or demo video",
+        "before": "Прослушивание записи или видео демо",
+        "after": "Прослушивание записи или видео демо",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "docs/business-plans/direct-ad-space-dev-sites.md",
+        "english": "Building an audience",
+        "before": "Строить публику",
+        "after": "Строительство публики",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "docs/business-plans/webcomics-webtoon-canvas-tapas.md",
+        "english": "Writers without drawing skill can partner with an artist; the platforms' AI-art rules should be checked first.",
+        "before": "Писатели; правила AI-art перронов должны проверяться сперва [without drawing skill can partner with an artist].",
+        "after": "Писатели; правила AI-art перронов должны проверяться сперва [without drawing skill can partner with an artist].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "docs/business-plans/recover-money-you-are-owed.md",
+        "english": "Nothing may be owed to you",
+        "before": "Ничего может быть [owed to you]",
+        "after": "Ничего может быть [owed to you]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "docs/business-plans/cuemath-online-math-tutor.md",
+        "english": "Evening/night slots for US, UK and Australian students pay best.",
+        "before": "Вечер/вечер, UK и студенты Australian платят [slots for US best].",
+        "after": "Вечер/вечер, UK и студенты Australian платят [slots for US best].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "strategies.json#lora-model-creator-incentives",
+        "english": "training data rights",
+        "before": "Данные тренировки [rights]",
+        "after": "Данные тренировки [rights]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "docs/business-plans/interactive-fiction-choice-of-games.md",
+        "english": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+        "before": "[Writing and selling original text is legal in all reference countries; royalties are taxable.]",
+        "after": "Письменность, и продажа первоначального текста во всех странах ссылки юридическо [royalties are taxable].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "docs/business-plans/robo-advisor-index-dividends.md",
+        "english": "Investing in domestic funds is legal everywhere (hence 100%).",
+        "before": "Investing юридический везде (отсюда 100%).",
+        "after": "Investing юридический везде (отсюда 100%).",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "docs/business-plans/minecraft-server-tebex-store.md",
+        "english": "Handling player support and disputes",
+        "before": "Управлять поддержкой игрока [disputes]",
+        "after": "Управлять поддержкой игрока [disputes]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "docs/business-plans/cad-drafting-3d-rendering.md",
+        "english": "vetting may reject newcomers",
+        "before": "Отвергайте [vetting may newcomers]",
+        "after": "Отвергайте [vetting may newcomers]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "docs/business-plans/game-playtesting.md",
+        "english": "BetaTesting and Antidote terms not re-checked.",
+        "before": "BetaTesting и условия Antidote [re-checked].",
+        "after": "BetaTesting и условия Antidote [re-checked].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "docs/business-plans/bank-account-signup-bonuses.md",
+        "english": "Closing accounts after the hold period",
+        "before": "Закрывать счета после периода захвата",
+        "after": "Закрывать счета после периода захвата",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "docs/business-plans/direct-ad-space-dev-sites.md",
+        "english": "Advertisers pay to reach developers without tracking.",
+        "before": "Рекламодатели платят, чтобы доходить разработчикам без того, чтобы отслеживать.",
+        "after": "Рекламодатели платят, чтобы доходить разработчикам без отслеживания.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "docs/business-plans/hotmart-course-affiliate-network.md",
+        "english": "Selling courses is legal everywhere.",
+        "before": "Продавать последовательности везде юридическо.",
+        "after": "Продажа последовательностей везде юридическо.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      }
+    ]
+  },
+  "random30": {
+    "count": 30,
+    "changed": 3,
+    "completeBefore": 13,
+    "completeAfter": 13,
+    "sentences": [
+      {
+        "source": "random seed 20261104",
+        "english": "'Freiberufler' or 'Gewerbetreibender' (Einzelunternehmen).",
+        "before": "'Freiberufler или 'Gewerbetreibender (индивидуальный предприниматель) [' '].",
+        "after": "'Freiberufler или 'Gewerbetreibender (индивидуальный предприниматель) [' '].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "ISP ToS violation",
+        "before": "Нарушение ISP ToS",
+        "after": "Нарушение ISP ToS",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Legal; Roblox itself has been blocked by some governments (platform availability, not illegality of the activity).",
+        "before": "Юридический; сам Roblox блокирован некоторыми правительствами (наличие перрона), деятельность [not illegality of].",
+        "after": "Юридический; сам Roblox блокирован некоторыми правительствами (наличие перрона), деятельность [not illegality of].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Legal across the set; must own rights to text and images.",
+        "before": "Через набор юридическо; владейте, и образы [must rights to text].",
+        "after": "Через набор юридическо; владейте, и образы [must rights to text].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "countries where a given app is not licensed",
+        "before": "Страны, где данное приложение не [licensed]",
+        "after": "Страны, где данное приложение не [licensed]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "NativeCamp's tutor portal shows 430 NCC per booked class and 192 NCC per 25-minute instant lesson, plus a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks; it says applications from some countries are paused.",
+        "before": "NativeCamp — портал репетитора, и NCC за 25, мелкий немедленный урок, плюс; оно говорит [shows 430 NCC per booked class a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks applications from some countries are paused].",
+        "after": "NativeCamp — портал репетитора, и NCC за 25, мелкий немедленный урок, плюс; оно говорит [shows 430 NCC per booked class a 2,200 NCC new-tutor incentive for 100 lesson slots in two weeks applications from some countries are paused].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "_Confidence: estimated; last checked 2026-11-03._",
+        "before": "Confidence; длитесь, 3 [estimated checked 2026-11].",
+        "after": "Confidence; длитесь, 3 [estimated checked 2026-11].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Sole proprietorship ('獨資商號') registered with the city/county government.",
+        "before": "Подошва (獨資商號), с правительством города/графства [proprietorship ' ' registered].",
+        "after": "Подошва (獨資商號), с правительством города/графства [proprietorship ' ' registered].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Cross-post to all stores (MakerWorld exclusives cannot be sold elsewhere under the exclusive licence)",
+        "before": "Cross-post во все магазины (MakerWorld) [exclusives can n't be sold elsewhere under the exclusive licence]",
+        "after": "Cross-post во все магазины (MakerWorld) [exclusives can n't be sold elsewhere under the exclusive licence]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Database of used clues",
+        "before": "База данных [of used clues]",
+        "after": "База данных [of used clues]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Process orders via pipeline + QA",
+        "before": "Порядки Process через разработку и обеспечение качества",
+        "after": "Порядки Process через разработку и обеспечение качества",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "AI name generation and trademark screening",
+        "before": "Создание имени ИИ и отбор товарного знака",
+        "after": "Создание имени ИИ и отбор товарного знака",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Month 1-2: accumulate points",
+        "before": "Месяц 1–2: накопите стрелку",
+        "after": "Месяц 1–2: накопите стрелку",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Selling your own used goods is legal everywhere.",
+        "before": "Продавать ваши собственные используемые толки везде юридическо.",
+        "after": "Продажа ваших собственных используемых толков везде юридическо.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "_Generated from `data/strategies/micro-tasks.json` by `npm run build:catalog`.",
+        "before": "Generated из `data/strategies/micro-tasks.json` `npm run build:catalog`.",
+        "after": "Generated из `data/strategies/micro-tasks.json` `npm run build:catalog`.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Go to locations and complete tasks",
+        "before": "Го в положения и полные задания",
+        "after": "Го в положения и полные задания",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "policy disapproval fixes",
+        "before": "Неодобрение политики чинит",
+        "after": "Неодобрение политики чинит",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "JustAnswer pays verified professionals a share of customer payments per answer.",
+        "before": "JustAnswer платит доказанным профессионалам акцию платежей клиента за ответ.",
+        "after": "JustAnswer платит доказанным профессионалам акцию платежей клиента за ответ.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Convert Flipkart, Myntra, Nykaa and other Indian store links into EarnKaro profit links, share them in WhatsApp/Telegram groups, and withdraw from ₹10.",
+        "before": "Превратите Flipkart, Myntra, Nykaa и другие ссылки магазина Indian в ссылки прибыли EarnKaro, разделите их в группах WhatsApp/Telegram и выводите от ₹10.",
+        "after": "Превратите Flipkart, Myntra, Nykaa и другие ссылки магазина Indian в ссылки прибыли EarnKaro, разделите их в группах WhatsApp/Telegram и выводите от ₹10.",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "AI texture tools help production.",
+        "before": "Строение ИИ [tools help production].",
+        "after": "Строение ИИ [tools help production].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Publish the same ebook to every non-Amazon store plus subscription and library channels through one aggregator, instead of Amazon-exclusive KDP Select.",
+        "before": "Опубликуйте одинаковую электронную книгу в каждый магазин non-Amazon плюс подписка и библиотека, Amazon-exclusive KDP Select [channels through one aggregator instead of].",
+        "after": "Опубликуйте одинаковую электронную книгу в каждый магазин non-Amazon плюс подписка и библиотека, Amazon-exclusive KDP Select [channels through one aggregator instead of].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "**Automate**: portfolio listing, pricing and renewal decisions with a rules engine, and trademark screening before purchase.",
+        "before": "Automate: реклама портфеля, оценивать и обновление и зарегистрируйте как товарный знак просеивать до покупки [decisions with a rules engine].",
+        "after": "Automate: реклама портфеля, оценивать и обновление и зарегистрируйте как товарный знак просеивание до покупки [decisions with a rules engine].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Tax reporting thresholds",
+        "before": "Истощите сообщать пороги",
+        "after": "Истощите сообщать пороги",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Chase pays within 15 days of meeting requirements; UK switch bonuses typically within weeks of the switch.",
+        "before": "[Chase pays within 15 days of meeting requirements; UK switch bonuses typically within weeks of the switch.]",
+        "after": "Погонитесь за зарплаты в пределах 15 дней из встречи; выключатель Великобритании [requirements bonuses typically within weeks of the switch].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Winners are experienced contributors who specialise in one or two codebases and get assigned bounties before posting PRs.",
+        "before": "Winners — опытные благодетели или два, и мерзавец назначил, прежде чем посылать PRs [who specialise in one codebases bounties].",
+        "after": "Winners — опытные благодетели или два, и мерзавец назначил, прежде чем посылать PRs [who specialise in one codebases bounties].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "weekly (Mondays) after 30-day hold",
+        "before": "Еженедельник (понедельники) после 30, захват дня",
+        "after": "Еженедельник (понедельники) после 30, захват дня",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Creating the original notes",
+        "before": "Creating [the original notes]",
+        "after": "Creating [the original notes]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "skill bar is high",
+        "before": "Бар умения высок",
+        "after": "Бар умения высок",
+        "completeBefore": 1,
+        "completeAfter": 1
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Open time slots",
+        "before": "Откройте время [slots]",
+        "after": "Откройте время [slots]",
+        "completeBefore": 0,
+        "completeAfter": 0
+      },
+      {
+        "source": "random seed 20261104",
+        "english": "Upwork: variable 0-15% freelancer service fee set per contract since May 2025 (pre-May-2025 contracts 10%), per Upwork's SEC 10-Q; Upwork help pages block automated fetch.",
+        "before": "Upwork: переменная, с тех пор как смогите 2025 (pre-May), 2025 контрактов, Upwork — 10-Q; страницы помощи Upwork, которые блок автоматизировал, приносят [0-15% freelancer service fee set per contract 10% per].",
+        "after": "Upwork: переменная, с тех пор как смогите 2025 (pre-May), 2025 контрактов, Upwork — 10-Q; страницы помощи Upwork, которые блок автоматизировал, приносят [0-15% freelancer service fee set per contract 10% per].",
+        "completeBefore": 0,
+        "completeAfter": 0
+      }
+    ]
+  }
+}

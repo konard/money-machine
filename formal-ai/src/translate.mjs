@@ -6,6 +6,7 @@ import { loadLexicon } from './lexicon.mjs';
 import { formalize } from './formalize.mjs';
 import { naturalizeRussian } from './russian/naturalize.mjs';
 import { DocumentMemory } from './senses.mjs';
+import { topicProfile } from './topic-context.mjs';
 
 /** Resolve vocabulary before translating; offline mode skips all lookups. */
 export async function resolveForTranslation(text, options = {}) {
@@ -31,6 +32,7 @@ export class TranslationContext {
     this.lexicon = options.lexicon || loadLexicon();
     this.options = options;
     this.memory = new DocumentMemory();
+    this.memory.methods = options.methods;
     this.discourse = { referents: [] };
   }
 }
@@ -46,6 +48,13 @@ export function translateSentence(
   sentence,
   context = new TranslationContext()
 ) {
+  if (!context.memory.topic) {
+    context.memory.setTopic(context.options.topic || sentence);
+    context.memory.profile = topicProfile(
+      context.options.topic || sentence,
+      context.lexicon
+    );
+  }
   const formal = formalize(
     sentence,
     context.lexicon,

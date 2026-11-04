@@ -1,24 +1,13 @@
-/**
- * Context-based sense selection.
- *
- * New in this copy. Upstream Formal AI picks the first lexeme whose surface
- * matches. Here each candidate concept is scored by evidence from its
- * context, and the evidence is kept so a wrong choice can be traced to its
- * cause:
- *
- * - cue words near the ambiguous word, weighted by distance (the nearest
- *   words count most): weight = 1 + 2 / distance;
- * - selectional fit between a verb and its object (`object-class`);
- * - syntactic position for adverbs (`syntax degree` before an adjective);
- * - document memory: cue words from earlier sentences, decayed per sentence.
- */
+/** Context-based sense selection with traceable dictionary and corpus evidence. */
 
+import { methodWeight } from './methods.mjs';
 import {
   dictionaryContext,
   nounObjectContext,
   membershipContext,
 } from './sense-context.mjs';
 import { attachmentContext } from './attachment-context.mjs';
+import { documentTopicContext } from './topic-context.mjs';
 import { alternativeTokens } from './english/coordination-context.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
 
@@ -401,6 +390,15 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           why.push(`grammatical partner evidence (+${attached.toFixed(2)})`);
         }
         const semantic = dictionaryContext(node, concept, heads, lexicon);
+        const topic =
+          parsed.leftover?.length || parsed.unknown?.length
+            ? 0
+            : documentTopicContext(node, concept, lexicon, memory.profile) *
+              methodWeight(memory.methods, 'documentTopic');
+        score += topic;
+        if (topic) {
+          why.push(`distinctive document definitions (+${topic.toFixed(2)})`);
+        }
         if (node.pos === 'verb') {
           const membership = membershipContext(
             concept,
@@ -501,7 +499,9 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
               `${local.has(w.pos) ? 'cue' : 'other clause cue'} "${cue}" at distance ${distance} (+${weight.toFixed(2)})`
             );
           }
-          const remembered = memory.weight(cue);
+          // The same document occurrence cannot vote again through recency.
+          const remembered =
+            topic && memory.profile.has(stem(cue)) ? 0 : memory.weight(cue);
           if (remembered > 0) {
             score += remembered * 0.8;
             why.push(
@@ -704,6 +704,7 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         if (
           domain &&
           memory.mentions(domain, word) &&
+          !(topic && concept.cues?.includes(domain)) &&
           !(
             (concept.cues || []).includes(domain) &&
             memory.topicWeight(domain, word)

@@ -1,7 +1,9 @@
+import { shortParticiple, passiveFallbackTense } from './passive.mjs';
+export { shortParticiple } from './passive.mjs';
 import { renderFragment } from './fragment.mjs';
+import { quantityRange } from './quantity-range.mjs';
 import { markParenthetic, punctuateParenthetics } from './parenthetic.mjs';
 /** Naturalize meta-language statements into Russian, recording decisions. */
-
 import { periodicAdverb } from './periodic-adverb.mjs';
 import { degreeForm, quantityWord } from './degree.mjs';
 import { frontRelative } from './relative.mjs';
@@ -26,6 +28,7 @@ import {
   isPerson,
 } from './phrase.mjs';
 import { withPartner } from './partner.mjs';
+import { anticausative } from './anticausative.mjs';
 import {
   renderCopula,
   renderPossession,
@@ -33,7 +36,6 @@ import {
   copulaWord,
   shortFrom,
 } from './copula.mjs';
-
 /** Adverbs placed before the verb in Russian. */
 const PREVERBAL = new Set(
   'often always never sometimes usually already also still really only soon again'.split(
@@ -51,11 +53,8 @@ function habitualAdverb(concept, ctx) {
     )
   );
 }
-
 export const BYT_PAST = { m: 'был', f: 'была', n: 'было', pl: 'были' };
-
 export const lexEntry = (ctx, id) => ctx.lexicon.get(id);
-
 /** Naturalize formalized statements; return Russian text and decision notes. */
 export function naturalizeRussian(
   formal,
@@ -73,9 +72,15 @@ export function naturalizeRussian(
   statements.forEach((s, i) => {
     const ctx = {
       lexicon,
+      voiceReliable:
+        !(formal.unknown || []).length && !(formal.leftover || []).length,
       options: opts,
       notes,
       discourse,
+      adverbialAction:
+        s.link === 'conj.while' &&
+        !!s.entity?.action &&
+        !!statements[i - 1]?.subject,
       renderStatement,
       renderAction,
       renderParticiple,
@@ -132,6 +137,10 @@ export function naturalizeRussian(
       if (i > 0 && !s.separator) {
         pieces.push(',');
       }
+    } else if (ctx.adverbialAction) {
+      if (!s.separator) {
+        pieces.push(',');
+      }
     } else if (s.link && CONJUNCTIONS[s.link]) {
       const previous = statements[i - 1];
       const named = (e) => e?.name || e?.coordination;
@@ -182,7 +191,6 @@ export function naturalizeRussian(
   text = (text + (formal.punctuation || '')).replace(/(?<!\.)\.\.$/, '.');
   return { text, notes: [...notes] };
 }
-
 /** Record inanimate nouns as referents for later "it". */
 function remember(s, ctx) {
   const candidates = [s.subject, ...(s.objects || [])].filter(Boolean);
@@ -476,7 +484,7 @@ export function renderModifiers(mods, ctx, entry) {
   const before = [];
   const after = [];
   let negative = false;
-  for (const m of mods || []) {
+  for (const m of quantityRange(mods)) {
     if (m.kind === 'adverb') {
       const adv = periodicAdverb(lexEntry(ctx, m.concept), ctx.lexicon);
       if (!adv) {
@@ -567,12 +575,7 @@ function renderEvent(s, ctx) {
   ctx.motion = entry.motion;
   ctx.hasObject = (s.objects || []).length > 0;
   ctx.passive = s.voice === 'passive';
-  if (
-    entry.intransitive &&
-    !ctx.hasObject &&
-    !s.complementClause &&
-    !ctx.passive
-  ) {
+  if (anticausative(entry, s, ctx)) {
     entry = entry.intransitive;
   }
   // "like to read" → любить читать
@@ -693,12 +696,17 @@ function renderEvent(s, ctx) {
   const hasParticiple = entry.pastPassive || entry.perfective?.pastPassive;
   if (
     s.voice === 'passive' &&
-    isPerson(s.subject, ctx) &&
-    (passiveGovernment.case === 'dat' || !hasParticiple) &&
+    ((isPerson(s.subject, ctx) &&
+      (passiveGovernment.case === 'dat' || !hasParticiple)) ||
+      (entry.aspect === 'perf' && !hasParticiple)) &&
     !(s.modifiers || []).some((m) => m.relation === 'rel.by')
   ) {
     // A recipient passive is an indefinite personal clause: "вам платят".
-    const active = { ...s, voice: undefined };
+    const active = {
+      ...s,
+      voice: undefined,
+      tense: passiveFallbackTense(s, entry),
+    };
     return [
       ...words,
       governed(s.subject, passiveGovernment, ctx),
@@ -791,19 +799,6 @@ function verbGroup(entry, s, f, ctx) {
     return s.sharedModality ? inf : `${modalWord(s, f, ctx)} ${inf}`;
   }
   return finiteVerb(variant, s, f, ctx);
-}
-
-/** Short form of a past passive participle: опубликованный → опубликована. */
-export function shortParticiple(long, f) {
-  const base = long.replace(/ый$/, '').replace(/нн$/, 'н');
-  if (base === long) {
-    return null;
-  }
-  if (f.number === 'pl') {
-    return `${base.replace(/ё(?=[^ё]*$)/, 'е')}ы`;
-  }
-  const ending = { m: '', f: 'а', n: 'о' }[f.gender || 'm'];
-  return ending ? `${base.replace(/ё(?=[^ё]*$)/, 'е')}${ending}` : base;
 }
 
 /** Passive results use short participles; ongoing processes use reflexives. */

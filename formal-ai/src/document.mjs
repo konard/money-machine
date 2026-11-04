@@ -9,6 +9,7 @@
 
 import { parseSentence } from './english/clause.mjs';
 import { translateSentence, TranslationContext } from './translate.mjs';
+import { topicProfile } from './topic-context.mjs';
 
 const ABBREVIATIONS =
   /\b(?:Mr|Mrs|Ms|Dr|Prof|St|vs|etc|e\.g|i\.e|No|Jr|Sr|Inc|Ltd)\.$/i;
@@ -264,8 +265,13 @@ export function translateDocument(text, options = {}) {
   if (options.field && !context.memory.families) {
     context.memory.setField(options.field);
   }
+  context.memory.methods ??= options.methods;
   if (!context.memory.topic) {
     context.memory.setTopic(options.topic || text);
+    context.memory.profile = topicProfile(
+      options.topic || text,
+      context.lexicon
+    );
     context.lexicon.setDocumentNames?.(
       new Set([
         ...documentNames(options.field || ''),

@@ -3,8 +3,8 @@
  * entities and long passive participles.
  */
 
-import { declineAdjective } from './morphology.mjs';
-import { renderEntity, nounEntry } from './phrase.mjs';
+import { declineNoun, declineAdjective } from './morphology.mjs';
+import { actionNounEntry } from './phrase.mjs';
 import {
   chooseVerb,
   lexEntry,
@@ -21,8 +21,33 @@ export function renderAction(e, kase, ctx) {
       ctx
     ).join(' ');
   }
-  if (e.nominalization && nounEntry(e.nominalization, ctx)) {
-    return renderEntity(e.nominalization, kase, ctx);
+  const governor = lexEntry(ctx, ctx.predicate)?.ru;
+  const infinitive =
+    !ctx.afterPrep && (governor?.infinitiveComplement || governor?.experiencer);
+  const noun = actionNounEntry(e, ctx);
+  if (noun && !infinitive && !e.action.complementClause) {
+    const verb = lexEntry(ctx, e.action.predicate)?.ru;
+    const mods = renderModifiers(e.action.modifiers, { ...ctx }, verb);
+    return [
+      ...mods.before,
+      declineNoun(noun, kase),
+      ...renderObjects(
+        e.action.objects || [],
+        {
+          ...verb,
+          classGovernment: undefined,
+          government:
+            verb?.government?.preposition ||
+            (verb?.government && verb.government.case !== 'acc')
+              ? verb.government
+              : { case: 'gen' },
+        },
+        { ...ctx, afterPrep: false, predicate: e.action.predicate }
+      ),
+      ...mods.after,
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
   const text = infinitiveClause(
     e.action,
@@ -97,7 +122,7 @@ export function renderParticiple(p, agree, ctx) {
           predicate: p.predicate || p.concept,
           frame: 'event',
           mood: 'declarative',
-          tense: 'present',
+          tense: entry.aspect === 'perf' ? 'past' : 'present',
           aspect: 'simple',
           polarity: 'positive',
           subject: agent?.entity || {

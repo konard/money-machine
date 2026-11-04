@@ -1,0 +1,9 @@
+{"name":"CASS","source":"docs/research/platform-rules.md","en":"This covers Chase, Wells Fargo and SoFi (US), UK CASS switching offers, Canada's big-5 banks and German direct banks.","ru":"Это, источники, и SoFi (США), UK CASS, Canada, 5 банков и прямые банки German [covers Chase Fargo switching offers big].","label":"CASS","entity":"Q30259649"}
+{"name":"Wise","source":"docs/business-plans/rent-gpu-vast-ai.md","en":"Wise, PayPal, Stripe","ru":"Wise, PayPal, Stripe","label":"Wise","entity":"Q7833987"}
+{"name":"Apple","source":"strategies.json#mobile-apps-iap-ads","en":"Apple pays within 45 days of fiscal month end; AdMob pays on or around the 21st of the following month once the threshold is met.","ru":"Зарплаты Apple в пределах 45 дней; зарплаты AdMob или около 21 [of fiscal month end on st of the following month once the threshold is met].","label":"Apple","entity":"Q312"}
+{"name":"EU","source":"docs/business-plans/direct-ad-space-dev-sites.md","en":"Low CPM outside US/EU","ru":"Low CPM или ЕС [outside US]","label":"ЕС","entity":"Q458"}
+{"name":"US","source":"strategies.json#split-fee-recruiting-marketplaces","en":"Roles mostly US.","ru":"Roles [mostly US].","label":"США","entity":"Q30"}
+{"name":"Russia","source":"docs/legal/remote-incorporation-options.md","en":"I work in Russia.","ru":"Я работаю в России.","label":"Россия","entity":"Q159"}
+{"name":"Google","source":"strategies.json#google-opinion-rewards","en":"Google Play credit (Android)","ru":"Кредит Google Play (Android)","label":"Google","entity":"Q95"}
+{"name":"PayPal","source":"docs/business-plans/bandcamp-direct-sales.md","en":"PayPal -> bank","ru":"PayPal, банк","label":"PayPal","entity":"Q483959"}
+{"name":"Payoneer","source":"docs/business-plans/kolabtree-science-freelance.md","en":"Payoneer -> bank","ru":"Payoneer, банк","label":"Payoneer","entity":"Q7156870"}

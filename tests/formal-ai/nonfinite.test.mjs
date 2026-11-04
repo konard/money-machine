@@ -53,7 +53,7 @@ async function dictionaryFetch(url) {
           : { title, missing: true };
       }
       const [pos, ru, gender = ''] = entry;
-      const content = `==English==\n===${pos}===\n# A test sense.\n====Translations====\n{{trans-top|test sense}}\n* Russian: {{t|ru|${ru}|${gender}}}\n{{trans-bottom}}`;
+      const content = `==English==\n===${pos}===\n# ${title === 'reading' ? 'The action of reading' : 'A test sense'}.\n====Translations====\n{{trans-top|${title === 'reading' ? 'action of reading' : 'test sense'}}}\n* Russian: {{t|ru|${ru}|${gender}}}\n{{trans-bottom}}`;
       return { title, revisions: [{ slots: { main: { content } } }] };
     });
   return { ok: true, json: async () => ({ query: { pages } }) };
@@ -128,7 +128,7 @@ test('gerunds work as direct objects and prepositional objects', async () => {
     'I think about reading books.',
     lexicon
   );
-  assert.equal(russian, 'Я думаю о том, чтобы читать книги.');
+  assert.equal(russian, 'Я думаю о чтении книг.');
   assert.ok(formal.statements[0].objects[0].action);
 });
 

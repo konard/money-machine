@@ -67,9 +67,15 @@ export function features(e, ctx) {
     return { person: 3, number: 'sg', gender: 'n' };
   }
   if (e.action) {
-    return e.nominalization
-      ? features(e.nominalization, ctx)
-      : { person: 3, number: 'sg', gender: 'n' };
+    const governor = ctx.lexicon.get(ctx.predicate)?.ru;
+    const infinitive =
+      !ctx.afterPrep &&
+      (governor?.infinitiveComplement || governor?.experiencer);
+    return {
+      person: 3,
+      number: 'sg',
+      gender: (infinitive ? null : actionNounEntry(e, ctx)?.gender) || 'n',
+    };
   }
   if (e.coordination) {
     return { person: 3, number: 'pl', gender: 'pl' };
@@ -165,6 +171,31 @@ export function pronounKey(p, ctx) {
     return `3sg${ctx.discourse.referents[0].gender}`;
   }
   return `3sg${GENDER[p.gender] || 'n'}`;
+}
+
+/** Prefer the verb's attested action noun to an unrelated -ing noun sense. */
+export function actionNounEntry(e, ctx) {
+  const derived = ctx.lexicon.get(e.action?.predicate)?.ru?.actionNoun;
+  if (derived) {
+    return derived;
+  }
+  const nominal = ctx.lexicon.get(e.nominalization?.concept);
+  const lemma = nominal?.en?.find((r) => r.pos === 'noun')?.lemma;
+  const action = (lemma ? ctx.lexicon.lookup('noun', lemma) : [])
+    .map((id) => ctx.lexicon.get(id))
+    .find(
+      (c) =>
+        c.ru?.pos === 'noun' &&
+        /\b(?:act|action|process|activity|gerund|verbal noun)\b/i.test(
+          `${c.gloss} ${c.definition || ''}`
+        )
+    );
+  return (
+    action?.ru ||
+    (!(e.action?.objects?.length || e.action?.modifiers?.length)
+      ? nounEntry(e.nominalization, ctx)
+      : null)
+  );
 }
 
 /** The Russian noun entry for an entity, if any. */
@@ -755,7 +786,7 @@ export function renderRelation(m, ctx) {
   const concept = conceptOf(ctx, e?.concept);
   const entry = nounEntry(e, ctx);
   const rel = m.relation;
-  if (rel === 'rel.by' && e?.action && ctx.renderAction) {
+  if (['rel.by', 'rel.while'].includes(rel) && e?.action && ctx.renderAction) {
     return `, ${ctx.renderAction(e, 'ins', { ...ctx, adverbialAction: true })}`;
   }
   // "before relying on it": a clause conjunction with an infinitive

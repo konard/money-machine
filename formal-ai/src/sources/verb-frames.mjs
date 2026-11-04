@@ -82,10 +82,10 @@ export function senseFrames(text = '', headword) {
   if (/\babout\b/.test(clean)) {
     frames.add('about');
   }
-  if (/\|(?:ambi|di)?transitive[|}]/.test(text)) {
+  if (/\|(?:(?:ambi|di)?transitive|ergative)[|}]/.test(text)) {
     frames.add('transitive');
   }
-  if (/\|(?:intransitive|ambitransitive)[|}]/.test(text)) {
+  if (/\|(?:intransitive|ambitransitive|ergative)[|}]/.test(text)) {
     frames.add('intransitive');
   }
   return [...frames];
@@ -157,4 +157,15 @@ export function russianGovernment(text = '') {
         }[m[1].toLowerCase()],
       }
     : undefined;
+}
+
+/** A possessive plus a feminine noun in -ой/-ей explicitly marks instrumental. */
+export function exampleInstrumental(text = '') {
+  return /\{\{выдел\|[^}]+\}\}\s+(?:своей|моей|твоей|нашей|вашей)\s+(?:[а-яё]+\s+){0,2}[а-яё]+(?:ой|ей)[.,|}]/i.test(
+    text
+      .normalize('NFD')
+      .replace(/[̀́]/g, '')
+      .normalize('NFC')
+      .replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1')
+  );
 }

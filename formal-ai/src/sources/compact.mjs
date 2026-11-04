@@ -9,13 +9,19 @@
  * claim values and the number of sitelinks.
  */
 
-import { russianGovernment, senseFrames } from './verb-frames.mjs';
+import {
+  exampleInstrumental,
+  russianGovernment,
+  senseFrames,
+} from './verb-frames.mjs';
 
 const KEEP_SECTIONS = ['English', 'Russian'];
 // Item context/types, grammatical gender, sense grounding/translation and
 // lexeme characteristics: all properties read by the public-source callers.
 const CLAIMS = new Set([
   'P498',
+  'P297',
+  'P298',
   'P31',
   'P279',
   'P17',
@@ -26,7 +32,8 @@ const CLAIMS = new Set([
   'P1552',
 ]);
 
-/** Keep case notes, definition-based argument markers, homonym boundaries
+/** Keep case notes, definition-based argument markers, homonym boundaries,
+ * the etymology (its source word attests a reflexive counterpart)
  * and highlighted recipient examples in their original order. */
 function compactGovernment(text) {
   if (/\{\{-en-\}\}/.test(text)) {
@@ -34,12 +41,16 @@ function compactGovernment(text) {
   }
   return [
     ...text.matchAll(
-      /^={3,5}\s*Управление\s*={3,5}\s*\n[\s\S]*?(?=^=|$(?![\s\S]))|^=+[^\n]*|^#[^#*:][^\n]*|^\|en=[^\n]*|\{\{помета\|[^{}]+\}\}|\{\{пример\|[^\n]*/gm
+      /^={3,5}\s*(?:Управление|Производные слова|Родственные слова|Этимология)\s*={3,5}\s*\n[\s\S]*?(?=^=|$(?![\s\S]))|^=+[^\n]*|^#[^#*:][^\n]*|^\{\{гл ru [^\n]*|^\|(?:en|соотв)=[^\n]*|\{\{помета\|[^{}]+\}\}|\{\{пример\|[^\n]*/gm
     ),
   ]
     .map((m) => m[0])
     .filter((part) => {
-      if (!part.startsWith('{{пример|') || part.includes('{{помета|')) {
+      if (
+        !part.startsWith('{{пример|') ||
+        part.includes('{{помета|') ||
+        exampleInstrumental(part)
+      ) {
         return true;
       }
       // Only highlighted-headword examples with a dative pronoun can affect
@@ -52,11 +63,17 @@ function compactGovernment(text) {
     .map((part) => {
       if (
         /^=/.test(part) &&
-        !/Управление|\{\{-ru-\}\}|^==\s*\{\{з\|II/.test(part)
+        !/Управление|Производные слова|Родственные слова|Этимология|\{\{-ru-\}\}|^==\s*\{\{з\|II/.test(
+          part
+        )
       ) {
         return '=';
       }
-      if (!part.startsWith('{{пример|') || part.includes('{{помета|')) {
+      if (
+        !part.startsWith('{{пример|') ||
+        part.includes('{{помета|') ||
+        exampleInstrumental(part)
+      ) {
         return part;
       }
       const plain = part

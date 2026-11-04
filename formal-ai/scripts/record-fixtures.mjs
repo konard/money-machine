@@ -46,6 +46,10 @@ export const BASIC = [
   'The bank lends money.',
   'We sat on the river bank.',
   'I help Mary.',
+  'I visited China.',
+  'We started.',
+  'Tom started.',
+  'The meeting started.',
   'Mary helps Tom.',
   'I wait for Mary.',
   'We wait for the bus.',
@@ -128,14 +132,20 @@ export function differences(expected, actual) {
 async function translations() {
   const { resolveText } = await import('../src/resolve.mjs');
   const { translateDocument } = await import('../src/document.mjs');
+  const { pages } = await import('./sample.mjs');
+  const pageTopics = new Map(pages().map((p) => [p.source, p.text]));
+  const website = JSON.parse(
+    readFileSync(new URL('./fixture-sentences.json', import.meta.url), 'utf8')
+  );
   const sentences = sentenceSet();
   // One public pre-pass, as in sample.mjs, followed by deterministic translation.
   await resolveText(sentences.join('\n\n'), {
     log: process.argv.includes('--replay') ? () => {} : console.error,
   });
-  return sentences.map((english) => {
+  return sentences.map((english, i) => {
     try {
-      return { english, russian: translateDocument(english).text };
+      const topic = pageTopics.get(website[i - BASIC.length]?.source);
+      return { english, russian: translateDocument(english, { topic }).text };
     } catch (error) {
       return { english, error: error.message };
     }

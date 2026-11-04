@@ -101,11 +101,11 @@ test('agreement distinguishes an attributive -ing subject from an activity', asy
 
 test('missing long participles become finite relatives after the complete noun phrase', async () => {
   const lexicon = await vocabulary(
-    'I sell restricted products. Products supplied to students.'
+    'I sell restricted products. I sell products supplied to students.'
   );
   for (const source of [
     'I sell restricted products.',
-    'Products supplied to students.',
+    'I sell products supplied to students.',
   ]) {
     const result = translateDocument(source, { lexicon });
     assert.equal(result.stats.incomplete, 0, result.text);
@@ -114,7 +114,7 @@ test('missing long participles become finite relatives after the complete noun p
   }
   assert.match(
     translateDocument('I sell restricted products.', { lexicon }).text,
-    /которые ограничат/
+    /которые ограничили/
   );
 });
 
@@ -151,4 +151,14 @@ test('comma reduced relatives retain their modifiers and overt agents', async ()
   assert.deepEqual(series.leftover, []);
   assert.equal(series.clauses.length, 3);
   assert.equal(series.clauses[0].objects[0].participles, undefined);
+});
+
+test('perfective headline passives without a participle never become future', async () => {
+  const lexicon = await vocabulary('Products supplied to students.');
+  const result = translateDocument('Products supplied to students.', {
+    lexicon,
+  });
+  assert.equal(result.stats.incomplete, 0, result.text);
+  assert.match(result.text, /товары снабдили студентам/i);
+  assert.doesNotMatch(result.text, /снабдят/);
 });
