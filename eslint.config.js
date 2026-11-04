@@ -82,6 +82,8 @@ export default [
       'dist/**',
       '*.min.js',
       '.eslintcache',
+      'formal-ai/.site-ru/**',
+      'website/ru/**',
     ],
   },
 ];
