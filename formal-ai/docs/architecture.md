@@ -25,6 +25,23 @@ English analyser → meta language (links) → Russian renderer / English genera
 - Local `.lino` overrides are a union layer over public data, never a code
   branch.
 
+### Data collection: `resolveText` phases
+
+`resolve.mjs` only orders the phases; each phase reads what the previous
+ones collected from one `run` record and fetches only what it needs:
+
+| phase | module                  | asks for                                                                                   |
+| ----- | ----------------------- | ------------------------------------------------------------------------------------------ |
+| 1     | `resolve/english-pages` | English pages of unknown words, their capital titles, phrases, compounds, bases, subpages  |
+| 2     | `resolve/sense-plans`   | nothing new: senses with Russian candidates per (lemma, part of speech), voice evidence    |
+| 3     | `resolve/russian-pages` | Russian pages of the candidates, their lemmas, aspect partners, government, rendered forms |
+| 4     | `resolve/concepts`      | concepts in the lexicon; then ruwiki and RNC frequency of their Russian lemmas             |
+| after | `resolve.mjs`           | forms, frames, names, phrasal verbs, contexts (Wikidata `P279` within the horizon)         |
+
+A new kind of evidence goes into the phase whose pages it reads; if it
+needs pages no phase fetches, it is a new phase or a source module, not a
+branch inside an existing one.
+
 ## 1. A word's facts do not depend on the batch
 
 What a word means, its Russian forms, frames and contexts are facts about
@@ -80,9 +97,9 @@ itself is wrong; only a range comparison or a reference catches that
 
 ## Known debt
 
-- Five modules sit near the 1000-line limit (`resolve.mjs`,
-  `english/clause.mjs`, `senses.mjs`, `russian/phrase.mjs`,
-  `english/parser.mjs`); they are to be split by responsibility.
+- Four modules sit near the 1000-line limit (`english/clause.mjs`,
+  `senses.mjs`, `russian/phrase.mjs`, `english/parser.mjs`); they are to
+  be split by responsibility, as `resolve.mjs` was.
 - Text helpers (`stem`, content-word sets) are duplicated with small
   differences in `topic-context.mjs`, `attachment-context.mjs`,
   `sense-context.mjs`, `sources/synonyms.mjs`, `sources/government.mjs` and
