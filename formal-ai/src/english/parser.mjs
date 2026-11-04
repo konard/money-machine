@@ -799,13 +799,17 @@ export function parseTail(c, frame, options = {}) {
       reading(c.at(1), 'verb').features.form === 'base';
     // "to wait", "to track sales": a word that is mostly a verb, or one
     // followed by its own object, is an infinitive after a verb's object
+    // without an object the verb's senses must clearly outnumber the noun's
+    // ("try to join"), so "go to school" keeps its preposition
+    const [verbSenses, nounSenses] = ['verb', 'noun'].map(
+      (p) => toVerb && has(c.at(1), p) && reading(c.at(1), p).concepts.length
+    );
     const mostlyVerb =
       toVerb &&
       has(c.at(1), 'noun') &&
-      out.objects.length > 0 &&
-      (reading(c.at(1), 'verb').concepts.length >=
-        reading(c.at(1), 'noun').concepts.length ||
-        startsNP(c.at(2)));
+      (out.objects.length > 0
+        ? verbSenses >= nounSenses || startsNP(c.at(2))
+        : verbSenses > 2 * nounSenses);
     if (
       toVerb &&
       (options.infinitive || !has(c.at(1), 'noun') || mostlyVerb) &&

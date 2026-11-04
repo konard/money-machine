@@ -13,6 +13,7 @@ import {
   pronounKey,
 } from './phrase.mjs';
 import { BYT_PAST, lexEntry, renderModifiers } from './naturalize.mjs';
+import { infinitiveClause } from './nonfinite.mjs';
 
 const BYT_FUTURE = ['буду', 'будешь', 'будет', 'будем', 'будете', 'будут'];
 const PERSON_INDEX = {
@@ -73,6 +74,10 @@ export function renderCopula(s, ctx) {
     ]
       .filter(Boolean)
       .join(' ');
+  }
+  const tough = adjectiveInfinitive(s, mods, ctx);
+  if (tough) {
+    return tough;
   }
   // impersonal "it is cold"
   if (
@@ -150,6 +155,10 @@ export function renderCopula(s, ctx) {
         words.push(declineAdjective(adj.lemma, { ...agree, case: 'nom' }));
       }
     }
+    // "I am happy to help" → я рад помочь
+    if (s.complementClause) {
+      words.push(...infinitiveClause(s.complementClause, positive(s), ctx));
+    }
   } else if (c.kind === 'entity') {
     const nominalSubject =
       subj && !subj.pronoun && !subj.demonstrative && !subj.question;
@@ -167,6 +176,43 @@ export function renderCopula(s, ctx) {
   }
   words.push(...mods.after);
   return words.filter(Boolean).join(' ');
+}
+
+const positive = (s) => ({ ...s, polarity: 'positive' });
+
+/**
+ * An adjective with an infinitive is predicative: "it is easy to read" →
+ * легко читать; a lifeless subject the infinitive lacks becomes its
+ * object: "the book is easy to read" → книгу легко читать.
+ */
+function adjectiveInfinitive(s, mods, ctx) {
+  const [c, x, subj] = [s.complement, s.complementClause, s.subject];
+  if (!x || c?.kind !== 'property' || s.question || !lexEntry(ctx, c.concept)) {
+    return undefined;
+  }
+  const dummy =
+    !subj || (subj.pronoun?.gender === 'neuter' && subj.pronoun.person === 3);
+  const lifeless =
+    !subj?.pronoun && !x.objects.length && !features(subj, ctx).animate;
+  if (!dummy && !lifeless) {
+    return undefined;
+  }
+  const adj = lexEntry(ctx, c.concept).ru;
+  if (adj?.pos !== 'adj') {
+    return undefined;
+  }
+  return [
+    dummy ? '' : renderEntity(subj, 'acc', ctx),
+    ...mods.before,
+    s.polarity === 'negative' ? 'не' : '',
+    s.tense === 'past' ? 'было' : s.tense === 'future' ? 'будет' : '',
+    degreeWord(c, ctx),
+    predicativeAdverb(adj.lemma),
+    ...infinitiveClause(x, positive(s), ctx),
+    ...mods.after,
+  ]
+    .filter(Boolean)
+    .join(' ');
 }
 
 export function shortFrom(adj, agree) {

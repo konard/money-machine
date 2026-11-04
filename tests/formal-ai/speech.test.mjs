@@ -181,3 +181,10 @@ test('an -ing word after "be" is a progressive, not a compound noun', () => {
   assert.match(ru('She is writing tables.'), /^Она пишет /);
   assert.equal(ru('The writing tables are old.'), 'Конторки старые.');
 });
+
+test('an adjective with an infinitive is a predicative adverb', () => {
+  assert.equal(ru('It is easy to read.'), 'Легко читать.');
+  assert.equal(ru('It was hard to find a book.'), 'Было трудно найти книгу.');
+  // the lifeless subject is what the infinitive acts on
+  assert.equal(ru('The book is easy to read.'), 'Книгу легко читать.');
+});
