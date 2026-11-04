@@ -93,8 +93,11 @@ setRelativeParser((c, np) => {
         tail = shorter;
       }
     }
-    // An occupied direct-object slot cannot also be the relative gap.
-    if (tail.objects.length && !tail.stranded) {
+    // An occupied object slot or complement ("pay is low") is no gap.
+    if (
+      (tail.objects.length || (vg.frame === 'copula' && tail.complement)) &&
+      !tail.stranded
+    ) {
       return null;
     }
     tail.objects.push({

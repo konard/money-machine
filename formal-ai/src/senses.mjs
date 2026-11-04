@@ -790,7 +790,8 @@ function valencyFit(node, clause, concept, next) {
       : owner.mods?.some((m) => m.prep === 'about') ||
           owner.objects?.some((o) => o.marker === 'about')
         ? 'about'
-        : owner === clause && next?.link?.text === 'that'
+        : owner === clause &&
+            (next?.link?.text === 'that' || clause.finiteLink === 'that')
           ? 'that'
           : owner === clause &&
               (next?.link?.concept === 'conj.whether' ||

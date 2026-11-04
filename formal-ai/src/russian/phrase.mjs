@@ -424,15 +424,7 @@ export function renderEntity(e, kase, ctx) {
       if (/^~?\p{Sc}?\d/u.test(e.name)) {
         return localizeQuantity(e.name);
       }
-      // a name keeps its Russian label from Wikidata; without one it stays
-      // in Latin script, as brands do in Russian text (PayPal, Shopify)
-      const label = ctx.lexicon.nameLabel?.(e.name);
-      if (label) {
-        ctx.notes.add(`name "${e.name}" → ${label} (Wikidata label)`);
-        const entry = ctx.lexicon.nameEntry?.(e.name);
-        return entry ? declineNoun(entry, kase, 'sg') : label;
-      }
-      return e.name;
+      return ownedName(e, kase, ctx);
     }
     if (e.numeral) {
       return cardinal(e.quantity, kase, ctx.numeralGender || 'm', e.digits);
@@ -442,6 +434,68 @@ export function renderEntity(e, kase, ctx) {
     return `[${label}]`;
   }
   return renderNoun(e, entry, kase, ctx);
+}
+
+/** Noun modifiers as genitives: «проверка счёта банка». */
+function modifierWords(e, ctx) {
+  const out = [];
+  const modifiers = e.modifiers || [];
+  // A collective activity targets a class of people: a bare singular human
+  // modifier denotes participants, rather than a particular possessor.
+  const collective = /\b(?:set|series|collection|group) of\b/.test(
+    conceptOf(ctx, e.concept)?.gloss || ''
+  );
+  for (const m of modifiers.some((x) => x.concept)
+    ? [...modifiers].reverse()
+    : modifiers) {
+    // English compounds branch to the right: bank account verification →
+    // проверка счёта банка, with the nearest head's modifier first.
+    // "tax/payment setup" → установка налога/платежа
+    out.push(
+      [m, ...(m.alternative ? [m.alternative] : [])]
+        .map((x) =>
+          renderEntity(
+            {
+              concept: x.concept,
+              name: x.name,
+              number:
+                m.number ||
+                (collective && conceptOf(ctx, x.concept)?.ru?.animate
+                  ? 'plural'
+                  : 'singular'),
+            },
+            'gen',
+            { ...ctx, afterPrep: false }
+          )
+        )
+        .join('/')
+    );
+  }
+  return out;
+}
+
+/** A name with its owner: «FAQ сайта», «ваш PayPal», «Мэри Тома». */
+function ownedName(e, kase, ctx) {
+  // a name keeps its Russian label from Wikidata; without one it stays
+  // in Latin script, as brands do in Russian text (PayPal, Shopify)
+  const label = ctx.lexicon.nameLabel?.(e.name);
+  const entry = label && ctx.lexicon.nameEntry?.(e.name);
+  if (label) {
+    ctx.notes.add(`name "${e.name}" → ${label} (Wikidata label)`);
+  }
+  const name = entry ? declineNoun(entry, kase, 'sg') : label || e.name;
+  const owner = e.possessor;
+  const own = [name, ...modifierWords(e, ctx)].join(' ');
+  if (!owner) {
+    return own;
+  }
+  if (owner.pronoun) {
+    const gender = entry?.gender || 'm';
+    const agree = { gender, case: kase, animate: entry?.animate };
+    return `${possessiveWord(owner, { gender }, agree, ctx)} ${own}`;
+  }
+  const local = { ...ctx, afterPrep: false, locative: false };
+  return `${own} ${renderEntity(owner, 'gen', local)}`;
 }
 
 function renderNoun(e, entry, kase, ctx) {
@@ -631,38 +685,7 @@ function renderNoun(e, entry, kase, ctx) {
   if (e.label) {
     words.push(localizeQuantity(e.label));
   }
-  const modifiers = e.modifiers || [];
-  // A collective activity targets a class of people: a bare singular human
-  // modifier denotes participants, rather than a particular possessor.
-  const collective = /\b(?:set|series|collection|group) of\b/.test(
-    conceptOf(ctx, e.concept)?.gloss || ''
-  );
-  for (const m of modifiers.some((x) => x.concept)
-    ? [...modifiers].reverse()
-    : modifiers) {
-    // English compounds branch to the right: bank account verification →
-    // проверка счёта банка, with the nearest head's modifier first.
-    // "tax/payment setup" → установка налога/платежа
-    words.push(
-      [m, ...(m.alternative ? [m.alternative] : [])]
-        .map((x) =>
-          renderEntity(
-            {
-              concept: x.concept,
-              name: x.name,
-              number:
-                m.number ||
-                (collective && conceptOf(ctx, x.concept)?.ru?.animate
-                  ? 'plural'
-                  : 'singular'),
-            },
-            'gen',
-            { ...ctx, afterPrep: false }
-          )
-        )
-        .join('/')
-    );
-  }
+  words.push(...modifierWords(e, ctx));
   if (e.possessor && !e.possessor.pronoun) {
     words.push(
       renderEntity(e.possessor, 'gen', {

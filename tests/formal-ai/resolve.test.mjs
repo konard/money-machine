@@ -48,6 +48,13 @@ function stub(steps) {
             Promise.resolve({ query: { searchinfo: { totalhits: 0 } } }),
         });
       }
+      // Wiktionary's topical label list: absent, so the offline pattern decides.
+      if (request.searchParams.get('titles') === 'Module:labels/data/topical') {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve({ query: { pages: [] } }),
+        });
+      }
       const corpus = rncFixture(request.searchParams);
       if (corpus) {
         return corpus;

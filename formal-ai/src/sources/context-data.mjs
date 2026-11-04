@@ -22,6 +22,7 @@ export async function populateContexts(lexicon, options = {}) {
     labels.add(network.id(options.context));
   }
   const maxDepth = Math.min(8, Math.max(0, options.contextDepth ?? 3));
+  network.horizon = maxDepth;
   for (const label of labels) {
     if (network.loaded.has(label) || network.overrides.has(label)) {
       continue;
@@ -89,12 +90,15 @@ export async function populateContexts(lexicon, options = {}) {
                     .flatMap((c) => c.mainsnak?.datavalue?.value?.id || [])
                     .slice(0, 8)
                 : [];
-            network.define(
-              names.get(id),
-              parents.length
-                ? parents.map((p) => names.get(p) || p.toLowerCase())
-                : ['Context']
-            );
+            // A depth cut must not erase parents another label fetched.
+            if (parents.length) {
+              network.define(
+                names.get(id),
+                parents.map((p) => names.get(p) || p.toLowerCase())
+              );
+            } else if (!network.links.has(network.id(names.get(id)))) {
+              network.define(names.get(id));
+            }
             parents.forEach((p) => next.add(p));
           }
         }

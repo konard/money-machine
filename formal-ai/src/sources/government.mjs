@@ -393,6 +393,24 @@ export function verbGovernment(english, russian, sense) {
   return result;
 }
 
+/** The marker after the verb in an intransitive sense's own examples. */
+function exampleMarker(sense) {
+  if (
+    !sense.frames?.includes('intransitive') ||
+    sense.frames.includes('transitive')
+  ) {
+    return null;
+  }
+  const verb = new RegExp(
+    `\\b${sense.lemma}(?:s|es|ed|d|ing)?\\s+(on|upon|for|with|at|from|about|of)\\b`,
+    'i'
+  );
+  const found = (sense.examples || [])
+    .map((e) => verb.exec(e)?.[1]?.toLowerCase())
+    .filter(Boolean);
+  return found.length && found.every((m) => m === found[0]) ? found[0] : null;
+}
+
 /** Prefer attested frames when the English sense actually has an object. */
 export function governmentFit(entry, sense) {
   if (!entry) {
@@ -465,6 +483,12 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
       )
     ) {
       ru.markerGovernment.by = gov('dat', 'по');
+    }
+    // "it depends on the amount": the sense's own example shows which
+    // English marker introduces the argument the Russian preposition takes.
+    const marker = ru.government.preposition && exampleMarker(sense);
+    if (marker && !ru.markerGovernment[marker]) {
+      ru.markerGovernment[marker] = ru.government;
     }
     ru.classGovernment ||= {};
     ru.recipient ||= 'dat';

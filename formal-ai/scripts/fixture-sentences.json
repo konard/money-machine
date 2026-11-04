@@ -118,5 +118,13 @@
   {
     "text": "Each project limits which countries it accepts.",
     "source": "docs/business-plans/generalist-rlhf-ai-training.md"
+  },
+  {
+    "text": "Invitations depend on your device, country and demographics.",
+    "source": "strategies.json#game-playtesting"
+  },
+  {
+    "text": "NativeCamp's tutor FAQ (read in a browser Nov 2026) says pay depends on your tutor rank, shown only after you sign the contract, and the payment method is set by country and told to you once hired.",
+    "source": "docs/business-plans/esl-company-tutoring.md"
   }
 ]

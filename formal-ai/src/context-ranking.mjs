@@ -60,6 +60,9 @@ export function rankContexts(words, lexicon, { coherent = false } = {}) {
     return [];
   }
   const counts = new Map();
+  const closure = network.closure(
+    words.flatMap(({ candidates }) => candidates.map((id) => lexicon.get(id)))
+  );
   const choices = words.map(({ candidates }) =>
     candidates.map((id) => network.contextsOf(lexicon.get(id)))
   );
@@ -77,7 +80,7 @@ export function rankContexts(words, lexicon, { coherent = false } = {}) {
     .map(([context, count]) => ({
       context,
       count,
-      depth: network.depth(context),
+      depth: network.depth(context, closure),
     }))
     .sort(
       (a, b) =>
@@ -125,9 +128,12 @@ export function positionalContext(node, heads, clause, lexicon) {
       continue;
     }
     const common = [...senses[0]].filter((c) => senses.every((s) => s.has(c)));
+    const closure = network.closure(
+      other.candidates.map((id) => lexicon.get(id))
+    );
+    const isA = (a, b) => network.isA(a, b, closure);
     const specific = common.filter(
-      (c) =>
-        !common.some((d) => d !== c && network.isA(d, c) && !network.isA(c, d))
+      (c) => !common.some((d) => d !== c && isA(d, c) && !isA(c, d))
     );
     if (specific.length !== 1) {
       continue;

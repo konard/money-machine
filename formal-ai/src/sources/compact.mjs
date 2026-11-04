@@ -239,6 +239,14 @@ function compactEntity(e) {
   return out;
 }
 
+/** A Wiktionary label module: only label heads, aliases and Wikidata ids. */
+function compactLabelModule(text) {
+  return text
+    .split('\n')
+    .filter((line) => /^labels\["|^\s*(?:aliases|Wikidata)\s*=/.test(line))
+    .join('\n');
+}
+
 /** A compacted copy of a response for the given cache bucket. */
 export function compactResponse(bucket, value) {
   if (!value || typeof value !== 'object') {
@@ -338,7 +346,9 @@ export function compactResponse(bucket, value) {
                             ? compactGovernment(content)
                             : page.title?.startsWith('Appendix:')
                               ? content
-                              : compactWikitext(content),
+                              : page.title?.startsWith('Module:labels/')
+                                ? compactLabelModule(content)
+                                : compactWikitext(content),
                       },
                     },
                   },

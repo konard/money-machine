@@ -6,7 +6,11 @@
  *
  * Sources: every prose field of website/strategies.json and the markdown
  * under docs/ that the site pages are built from. The same seed gives the
- * same sample, so a reviewed sample can be re-run after a fix.
+ * same sample, so a reviewed sample can be re-run after a fix. Each
+ * sentence is read back from the Russian (src/russian/read-back.mjs) and
+ * regenerated in English from its meta links: `lost`, `changed` and `added`
+ * lines name information the translation did not keep, `en` an English
+ * round trip that differs.
  */
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -14,6 +18,9 @@ import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { splitSentences, translateDocument } from '../src/document.mjs';
 import { resolveText } from '../src/resolve.mjs';
+import { loadLexicon } from '../src/lexicon.mjs';
+import { readBack, russianFormIndex } from '../src/russian/read-back.mjs';
+import { englishRoundTrip } from '../src/english/round-trip.mjs';
 
 const ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..');
 
@@ -98,6 +105,26 @@ export function sentences(paragraph) {
     .map((text) => ({ source: paragraph.source, page: paragraph.page, text }));
 }
 
+/** What the Russian and the regenerated English do not keep. */
+function roundTripProblems(translated, lexicon, index) {
+  return translated
+    .filter((s) => s.formal && s.complete)
+    .flatMap((s) => {
+      const r = readBack(s.text, s.formal, lexicon, index);
+      const trip = englishRoundTrip(s.source, lexicon);
+      return [
+        ...r.links
+          .filter((l) => !['kept', 'widened', 'optional'].includes(l.status))
+          .map(
+            (l) =>
+              `${l.status} ${l.concept || l.name}${l.word ? ` (${l.word})` : ''}${l.changes ? `: ${l.changes.join('; ')}` : ''}`
+          ),
+        ...r.added.map((w) => `added ${w}`),
+        ...(trip.exact ? [] : [`en ${trip.english}`]),
+      ];
+    });
+}
+
 /** Deterministic shuffle (mulberry32). */
 function sample(items, count, seed) {
   let a = seed >>> 0;
@@ -133,23 +160,29 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   console.log(
     `resolved ${lookup.resolved.length} senses from public sources; unknown: ${lookup.missing.join(', ') || 'none'}`
   );
+  const lexicon = loadLexicon();
+  const index = russianFormIndex(lexicon);
+  let kept = 0;
   picked.forEach((u, i) => {
     let text;
     let ok;
+    const problems = [];
     try {
       const r = translateDocument(u.text, { topic: u.page, field });
       text = r.text;
       ok = r.stats.complete === r.stats.sentences;
+      problems.push(...roundTripProblems(r.sentences, lexicon, index));
     } catch (error) {
       text = `CRASH: ${error.message}`;
       ok = false;
     }
     complete += ok ? 1 : 0;
+    kept += ok && !problems.length ? 1 : 0;
     console.log(
-      `\n[${i + 1}] ${ok ? 'ok' : '!!'} ${u.source}\nEN: ${u.text}\nRU: ${text}`
+      `\n[${i + 1}] ${ok ? (problems.length ? '~~' : 'ok') : '!!'} ${u.source}\nEN: ${u.text}\nRU: ${text}${problems.map((p) => `\n   ${p}`).join('')}`
     );
   });
   console.log(
-    `\nseed ${seed}: ${complete}/${picked.length} ${unit}s complete (of ${units.length} in the site)`
+    `\nseed ${seed}: ${complete}/${picked.length} ${unit}s complete, ${kept} also round-trip (of ${units.length} in the site)`
   );
 }

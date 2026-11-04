@@ -16,6 +16,9 @@ export class ContextNetwork {
     this.descriptions = new Map();
     this.extraParents = new Map();
     this.ancestry = new Map();
+    // Public parents are followed only as far as the loader fetched them from
+    // each label, so extra loaded graph cannot change a word's contexts.
+    this.horizon = Infinity;
   }
 
   id(name) {
@@ -94,14 +97,69 @@ export class ContextNetwork {
     return new Set(out);
   }
 
-  isA(child, parent) {
+  /** With a closure, only parents inside its horizon count. */
+  isA(child, parent, closure) {
     const a = this.links.has(child) ? child : this.id(child);
     const b = this.links.has(parent) ? parent : this.id(parent);
-    return a === b || this.ancestorsOf(a).has(b);
+    if (a === b) {
+      return true;
+    }
+    if (!closure) {
+      return this.ancestorsOf(a).has(b);
+    }
+    const seen = new Set([a]);
+    const pending = [a];
+    while (pending.length) {
+      for (const p of this.boundedParents(pending.pop(), closure)) {
+        if (p === b) {
+          return true;
+        }
+        if (!seen.has(p)) {
+          seen.add(p);
+          pending.push(p);
+        }
+      }
+    }
+    return false;
+  }
+
+  /** A node at the horizon reads as a direct child of Context. */
+  boundedParents(id, closure) {
+    if (!closure) {
+      return this.parentsOf(id);
+    }
+    const level = closure.get(id);
+    return level !== undefined && level < this.horizon
+      ? this.parentsOf(id)
+      : new Set(['Context']);
+  }
+
+  /** Context id -> fewest steps from a direct context, within the horizon. */
+  closure(concepts) {
+    const out = new Map();
+    let level = [
+      ...new Set(
+        [concepts].flat().flatMap((c) => [...this.directContextsOf(c)])
+      ),
+    ];
+    for (let step = 0; level.length; step += 1) {
+      const next = [];
+      for (const id of level) {
+        if (out.has(id)) {
+          continue;
+        }
+        out.set(id, step);
+        if (step < this.horizon) {
+          next.push(...this.parentsOf(id));
+        }
+      }
+      level = next.filter((id) => !out.has(id));
+    }
+    return out;
   }
 
   /** Shortest path to Context: cycles cannot inflate specificity. */
-  depth(name) {
+  depth(name, closure) {
     let level = [this.id(name)];
     const seen = new Set();
     for (let depth = 0; level.length; depth += 1) {
@@ -114,7 +172,7 @@ export class ContextNetwork {
           continue;
         }
         seen.add(id);
-        next.push(...this.parentsOf(id));
+        next.push(...this.boundedParents(id, closure));
       }
       level = next.filter((id) => !seen.has(id));
     }
@@ -149,16 +207,11 @@ export class ContextNetwork {
   }
 
   contextsOf(concept) {
-    const out = new Set();
-    for (const id of this.directContextsOf(concept)) {
-      out.add(id);
-      for (const ancestor of this.ancestorsOf(id)) {
-        if (!['Context', 'Type', 'Meaning'].includes(ancestor)) {
-          out.add(ancestor);
-        }
-      }
-    }
-    return out;
+    return new Set(
+      [...this.closure(concept).keys()].filter(
+        (id) => !['Context', 'Type', 'Meaning'].includes(id)
+      )
+    );
   }
 
   /** Local definitions replace public parents/bindings, including empty ones. */

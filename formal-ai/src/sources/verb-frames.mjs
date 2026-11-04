@@ -66,7 +66,15 @@ export function senseFrames(text = '', headword) {
     if (usage && /^\s+(?:whether|if|what|why|how|when|where)\b/i.test(after)) {
       frames.add('question');
     }
-    if (usage && /^\s+(?:\w+\s+)?that\b/i.test(after)) {
+    // "He said he would be here", "The sign says it's 50 km": a clause
+    // without "that" (a subject pronoun and its finite verb) is that frame
+    if (
+      usage &&
+      (/^\s+(?:\w+\s+)?that\b/i.test(after) ||
+        /^\s+(?:(?:i|he|she|we|they)\s+[a-z]+|(?:it|you)(?:['’](?:s|re|ll|d)\b|\s+(?:is|was|are|were|will|would|can|could|has|had|must|should)\b))/i.test(
+          after
+        ))
+    ) {
       frames.add('that');
     }
     if (usage && /^\s+about\b/i.test(after)) {

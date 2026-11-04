@@ -2,6 +2,7 @@
 import { matchingDefinition } from './wiktionary.mjs';
 import { PREPOSITIONS } from '../english/function-words.mjs';
 import { changeOfState } from './reflexive.mjs';
+import { topicalLabel } from './label-data.mjs';
 
 export function publicSenses(entries, title, pos) {
   const own = entries.get(title) || [];
@@ -235,31 +236,52 @@ const USAGE_LABEL =
  * or the field prefix of its translation gloss ("law: demand for…").
  */
 export function senseDomain(sense) {
-  const label = (sense.labels || []).find(
-    (l) =>
-      /^[a-z][a-z -]{2,24}$/i.test(l) &&
-      !USAGE_LABEL.test(l) &&
-      l !== 'distributive' &&
-      !/^(?:of|with|in|usually|often|chiefly)\b/i.test(l)
-  );
+  const label = (sense.labels || []).find((l) => isField(l));
   if (label) {
     return label.toLowerCase();
   }
   const prefix = /^([a-z][a-z ]{2,20}): /.exec(sense.gloss)?.[1];
-  return !sense.seeAlso && prefix && !USAGE_LABEL.test(prefix) ? prefix : null;
+  return !sense.seeAlso && prefix && isField(prefix) ? prefix : null;
+}
+
+/** Wiktionary's topical label list decides; the pattern only stands in offline. */
+function isField(label) {
+  const known = topicalLabel(label);
+  if (known !== undefined) {
+    return Boolean(known);
+  }
+  return (
+    /^[a-z][a-z -]{2,24}$/i.test(label) &&
+    !USAGE_LABEL.test(label) &&
+    label !== 'distributive' &&
+    !/^(?:of|with|in|usually|often|chiefly)\b/i.test(label)
+  );
 }
 /** Content words of a gloss, used as context cues. */
-export function glossWords(gloss, headword = '') {
+export function glossWords(gloss, headword = '', verb = false) {
+  const text = gloss
+    .toLowerCase()
+    // "… See grammatical person.": a cross-reference, no context
+    .replace(/(?:^|[.;(]\s*)see(?: also)? [^.;)]*/g, ' ');
   return [
     ...new Set(
-      gloss
-        .toLowerCase()
-        // "… See grammatical person.": a cross-reference, no context
-        .replace(/(?:^|[.;(]\s*)see(?: also)? [^.;)]*/g, ' ')
+      (verb ? lightVerbNouns(text) : text)
         .split(/[^a-z]+/)
         .filter((w) => w.length > 2 && !STOP.has(w) && w !== headword)
     ),
   ];
+}
+
+/**
+ * "heed; pay attention; regard": a two-word synonym in a verb's list is a
+ * verb and its noun, and the noun carries the meaning ("pay" alone is no
+ * cue for this sense of "depend").
+ */
+export function lightVerbNouns(text) {
+  return text.replace(
+    /([;,]\s*)(?:to\s+)?[a-z]+\s+([a-z]+)(?=\s*(?:[;,.)]|$))/g,
+    '$1$2'
+  );
 }
 
 /** A conceptual alias is not automatically a fixed phrase in this sentence. */

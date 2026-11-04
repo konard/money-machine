@@ -28,6 +28,7 @@ import { attributiveAction } from './attributive-action.mjs';
 import { parseCalendar, calendarAhead } from './calendar.mjs';
 import { Cursor } from './cursor.mjs';
 import { sharedHead } from './shared-head.mjs';
+import { possessiveClitic } from './possessive.mjs';
 import { nounFirst, nounModifier } from './nominal-evidence.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
 import { borrowedAdjective, standalone } from './noun-helpers.mjs';
@@ -557,21 +558,6 @@ export function parseNP(c, options = {}) {
     c.i = clitic;
   }
   return attachOf(c, np, options);
-}
-
-/** `'s` after a noun is possessive when a noun phrase follows. */
-function possessiveClitic(c) {
-  if (c.peek.lower === "'") {
-    return true;
-  }
-  const after = c.at(1);
-  // "Audiomack's free route": an adjective (even one that is also a
-  // verb) before a noun still starts the owned noun phrase
-  return Boolean(
-    after &&
-    (has(after, 'noun') || has(after, 'adj')) &&
-    (!has(after, 'verb') || (has(after, 'adj') && nounAhead(c, 2)))
-  );
 }
 
 const RELATIVES = new Set(['who', 'which', 'that']);

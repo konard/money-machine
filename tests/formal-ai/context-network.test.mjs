@@ -103,6 +103,74 @@ test('public topic mapping follows bounded P279 with multiple parents and local 
   assert.equal(requests.length, count);
 });
 
+test('a depth cut from one label keeps the parents another label fetched', async () => {
+  const lexicon = new Lexicon();
+  lexicon.add({ id: 'trade', domain: 'commerce', en: [] });
+  lexicon.add({ id: 'money', domain: 'finance', en: [] });
+  const entity = (label, parents = []) => ({
+    labels: { en: { value: label } },
+    claims: {
+      P279: parents.map((id) => ({
+        mainsnak: { datavalue: { value: { id } } },
+      })),
+    },
+  });
+  const entities = {
+    Q1: entity('finance', ['Q2']),
+    Q2: entity('commerce', ['Q4']),
+    Q4: entity('activity'),
+  };
+  const ids = { finance: 'Q1', commerce: 'Q2' };
+  await populateContexts(lexicon, {
+    cache: false,
+    contextDepth: 1,
+    fetchImpl: (url) => {
+      const p = new URL(url).searchParams;
+      const body =
+        p.get('action') === 'wbsearchentities'
+          ? { search: [{ id: ids[p.get('search')], label: p.get('search') }] }
+          : {
+              entities: Object.fromEntries(
+                p
+                  .get('ids')
+                  .split('|')
+                  .map((id) => [id, entities[id]])
+              ),
+            };
+      return Promise.resolve({ ok: true, json: () => Promise.resolve(body) });
+    },
+  });
+  const network = lexicon.contextNetwork;
+  assert.deepEqual([...network.parentsOf('commerce')], ['activity']);
+  assert.deepEqual([...network.contextsOf('money')].sort(), [
+    'commerce',
+    'finance',
+  ]);
+  assert.deepEqual([...network.contextsOf('trade')].sort(), [
+    'activity',
+    'commerce',
+  ]);
+});
+
+test('contexts stay within the loaded horizon, whatever else was loaded', () => {
+  const n = new ContextNetwork();
+  n.horizon = 2;
+  n.define('electronics', ['technique']);
+  n.define('technique', ['activity']);
+  n.define('activity'); // cut at the horizon when only electronics was loaded
+  n.linkConcept({ id: 'bus-conductor', contexts: ['electronics'] });
+  const alone = [...n.contextsOf('bus-conductor')].sort();
+  const depth = n.depth('electronics', n.closure('bus-conductor'));
+  // another label loads activity's own parents
+  n.define('activity', ['stative', 'process']);
+  n.define('process', ['occurrent']);
+  assert.deepEqual([...n.contextsOf('bus-conductor')].sort(), alone);
+  assert.deepEqual(alone, ['activity', 'electronics', 'technique']);
+  assert.equal(n.depth('electronics', n.closure('bus-conductor')), depth);
+  assert.ok(!n.isA('electronics', 'stative', n.closure('bus-conductor')));
+  assert.ok(n.isA('electronics', 'stative'));
+});
+
 function vocabulary() {
   const lexicon = loadLexicon({ fresh: true });
   const add = (id, word, domain, russian, prior = 0) =>

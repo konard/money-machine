@@ -2,6 +2,7 @@
 import { INDEFINITES, PRONOUNS } from './english/function-words.mjs';
 import { attachments } from './english/attachments.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
+import { lightVerbNouns } from './sources/sense-data.mjs';
 
 const stem = (s) =>
   s
@@ -17,9 +18,10 @@ const words = (s) =>
       )
       .map(stem)
   );
+// a verb's "pay attention" describes it by its noun alone, as in its cues
 const describes = (c) =>
   words(
-    `${c?.gloss || ''} ${c?.definition || ''} ${(c?.examples || []).join(' ')}`
+    `${c?.gloss || ''} ${(/:verb:/.test(c?.id || '') ? lightVerbNouns : String)(c?.definition || '')} ${(c?.examples || []).join(' ')}`
   );
 
 export function attachmentContext(node, concept, tree, lexicon) {

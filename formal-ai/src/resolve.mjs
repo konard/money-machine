@@ -1,3 +1,10 @@
+/** Resolve vocabulary, senses and Russian forms from public dictionaries. */
+import { loadTopicalLabels } from './sources/label-data.mjs';
+import {
+  closedClass,
+  unknownWords,
+  capitalizedWords,
+} from './unknown-words.mjs';
 import { roundTripEvidence } from './round-trip.mjs';
 import {
   voiceDictionary,
@@ -11,7 +18,6 @@ import { learnActionNouns } from './sources/action-nouns.mjs';
 import { populateContexts } from './sources/resolve-links.mjs';
 import { currencyPlans } from './sources/currencies.mjs';
 import { predicateEvidence } from './english/participle-evidence.mjs';
-/** Resolve vocabulary, senses and Russian forms from public dictionaries. */
 import { rememberPartsOfSpeech } from './english/nominal-evidence.mjs';
 import {
   learnInfinitiveFrames,
@@ -92,76 +98,8 @@ const FEATURE = {
   'past participle': 'participle',
   'ed-form': 'past',
 };
-/** A grammatical word, never looked up; "like", "there" and "hundred" may
- * be content words ("went there", "several hundred"). */
-function closedClass(word, lexicon) {
-  const open = ['propn', 'noun', 'verb', 'adj', 'adv', 'name', 'prep', 'there'];
-  return readings(
-    { text: word, lower: word, kind: 'word', first: true },
-    lexicon
-  ).some(
-    (r) =>
-      !open.includes(r.pos) && !(r.pos === 'num' && r.features?.value >= 100)
-  );
-}
-/** Words of a text that the lexicon has no reading for. */
-export function unknownWords(text, lexicon = loadLexicon()) {
-  const out = new Set();
-  const clean = text
-    .replace(/```[\s\S]*?```|`[^`]*`/g, ' ')
-    .replace(/\]\([^)]*\)|https?:\/\/\S+|<[^>]+>/g, ' ');
-  // a line starts a sentence or a list item, whatever ends the line above
-  const tokens = clean
-    .split('\n')
-    .flatMap((line) => tokenize(line).map((t, k) => ({ ...t, lineStart: !k })));
-  // a word only ever capitalized inside sentences is a name ("Google")
-  const lowercase = new Set(
-    tokens.filter((t) => t.text === t.lower).map((t) => t.lower)
-  );
-  for (const [i, token] of tokens.entries()) {
-    const w = token.lower;
-    if (
-      token.kind !== 'word' ||
-      // "e.g." and "i.e." are words too
-      !/^\p{Ll}[\p{Ll}-]*\p{Ll}$|^\p{Ll}(?:\.\p{Ll})+\.$/u.test(w) ||
-      w.length < 2
-    ) {
-      continue;
-    }
-    const initial =
-      token.lineStart || /^[.!?:#*\-–—|>"(]$/.test(tokens[i - 1].text);
-    if (!initial && token.text !== w && !lowercase.has(w)) {
-      continue;
-    }
-    // a content word is looked up unless public sources were asked already
-    const closed = closedClass(w, lexicon);
-    if (!closed && !lexicon.asked?.(w)) {
-      out.add(w);
-    }
-  }
-  return [...out];
-}
-/** Unknown capitals inside sentences: names, months and weekdays. */
-export function capitalizedWords(text, lexicon = loadLexicon()) {
-  const out = new Set();
-  for (const line of text.replace(/```[\s\S]*?```|`[^`]*`/g, ' ').split('\n')) {
-    const tokens = tokenize(line);
-    for (const [i, t] of tokens.entries()) {
-      if (
-        i > 0 &&
-        t.kind === 'word' &&
-        /^\p{Lu}\p{Ll}+$/u.test(t.text) &&
-        !/^[.!?:#*\-–—|>"(]$/.test(tokens[i - 1].text) &&
-        !lexicon.lookup('noun', t.lower).length &&
-        !lexicon.asked?.(t.lower)
-      ) {
-        out.add(t.lower);
-      }
-    }
-  }
-  return [...out];
-}
 export { nameCandidates };
+export { unknownWords, capitalizedWords };
 /**
  * Resolve every unknown word of `text` into the lexicon.
  * @returns {Promise<{words: number, resolved: string[], missing: string[]}>}
@@ -186,7 +124,9 @@ export async function resolveText(
     await learnUnitSymbols(text, lexicon, options);
   }
   const words = only || unknownWords(text, lexicon);
-  options.words = words;
+  if ((options.words = words).length) {
+    await loadTopicalLabels(options); // which sense labels are fields
+  }
   const done = new Set();
   const entries = new Map(); // lemma → english entries
   const forms = []; // {form, lemma, kind, pos}
@@ -285,8 +225,7 @@ export async function resolveText(
         };
         for (const f of e.formOf) {
           promote(f.lemma);
-          // "Sundays" → "Sunday": a capital page's base is learned under
-          // the lowercase word too
+          // "Sundays" → "Sunday": a capital page's base, learned lowercase too
           const lemma =
             key !== title && /^\p{Lu}\p{Ll}+$/u.test(f.lemma)
               ? f.lemma.toLowerCase()
@@ -296,8 +235,7 @@ export async function resolveText(
           }
           const pos = /past participle|ed-form/.test(f.kind) ? 'verb' : e.pos;
           forms.push({ form: key, lemma, kind: f.kind, pos });
-          // a variant ("doc" ← "document") borrows the target's senses,
-          // so the target page is needed even when the lexicon knows it
+          // a variant ("doc" ← "document") needs its target's page and senses
           const variantOf = /alternative|spelling/.test(f.kind);
           if (
             !done.has(f.lemma) &&
@@ -683,14 +621,15 @@ export async function resolveText(
         ruPages.get(word) || government.get(word)
       );
       if (entry?.pos === 'noun' && candidate) {
-        // the translation's own marks: машина|f, деньги|f-p
+        // own marks: машина|f, деньги|f-p (but зарпла́та|f-p is singular)
         if (!r.result.gender && candidate.gender) {
           entry.gender = candidate.gender;
         }
         if (
           candidate.plural &&
           !entry.pluraliaTantum &&
-          entry.forms?.['pl.nom']
+          entry.forms?.['pl.nom'] &&
+          unstress(entry.forms['sg.nom'] || '') !== unstress(word)
         ) {
           entry.pluraliaTantum = true;
           entry.lemma = entry.forms['pl.nom'];
@@ -817,7 +756,8 @@ export async function resolveText(
             : undefined,
         cues: glossWords(
           `${s.gloss} ${s.definition || ''} ${s.context || ''} ${(s.labels || []).join(' ')}`,
-          plan.lemma
+          plan.lemma,
+          plan.pos === 'verb'
         ),
         capital: s.capital || undefined,
         usagePenalty: usagePenalty(s),
