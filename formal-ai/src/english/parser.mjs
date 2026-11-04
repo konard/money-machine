@@ -76,6 +76,8 @@ export function parseNP(c, options = {}) {
   if (
     gerundReading(t) &&
     !options.nominal &&
+    // "pass onboarding tests": a verb that takes no gerund has a noun object
+    !(options.gerundObject === false && has(t, 'noun') && startsNP(c.at(1))) &&
     !contactRelativeAhead(c) &&
     !intransitiveAttribute(c)
   ) {
@@ -954,6 +956,7 @@ export function parseTail(c, frame, options = {}) {
     if (startsNP(t) && !(has(t, 'verb') && out.objects.length > 0)) {
       const np = parseNP(c, {
         infinitiveObject: true,
+        gerundObject: options.gerund,
       });
       if (!np) {
         break;

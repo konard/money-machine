@@ -46,6 +46,22 @@ export function catenativeInventory(text = '') {
   return words;
 }
 
+/** Verbs the appendix lists as followed by a gerund ("enjoy reading"). */
+export function gerundInventory(text = '') {
+  const words = new Set();
+  let active = false;
+  for (const line of text.split('\n')) {
+    if (/^==[^=]/.test(line)) {
+      active = /gerund\/present participle/.test(line) && !/passive/.test(line);
+    }
+    const word = /^\[\[([a-z]+(?: [a-z]+)*)(?:\|[^\]]+)?\]\]/.exec(line)?.[1];
+    if (active && word) {
+      words.add(word);
+    }
+  }
+  return words;
+}
+
 /** Attach lemma-level availability separately from sense-level frame evidence. */
 export async function learnInfinitiveFrames(entries, lexicon, options) {
   if (
@@ -89,6 +105,7 @@ export async function learnInfinitiveFrames(entries, lexicon, options) {
         )
     );
   const inventory = catenativeInventory(pages.get(CATENATIVES));
+  const gerunds = gerundInventory(pages.get(CATENATIVES));
   for (const [lemma, list] of entries) {
     for (const pos of ['verb', 'adj']) {
       const own = list.filter((e) => e.pos === pos && !e.rare);
@@ -111,6 +128,9 @@ export async function learnInfinitiveFrames(entries, lexicon, options) {
         }
         concept.infinitiveComplement =
           takes || (inventory.size ? false : undefined);
+        if (pos === 'verb' && gerunds.size) {
+          concept.gerundComplement = gerunds.has(lemma);
+        }
         if (takes && concept.frames?.includes('to-example')) {
           concept.frames = [...new Set([...concept.frames, 'to-infinitive'])];
         }

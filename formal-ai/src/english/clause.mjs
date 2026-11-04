@@ -1,6 +1,6 @@
 import { parseFragment } from './fragment.mjs';
 import { calendarPredicate } from './calendar.mjs';
-import { infinitiveOf } from './infinitive.mjs';
+import { gerundOf, infinitiveOf } from './infinitive.mjs';
 import { preferNominal } from './nominal-evidence.mjs';
 import { parseFactList, unknownFactWords } from './fact-list.mjs';
 /**
@@ -768,6 +768,7 @@ function tailOptions(ctx, vg) {
   return {
     takes: r ? ctx.takesOf(r) : [],
     infinitive: r ? ctx.infinitiveOf(r) : false,
+    gerund: r ? gerundOf(ctx.lexicon)(r) : undefined,
     takesOf: ctx.takesOf,
     infinitiveOf: ctx.infinitiveOf,
     lexicon: ctx.lexicon,

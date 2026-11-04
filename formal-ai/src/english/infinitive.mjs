@@ -23,6 +23,20 @@ export function infinitiveOf(lexicon) {
   };
 }
 
+/** Does the verb take a gerund ("enjoy reading")? undefined when unknown. */
+export function gerundOf(lexicon) {
+  return (reading) => {
+    const flags = reading.concepts.map(
+      (id) => lexicon?.get(id)?.gerundComplement
+    );
+    return flags.includes(true)
+      ? true
+      : flags.includes(false)
+        ? false
+        : undefined;
+  };
+}
+
 /** Parse a complement or purpose infinitive, preserving attested noun uses of to. */
 export function parseToInfinitive(c, frame, out, options, parseTail) {
   const t = c.peek;
