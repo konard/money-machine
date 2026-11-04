@@ -299,7 +299,7 @@ concept answering
 concept send
   class transfer
   en verb send sent sent
-  ru verb отправлять perf:отправить perf-imp:отправь rec:dat
+  ru verb отправлять perf:отправить perf-imp:отправь perf-pp:отправленный rec:dat
 
 concept get
   class transfer

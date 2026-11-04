@@ -231,3 +231,21 @@ test('adjectives coordinated after "be" all agree with the subject', () => {
     'Машина дешёвая, но медленная.'
   );
 });
+
+test('a modal before "be" stays: должна быть, была бы', () => {
+  assert.equal(ru('The book must be cheap.'), 'Книга должна быть дешёвая.');
+  assert.equal(
+    ru('The books should be cheap and good.'),
+    'Книги должны быть дешёвые и хорошие.'
+  );
+  assert.equal(ru('The book would be cheap.'), 'Книга была бы дешёвая.');
+});
+
+test('a perfect or bare-participle passive states a result', () => {
+  assert.equal(ru('Sent by a friend.'), 'Отправлено другом.');
+  assert.equal(ru('Sent to the bank.'), 'Отправлено в банк.');
+  assert.equal(
+    ru('The money has been sent to the bank.'),
+    'Деньги отправлены в банк.'
+  );
+});

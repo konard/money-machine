@@ -110,6 +110,7 @@ function parseRussian(value, node) {
         present: list(attrs['perf-pres']),
         past: list(attrs['perf-past']),
         imperative: attrs['perf-imp'],
+        pastPassive: attrs['perf-pp'],
       };
     }
     if (attrs.hab) {

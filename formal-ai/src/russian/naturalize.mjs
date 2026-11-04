@@ -38,13 +38,11 @@ const PREVERBAL = new Set(
   )
 );
 /** Adverbs and determiners that make an action habitual (imperfective). */
-const HABITUAL = new Set(
-  'often always never sometimes usually again'.split(' ')
-);
+const HABIT = new Set('often always never sometimes usually again'.split(' '));
 /** "often", or an adverb whose gloss repeats ("monthly": every month). */
 function habitualAdverb(concept, ctx) {
   return (
-    HABITUAL.has(concept) ||
+    HABIT.has(concept) ||
     /\b(?:every|each|regularly|repeatedly|once an?)\b/.test(
       ctx.lexicon.get(concept)?.gloss || ''
     )
@@ -124,7 +122,7 @@ export function naturalizeRussian(
       const habitual = (s.modifiers || []).some(
         (m) =>
           (m.kind === 'time' && m.entity?.determiner === 'det.every') ||
-          (m.kind === 'adverb' && HABITUAL.has(m.concept))
+          (m.kind === 'adverb' && HABIT.has(m.concept))
       );
       if (adjusted.tense === 'present past' && habitual) {
         adjusted.tense = 'present';
@@ -830,6 +828,7 @@ function passiveGroup(entry, s, f, ctx) {
     (s.generic && s.tense === 'present') ||
     /progressive/.test(s.aspect || '') ||
     (s.tense === 'present' &&
+      !/perfect/.test(s.aspect || '') &&
       (s.modifiers || []).some(
         (m) =>
           (m.kind === 'adverb' && habitualAdverb(m.concept, ctx)) ||
@@ -858,7 +857,7 @@ function passiveGroup(entry, s, f, ctx) {
   );
 }
 
-function modalWord(s, f) {
+export function modalWord(s, f) {
   const tense =
     s.tense === 'past' ? 'past' : s.tense === 'future' ? 'future' : 'present';
   const gender = f.number === 'pl' ? undefined : f.gender;

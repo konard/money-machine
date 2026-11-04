@@ -12,7 +12,12 @@ import {
   renderRelation,
   pronounKey,
 } from './phrase.mjs';
-import { BYT_PAST, lexEntry, renderModifiers } from './naturalize.mjs';
+import {
+  BYT_PAST,
+  lexEntry,
+  modalWord,
+  renderModifiers,
+} from './naturalize.mjs';
 import { infinitiveClause } from './nonfinite.mjs';
 
 const BYT_FUTURE = ['буду', 'будешь', 'будет', 'будем', 'будете', 'будут'];
@@ -115,7 +120,13 @@ export function renderCopula(s, ctx) {
   const presentational =
     subjectText === 'это' && c?.kind === 'entity' && !c.entity?.question;
   const f = presentational ? features(c.entity, ctx) : features(subj, ctx);
-  const be = copulaWord(s, f);
+  // "must be cheap" → должны быть дёшевы; "would be" → был бы
+  const be =
+    s.modality === 'modal.would'
+      ? `${copulaWord({ ...s, tense: 'past' }, f)} бы`
+      : s.modality
+        ? `${modalWord(s, f)} быть`
+        : copulaWord(s, f);
   const embedded = s.link === 'conj.whether';
   const words = [whWord, embedded ? '' : subjectText, ...mods.before];
   if (negative) {
