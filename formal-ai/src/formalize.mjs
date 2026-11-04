@@ -172,8 +172,10 @@ function entity(np, lexicon) {
   if (np.of) {
     e.of = entity(np.of, lexicon);
   }
-  if (np.pps) {
-    e.relations = np.pps.map((m) => modifier(m, lexicon));
+  if (np.pps || np.measures) {
+    e.relations = [...(np.measures || []), ...(np.pps || [])].map((m) =>
+      modifier(m, lexicon)
+    );
   }
   if (np.emphatic) {
     e.emphatic = true;
@@ -262,6 +264,9 @@ function modifierCore(m, lexicon) {
     return { kind: 'conj', conj: m.conj };
   }
   const out = { kind: 'relation', relation: m.relation };
+  if (m.measure) {
+    out.measure = true;
+  }
   if (m.postposition) {
     out.postposition = true;
   }

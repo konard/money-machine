@@ -201,17 +201,10 @@ export class Lexicon {
       ]) {
         if (concept[key] !== undefined) {
           // Frequency belongs to its own layer, not the dictionary layer.
-          for (const member of this.links.layers.values()) {
-            for (const [address, link] of member) {
-              if (
-                link.concept === concept.id &&
-                link.path[0] === key &&
-                link.layer !== 'overrides'
-              ) {
-                member.delete(address);
-              }
-            }
-          }
+          this.links.remove(
+            concept.id,
+            (link) => link.path[0] === key && link.layer !== 'overrides'
+          );
           this.links.add({ id: concept.id, [key]: concept[key] }, source);
         }
       }

@@ -14,8 +14,14 @@ import {
 import { clause } from './clause-node.mjs';
 import { calendarAhead } from './calendar.mjs';
 
-/** The word starts a sentence or a part after a semicolon. */
-const opens = (c) => Boolean(c.peek?.first || c.at(-1)?.text === ';');
+/** The word starts a sentence, a parenthesis or a part after a semicolon. */
+const opens = (c) =>
+  Boolean(c.peek?.first || c.i === 0 || c.at(-1)?.text === ';');
+
+/** "where required", "as agreed": a participle right after a subordinator. */
+const afterLink = (c) =>
+  has(c.at(-1), 'subord') &&
+  ['where', 'as', 'if', 'when', 'unless'].includes(c.at(-1).lower);
 
 const IT = {
   type: 'np',
@@ -54,25 +60,33 @@ export function noteStatement(c, ctx, tailOptions) {
  * subject, the thing described, goes unsaid.
  */
 function participleStart(c) {
-  // "Last checked 3 November 2026": adverbs may come first
+  // "Last checked 3 November 2026", "Not published for…": adverbs and a
+  // negation may come first
   let k = 0;
-  while (k < 2 && has(c.at(k), 'adv') && !isPunct(c.at(k + 1))) {
+  while (
+    k < 3 &&
+    (has(c.at(k), 'adv') || has(c.at(k), 'neg')) &&
+    !isPunct(c.at(k + 1))
+  ) {
     k += 1;
   }
   const [a, after] = [c.at(k), c.at(k + 1)];
   // how many adverbs open it, plus one; 0 when it is no such start
   return (
     Boolean(
-      opens(c) &&
+      (opens(c) || afterLink(c)) &&
       a?.readings.some(
         (r) => r.pos === 'verb' && /pp/.test(r.features?.form || '')
       ) &&
-      after &&
-      (has(after, 'prep') || has(after, 'adv') || calendarAhead(c, k + 1)) &&
+      ((afterLink(c) && (!after || isPunct(after))) ||
+        (after &&
+          (has(after, 'prep') ||
+            has(after, 'adv') ||
+            calendarAhead(c, k + 1)))) &&
       !has(after, 'det') &&
       // "Used to pay": "to" before a verb is an infinitive
       !(
-        after.lower === 'to' &&
+        after?.lower === 'to' &&
         c
           .at(k + 2)
           ?.readings.some(
@@ -243,7 +257,7 @@ function adjectiveStart(c, ctx) {
   const a = c.at(k);
   const after = c.at(k + 1);
   return Boolean(
-    opens(c) &&
+    (opens(c) || (afterLink(c) && (!after || isPunct(after)))) &&
     has(a, 'adj') &&
     // "Free to join": a verb reading yields to "to" + infinitive
     ((after?.lower === 'to' &&
@@ -256,6 +270,8 @@ function adjectiveStart(c, ctx) {
     (!after ||
       isPunct(after) ||
       ['prep', 'subord', 'coord'].some((p) => has(after, p)) ||
+      // "Legal everywhere": an adverb that is nothing else
+      after.readings.every((r) => r.pos === 'adv') ||
       after.lower === 'to') &&
     !(after && has(after, 'noun') && !has(after, 'prep'))
   );
@@ -274,13 +290,17 @@ function adjectivePredicate(c, ctx, tailOptions, adverbs = false) {
       { pos: 'be', lemma: 'be', features: { form: '3sg' }, concepts: ['be'] },
     ],
   };
-  const rest = c.tokens
-    .slice(c.i)
-    .map((t, k) =>
-      k < (adverbs || 0)
-        ? { ...t, readings: t.readings.filter((r) => r.pos === 'adv') }
+  const rest = c.tokens.slice(c.i).map((t, k) =>
+    k < (adverbs || 0)
+      ? {
+          ...t,
+          readings: t.readings.filter((r) => ['adv', 'neg'].includes(r.pos)),
+        }
+      : // "where required": the participle of a passive, not an adjective
+        passive && k === adverbs
+        ? { ...t, readings: t.readings.filter((r) => r.pos === 'verb') }
         : t
-    );
+  );
   const reordered = new Cursor([be, ...rest]);
   reordered.grammar = ctx;
   const vg = parseVerbGroup(reordered);

@@ -152,6 +152,11 @@ export function regularEntry(
   if (pos === 'adv' && /^[а-яё-]+(?: [а-яё-]+){1,2}$/i.test(word)) {
     return { pos: 'adv', lemma: word, regular: true };
   }
+  // an adjective with its fixed complement ("облагаемый налогом"): the
+  // first word agrees, the rest is kept
+  if (pos === 'adj' && /^[а-яё-]+(?:ый|ий|ой)(?: [а-яё-]+){1,2}$/i.test(word)) {
+    return { pos: 'adj', lemma: word, regular: true };
+  }
   if (word.includes(' ') || !/^[а-яё-]+$/i.test(word)) {
     return null;
   }

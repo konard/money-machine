@@ -32,6 +32,7 @@ export const INDEFINITES = {
   something: 'pro.something',
   anything: 'pro.anything',
   nothing: 'pro.nothing',
+  none: 'pro.none',
   everything: 'pro.everything',
   someone: 'pro.someone',
   somebody: 'pro.someone',

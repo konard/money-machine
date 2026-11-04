@@ -18,6 +18,10 @@ export function attachParticiple(c, np, options) {
       )) ||
     np.pronoun ||
     np.participles ||
+    // "the marketplace cut": a noun reading with nothing after it is a head
+    (!detached &&
+      has(c.peek, 'noun') &&
+      (!c.at(1) || /^[.!?;:,)]$/.test(c.at(1).text))) ||
     (options.stopAt !== undefined && c.i >= options.stopAt)
   ) {
     return;

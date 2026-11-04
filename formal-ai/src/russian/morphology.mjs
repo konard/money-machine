@@ -349,6 +349,11 @@ export function declineAdjective(lemma, f = {}) {
  * `готовы`) for predicates such as "is ready".
  */
 export function shortAdjective(lemma, f = {}) {
+  // "облагаемый налогом" → облагаемы налогом: the complement stays
+  const [first, ...rest] = lemma.split(' ');
+  if (rest.length) {
+    return [shortAdjective(first, f), ...rest].join(' ');
+  }
   const stem = lemma.slice(0, -2);
   if (f.number === 'pl') {
     return stem + fixY(stem, 'ы');

@@ -18,6 +18,9 @@ const finiteAhead = (t) =>
 /** Attach "localizing content" to the subject NP; false if it is not one. */
 export function attachIngRelative(c, np, options) {
   const r = gerundReading(c.peek);
+  if (r && !options.clauseStart) {
+    return attachPostposedIng(c, np, options, r);
+  }
   if (
     !r ||
     !options.clauseStart ||
@@ -49,9 +52,20 @@ export function attachIngRelative(c, np, options) {
   if (!tail) {
     c.tokens = tokens;
     c.i = save;
-    return false;
+    // "60-day hold matching the refund window": with no verb ahead, the
+    // phrase modifies a noun of a heading
+    return (
+      !tokens.slice(save + 1).some(finiteAhead) &&
+      attachPostposedIng(c, np, { ...options, clauseStart: false }, r)
+    );
   }
-  np.relative = clause(
+  np.relative = relativeOf(v, r, np, tail);
+  return true;
+}
+
+/** «которые локализуют контент»: the relative clause of an -ing phrase. */
+function relativeOf(v, r, np, tail) {
+  return clause(
     'declarative',
     {
       verb: head(v, r),
@@ -66,5 +80,43 @@ export function attachIngRelative(c, np, options) {
       ...tail,
     }
   );
+}
+
+/**
+ * "a hold matching the refund window", "sellers wanting fast assets": an
+ * -ing participle with its object after a noun later in a clause is a
+ * relative clause too («удержание, которое соответствует окну возврата»).
+ */
+function attachPostposedIng(c, np, options, r) {
+  const next = c.at(1);
+  if (
+    options.nonfinite ||
+    np.pronoun ||
+    np.relative ||
+    np.participles ||
+    (options.stopAt !== undefined && c.i >= options.stopAt) ||
+    !next ||
+    // a determiner surely opens the participle's object; otherwise the
+    // -ing word must be no noun ("sound effects licensing")
+    !(
+      ['det', 'poss'].some((p) => has(next, p)) ||
+      (!has(c.peek, 'noun') && ['adj', 'noun'].some((p) => has(next, p))) ||
+      // "sellers wanting fast assets": after a plural, before a modifier
+      (np.number === 'pl' && has(next, 'adj'))
+    )
+  ) {
+    return false;
+  }
+  const save = c.i;
+  const v = c.next();
+  const tail = parseTail(c, 'event', {
+    nonfinite: true,
+    stopAt: options.stopAt,
+  });
+  if (!tail.objects.length || tail.complement) {
+    c.i = save;
+    return false;
+  }
+  np.relative = relativeOf(v, r, np, tail);
   return true;
 }

@@ -77,3 +77,11 @@ concept last.finally
   gloss "after everything else; finally"
   en adv last
   ru adv после+всех
+
+# public data: гонорар, пошлина, взнос, плата, сбор (all for "payment for
+# professional services"); Wiktionary's sense "an amount charged ancillary
+# to the base cost of a product or service" has no Russian translation
+concept fee
+  gloss "an amount charged on top of the base cost of a product or service"
+  en noun fee
+  ru noun комиссия f

@@ -193,6 +193,19 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           score += 0.6;
           why.push('uncounted shared noun modifier (+0.60)');
         }
+        // "It is legal" → законно: a relational adjective (юридический), with
+        // no short forms, describes no state a predicate can assert
+        const ru = concept?.ru;
+        if (
+          role === 'complement' &&
+          ru?.pos === 'adj' &&
+          ru.shortForms &&
+          !Object.keys(ru.shortForms).length &&
+          !ru.short
+        ) {
+          score -= 0.4;
+          why.push('no Russian short form for a predicate (-0.40)');
+        }
         if (node.pos === 'noun' && concept?.labels?.includes('distributive')) {
           const rate = tokens.some(
             (t) => (t.position ?? t.index) === at - 1 && t.lower === 'per'

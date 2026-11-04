@@ -85,8 +85,20 @@ export function naturalizeRussian(
       text = renderFragment(s, ctx, renderModifiers);
     } else {
       const adjusted = { ...s };
+      // "where required", "if possible": the unsaid "it" is the situation
+      // («где это требуется»), not a thing named before
+      const situation =
+        s.link && s.subject?.implicit && s.subject.pronoun?.gender === 'neuter';
+      if (situation) {
+        adjusted.subject = {
+          implicit: true,
+          demonstrative: 'this',
+          number: 'singular',
+        };
+      }
       if (
         future &&
+        !situation &&
         s.tense === 'present' &&
         [
           'conj.if',

@@ -251,8 +251,16 @@ export class EnglishRenderer {
       upper: 'up to',
       approximate: 'about',
       almost: 'almost',
+      maximum: 'max',
+      minimum: 'min',
       range: `between ${e.rangeFrom} and`,
     }[e.bound];
+    // "a 60-day hold": a measure goes before the noun, hyphenated
+    const measures = (e.relations || [])
+      .filter((m) => m.measure)
+      .map(
+        (m) => `${m.entity.quantity}-${this.word(m.entity.concept, 'noun')}`
+      );
     let text = join(
       e.question && this.word(e.question),
       bound,
@@ -260,6 +268,7 @@ export class EnglishRenderer {
         { greater: 'more', lesser: 'less', least: 'least' }[e.quantifier],
       det,
       count,
+      measures,
       props,
       mods,
       head,
@@ -271,7 +280,7 @@ export class EnglishRenderer {
     if (e.relations) {
       text = join(
         text,
-        e.relations.map((m) => this.modifier(m))
+        e.relations.filter((m) => !m.measure).map((m) => this.modifier(m))
       );
     }
     if (e.participles) {

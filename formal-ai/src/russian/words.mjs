@@ -127,6 +127,8 @@ export const PRONOUN_WORDS = {
     'что-нибудь чего-нибудь чему-нибудь что-нибудь чем-нибудь чём-нибудь'
   ),
   'pro.nothing': table('ничего ничего ничему ничего ничем ничём'),
+  // "Capital controls: none" → «нет»: a stated absence
+  'pro.none': table('нет ничего ничему ничего ничем ничём'),
   'pro.everything': table('всё всего всему всё всем всём'),
   'pro.someone': table('кто-то кого-то кому-то кого-то кем-то ком-то'),
   'pro.anyone': table(
@@ -432,3 +434,11 @@ export function transliterate(name) {
   }
   return out ? out[0].toUpperCase() + out.slice(1) : name;
 }
+
+/** Bounds that keep the phrase's own case: «примерно 4 дня», «максимум $20». */
+export const NEAR = {
+  approximate: 'примерно',
+  almost: 'почти',
+  maximum: 'максимум',
+  minimum: 'минимум',
+};

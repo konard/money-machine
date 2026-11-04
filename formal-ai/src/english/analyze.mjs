@@ -95,6 +95,21 @@ export function tokenize(sentence) {
       push(raw, 'word');
       continue;
     }
+    // "60-day", "30-minute": a count and its unit, joined to measure a noun
+    const measure =
+      /^([^\p{L}\d]*)(\d+(?:\.\d+)?)-(\p{Ll}+)([^\p{L}\d-]*)$/u.exec(raw);
+    if (measure) {
+      (measure[1].match(WORD) || []).forEach((p) => push(p, 'punct'));
+      out.push({
+        text: measure[2],
+        lower: measure[2],
+        kind: 'number',
+        measure: true,
+      });
+      push(measure[3], 'word');
+      (measure[4].match(WORD) || []).forEach((p) => push(p, 'punct'));
+      continue;
+    }
     // "2026-11-03" (ISO 8601) is the date "3 November 2026"
     const dated = /^([^\p{L}\d-]*)(\d{4}-\d{2}-\d{2})([^\p{L}\d-]*)$/u.exec(
       raw

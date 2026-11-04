@@ -28,6 +28,7 @@ import { attributiveAction } from './attributive-action.mjs';
 import { parseCalendar, calendarAhead } from './calendar.mjs';
 import { Cursor } from './cursor.mjs';
 import { letterLabel } from './label-value.mjs';
+import { measureAhead } from './measure.mjs';
 import { sharedHead } from './shared-head.mjs';
 import { possessiveClitic } from './possessive.mjs';
 import { nounFirst, nounModifier } from './nominal-evidence.mjs';
@@ -49,6 +50,7 @@ import {
 } from './predicate-adjectives.mjs';
 import { attachIngRelative } from './ing-relative.mjs';
 import { attachParticiple } from './participle-relative.mjs';
+import { attachParenthesis } from './parenthesis.mjs';
 import { clauseAhead, commaList, eitherOr, parallelVerb } from './lists.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
 import { intransitiveAttribute } from './verb-group.mjs';
@@ -170,6 +172,8 @@ export function parseNP(c, options = {}) {
     np.def = 'def';
     c.next();
   }
+  const measure = measureAhead(c, options, parseNP);
+  np.measures = measure ? [measure] : undefined;
   if (
     c.peek?.kind === 'quantity' &&
     /\p{Sc}/u.test(c.peek.text) &&
@@ -183,6 +187,7 @@ export function parseNP(c, options = {}) {
     c.next();
   } else if (
     c.peek?.kind === 'quantity' &&
+    /\d/.test(c.peek.text) &&
     !/[\p{Sc}%]/u.test(c.peek.text) &&
     nounAhead(c, 1)
   ) {
@@ -239,11 +244,14 @@ export function parseNP(c, options = {}) {
       (c.at(1)?.slash || ['and', 'or'].includes(c.at(1)?.lower)) &&
       (has(c.at(2), 'adj') || participleReading(c.at(2))) &&
       nounAhead(c, 3);
+    // "fast, consistent assets": adjectives joined by a comma
+    const comma =
+      c.at(1)?.text === ',' && has(c.at(2), 'adj') && nounAhead(c, 3);
     if (
       limited ||
       amountAhead ||
       (has(t2, 'noun') && participleReading(c.at(1)) && !nounAhead(c, 1)) ||
-      (!pair && !nounAhead(c, 1) && !has(c.at(1), 'adj'))
+      (!pair && !comma && !nounAhead(c, 1) && !has(c.at(1), 'adj'))
     ) {
       if (has(t2, 'noun') || has(t2, 'name')) {
         break;
@@ -286,6 +294,9 @@ export function parseNP(c, options = {}) {
       a.comparative = true;
     }
     adjectives.push(a);
+    if (comma) {
+      c.next();
+    }
   }
   np.adjs = adjectives;
   t = c.peek;
@@ -356,6 +367,11 @@ export function parseNP(c, options = {}) {
     ) {
       break;
     }
+    // "a hold matching the refund window": an -ing word before a
+    // determiner is a participle taking an object, no compound's head
+    if (nouns.length && gerundReading(t3) && has(c.at(1), 'det')) {
+      break;
+    }
     // "bought a car yesterday": a word that can be an adverb and ends the
     // clause is no second noun of a compound
     const after = c.at(1);
@@ -402,9 +418,11 @@ export function parseNP(c, options = {}) {
       nouns.length >= 1 &&
       verbLikely(c) &&
       // "keyboard testing.", "with B2B targets.": an -ing word, or any
-      // word inside a phrase after the verb, ending the phrase is a noun
+      // word inside a phrase or an object ("the marketplace cut"), ending
+      // the phrase is a noun
       !(
         (options.inPhrase ||
+          (np.def && !options.clauseStart) ||
           t3.readings.every(
             (x) => x.pos !== 'verb' || x.features.form === 'ing'
           )) &&
@@ -570,42 +588,14 @@ export function parseNP(c, options = {}) {
   return attachOf(c, np, options);
 }
 
+export { setParentheticalParser } from './parenthesis.mjs';
+
 const RELATIVES = new Set(['who', 'which', 'that']);
 let relativeParser = null;
 
 /** The clause parser registers how to read "who/which/that …". */
 export function setRelativeParser(fn) {
   relativeParser = fn;
-}
-
-let parentheticalParser = null;
-
-/** The clause parser registers how to read the inside of "( … )". */
-export function setParentheticalParser(fn) {
-  parentheticalParser = fn;
-}
-
-/** "Upwork (pre-May contracts 10%)": the parenthesis belongs to the noun. */
-function attachParenthesis(c, np) {
-  if (!parentheticalParser || c.peek?.text !== '(') {
-    return;
-  }
-  let depth = 0;
-  for (let j = c.i; j < c.tokens.length; j += 1) {
-    depth += c.tokens[j].text === '(' ? 1 : c.tokens[j].text === ')' ? -1 : 0;
-    if (depth === 0) {
-      const inside = c.tokens.slice(c.i + 1, j);
-      const parsed = inside.length ? parentheticalParser(inside) : null;
-      if (parsed && !parsed.leftover.length) {
-        np.parenthetical = parsed.list;
-        np.parentheticalFinal = c.tokens
-          .slice(j + 1)
-          .every((t) => /^[.!?;]$/.test(t.text));
-        c.i = j + 1;
-      }
-      return;
-    }
-  }
 }
 
 /** "the price of the book" → genitive modifier. */
@@ -930,7 +920,7 @@ export function parseTail(c, frame, options = {}) {
     // "sell new and used books": an adjective coordinated before a noun
     const pairedAdjective =
       has(t, 'adj') &&
-      ['and', 'or'].includes(next?.lower) &&
+      (['and', 'or'].includes(next?.lower) || next?.text === ',') &&
       (has(c.at(2), 'adj') || participleReading(c.at(2))) &&
       has(c.at(3), 'noun');
     if (

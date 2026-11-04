@@ -16,6 +16,9 @@ const APPROXIMATE = {
   roughly: 'approximate',
   nearly: 'almost',
   almost: 'almost',
+  // "max $20 per payout", "min $1.50": a bound written as a label
+  max: 'maximum',
+  min: 'minimum',
 };
 
 /** A number or a quantity token ("4", "$20", "1-2"). */

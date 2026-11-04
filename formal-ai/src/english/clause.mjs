@@ -262,7 +262,7 @@ function parseClauses(tokens, ctx) {
     if (isPunct(t)) {
       // "(e.g. eBay)": a parenthesis after a clause encloses the next item
       if (
-        [';', ':', ',', '('].includes(t.text) &&
+        [';', ':', ',', '(', '='].includes(t.text) &&
         (result.list.length || t.text === '(')
       ) {
         link = { ...(link || {}), separator: t.text };
@@ -353,8 +353,11 @@ function parseClauses(tokens, ctx) {
       parseClause(
         c,
         { ...ctx, embedded: link?.embedded },
-        // "Confidence: estimated; last checked …": a semicolon starts afresh
-        result.list.length === 0 || link?.separator === ';'
+        // "Confidence: estimated; last checked …": a semicolon starts afresh,
+        // and so does "where required" after its subordinator
+        result.list.length === 0 ||
+          link?.separator === ';' ||
+          Boolean(link?.concept && has(c.at(-1), 'subord'))
       );
     if (!clause || c.i === before) {
       result.leftover.push(c.next().text);
@@ -391,6 +394,8 @@ function parseClause(c, ctx, initial) {
   const afterProperty = c.at(has(t, 'neg') ? 2 : 1);
   if (
     has(property, 'adj') &&
+    // "where possible" is a clause whose subject goes unsaid
+    !has(c.at(-1), 'subord') &&
     !property.readings.some(
       (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
     ) &&
@@ -472,10 +477,21 @@ function parseClause(c, ctx, initial) {
   }
   // "Elsewhere use PayPal": a fronted adverb before a request ("please"
   // is the request's own politeness)
+  // "Only apply for…", "First check the rules": a noun reading yields
+  // before a word that is only a verb, or a verb before its object
+  const verbOnly =
+    c
+      .at(1)
+      ?.readings.every(
+        (r) => r.pos === 'verb' && r.features?.form === 'base'
+      ) ||
+    (reading(c.at(1), 'verb')?.features.form === 'base' &&
+      ['det', 'poss'].some((p) => has(c.at(2), p)));
   if (
     has(t, 'adv') &&
     t.lower !== 'please' &&
-    !['verb', 'noun', 'wh', 'neg', 'det', 'pron'].some((p) => has(t, p))
+    !['verb', 'wh', 'neg', 'det', 'pron'].some((p) => has(t, p)) &&
+    (!has(t, 'noun') || verbOnly)
   ) {
     const save = c.i;
     c.next();

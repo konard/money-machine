@@ -27,6 +27,7 @@ import {
   cardinal,
   QUANTIFIERS,
   QUANTIFIER_CASES,
+  NEAR,
 } from './words.mjs';
 
 const CASE_INDEX = Object.fromEntries(CASES.map((c, i) => [c, i]));
@@ -260,7 +261,7 @@ export function renderEntity(e, kase, ctx) {
   if (e.bound) {
     const { bound, rangeFrom, ...rest } = e;
     // примерно/почти keep the phrase's own case
-    const near = { approximate: 'примерно', almost: 'почти' }[bound];
+    const near = NEAR[bound];
     if (near) {
       return `${near} ${renderEntity(rest, kase, ctx)}`;
     }
@@ -347,7 +348,11 @@ export function renderEntity(e, kase, ctx) {
               : renderEntity(st.entity, 'nom', { ...ctx, afterPrep: false })
           : ctx.renderStatement(st, { ...ctx, afterPrep: false })
       )
-      .join(', ');
+      // "(1 = none)": a stated separator is kept
+      .reduce((text, piece, i) => {
+        const sep = parenthetical[i].separator;
+        return i ? `${text}${sep === '=' ? ' =' : ','} ${piece}` : piece;
+      }, '');
     return `${renderEntity(rest, kase, ctx)} (${inside})`;
   }
   if (e.relative && ctx.renderStatement) {
@@ -812,10 +817,13 @@ export function renderRelation(m, ctx) {
   const e = m.entity;
   // "in about 4 days" → «примерно через 4 дня»: the approximation
   // goes before the preposition
-  const near = { approximate: 'примерно', almost: 'почти' }[e?.bound];
+  const near = NEAR[e?.bound];
   if (near) {
     const { bound: _bound, ...rest } = e;
     return `${near} ${renderRelation({ ...m, entity: rest }, ctx)}`;
+  }
+  if (m.measure) {
+    return `на ${renderEntity(e, 'acc', { ...ctx, afterPrep: true })}`;
   }
   if (m.adverb) {
     const adv = conceptOf(ctx, m.adverb)?.ru;

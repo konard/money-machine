@@ -116,7 +116,16 @@ export async function completeRussianMeanings(plans, entries, options) {
       meanings.length === 1 &&
       !plan.senses[0].russian.length
     ) {
-      plan.senses[0].russian = [{ word: meanings[0].word }];
+      // a phrase from a Russian dictionary's own definition ("облагаемый
+      // налогом") is attested by it, though it has no page of its own
+      plan.senses[0].russian = [
+        {
+          word: meanings[0].word,
+          ...(plan.pos === 'adj' && meanings[0].word.includes(' ')
+            ? { attested: true }
+            : {}),
+        },
+      ];
       plan.senses[0].source = 'wiktionary-ru';
     }
   }

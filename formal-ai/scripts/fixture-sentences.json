@@ -150,5 +150,53 @@
   {
     "text": "Education & tutoring",
     "source": "website/strategies.json"
+  },
+  {
+    "text": "Legal everywhere.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Start a 30-day free trial.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Ongoing effort (1 = none)",
+    "source": "docs/business-plans/qmee-surveys-no-minimum-cashout.md"
+  },
+  {
+    "text": "PayPal payouts carry a 2% fee (max $20).",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Not published for the new program",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Capital controls: none",
+    "source": "docs/legal/incorporation-costs.md"
+  },
+  {
+    "text": "Respect template and font licenses; add privacy/cookie notices where required.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Students (often reimbursed by employers) pay $200-$2,000 per seat.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "60-day royalty hold matching the refund window.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Buyers are new businesses and online sellers wanting fast, consistent assets.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Avoid gift-card-only apps (Fetch) if you want money in a bank.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+    "source": "website/strategies.json"
   }
 ]

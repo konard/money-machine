@@ -200,7 +200,9 @@ function predicateAdjective(c, f, ctx) {
       degreeForm(adj, c.comparison || 'greater', { ...agree, case: 'nom' }),
     ];
   }
-  if (adj.predicateShort || adj.short) {
+  // a present passive participle with its complement states a rule:
+  // облагаемы налогом
+  if (adj.predicateShort || adj.short || /^\S+[еио]мый /.test(adj.lemma)) {
     return [
       degreeWord(c, ctx),
       f.number !== 'pl' && f.gender === 'm' && adj.short

@@ -1,6 +1,7 @@
 /** Productive hyphenated modifiers, after whole-word dictionary lookup. */
 import { DocumentMemory, resolveSenses } from './senses.mjs';
 import { readings } from './english/analyze.mjs';
+import { RELATIONS } from './russian/words.mjs';
 import {
   declineAdjective,
   declineNoun,
@@ -12,7 +13,17 @@ export function hyphenatedTitles(words) {
     ...new Set(
       words
         .filter((w) => /^[a-z]+(?:-[a-z]+)+$/.test(w))
-        .flatMap((w) => [w.replaceAll('-', ' '), ...w.split('-')])
+        .flatMap((w) => {
+          const parts = w.split('-');
+          // "gift-card-only": shorter runs may be dictionary terms too
+          const runs = [];
+          for (let i = 0; i < parts.length; i += 1) {
+            for (let j = i + 2; j <= parts.length - (i ? 0 : 1); j += 1) {
+              runs.push(parts.slice(i, j).join(' '));
+            }
+          }
+          return [w.replaceAll('-', ' '), ...runs, ...parts];
+        })
     ),
   ];
 }
@@ -62,6 +73,20 @@ function analyses(word, lexicon, context, neighbors) {
 }
 
 function compose(parts, lexicon, context) {
+  // "gift-card-only", "subject-matter-expert": a run of parts named by a
+  // dictionary is one part
+  for (let n = parts.length - 1; parts.length > 2 && n >= 2; n -= 1) {
+    for (let i = 0; i + n <= parts.length; i += 1) {
+      const run = parts.slice(i, i + n).join(' ');
+      if (lexicon.lookup('noun', run).length) {
+        return compose(
+          [...parts.slice(0, i), run, ...parts.slice(i + n)],
+          lexicon,
+          context
+        );
+      }
+    }
+  }
   const found = parts.map((p) => analyses(p, lexicon, context, parts));
   const noun = (i) => found[i]?.find((r) => r.pos === 'noun')?.ru;
   const adjective = (i) => found[i]?.find((r) => r.pos === 'adj')?.ru;
@@ -95,6 +120,18 @@ function compose(parts, lexicon, context) {
   }
   if (last === 1 && n && parts[1] === 'free') {
     return `без ${declineNoun(n, 'gen')}`;
+  }
+  if (last === 1 && n && parts[1] === 'heavy') {
+    return `с упором на ${declineNoun(n, 'acc')}`;
+  }
+  // "in-world": a preposition and its noun
+  const relation = readings(
+    { text: parts[0], lower: parts[0], kind: 'word', index: 0 },
+    lexicon
+  ).find((r) => r.pos === 'prep')?.concepts?.[0];
+  const place = RELATIONS[relation]?.place;
+  if (last === 1 && place && noun(1)) {
+    return `${place[0]} ${declineNoun(noun(1), place[1])}`;
   }
   const verb = found[last]?.find(
     (r) => r.pos === 'verb' && /ing|pp|past/.test(r.features.form)
@@ -138,6 +175,16 @@ function compose(parts, lexicon, context) {
   if (last === 1 && adjective(0) && noun(1)) {
     const head = noun(1);
     return `с ${declineAdjective(adjective(0).lemma, { gender: head.gender, case: 'ins' })} ${declineNoun(head, 'ins')}`;
+  }
+  // "product-photo look", "subject-matter-expert notes": nouns modifying
+  // the head follow it in the genitive, the last part first
+  if (parts.length > 1 && parts.every((_, i) => noun(i))) {
+    return {
+      genitive: parts
+        .map((_, i) => declineNoun(noun(i), 'gen'))
+        .reverse()
+        .join(' '),
+    };
   }
   // A nominal/infinitival head followed by a prepositional complement.
   const prep = { on: ['по', 'dat'], per: ['за', 'acc'] };
@@ -230,8 +277,10 @@ export function learnHyphenated(words, lexicon, topic = '') {
         en: [{ pos: 'adj', lemma: word, words: [word] }],
         ru: {
           pos: 'adj',
-          lemma,
-          postpositive: /^(?:без|только для|с|со|за) /.test(lemma),
+          lemma: lemma.genitive || lemma,
+          postpositive:
+            Boolean(lemma.genitive) ||
+            /^(?:без|только для|с|со|за|в|на|по) /.test(lemma),
         },
         source: 'compound',
       });
