@@ -418,6 +418,10 @@ export function statement(clause, lexicon) {
   s.predicate = clause.verb.concept || clause.verb.candidates?.[0];
   Object.assign(s, rangeLink(clause.verb));
   s.subject = entity(clause.subject, lexicon);
+  // "agents help you…, write fixes": a series says its subject once
+  if (clause.elided && clause.subject?.implicit && !clause.subject.pronoun) {
+    s.subject = { ...s.subject, implicit: true };
+  }
   // "no homepage names it": both languages negate the verb (negative
   // concord in Russian: «никакая … не называет»), and the quantifier stays:
   // "no X" is not "the X"

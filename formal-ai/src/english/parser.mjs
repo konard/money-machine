@@ -23,7 +23,11 @@ import {
   gerundReading,
   participleReading,
 } from './token-readings.mjs';
-import { parseToInfinitive } from './infinitive.mjs';
+import {
+  objectBeforeBareVerb,
+  parseBareInfinitive,
+  parseToInfinitive,
+} from './infinitive.mjs';
 import { attributiveAction } from './attributive-action.mjs';
 import { parseCalendar, calendarAhead } from './calendar.mjs';
 import { Cursor } from './cursor.mjs';
@@ -39,11 +43,16 @@ import {
   parseQuantity,
   parseCurrency,
   quantityDegree,
+  parseDegree,
 } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, offsetModifier, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
-import { objectBeforeState, objectComplement } from './object-complement.mjs';
+import {
+  linksAdjective,
+  objectBeforeState,
+  objectComplement,
+} from './object-complement.mjs';
 import {
   coordinatedAdjectives,
   degreeAdverb,
@@ -756,33 +765,7 @@ export function parseTail(c, frame, options = {}) {
     if (has(t, 'wh') && out.objects.length + out.mods.length > 0) {
       break;
     }
-    const degree = quantityDegree(t);
-    if (degree) {
-      const next = c.at(1);
-      const pos =
-        frame === 'copula' && !out.complement && has(next, 'adj')
-          ? 'adj'
-          : has(next, 'adv') && !has(next, 'noun')
-            ? 'adv'
-            : null;
-      if (pos) {
-        c.next();
-        c.next();
-        const item = { ...head(next, reading(next, pos)), comparison: degree };
-        if (pos === 'adj') {
-          out.complement = { type: 'adj', ...item };
-        } else {
-          out.mods.push({ type: 'adv', ...item });
-        }
-        continue;
-      }
-      const np = parseQuantity(c, options, parseNP);
-      if (np) {
-        out.objects.push(np);
-        continue;
-      }
-      c.next();
-      out.mods.push({ type: 'quantity', comparison: degree });
+    if (parseDegree(c, frame, out, options, parseNP)) {
       continue;
     }
     if (t.lower === 'than') {
@@ -796,7 +779,13 @@ export function parseTail(c, frame, options = {}) {
       c.i = save;
       break;
     }
-    if (frame === 'copula' && !out.complement) {
+    const linking =
+      frame === 'copula' ||
+      // "stay low", not "arrived 2 days later": right after the verb
+      (!out.objects.length &&
+        !out.mods.length &&
+        linksAdjective(options.verbConcepts, options.lexicon));
+    if (linking && !out.complement) {
       if (
         has(t, 'adj') &&
         !nounAhead(c, 1) &&
@@ -826,7 +815,10 @@ export function parseTail(c, frame, options = {}) {
     if (objectComplement(c, frame, out, options)) {
       continue;
     }
-    if (parseToInfinitive(c, frame, out, options, parseTail)) {
+    if (
+      parseToInfinitive(c, frame, out, options, parseTail) ||
+      parseBareInfinitive(c, out, options, parseTail)
+    ) {
       continue;
     }
     // "ask about 3 options": a preposition the verb takes is no bound
@@ -952,11 +944,12 @@ export function parseTail(c, frame, options = {}) {
         c.i,
         { infinitiveObject: true, gerundObject: options.gerund },
       ];
+      const parse = (k) => parseNP(k, o);
       const np = objectBeforeState(
         c,
         start,
-        parseNP(c, o),
-        (k) => parseNP(k, o),
+        objectBeforeBareVerb(c, start, parseNP(c, o), parse, options),
+        parse,
         options
       );
       if (!np) {

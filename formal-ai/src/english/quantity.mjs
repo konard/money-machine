@@ -1,3 +1,5 @@
+import { has, head, reading } from './token-readings.mjs';
+
 /** Closed-class degree operators: lexical translations still come from sources. */
 export const quantityDegree = (token) =>
   ({
@@ -7,6 +9,41 @@ export const quantityDegree = (token) =>
     most: 'greatest',
     least: 'least',
   })[token?.lower];
+
+/** "is more stable", "pays less", "more than 50": a degree word in a
+ * predicate grades an adjective, an adverb or an amount. */
+export function parseDegree(c, frame, out, options, parseNP) {
+  const degree = quantityDegree(c.peek);
+  if (!degree) {
+    return false;
+  }
+  const next = c.at(1);
+  const pos =
+    frame === 'copula' && !out.complement && has(next, 'adj')
+      ? 'adj'
+      : has(next, 'adv') && !has(next, 'noun')
+        ? 'adv'
+        : null;
+  if (pos) {
+    c.next();
+    c.next();
+    const item = { ...head(next, reading(next, pos)), comparison: degree };
+    if (pos === 'adj') {
+      out.complement = { type: 'adj', ...item };
+    } else {
+      out.mods.push({ type: 'adv', ...item });
+    }
+    return true;
+  }
+  const np = parseQuantity(c, options, parseNP);
+  if (np) {
+    out.objects.push(np);
+    return true;
+  }
+  c.next();
+  out.mods.push({ type: 'quantity', comparison: degree });
+  return true;
+}
 
 /** Closed-class approximators before a count. */
 const APPROXIMATE = {

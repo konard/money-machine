@@ -669,6 +669,10 @@ function renderEvent(s, ctx) {
   if (s.complementClause && controlled) {
     words.push(...infinitiveClause(s.complementClause, s, ctx));
   }
+  // "you stay accountable": a linking verb's adjective is instrumental
+  if (s.complement?.kind === 'property' && s.subject) {
+    words.push(objectState({ ...s.subject, state: s.complement }, ctx));
+  }
   words.push(...mods.after);
   if (purpose) {
     words.push(...purposeClause(s.complementClause, s, ctx));

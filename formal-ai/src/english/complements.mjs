@@ -9,7 +9,8 @@ export function finiteComplementAhead(c, predicate, ctx) {
   const wh = has(c.peek, 'wh');
   const probe = new Cursor(c.tokens);
   probe.i = c.i + (wh ? 1 : 0);
-  probe.grammar = ctx;
+  // the outer subject's limit (a retry's stopAt) is not this clause's
+  probe.grammar = { ...ctx, stopAt: undefined };
   const start = probe.peek;
   const licensed = predicate?.candidates.some((id) =>
     ctx.lexicon.get(id)?.frames?.includes('that')

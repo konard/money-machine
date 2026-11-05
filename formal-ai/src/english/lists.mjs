@@ -22,7 +22,8 @@ export function commaList(c, first) {
     if ((word === 'and' || word === 'or') && startsNP(c.at(1))) {
       break;
     }
-    if (!startsNP(c.peek) || clauseAhead(c, 0)) {
+    // "reproduce bugs, write fixes and tests": a verb like the one before
+    if (!startsNP(c.peek) || clauseAhead(c, 0) || parallelVerb(c, 0)) {
       c.i = save;
       return null;
     }

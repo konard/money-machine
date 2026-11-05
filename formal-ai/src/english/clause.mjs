@@ -1,6 +1,6 @@
 import { parseFragment } from './fragment.mjs';
 import { calendarPredicate } from './calendar.mjs';
-import { gerundOf, infinitiveOf } from './infinitive.mjs';
+import { bareInfinitiveOf, gerundOf, infinitiveOf } from './infinitive.mjs';
 import { preferNominal } from './nominal-evidence.mjs';
 import { parseFactList, unknownFactWords } from './fact-list.mjs';
 /**
@@ -25,6 +25,7 @@ import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
 import { finiteComplementAhead } from './complements.mjs';
+import { parseInverted } from './inverted.mjs';
 import {
   isImperativeStart,
   noteStatement,
@@ -73,7 +74,25 @@ setRelativeParser((c, np) => {
     c.next();
   }
   const start = c.i;
-  const subject = parseNP(c, { clauseStart: true });
+  const parsed = parseNP(c, { clauseStart: true });
+  // "the tools developers use": without "that", a relative's subject is
+  // determined, plural or a name; a bare singular noun ("agents help you
+  // …") is the outer verb read as a noun
+  const word = c.tokens.find((t) => t.index === parsed?.head?.token);
+  const bare =
+    !explicit &&
+    parsed?.head?.pos === 'noun' &&
+    (parsed.number === 'sg' ||
+      // "FAQ (…) says pay depends": a lone plural that is also a 3sg verb
+      (c.i === start + 1 &&
+        word?.readings.some(
+          (r) => r.pos === 'verb' && r.features?.form === '3sg'
+        ))) &&
+    !parsed.det &&
+    !parsed.poss &&
+    !parsed.quantity &&
+    !parsed.def;
+  const subject = !bare && parsed;
   const vg =
     subject &&
     parseVerbGroup(
@@ -184,6 +203,7 @@ export function parseSentence(sentence, lexicon, options = {}) {
     lexicon,
     takesOf: takesOf(lexicon),
     infinitiveOf: infinitiveOf(lexicon),
+    bareInfinitiveOf: bareInfinitiveOf(lexicon),
     question: punctuation === '?',
   };
   const clauses = parseClauses(tokens, ctx);
@@ -457,8 +477,13 @@ function parseClause(c, ctx, initial) {
     return parseWhQuestion(c, ctx);
   }
   // yes/no question: aux first
-  if (ctx.question && AUX.some((p) => has(t, p)) && !has(t, 'noun')) {
-    return parseInverted(c, ctx, null);
+  // ("do" is a noun too: "a do", yet "Do you…?" still asks)
+  if (
+    ctx.question &&
+    AUX.some((p) => has(t, p)) &&
+    (!has(t, 'noun') || has(t, 'do'))
+  ) {
+    return parseInverted(c, ctx, null, tailOptions);
   }
   // existential: there is / there are
   if (
@@ -769,6 +794,8 @@ function tailOptions(ctx, vg) {
   return {
     takes: r ? ctx.takesOf(r) : [],
     infinitive: r ? ctx.infinitiveOf(r) : false,
+    bareInfinitive: r ? ctx.bareInfinitiveOf(r) : false,
+    bareInfinitiveOf: ctx.bareInfinitiveOf,
     gerund: r ? gerundOf(ctx.lexicon)(r) : undefined,
     takesOf: ctx.takesOf,
     infinitiveOf: ctx.infinitiveOf,
@@ -843,53 +870,6 @@ function parseImperative(c, ctx) {
   return clause('imperative', vg, { subject, polite, inclusive, ...tail });
 }
 
-/** Undo subject–aux inversion: "Do you like tea" → "you do like tea". */
-function parseInverted(c, ctx, wh) {
-  const auxStart = c.i;
-  const aux = [c.next()];
-  while (has(c.peek, 'neg')) {
-    aux.push(c.next());
-  }
-  // "Is there a bank here?": an existential question
-  if (has(aux[0], 'be') && has(c.peek, 'there') && !wh) {
-    c.next();
-    const reordered = new Cursor([...aux, ...c.tokens.slice(c.i)]);
-    reordered.grammar = ctx;
-    const vg = parseVerbGroup(reordered);
-    const theme = vg && parseNP(reordered);
-    if (theme) {
-      const tail = parseTail(reordered, 'event', ctx);
-      c.i += reordered.i - aux.length;
-      return clause('question', vg, {
-        frame: 'existence',
-        subject: theme,
-        ...tail,
-      });
-    }
-    c.i = auxStart;
-    return null;
-  }
-  const subject = parseNP(c);
-  if (!subject) {
-    c.i = auxStart;
-    if (wh) {
-      // "Who lives here?" – the wh-word is the subject
-      return null;
-    }
-    return null;
-  }
-  const rest = c.tokens.slice(c.i);
-  const reordered = new Cursor([...aux, ...rest]);
-  reordered.grammar = ctx;
-  const vg = parseVerbGroup(reordered, 'question');
-  if (!vg) {
-    return null;
-  }
-  const tail = parseTail(reordered, vg.frame, tailOptions(ctx, vg));
-  c.i += reordered.i - aux.length;
-  return clause('question', vg, { subject, ...tail, wh });
-}
-
 function parseWhQuestion(c, ctx) {
   const t = c.next();
   const r = reading(t, 'wh');
@@ -921,7 +901,7 @@ function parseWhQuestion(c, ctx) {
   // "how many / how much" not modelled: report through leftover
   if (AUX.some((p) => has(c.peek, p))) {
     const save = c.i;
-    const inverted = parseInverted(c, ctx, wh);
+    const inverted = parseInverted(c, ctx, wh, tailOptions);
     if (inverted) {
       fillWh(inverted, wh);
       return inverted;

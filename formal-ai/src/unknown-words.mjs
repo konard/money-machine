@@ -3,9 +3,13 @@ import { readings, tokenize } from './english/analyze.mjs';
 import { loadLexicon } from './lexicon.mjs';
 
 /** A grammatical word, never looked up; "like", "there" and "hundred" may
- * be content words ("went there", "several hundred"). */
+ * be content words ("went there", "several hundred"), and the auxiliary
+ * "do" is a verb of its own ("do the tasks"). */
 export function closedClass(word, lexicon) {
-  const open = ['propn', 'noun', 'verb', 'adj', 'adv', 'name', 'prep', 'there'];
+  const open = [
+    ...['propn', 'noun', 'verb', 'adj', 'adv', 'name', 'prep', 'there'],
+    'do',
+  ];
   return readings(
     { text: word, lower: word, kind: 'word', first: true },
     lexicon

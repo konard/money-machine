@@ -92,13 +92,19 @@ export function earlierVerb(c, start, verbAt, reparse) {
     ) &&
     after?.readings.some((r) => r.pos === 'noun') &&
     !after.readings.some((r) => ['det', 'pron'].includes(r.pos));
+  // "the site says pay depends…": a finite verb left over after the
+  // clause shows the subject took the real verb as a noun
+  const dangling = c.tokens[end]?.readings.some(
+    (r) => r.pos === 'verb' && /3sg|past/.test(r.features?.form || '')
+  );
   // A participle or uninflected adjective/verb may belong to the object
   // of an earlier finite verb: "says top tutors", "covers fixed cost".
   if (
     !verb?.readings.some(
       (r) => r.pos === 'verb' && /past|pp/.test(r.features?.form || '')
     ) &&
-    !modifier
+    !modifier &&
+    !dangling
   ) {
     return null;
   }
@@ -116,7 +122,12 @@ export function earlierVerb(c, start, verbAt, reparse) {
       continue;
     }
     const retry = reparse(k);
-    if (retry?.type === 'clause' && retry.verb?.token === k && c.i >= end) {
+    // ("says pay depends": the rest is the clause the verb introduces)
+    if (
+      retry?.type === 'clause' &&
+      retry.verb?.token === k &&
+      (c.i >= end || (dangling && retry.finiteLink))
+    ) {
       return retry;
     }
   }

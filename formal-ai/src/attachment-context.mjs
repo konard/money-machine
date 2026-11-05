@@ -2,7 +2,7 @@
 import { INDEFINITES, PRONOUNS } from './english/function-words.mjs';
 import { attachments } from './english/attachments.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
-import { lightVerbNouns } from './sources/sense-data.mjs';
+import { definingVerbs, lightVerbNouns } from './sources/sense-data.mjs';
 
 const stem = (s) =>
   s
@@ -35,8 +35,10 @@ export function attachmentContext(node, concept, tree, lexicon) {
       .map((id) => lexicon.get(id))
       .filter(Boolean);
     const own = describes(concept);
+    const defining = [...definingVerbs(concept)].map(stem);
     const distinctive = (word) =>
       own.has(word) &&
+      !defining.includes(word) &&
       alternatives.filter((c) => describes(c).has(word)).length <=
         alternatives.length / 2;
     const direct = stem(partner.lemma || partner.text || '');

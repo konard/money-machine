@@ -96,8 +96,12 @@ export async function sensePlans(run) {
         own.delete(`${e.pos}:${title}`);
         continue;
       }
+      // a misspelling ("lets" for "let's") is never what the writer meant
       for (const f of e.formOf.filter(
-        (x) => /alternative|spelling|form$/.test(x.kind) && !FEATURE[x.kind]
+        (x) =>
+          /alternative|spelling|form$/.test(x.kind) &&
+          !/misspelling/.test(x.kind) &&
+          !FEATURE[x.kind]
       )) {
         // "e.g." (adverb) ← "for example" (prepositional phrase)
         const pos = e.pos === 'adv' && / /.test(f.lemma) ? 'prep' : e.pos;

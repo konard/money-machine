@@ -273,6 +273,23 @@ export function glossWords(gloss, headword = '', verb = false) {
 }
 
 /**
+ * "To work for or on, by way of caring for…": the verbs a verb sense is
+ * defined by name the action itself, never a partner of it ("did the work"
+ * is no sign of the caring-for sense).
+ */
+export function definingVerbs(concept) {
+  if (!/:verb:/.test(concept?.id || '')) {
+    return new Set();
+  }
+  const text = `${concept.gloss || ''}; ${concept.definition || ''}`;
+  return new Set(
+    [...text.toLowerCase().matchAll(/(?:^|[;,.]\s*)to\s+([a-z]+)/g)].map(
+      (m) => m[1]
+    )
+  );
+}
+
+/**
  * "heed; pay attention; regard": a two-word synonym in a verb's list is a
  * verb and its noun, and the noun carries the meaning ("pay" alone is no
  * cue for this sense of "depend").

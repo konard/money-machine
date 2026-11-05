@@ -21,6 +21,7 @@ import { DocumentMemory, stem } from './document-memory.mjs';
 export { DocumentMemory };
 import { alternativeTokens } from './english/coordination-context.mjs';
 import { translationHead } from './sources/translation-morphology.mjs';
+import { definingVerbs } from './sources/sense-data.mjs';
 /** A cue word matches a sentence word or its derivation (pay ~ payment). */
 function matchesCue(words, cue) {
   if (words.has(cue)) {
@@ -318,10 +319,12 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           score += 1;
           why.push('capitalized dictionary entry for capitalized token (+1)');
         }
+        const defining = definingVerbs(concept);
         for (const cue of concept?.cues || []) {
           for (const w of words) {
             if (
               w.pos === at ||
+              defining.has(cue) ||
               alternatives.has(w.token.index) ||
               !matchesCue(w.words, cue)
             ) {
@@ -628,8 +631,10 @@ function valencyFit(node, clause, concept, next) {
   if (owner.complement?.object && stateSense(concept)) {
     return { score: 1.5, reason: 'state sense with object complement (+1.5)' };
   }
-  const observed =
-    owner.xcomp && !owner.xcomp.purpose
+  // "let it run", "make them write": a bare verb after the object
+  const observed = owner.xcomp?.bare
+    ? 'bare-infinitive'
+    : owner.xcomp && !owner.xcomp.purpose
       ? hasObject
         ? 'object-to'
         : 'to-infinitive'
@@ -647,6 +652,7 @@ function valencyFit(node, clause, concept, next) {
   const compatible =
     observed &&
     (frames.includes(observed) ||
+      (observed === 'bare-infinitive' && concept.bareInfinitive) ||
       (observed === 'object-to' && frames.includes('to-infinitive')));
   if (compatible) {
     return { score: 4, reason: `valency ${observed} (+4)` };

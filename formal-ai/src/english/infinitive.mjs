@@ -23,6 +23,70 @@ export function infinitiveOf(lexicon) {
   };
 }
 
+/** "let you sell", "help you reproduce": an object, then a bare verb. */
+export function bareInfinitiveOf(lexicon) {
+  return (reading) =>
+    reading.concepts.some((id) => {
+      const c = lexicon?.get(id);
+      return c?.bareInfinitive || c?.frames?.includes('bare-infinitive');
+    });
+}
+
+/** "make the agent write tests": after a verb taking a bare infinitive,
+ * the object ends before a base verb instead of compounding with it. */
+export function objectBeforeBareVerb(c, start, np, parse, options) {
+  if (!np || !options.bareInfinitive) {
+    return np;
+  }
+  for (let k = start + 1; k < c.i; k += 1) {
+    const t = c.tokens[k];
+    if (
+      reading(t, 'verb')?.features.form === 'base' &&
+      has(c.tokens[k - 1], 'noun')
+    ) {
+      const shorter = new c.constructor(c.tokens.slice(0, k));
+      shorter.i = start;
+      const object = parse(shorter);
+      if (object && shorter.i === k) {
+        c.i = k;
+        return object;
+      }
+    }
+  }
+  return np;
+}
+
+/** "lets you sell items": the object does what the bare verb says. */
+export function parseBareInfinitive(c, out, options, parseTail) {
+  const t = c.peek;
+  const r = reading(t, 'verb');
+  if (
+    !options.bareInfinitive ||
+    out.xcomp ||
+    out.objects.length !== 1 ||
+    out.objects[0].type !== 'np' ||
+    r?.features.form !== 'base' ||
+    // "make the free version": the noun continues the object
+    (has(t, 'noun') && !startsNP(c.at(1)) && c.at(1)?.kind === 'word')
+  ) {
+    return false;
+  }
+  c.next();
+  // "help you reproduce bugs, write fixes…": the series is of base verbs
+  const finite = c.finite;
+  c.finite = 'base';
+  const sub = parseTail(c, 'event', {
+    ...options,
+    bareInfinitive: options.bareInfinitiveOf?.(r),
+    takes: options.takesOf?.(r) || [],
+    infinitive: options.infinitiveOf?.(r),
+    verbConcepts: r.concepts,
+  });
+  c.finite = finite;
+  out.xcomp = { verb: head(t, r), ...sub, bare: true };
+  return true;
+}
+
 /** Does the verb take a gerund ("enjoy reading")? undefined when unknown. */
 export function gerundOf(lexicon) {
   return (reading) => {
@@ -108,6 +172,7 @@ export function parseToInfinitive(c, frame, out, options, parseTail) {
       ...options,
       takes: options.takesOf?.(r) || [],
       infinitive: options.infinitiveOf?.(r),
+      bareInfinitive: r && options.bareInfinitiveOf?.(r),
       verbConcepts: r?.concepts,
     });
     out.xcomp = { verb: head(v, r), ...sub };

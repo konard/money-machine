@@ -97,3 +97,10 @@ export function objectBeforeState(c, start, np, parse, options) {
   c.i -= 1;
   return object;
 }
+
+/** "stay", "seem": a verb with a sense the dictionary calls copulative. */
+export function linksAdjective(concepts, lexicon) {
+  return (concepts || []).some((id) =>
+    lexicon?.get(id)?.frames?.includes('copulative')
+  );
+}

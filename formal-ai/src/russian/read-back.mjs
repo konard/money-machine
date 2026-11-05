@@ -414,6 +414,11 @@ export function sourceLinks(formal) {
       node.forEach((n) => visit(n, statement));
       return;
     }
+    // "the seller passes … and must not sell": a series says its shared
+    // subject once, and the earlier clause carries its links
+    if (node.implicit && !node.pronoun) {
+      return;
+    }
     if (node.action && node.nominalization) {
       visit(node.action, statement);
       const outer = optional;

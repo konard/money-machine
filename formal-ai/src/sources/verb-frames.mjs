@@ -19,6 +19,14 @@ export function senseFrames(text = '', headword) {
     )) {
       frames.add(`prep:${marker[1]}`);
     }
+    // "stay accountable", "seem fine": the verb links an adjective
+    if (/\bcopulative\b/.test(note)) {
+      frames.add('copulative');
+    }
+    // "let" (usually without to), "make" (second object is a verb)
+    if (/bare infinitive|without to\b|second object is a verb/.test(note)) {
+      frames.add('bare-infinitive');
+    }
     if (/\bmembers? of (?:a|the) group\b/.test(note)) {
       frames.add('prep:by');
     }

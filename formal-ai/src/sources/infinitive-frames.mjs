@@ -46,6 +46,24 @@ export function catenativeInventory(text = '') {
   return words;
 }
 
+/** Verbs the appendix lists before a bare infinitive ("help pack", "go
+ * clean"); a line may name several ("[[go]] / [[come]]"). */
+export function bareInventory(text = '') {
+  const words = new Set();
+  let active = false;
+  for (const line of text.split('\n')) {
+    if (/^==[^=]/.test(line)) {
+      active = /bare infinitive/.test(line);
+    }
+    if (active && /^\[\[/.test(line)) {
+      for (const m of line.matchAll(/\[\[([a-z]+)(?:\|[^\]]+)?\]\]/g)) {
+        words.add(m[1]);
+      }
+    }
+  }
+  return words;
+}
+
 /** Verbs the appendix lists as followed by a gerund ("enjoy reading"). */
 export function gerundInventory(text = '') {
   const words = new Set();
@@ -106,6 +124,7 @@ export async function learnInfinitiveFrames(entries, lexicon, options) {
     );
   const inventory = catenativeInventory(pages.get(CATENATIVES));
   const gerunds = gerundInventory(pages.get(CATENATIVES));
+  const bare = bareInventory(pages.get(CATENATIVES));
   for (const [lemma, list] of entries) {
     for (const pos of ['verb', 'adj']) {
       const own = list.filter((e) => e.pos === pos && !e.rare);
@@ -128,6 +147,9 @@ export async function learnInfinitiveFrames(entries, lexicon, options) {
         }
         concept.infinitiveComplement =
           takes || (inventory.size ? false : undefined);
+        if (pos === 'verb' && bare.has(lemma)) {
+          concept.bareInfinitive = true;
+        }
         if (pos === 'verb' && gerunds.size) {
           concept.gerundComplement = gerunds.has(lemma);
         }
