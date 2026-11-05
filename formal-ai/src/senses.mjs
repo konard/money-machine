@@ -15,6 +15,7 @@ import {
   membershipContext,
 } from './sense-context.mjs';
 import { attachmentContext } from './attachment-context.mjs';
+import { cognateShare } from './cognates.mjs';
 import { cueRarity, documentTopicContext } from './topic-context.mjs';
 import { DocumentMemory, stem } from './document-memory.mjs';
 
@@ -502,6 +503,19 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           why.push(
             `Russian corpus rank ${concept.ruRank} (${common.toFixed(2)})`
           );
+        }
+        // кантри is the loan, страна the word: a loan far rarer than the
+        // alternatives has only its narrow borrowed meaning
+        const commonest = Math.max(
+          ...node.candidates.map((c) => lexicon.get(c)?.ruFrequency || 0)
+        );
+        const cognate =
+          (concept?.ruFrequency || 0) * 20 >= commonest
+            ? 0.5 * cognateShare(node.lemma, concept?.ru?.lemma)
+            : 0;
+        if (cognate) {
+          score += cognate;
+          why.push(`international word (+${cognate.toFixed(2)})`);
         }
         if (Number.isFinite(concept?.ruFrequency)) {
           // Russian frequency supplies only a small default preference;
