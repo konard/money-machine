@@ -14,11 +14,11 @@ const describes = (concept) =>
  * definitions are written, not what a sense is about.
  */
 const general = new WeakMap();
-function generalCues(lexicon) {
+function cueStatistics(lexicon) {
   const size = lexicon.concepts?.size || 0;
   const known = general.get(lexicon);
   if (known?.size === size) {
-    return known.cues;
+    return known;
   }
   const counts = new Map();
   for (const concept of lexicon.concepts?.values() || []) {
@@ -31,8 +31,20 @@ function generalCues(lexicon) {
       .filter(([, n]) => n >= 20 && n >= 0.02 * size)
       .map(([cue]) => cue)
   );
-  general.set(lexicon, { size, cues });
-  return cues;
+  const statistics = { size, cues, counts };
+  general.set(lexicon, statistics);
+  return statistics;
+}
+const generalCues = (lexicon) => cueStatistics(lexicon).cues;
+
+/**
+ * How much a definition word says about one sense: 1 for a distinctive word,
+ * less the more definitions use it ("small", "hand", "person").
+ */
+export function cueRarity(cue, lexicon) {
+  const { size, counts } = cueStatistics(lexicon);
+  const n = counts.get(stem(cue)) || 0;
+  return n < 20 || !size ? 1 : Math.min(1, (0.001 * size) / n);
 }
 
 /** Each source lemma gets one vote; repeated boilerplate cannot dominate. */

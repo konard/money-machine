@@ -151,7 +151,7 @@ export function frequent(units, count) {
 }
 
 /** Deterministic shuffle (mulberry32). */
-function sample(items, count, seed) {
+export function sample(items, count, seed) {
   let a = seed >>> 0;
   const random = () => {
     a = (a + 0x6d2b79f5) >>> 0;

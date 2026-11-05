@@ -15,7 +15,7 @@ import {
   membershipContext,
 } from './sense-context.mjs';
 import { attachmentContext } from './attachment-context.mjs';
-import { documentTopicContext } from './topic-context.mjs';
+import { cueRarity, documentTopicContext } from './topic-context.mjs';
 import { DocumentMemory, stem } from './document-memory.mjs';
 
 export { DocumentMemory };
@@ -354,7 +354,10 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
               )
                 ? 0.1
                 : 1) *
-              (reverseOnly ? 0.2 : 1);
+              (reverseOnly ? 0.2 : 1) *
+              cueRarity(cue, lexicon) *
+              // another page's definition says nothing of this word's context
+              (concept?.related ? 0.2 : 1);
             score += weight;
             why.push(
               `${local.has(w.pos) ? 'cue' : 'other clause cue'} "${cue}" at distance ${distance} (+${weight.toFixed(2)})`
@@ -413,8 +416,12 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
           );
         }
         if (concept?.related) {
-          score -= 0.5;
-          why.push('related translation page (-0.50)');
+          // another page's meaning is a fallback for a word without its own
+          const own =
+            !concept.capital &&
+            node.candidates.some((c) => !lexicon.get(c)?.related);
+          score -= own ? 2 : 0.5;
+          why.push(`related translation page (-${own ? 2 : 0.5})`);
         }
         if (
           concept?.variant &&

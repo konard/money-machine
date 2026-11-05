@@ -9,14 +9,14 @@ export function methodEvidence(concept, memory, word, semantic, topic) {
   // unless the document is about that field
   if (
     domain &&
-    !semantic &&
+    !(semantic >= 0.8) &&
     !concept.core &&
     !memory.mentions(domain, word) &&
     !(memory.familyWeight(domain) >= 0.4)
   ) {
     evidence.push({
-      score: -0.2 * weight,
-      reason: `specialist sense (${domain}) (${(-0.2 * weight).toFixed(2)})`,
+      score: -0.5 * weight,
+      reason: `specialist sense (${domain}) (${(-0.5 * weight).toFixed(2)})`,
     });
   }
   if (

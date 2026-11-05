@@ -127,10 +127,13 @@ export async function resolveText(
     )
   );
   if (!only) {
+    // A phrase page read for its expressions has taught no verb yet, so
+    // "asked" alone would hide "hand over"; ask once as a verb of its own.
     const phrasal = phrasalCandidates(text, lexicon).filter(
-      (p) => !lexicon.asked(p)
+      (p) => !lexicon.asked(`phrasal ${p}`)
     );
     if (phrasal.length) {
+      lexicon.markAsked(phrasal.map((p) => `phrasal ${p}`));
       const inner = await resolveText('', {
         lexicon,
         fetchImpl,
