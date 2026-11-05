@@ -1,4 +1,5 @@
 import { has, head, reading } from './token-readings.mjs';
+import { nounAhead } from './predicate-adjectives.mjs';
 
 /** Closed-class degree operators: lexical translations still come from sources. */
 export const quantityDegree = (token) =>
@@ -248,4 +249,35 @@ export function currencyTokens(tokens, lexicon) {
       ];
     })
     .map((t, index) => ({ ...t, index }));
+}
+
+/** An amount or a count before the noun: "$50 fee", "two users", "~190 markets". */
+export function parseCount(c, np) {
+  if (
+    c.peek?.kind === 'quantity' &&
+    /\p{Sc}/u.test(c.peek.text) &&
+    nounAhead(c, 1)
+  ) {
+    np.amount = c.next().text;
+  } else if (has(c.peek, 'num') && !has(c.peek, 'det')) {
+    const r = reading(c.peek, 'num');
+    np.quantity = r.features.value;
+    np.quantityText = c.peek.text;
+    c.next();
+  } else if (
+    c.peek?.kind === 'quantity' &&
+    /\d/.test(c.peek.text) &&
+    !/[\p{Sc}%]/u.test(c.peek.text) &&
+    nounAhead(c, 1)
+  ) {
+    // "~190 markets", "50K plays", "1-2 students": a count before a noun
+    const n = Number(/\d+(?:\.\d+)?/.exec(c.peek.text.replace(/,/g, ''))[0]);
+    const scale = /k/i.test(c.peek.text)
+      ? 1000
+      : /m/i.test(c.peek.text)
+        ? 1e6
+        : 1;
+    np.quantity = /[–-]/.test(c.peek.text) ? 5 : n * scale;
+    np.quantityText = c.next().text;
+  }
 }

@@ -1,7 +1,7 @@
 /** Small noun phrase helpers shared with the core parser. */
 import { head, reading, has } from './token-readings.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
-import { degreeAdverb } from './predicate-adjectives.mjs';
+import { degreeAdverb, nounAhead } from './predicate-adjectives.mjs';
 
 /**
  * "is here": an adjective whose every sense is borrowed from another word
@@ -73,4 +73,23 @@ export function stateAdverb(c, t, out) {
     });
   }
   return taken;
+}
+
+/**
+ * "first $50 licence", "next 10 days": an adjective before a count or an
+ * amount comes first in English, but describes the noun after them.
+ */
+export function adjectiveBeforeCount(c) {
+  const count = c.at(1)?.kind === 'quantity' || has(c.at(1), 'num');
+  if (
+    !has(c.peek, 'adj') ||
+    has(c.peek, 'det') ||
+    has(c.peek, 'num') ||
+    !count ||
+    !nounAhead(c, 2)
+  ) {
+    return [];
+  }
+  const t = c.next();
+  return [head(t, reading(t, 'adj'))];
 }

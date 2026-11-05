@@ -61,8 +61,9 @@ setParentheticalParser((tokens) => {
   const outer = currentCtx;
   // a parenthesis usually holds a phrase: prefer that reading on a tie
   const fragments = parseClauses(tokens, { ...outer, fragments: true });
+  // a clause inside a phrase: "per month (method not published)"
   const inner = fragments.leftover.length
-    ? parseClauses(tokens, outer)
+    ? parseClauses(tokens, { ...outer, fragments: false })
     : fragments;
   currentCtx = outer;
   return inner.leftover.length < fragments.leftover.length ? inner : fragments;

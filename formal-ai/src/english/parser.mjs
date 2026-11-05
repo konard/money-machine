@@ -42,6 +42,7 @@ import {
   standalone,
   verbAfterName,
   stateAdverb,
+  adjectiveBeforeCount,
 } from './noun-helpers.mjs';
 import {
   countAhead,
@@ -49,6 +50,7 @@ import {
   parseCurrency,
   quantityDegree,
   parseDegree,
+  parseCount,
 } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, offsetModifier, timeAhead } from './time-phrase.mjs';
@@ -199,36 +201,10 @@ export function parseNP(c, options = {}) {
     np.def = 'def';
     c.next();
   }
+  const adjectives = adjectiveBeforeCount(c);
   const measure = measureAhead(c, options, parseNP);
   np.measures = measure ? [measure] : undefined;
-  if (
-    c.peek?.kind === 'quantity' &&
-    /\p{Sc}/u.test(c.peek.text) &&
-    nounAhead(c, 1)
-  ) {
-    np.amount = c.next().text;
-  } else if (has(c.peek, 'num') && !has(c.peek, 'det')) {
-    const r = reading(c.peek, 'num');
-    np.quantity = r.features.value;
-    np.quantityText = c.peek.text;
-    c.next();
-  } else if (
-    c.peek?.kind === 'quantity' &&
-    /\d/.test(c.peek.text) &&
-    !/[\p{Sc}%]/u.test(c.peek.text) &&
-    nounAhead(c, 1)
-  ) {
-    // "~190 markets", "50K plays", "1-2 students": a count before a noun
-    const n = Number(/\d+(?:\.\d+)?/.exec(c.peek.text.replace(/,/g, ''))[0]);
-    const scale = /k/i.test(c.peek.text)
-      ? 1000
-      : /m/i.test(c.peek.text)
-        ? 1e6
-        : 1;
-    np.quantity = /[–-]/.test(c.peek.text) ? 5 : n * scale;
-    np.quantityText = c.next().text;
-  }
-  const adjectives = [];
+  parseCount(c, np);
   while (
     c.peek &&
     !(
@@ -327,7 +303,11 @@ export function parseNP(c, options = {}) {
   }
   np.adjs = adjectives;
   t = c.peek;
-  const nounish = t && (has(t, 'noun') || has(t, 'name') || has(t, 'propn'));
+  // "over 10 | pay": a limit may come right after a count
+  const nounish =
+    t &&
+    !(c.i >= options.stopAt) &&
+    (has(t, 'noun') || has(t, 'name') || has(t, 'propn'));
   if (!nounish) {
     // "this", "those" standing alone: "What is this?", "This is my house."
     if (
@@ -349,6 +329,7 @@ export function parseNP(c, options = {}) {
     }
     if (np.quantity !== undefined && !np.det && !np.possessor) {
       np.numeral = true;
+      np.number = np.quantity === 1 ? 'sg' : 'pl';
       return attachOf(c, np, options);
     }
     c.i = start;
@@ -370,8 +351,7 @@ export function parseNP(c, options = {}) {
     !(options.stopAt !== undefined && c.i >= options.stopAt)
   ) {
     const t3 = c.peek;
-    // A secondary noun borrowed through a related entry cannot absorb an
-    // ordinary predicate adjective after the subject.
+    // a borrowed secondary noun cannot absorb a predicate adjective
     if (
       nouns.length &&
       has(t3, 'adj') &&

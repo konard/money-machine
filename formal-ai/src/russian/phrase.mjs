@@ -114,7 +114,12 @@ export function features(e, ctx) {
     (QUANTIFIERS[e.determiner] &&
       (!plural || (entry?.pluraliaTantum && e.number !== 'plural')))
   ) {
-    // "пять книг лежит" – counted subjects agree in neuter singular
+    // «два пользователя платят», «пять человек пришли»: 2–4 and people
+    // take the plural; "пять книг лежит" – other counts the neuter singular
+    const few = e.quantity % 10 >= 2 && e.quantity % 10 <= 4;
+    if ((few && Math.floor(e.quantity / 10) % 10 !== 1) || entry?.animate) {
+      return { person: 3, number: 'pl', gender: 'pl', animate: entry?.animate };
+    }
     return {
       person: 3,
       number: 'sg',

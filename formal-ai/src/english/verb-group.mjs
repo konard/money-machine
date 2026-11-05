@@ -12,7 +12,12 @@ const isDegree = (id) => id === 'very' || id === 'too';
  * @returns {object|null} `{tense, aspect, polarity, modal, verb, passive, frame}`
  */
 export function parseVerbGroup(c, subject, subjectNP) {
+  const start = c.i;
   const vg = verbGroup(c, subject, subjectNP);
+  // "Residents over 18": skipped adverbs belong to no verb group
+  if (!vg) {
+    c.i = start;
+  }
   const t = vg?.verb && c.tokens.find((x) => x.index === vg.verb.token);
   const form = t && reading(t, 'verb')?.features.form;
   if (
@@ -342,6 +347,21 @@ function verbGroup(c, subject, subjectNP) {
         if (!r) {
           return null;
         }
+      }
+      // "method not published": a past without "did" is no past, so the
+      // participle is a passive whose "is" a note leaves out
+      const elided =
+        expect === 'finite' &&
+        vg.polarity === 'negative' &&
+        t.readings.find(
+          (x) => x.pos === 'verb' && /pp/.test(x.features.form || '')
+        );
+      if (elided) {
+        c.next();
+        vg.passive = true;
+        vg.verb = head(t, elided);
+        vg.frame = 'event';
+        return vg;
       }
       const form = r.features.form;
       // "withdrawals to nostro accounts are": a plural subject never takes
