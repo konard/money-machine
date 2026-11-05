@@ -22,7 +22,11 @@ import {
 } from './subject-phrases.mjs';
 import { headlineCopula, adjectiveListAhead } from './headline-copula.mjs';
 import { reducedPassive } from './reduced-passive.mjs';
-import { leadingPhraseAhead, parseLeading } from './leading.mjs';
+import {
+  frontedRequest,
+  leadingPhraseAhead,
+  parseLeading,
+} from './leading.mjs';
 import { takesOf, matchPhrase, leadingPhrase } from './fixed-phrases.mjs';
 import { participleValue, mergeLabelValues } from './label-value.mjs';
 import { outerVerbAt } from './relative-end.mjs';
@@ -522,7 +526,9 @@ function parseClause(c, ctx, initial) {
         (r) => r.pos === 'verb' && r.features?.form === 'base'
       ) ||
     (reading(c.at(1), 'verb')?.features.form === 'base' &&
-      ['det', 'poss'].some((p) => has(c.at(2), p)));
+      (['det', 'poss'].some((p) => has(c.at(2), p)) ||
+        // "Then get consent": a singular noun "get" has no bare verb
+        (startsNP(c.at(2)) && isImperativeStart(c.from(1)))));
   if (
     has(t, 'adv') &&
     t.lower !== 'please' &&
@@ -546,6 +552,10 @@ function parseClause(c, ctx, initial) {
       }
     }
     c.i = save;
+  }
+  const fronted = has(t, 'prep') && frontedRequest(c, ctx, parseImperative);
+  if (fronted) {
+    return fronted;
   }
   // "Pays only on spending", "Fully passive after install": a note-style
   // statement whose subject is the thing described

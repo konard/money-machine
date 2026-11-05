@@ -115,14 +115,12 @@ function atoms(text) {
   const out = [];
   for (const m of text.matchAll(/\{\{\+obj\|ru\|([^{}]+)\}\}/g)) {
     for (const a of m[1].matchAll(
-      /(?::([^\s:|+<>()[\]]+)\((acc|dat|gen|ins|pre|prep|loc)\)|(acc|dat|gen|ins|pre|prep|loc))(?=<|\s|\||$)(?:<([^>]+)>)?/g
+      /(?::([^\s:|+<>()[\]]+)\((acc|dat|gen|ins|pre|prep|loc)\)|(acc|dat|gen|ins|pre|prep|loc|accusative|dative|genitive|instrumental|prepositional))(?=<|\s|\||:|$)(?:<([^>]+)>|:([^|]+))?/g
     )) {
+      const kase = CASES[a[3]] || a[2] || a[3];
       out.push({
-        ...gov(
-          /^(pre|loc)$/.test(a[2] || a[3]) ? 'prep' : a[2] || a[3],
-          a[1] || null
-        ),
-        role: a[4] || '',
+        ...gov(/^(pre|loc)$/.test(kase) ? 'prep' : kase, a[1] || null),
+        role: a[4] || a[5] || '',
       });
     }
   }
@@ -355,11 +353,14 @@ function russianNotes(text, sense) {
   return result;
 }
 
-/** Pronouns immediately next to the highlighted headword identify a receiver. */
+/**
+ * Pronouns immediately next to the highlighted headword identify a receiver
+ * («им», «ей» are instrumental too: «владеет им» names no receiver).
+ */
 function exampleRecipient(text) {
   const examples = [...(text || '').matchAll(/\{\{пример\|([^\n]+)/g)];
   return examples.some((m) =>
-    /(?:\{\{выдел\|[^}]+\}\}\s+(?:ему|ей|им|мне|нам|вам|тебе)(?![а-яё])|(?<![а-яё])(?:ему|ей|им|мне|нам|вам|тебе)\s+\{\{выдел\|)/i.test(
+    /(?:\{\{выдел\|[^}]+\}\}\s+(?:ему|мне|нам|вам|тебе)(?![а-яё])|(?<![а-яё])(?:ему|мне|нам|вам|тебе)\s+\{\{выдел\|)/i.test(
       plain(m[1])
     )
   );

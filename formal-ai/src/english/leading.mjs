@@ -1,6 +1,7 @@
 /** Fronted adverbials before a subject: "On Tuesday we…", "Yesterday, I…". */
 
 import { has, head, parseNP, reading, timeAhead } from './parser.mjs';
+import { isImperativeStart } from './imperative-start.mjs';
 
 /** A subject comes next (after an optional comma). */
 export function subjectAhead(c) {
@@ -85,4 +86,33 @@ export function leadingPhraseAhead(c) {
   const mods = parseLeading(c);
   c.i = save;
   return mods.length > 0;
+}
+
+/** "For dubbing, get consent": a fronted phrase, a comma, a request. */
+export function frontedRequest(c, ctx, parseImperative) {
+  const save = c.i;
+  const t = c.next();
+  const np = parseNP(c, { relative: false });
+  if (np && c.peek?.text === ',' && c.at(1)) {
+    c.next();
+    if (isImperativeStart(c)) {
+      const request = parseImperative(c, ctx);
+      if (request) {
+        request.mods = [
+          {
+            type: 'pp',
+            relation: reading(t, 'prep').concepts[0],
+            prep: t.lower,
+            np,
+            token: t.index,
+            fronted: true,
+          },
+          ...request.mods,
+        ];
+        return request;
+      }
+    }
+  }
+  c.i = save;
+  return null;
 }

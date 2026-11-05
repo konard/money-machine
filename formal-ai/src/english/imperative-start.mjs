@@ -128,9 +128,20 @@ export function isImperativeStart(c) {
     return false;
   }
   // "Book a table" vs "Books are…": a noun reading wins only before a verb
+  // …and only one that agrees with it ("get consent": no singular "get"
+  // takes a bare "consent")
+  const plural = reading(t, 'noun')?.features?.number === 'pl';
   if (
     has(t, 'noun') &&
-    (has(c.at(1), 'be') || has(c.at(1), 'verb') || has(c.at(1), 'modal'))
+    (has(c.at(1), 'be') ||
+      has(c.at(1), 'modal') ||
+      c
+        .at(1)
+        ?.readings.some(
+          (x) =>
+            x.pos === 'verb' &&
+            (plural ? /base|past/ : /3sg|past/).test(x.features?.form || '')
+        ))
   ) {
     return false;
   }
