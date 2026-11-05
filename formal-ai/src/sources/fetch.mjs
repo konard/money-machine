@@ -30,6 +30,17 @@ export const cacheDir = (name) =>
 const memory = new Map();
 
 /**
+ * Network progress: `setNetworkLog(fn)` reports every live request (not
+ * cache or fixture hits), each retry and each failure, so a long resolve
+ * shows that it is working and where it waits.
+ */
+let networkLog = null;
+export const network = { requests: 0, retries: 0, failures: 0 };
+export function setNetworkLog(fn) {
+  networkLog = fn;
+}
+
+/**
  * Recorded responses: `FORMAL_AI_FIXTURES` names a directory of compact API
  * responses (read first after the cache); with `FORMAL_AI_RECORD` set, new
  * responses are written there if missing, including on cache hits; with `FORMAL_AI_OFFLINE` set, a request
@@ -103,6 +114,8 @@ export async function getJson(
   for (let attempt = 0; attempt < 6; attempt += 1) {
     try {
       await throttle(url);
+      network.requests += 1;
+      networkLog?.({ event: 'request', url, attempt, ...network });
       const response = await fetchImpl(url, {
         method: form ? 'POST' : 'GET',
         headers: {
@@ -143,9 +156,14 @@ export async function getJson(
       if (error.fatal) {
         break;
       }
-      await sleep(Math.max(error.wait || 0, 2000 * 2 ** attempt));
+      const wait = Math.max(error.wait || 0, 2000 * 2 ** attempt);
+      network.retries += 1;
+      networkLog?.({ event: 'retry', url, attempt, wait, error, ...network });
+      await sleep(wait);
     }
   }
+  network.failures += 1;
+  networkLog?.({ event: 'failure', url, error: lastError, ...network });
   throw lastError;
 }
 

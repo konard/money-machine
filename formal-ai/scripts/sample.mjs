@@ -5,6 +5,10 @@
  *   node formal-ai/scripts/sample.mjs [sentence|paragraph|page|top] [count] [seed]
  *   (top: the most repeated sentence shapes, one instance each)
  *
+ * Progress goes to stderr as it happens (resolve phases, every 20th live
+ * request, each retry and failure), so a slow run can be told from a stuck
+ * one; results go to stdout one item at a time.
+ *
  * Sources: every prose field of website/strategies.json and the markdown
  * under docs/ that the site pages are built from. The same seed gives the
  * same sample, so a reviewed sample can be re-run after a fix. Each
@@ -22,6 +26,7 @@ import { resolveText } from '../src/resolve.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
 import { readBack, russianFormIndex } from '../src/russian/read-back.mjs';
 import { englishRoundTrip } from '../src/english/round-trip.mjs';
+import { setNetworkLog } from '../src/sources/fetch.mjs';
 
 const ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..');
 
@@ -179,7 +184,30 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     unit === 'top'
       ? frequent(units, Number(count))
       : sample(units, Number(count), Number(seed));
-  const lookup = await resolveText(picked.map((u) => u.text).join('\n\n'));
+  const started = Date.now();
+  const progress = (message) =>
+    console.error(
+      `[${((Date.now() - started) / 1000).toFixed(0).padStart(4)}s] ${message}`
+    );
+  setNetworkLog(({ event, url, requests, retries, failures, wait, error }) => {
+    const host = new URL(url).host;
+    if (event === 'request' && requests % 20 === 0) {
+      progress(`network: ${requests} requests (last ${host})`);
+    } else if (event === 'retry') {
+      progress(
+        `network: retry in ${wait / 1000}s after ${error.message} (${host}; ${retries} retries)`
+      );
+    } else if (event === 'failure') {
+      progress(
+        `network: gave up on ${url}: ${error.message} (${failures} failures)`
+      );
+    }
+  });
+  progress(`resolving ${picked.length} ${unit}s`);
+  const lookup = await resolveText(picked.map((u) => u.text).join('\n\n'), {
+    log: progress,
+  });
+  progress('resolved; translating');
   console.log(
     `resolved ${lookup.resolved.length} senses from public sources; unknown: ${lookup.missing.join(', ') || 'none'}`
   );
