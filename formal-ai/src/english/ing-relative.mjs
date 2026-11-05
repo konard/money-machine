@@ -9,10 +9,16 @@ import { clause } from './clause-node.mjs';
 import { parseTail } from './parser.mjs';
 import { gerundReading, has, head } from './token-readings.mjs';
 
-const finiteAhead = (t) =>
+// "Stripe missing in many reference countries": a singular subject takes
+// no base form, so "reference" is no verb of its clause
+const finiteAhead = (t, np) =>
   ['be', 'modal', 'do', 'have'].some((p) => has(t, p)) ||
   t?.readings.some(
-    (r) => r.pos === 'verb' && /base|3sg|past/.test(r.features?.form || '')
+    (r) =>
+      r.pos === 'verb' &&
+      (np?.number === 'sg' ? /3sg|past/ : /base|3sg|past/).test(
+        r.features?.form || ''
+      )
   );
 
 /** Attach "localizing content" to the subject NP; false if it is not one. */
@@ -38,7 +44,7 @@ export function attachIngRelative(c, np, options) {
   const tokens = c.tokens;
   let tail = null;
   for (let k = c.i + 1; k < tokens.length && !tail; k += 1) {
-    if (!finiteAhead(tokens[k])) {
+    if (!finiteAhead(tokens[k], np)) {
       continue;
     }
     c.tokens = tokens.slice(0, k);
@@ -55,7 +61,7 @@ export function attachIngRelative(c, np, options) {
     // "60-day hold matching the refund window": with no verb ahead, the
     // phrase modifies a noun of a heading
     return (
-      !tokens.slice(save + 1).some(finiteAhead) &&
+      !tokens.slice(save + 1).some((t) => finiteAhead(t, np)) &&
       attachPostposedIng(c, np, { ...options, clauseStart: false }, r)
     );
   }

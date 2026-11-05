@@ -178,6 +178,19 @@ export function mergeMultiwords(tokens, lexicon) {
       ) {
         continue;
       }
+      // "for short stays", "for free courses": an adjective ending an
+      // adverbial phrase describes the noun right after it
+      const last = tokens[i + n - 1];
+      if (
+        !['noun', 'verb'].includes(entry.pos) &&
+        last?.readings.some((r) => r.pos === 'adj') &&
+        tokens[i + n]?.readings.some((r) => r.pos === 'noun') &&
+        !tokens[i + n].readings.some((r) =>
+          ['det', 'prep', 'pron', 'coord', 'conj', 'subord'].includes(r.pos)
+        )
+      ) {
+        continue;
+      }
       // "is reading books": a progressive verb, not the compound "reading book"
       const progressive =
         entry.pos === 'noun' &&

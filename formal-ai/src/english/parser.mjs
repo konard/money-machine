@@ -43,6 +43,7 @@ import {
   verbAfterName,
   stateAdverb,
   adjectiveBeforeCount,
+  pluralOnly,
 } from './noun-helpers.mjs';
 import {
   countAhead,
@@ -348,6 +349,8 @@ export function parseNP(c, options = {}) {
     !(nouns.length && has(c.peek, 'prep') && startsNP(c.at(1))) &&
     // "Month 3-6": a quantity after a noun names it, it is no compound
     !(nouns.length && c.peek.kind === 'quantity') &&
+    // "a shop selling templates earns": "a" counts one, not "templates"
+    !(nouns.length && np.detNumber === 'sg' && pluralOnly(c.peek, c.at(1))) &&
     !(options.stopAt !== undefined && c.i >= options.stopAt)
   ) {
     const t3 = c.peek;
@@ -376,7 +379,13 @@ export function parseNP(c, options = {}) {
     }
     // "a hold matching the refund window": an -ing word before a
     // determiner is a participle taking an object, no compound's head
-    if (nouns.length && gerundReading(t3) && has(c.at(1), 'det')) {
+    // …and so before a plural "a" cannot count ("a shop selling templates")
+    if (
+      nouns.length &&
+      gerundReading(t3) &&
+      (has(c.at(1), 'det') ||
+        (np.detNumber === 'sg' && pluralOnly(c.at(1), c.at(2))))
+    ) {
       break;
     }
     // "bought a car yesterday": a word that can be an adverb and ends the

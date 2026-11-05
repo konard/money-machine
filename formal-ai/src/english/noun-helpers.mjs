@@ -93,3 +93,13 @@ export function adjectiveBeforeCount(c) {
   const t = c.next();
   return [head(t, reading(t, 'adj'))];
 }
+
+/** A plural noun ending a phrase: no head for a singular determiner. */
+export function pluralOnly(t, next) {
+  const nouns = t.readings.filter((r) => r.pos === 'noun');
+  return (
+    nouns.length > 0 &&
+    nouns.every((r) => r.features?.number === 'pl') &&
+    !has(next, 'noun')
+  );
+}
