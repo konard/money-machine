@@ -39,3 +39,29 @@ export function attributiveAction(c, options, parseNP) {
   );
   return np;
 }
+
+/**
+ * "Manual invoicing is slow", "Direct invoicing pays out": an adjective
+ * before an -ing form with no noun reading describes the activity.
+ */
+export function describedAction(c, options, parseNP) {
+  const [a, g] = [c.peek, c.at(1)];
+  if (
+    !options.clauseStart ||
+    !has(a, 'adj') ||
+    has(a, 'det') ||
+    !gerundReading(g) ||
+    has(g, 'noun')
+  ) {
+    return null;
+  }
+  const start = c.i;
+  c.next();
+  const np = parseNP(c, { ...options, clauseStart: false });
+  if (!np?.action) {
+    c.i = start;
+    return null;
+  }
+  np.adjs = [head(a, reading(a, 'adj'))];
+  return np;
+}

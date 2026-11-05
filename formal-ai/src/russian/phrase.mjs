@@ -162,7 +162,9 @@ export function pronounKey(p, ctx) {
 /** Prefer the verb's attested action noun to an unrelated -ing noun sense. */
 export function actionNounEntry(e, ctx) {
   const derived = ctx.lexicon.get(e.action?.predicate)?.ru?.actionNoun;
-  if (derived) {
+  // a phrase's head noun («давание уроков») only when the -ing word has no
+  // noun of its own («репетиторство»)
+  if (derived && !derived.tail) {
     return derived;
   }
   const nominal = ctx.lexicon.get(e.nominalization?.concept);
@@ -180,7 +182,9 @@ export function actionNounEntry(e, ctx) {
     action?.ru ||
     (!(e.action?.objects?.length || e.action?.modifiers?.length)
       ? nounEntry(e.nominalization, ctx)
-      : null)
+      : null) ||
+    derived ||
+    null
   );
 }
 

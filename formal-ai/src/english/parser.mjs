@@ -28,7 +28,7 @@ import {
   parseBareInfinitive,
   parseToInfinitive,
 } from './infinitive.mjs';
-import { attributiveAction } from './attributive-action.mjs';
+import { attributiveAction, describedAction } from './attributive-action.mjs';
 import { parseCalendar, calendarAhead } from './calendar.mjs';
 import { Cursor } from './cursor.mjs';
 import { letterLabel } from './label-value.mjs';
@@ -46,12 +46,13 @@ import {
   pluralOnly,
 } from './noun-helpers.mjs';
 import {
-  countAhead,
   parseQuantity,
   parseCurrency,
   quantityDegree,
   parseDegree,
   parseCount,
+  approximateQuantifier,
+  adverbPhrase,
 } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
 import {
@@ -98,7 +99,9 @@ export function parseNP(c, options = {}) {
   if (pair) {
     return pair;
   }
-  const attributed = attributiveAction(c, options, parseNP);
+  const attributed =
+    attributiveAction(c, options, parseNP) ||
+    describedAction(c, options, parseNP);
   if (attributed) {
     return attributed;
   }
@@ -850,23 +853,13 @@ export function parseTail(c, frame, options = {}) {
     if (has(t, 'prep')) {
       const save = c.i;
       c.next();
-      if (
-        has(c.peek, 'adv') &&
-        reading(c.peek, 'adv').features &&
-        !startsNP(c.peek) &&
-        !countAhead(c.at(1))
-      ) {
-        // "go to home" never happens; "from here"
-        const a = c.next();
-        out.mods.push({
-          type: 'pp',
-          relation: reading(t, 'prep').concepts[0],
-          prep: t.lower,
-          adv: head(a, reading(a, 'adv')),
-        });
+      // "go to home" never happens; "from here"
+      if (adverbPhrase(c, t, out)) {
         continue;
       }
-      const np = parseNP(c, { inPhrase: true });
+      const np =
+        approximateQuantifier(c, (x) => parseNP(x, { inPhrase: true })) ||
+        parseNP(c, { inPhrase: true });
       if (!np) {
         c.i = save;
         break;

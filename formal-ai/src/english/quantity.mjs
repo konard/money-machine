@@ -1,4 +1,4 @@
-import { has, head, reading } from './token-readings.mjs';
+import { has, head, reading, startsNP } from './token-readings.mjs';
 import { nounAhead } from './predicate-adjectives.mjs';
 
 /** Closed-class degree operators: lexical translations still come from sources. */
@@ -283,4 +283,42 @@ export function parseCount(c, np) {
     np.quantity = n * scale;
     np.quantityText = c.next().text;
   }
+}
+
+/** "nearly all countries", "almost every user": an approximated quantifier. */
+export function approximateQuantifier(c, parse) {
+  const bound = APPROXIMATE[c.peek?.lower];
+  const det = reading(c.at(1), 'det');
+  if (!bound || !['all', 'every', 'each', 'no'].includes(det?.lemma)) {
+    return null;
+  }
+  const start = c.i;
+  c.next();
+  const np = parse(c);
+  if (!np) {
+    c.i = start;
+    return null;
+  }
+  return { ...np, bound };
+}
+
+/** "from here": a preposition before an adverb that starts no phrase. */
+export function adverbPhrase(c, t, out) {
+  if (
+    has(c.peek, 'adv') &&
+    reading(c.peek, 'adv').features &&
+    !startsNP(c.peek) &&
+    !countAhead(c.at(1)) &&
+    !startsNP(c.at(1))
+  ) {
+    const a = c.next();
+    out.mods.push({
+      type: 'pp',
+      relation: reading(t, 'prep').concepts[0],
+      prep: t.lower,
+      adv: head(a, reading(a, 'adv')),
+    });
+    return true;
+  }
+  return false;
 }

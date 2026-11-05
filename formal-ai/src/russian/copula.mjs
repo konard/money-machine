@@ -11,6 +11,7 @@ import {
   renderEntity,
   renderRelation,
   pronounKey,
+  actionNounEntry,
 } from './phrase.mjs';
 import {
   BYT_PAST,
@@ -86,7 +87,7 @@ export function renderCopula(s, ctx) {
   }
   // impersonal "it is cold"
   if (
-    ((subj?.action && !subj.nominalization) ||
+    ((subj?.action && !subj.nominalization && !actionNounEntry(subj, ctx)) ||
       (subj?.pronoun?.gender === 'neuter' && subj.pronoun.person === 3)) &&
     c?.kind === 'property' &&
     !lexEntry(ctx, c.concept)?.ru?.passive &&

@@ -4,6 +4,7 @@
  */
 
 import { declineNoun, declineAdjective } from './morphology.mjs';
+import { regularEntry } from '../russian-entry.mjs';
 import { actionNounEntry } from './phrase.mjs';
 import {
   chooseVerb,
@@ -28,9 +29,23 @@ export function renderAction(e, kase, ctx) {
   if (noun && !infinitive && !e.action.complementClause) {
     const verb = lexEntry(ctx, e.action.predicate)?.ru;
     const mods = renderModifiers(e.action.modifiers, { ...ctx }, verb);
+    // "manual invoicing" → ручное выставление счёта
+    const adjectives = (e.properties || []).map((p) => {
+      const adj = lexEntry(ctx, p.concept)?.ru;
+      return adj?.pos === 'adj'
+        ? declineAdjective(adj.lemma, {
+            case: kase,
+            number: 'sg',
+            gender: noun.gender || 'n',
+          })
+        : `[${p.concept}]`;
+    });
+    const tail = noun.tail && regularEntry('noun', { word: noun.tail });
     return [
       ...mods.before,
+      ...adjectives,
       declineNoun(noun, kase),
+      tail ? declineNoun(tail, 'gen') : noun.tail,
       ...renderObjects(
         e.action.objects || [],
         {
@@ -48,6 +63,9 @@ export function renderAction(e, kase, ctx) {
     ]
       .filter(Boolean)
       .join(' ');
+  }
+  for (const p of e.properties || []) {
+    ctx.notes.add(`no Russian action noun to describe as ${p.concept}`);
   }
   const text = infinitiveClause(
     e.action,

@@ -154,10 +154,12 @@ function agreeingSubjectAhead(c) {
   if (has(c.peek, 'adj')) {
     for (let k = 2; k < c.tokens.length; k += 1) {
       const head = c.at(k - 1);
-      if (!has(head, 'noun')) {
+      // "Direct invoicing pays": a gerund heads the subject too
+      const gerund = reading(head, 'verb')?.features?.form === 'ing';
+      if (!has(head, 'noun') && !gerund) {
         break;
       }
-      const plural = reading(head, 'noun').features?.number === 'pl';
+      const plural = reading(head, 'noun')?.features?.number === 'pl';
       if (
         c
           .at(k)

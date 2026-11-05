@@ -50,7 +50,14 @@ export async function learnActionNouns(text, lexicon, options) {
   const entries = [...new Set(verbs.flatMap((r) => r.concepts || []))]
     .map((id) => lexicon.get(id))
     .filter((c) => c?.ru?.pos === 'verb');
-  const lemmas = entries.map((c) => c.ru.lemma).filter((w) => !w.includes(' '));
+  // «выставлять счёт»: the head verb names the action, its object follows
+  const heads = entries
+    .map((c) => c.ru.lexicalHead)
+    .filter((h) => h?.pos === 'verb' && !h.lemma.includes(' '));
+  const lemmas = [
+    ...entries.flatMap((c) => [c.ru.lemma, c.ru.partner]),
+    ...heads.flatMap((h) => [h.lemma, h.partner]),
+  ].filter((w) => w && !w.includes(' '));
   const pages = await fetchPages(lemmas, options).catch(() => new Map());
   const russian = await governmentPages(lemmas, options);
   for (const c of entries) {
@@ -64,12 +71,19 @@ export async function learnActionNouns(text, lexicon, options) {
       })
     );
   }
-  const targets = [...new Set(actions.flatMap((r) => r.concepts || []))]
+  const acting = [...new Set(actions.flatMap((r) => r.concepts || []))]
     .map((id) => lexicon.get(id)?.ru)
     .filter((ru) => ru?.pos === 'verb' && !ru.actionNoun);
+  const targets = acting.map((ru) =>
+    ru.lemma.includes(' ') && ru.lexicalHead ? ru.lexicalHead : ru
+  );
   const candidates = new Map(
     targets.map((ru) => {
-      const en = languageSection(pages.get(ru.lemma) || '', 'Russian');
+      // the aspect partner's page lists the shared action noun too
+      const own = [ru.lemma, ru.partner].filter(Boolean);
+      const en = own
+        .map((w) => languageSection(pages.get(w) || '', 'Russian'))
+        .join('\n');
       const vn = russianTemplates(pages.get(ru.lemma) || '').find(
         (e) => e.pos === 'verb'
       )?.headword?.named?.vn;
@@ -80,8 +94,11 @@ export async function learnActionNouns(text, lexicon, options) {
           return [ru, []];
         }
       }
-      const local =
-        (russian.get(ru.lemma) || '').split(/=\s*\{\{-ru-\}\}\s*=/)[1] || '';
+      const local = own
+        .map(
+          (w) => (russian.get(w) || '').split(/=\s*\{\{-ru-\}\}\s*=/)[1] || ''
+        )
+        .join('\n');
       // any heading ends the section, also the bare `=` of a compacted page
       const derived = [
         ...`${en}\n${local}`.matchAll(
@@ -93,16 +110,22 @@ export async function learnActionNouns(text, lexicon, options) {
       const templateWords = [
         ...unstress(derived).matchAll(/(?:[|=])([а-яё-]+)(?=[|}])/g),
       ].map((m) => m[1]);
-      const regular = /[ая]ть$/.test(ru.lemma)
-        ? ru.lemma.replace(/ть$/, 'ние')
-        : null;
+      // regular guesses, kept only when a page attests them: -ать/-ять →
+      // -ние, -ить → -ение (-ление after a labial: выставить → выставление)
+      const regular = own.map((w) =>
+        /[ая]ть$/.test(w)
+          ? w.replace(/ть$/, 'ние')
+          : /ить$/.test(w)
+            ? w.replace(/([бпвфм])?ить$/, (_, l) => (l ? `${l}ление` : 'ение'))
+            : null
+      );
       return [
         ru,
         [
           ...new Set(
-            [...links(derived), ...templateWords, regular].filter(Boolean)
+            [...links(derived), ...templateWords, ...regular].filter(Boolean)
           ),
-        ].filter((w) => w !== ru.lemma),
+        ].filter((w) => !own.includes(w)),
       ];
     })
   );
@@ -110,13 +133,29 @@ export async function learnActionNouns(text, lexicon, options) {
   const nounPages = await fetchPages(titles, options).catch(() => new Map());
   const localNouns = await governmentPages(titles, options);
   for (const [ru, words] of candidates) {
-    const word = words.find(
-      (w) =>
-        actionNounOf(nounPages.get(w), ru.lemma) ||
-        actionNounOf(localNouns.get(w), ru.lemma)
+    // «выставление»: {{действие|выставить}} names the aspect partner
+    const verbs = [ru.lemma, ru.partner].filter(Boolean);
+    // a process noun in -ние («выставление») before a concrete result
+    // («выставка») that also names the action
+    const ordered = [
+      ...words.filter((w) => /ние$/.test(w)),
+      ...words.filter((w) => !/ние$/.test(w)),
+    ];
+    const word = ordered.find((w) =>
+      verbs.some(
+        (v) =>
+          actionNounOf(nounPages.get(w), v) ||
+          actionNounOf(localNouns.get(w), v)
+      )
     );
     if (word) {
       ru.actionNoun = regularEntry('noun', { word });
+    }
+  }
+  for (const ru of acting) {
+    const noun = ru.lexicalHead?.actionNoun;
+    if (ru !== ru.lexicalHead && noun && ru.definitionTail) {
+      ru.actionNoun = { ...noun, tail: ru.definitionTail };
     }
   }
 }
