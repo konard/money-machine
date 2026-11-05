@@ -271,13 +271,16 @@ export function parseCount(c, np) {
     nounAhead(c, 1)
   ) {
     // "~190 markets", "50K plays", "1-2 students": a count before a noun
-    const n = Number(/\d+(?:\.\d+)?/.exec(c.peek.text.replace(/,/g, ''))[0]);
+    // a range counts as its upper bound: «1–2 студента», «5–15 студентов»
+    const n = Number(
+      /\d+(?:\.\d+)?(?!.*\d)/.exec(c.peek.text.replace(/,/g, ''))[0]
+    );
     const scale = /k/i.test(c.peek.text)
       ? 1000
       : /m/i.test(c.peek.text)
         ? 1e6
         : 1;
-    np.quantity = /[–-]/.test(c.peek.text) ? 5 : n * scale;
+    np.quantity = n * scale;
     np.quantityText = c.next().text;
   }
 }

@@ -18,7 +18,7 @@ export function parseFragment(c, ctx) {
     return null;
   }
   const afterNP = c.i;
-  const tail = parseTail(c, 'fragment', { ...ctx, takes: [] });
+  const tail = parseTail(c, 'fragment', { ...ctx, takes: [], rateBase: np });
   if (
     tail.objects.length ||
     tail.complement ||

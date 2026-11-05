@@ -1,6 +1,6 @@
 /** Time phrases: "every Monday", "last year", a time noun ahead. */
 
-import { has, reading } from './token-readings.mjs';
+import { has, head, reading } from './token-readings.mjs';
 
 const TIME_NOUNS =
   /^(day|week|month|year|morning|evening|night|summer|winter|autumn|spring\.season|time|hour|minute|weekend|monday|tuesday|wednesday|thursday|friday|saturday|sunday|january|february|march|april|may|june|july|august|september|october|november|december)$/;
@@ -67,4 +67,36 @@ export function offsetAhead(c, from) {
     }
   }
   return false;
+}
+
+/**
+ * "2 contracts a month", "$5 a week": after a count, "a" and a time noun
+ * state a rate, as "per month" does.
+ */
+export function rateArticle(c, out, base) {
+  const last = out.objects.at(-1) || base;
+  if (
+    !['a', 'an'].includes(c.peek?.lower) ||
+    !timeAhead(c) ||
+    !last ||
+    !(last.quantity !== undefined || /\d/.test(last.head?.text || '')) ||
+    has(c.at(2), 'noun')
+  ) {
+    return false;
+  }
+  c.next();
+  const t = c.next();
+  out.mods.push({
+    type: 'pp',
+    relation: 'rel.per',
+    prep: 'per',
+    np: {
+      type: 'np',
+      adjs: [],
+      number: 'sg',
+      def: null,
+      head: head(t, reading(t, 'noun')),
+    },
+  });
+  return true;
 }

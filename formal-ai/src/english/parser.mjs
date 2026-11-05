@@ -54,7 +54,12 @@ import {
   parseCount,
 } from './quantity.mjs';
 import { mergeMultiwords } from './multiword.mjs';
-import { isTimeNP, offsetModifier, timeAhead } from './time-phrase.mjs';
+import {
+  isTimeNP,
+  offsetModifier,
+  rateArticle,
+  timeAhead,
+} from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
 import {
   linksAdjective,
@@ -243,8 +248,7 @@ export function parseNP(c, options = {}) {
       (has(t2, 'noun') || has(t2, 'name'));
     // "rated 2/10": a score or an amount takes no adjective
     const amountAhead = c.at(1)?.kind === 'quantity';
-    // "low/medium risk": alternative adjectives written with a slash
-    // …or with "and"/"or"/"but": "raw or unpublished video"
+    // alternative adjectives: "low/medium risk", "raw or unpublished video"
     const pair =
       (c.at(1)?.slash || ['and', 'or', 'but'].includes(c.at(1)?.lower)) &&
       (has(c.at(2), 'adj') || participleReading(c.at(2))) &&
@@ -753,7 +757,10 @@ export function parseTail(c, frame, options = {}) {
     ) {
       break;
     }
-    if (t.lower === 'as' && asPhrase(c, frame, out, options)) {
+    if (
+      rateArticle(c, out, options.rateBase) ||
+      (t.lower === 'as' && asPhrase(c, frame, out, options))
+    ) {
       continue;
     }
     if (has(t, 'coord') || (has(t, 'subord') && !has(t, 'prep'))) {
