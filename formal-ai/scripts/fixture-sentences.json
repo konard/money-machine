@@ -310,5 +310,33 @@
   {
     "text": "The site says pay depends on your rank.",
     "source": "docs"
+  },
+  {
+    "text": "Win and hand over files",
+    "source": "session regression"
+  },
+  {
+    "text": "Rates have fallen with machine translation",
+    "source": "session regression"
+  },
+  {
+    "text": "Launch Ghost site with free newsletter ($10 + $29/mo)",
+    "source": "session regression"
+  },
+  {
+    "text": "The fee is 30% unless a tax treaty applies.",
+    "source": "session regression"
+  },
+  {
+    "text": "AdSense pays on the 21st of the month once the balance meets the threshold.",
+    "source": "session regression"
+  },
+  {
+    "text": "No account sharing or playing on the account, which breaks most game ToS.",
+    "source": "session regression"
+  },
+  {
+    "text": "Use a platform of free tools, paid plans and trials.",
+    "source": "session regression"
   }
 ]

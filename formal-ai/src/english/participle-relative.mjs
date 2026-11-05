@@ -16,6 +16,11 @@ export function attachParticiple(c, np, options) {
       (c.at(1)?.readings || []).some(
         (x) => x.pos === 'verb' && x.features.form === 'base'
       )) ||
+    // "free tools, paid plans and trials": a list item, not a passive object
+    (detached &&
+      has(c.at(2), 'noun') &&
+      !has(c.at(2), 'det') &&
+      !has(c.at(2), 'adv')) ||
     np.pronoun ||
     np.participles ||
     // "the marketplace cut": a noun reading with nothing after it is a head

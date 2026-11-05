@@ -196,6 +196,10 @@ function agreeingSubjectAhead(c) {
  */
 function subjectlessStart(c) {
   const t = c.peek;
+  // ", which breaks the rules": the clause before it is the subject
+  if (c.at(-1)?.lower === 'which' && has(c.at(-1), 'subord')) {
+    return true;
+  }
   if (
     !opens(c) ||
     has(t, 'pron') ||

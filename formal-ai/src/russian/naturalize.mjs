@@ -98,11 +98,17 @@ export function naturalizeRussian(
           number: 'singular',
         };
       }
+      // "unless a treaty applies": если договор не применяется
+      if (s.link === 'conj.unless') {
+        adjusted.polarity = 'negative';
+      }
       if (
         future &&
         !situation &&
         s.tense === 'present' &&
         [
+          'conj.unless',
+          'conj.once',
           'conj.if',
           'conj.when',
           'conj.before',

@@ -31,6 +31,7 @@ const CLAIMS = new Set([
   'P5972',
   'P9488',
   'P1552',
+  'P5061', // unit symbol
 ]);
 
 /** Keep case notes, definition-based argument markers, homonym boundaries,

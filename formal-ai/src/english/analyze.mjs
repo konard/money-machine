@@ -339,7 +339,7 @@ export function readings(token, lexicon) {
   if (PREPOSITIONS[w]) {
     add('prep', w, {}, [PREPOSITIONS[w]]);
   }
-  if (SUBORDINATORS[w]) {
+  if (SUBORDINATORS[w] && w !== 'once') {
     add('subord', w, {}, [SUBORDINATORS[w]]);
   }
   if (COORDINATORS[w]) {
@@ -684,6 +684,47 @@ export function analyze(sentence, lexicon) {
     );
     if (out[i + 1]?.lower === "n't" && auxiliary.length) {
       token.readings = auxiliary;
+    }
+  });
+  // "…on the account, which breaks the rules": the whole clause is meant
+  out.forEach((token, i) => {
+    const next = out[i + 1]?.readings || [];
+    if (
+      token.lower === 'which' &&
+      out[i - 1]?.text === ',' &&
+      next.some(
+        (r) =>
+          r.pos === 'be' || (r.pos === 'verb' && r.features?.form === '3sg')
+      ) &&
+      !out
+        .slice(0, i - 1)
+        .every(
+          (t) =>
+            t.kind === 'word' &&
+            !t.readings?.some((r) => r.pos === 'verb' || r.pos === 'be')
+        )
+    ) {
+      token.readings = [
+        {
+          pos: 'subord',
+          lemma: 'which',
+          features: {},
+          concepts: ['conj.which'],
+        },
+      ];
+    }
+  });
+  // "once the balance meets": a link only before a clause; not "once a week"
+  out.forEach((token, i) => {
+    const next = out[i + 1];
+    if (
+      token.lower === 'once' &&
+      next?.readings?.some((r) => ['det', 'pron', 'noun'].includes(r.pos)) &&
+      !['a', 'an', 'per', 'every', 'each'].includes(next.lower)
+    ) {
+      token.readings = [
+        { pos: 'subord', lemma: 'once', features: {}, concepts: ['conj.once'] },
+      ];
     }
   });
   return mergeNumerals(sharedSlashReadings(out));
