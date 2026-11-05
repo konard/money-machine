@@ -251,9 +251,9 @@ test('fetchPages follows normalized titles and redirects', async () => {
     fetchImpl: api.fetchImpl,
     cache: false,
   });
-  for (const title of ['QUOKKAS', 'Quokkas', 'quokka']) {
-    assert.equal(pages.get(title), english);
-  }
+  // only what was asked for: a cached run reads exactly like a fresh one
+  assert.deepEqual([...pages.keys()], ['QUOKKAS']);
+  assert.equal(pages.get('QUOKKAS'), english);
   api.done();
 });
 

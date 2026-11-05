@@ -12,7 +12,8 @@
 
 import { prepositionCase } from './case-notes.mjs';
 import { synonymReferences } from './synonyms.mjs';
-import { chunks, getJson, pool } from './fetch.mjs';
+import { chunks, getJson, pool, readRecord, writeRecord } from './fetch.mjs';
+import { bucketEnabled } from './registry.mjs';
 import {
   definitionBlocks,
   senseFrames,
@@ -35,50 +36,105 @@ export const unstress = (text) =>
  */
 export async function fetchPages(titles, options = {}) {
   const out = new Map();
-  await pool(chunks([...new Set(titles)], 50), 2, async (batch) => {
-    const body = await getJson(
-      `${options.language === 'ru' ? API.replace('en.wiktionary', 'ru.wiktionary') : API}?${new URLSearchParams(
-        {
-          action: 'query',
-          format: 'json',
-          formatversion: '2',
-          prop: 'revisions',
-          rvprop: 'content',
-          rvslots: 'main',
-          redirects: '1',
-          titles: batch.join('|'),
-        }
-      )}`,
-      {
-        ...options,
-        bucket: options.language === 'ru' ? 'wiktionary-ru' : 'wiktionary',
-      }
-    );
-    const alias = new Map();
-    for (const step of [
-      ...(body.query?.normalized || []),
-      ...(body.query?.redirects || []),
-    ]) {
-      alias.set(step.to, [...(alias.get(step.from) || [step.from]), step.from]);
+  const bucket = options.language === 'ru' ? 'wiktionary-ru' : 'wiktionary';
+  const stored =
+    options.cache !== false && bucketEnabled(bucket, options.sources);
+  const requested = [...new Set(titles)].filter(Boolean);
+  const known = new Map();
+  for (const title of stored ? requested : []) {
+    const record = readRecord(bucket, title);
+    if (record) {
+      known.set(title, record);
     }
-    for (const page of body.query?.pages || []) {
-      const text = page.revisions?.[0]?.slots?.main?.content;
-      if (!text) {
-        continue;
+  }
+  await pool(
+    chunks(
+      requested.filter((title) => !known.has(title)),
+      50
+    ),
+    2,
+    async (batch) => {
+      if (!batch.length) {
+        return;
       }
-      const names = new Set([page.title, ...(alias.get(page.title) || [])]);
-      // a redirect target may itself be the alias of another alias
-      for (const [to, froms] of alias) {
-        if (names.has(to)) {
-          froms.forEach((f) => names.add(f));
+      const body = await getJson(
+        `${options.language === 'ru' ? API.replace('en.wiktionary', 'ru.wiktionary') : API}?${new URLSearchParams(
+          {
+            action: 'query',
+            format: 'json',
+            formatversion: '2',
+            prop: 'revisions',
+            rvprop: 'content',
+            rvslots: 'main',
+            redirects: '1',
+            titles: batch.join('|'),
+          }
+        )}`,
+        { ...options, bucket, transient: true, cache: false }
+      );
+      const answers = pagesByRequest(body, batch);
+      // a complete answer that omits a title ("w:Oxford" is an interwiki
+      // link) has no page for it; a continued one may just be truncated
+      const settled =
+        body.query && !body.continue ? batch : [...answers.keys()];
+      for (const title of settled) {
+        const record = pageRecord(title, answers.get(title) || {});
+        known.set(title, record);
+        if (stored) {
+          writeRecord(bucket, title, record);
         }
       }
-      for (const name of names) {
-        out.set(name, text);
-      }
     }
-  });
+  );
+  // requested order, so a cached run reads exactly like a fresh one
+  for (const title of requested) {
+    const text =
+      known.get(title)?.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content;
+    if (text) {
+      out.set(title, text);
+    }
+  }
   return out;
+}
+
+/** A batch response: which page answers each requested title. */
+export function pagesByRequest(body, batch) {
+  const steps = [
+    ...(body.query?.normalized || []),
+    ...(body.query?.redirects || []),
+  ];
+  const pages = new Map((body.query?.pages || []).map((p) => [p.title, p]));
+  const answers = new Map();
+  for (const title of batch) {
+    let name = title;
+    // a chain of normalisation and redirects, bounded against a cycle
+    for (let i = 0; i <= steps.length; i += 1) {
+      const step = steps.find((x) => x.from === name);
+      if (!step) {
+        break;
+      }
+      name = step.to;
+    }
+    const page = pages.get(name);
+    // no content and no "missing" flag is a truncated answer: not known
+    if (page && (page.revisions?.length || page.missing || page.invalid)) {
+      answers.set(title, page);
+    }
+  }
+  return answers;
+}
+
+/** The stored form: one page in the API's shape, known-missing included. */
+export function pageRecord(title, page) {
+  return {
+    query: {
+      pages: [
+        page.revisions?.length
+          ? { title, revisions: page.revisions }
+          : { title, missing: true },
+      ],
+    },
+  };
 }
 
 /** The `==Language==` section of a page. */

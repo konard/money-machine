@@ -59,6 +59,43 @@ function recordFixture(bucket, key, value) {
   }
 }
 
+const recordKey = (id) =>
+  createHash('sha1').update(`record\n${id}`).digest('hex');
+
+/** One stored record (a page by title), whatever batch fetched it. */
+export function readRecord(bucket, id) {
+  const key = recordKey(id);
+  const memoryKey = `${cacheDir(bucket)}\n${process.env.FORMAL_AI_FIXTURES || ''}\n${key}`;
+  if (memory.has(memoryKey)) {
+    const value = memory.get(memoryKey);
+    recordFixture(bucket, key, value);
+    return value;
+  }
+  const file = join(cacheDir(bucket), key.slice(0, 2), `${key}.json`);
+  const found = [file, fixtureFile(bucket, key)].find(
+    (f) => f && existsSync(f)
+  );
+  if (!found) {
+    return null;
+  }
+  const value = JSON.parse(readFileSync(found, 'utf8'));
+  recordFixture(bucket, key, value);
+  memory.set(memoryKey, value);
+  return value;
+}
+
+export function writeRecord(bucket, id, value) {
+  const key = recordKey(id);
+  const file = join(cacheDir(bucket), key.slice(0, 2), `${key}.json`);
+  mkdirSync(join(file, '..'), { recursive: true });
+  writeFileSync(file, JSON.stringify(value));
+  recordFixture(bucket, key, value);
+  memory.set(
+    `${cacheDir(bucket)}\n${process.env.FORMAL_AI_FIXTURES || ''}\n${key}`,
+    value
+  );
+}
+
 /**
  * GET (or POST with `form`) a JSON API, with an on-disk cache.
  * @param {string} url
@@ -73,6 +110,7 @@ export async function getJson(
     bucket = 'http',
     sources,
     jsonLines = false,
+    transient = false,
   } = {}
 ) {
   if (!bucketEnabled(bucket, sources)) {
@@ -147,6 +185,9 @@ export async function getJson(
       if (file) {
         mkdirSync(join(file, '..'), { recursive: true });
         writeFileSync(file, JSON.stringify(value));
+      }
+      if (transient) {
+        return value; // the caller stores it per record
       }
       recordFixture(bucket, key, value);
       memory.set(memoryKey, value);
