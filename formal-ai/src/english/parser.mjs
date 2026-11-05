@@ -77,6 +77,7 @@ import {
   coordinatedPP,
   eitherOr,
   parallelVerb,
+  verbObjectAhead,
 } from './lists.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
 import { intransitiveAttribute } from './verb-group.mjs';
@@ -346,6 +347,8 @@ export function parseNP(c, options = {}) {
     // ("at month 6", not the @ sign)
     !has(c.peek, 'coord') &&
     !(nouns.length && has(c.peek, 'modal') && has(c.at(1), 'be')) &&
+    // "which car do you drive": an auxiliary before its subject
+    !(nouns.length && has(c.peek, 'do') && has(c.at(1), 'pron')) &&
     !(nouns.length && has(c.peek, 'prep') && startsNP(c.at(1))) &&
     // "Month 3-6": a quantity after a noun names it, it is no compound
     !(nouns.length && c.peek.kind === 'quantity') &&
@@ -673,7 +676,8 @@ function attachOf(c, np, options = {}) {
     !c.peek.slash &&
     startsNP(c.at(1)) &&
     !clauseAhead(c, 1) &&
-    !parallelVerb(c, 1)
+    !parallelVerb(c, 1) &&
+    !verbObjectAhead(c, 1)
   ) {
     const save = c.i;
     const coord = c.next().lower === 'or' ? 'conj.or' : 'conj.and';

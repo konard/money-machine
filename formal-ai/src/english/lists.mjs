@@ -159,3 +159,13 @@ export function coordinatedPP(c) {
     ? { comma: c.i + k }
     : null;
 }
+
+/** "… (…) and link the source": a verb right before its object's determiner. */
+export function verbObjectAhead(c, k) {
+  const t = c.at(k);
+  return (
+    has(t, 'verb') &&
+    !['det', 'poss', 'num', 'adj'].some((p) => has(t, p)) &&
+    ['det', 'poss'].some((p) => has(c.at(k + 1), p))
+  );
+}

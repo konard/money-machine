@@ -637,8 +637,10 @@ function renderEvent(s, ctx) {
       ? ''
       : renderEntity(s.subject, 'nom', { ...ctx, isSubject: true });
   }
+  // «кто пришёл», «что случилось»
   if (s.question?.slot === 'subject' && whWord) {
-    agreement = { person: 3, number: 'sg', gender: 'm' };
+    const what = s.question.concept === 'q.what';
+    agreement = { person: 3, number: 'sg', gender: what ? 'n' : 'm' };
   }
   const embeddedQuestion = s.link === 'conj.whether';
   if (!embeddedQuestion) {
@@ -648,9 +650,10 @@ function renderEvent(s, ctx) {
   if (negative) {
     words.push('не');
   }
+  // the fronted object is said once: «какую книгу вы читаете»
   const whObject =
     s.question && ['object'].includes(s.question.slot)
-      ? objects.find((o) => o.question && !o.concept)
+      ? objects.find((o) => o.question)
       : null;
   const finite = verbGroup(entry, s, agreement, ctx);
   words.push(embeddedQuestion ? finite.replace(/^(\S+)/, '$1 ли') : finite);

@@ -390,6 +390,7 @@ function parseClauses(tokens, ctx) {
           Boolean(link?.concept && has(c.at(-1), 'subord'))
       );
     if (!clause || c.i === before) {
+      c.i = before;
       result.leftover.push(c.next().text);
       continue;
     }
@@ -896,17 +897,27 @@ function parseWhQuestion(c, ctx) {
     startsNP(c.peek) &&
     !AUX.some((p) => has(c.peek, p));
   if (ctx.embedded || heading) {
+    const save = c.i;
+    // "which countries it accepts": the asked-for phrase, then its clause
+    if (r.features.role === 'determiner' && startsNP(c.peek)) {
+      wh.np = parseNP(c, { relative: false });
+    }
     const embedded = parseDeclarative(c, { ...ctx, question: false });
-    if (!embedded || embedded.type !== 'clause') {
+    if (embedded?.type === 'clause') {
+      fillWh(embedded, wh);
+      embedded.wh = wh;
+      return embedded;
+    }
+    // "what changed": the wh-word is the embedded clause's subject
+    c.i = save;
+    delete wh.np;
+    if (!ctx.embedded) {
       return null;
     }
-    fillWh(embedded, wh);
-    embedded.wh = wh;
-    return embedded;
   }
   // "which book", "whose car"
   if (r.features.role === 'determiner' && startsNP(c.peek)) {
-    wh.np = parseNP(c);
+    wh.np = parseNP(c, { relative: false });
   }
   // "how many / how much" not modelled: report through leftover
   if (AUX.some((p) => has(c.peek, p))) {
@@ -919,7 +930,7 @@ function parseWhQuestion(c, ctx) {
     c.i = save;
   }
   // wh-word is the subject: "Who lives here?", "What happened?"
-  const vg = parseVerbGroup(c, 'third');
+  const vg = parseVerbGroup(c, wh.np?.number === 'pl' ? null : 'third');
   if (!vg) {
     return null;
   }

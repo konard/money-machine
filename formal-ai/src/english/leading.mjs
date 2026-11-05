@@ -61,8 +61,11 @@ export function parseLeading(c) {
     if (
       has(t, 'adv') &&
       !has(t, 'wh') &&
-      !has(t, 'verb') &&
-      (!has(t, 'noun') || has(c.at(1), 'pron') || c.at(1)?.text === ',')
+      // "Still, users pay": a comma sets off a sentence adverb
+      (!has(t, 'verb') || c.at(1)?.text === ',') &&
+      (!has(t, 'noun') || has(c.at(1), 'pron') || c.at(1)?.text === ',') &&
+      // "new payout rule": an adjective before its noun
+      !(has(t, 'adj') && has(c.at(1), 'noun'))
     ) {
       c.next();
       if (subjectAhead(c)) {
