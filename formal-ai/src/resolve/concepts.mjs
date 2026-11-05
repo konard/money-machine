@@ -141,6 +141,7 @@ export async function learnConcepts(run) {
             pos: plan.pos,
             lemma: plan.lemma,
             words: plan.lemma.toLowerCase().split(/\s+/),
+            ...(plan.pluralOnly ? { pluralOnly: true } : {}),
           },
         ],
         ru,

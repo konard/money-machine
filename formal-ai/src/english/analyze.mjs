@@ -446,9 +446,17 @@ function contentReadings(token, lexicon, add, out = []) {
   for (const pos of ['noun', 'verb', 'adj', 'adv', 'postp']) {
     const direct = lexicon.lookup(pos, w);
     if (direct.length) {
+      // a plurale tantum ("earnings") is plural in every sense
+      const plural = direct.every((id) =>
+        lexicon
+          .get(id)
+          ?.en?.some(
+            (e) => e.pos === 'noun' && e.words.join(' ') === w && e.pluralOnly
+          )
+      );
       const features =
         pos === 'noun'
-          ? { number: 'sg' }
+          ? { number: plural ? 'pl' : 'sg' }
           : pos === 'verb'
             ? { form: 'base' }
             : {};

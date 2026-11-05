@@ -127,7 +127,16 @@ export async function sensePlans(run) {
     ].filter((x) => !seen.has(x.gloss) && seen.add(x.gloss));
     if (senses.length) {
       const expanded = collocationSenses(borrowGenus(senses));
-      plans.push({ lemma: rest.join(':'), pos, senses: expanded });
+      const lemma = rest.join(':');
+      const pluralOnly = (entries.get(lemma) || []).some(
+        (e) => e.pos === pos && e.pluralOnly
+      );
+      plans.push({
+        lemma,
+        pos,
+        senses: expanded,
+        ...(pluralOnly ? { pluralOnly } : {}),
+      });
     }
   }
   if (!only) {

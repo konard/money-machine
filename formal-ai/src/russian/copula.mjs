@@ -138,6 +138,14 @@ export function renderCopula(s, ctx) {
       words.push('ли', subjectText);
     }
   }
+  // "the goal is to earn money" → цель — зарабатывать деньги
+  if (!c && s.complementClause && !s.question) {
+    if (!be && !negative && !embedded) {
+      words.push('—');
+    }
+    words.push(...infinitiveClause(s.complementClause, positive(s), ctx));
+    return [...words, ...mods.after].filter(Boolean).join(' ');
+  }
   if (
     !c ||
     s.question?.slot === 'complement' ||

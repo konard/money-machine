@@ -452,7 +452,19 @@ export function statement(clause, lexicon) {
   if (clause.mods.length) {
     s.modifiers = clause.mods.map((m) => modifier(m, lexicon));
   }
-  if (clause.xcomp) {
+  // "is a way to earn money", "have a chance to win": the infinitive says
+  // what the noun is for, not a second predicate of be/have
+  const own =
+    clause.xcomp &&
+    ['be', 'have'].includes(clause.verb?.lemma) &&
+    (clause.complement?.np?.head
+      ? s.complement?.entity
+      : clause.objects?.length === 1 && clause.objects[0].head
+        ? s.objects?.[0]
+        : null);
+  if (own && !own.purpose) {
+    own.purpose = predicateClause(clause.xcomp, lexicon);
+  } else if (clause.xcomp) {
     s.complementClause = predicateClause(clause.xcomp, lexicon);
   }
   if (clause.wh) {

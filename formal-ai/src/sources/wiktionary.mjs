@@ -417,6 +417,11 @@ export function englishEntries(wikitext) {
       senses,
       see,
       subpage,
+      // `{{en-noun|p}}`: a plurale tantum ("earnings") agrees as a plural
+      ...(pos === 'noun' &&
+      templates(text, 'en-noun').some((t) => t.positional[0] === 'p')
+        ? { pluralOnly: true }
+        : {}),
     };
   });
 }
