@@ -7,6 +7,7 @@ export class Cursor {
   /** A cursor k tokens further on, leaving this one where it is. */
   from(k) {
     const other = new Cursor(this.tokens);
+    other.grammar = this.grammar;
     other.i = this.i + k;
     return other;
   }

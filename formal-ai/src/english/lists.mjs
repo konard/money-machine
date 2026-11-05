@@ -120,6 +120,7 @@ export function parallelVerb(c, k) {
 /** Is a finite verb coming after an NP at offset k (so "and" joins clauses)? */
 export function clauseAhead(c, k) {
   const probe = new Cursor(c.tokens);
+  probe.grammar = c.grammar;
   probe.i = c.i + k;
   const np = parseNP(probe);
   if (!np) {

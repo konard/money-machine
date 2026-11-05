@@ -9,7 +9,9 @@
  * it passes both automatic gates: translated completely (no English left
  * over) and read back without lost, changed or added information. These
  * gates do not prove a sense is right, so the catalogue stays a draft until
- * reviewed. Existing keys are kept; a key is the hash of its English source.
+ * reviewed: a key listed in rejected.lino (read and found wrong) stays out
+ * until its Russian changes. Existing keys are kept; a key is the hash of
+ * the English source and the Russian.
  */
 
 import { createHash } from 'node:crypto';
@@ -25,6 +27,7 @@ import { pages, paragraphs, sample, sentences } from './sample.mjs';
 
 const ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..');
 const OUT = join(ROOT, 'locales', 'drafts', 'ru.lino');
+const REJECTED = join(dirname(OUT), 'rejected.lino');
 const quote = (text) => `"${text.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
 
 /** Both gates, sentence by sentence. */
@@ -61,6 +64,9 @@ await resolveText(picked.map((u) => u.text).join('\n\n'), {
 });
 const lexicon = loadLexicon();
 const index = russianFormIndex(lexicon);
+const rejected = new Set(
+  existsSync(REJECTED) ? readFileSync(REJECTED, 'utf8').split('\n') : []
+);
 const known = existsSync(OUT)
   ? readFileSync(OUT, 'utf8').split('\n').slice(1).filter(Boolean)
   : [];
@@ -69,7 +75,10 @@ let added = 0;
 for (const u of picked) {
   const r = translateDocument(u.text, { topic: u.page, field });
   if (passes(r, lexicon, index)) {
-    const key = `s${createHash('sha1').update(u.text).digest('hex').slice(0, 12)}`;
+    const key = `s${createHash('sha1').update(`${u.text}\n${r.text}`).digest('hex').slice(0, 12)}`;
+    if (rejected.has(key)) {
+      continue;
+    }
     added += lines.has(key) ? 0 : 1;
     lines.set(key, `  ${key} ${quote(r.text)}`);
   }
