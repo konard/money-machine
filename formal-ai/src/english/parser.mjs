@@ -43,6 +43,7 @@ import {
 import { mergeMultiwords } from './multiword.mjs';
 import { isTimeNP, offsetModifier, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
+import { objectBeforeState, objectComplement } from './object-complement.mjs';
 import {
   coordinatedAdjectives,
   degreeAdverb,
@@ -51,7 +52,13 @@ import {
 import { attachIngRelative } from './ing-relative.mjs';
 import { attachParticiple } from './participle-relative.mjs';
 import { attachParenthesis } from './parenthesis.mjs';
-import { clauseAhead, commaList, eitherOr, parallelVerb } from './lists.mjs';
+import {
+  clauseAhead,
+  commaList,
+  coordinatedPP,
+  eitherOr,
+  parallelVerb,
+} from './lists.mjs';
 export { parseVerbGroup } from './verb-group.mjs';
 import { intransitiveAttribute } from './verb-group.mjs';
 
@@ -506,6 +513,8 @@ export function parseNP(c, options = {}) {
       break;
     }
     // "Stripe direct deposit": a name or noun modifying an adjective + noun
+    // …but "client content rights": after a common noun, a noun-first word
+    // is one more noun modifier (adjectives come before noun modifiers)
     if (
       has(c.peek, 'adj') &&
       !has(c.peek, 'prep') &&
@@ -514,6 +523,10 @@ export function parseNP(c, options = {}) {
     ) {
       while (has(c.peek, 'adj') && nounAhead(c, 1)) {
         const a = c.next();
+        if (r.pos === 'noun' && nounFirst(a, options.lexicon, 'adj')) {
+          nouns.push({ t: a, r: reading(a, 'noun') });
+          continue;
+        }
         adjectives.push(head(a, reading(a, 'adj')));
       }
       afterAdjective = true;
@@ -685,30 +698,6 @@ const ADVERB_NOUNS = new Set(['home']);
  * Parse adverbials and objects after the verb.
  * @returns {{objects: object[], mods: object[], complement: object|null}}
  */
-/**
- * After a prepositional phrase, "and"/"or" followed by another one,
- * perhaps across an adverb set off by commas ("and, more often, from").
- * @returns {{comma: number}|null} position of the closing comma, or -1
- */
-function coordinatedPP(c) {
-  if (!['and', 'or'].includes(c.peek.lower)) {
-    return null;
-  }
-  if (has(c.at(1), 'prep') && startsNP(c.at(2))) {
-    return { comma: -1 };
-  }
-  if (c.at(1)?.text !== ',') {
-    return null;
-  }
-  let k = 2;
-  while (c.at(k) && (has(c.at(k), 'adv') || quantityDegree(c.at(k)))) {
-    k += 1;
-  }
-  return k > 2 && c.at(k)?.text === ',' && has(c.at(k + 1), 'prep')
-    ? { comma: c.i + k }
-    : null;
-}
-
 export function parseTail(c, frame, options = {}) {
   const takes = options.takes || [];
   const out = { objects: [], mods: [], complement: null, xcomp: null };
@@ -834,6 +823,9 @@ export function parseTail(c, frame, options = {}) {
         continue;
       }
     }
+    if (objectComplement(c, frame, out, options)) {
+      continue;
+    }
     if (parseToInfinitive(c, frame, out, options, parseTail)) {
       continue;
     }
@@ -956,10 +948,17 @@ export function parseTail(c, frame, options = {}) {
       continue;
     }
     if (startsNP(t) && !(has(t, 'verb') && out.objects.length > 0)) {
-      const np = parseNP(c, {
-        infinitiveObject: true,
-        gerundObject: options.gerund,
-      });
+      const [start, o] = [
+        c.i,
+        { infinitiveObject: true, gerundObject: options.gerund },
+      ];
+      const np = objectBeforeState(
+        c,
+        start,
+        parseNP(c, o),
+        (k) => parseNP(k, o),
+        options
+      );
       if (!np) {
         break;
       }

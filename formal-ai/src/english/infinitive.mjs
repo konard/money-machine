@@ -108,6 +108,7 @@ export function parseToInfinitive(c, frame, out, options, parseTail) {
       ...options,
       takes: options.takesOf?.(r) || [],
       infinitive: options.infinitiveOf?.(r),
+      verbConcepts: r?.concepts,
     });
     out.xcomp = { verb: head(v, r), ...sub };
     // "build ratings to get offers": after a thing, "to" states a goal;

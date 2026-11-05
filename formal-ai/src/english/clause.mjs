@@ -773,6 +773,7 @@ function tailOptions(ctx, vg) {
     takesOf: ctx.takesOf,
     infinitiveOf: ctx.infinitiveOf,
     lexicon: ctx.lexicon,
+    verbConcepts: vg.verb?.candidates,
     finiteComplementAhead: (c) => finiteComplementAhead(c, vg.verb, ctx),
   };
 }

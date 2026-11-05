@@ -50,7 +50,11 @@ export function topicProfile(text, lexicon) {
     const readings = (token.readings || []).filter((r) =>
       ['noun', 'verb', 'adj', 'adv'].includes(r.pos)
     );
-    if (!readings.length) {
+    // "in" (also an adjective, "fashionable") is a function word here
+    const functional = (token.readings || []).some((r) =>
+      ['prep', 'det', 'pron', 'conj', 'coord', 'subord'].includes(r.pos)
+    );
+    if (!readings.length || functional) {
       continue;
     }
     const lemma = stem(readings[0].lemma || token.lower);
@@ -89,10 +93,21 @@ export function documentTopicContext(node, concept, lexicon, memory) {
   }
   const own = stem(node.lemma || node.text || '');
   const generic = generalCues(lexicon);
+  // the head says what kind of thing the sense is ("the amount by which the
+  // teeth of a saw…"), not what it is about; it has its own vote. Only a
+  // head that opens the definition is surely one ("a person or entity
+  // engaged in…" is not about being engaged).
+  const first = glossWords(concept?.definition || concept?.gloss || '')[0];
+  const genus =
+    concept?.genus &&
+    first &&
+    stem(first) === stem(concept.genus) &&
+    stem(concept.genus);
   const description = describes(concept);
   const matches = [...description].filter(
     (cue) =>
       cue !== own &&
+      cue !== genus &&
       !generic.has(cue) &&
       [...alternatives.values()].filter((d) => d.has(cue)).length <=
         alternatives.size / 2 &&

@@ -254,5 +254,29 @@
   {
     "text": "Pay at least 30 days before the deadline.",
     "source": "docs"
+  },
+  {
+    "text": "Legal across the set; ad income taxable.",
+    "source": "docs/business-plans/meta-facebook-instagram-content-monetization.md"
+  },
+  {
+    "text": "The license only addresses US law, so verify public-domain status in each sales country (life+50 or life+70).",
+    "source": "docs/research/platform-rules.md"
+  },
+  {
+    "text": "AI agent triages issues, drafts fixes and release notes to keep repos active",
+    "source": "strategies.json#github-sponsors"
+  },
+  {
+    "text": "report income for tax; written voice-clone consent; client content rights; data processing agreement for EU clients",
+    "source": "docs/business-plans/ai-dubbing-localization-service.md"
+  },
+  {
+    "text": "Keep your account active.",
+    "source": "docs"
+  },
+  {
+    "text": "Leave the field empty.",
+    "source": "docs"
   }
 ]

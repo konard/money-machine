@@ -320,13 +320,28 @@ function complement(c, lexicon) {
   return modifier(c, lexicon);
 }
 
+/**
+ * Objects, the last one with the state an object complement puts it in
+ * ("keep repos active": repos, state active).
+ */
+function objects(x, lexicon) {
+  const out = x.objects.map((o) => entity(o, lexicon));
+  if (x.complement?.object && out.length) {
+    out[out.length - 1] = {
+      ...out[out.length - 1],
+      state: complement(x.complement, lexicon),
+    };
+  }
+  return out;
+}
+
 function predicateClause(x, lexicon) {
   return {
     predicate: x.verb.concept || x.verb.candidates?.[0],
     ...rangeLink(x.verb),
     subject: x.subject ? entity(x.subject, lexicon) : undefined,
     voice: x.passive ? 'passive' : undefined,
-    objects: x.objects.map((o) => entity(o, lexicon)),
+    objects: objects(x, lexicon),
     modifiers: x.mods.map((m) => modifier(m, lexicon)),
     complementClause: x.xcomp ? predicateClause(x.xcomp, lexicon) : undefined,
     purpose: x.purpose || undefined,
@@ -414,7 +429,7 @@ export function statement(clause, lexicon) {
     s.generic = true;
   }
   if (clause.objects.length) {
-    s.objects = clause.objects.map((o) => entity(o, lexicon));
+    s.objects = objects(clause, lexicon);
     // "need no platform": Russian negates the verb («не нужна никакая»)
     if (
       s.objects.some(
@@ -425,7 +440,8 @@ export function statement(clause, lexicon) {
       s.polarity = 'negative';
     }
   }
-  const comp = complement(clause.complement, lexicon);
+  const comp =
+    !clause.complement?.object && complement(clause.complement, lexicon);
   if (comp) {
     s.complement = comp;
   }

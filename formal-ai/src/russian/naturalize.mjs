@@ -32,6 +32,7 @@ import {
   isPerson,
 } from './phrase.mjs';
 import { withPartner } from './partner.mjs';
+import { declineAdjective } from './morphology.mjs';
 import { anticausative } from './anticausative.mjs';
 import {
   renderCopula,
@@ -303,8 +304,26 @@ export function renderObjects(objects, entry, ctx, skip = new Set()) {
       return;
     }
     out.push(governed(o, governmentFor(entry, o, gov, ctx), ctx));
+    if (o.state) {
+      out.push(objectState(o, ctx));
+    }
   });
   return out;
+}
+
+/**
+ * "keep repos active" → поддерживать репозитории активными: the state an
+ * object is kept in or brought to is an instrumental agreeing adjective.
+ */
+function objectState(o, ctx) {
+  const adj = lexEntry(ctx, o.state.concept)?.ru;
+  if (!adj || adj.pos !== 'adj') {
+    ctx.notes.add(`no Russian adjective for ${o.state.concept}`);
+    return `[${o.state.concept}]`;
+  }
+  const f = features(o, ctx);
+  const agree = f.number === 'pl' ? { number: 'pl' } : { gender: f.gender };
+  return declineAdjective(adj.lemma, { ...agree, case: 'ins' });
 }
 
 /** Government for an object, honouring its English preposition. */

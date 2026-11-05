@@ -1,3 +1,4 @@
+import { stateSense } from './english/object-complement.mjs';
 import { scoreRanges } from './meaning-ranges.mjs';
 import { methodEvidence } from './sense-methods.mjs';
 /** Context-based sense selection with traceable dictionary and corpus evidence. */
@@ -121,8 +122,13 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
     token: t,
   }));
   const decisions = [];
+  // A word shared by coordinated clauses ("AI agent triages issues, drafts
+  // fixes…") is one entity: decided once, in its own clause, and it does
+  // not stretch a later clause's span back to its position.
+  const decided = new Set();
   for (const clause of parsed.clauses) {
-    const heads = collectHeads(clause);
+    const heads = collectHeads(clause).filter(({ node }) => !decided.has(node));
+    heads.forEach(({ node }) => decided.add(node));
     const localPositions = heads
       .map(({ node }) => positions.get(node.token))
       .filter(Number.isFinite);
@@ -617,6 +623,10 @@ function valencyFit(node, clause, concept, next) {
     !frames.includes('transitive')
   ) {
     return { score: -4, reason: 'intransitive sense with direct object (-4)' };
+  }
+  // "keep repos active": the object complement asks for the state sense
+  if (owner.complement?.object && stateSense(concept)) {
+    return { score: 1.5, reason: 'state sense with object complement (+1.5)' };
   }
   const observed =
     owner.xcomp && !owner.xcomp.purpose

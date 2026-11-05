@@ -41,10 +41,14 @@ export function dictionaryContext(node, concept, heads, lexicon) {
           Math.max(1, alternatives.length / 2)
     );
   let shared = 0;
+  // "life+50 or life+70": one word is one vote, however often it occurs
+  const seen = new Set();
   for (const { node: other } of heads) {
-    if (other === node || other.pos !== 'noun') {
+    const key = other.lemma || other.text;
+    if (other === node || other.pos !== 'noun' || seen.has(key)) {
       continue;
     }
+    seen.add(key);
     const senses = other.candidates
       .map((id) => lexicon.get(id))
       .filter(Boolean);

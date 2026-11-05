@@ -396,7 +396,13 @@ export class EnglishRenderer {
   tail(s) {
     const objects = (s.objects || [])
       .filter((e) => !e.relativePronoun && !e.question)
-      .map((e) => join(this.relation(e.marker), this.entity(e)));
+      .map((e) =>
+        join(
+          this.relation(e.marker),
+          this.entity(e),
+          e.state && this.property(e.state)
+        )
+      );
     const comp = s.complement;
     const complement = comp
       ? comp.kind === 'property'

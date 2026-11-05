@@ -4,6 +4,7 @@ import { Cursor } from './cursor.mjs';
 import { parseNP } from './parser.mjs';
 import { has, reading, startsNP } from './token-readings.mjs';
 import { COORDINATORS } from './function-words.mjs';
+import { quantityDegree } from './quantity.mjs';
 
 /**
  * "Kenya, Nigeria and Ghana", "A, B, or C": a comma list is one
@@ -132,4 +133,28 @@ export function clauseAhead(c, k) {
       (has(t, 'verb') && reading(t, 'verb').features.form !== 'base') ||
       (has(t, 'verb') && np.pronoun))
   );
+}
+
+/**
+ * After a prepositional phrase, "and"/"or" followed by another one,
+ * perhaps across an adverb set off by commas ("and, more often, from").
+ * @returns {{comma: number}|null} position of the closing comma, or -1
+ */
+export function coordinatedPP(c) {
+  if (!['and', 'or'].includes(c.peek.lower)) {
+    return null;
+  }
+  if (has(c.at(1), 'prep') && startsNP(c.at(2))) {
+    return { comma: -1 };
+  }
+  if (c.at(1)?.text !== ',') {
+    return null;
+  }
+  let k = 2;
+  while (c.at(k) && (has(c.at(k), 'adv') || quantityDegree(c.at(k)))) {
+    k += 1;
+  }
+  return k > 2 && c.at(k)?.text === ',' && has(c.at(k + 1), 'prep')
+    ? { comma: c.i + k }
+    : null;
 }
