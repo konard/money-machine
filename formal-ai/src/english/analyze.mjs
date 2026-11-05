@@ -181,7 +181,10 @@ export function tokenize(sentence) {
           `^[\\p{Ll}${i === 1 ? '\\p{Lu}' : ''}][\\p{Ll}-]+$`,
           'u'
         ).test(out[i - 1].text) &&
-          /^\p{Ll}[\p{Ll}-]+$/u.test(out[i + 1].text)) ||
+          // …"spammy/AI-violating": an acronym compound is a common word
+          /^(?:\p{Ll}|\p{Lu}[\p{Lu}\d]+-\p{Ll})[\p{Ll}-]+$/u.test(
+            out[i + 1].text
+          )) ||
         (/^\p{Lu}/u.test(out[i - 1].text) &&
           /^\p{Lu}[\p{L}\d]+$/u.test(out[i + 1].text))) &&
       ![out[i - 1].lower, out[i + 1].lower].some((w) =>

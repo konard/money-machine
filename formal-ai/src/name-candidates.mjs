@@ -12,6 +12,11 @@ export function nameCandidates(text, lexicon = loadLexicon()) {
   const tokens = tokenize(clean);
   const capital = (t) => t?.kind === 'word' && /^[A-Z]/.test(t.text);
   for (let i = 0; i < tokens.length; i += 1) {
+    // "AI-generated": the acronym a compound is made with
+    const acronym = /^([A-Z][A-Z\d]+)-\p{Ll}/u.exec(tokens[i].text);
+    if (acronym && !lexicon.lookup('name', acronym[1].toLowerCase()).length) {
+      out.add(acronym[1]);
+    }
     if (!capital(tokens[i]) || tokens[i].text === 'I') {
       continue;
     }

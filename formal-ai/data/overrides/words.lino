@@ -85,3 +85,13 @@ concept fee
   gloss "an amount charged on top of the base cost of a product or service"
   en noun fee
   ru noun комиссия f
+
+# public data: (Wiktionary has no Russian for "gated", restricted access)
+concept gated
+  en adj gated
+  ru adj закрытый
+
+# public data: (Wiktionary has no Russian for "spammy", like spam)
+concept spammy
+  en adj spammy
+  ru adj спамный

@@ -50,6 +50,7 @@ import { isTimeNP, offsetModifier, timeAhead } from './time-phrase.mjs';
 import { asPhrase } from './as-phrase.mjs';
 import {
   linksAdjective,
+  takesTwoObjects,
   objectBeforeState,
   objectComplement,
 } from './object-complement.mjs';
@@ -508,7 +509,7 @@ export function parseNP(c, options = {}) {
     // …and so is it before a noun and a plain verb: "Sales teams earn"
     const pluralModifier =
       has(c.peek, 'noun') &&
-      ((options.inPhrase &&
+      (((options.inPhrase || options.soleObject || options.fragment) &&
         (!c.at(1) || isPunct(c.at(1)) || has(c.at(1), 'coord'))) ||
         (options.clauseStart &&
           !has(c.at(1), 'noun') &&
@@ -942,7 +943,14 @@ export function parseTail(c, frame, options = {}) {
     if (startsNP(t) && !(has(t, 'verb') && out.objects.length > 0)) {
       const [start, o] = [
         c.i,
-        { infinitiveObject: true, gerundObject: options.gerund },
+        {
+          infinitiveObject: true,
+          gerundObject: options.gerund,
+          // "handle rights verification": one object, unless two can follow
+          soleObject:
+            !out.objects.length &&
+            !takesTwoObjects(options.verbConcepts, options.lexicon),
+        },
       ];
       const parse = (k) => parseNP(k, o);
       const np = objectBeforeState(

@@ -36,7 +36,19 @@ function analyses(word, lexicon, context, neighbors) {
     first: true,
     index: 0,
   };
-  return readings(token, lexicon)
+  // "ai-generated" ← "AI-generated": an acronym part is a name (ИИ)
+  const own = readings(token, lexicon);
+  const label = !own.length && lexicon.nameLabel?.(word.toUpperCase());
+  if (label) {
+    return [
+      {
+        pos: 'noun',
+        lemma: word.toUpperCase(),
+        ru: { pos: 'noun', lemma: label, gender: 'm', indeclinable: true },
+      },
+    ];
+  }
+  return own
     .flatMap((r) => {
       const own = (r.concepts || []).filter((id) => !lexicon.get(id)?.variant);
       const node = {

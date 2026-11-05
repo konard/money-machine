@@ -104,3 +104,14 @@ export function linksAdjective(concepts, lexicon) {
     lexicon?.get(id)?.frames?.includes('copulative')
   );
 }
+
+/** Does one of the verb's senses take two objects ("give users access")? */
+export function takesTwoObjects(concepts, lexicon) {
+  return (concepts || []).some((id) => {
+    const c = lexicon?.get(id);
+    return (
+      c?.frames?.includes('ditransitive') ||
+      (c?.labels || []).includes('ditransitive')
+    );
+  });
+}

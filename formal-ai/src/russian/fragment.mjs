@@ -18,6 +18,12 @@ export function renderFragment(s, ctx, renderModifiers) {
     ctx,
     null
   );
+  // "Etsy $0 weekly" → Etsy $0 еженедельно: the value's own adverb follows it
+  const ofValue = s.factValue ? [...mods.before, ...mods.after] : [];
+  if (s.factValue) {
+    mods.before = [];
+    mods.after = [];
+  }
   mods.before = [...front.before, ...front.after, ...mods.before];
   const absent = s.entity?.determiner === 'det.no';
   const propertyConcept = s.property && ctx.lexicon.get(s.property.concept);
@@ -78,7 +84,7 @@ export function renderFragment(s, ctx, renderModifiers) {
       : renderEntity(s.factValue, 'nom', ctx);
     const focus =
       s.factFocus && ctx.lexicon.get(s.factFocus.concept)?.ru?.lemma;
-    text += `${s.valueSeparator || ''} ${focus ? `${focus} ` : ''}${value}`;
+    text += `${s.valueSeparator || ''} ${focus ? `${focus} ` : ''}${[value, ...ofValue].join(' ')}`;
   }
   return text;
 }

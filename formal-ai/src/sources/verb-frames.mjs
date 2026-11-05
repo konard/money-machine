@@ -27,6 +27,10 @@ export function senseFrames(text = '', headword) {
     if (/bare infinitive|without to\b|second object is a verb/.test(note)) {
       frames.add('bare-infinitive');
     }
+    // "give someone something": two objects in a row
+    if (/\bditransitive\b/.test(note)) {
+      frames.add('ditransitive');
+    }
     if (/\bmembers? of (?:a|the) group\b/.test(note)) {
       frames.add('prep:by');
     }

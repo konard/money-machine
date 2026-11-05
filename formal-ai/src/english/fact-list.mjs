@@ -30,6 +30,24 @@ function nominal(tokens, ctx) {
   return null;
 }
 
+/** "$0 weekly": an amount, with a closing adverb of how often or how. */
+function measured(tokens, ctx) {
+  const whole = nominal(tokens, ctx);
+  const last = tokens.at(-1);
+  // "$0 weekly" is not a kind of "weekly" named "$0"
+  const amount = (np) => np && (np.quantity !== undefined || np.name);
+  if (amount(whole?.np) || tokens.length < 2 || !has(last, 'adv')) {
+    return whole;
+  }
+  const shorter = nominal(tokens.slice(0, -1), ctx);
+  return amount(shorter?.np)
+    ? {
+        ...shorter,
+        mods: [{ type: 'adv', ...head(last, reading(last, 'adv')) }],
+      }
+    : whole;
+}
+
 function fact(tokens, ctx) {
   const colon = tokens.findIndex((t) => t.text === ':');
   if (colon > 0) {
@@ -93,13 +111,18 @@ function fact(tokens, ctx) {
       continue;
     }
     const label = nominal(tokens.slice(0, k), ctx);
-    const value = nominal(tokens.slice(k), ctx);
+    const value = measured(tokens.slice(k), ctx);
     if (
       label &&
       value?.np &&
       (value.np.quantity !== undefined || value.np.name)
     ) {
-      return { type: 'fragment', ...label, factValue: value.np };
+      return {
+        type: 'fragment',
+        ...label,
+        factValue: value.np,
+        ...(value.mods ? { mods: [...(label.mods || []), ...value.mods] } : {}),
+      };
     }
   }
   // A duration without a label is parallel to the labelled amounts.
@@ -141,4 +164,29 @@ export function parseFactList(tokens, ctx) {
 export function unknownFactWords(unknown, clauses) {
   const answers = new Set(clauses.map((c) => c.answer).filter(Boolean));
   return unknown.filter((word) => !answers.has(word.toLowerCase()));
+}
+
+/** "Per platform: Etsy $0, Gumroad $100": a heading, then labelled amounts. */
+export function labelledFacts(tokens, ctx, parseClauses) {
+  const colon = tokens.findIndex((t) => t.text === ':');
+  if (colon < 1 || tokens.slice(colon + 1).some((t) => t.text === ':')) {
+    return null;
+  }
+  const rest = tokens.slice(colon + 1);
+  const listed = parseFactList(rest, ctx);
+  const facts = listed?.list.every((item) => item.factValue)
+    ? listed
+    : parseClauses(rest, ctx);
+  if (facts.leftover.length || !facts.list.some((item) => item.factValue)) {
+    return null;
+  }
+  const heading = parseClauses(tokens.slice(0, colon), {
+    ...ctx,
+    fragments: true,
+  });
+  if (heading.leftover.length || !heading.list.length) {
+    return null;
+  }
+  facts.list[0].link = { separator: ':' };
+  return { list: [...heading.list, ...facts.list], leftover: [] };
 }

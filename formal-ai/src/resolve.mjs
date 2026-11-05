@@ -116,6 +116,16 @@ export async function resolveText(
   );
   await resolveNames(names, { ...options, lexicon, topic, givenOnly, methods });
   await declineNames(dictionaryNames, { lexicon, fetchImpl, cache });
+  // "AI-generated": a compound whose part is a name known only now
+  resolved.push(
+    ...learnHyphenated(
+      words.filter(
+        (w) => /^[a-z\d]+-/.test(w) && !lexicon.lookup('adj', w).length
+      ),
+      lexicon,
+      topic
+    )
+  );
   if (!only) {
     const phrasal = phrasalCandidates(text, lexicon).filter(
       (p) => !lexicon.asked(p)

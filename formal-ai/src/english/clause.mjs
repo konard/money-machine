@@ -2,7 +2,11 @@ import { parseFragment } from './fragment.mjs';
 import { calendarPredicate } from './calendar.mjs';
 import { bareInfinitiveOf, gerundOf, infinitiveOf } from './infinitive.mjs';
 import { preferNominal } from './nominal-evidence.mjs';
-import { parseFactList, unknownFactWords } from './fact-list.mjs';
+import {
+  labelledFacts,
+  parseFactList,
+  unknownFactWords,
+} from './fact-list.mjs';
 /**
  * Sentence → clauses in the meta language.
  *
@@ -240,7 +244,12 @@ export function parseSentence(sentence, lexicon, options = {}) {
       Object.assign(clauses, fragments);
     }
   }
-  Object.assign(clauses, parseFactList(tokens, ctx) || {});
+  Object.assign(
+    clauses,
+    parseFactList(tokens, ctx) ||
+      (clauses.leftover.length && labelledFacts(tokens, ctx, parseClauses)) ||
+      {}
+  );
   mergeLabelValues(clauses.list);
   for (const [i, item] of clauses.list.entries()) {
     if (!item.labelPredicate || clauses.list[i + 1]?.link?.separator !== ':') {

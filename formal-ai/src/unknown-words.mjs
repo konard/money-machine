@@ -44,7 +44,11 @@ export function unknownWords(text, lexicon = loadLexicon()) {
     }
     const initial =
       token.lineStart || /^[.!?:#*_\-–—|>"(·•]$/.test(tokens[i - 1].text);
-    if (!initial && token.text !== w && !lowercase.has(w)) {
+    // "AI-generated": an acronym compounded with a word is not a name
+    const acronymCompound = /^\p{Lu}[\p{Lu}\d]+(?:-\p{Ll}+)+$/u.test(
+      token.text
+    );
+    if (!initial && token.text !== w && !lowercase.has(w) && !acronymCompound) {
       continue;
     }
     // a content word is looked up unless public sources were asked already
