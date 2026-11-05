@@ -18,7 +18,14 @@ export function unitSymbolCandidates(text, lexicon) {
       out.add(symbol);
     }
   }
-  return [...out];
+  // "$29/mo": a symbol after a rate's slash even if also a word ("mo", moment)
+  for (const m of text.matchAll(/\d\/([a-z]{1,3})(?![A-Za-z])/g)) {
+    out.add(m[1]);
+  }
+  return [...out].filter(
+    (symbol) =>
+      !lexicon.lookup('noun', symbol).some((id) => id.startsWith('unit:'))
+  );
 }
 
 /** Wikidata items of a page's senses in a language: {{senseid|mul|Q573}}. */
@@ -86,6 +93,7 @@ export async function learnUnitSymbols(text, lexicon, options = {}) {
     // symbol abbreviates ("kg" → kilogram, "GB" → gigabyte)
     const ids = [
       ...symbolItems(pages.get(symbol)),
+      ...senseItems(pages.get(symbol), 'English', 'en'),
       ...targets
         .get(symbol)
         .flatMap((unit) => senseItems(unitPages.get(unit), 'English', 'en')),

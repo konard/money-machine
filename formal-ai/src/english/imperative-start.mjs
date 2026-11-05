@@ -207,7 +207,11 @@ function subjectlessStart(c) {
   if (!has(t, 'noun')) {
     return true;
   }
-  if (nounPairAhead(c)) {
+  // "Rates have fallen": an auxiliary right after makes the noun its subject
+  if (
+    nounPairAhead(c) ||
+    ['be', 'have', 'do', 'modal'].some((pos) => has(c.at(1), pos))
+  ) {
     return false;
   }
   for (let k = 1; c.at(k) && !isPunct(c.at(k)); k += 1) {

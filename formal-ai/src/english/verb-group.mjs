@@ -173,7 +173,9 @@ function verbGroup(c, subject, subjectNP) {
         ) &&
         !(
           has(after, 'noun') &&
-          !reading(after, 'verb').features.form.includes('past')
+          !reading(after, 'verb').features.form.includes('past') &&
+          // "have fallen trees", but "have fallen with…": a noun needs its noun
+          has(c.at(2), 'noun')
         )
       ) {
         if (expect === 'finite') {
