@@ -306,7 +306,17 @@ export class EnglishRenderer {
       text = join(text, 'to', this.nonfinite(e.purpose));
     }
     if (e.relative) {
-      const relative = this.clause(e.relative, true);
+      const series = [
+        this.clause(e.relative, true),
+        ...(e.relative.coordinated || []).map((s) =>
+          this.clause({ ...s, link: null }, true)
+        ),
+      ];
+      const word = e.relative.coordinated?.at(-1).link === 'conj.or';
+      const relative =
+        series.length > 1
+          ? `${series.slice(0, -1).join(', ')} ${word ? 'or' : 'and'} ${series.at(-1)}`
+          : series[0];
       text = join(
         text,
         e.relative.subject?.relativePronoun ? '' : 'that',

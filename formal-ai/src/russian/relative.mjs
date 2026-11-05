@@ -31,3 +31,26 @@ export function frontRelative(s, ctx, renderObjects) {
     .filter(Boolean)
     .join(' ');
 }
+
+/** "бот, который обобщает каналы или управляет играми,": a relative clause. */
+export function renderRelative(e, kase, ctx) {
+  const { relative, ...antecedent } = e;
+  const head = renderEntity(antecedent, kase, ctx);
+  const bound = bindRelative(relative, antecedent);
+  const gaps = (bound.objects || []).filter((o) => o.relativePronoun);
+  // Russian puts the relative phrase first, including governed prepositions.
+  const inner = { ...ctx, afterPrep: false };
+  const series = [
+    ctx.renderStatement(bound, { ...inner, relativeGaps: gaps }),
+    ...(relative.coordinated || []).map((s) =>
+      ctx.renderStatement(bindRelative({ ...s, link: null }, antecedent), inner)
+    ),
+  ];
+  const word = relative.coordinated?.at(-1).link === 'conj.or' ? 'или' : 'и';
+  const text =
+    series.length > 1
+      ? `${series.slice(0, -1).join(', ')} ${word} ${series.at(-1)}`
+      : series[0];
+  // the closing comma is dropped before sentence punctuation later
+  return `${head}, ${text},`;
+}

@@ -22,13 +22,17 @@ export async function completeAdjunctDefinitions(plans, entries, options) {
             /^To ([a-z]+) \([^)]*\) in ([a-z]+) ([a-z]+)(?:[.,]|$)/.exec(
               definition
             );
+          // "To apply again": the verb and one adverb of its manner
+          const adverb = /^To ([a-z]+) ([a-z]+)\.?$/.exec(definition);
           return m
             ? [{ plan, definition, verb: m[1], adjective: m[2], noun: m[3] }]
-            : [];
+            : adverb
+              ? [{ plan, definition, verb: adverb[1], adverb: adverb[2] }]
+              : [];
         })
     );
   const pages = await fetchPages(
-    missing.flatMap((x) => [x.verb, x.adjective, x.noun]),
+    missing.flatMap((x) => [x.verb, x.adjective, x.noun, x.adverb]),
     options
   );
   const bases = missing.flatMap((x) =>
@@ -74,7 +78,20 @@ export async function completeAdjunctDefinitions(plans, entries, options) {
       })
       .flatMap((s) => s.russian)[0];
   };
-  for (const x of missing) {
+  for (const x of missing.filter((x) => x.adverb)) {
+    const context = x.definition;
+    const verb = candidate(x.verb, 'verb', context);
+    const adverb = candidate(x.adverb, 'adv', context);
+    if (verb && adverb && !verb.word.includes(' ')) {
+      x.plan.senses.push({
+        gloss: plain(x.definition),
+        definition: x.definition,
+        russian: [{ word: `${verb.word} ${adverb.word}` }],
+        composed: true,
+      });
+    }
+  }
+  for (const x of missing.filter((x) => !x.adverb)) {
     const base = englishEntries(pages.get(x.noun) || '')
       .flatMap((e) => e.formOf)
       .find((f) => f.kind === 'plural')?.lemma;

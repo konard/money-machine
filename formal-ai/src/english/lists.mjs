@@ -112,7 +112,8 @@ export function parallelVerb(c, k) {
       has(after, p)
     ) ||
     // a request's second verb may take a bare object: "and deposit money"
-    (form === 'base' && has(after, 'noun') && !has(c.at(k), 'adj'))
+    // …and so may a statement's: "summarizes channels or runs games"
+    (/^(?:base|3sg)$/.test(form) && has(after, 'noun') && !has(c.at(k), 'adj'))
   );
 }
 

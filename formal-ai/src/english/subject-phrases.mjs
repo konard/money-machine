@@ -74,14 +74,19 @@ export function verbAmbiguity(t) {
  * the clause read that way reaches as far.
  * @param {object} c - cursor at the end of the greedy clause
  * @param {number} start - clause start
- * @param {number} verbAt - token index of the greedy reading's verb
+ * @param {number} verbIndex - token index of the greedy reading's verb
  * @param {(stopAt: number) => object|null} reparse - clause ending its
  *   subject before `stopAt`, cursor after it
  * @returns {object|null} the better clause (cursor after it) or null
  */
-export function earlierVerb(c, start, verbAt, reparse) {
+export function earlierVerb(c, start, verbIndex, reparse) {
   const end = c.i;
+  // a parenthesis parses a slice of the sentence: find the verb's position
+  const verbAt = c.tokens.findIndex((t) => t.index === verbIndex);
   const verb = c.tokens[verbAt];
+  if (!verb) {
+    return null;
+  }
   // "says top tutors": an adjective before a noun; "times mean many
   // writers" keeps its verb before a determiner
   const after = c.tokens[verbAt + 1];

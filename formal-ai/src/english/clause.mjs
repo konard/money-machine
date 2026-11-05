@@ -1,6 +1,7 @@
 import { parseFragment } from './fragment.mjs';
 import { calendarPredicate } from './calendar.mjs';
-import { bareInfinitiveOf, gerundOf, infinitiveOf } from './infinitive.mjs';
+import { bareInfinitiveOf, infinitiveOf } from './infinitive.mjs';
+import { ellipsis, tailOptions } from './ellipsis.mjs';
 import { preferNominal } from './nominal-evidence.mjs';
 import {
   labelledFacts,
@@ -22,6 +23,7 @@ import {
 } from './subject-phrases.mjs';
 import { headlineCopula, adjectiveListAhead } from './headline-copula.mjs';
 import { reducedPassive } from './reduced-passive.mjs';
+import { relativePredicates } from './relative-predicates.mjs';
 import {
   frontedRequest,
   leadingPhraseAhead,
@@ -32,7 +34,6 @@ import { participleValue, mergeLabelValues } from './label-value.mjs';
 import { outerVerbAt } from './relative-end.mjs';
 import { superlatives } from './quantity.mjs';
 import { analyze } from './analyze.mjs';
-import { finiteComplementAhead } from './complements.mjs';
 import { parseInverted } from './inverted.mjs';
 import {
   isImperativeStart,
@@ -73,17 +74,15 @@ setParentheticalParser((tokens) => {
   return inner.leftover.length < fragments.leftover.length ? inner : fragments;
 });
 
-// Relatives with an overt subject have an object gap; otherwise a subject gap.
-setRelativeParser((c, np) => {
-  if (!currentCtx) {
-    return null;
-  }
-  const explicit = ['who', 'which', 'that'].includes(c.peek?.lower);
-  if (explicit) {
-    c.next();
-  }
+/**
+ * "the tools developers use": a relative whose own subject leaves the
+ * object slot as its gap.
+ * @returns {{end: number, clause?: object}} where its subject ended
+ */
+function objectGap(c, np, explicit, stopAt) {
   const start = c.i;
-  const parsed = parseNP(c, { clauseStart: true });
+  const parsed = parseNP(c, { clauseStart: true, stopAt });
+  const end = c.i;
   // "the tools developers use": without "that", a relative's subject is
   // determined, plural or a name; a bare singular noun ("agents help you
   // …") is the outer verb read as a noun
@@ -122,25 +121,55 @@ setRelativeParser((c, np) => {
         const shorter = parseTail(c, vg.frame, tailOptions(currentCtx, vg));
         c.tokens = tokens;
         if (shorter.objects.length || c.i !== end) {
-          return null;
+          return { end };
         }
         tail = shorter;
       }
     }
-    // An occupied object slot or complement ("pay is low") is no gap.
-    if (
+    // An occupied object slot or complement ("pay is low") is no gap…
+    // …but after "that" the gap may be the subject: "that captures traffic"
+    const occupied =
       (tail.objects.length || (vg.frame === 'copula' && tail.complement)) &&
-      !tail.stranded
-    ) {
-      return null;
+      !tail.stranded;
+    if (occupied && !explicit) {
+      return { end };
     }
-    tail.objects.push({
-      type: 'np',
-      relativeSubject: true,
-      number: np.number,
-      ...(tail.stranded ? { marker: tail.stranded } : {}),
-    });
-    return clause('declarative', vg, { subject, ...tail });
+    if (!occupied) {
+      tail.objects.push({
+        type: 'np',
+        relativeSubject: true,
+        number: np.number,
+        ...(tail.stranded ? { marker: tail.stranded } : {}),
+      });
+      return { end, clause: clause('declarative', vg, { subject, ...tail }) };
+    }
+  }
+  return { end };
+}
+
+// Relatives with an overt subject have an object gap; otherwise a subject gap.
+setRelativeParser((c, np) => {
+  if (!currentCtx) {
+    return null;
+  }
+  const explicit = ['who', 'which', 'that'].includes(c.peek?.lower);
+  if (explicit) {
+    c.next();
+  }
+  const start = c.i;
+  const found = objectGap(c, np, explicit);
+  // "the tools that developers use": a subject that took the verb as its
+  // last noun ends before it
+  const last = found.end - 1;
+  if (!found.clause && last > start && has(c.tokens[last], 'verb')) {
+    c.i = start;
+    const shorter = objectGap(c, np, explicit, last);
+    if (shorter.clause) {
+      return shorter.clause;
+    }
+  }
+  if (found.clause) {
+    return found.clause;
   }
   c.i = start;
   if (!explicit) {
@@ -153,15 +182,25 @@ setRelativeParser((c, np) => {
   if (!subjectVerb) {
     return null;
   }
-  const tail = parseTail(
+  const gap = { type: 'np', relativeSubject: true, number: np.number };
+  // a later predicate ends before the outer verb ("or runs games can…")
+  const predicate = (vg, later) =>
+    vg &&
+    clause('declarative', vg, {
+      subject: gap,
+      ...parseTail(c, vg.frame, {
+        ...tailOptions(currentCtx, vg),
+        ...(later ? { finiteComplementAhead: () => false } : {}),
+      }),
+    });
+  const verb = c.tokens.find((x) => x.index === subjectVerb.verb?.token);
+  return relativePredicates(
     c,
-    subjectVerb.frame,
-    tailOptions(currentCtx, subjectVerb)
+    predicate(subjectVerb),
+    reading(verb, 'verb')?.features.form,
+    () =>
+      predicate(parseVerbGroup(c, np.number === 'pl' ? null : 'third'), true)
   );
-  return clause('declarative', subjectVerb, {
-    subject: { type: 'np', relativeSubject: true, number: np.number },
-    ...tail,
-  });
 });
 
 /**
@@ -742,88 +781,6 @@ function parseDeclarative(c, ctx) {
       return parseDeclarative(c, { ...ctx, retried: true, stopAt });
     });
   return better || reducedPassive(c, result, ctx.lexicon);
-}
-
-/**
- * "I came home and went to bed": a finite verb right after a coordinator
- * shares the previous clause's subject.
- */
-function ellipsis(c, ctx, previous, link) {
-  const t = c.peek;
-  // "you don't market yourself or set prices": a negation before "or"/"nor"
-  // covers both predicates, ¬(A ∨ B); before "and" it often does not ("we
-  // don't track you and respect your privacy")
-  const sharesNegation =
-    previous.polarity === 'negative' &&
-    previous.mood === 'declarative' &&
-    ['conj.or', 'conj.nor'].includes(link?.concept);
-  const r = reading(t, 'verb');
-  const subject = previous.subject;
-  const third = subject.pronoun
-    ? subject.pronoun.person === 3 && subject.number === 'sg'
-    : subject.number !== 'pl' && (!subject.coord || subject.correlative);
-  // a base form shares the previous modal, the future ("they will come and
-  // help") or a do-support negation ("he doesn't read or write"), and then
-  // agrees with nothing ("she can read and write")
-  const bare = previous.modal || previous.tense === 'future' || sharesNegation;
-  // "we live in London and work in Paris": a base verb shares the subject
-  const finite =
-    r &&
-    (['past', 'past|pp', '3sg'].includes(r.features.form) ||
-      (r.features.form === 'base' &&
-        previous.mood === 'declarative' &&
-        (bare || (!third && previous.tense === 'present'))));
-  const auxiliary = AUX.some((p) => has(t, p)) && !has(c.at(1), 'pron');
-  if (!finite && !auxiliary) {
-    return null;
-  }
-  const save = c.i;
-  const agree = third && !bare ? 'third' : null;
-  let vg = parseVerbGroup(c, agree);
-  if (!vg && has(c.peek, 'prep')) {
-    const phrases = subjectPhrases(c, agree);
-    if (phrases) {
-      attachPhrases(subject, phrases.pps);
-      vg = phrases.vg;
-    }
-  }
-  if (!vg) {
-    c.i = save;
-    return null;
-  }
-  if (r?.features.form === 'base' && !auxiliary) {
-    vg.tense = previous.tense;
-    vg.modal = previous.modal;
-    vg.sharedModal = Boolean(previous.modal);
-    if (sharesNegation) {
-      vg.polarity = 'negative';
-      vg.sharedPolarity = true;
-    }
-  }
-  const tail = parseTail(c, vg.frame, tailOptions(ctx, vg));
-  return {
-    ...clause('declarative', vg, {
-      subject: { ...subject, implicit: true },
-      ...tail,
-    }),
-    elided: true,
-  };
-}
-
-function tailOptions(ctx, vg) {
-  const r = vg.verb && { concepts: vg.verb.candidates };
-  return {
-    takes: r ? ctx.takesOf(r) : [],
-    infinitive: r ? ctx.infinitiveOf(r) : false,
-    bareInfinitive: r ? ctx.bareInfinitiveOf(r) : false,
-    bareInfinitiveOf: ctx.bareInfinitiveOf,
-    gerund: r ? gerundOf(ctx.lexicon)(r) : undefined,
-    takesOf: ctx.takesOf,
-    infinitiveOf: ctx.infinitiveOf,
-    lexicon: ctx.lexicon,
-    verbConcepts: vg.verb?.candidates,
-    finiteComplementAhead: (c) => finiteComplementAhead(c, vg.verb, ctx),
-  };
 }
 
 function parseImperative(c, ctx) {

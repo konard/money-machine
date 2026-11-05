@@ -41,6 +41,7 @@ import {
   borrowedAdjective,
   standalone,
   verbAfterName,
+  nameOfKind,
   stateAdverb,
   adjectiveBeforeCount,
   pluralOnly,
@@ -419,9 +420,9 @@ export function parseNP(c, options = {}) {
       !np.def &&
       !np.possessor &&
       np.quantity === undefined &&
-      nouns[0].r.pos === 'noun' &&
       nouns[0].r.features.number !== 'pl' &&
-      t3.readings.some((x) => x.pos === 'noun' && x.features.number === 'pl');
+      t3.readings.some((x) => x.pos === 'noun' && x.features.number === 'pl') &&
+      (nouns[0].r.pos === 'noun' || nameOfKind(c, nouns[0], options));
     if (
       nouns.length &&
       !options.fragment &&

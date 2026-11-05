@@ -103,3 +103,18 @@ export function pluralOnly(t, next) {
     !has(next, 'noun')
   );
 }
+
+/**
+ * "sell WordPress themes on Etsy": a name before a plural that ends the
+ * object names the kind; "Outschool says…" opens a clause.
+ */
+export function nameOfKind(c, first, options) {
+  const after = c.at(1);
+  return (
+    first.r.pos === 'propn' &&
+    !options.clauseStart &&
+    (!after ||
+      after.kind === 'punct' ||
+      ['coord', 'prep'].some((p) => has(after, p)))
+  );
+}

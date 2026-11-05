@@ -56,6 +56,13 @@ function entity(np, lexicon) {
   }
   if (np.relative) {
     e.relative = statement(np.relative, lexicon);
+    // "that summarizes channels or runs games": more predicates, said once
+    if (np.relative.coordinated) {
+      e.relative.coordinated = np.relative.coordinated.map((x) => {
+        const s = statement(x, lexicon);
+        return { ...s, subject: { ...s.subject, implicit: true } };
+      });
+    }
   }
   if (np.pronoun) {
     const p = np.pronoun;

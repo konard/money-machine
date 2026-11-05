@@ -5,7 +5,7 @@
  */
 
 import { degreeForm, quantityWord } from './degree.mjs';
-import { bindRelative } from './relative.mjs';
+import { renderRelative } from './relative.mjs';
 import { shortFrom } from './copula.mjs';
 import { calendarRelation, renderCalendar } from './calendar.mjs';
 import {
@@ -341,18 +341,7 @@ export function renderEntity(e, kase, ctx) {
     return `${renderEntity(rest, kase, ctx)} (${inside})`;
   }
   if (e.relative && ctx.renderStatement) {
-    const { relative, ...antecedent } = e;
-    const head = renderEntity(antecedent, kase, ctx);
-    const bound = bindRelative(relative, antecedent);
-    const gaps = (bound.objects || []).filter((o) => o.relativePronoun);
-    // Russian puts the relative phrase first, including governed prepositions.
-    const text = ctx.renderStatement(bound, {
-      ...ctx,
-      afterPrep: false,
-      relativeGaps: gaps,
-    });
-    // the closing comma is dropped before sentence punctuation later
-    return `${head}, ${text},`;
+    return renderRelative(e, kase, ctx);
   }
   if (e.coordination) {
     const items = e.items.map((item, i) =>
