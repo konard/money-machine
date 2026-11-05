@@ -509,6 +509,18 @@ export function resolveSenses(parsed, lexicon, memory = new DocumentMemory()) {
         const commonest = Math.max(
           ...node.candidates.map((c) => lexicon.get(c)?.ruFrequency || 0)
         );
+        // "keep paying": before a gerund, the sense that means continuing
+        const nextToken = tokens.find((t) => t.index === node.token + 1);
+        if (
+          node.pos === 'verb' &&
+          /\bcontinu/i.test(concept?.definition || concept?.gloss || '') &&
+          nextToken?.readings?.some(
+            (r) => r.pos === 'verb' && r.features?.form === 'ing'
+          )
+        ) {
+          score += 3;
+          why.push('continuing sense before a gerund (+3)');
+        }
         const cognate =
           (concept?.ruFrequency || 0) * 20 >= commonest
             ? 0.5 * cognateShare(node.lemma, concept?.ru?.lemma)

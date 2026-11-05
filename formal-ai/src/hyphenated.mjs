@@ -159,6 +159,11 @@ function compose(parts, lexicon, context) {
       : plural
           ?.replace(/([ую])т(ся)?$/, '$1щий$2')
           .replace(/([ая])т(ся)?$/, '$1щий$2');
+    // re- and pre- are bound prefixes too
+    const bound = { re: 'повторно', pre: 'предварительно' }[parts[0]];
+    if (participle && last === 1 && passive && bound) {
+      return `${bound} ${participle}`;
+    }
     if (participle && last === 1 && n && parts[0] !== 'auto') {
       return `${participle} ${declineNoun(n, passive ? 'ins' : 'acc')}`;
     }

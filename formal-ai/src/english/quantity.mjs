@@ -19,6 +19,10 @@ export function parseDegree(c, frame, out, options, parseNP) {
     return false;
   }
   const next = c.at(1);
+  // "get most submissions": a determiner of the object, not a degree
+  if (degree === 'greatest' && has(next, 'noun') && !has(next, 'adj')) {
+    return false;
+  }
   const pos =
     frame === 'copula' && !out.complement && has(next, 'adj')
       ? 'adj'

@@ -714,6 +714,17 @@ export function analyze(sentence, lexicon) {
       ];
     }
   });
+  // "get the most submissions": a quantity, as "most submissions"
+  for (let i = out.length - 3; i >= 0; i -= 1) {
+    if (
+      out[i].lower === 'the' &&
+      out[i + 1].lower === 'most' &&
+      out[i + 2].readings?.some((r) => r.pos === 'noun') &&
+      !out[i + 2].readings.some((r) => r.pos === 'adj')
+    ) {
+      out.splice(i, 1);
+    }
+  }
   // "once the balance meets": a link only before a clause; not "once a week"
   out.forEach((token, i) => {
     const next = out[i + 1];
