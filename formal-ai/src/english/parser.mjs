@@ -37,7 +37,12 @@ import { sharedHead } from './shared-head.mjs';
 import { possessiveClitic } from './possessive.mjs';
 import { nounFirst, nounModifier } from './nominal-evidence.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
-import { borrowedAdjective, standalone } from './noun-helpers.mjs';
+import {
+  borrowedAdjective,
+  standalone,
+  verbAfterName,
+  stateAdverb,
+} from './noun-helpers.mjs';
 import {
   countAhead,
   parseQuantity,
@@ -57,6 +62,7 @@ import {
 import {
   coordinatedAdjectives,
   degreeAdverb,
+  degreeComplement,
   nounAhead,
 } from './predicate-adjectives.mjs';
 import { attachIngRelative } from './ing-relative.mjs';
@@ -260,9 +266,9 @@ export function parseNP(c, options = {}) {
     // "rated 2/10": a score or an amount takes no adjective
     const amountAhead = c.at(1)?.kind === 'quantity';
     // "low/medium risk": alternative adjectives written with a slash
-    // …or with "and"/"or": "raw or unpublished video"
+    // …or with "and"/"or"/"but": "raw or unpublished video"
     const pair =
-      (c.at(1)?.slash || ['and', 'or'].includes(c.at(1)?.lower)) &&
+      (c.at(1)?.slash || ['and', 'or', 'but'].includes(c.at(1)?.lower)) &&
       (has(c.at(2), 'adj') || participleReading(c.at(2))) &&
       nounAhead(c, 3);
     // "fast, consistent assets": adjectives joined by a comma
@@ -298,7 +304,7 @@ export function parseNP(c, options = {}) {
         a.alternative.participle = 'past-passive';
       }
       if (!join.slash) {
-        a.alternative.join = join.lower === 'and' ? 'conj.and' : 'conj.or';
+        a.alternative.join = `conj.${join.lower}`;
       }
     }
     if (last?.comparison) {
@@ -435,7 +441,7 @@ export function parseNP(c, options = {}) {
       ) &&
       !baseAfterSingular(t3, nouns[nouns.length - 1].r) &&
       has(t3, 'verb') &&
-      !has(c.at(1), 'noun') &&
+      (!has(c.at(1), 'noun') || verbAfterName(c, nouns.at(-1))) &&
       nouns.length >= 1 &&
       verbLikely(c) &&
       // "keyboard testing.", "with B2B targets.": an -ing word, or any
@@ -443,6 +449,7 @@ export function parseNP(c, options = {}) {
       // the phrase is a noun
       !(
         (options.inPhrase ||
+          options.soleObject ||
           (np.def && !options.clauseStart) ||
           t3.readings.every(
             (x) => x.pos !== 'verb' || x.features.form === 'ing'
@@ -787,6 +794,9 @@ export function parseTail(c, frame, options = {}) {
         !out.mods.length &&
         linksAdjective(options.verbConcepts, options.lexicon));
     if (linking && !out.complement) {
+      if (stateAdverb(c, t, out)) {
+        continue;
+      }
       if (
         has(t, 'adj') &&
         !nounAhead(c, 1) &&
@@ -804,12 +814,7 @@ export function parseTail(c, frame, options = {}) {
         coordinatedAdjectives(c, out.complement);
         continue;
       }
-      if (degreeAdverb(t) && has(c.at(1), 'adj')) {
-        const degree = head(t, reading(t, 'adv'));
-        c.next();
-        const a = c.next();
-        out.complement = { type: 'adj', ...head(a, reading(a, 'adj')), degree };
-        coordinatedAdjectives(c, out.complement);
+      if (degreeComplement(c, t, out)) {
         continue;
       }
     }
@@ -947,7 +952,9 @@ export function parseTail(c, frame, options = {}) {
           infinitiveObject: true,
           gerundObject: options.gerund,
           // "handle rights verification": one object, unless two can follow
+          // …not a gerund subject's: "Reading students helps"
           soleObject:
+            !(options.nonfinite && options.clauseStart) &&
             !out.objects.length &&
             !takesTwoObjects(options.verbConcepts, options.lexicon),
         },

@@ -608,7 +608,7 @@ function renderNoun(e, entry, kase, ctx) {
     const alt = p.alternative && propertyWord(p.alternative, agree, ctx);
     const joined = (word) =>
       alt
-        ? `${word}${p.alternative.join ? ` ${p.alternative.join === 'conj.and' ? 'и' : 'или'} ` : '/'}${alt}`
+        ? `${word}${p.alternative.join ? `${{ 'conj.and': ' и', 'conj.or': ' или', 'conj.but': ', но' }[p.alternative.join]} ` : '/'}${alt}`
         : word;
     if (p.participle && ctx.renderParticiple) {
       const text = joined(

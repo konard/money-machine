@@ -3,16 +3,26 @@ import { englishEntries, fetchPages } from './wiktionary.mjs';
 import { glossWords } from './sense-data.mjs';
 
 export function definitionSynonyms(sense) {
-  const text = (sense.definition || '').replace(/[.]$/, '');
   // Only an entire definition consisting of coordinated bare verbs is an
-  // equivalence. "To manage with the hands" has a narrower meaning.
-  if (!/^To [a-z]+(?:(?:, (?:or |and )?| (?:or|and) )[a-z]+)+$/.test(text)) {
+  // equivalence. "To manage with the hands" has a narrower meaning; notes
+  // on typical objects and usage narrow nothing the verbs say: "To deploy
+  // or release (a new film…); to launch (a product…), especially…"
+  const text = (sense.definition || '')
+    .replace(/\s*\([^()]*\)/g, '')
+    .replace(/,\s*(?:especially|usually|often|typically|chiefly)\b[^;]*/g, '')
+    .replace(/[.]$/, '');
+  const clauses = text.split(/;\s*/);
+  const bare = /^[Tt]o [a-z]+(?:(?:, (?:or |and )?| (?:or|and) )[a-z]+)*$/;
+  if (!clauses.every((clause) => bare.test(clause))) {
     return [];
   }
-  return text
-    .slice(3)
-    .split(/, (?:or |and )?| (?:or|and) /)
-    .filter((word) => /^[a-z]+$/.test(word));
+  return [
+    ...new Set(
+      clauses.flatMap((clause) =>
+        clause.slice(3).split(/, (?:or |and )?| (?:or|and) /)
+      )
+    ),
+  ].filter((word) => /^[a-z]+$/.test(word));
 }
 
 export async function completeSynonymDefinitions(plans, options) {

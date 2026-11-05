@@ -148,7 +148,8 @@ export class EnglishRenderer {
     }
     word = join(p.degree && this.word(p.degree, 'adv'), word);
     if (p.alternative) {
-      word += `/${this.property(p.alternative)}`;
+      const joined = p.alternative.join?.replace('conj.', '');
+      word += `${joined ? ` ${joined} ` : '/'}${this.property(p.alternative)}`;
     }
     if (p.also) {
       word = join(

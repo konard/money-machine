@@ -79,3 +79,16 @@ export function nounAhead(c, k) {
     (has(t, 'noun') || has(t, 'name') || has(t, 'propn'))
   );
 }
+
+/** "is very good": a degree adverb and the adjective it grades. */
+export function degreeComplement(c, t, out) {
+  if (!degreeAdverb(t) || !has(c.at(1), 'adj')) {
+    return false;
+  }
+  const degree = head(t, reading(t, 'adv'));
+  c.next();
+  const a = c.next();
+  out.complement = { type: 'adj', ...head(a, reading(a, 'adj')), degree };
+  coordinatedAdjectives(c, out.complement);
+  return true;
+}

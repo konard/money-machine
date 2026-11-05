@@ -87,11 +87,11 @@ setRelativeParser((c, np) => {
     !explicit &&
     parsed?.head?.pos === 'noun' &&
     (parsed.number === 'sg' ||
-      // "FAQ (…) says pay depends": a lone plural that is also a 3sg verb
-      (c.i === start + 1 &&
-        word?.readings.some(
-          (r) => r.pos === 'verb' && r.features?.form === '3sg'
-        ))) &&
+      // "FAQ (…) says pay depends", "Outschool says payouts continue": a
+      // plural opening with a 3sg verb
+      (c.i === start + 1 ? word : c.tokens[start])?.readings.some(
+        (r) => r.pos === 'verb' && r.features?.form === '3sg'
+      )) &&
     !parsed.det &&
     !parsed.poss &&
     !parsed.quantity &&

@@ -1,6 +1,7 @@
 /** Small noun phrase helpers shared with the core parser. */
 import { head, reading, has } from './token-readings.mjs';
 import { STANDALONE_DETERMINERS } from './function-words.mjs';
+import { degreeAdverb } from './predicate-adjectives.mjs';
 
 /**
  * "is here": an adjective whose every sense is borrowed from another word
@@ -25,4 +26,51 @@ export function standalone(c, np, options, attachOf) {
   np.det = null;
   np.indefinite = true;
   return attachOf(c, np, options);
+}
+
+/**
+ * "Outschool says payouts continue": after a name, a word that agrees with
+ * it as a verb and is followed by a noun and a verb introduces a clause.
+ */
+export function verbAfterName(c, previous) {
+  return (
+    previous?.r.pos === 'propn' &&
+    c.peek?.readings.some(
+      (x) => x.pos === 'verb' && x.features.form === '3sg'
+    ) &&
+    has(c.at(1), 'noun') &&
+    has(c.at(2), 'verb')
+  );
+}
+
+/**
+ * "is still open": an adverb before a lone adjective (or -ing verb) ending
+ * the predicate; read as adjective + noun it would be a bare singular noun
+ * phrase ("a still"), which a predicate does not take.
+ */
+export function stateAdverb(c, t, out) {
+  const next = c.at(1);
+  const after = c.at(2);
+  const taken =
+    has(t, 'adv') &&
+    // "very good" is a degree of the adjective (see degreeComplement)
+    !degreeAdverb(t) &&
+    !has(t, 'det') &&
+    (has(next, 'adj') ||
+      next?.readings.some(
+        (x) => x.pos === 'verb' && x.features.form === 'ing'
+      )) &&
+    !has(after, 'noun') &&
+    !has(after, 'adj') &&
+    !has(after, 'propn');
+  if (taken) {
+    // "is still open" → ещё открыт: the adverb before the state
+    c.next();
+    out.mods.push({
+      type: 'adv',
+      ...head(t, reading(t, 'adv')),
+      preverbal: true,
+    });
+  }
+  return taken;
 }

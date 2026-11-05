@@ -45,23 +45,43 @@ function verbGroup(c, subject, subjectNP) {
   ) {
     subjectNP.floatingQuantifier = c.next().lower;
   }
+  // "is still rolling out": after an auxiliary, an adverb before an -ing
+  // verb, whatever else the word may be ("a still")
+  const beforeIng = () =>
+    c
+      .at(1)
+      ?.readings.some((x) => x.pos === 'verb' && x.features.form === 'ing');
+  // …and "You then fill": before a word that can only be a verb
+  const beforeVerb = () =>
+    c.at(1)?.readings.length && c.at(1).readings.every((x) => x.pos === 'verb');
   const skipAdverbs = (preverbal = false) => {
     while (
       c.peek &&
       has(c.peek, 'adv') &&
       !quantityDegree(c.peek) &&
-      !has(c.peek, 'verb') &&
-      // "You then fill": an adverb that may be an adjective, before a verb
-      (!has(c.peek, 'adj') || (has(c.at(1), 'verb') && !has(c.at(1), 'adj'))) &&
-      !has(c.peek, 'noun') &&
-      !(
-        reading(c.peek, 'adv').concepts.some(isDegree) &&
-        (has(c.at(1), 'adj') || has(c.at(1), 'adv'))
-      )
+      ((!preverbal && beforeIng()) ||
+        (preverbal && beforeVerb()) ||
+        adverbOnly(preverbal))
     ) {
-      vg.adverbs.push({ ...head(c.peek, reading(c.peek, 'adv')), preverbal });
+      // "is still running" → всё ещё бежит: before the verb in Russian too
+      vg.adverbs.push({
+        ...head(c.peek, reading(c.peek, 'adv')),
+        preverbal: preverbal || beforeIng(),
+      });
       c.next();
     }
+    skipNegation();
+  };
+  const adverbOnly = () =>
+    !has(c.peek, 'verb') &&
+    // "You then fill": an adverb that may be an adjective, before a verb
+    (!has(c.peek, 'adj') || (has(c.at(1), 'verb') && !has(c.at(1), 'adj'))) &&
+    !has(c.peek, 'noun') &&
+    !(
+      reading(c.peek, 'adv').concepts.some(isDegree) &&
+      (has(c.at(1), 'adj') || has(c.at(1), 'adv'))
+    );
+  const skipNegation = () => {
     while (has(c.peek, 'neg')) {
       vg.polarity = 'negative';
       if (reading(c.peek, 'neg').lemma === 'never') {
