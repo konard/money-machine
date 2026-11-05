@@ -189,16 +189,11 @@ test('public form-of pages supply irregular generation without per-word rules', 
   assert.equal(result.exact, true);
 });
 
-test('known loss: omitted context can add ambiguity on the second parse', () => {
-  // "lends" is absent from the offline unit vocabulary. It still supplies
-  // financial context to the first sense pass, but is absent from its meta.
+test('known loss: an unknown verb is dropped from the meta', () => {
+  // "lends" is absent from the offline unit vocabulary; "bank" stays банк
+  // on both passes, since the international word needs no financial context.
   const result = englishRoundTrip('The bank lends money.');
   assert.equal(result.english, 'The bank.');
-  assert.equal(result.exact, false);
+  assert.equal(result.exact, true);
   assert.equal(result.complete, false);
-  assert.ok(
-    result.differences.some(
-      (d) => d.kind === 'ambiguous' && d.change === 'added'
-    )
-  );
 });
