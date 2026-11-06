@@ -117,11 +117,29 @@ export function parallelVerb(c, k) {
   );
 }
 
-/** Is a finite verb coming after an NP at offset k (so "and" joins clauses)? */
+/**
+ * Is a finite verb coming after an NP at offset k (so "and" joins clauses)?
+ * The probe's noun phrase may itself be a comma list, which probes every later
+ * comma: remembered per position, or a long list takes exponential time.
+ */
+const probed = new WeakMap();
 export function clauseAhead(c, k) {
+  let known = probed.get(c.tokens);
+  if (known?.grammar !== c.grammar) {
+    known = { grammar: c.grammar, at: new Map() };
+    probed.set(c.tokens, known);
+  }
+  const at = c.i + k;
+  if (!known.at.has(at)) {
+    known.at.set(at, probeClause(c, at));
+  }
+  return known.at.get(at);
+}
+
+function probeClause(c, at) {
   const probe = new Cursor(c.tokens);
   probe.grammar = c.grammar;
-  probe.i = c.i + k;
+  probe.i = at;
   const np = parseNP(probe);
   if (!np) {
     return false;
