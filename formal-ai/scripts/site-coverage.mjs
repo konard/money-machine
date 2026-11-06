@@ -16,12 +16,20 @@ import { englishRoundTrip } from '../src/english/round-trip.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
 import { resolveText } from '../src/resolve.mjs';
 import { readBack, russianFormIndex } from '../src/russian/read-back.mjs';
+import { setNetworkLog } from '../src/sources/fetch.mjs';
 import { pages, paragraphs, sentences } from './sample.mjs';
 
 const out = process.argv[2] || 'site-coverage.json';
 const started = Date.now();
 const progress = (message) =>
   console.error(`[${((Date.now() - started) / 1000).toFixed(0)}s] ${message}`);
+setNetworkLog(({ event, url, requests, failures, error }) => {
+  if (event === 'request' && requests % 100 === 0) {
+    progress(`${requests} requests (last ${new URL(url).host})`);
+  } else if (event === 'failure') {
+    progress(`gave up on ${url}: ${error.message} (${failures} failures)`);
+  }
+});
 const all = pages();
 const field = all.map((p) => p.text).join('\n\n');
 const lexicon = loadLexicon();
