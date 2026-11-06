@@ -1,0 +1,722 @@
+[
+  {
+    "seed": 17,
+    "source": "docs/business-plans/pro-rate-short-fiction-markets.md",
+    "english": "The chance of receiving at least one real payout within six months is rated **2/10**.",
+    "before": "Возможность получать не менее одной действительной выплаты в пределах шести месяцев ругается 2/10.",
+    "after": "Возможность получать не менее одной действительной выплаты в пределах шести месяцев ругается 2/10.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#esl-company-tutoring",
+    "english": "Open slots and teach",
+    "before": "Открывайте и преподайте [slots]",
+    "after": "Открывайте и преподайте [slots]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/sheet-music-arrangeme.md",
+    "english": "_Generated from `data/strategies/music-audio.json` by `npm run build:catalog`.",
+    "before": "Порождалось из `data/strategies/music-audio.json` `npm run build:catalog`.",
+    "after": "Порождается из `data/strategies/music-audio.json` `npm run build:catalog`.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/cutting-machine-design-store-artist.md",
+    "english": "Similar license deals exist with Cricut's Design Space image library on a contract basis.",
+    "before": "Похожая лицензия [deals exist with Cricut 's Design Space image library on a contract basis].",
+    "after": "Похожая лицензия [deals exist with Cricut 's Design Space image library on a contract basis].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/meta-facebook-instagram-content-monetization.md",
+    "english": "The chance of receiving at least one real payout within six months is rated **3/10**.",
+    "before": "Возможность получать не менее одной действительной выплаты в пределах шести месяцев ругается 3/10.",
+    "after": "Возможность получать не менее одной действительной выплаты в пределах шести месяцев ругается 3/10.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/mercado-livre-afiliados.md",
+    "english": "Month 6-12: Black Friday/Hot Sale spikes; median ~$40/month",
+    "before": "Месяц 6–12: шиповка Black Friday/Hot Sale; медиана ≈$40 в месяц",
+    "after": "Месяц 6–12: шиповка Black Friday/Hot Sale; медиана ≈$40 в месяц",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#x-original-content-rewards",
+    "english": "LLM drafting of threads/articles from your research",
+    "before": "Черчение LLM шмоток или из вашего исследования [articles]",
+    "after": "Черчение LLM шмоток или из вашего исследования [articles]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/research/platform-rules.md",
+    "english": "The license only addresses US law, so verify public-domain status in each sales country (life+50 or life+70).",
+    "before": "Единственный ребёнок лицензии, поэтому удостоверяйте положение с общественным достоянием в каждом, жизнь или жизнь, 70 [addresses US law sales country 50].",
+    "after": "Единственный ребёнок лицензии, поэтому удостоверяйте положение с общественным достоянием в каждом, жизнь или жизнь, 70 [addresses US law sales country 50].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/minecraft-mod-rewards-curseforge-modrinth.md",
+    "english": "Version churn requires constant updates",
+    "before": "Отток абонентов версии [requires constant updates]",
+    "after": "Отток абонентов версии [requires constant updates]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/meta-facebook-instagram-content-monetization.md",
+    "english": "Legal across the set; ad income taxable.",
+    "before": "Через набор юридическо; доход рекламы [taxable].",
+    "after": "Через набор юридическо; доход рекламы [taxable].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/research/legal-framework.md",
+    "english": "No gray area exploitation",
+    "before": "Без эксплуатации серой зоны",
+    "after": "Без эксплуатации серой зоны",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/grant-writing-service.md",
+    "english": "Months include ramp-up to the first order.",
+    "before": "Месяцы включают [ramp-up to the first order].",
+    "after": "Месяцы включают [ramp-up to the first order].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#interactive-fiction-choice-of-games",
+    "english": "milestone advances; royalties per publisher schedule",
+    "before": "Мильный камень; за расписание издателя [advances royalties]",
+    "after": "Мильный камень; за расписание издателя [advances royalties]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#crowdtesting-bug-hunts",
+    "english": "Cycle availability varies by device/country",
+    "before": "Ездите на велосипеде наличие или страна [varies by device]",
+    "after": "Ездите на велосипеде наличие или страна [varies by device]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/roblox-game-devex.md",
+    "english": "Scripted content/event updates",
+    "before": "Планомерное содержание/событие [updates]",
+    "after": "Планомерное содержание/событие [updates]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/ai-dubbing-localization-service.md",
+    "english": "report income for tax; written voice-clone consent; client content rights; data processing agreement for EU clients",
+    "before": "Сообщайте доход для налога; разрешайте; содержание клиента; соглашение обработки данных для клиентов EU [written voice-clone rights]",
+    "after": "Сообщайте доход для налога; разрешайте; содержание клиента; соглашение обработки данных для клиентов EU [written voice-clone rights]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/research/platform-rules.md",
+    "english": "**Payout**: interest is credited monthly; bills pay at maturity (4-52 weeks).",
+    "before": "Выплата: процент; платите в зрелости (4–52 недель) [credited monthly bills].",
+    "after": "Выплата: процент; платите в зрелости (4–52 недель) [credited monthly bills].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/paid-chat-community.md",
+    "english": "AI weekly digests",
+    "before": "Еженедельник ИИ [digests]",
+    "after": "Еженедельник ИИ [digests]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/sell-datasets.md",
+    "english": "Month 1-3: list on Datarade and a gated Hugging Face repo; likely $0",
+    "before": "Месяц 1–3: слушайте на Datarade, и репозиторий Hugging Face; $0 [a gated]",
+    "after": "Месяц 1–3: слушайте на Datarade, и репозиторий Hugging Face; $0 [a gated]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/smb-security-questionnaires-awareness.md",
+    "english": "simulation complaints from staff",
+    "before": "Симуляция [complaints from staff]",
+    "after": "Симуляция [complaints from staff]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#wcag-accessibility-audit-remediation",
+    "english": "WebAIM Million 2026 (Feb 2026): 95.9% of top home pages had detected WCAG 2 failures, avg 56.1 errors.",
+    "before": "WebAIM Million, Feb: у 95,9% лучших жилых страниц есть, 56.1 [2026 2026 detected WCAG 2 failures avg errors].",
+    "after": "WebAIM Million, Feb: у 95,9% лучших жилых страниц есть, 56.1 [2026 2026 detected WCAG 2 failures avg errors].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#github-sponsors",
+    "english": "AI agent triages issues, drafts fixes and release notes to keep repos active",
+    "before": "Установки очерёдности ИИ действующей силы, шашки и отпускайте заметки, чтобы хранить доверенных лиц [issues fixes active]",
+    "after": "Установки очерёдности действующей силы ИИ, шашки и отпускайте заметки, чтобы хранить доверенных лиц [issues fixes active]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#micro-saas-merchant-of-record",
+    "english": "MoR seller verification/KYC",
+    "before": "Проверка MoR продавца, KYC",
+    "after": "Проверка продавца MoR, KYC",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/high-yield-savings-mmf-tbills.md",
+    "english": "Bank failure above insurance limits",
+    "before": "Провал банка над пределами страхования",
+    "after": "Провал банка над пределами страхования",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/jumia-kol-affiliate.md",
+    "english": "Not confirmed on an official page, and it is unclear the program still runs in every Jumia country, so paymentProbability is 3 rather than 4.",
+    "before": "Официальная страница, и неясно, поэтому paymentProbability — 3 вместо 4 [Not confirmed on runs in every Jumia country].",
+    "after": "Официальная страница, и неясно, поэтому paymentProbability — 3 вместо 4 [Not confirmed on runs in every Jumia country].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#rent-gpu-vast-ai",
+    "english": "List an idle NVIDIA GPU machine on Vast.ai's marketplace and earn per-hour rental fees from AI/ML customers.",
+    "before": "Внестийте в список ленивую машину NVIDIA GPU на рынке Vast.ai и зарабатывайте или мегалитр [per-hour rental fees from AI customers].",
+    "after": "Внестийте в список ленивую машину NVIDIA GPU на рынке Vast.ai и зарабатывайте или мегалитр [per-hour rental fees from AI customers].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#roblox-game-devex",
+    "english": "DevEx application and Tipalti setup",
+    "before": "Приложение DevEx и инсталлятор Tipalti",
+    "after": "Приложение DevEx и инсталлятор Tipalti",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#bug-bounty-programs",
+    "english": "Legal risk if out of scope",
+    "before": "Юридический риск, если из области видимости",
+    "after": "Юридический риск, если из области видимости",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/independent-online-tutoring-practice.md",
+    "english": "Marketplaces can still be a lead source, but repeat students stay direct where terms allow.",
+    "before": "Рынки могут успокоить, но рынки повторять, где рынки позволять [be a lead source students stay direct terms].",
+    "after": "Рынки могут успокоить, но рынки повторять, где рынки позволять [be a lead source students stay direct terms].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#receipt-and-shopping-data-apps",
+    "english": "Legal everywhere; you are selling your own purchase data under the app's privacy policy.",
+    "before": "Везде; вы [Legal selling your own purchase data under the app 's privacy policy].",
+    "after": "Везде; вы [Legal selling your own purchase data under the app 's privacy policy].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/research/platform-rules.md",
+    "english": "Track rate limit usage",
+    "before": "Отслеживайте использование ставки предела",
+    "after": "Отслеживайте использование предела ставки",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/superprof-lead-gen-tutoring.md",
+    "english": "Fact-check: median month-12 net lowered from $250 to $80 so it agrees with the 35% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot).",
+    "before": "С фактчеком: медианный месяц, 12 сетей, поэтому оно согласовывается с вероятностью 35% прибыли, половина первых блюд, поэтому медианное первое блюдо [lowered from $250 to $80 fewer than clear $100 per month cannot].",
+    "after": "С фактчеком: медианный месяц, 12 сетей, поэтому оно согласовывается с вероятностью прибыли 35%, половина первых блюд, поэтому медианное первое блюдо [lowered from $250 to $80 fewer than clear $100 per month cannot].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/technical-writing-api-docs.md",
+    "english": "editor feedback rounds",
+    "before": "Обход редактора отзыва",
+    "after": "Обход отзыва редактора",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/cashback-portals.md",
+    "english": "Cashback sites (Rakuten, TopCashback, Quidco, ShopBack, iGraal, Cashrewards) earn affiliate commissions from merchants and pass most of it to you.",
+    "before": "Кешбэк, Rakuten, TopCashback, Quidco, ShopBack, iGraal, Cashrewards, зарабатывайте и проходите больше всего его вам [sites affiliate commissions from merchants].",
+    "after": "Кешбэк, Rakuten, TopCashback, Quidco, ShopBack, iGraal, Cashrewards, зарабатывайте и проходите больше всего его вам [sites affiliate commissions from merchants].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#sample-packs-splice-loopmasters",
+    "english": "LLM-generated pack descriptions and metadata",
+    "before": "Пакет LLM-generated, и метаданные [descriptions]",
+    "after": "Пакет LLM-generated, и метаданные [descriptions]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/beat-leasing-beatstars-airbit.md",
+    "english": "**Rank #145 · Tier C · Priority score 49/100 · Category: Licensing, royalties & rentals**",
+    "before": "Ранг, 145, Tier C, Priority, Category: лицензирование, аренды [score 49/100 royalties]",
+    "after": "Ранг, 145, Tier C, Priority, Category: лицензирование, аренды [score 49/100 royalties]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/twitch-extensions-bits.md",
+    "english": "Use AI coding agents to build the extension front end and EBS backend",
+    "before": "Агенты Use AI кодировки, и задняя часть EBS [to build the extension front end]",
+    "after": "Агенты кодировки Use AI, и задняя часть EBS [to build the extension front end]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "docs/business-plans/paid-chat-community.md",
+    "english": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised).",
+    "before": "recurringMonthlyUsd только [Fixed cost startup cash not amortised].",
+    "after": "recurringMonthlyUsd только [Fixed cost startup cash not amortised].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#domain-flipping-parking",
+    "english": "Registrars and marketplaces accept customers from nearly all reference countries; payouts via wire, PayPal or Payoneer.",
+    "before": "Registrars и рынки; выплаты, PayPal Payoneer [accept customers from nearly all reference countries via wire].",
+    "after": "Registrars и рынки; выплаты, PayPal Payoneer [accept customers from nearly all reference countries via wire].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 17,
+    "source": "strategies.json#inkitt-galatea-revenue-share",
+    "english": "Sign Galatea contract",
+    "before": "Контракт Sign Galatea",
+    "after": "Контракт Sign Galatea",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/electronics-buyback-sites.md",
+    "english": "Month 0: inventory unused devices, compare quotes (cost $0)",
+    "before": "Месяц 0: инвентаризируйте неиспользованные устройства, $0 [compare quotes cost]",
+    "after": "Месяц 0: инвентаризируйте неиспользованные устройства, $0 [compare quotes cost]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#design-assets-fonts-icons-ui-kits",
+    "english": "AI ideation and vector cleanup scripts",
+    "before": "Мышление ИИ, и уборка [vector scripts]",
+    "after": "Мышление ИИ, и уборка [vector scripts]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/affiliate-network-programmatic-seo.md",
+    "english": "Month 3-6: prune pages without impressions, enrich winners; expect $20-100/month",
+    "before": "Месяц 3–6: страницы; надеяйтесь $20–100 в месяц [prune without impressions enrich winners]",
+    "after": "Месяц 3–6: страницы; надеяйтесь $20–100 в месяц [prune without impressions enrich winners]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "Self-employed individual ('einstaklingsrekstur'); must calculate a deemed salary ('reiknað endurgjald') and pay payroll/social charges on it.",
+    "before": "Ð, и платная платёжная ведомость или на нём [Self-employed individual 'einstaklingsrekstur ' must calculate a deemed salary 'reikna endurgjald ' social charges].",
+    "after": "Ð, и платная платёжная ведомость или на нём [Self-employed individual 'einstaklingsrekstur ' must calculate a deemed salary 'reikna endurgjald ' social charges].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/salad-idle-pc-compute.md",
+    "english": "PayPal (supported countries), gift cards (not bank)",
+    "before": "PayPal, страны, дарите, а не банк [supported cards]",
+    "after": "PayPal, страны, дарите, а не банк [supported cards]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#sample-packs-splice-loopmasters",
+    "english": "Deliver files + demos",
+    "before": "Deliver [files demos]",
+    "after": "Deliver [files demos]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/pay-per-lead-landing-pages.md",
+    "english": "Estimate from public CPL offers: B2B/home services $5-50, solar and legal intake up to $100+; ~$3 variable cost for tools/traffic; scrubbed leads are unpaid.",
+    "before": "Оценивайте: B2B, наводитесь бензозаправочную станцию $5–50 и глотайте до $100; ≈$3; или наводки неуплаченные [from public CPL offers solar legal variable cost for tools traffic scrubbed].",
+    "after": "Оценивайте: B2B, наводитесь бензозаправочную станцию $5–50 и глотайте до $100+; ≈$3; или наводки неуплаченные [from public CPL offers solar legal variable cost for tools traffic scrubbed].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#lessonface-music-arts-lessons",
+    "english": "Lessonface lists teachers outside the US, but it has no official list of countries it accepts teachers from.",
+    "before": "Списки Lessonface, но у него нет официального списка стран [teachers outside the US accepts teachers from].",
+    "after": "Списки Lessonface, но у него нет официального списка стран [teachers outside the US accepts teachers from].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/wordpress-freemium-plugins.md",
+    "english": "One median license a month covers demo hosting; WordPress.org review adds 1-4 weeks.",
+    "before": "Одна медианная лицензия; WordPress.org [a month covers demo hosting review adds 1-4 weeks].",
+    "after": "Одна медианная лицензия; WordPress.org [a month covers demo hosting review adds 1-4 weeks].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/research/zero-capital-strategies.md",
+    "english": "**Automation level**: Very high (95%)",
+    "before": "Автоматизация: Very, 95% [level high]",
+    "after": "Автоматизация: Very, 95% [level high]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#ai-automation-agency",
+    "english": "Stripe/Wise invoices to bank",
+    "before": "Stripe/Wise [invoices to bank]",
+    "after": "Stripe/Wise [invoices to bank]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#oss-bounties-algora",
+    "english": "Competition and duplicate claims",
+    "before": "Соревнование [duplicate claims]",
+    "after": "Соревнование [duplicate claims]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/smb-ppc-ads-management.md",
+    "english": "Google runs a Partners program whose badge requires 70% optimization score, $10,000 90-day spend across managed accounts and certifications, showing a large agency ecosystem around SMB ad management.",
+    "before": "Программа Partners, $10 000, и сертификации, экосистема вокруг рекламы SMB [Google runs whose badge requires 70% optimization score 90 day spend across managed accounts showing a large agency management].",
+    "after": "Программа Partners, $10 000, и сертификации, экосистема вокруг рекламы SMB [Google runs whose badge requires 70% optimization score 90 day spend across managed accounts showing a large agency management].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/music-sync-stock-libraries.md",
+    "english": "Month 12+: catalogue of 100+ tracks earning $50-$300/month",
+    "before": "Месяц 12: 100, дорожки [catalogue earning $50-$300 per month]",
+    "after": "Месяц 12+: 100+ дорожек [catalogue of earning $50-$300 per month]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/vocal-media-reads.md",
+    "english": "Still unconfirmed: the read rates and the payout minimum, because vocal.media geo-blocks this location ('Service Not Available in Your Location', 403) even in a real browser (Nov 2026).",
+    "before": "Неподвижно: пропорции и минимум выплаты, потому что vocal.media, Service Not Available в Location, 403, эвенский в действительном браузере, Nov [unconfirmed the read geo-blocks this location ' ' 2026].",
+    "after": "Неподвижно: пропорции и минимум выплаты, потому что vocal.media, Service Not Available в Location, 403, эвенский в действительном браузере, Nov [unconfirmed the read geo-blocks this location ' ' 2026].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#smb-ppc-ads-management",
+    "english": "Win first client via Upwork/local outreach",
+    "before": "Первый клиент Win через Upwork, превосходите [local]",
+    "after": "Первый клиент Win через Upwork, превосходите [local]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/instructional-design-elearning-freelance.md",
+    "english": "Month 3-6: 2-3 repeat clients, $500-1,500/month",
+    "before": "Месяц 3–6: 2–3, $500–1 500 в месяц [repeat clients]",
+    "after": "Месяц 3–6: 2–3, $500–1 500 в месяц [repeat clients]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#custom-songs-jingles",
+    "english": "Automated delivery packaging and license PDF",
+    "before": "Лицензируйте PDF [Automated delivery packaging and]",
+    "after": "Лицензируйте PDF [Automated delivery packaging and]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#ai-assistant-store-revenue",
+    "english": "Poe: $10 (smaller balances roll over)",
+    "before": "Poe: $10 [smaller balances roll over]",
+    "after": "Poe: $10 [smaller balances roll over]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/apify-actors-mcp-tools.md",
+    "english": "**Rank #25 · Tier A · Priority score 62/100 · Category: Software & developer monetization**",
+    "before": "Ранг, 25, Tier A, Priority, Category: программное обеспечение, монетизация программиста [score 62/100]",
+    "after": "Ранг, 25, Tier A, Priority, Category: программное обеспечение, монетизация программиста [score 62/100]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/bandcamp-direct-sales.md",
+    "english": "Bandcamp Fridays are confirmed only through Dec 2026",
+    "before": "Пятницы Bandcamp — закоренелый единственный ребёнок через Dec",
+    "after": "Пятницы Bandcamp — закоренелый единственный ребёнок через Dec",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#website-newsletter-flipping",
+    "english": "Asset transfer and handover",
+    "before": "Асет, и передача [transfer]",
+    "after": "Асет, и передача [transfer]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/crossword-puzzle-submissions.md",
+    "english": "Month 0: learn construction, solve and study accepted grids (cost $0)",
+    "before": "Месяц 0: обучение, и $0 [construction solve study accepted grids cost]",
+    "after": "Месяц 0: обучение, и $0 [construction solve study accepted grids cost]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#seo-blog-display-ads",
+    "english": "Publish genuinely useful pages that rank in search, monetized with display ads via AdSense, then Ezoic, Mediavine or Raptive as traffic grows.",
+    "before": "Publish, что ранг в поиске, рекламы через AdSense, Ezoic, Mediavine Raptive [genuinely useful pages monetized with display then traffic grows].",
+    "after": "Publish, что ранг в поиске, рекламы через AdSense, Ezoic, Mediavine Raptive [genuinely useful pages monetized with display then traffic grows].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#recover-money-you-are-owed",
+    "english": "Settlement payouts can take months after the claims deadline.",
+    "before": "Выплаты Settlement [take months the claims deadline].",
+    "after": "Выплаты Settlement [take months the claims deadline].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#online-mystery-shopping",
+    "english": "Micro-tasks & paid research",
+    "before": "Micro-tasks, исследуйте [paid]",
+    "after": "Micro-tasks, исследуйте [paid]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/architecture.md",
+    "english": "Logger and basic monitoring",
+    "before": "Лесоруб, и мониторинг [basic]",
+    "after": "Лесоруб, и мониторинг [basic]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/paid-ide-plugins.md",
+    "english": "CI publishing to Marketplace",
+    "before": "CI [publishing to Marketplace]",
+    "after": "CI [publishing to Marketplace]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/crowd-translation-gengo.md",
+    "english": "Not for sworn/certified translation, which needs licensing.",
+    "before": "Лицензирование [Not for sworn or certified translation needs].",
+    "after": "Лицензирование [Not for sworn or certified translation needs].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/craft-design-subscription-marketplaces.md",
+    "english": "So Fontsy terms not re-checked.",
+    "before": "Поэтому Fontsy [terms not re-checked].",
+    "after": "Поэтому Fontsy [terms not re-checked].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/website-newsletter-flipping.md",
+    "english": "Starter sites without revenue sell for little.",
+    "before": "Первое блюдо [sites without revenue sell for little].",
+    "after": "Первое блюдо [sites without revenue sell for little].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/esports-coaching-metafy.md",
+    "english": "Metafy says local bank payouts are available in 'many countries'; PayPal is an option where supported.",
+    "before": "Metafy; PayPal [says local bank payouts are available in 'many countries ' an option supported].",
+    "after": "Metafy; PayPal [says local bank payouts are available in 'many countries ' an option supported].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/ai-training-footage-licensing.md",
+    "english": "An agent can inventory and tag archives, strip unwanted segments, prepare metadata and handle uploads.",
+    "before": "Агент может инвентаризировать, и метаданные, и закачивания [tag archives strip unwanted segments prepare handle].",
+    "after": "Агент может инвентаризировать, и метаданные, и закачивания [tag archives strip unwanted segments prepare handle].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "**Foreign currency.** Capital controls: reporting only.",
+    "before": "**Валюта.** Capital: доложить только [controls].",
+    "after": "**Валюта.** Capital: доложить только [controls].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "The first e.firma needs an in-person appointment, and CFDI e-invoices are issued free on the SAT portal.",
+    "before": "E.firma, и CFDI [needs an in-person appointment e-invoices are issued free on the SAT portal].",
+    "after": "E.firma, и CFDI [needs an in-person appointment e-invoices are issued free on the SAT portal].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/affiliate-network-programmatic-seo.md",
+    "english": "Publish & index",
+    "before": "Publish [index]",
+    "after": "Publish [index]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "docs/business-plans/elevenlabs-voice-library.md",
+    "english": "Payouts run automatically via Stripe Connect every 6-8 days once earnings pass the threshold ($10 in most countries).",
+    "before": "Выплаты бегают 6–8 автоматически через Stripe Connect, $10 в большинстве стран [days once earnings pass the threshold].",
+    "after": "Выплаты бегают 6–8 автоматически через Stripe Connect, $10 в большинстве стран [days once earnings pass the threshold].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#ai-micro-tools-site",
+    "english": "Free AI-powered micro-tools website monetized by display ads and freemium",
+    "before": "Free AI-powered, и бизнес-модель [micro-tools website monetized by display ads]",
+    "after": "Free AI-powered, и бизнес-модель [micro-tools website monetized by display ads]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#jumia-kol-affiliate",
+    "english": "It exited South Africa and Tunisia.",
+    "before": "Оно, и Tunisia [exited South Africa].",
+    "after": "Оно, и Tunisia [exited South Africa].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 91,
+    "source": "strategies.json#newsletter-sponsorships-ad-network",
+    "english": "Grow to ~1k+ engaged subs",
+    "before": "Grow в ≈1 тыс. [engaged subs]",
+    "after": "Grow в ≈1 тыс.+ [engaged subs]",
+    "completeBefore": false,
+    "completeAfter": false
+  }
+]

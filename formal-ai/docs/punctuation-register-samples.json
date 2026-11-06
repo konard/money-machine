@@ -1,0 +1,608 @@
+{
+  "concrete": [
+    {
+      "en": "Use cheap tools, e.g. Canva.",
+      "before": "Используйте дешёвые инструменты, например Canva.",
+      "after": "Используйте дешёвые инструменты, например, Canva."
+    },
+    {
+      "en": "(e.g. eBay)",
+      "before": "Например eBay",
+      "after": "(например, eBay)"
+    },
+    {
+      "en": "It is free (optional).",
+      "before": "Свободно (необязательно).",
+      "after": "Свободно (необязательно)."
+    },
+    {
+      "en": "Free tier available",
+      "before": "Освободите ярус [available]",
+      "after": "Свободный ярус доступен"
+    },
+    {
+      "en": "a free plan",
+      "before": "Свободный план",
+      "after": "Свободный план"
+    },
+    {
+      "en": "Pay via PayPal (optional).",
+      "before": "Платите через PayPal (необязательный).",
+      "after": "Платите через PayPal (необязательно)."
+    },
+    {
+      "en": "income (low, median, high)",
+      "before": "Доход (низкий, медианный, высокий)",
+      "after": "Доход (низкий, медианный, высокий)"
+    },
+    {
+      "en": "A free subscription.",
+      "before": "Свободная подписка.",
+      "after": "Бесплатная подписка."
+    }
+  ],
+  "websiteFreeOccurrences": [
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "text": "Free FX market.",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "Освободите FX [market].",
+      "after": "Освободите FX [market]."
+    },
+    {
+      "source": "strategies.json#paid-newsletter-subscriptions",
+      "text": "Launch free list",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "Launch свободен [list]",
+      "after": "Launch свободен [list]"
+    },
+    {
+      "source": "strategies.json#superprof-lead-gen-tutoring",
+      "text": "Create free profile",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "Create свободен [profile]",
+      "after": "Create свободен [profile]"
+    },
+    {
+      "source": "strategies.json#freelancer-com-contests",
+      "text": "Enter contests (free)",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "Enter (свободный удар) [contests]",
+      "after": "Enter (свободный удар) [contests]"
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "text": "Registration is free.",
+      "before": "Регистрация свободна.",
+      "after": "Регистрация свободна."
+    },
+    {
+      "source": "strategies.json#brokerage-signup-transfer-bonuses",
+      "text": "Receive free share/cash",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "Receive свободен [share cash]",
+      "after": "Receive свободен [share cash]"
+    },
+    {
+      "source": "strategies.json#seo-audit-productized",
+      "text": "commoditized by free tools",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "Свободным ударом [commoditized tools]",
+      "after": "Свободным ударом [commoditized tools]"
+    },
+    {
+      "source": "strategies.json#sheet-music-arrangeme",
+      "text": "Competition from free scores",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "Competition из свободного удара [scores]",
+      "after": "Competition из свободного удара [scores]"
+    },
+    {
+      "source": "strategies.json#gated-membership-site",
+      "text": "Publish free + gated content",
+      "before": "Публикуйте бесплатно, и довольный [gated]",
+      "after": "Публикуйте бесплатно, и довольный [gated]"
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "text": "An EIN is free and optional.",
+      "lookupFailure": "uncached public request: en.wiktionary.org query",
+      "before": "EIN свободен [optional].",
+      "after": "EIN свободен [optional]."
+    }
+  ],
+  "samples": [
+    {
+      "seed": 73,
+      "method": "Frozen public lexicon; baseline and current rendering/scoring, same topic and field.",
+      "results": [
+        {
+          "source": "strategies.json#website-in-a-day",
+          "en": "on demand after clearance",
+          "before": "На требовании после разрешения",
+          "after": "На требовании после разрешения",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#fixed-rate-language-school-freelance",
+          "en": "Job listings say 'Remote - all countries' as long as you can legally freelance.",
+          "before": "Рекламы работы говорят, все страны, как стремитесь, как вы можете фрилансить законно [' Remote '].",
+          "after": "Рекламы работы говорят, все страны, как стремитесь, как вы можете фрилансить законно [' Remote '].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/pro-rate-short-fiction-markets.md",
+          "en": "Submission tracker (deadlines, response times)",
+          "before": "Трекер подачи (крайние сроки, времена отклика)",
+          "after": "Трекер подачи (крайние сроки, времена отклика)",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/live-streaming-twitch-kick.md",
+          "en": "Twitch Affiliate payouts available in most countries; Kick pays only to Stripe-supported countries.",
+          "before": "Выплаты аффилированного лица Twitch доступны в большинстве стран; зарплаты Kick единственны в страны Stripe-supported.",
+          "after": "Выплаты аффилированного лица Twitch доступны в большинстве стран; Kick платит только в страны Stripe-supported.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/overwolf-in-game-apps.md",
+          "en": "_Generated from `data/strategies/games-virtual-worlds.json` by `npm run build:catalog`.",
+          "before": "Порождено из `data/strategies/games-virtual-worlds.json` `npm run build:catalog`.",
+          "after": "Порождено из `data/strategies/games-virtual-worlds.json` `npm run build:catalog`.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/spreadsheet-templates-calculators.md",
+          "en": "Avoid presenting outputs as personalized financial advice.",
+          "before": "Избегите представлять производства как адаптированный финансовый совет.",
+          "after": "Избегите представлять производства как адаптированный финансовый совет.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#outschool-live-kids-classes",
+          "en": "Outschool keeps 30% and pays 70% of the class price, always in USD.",
+          "before": "Outschool хранит 30% и зарплаты 70% цены класса, USD.",
+          "after": "Outschool хранит 30% и зарплаты 70% цены класса, USD.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#stock-music-sound-effects",
+          "en": "Pond5 contributor portal states 30% music/SFX royalty, $25 minimum and 15th-of-month payouts; Envato author help center documents the flat 50% author fee from July 1, 2026, $50 minimum, 15th payouts and its AI-generated content ban.",
+          "before": "Портал благодетеля Pond5 утверждает музыку 30%, царственность SFX, $25 минимума и 15; центр помощи автора Envato документирует бемолю гонорар автора 50% с июля 1, 2026, $50 минимума, 15, и его довольный запрет AI-generated [th-of-month payouts th payouts].",
+          "after": "Портал благодетеля Pond5 утверждает музыку 30%, царственность SFX, $25 минимума и 15; центр помощи автора Envato документирует бемолю гонорар автора 50% с июля 1, 2026, $50 минимума, 15, и его довольный запрет AI-generated [th-of-month payouts th payouts].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/README.md",
+          "en": "**#33** [Paid survey panels (Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel)](./paid-survey-panels.md) — median $30/mo, pay prob.",
+          "before": "[Paid survey panels (Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel)](./paid-survey-panels.md), медиана $30 в момент, платите вероятно.",
+          "after": "[Paid survey panels (Swagbucks, Branded Surveys, Toluna, YouGov, PrizeRebel)](./paid-survey-panels.md), медиана $30 в момент, платите вероятно.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/research/platform-rules.md",
+          "en": "KDP Select (Kindle Unlimited and Kindle+) pays about $4-4.5 per 1,000 KENP pages read (estimated).",
+          "before": "KDP Select (Kindle Unlimited и Kindle) платит примерно $4–4,5 за KENP, которого страницы прочитают [estimated].",
+          "after": "KDP Select (Kindle Unlimited и Kindle) платит примерно $4–4,5 за KENP, которого страницы прочитают [estimated].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/kofi-buymeacoffee-tips.md",
+          "en": "One-off tips plus optional monthly memberships, commissions and a small shop, paid directly into your PayPal/Stripe.",
+          "before": "Одноразовые чаевые плюс необязательные ежемесячные членства, комиссии и маленький магазин, в PayPal/Stripe [paid directly].",
+          "after": "Одноразовые чаевые плюс необязательные ежемесячные членства, комиссии и маленький магазин, в PayPal/Stripe [paid directly].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "strategies.json#cohort-courses-maven",
+          "en": "Live cohort-based courses on Maven",
+          "before": "Живые основанные коллективом курсы на Maven",
+          "after": "Живые основанные коллективом курсы на Maven",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#dual-license-open-source",
+          "en": "Choosing a valuable niche",
+          "before": "Выбирать ценную нишу",
+          "after": "Выбирать ценную нишу",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#public-domain-derived-works",
+          "en": "Sell new translations/annotated editions of public-domain works",
+          "before": "Продайте переводы вновь или комментированные издания работ с общественным достоянием",
+          "after": "Продайте переводы вновь или комментированные издания работ с общественным достоянием",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#real-estate-virtual-staging",
+          "en": "Staged images must be disclosed as virtually staged in listings.",
+          "before": "Инсценированные образы должны быть раскрыты, как инсценированные образы организовали в рекламах [virtually].",
+          "after": "Инсценированные образы должны быть раскрыты, как инсценированные образы организовали в рекламах [virtually].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "strategies.json#brokerage-signup-transfer-bonuses",
+          "en": "Specific current offers could not be confirmed on official pages in Nov 2026 (broker sites blocked automated reads).",
+          "before": "Явные нынешние предложения не могли быть подтверждены 2026 на официальных страницах в Nov (более безденежные сайты, блокированные, автоматизировали) [reads].",
+          "after": "Явные нынешние предложения не могли быть подтверждены 2026 на официальных страницах в Nov (более безденежные сайты, блокированные, автоматизировали) [reads].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/per-minute-expert-calls.md",
+          "en": "Share booking link",
+          "before": "Ссылка резервирования доли",
+          "after": "Ссылка резервирования доли",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/music-curator-paid-reviews.md",
+          "en": "Low-effort AI-only feedback gets curators removed",
+          "before": "Отзыв с низким усилием AI-only достаёт кураторов, удалённых",
+          "after": "Отзыв с низким усилием AI-only достаёт кураторов, удалённых",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#wordpress-freemium-plugins",
+          "en": "AI coding agent builds/maintains plugin and compatibility updates",
+          "before": "Агент кодировки ИИ строит или агент кодировки ИИ поддерживает плагин и обновления совместимости",
+          "after": "Агент кодировки ИИ строит или агент кодировки ИИ поддерживает плагин и обновления совместимости",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/ai-redteam-bounties.md",
+          "en": "Gray Swan states $1M+ rewards paid to 15K+ red-teamers; Anthropic pays up to $35K per novel universal jailbreak (invite via application, NDA).",
+          "before": "Gray Swan утверждает $1 млн+ наград, заплаченных в 15 тыс.; Anthropic платит до $35 тыс. за новый вселенский побег (приглашение через приложение, NDA) [red-teamers].",
+          "after": "Gray Swan утверждает $1 млн+ наград, заплаченных в 15 тыс.; Anthropic платит до $35 тыс. за новый универсальный побег (приглашение через приложение, NDA) [red-teamers].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "strategies.json#rent-parking-storage-space",
+          "en": "Neighbor: renter is charged at the start of each rental period and the host payout is sent via Stripe at the end, arriving in 2-3 business days; Neighbor deducts a 4.9% + $0.30 processing fee per host payout.",
+          "before": "Neighbor: собака, и выплата хозяина послана через Stripe в конце, доходить через 2–3 рабочих дней; Neighbor удерживает 4,9% и $0,30 гонорара обработки за выплату хозяина [renter is charged the start of each rental period].",
+          "after": "Neighbor: собака, и выплата хозяина послана через Stripe в конце, доходить через 2–3 рабочих дней; Neighbor удерживает 4,9% и $0,30 гонорара обработки за выплату хозяина [renter is charged the start of each rental period].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "strategies.json#developer-marketplaces-code-review",
+          "en": "Toptal screening interviews",
+          "before": "Интервью отбора Toptal",
+          "after": "Интервью отбора Toptal",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/research/legal-framework.md",
+          "en": "Disclosure must be near affiliate links",
+          "before": "Раскрытие должно быть рядом с ссылками аффилированного лица",
+          "after": "Раскрытие должно быть рядом с ссылками аффилированного лица",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/saas-recurring-affiliate-tutorials.md",
+          "en": "No fixed monthly cost, so any commission is profit; months count ramp-up to the first payable earnings.",
+          "before": "Без фиксированных ежемесячных расходов, поэтому комиссия — прибыль; месяцы считаются [ramp-up to the first payable earnings].",
+          "after": "Без фиксированных ежемесячных расходов, поэтому комиссия — прибыль; месяцы считаются [ramp-up to the first payable earnings].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/legal/incorporation-costs.md",
+          "en": "Small-business regime: Micro-entrepreneur flat social charges with optional 'versement libératoire' income tax (1-2.2% of turnover); 15% CIT on first EUR 42,500 of profit for SMEs; VAT franchise.",
+          "before": "Режим с маленьким предприятием: плоские социальные цены Micro-entrepreneur (1–2,2% товарооборота); CIT на EUR 42,500 прибыли для SMEs; франшиза VAT [with optional 'versement libératoire ' income tax].",
+          "after": "Режим с маленьким предприятием: плоские социальные цены Micro-entrepreneur (1–2,2% товарооборота); CIT на EUR 42,500 прибыли для SMEs; франшиза VAT [with optional 'versement libératoire ' income tax].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "strategies.json#rent-parking-storage-space",
+          "en": "Renting your own space is legal; leases/HOAs/zoning may restrict.",
+          "before": "Аренда, которую ваше собственное пространство юридическое; аренды, HOAs, зонирование может ограничить.",
+          "after": "Аренда, которую ваше собственное пространство юридическое; аренды, HOAs, зонирование может ограничить.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#lora-model-creator-incentives",
+          "en": "Users run it",
+          "before": "Пользователи, управлянные",
+          "after": "Пользователи, управлянные",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#design-brand-kit-image-gigs",
+          "en": "very crowded category",
+          "before": "Очень переполненная категория",
+          "after": "Очень переполненная категория",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#curated-publisher-video-courses",
+          "en": "Pitch templates for multiple publishers",
+          "before": "Шаблоны тона для многочисленных издателей",
+          "after": "Шаблоны тона для многочисленных издателей",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#website-in-a-day",
+          "en": "Build 5 niche templates",
+          "before": "Постройте 5 шаблонов ниши",
+          "after": "Постройте 5 шаблонов ниши",
+          "beforeComplete": true,
+          "afterComplete": true
+        }
+      ]
+    },
+    {
+      "seed": 48173,
+      "method": "Frozen public lexicon; baseline and current rendering/scoring, same topic and field.",
+      "results": [
+        {
+          "source": "docs/business-plans/freelancer-com-contests.md",
+          "en": "final edits and handover files",
+          "before": "Окончательные редакции и дела передачи",
+          "after": "Окончательные редакции и файлы передачи",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#music-curator-paid-reviews",
+          "en": "Per-review rates are unpublished.",
+          "before": "Тарифы за пересмотр неопубликованные.",
+          "after": "Тарифы за пересмотр неопубликованные.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#domain-lease-to-own",
+          "en": "Eligible Buy-It-Now prices $495 to $5M.",
+          "before": "Buy-It-Now оценивает $495 в $5 млн.",
+          "after": "Buy-It-Now оценивает $495 в $5 млн.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/ai-stock-imagery-adobe-freepik.md",
+          "en": "Adobe Stock and Freepik accept generative-AI submissions if they are labeled as AI, contain no real people/brands/artist names, and meet quality rules.",
+          "before": "Adobe Stock и Freepik принимают предложения generative-AI, если они будут повешены ярлыки как AI, не содержат никаких настоящих персонажей/марки или имена художника и познакомьтесь с правилами качества.",
+          "after": "Adobe Stock и Freepik принимают предложения generative-AI, если они будут повешены ярлыки как AI, не содержат никаких настоящих персонажей/марки или имена художника и познакомьтесь с правилами качества.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/music-transcription-gigs.md",
+          "en": "**Rank #85 · Tier B · Priority score 54/100 · Category: Services & freelancing**",
+          "before": "Ранжируйте, 85, B, счёт 54/100 Priority, категория в проекте Викимедиа: службы, фрилансить",
+          "after": "Ранжируйте, 85, B, счёт 54/100 Priority, категория в проекте Викимедиа: службы, фрилансить",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/game-server-hosting-reseller.md",
+          "en": "Rent capacity from a provider that allows resale, install the open-source Pterodactyl panel and a billing system (Paymenter/WHMCS), and sell monthly managed servers per game to friend groups and communities.",
+          "before": "Рваная способность от провайдера, который позволяет перепродаже, установите группу с открытым источником Птеродактиль, и посылать счёт системе (Paymenter/WHMCS) и продайте ежемесячные управлянные серверы за игру, чтобы зафрендить группы и колонии [a].",
+          "after": "Рваная способность от провайдера, который позволяет перепродаже, установите группу с открытым источником Птеродактиль, и посылать счёт системе (Paymenter/WHMCS) и продайте ежемесячные управлянные серверы за игру, чтобы зафрендить группы и колонии [a].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/wcag-accessibility-audit-remediation.md",
+          "en": "Scanners find part of the issues; you add keyboard/screen-reader testing, write the report with LLM help, and fix code or tag PDFs.",
+          "before": "Сканеры находят частично выпусков; вы добавляете клавиатуру или тестирование с экранным считывающим устройством, напишите репортаж с помощью БЯМ и почините кодекс или PDFs.",
+          "after": "Сканеры находят частично выпусков; вы добавляете клавиатуру или тестирование с экранным считывающим устройством, напишите репортаж с помощью БЯМ и почините кодекс или PDFs.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/teachers-pay-teachers.md",
+          "en": "Expect the first payment after 14–120 d.",
+          "before": "Ожидайте первую плату после 14–120 сут.",
+          "after": "Ожидайте первую плату после 14–120 сут.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#study-notes-stuvia",
+          "en": "Selling your own notes is legal; some universities prohibit selling notes from their lectures.",
+          "before": "Продавать ваши собственные заметки юридическо; несколько университетов запрещают продавать заметки из их лекций.",
+          "after": "Продавать ваши собственные заметки юридическо; несколько университетов запрещают продавать заметки из их лекций.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/tutoring-marketplaces.md",
+          "en": "Month 1-2: first trial lessons and regular students; expected $100-$300",
+          "before": "Месяц 1–2: первые пробные уроки и обычные студенты; $100–$300 [expected]",
+          "after": "Месяц 1–2: первые пробные уроки и обычные студенты; $100–$300 [expected]",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/legal/incorporation-costs.md",
+          "en": "**Company.** Private Company Limited by Shares (Ltd): government fee $49, typical all-in $300, minimum capital $0, annual compliance about $700, about 5 days, online: yes, 100% foreign ownership: yes, local director required: yes.",
+          "before": "**Компания.** Private Company Limited Shares (Ltd): гонорар $49 правительства, $300, минимальный капитал $0, ежегодный комплаенс, примерно 5 дней, онлайновый: поддакивайте, иностранное владение 100%: поддакивайте, локальный директор, потребованный: поддакивайте [typical all-in about $700].",
+          "after": "**Компания.** Private Company Limited Shares (Ltd): гонорар $49 правительства, $300, минимальный капитал $0, ежегодный комплаенс, примерно 5 дней, онлайновый: поддакивайте, иностранное владение 100%: поддакивайте, локальный директор, потребованный: поддакивайте [typical all-in about $700].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/video-podcast-sponsorship-marketplaces.md",
+          "en": "Per campaign (no threshold on most)",
+          "before": "За кампанию (без порога на большинстве)",
+          "after": "За кампанию (без порога на большинстве)",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/photo-presets-luts.md",
+          "en": "Edit the JSON, not this file._",
+          "before": "Отредактируйте JSON, а не это дело.",
+          "after": "Отредактируйте JSON, а не это дело.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/google-opinion-rewards.md",
+          "en": "The survey landing page mentions 'Google Play or PayPal credit'; PayPal is the iOS reward, but the help centre no longer documents iOS availability or a cash-out minimum (historically $2).",
+          "before": "Google Play или кредитоспособность PayPal; PayPal — награда iOS, но центр помощи или минимум с аутом наличных (исторически $2) [' no longer documents iOS availability].",
+          "after": "Google Play или кредитоспособность PayPal; PayPal — награда iOS, но центр помощи или минимум с аутом наличных (исторически $2) [' no longer documents iOS availability].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/legal/incorporation-costs.md",
+          "en": "**Sole proprietor.** Registration: before earning (Register a business name with CAC before trading; individuals' first NGN 800k a year is tax-free under the Nigeria Tax Act 2025).",
+          "before": "**Единоличник.** Регистрация: прежде чем зарабатывать (зарегистрируйте имя занятия с Университет штата Колорадо до торговли); NGN [800k a year is tax-free under the Nigeria Tax Act 2025].",
+          "after": "**Единоличник.** Регистрация: прежде чем зарабатывать (зарегистрируйте имя занятия с Университет штата Колорадо до торговли); NGN [800k a year is tax-free under the Nigeria Tax Act 2025].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/oss-funding-opencollective-polar-thanksdev.md",
+          "en": "Apply to a fiscal host",
+          "before": "Обращайтесь к финансовому хозяину",
+          "after": "Обращайтесь к финансовому хозяину",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/legal/incorporation-costs.md",
+          "en": "**Foreign currency.** Capital controls: none.",
+          "before": "**Валюта.** Контроли за движением капитала [none].",
+          "after": "**Валюта.** Контроли за движением капитала [none].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/kolabtree-science-freelance.md",
+          "en": "Payoneer is the only payout method; payout needs a USD 49.99 minimum balance.",
+          "before": "Payoneer — единственный метод выплаты; выплата нуждается в минимальном балансе USD 49.99.",
+          "after": "Payoneer — единственный метод выплаты; выплата нуждается в минимальном балансе USD 49.99.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/envato-code-themes.md",
+          "en": "$50 (SWIFT higher)",
+          "before": "$50 (SWIFT более высокий)",
+          "after": "$50 (SWIFT более высокий)",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/rent-parking-storage-space.md",
+          "en": "Most people who try this earn around **$0–$100 per month** in the first year; the high figure of $600 is a ceiling for a focused solo operator, not a typical outcome.",
+          "before": "Большинство людей, которые судят это, зарабатывают примерно $0–$100 в месяц в первом годе; высокая фигура $600 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.",
+          "after": "Большинство людей, которые судят это, зарабатывают примерно $0–$100 в месяц в первом годе; высокая фигура $600 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "strategies.json#seo-blog-display-ads",
+          "en": "Raptive and Mediavine pay thousands of independent publishers; SEJ reported Raptive's cut to 25k views to admit smaller sites.",
+          "before": "Raptive и платные тысячи Mediavine независимых издателей; у SEJ, сообщённого, есть моток в 25 тыс. просмотров.",
+          "after": "Raptive и платные тысячи Mediavine независимых издателей; у SEJ, сообщённого, есть моток в 25 тыс. просмотров.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/online-course-marketplaces.md",
+          "en": "Self-hosting keeps more per sale but needs your own audience: Thinkific has a free plan, Payhip's free plan charges 5%, Teachable has no free plan (from $39/mo + 7.5%).",
+          "before": "Веб-хостинг хранит больше за продажу, но веб-хостинг нуждается в вашей собственной публике: у Thinkific есть свободный план, свободный план Payhip заряжает 5%, у Teachable нет свободного плана (от $39 за момент и 7,5%).",
+          "after": "Веб-хостинг хранит больше за продажу, но веб-хостинг нуждается в вашей собственной публике: у Thinkific есть свободный план, свободный план Payhip заряжает 5%, у Teachable нет свободного плана (от $39 за момент и 7,5%).",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/legal/incorporation-costs.md",
+          "en": "ICT companies may qualify for reduced rates or exemptions under investment incentives.",
+          "before": "Компании ICT могут квалифицироваться для уменьшенных пропорций или льгот под поощрениями инвестиции.",
+          "after": "Компании ICT могут квалифицироваться для уменьшенных пропорций или льгот под поощрениями инвестиции.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/research/platform-rules.md",
+          "en": "Earnings are void after 6 months without sharing or payouts, and earnings above the threshold expire after 24 months.",
+          "before": "Заработок пуст после 6 месяцев без раздела или выплат, и заработок над порогом, после того как 24 месяца [expire].",
+          "after": "Заработок пуст после 6 месяцев без раздела или выплат, и заработок над порогом, после того как 24 месяца [expire].",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "docs/business-plans/README.md",
+          "en": "**#205** [Live cohort-based courses on Maven](./cohort-courses-maven.md) — Teach a multi-week live course to a cohort of paying students; Maven provides storefront, payments and discovery. _(score 41, tier C)_",
+          "before": "[Live cohort-based courses on Maven](./cohort-courses-maven.md), Teach; Maven обеспечивает, платы и открытие [a multi-week live course to a cohort of paying students storefront]. Счёт 41, C",
+          "after": "[Live cohort-based courses on Maven](./cohort-courses-maven.md), Teach; Maven обеспечивает, платы и открытие [a multi-week live course to a cohort of paying students storefront]. (счёт 41), C",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "strategies.json#pay-per-lead-landing-pages",
+          "en": "Insurance/legal lead referral needs a licence in some US states and EU countries",
+          "before": "Страхование или юридическое главное направление нуждается в лицензии в некоторых государствах США и странах Эгейский университет",
+          "after": "Страхование или юридическое главное направление нуждается в лицензии в некоторых государствах США и странах Эгейский университет",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/data-cleaning-conversion-gigs.md",
+          "en": "on demand after clearance",
+          "before": "На спросе после распродажи",
+          "after": "На спросе после распродажи",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/pod-board-games-game-crafter.md",
+          "en": "Ordering one physical copy of your game (required before publishing to the shop, then a 10-day wait)",
+          "before": "Заказывать одну физическую копию из вашей игры (, прежде чем публиковать в магазин центральная часть), ожидание дня [required a 10]",
+          "after": "Заказывать одну физическую копию из вашей игры (, прежде чем публиковать в магазин центральная часть), ожидание дня [required a 10]",
+          "beforeComplete": false,
+          "afterComplete": false
+        },
+        {
+          "source": "strategies.json#oss-funding-opencollective-polar-thanksdev",
+          "en": "Polar pays out via Stripe Connect Express (Stripe payout fees apply); Open Collective hosts may charge a host fee (e.g. ~10%); thanks.dev requires maintainer registration.",
+          "before": "Polar выплачивает через Stripe Connect Express (гонорары выплаты Stripe применяются); хозяева Open Collective могут взимать гонорар хозяина (например ≈10%); thanks.dev требует регистрацию мейнтейнера.",
+          "after": "Polar выплачивает через Stripe Connect Express (гонорары выплаты Stripe применяются); хозяева Open Collective могут взимать гонорар хозяина (например, ≈10%); thanks.dev требует регистрацию мейнтейнера.",
+          "beforeComplete": true,
+          "afterComplete": true
+        },
+        {
+          "source": "docs/business-plans/generalist-rlhf-ai-training.md",
+          "en": "Outlier's official site says contributors are paid weekly in 50 countries.",
+          "before": "Официальные голоса сайта Outlier, которым благодетелям платят раз в неделю в 50 странах.",
+          "after": "Официальные голоса сайта Outlier, которым благодетелям платят раз в неделю в 50 странах.",
+          "beforeComplete": true,
+          "afterComplete": true
+        }
+      ]
+    }
+  ]
+}

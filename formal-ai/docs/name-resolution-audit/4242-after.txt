@@ -1,0 +1,123 @@
+resolved 3658 senses from public sources; unknown: fiverr, inbound, whatsapp, llm, semrush, nda, portswigger, linkedin, ai, eu, ibotta, beehiiv, fewer, barclays, upsell, ads, legalzoom
+
+[1] ok docs/business-plans/affiliate-network-programmatic-seo.md
+EN: Startup recovery assumes about $20/month net at month 6.
+RU: Оживление стартапа предполагает примерно $20 в месяц нетто в месяце 6.
+
+[2] ok strategies.json#translation-post-editing
+EN: Deliver edited files
+RU: Доставьте отредактированные файлы
+
+[3] ok docs/business-plans/smb-security-questionnaires-awareness.md
+EN: Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026.
+RU: Fiverr (20%) и Upwork, которого количества гонорара оценены, (переменная 0–15% с 2025): их официальные страницы гонорара были блокированные ботом, когда их официальные страницы гонорара зарегистрировались в ноябре 2026 г.
+
+[4] ok strategies.json#crowdtesting-bug-hunts
+EN: Register, pass onboarding tests
+RU: Регистрируйтесь, сдайте тесты онбординга
+
+[5] ok docs/legal/incorporation-costs.md
+EN: Inbound freelance income usually comes through banks or exchange houses.
+RU: Автономный доход Inbound обычно приходит через банки или предприятия обмена.
+
+[6] ok docs/business-plans/earnkaro-india-deal-sharing.md
+EN: WhatsApp spam bans
+RU: Запреты спама WhatsApp
+
+[7] ok strategies.json#video-repurposing-thumbnail-agency
+EN: auto captions and translations
+RU: Скрытые субтитр и переводы
+
+[8] ok docs/business-plans/vtt-assets-roll20-marketplace.md
+EN: LLM drafts module text
+RU: БЯМ набирает текст модуля
+
+[9] !! docs/business-plans/website-in-a-day.md
+EN: Sell a fixed 1-page/24h tier to get reviews, then a 5-page package and mandatory monthly care plan; raise price once you have 10+ live examples.
+RU: Продавайте, нумеруйте, 24, центральная часть, занумеруйте план пакета и обязательный ежемесячный план заботы; поднимите цену один раз, что у вас есть 10+ живых примеров [a fixed 1 h tier to get reviews a 5].
+
+[10] ok docs/business-plans/seo-audit-productized.md
+EN: Automated audit tools (Semrush, Ahrefs, free AI site checkers) produce generic audits instantly, so standalone audits sell mainly as a lead-in to fix work or monitoring.
+RU: Автоматизированные инструменты аудита (Semrush, Ahrefs, свободные контролёры сайта ИИ) производят обобщённые аудиты сразу, поэтому автономные аудиты продают главным образом как предисловие, чтобы чинить работу или мониторинг.
+
+[11] ok strategies.json#pitch-deck-financial-model
+EN: NDA on client data
+RU: NDA на данных клиента
+
+[12] ok docs/business-plans/bug-bounty-programs.md
+EN: Learn the basics (PortSwigger Academy)
+RU: Изучите основы (PortSwigger Academy)
+
+[13] ok docs/business-plans/rent-parking-storage-space.md
+EN: _Generated from `data/strategies/licensing.json` by `npm run build:catalog`.
+RU: Порождено из `data/strategies/licensing.json` `npm run build:catalog`.
+
+[14] ok strategies.json#curated-publisher-video-courses
+EN: Author a produced course for a curated publisher (LinkedIn Learning, Pluralsight, Domestika)
+RU: Напишите произведённый курс для курированного издателя (LinkedIn Learning, Pluralsight, Domestika)
+
+[15] ok docs/research/platform-rules.md
+EN: **AI disclosure is now a platform rule, not just good practice.** Disclosure is required by Adobe Stock, Freepik, KDP, Etsy, YouTube (realistic synthetic media), Meta, TikTok, Spotify/DDEX credits, Fiverr and end-user chatbots (EU AI Act transparency).
+RU: **Раскрытие ИИ нынешнее, а не просто хороший обычай.** Раскрытие требуется Adobe Stock, Freepik, KDP, Etsy, YouTube (реалистичная синтетическая медиа), Meta, TikTok, Spotify/DDEX верит, Fiverr и чат-боты с конечным пользователем (прозрачность Закона Евросоюза об ИИ).
+
+[16] !! strategies.json#receipt-and-shopping-data-apps
+EN: Ibotta (help centre): withdraw to bank, PayPal or gift cards after reaching $20, redeeming one offer and, for new accounts, waiting 7 days and verifying a phone number.
+RU: Ibotta (центр помощи): снимайте в банк, PayPal или подарочные сертификаты после того, чтобы доходить $20, выкупать одно предложение, и новые счета, ожидание 7 дней и удостоверять номер телефона [for].
+
+[17] ok docs/business-plans/tutoring-marketplaces.md
+EN: identity verification; tax reporting
+RU: Проверка тождественности; отчётность налога
+
+[18] ok docs/business-plans/print-on-demand-own-shop.md
+EN: Month 3-6: expand winners into new products/colours; $20-150/month net
+RU: Месяц 3–6: увеличьте победителей в новые продукты/цвета; $20–150 в месяц нетто
+
+[19] ok docs/business-plans/compliant-b2b-outbound-lead-gen.md
+EN: Most people who try this earn around **$0–$500 per month** in the first year; the high figure of $10,000 is a ceiling for a focused solo operator, not a typical outcome.
+RU: Большинство людей, которые судят это, зарабатывают примерно $0–$500 в месяц в первом годе; высокая фигура $10 000 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.
+
+[20] !! strategies.json#newsletter-sponsorships-ad-network
+EN: beehiiv Ad Network is open to anyone on a paid beehiiv plan who is actively sending (no subscriber minimum, but small lists get fewer offers) and requires Stripe Express in your country.
+RU: Ad Network открыт в кого-нибудь (без минимума подписчика), но маленькие списки достают меньше предложений, и маленькие списки требуют Stripe Express в вашей стране [beehiiv on a paid beehiiv plan who is actively sending].
+
+[21] !! strategies.json#bank-account-signup-bonuses
+EN: Examples checked Nov 2026: in the US, Chase pays $400 for a new Total Checking account with $1,000+ of direct deposits within 90 days (offer ends 27 Jan 2027, paid within 15 days); in the UK, CASS switch bonuses range GBP 175-300 (Barclays up to GBP 300, Santander GBP 240, HSBC GBP 220, First Direct GBP 210, Lloyds/NatWest GBP 200).
+RU: Примеры, проверенные в ноябре 2026 г.: в США Chase платит $400 за новый текущий счёт Total с $1 000+ прямых задатков в пределах 90 дней (предложение заканчивается 27 января 2027 г.), предложение заплатило в пределах 15 дней; в Великобритании премии выключателя CASS отсеивают от 175 до 300 фунтов стерлингов (Barclays), фунт стерлингов 240 Santander, фунт стерлингов 220 HSBC, фунт стерлингов 210 First Direct, фунт стерлингов 200 Lloyds/NatWest [up to GBP 300].
+
+[22] ok docs/business-plans/niche-ai-agent-saas.md
+EN: Month 1-2: 100+ outreach contacts, 1 pilot; $0-$300
+RU: Месяц 1–2: 100+ контактов пропагандистской деятельности, 1 лётчик; $0–$300
+
+[23] ok strategies.json#design-assets-fonts-icons-ui-kits
+EN: Support for license questions
+RU: Поддержка для вопросов лицензии
+
+[24] ok docs/business-plans/minecraft-mod-rewards-curseforge-modrinth.md
+EN: Projects must be original or properly licensed.
+RU: Проекты должны быть первоначальны или должным образом лицензированы.
+
+[25] ok strategies.json#remote-usability-testing
+EN: Ratings drop if audio quality is poor
+RU: Классификации падают, если звуковое качество плохо
+
+[26] ok docs/business-plans/seo-audit-productized.md
+EN: Upsell fixes or monitoring.
+RU: Закрепления Upsell или мониторинг.
+
+[27] !! docs/business-plans/podcast-monetization.md
+EN: Run ads + sponsorships
+RU: Побегите, и спонсорства [ads]
+
+[28] ok docs/business-plans/corporate-elearning-scorm-production.md
+EN: Deliver + revise
+RU: Доставляйте и пересматривайте
+
+[29] ok docs/research/legal-framework.md
+EN: Online legal services (LegalZoom, Rocket Lawyer - for basics)
+RU: Онлайновые юридические обслуживающие программы (LegalZoom, Rocket Lawyer, для основ)
+
+[30] ok docs/business-plans/newsletter-ad-network-boosts.md
+EN: _Generated from `data/strategies/content.json` by `npm run build:catalog`.
+RU: Порождено из `data/strategies/content.json` `npm run build:catalog`.
+
+seed 4242: 25/30 sentences complete (of 18770 in the site)

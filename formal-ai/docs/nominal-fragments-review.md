@@ -1,0 +1,93 @@
+# Nominal fragments and imperative ambiguity review
+
+Measured on 2026-11-04 against a saved workspace baseline. No commits were made for this task. Concurrent edits were preserved.
+
+## Decision procedure
+
+- Preserve the dictionary's POS section order and definition counts before filtering unavailable translations. Prefer a noun reading supported by noun-first order or a larger noun sense inventory.
+- On an unpunctuated, colon/semicolon-ended, or structurally marked heading/list/table item, compare the ordinary parse with a complete nominal-fragment parse. Prefer the latter only when every sibling has nominal evidence. Explicit subjects, articles introducing verb objects, finite clauses, and negated commands remain protected.
+- Counts ending in + form quantity noun phrases. A separate + joins peer nouns or verbs; embedded notation such as life+50 stays separate from this coordination rule.
+- Keep complex bare objects after exclusively transitive dictionary verbs as commands unless independent gerund evidence supports a nominal chain. This preserves Track rate limit usage.
+- Missing noun translations may use exact public concept labels even when a verb translation already exists. Prefer exact labels over alternate aliases. Existing verb overrides inherit dictionary-attested valency without replacing their Russian translations.
+- Treat coordinated objects as objects in sense scoring. Bare coordinated commands may omit an object, so an absent object alone does not favor an unrelated dictionary sense. Reverse common-noun compound modifiers for Russian genitives while preserving runs of proper names.
+
+These are grammatical and public-source rules; no English-to-Russian word list was added.
+
+## Changed implementation
+
+- src/english/nominal-evidence.mjs: public POS/valency evidence and complete-fragment comparison.
+- src/english/analyze.mjs, src/english/clause.mjs, src/english/parser.mjs: quantities, coordination, parse preference and nominal modifiers.
+- src/document.mjs, src/translate.mjs, src/formalize.mjs: carry Markdown heading/list/table context into parsing.
+- src/resolve.mjs, src/sources/terms.mjs: retain public POS evidence and resolve missing noun readings independently of verbs.
+- src/senses.mjs, src/russian/phrase.mjs: argument-sensitive senses and compound order.
+- tests/formal-ai/nominal-fragments.test.mjs: offline stub-fetch coverage of source evidence, structural context, quantity NPs, compound order, coordinated objects and real commands.
+
+## Concrete before/after translations
+
+Standalone inputs use the same public-data resolver configuration. Improvements to syntactic category do not imply that remaining lexical choices are correct.
+
+| English                                             | Before                                                  | After                                                                      |
+| --------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Tax reporting                                       | Истощите сообщать                                       | Отчётность налога                                                          |
+| identity verification; tax reporting                | Проверка идентичности; истощите сообщать                | Проверка идентичности; отчётность налога                                   |
+| Month 1-2: 100+ outreach contacts, 1 pilot; $0-$300 | Месяц 1–2: 100, превзойдите контакты, 1 лётчик; $0–$300 | Месяц 1–2: 100+ контактов пропагандистской деятельности, 1 лётчик; $0–$300 |
+| WhatsApp spam bans                                  | Спам WhatsApp запрещает                                 | Запреты спама WhatsApp                                                     |
+| Support load from non-technical buyers              | Поддержите груз от нетехнических покупателей            | Груз поддержки от нетехнических покупателей                                |
+| Run ads + sponsorships                              | Побегите рекламы, спонсорства                           | Управляйте рекламой и спонсорствами                                        |
+| Deliver + revise                                    | Освобождайте, пересматривайте                           | Доставляйте и пересматривайте                                              |
+| auto captions and translations                      | Скрытые субтитры и переводы                             | Скрытые субтитры и переводы                                                |
+| No fixed cost                                       | Без постоянных затрат                                   | Без постоянных затрат                                                      |
+| Deliver edited files                                | Доставьте отредактированные дела                        | Доставьте отредактированные дела                                           |
+| Register, pass onboarding tests                     | Регистрируйтесь, сдайте добавлять пробы                 | Регистрируйтесь, сдайте добавлять пробы                                    |
+| Run the program.                                    | Запустите программу.                                    | Запустите программу.                                                       |
+| Open an account and deposit money.                  | Откройте счёт и внесите деньги.                         | Откройте счёт и внесите деньги.                                            |
+| Never buy books.                                    | Никогда не покупайте книги.                             | Никогда не покупайте книги.                                                |
+| Tax reporting thresholds                            | Истощите сообщать пороги                                | Пороги отчётности налога                                                   |
+| Tax reporting as contractor/business                | Истощите сообщать как подрядчик/предприятие             | Отчётность налога как подрядчик/предприятие                                |
+| Support load                                        | Поддержите груз                                         | Груз поддержки                                                             |
+| Tax reporting mechanism ready                       | Истощите сообщать наличные механизма                    | Наличные механизма отчётности налога                                       |
+| Payment processing                                  | Обработка платежа                                       | Обработка платежа                                                          |
+| Content marketing                                   | Удовлетворите маркетинг                                 | Маркетинг содержания                                                       |
+| Market research                                     | Исследований рынок                                      | Исследований рынок                                                         |
+| Customer support                                    | Служба поддержки клиентов                               | Служба поддержки клиентов                                                  |
+| Product testing                                     | Тестирование продукта                                   | Тестирование продукта                                                      |
+| Account setup                                       | Отчитайтесь установку                                   | Установка счёта                                                            |
+| Business registration                               | Регистрация предприятия                                 | Регистрация предприятия                                                    |
+| 100+ outreach contacts                              | 100, превзойдите контакты                               | 100+ контактов пропагандистской деятельности                               |
+| identity verification, tax reporting                | Проверка идентичности, истощите сообщать                | Проверка идентичности, отчётность налога                                   |
+| identity verification + tax reporting               | Проверка идентичности, истощите сообщать                | Проверка идентичности и отчётность налога                                  |
+
+## Seeded website review
+
+Requested sample runs: sentence 40 with seeds 17 and 91. Live runs hit Wikimedia API rate limiting. The comparison therefore uses the harness's identical seeded selections and cached public responses for both versions, with unavailable supplemental lookups omitted from both. There were 172 unavailable supplemental requests/titles, including 145 Wikidata lookups; this limits lexical-quality conclusions.
+
+Reviewed 80 website sentences: 70 unchanged, 10 changed, zero complete-to-incomplete regressions. Both versions completed 14/80; the existing incomplete sentences remain poor translations. The first 15 items from each seed also provide a 30-sentence regression check. All changed outputs were inspected. Sample-driven regressions in Track rate limit usage, life+50, and a slash-separated proper name were corrected before this final comparison. The Generated from tense difference also includes concurrent participle work and is not attributed to this patch.
+
+Full compact comparisons are in [nominal-fragments-sample.json](nominal-fragments-sample.json).
+
+| Seed | English                                                                                                                                                                            | Before                                                                                                                                                                                                                  | After                                                                                                                                                                                                                   |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 17   | _Generated from `data/strategies/music-audio.json` by `npm run build:catalog`.                                                                                                     | Порождалось из `data/strategies/music-audio.json` `npm run build:catalog`.                                                                                                                                              | Порождается из `data/strategies/music-audio.json` `npm run build:catalog`.                                                                                                                                              |
+| 17   | AI agent triages issues, drafts fixes and release notes to keep repos active                                                                                                       | Установки очерёдности ИИ действующей силы, шашки и отпускайте заметки, чтобы хранить доверенных лиц [issues fixes active]                                                                                               | Установки очерёдности действующей силы ИИ, шашки и отпускайте заметки, чтобы хранить доверенных лиц [issues fixes active]                                                                                               |
+| 17   | MoR seller verification/KYC                                                                                                                                                        | Проверка MoR продавца, KYC                                                                                                                                                                                              | Проверка продавца MoR, KYC                                                                                                                                                                                              |
+| 17   | Track rate limit usage                                                                                                                                                             | Отслеживайте использование ставки предела                                                                                                                                                                               | Отслеживайте использование предела ставки                                                                                                                                                                               |
+| 17   | Fact-check: median month-12 net lowered from $250 to $80 so it agrees with the 35% profit likelihood (fewer than half of starters clear $100/month, so the median starter cannot). | С фактчеком: медианный месяц, 12 сетей, поэтому оно согласовывается с вероятностью 35% прибыли, половина первых блюд, поэтому медианное первое блюдо [lowered from $250 to $80 fewer than clear $100 per month cannot]. | С фактчеком: медианный месяц, 12 сетей, поэтому оно согласовывается с вероятностью прибыли 35%, половина первых блюд, поэтому медианное первое блюдо [lowered from $250 to $80 fewer than clear $100 per month cannot]. |
+| 17   | editor feedback rounds                                                                                                                                                             | Обход редактора отзыва                                                                                                                                                                                                  | Обход отзыва редактора                                                                                                                                                                                                  |
+| 17   | Use AI coding agents to build the extension front end and EBS backend                                                                                                              | Агенты Use AI кодировки, и задняя часть EBS [to build the extension front end]                                                                                                                                          | Агенты кодировки Use AI, и задняя часть EBS [to build the extension front end]                                                                                                                                          |
+| 91   | Estimate from public CPL offers: B2B/home services $5-50, solar and legal intake up to $100+; ~$3 variable cost for tools/traffic; scrubbed leads are unpaid.                      | Оценивайте: B2B, наводитесь бензозаправочную станцию $5–50 и глотайте до $100; ≈$3; или наводки неуплаченные [from public CPL offers solar legal variable cost for tools traffic scrubbed].                             | Оценивайте: B2B, наводитесь бензозаправочную станцию $5–50 и глотайте до $100+; ≈$3; или наводки неуплаченные [from public CPL offers solar legal variable cost for tools traffic scrubbed].                            |
+| 91   | Month 12+: catalogue of 100+ tracks earning $50-$300/month                                                                                                                         | Месяц 12: 100, дорожки [catalogue earning $50-$300 per month]                                                                                                                                                           | Месяц 12+: 100+ дорожек [catalogue of earning $50-$300 per month]                                                                                                                                                       |
+| 91   | Grow to ~1k+ engaged subs                                                                                                                                                          | Grow в ≈1 тыс. [engaged subs]                                                                                                                                                                                           | Grow в ≈1 тыс.+ [engaged subs]                                                                                                                                                                                          |
+
+## Validation
+
+- New offline tests: 4/4 passing (multiple examples and invariants per test).
+- npx prettier --write on changed files; npx eslint formal-ai tests; npm run check:file-size.
+- Full required command: node --test --test-timeout=60000 tests/. Latest result: tests: 395, pass: 394, fail: 1. The sole failure is production translations replay: a new grouped public lookup is absent from its offline recordings while concurrent resolver/fixture work is ongoing. No expected translations or public recordings were changed for this task.
+
+## Remaining problems
+
+- Tax reporting is now nominal, but Отчётность налога still needs idiomatic relational/adjectival rendering. Support load similarly retains the cargo sense груз; outreach retains a public but overly broad label.
+- auto captions and translations remains Скрытые субтитры и переводы. Its dictionary entry describes an automatically generated subtype of closed captions, but the existing synonym fallback drops that qualification.
+- Tax reporting mechanism ready still misreads the final ready as a noun. Pilot, files, and onboarding also retain unrelated lexical senses in some supplied examples.
+- The real-command examples preserve imperative structure; Run the program., Open an account and deposit money., Never buy books., and No fixed cost retain their measured baseline Russian. Deliver edited files still has the pre-existing files → дела sense error.
+- Sibling comparison is within a translated line/cell; cross-line majority voting is not added. Inherently ambiguous bare strings still require conservative evidence rather than a guarantee of author intent.

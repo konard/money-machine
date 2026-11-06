@@ -1,0 +1,497 @@
+# Verb concepts.
+#
+#   en verb <base> [past] [participle]   irregular forms when needed
+#   en takes <preposition>               "wait for X", "look at X": the
+#                                        preposition marks the object
+#   ru verb <imperfective> [perf:<perfective>]
+#      [pres:<1sg>,<2sg>|six forms] [past:<m>,<f>] [imp:<2sg>]
+#      [perf-pres:…] [perf-past:…] [perf-imp:…]
+#      [hab:<habitual motion verb>] [hab-pres:…]
+#      [gov:<case>|gov:<prep>+<case>]   case of the object (default acc)
+#      [rec:dat]                        recipient case ("give him")
+#      [motion]                         "to"/"in" take direction (в + acc)
+#      [exp-dat]                        experiencer in dative, theme as
+#                                       subject ("мне нравится книга")
+#   object-class <classes>              classes the object prefers
+
+concept read
+  class communication
+  en verb read read read
+  ru verb читать perf:прочитать
+
+concept write
+  class communication
+  en verb write wrote written
+  ru verb писать perf:написать pres:пишу,пишешь perf-pres:напишу,напишешь
+
+concept speak
+  class communication
+  en verb speak spoke spoken
+  en verb talk
+  en takes to with about
+  ru verb говорить perf:поговорить gov.to:с+ins gov.with:с+ins gov.about:о+prep
+
+concept say
+  class communication
+  en verb say said said
+  ru verb говорить perf:сказать perf-pres:скажу,скажешь rec:dat
+
+concept tell
+  class communication
+  en verb tell told told
+  ru verb рассказывать perf:рассказать perf-pres:расскажу,расскажешь rec:dat
+
+concept see
+  class perception
+  en verb see saw seen
+  ru verb видеть prefer:impf perf:увидеть pres:вижу,видишь perf-pres:увижу,увидишь imp:смотри perf-imp:посмотри
+
+concept watch
+  class perception
+  en verb watch
+  ru verb смотреть perf:посмотреть pres:смотрю,смотришь perf-pres:посмотрю,посмотришь
+
+concept look
+  class perception
+  en verb look
+  en takes at
+  ru verb смотреть perf:посмотреть pres:смотрю,смотришь perf-pres:посмотрю,посмотришь gov:на+acc
+
+concept hear
+  class perception
+  en verb hear heard heard
+  ru verb слышать prefer:impf perf:услышать pres:слышу,слышишь perf-pres:услышу,услышишь
+
+concept listen
+  class perception
+  en verb listen
+  en takes to
+  ru verb слушать prefer:impf perf:послушать
+
+concept know
+  class cognition
+  en verb know knew known
+  ru verb знать
+
+concept think
+  class cognition
+  en verb think thought thought
+  en takes about
+  ru verb думать prefer:impf perf:подумать gov:о+prep
+
+concept understand
+  class cognition
+  en verb understand understood understood
+  ru verb понимать perf:понять perf-pres:пойму,поймёшь perf-past:понял,поняла
+
+concept remember
+  class cognition
+  en verb remember
+  ru verb помнить
+
+concept forget
+  class cognition
+  en verb forget forgot forgotten
+  ru verb забывать perf:забыть perf-pres:забуду,забудешь perf-imp:забудь
+
+concept want
+  class desire
+  en verb want
+  ru verb хотеть pres:хочу,хочешь,хочет,хотим,хотите,хотят
+
+concept like
+  gloss "find agreeable"
+  class desire
+  en verb like
+  ru verb нравиться perf:понравиться exp-dat
+
+concept love
+  class desire
+  en verb love
+  ru verb любить
+
+concept hate
+  class desire
+  en verb hate
+  ru verb ненавидеть pres:ненавижу,ненавидишь imp:ненавидь
+
+concept go
+  class motion
+  en verb go went gone
+  ru verb идти perf:пойти pres:иду,идёшь past:шёл,шла perf-pres:пойду,пойдёшь perf-past:пошёл,пошла hab:ходить hab-pres:хожу,ходишь motion
+
+concept come
+  class motion
+  en verb come came come
+  ru verb приходить perf:прийти pres:прихожу,приходишь perf-pres:приду,придёшь perf-past:пришёл,пришла motion
+
+concept drive
+  class motion
+  en verb drive drove driven
+  ru verb ехать perf:поехать pres:еду,едешь perf-pres:поеду,поедешь imp:езжай hab:ездить hab-pres:езжу,ездишь motion
+
+concept fly
+  class motion
+  en verb fly flew flown
+  ru verb лететь perf:полететь pres:лечу,летишь perf-pres:полечу,полетишь hab:летать motion
+
+concept walk
+  class motion
+  en verb walk
+  ru verb гулять perf:погулять
+
+concept run.move
+  gloss "move fast on foot"
+  class motion
+  en verb run ran run
+  ru verb бегать perf:побежать perf-pres:побегу,побежишь,побежит,побежим,побежите,побегут motion
+  cues fast park morning every race marathon quickly away
+
+concept run.manage
+  gloss "be in charge of an organisation"
+  class management
+  en verb run ran run
+  ru verb руководить pres:руковожу,руководишь gov:ins
+  object-class organization activity group
+  cues company business team project department shop restaurant
+
+concept live
+  class state
+  en verb live
+  ru verb жить pres:живу,живёшь past:жил,жила
+
+concept working
+  class activity
+  en verb work
+  ru verb работать perf:поработать
+
+concept study
+  class activity
+  en verb study
+  ru verb учиться pres:учусь,учишься
+
+concept learn
+  class activity
+  en verb learn learned learned
+  ru verb изучать perf:изучить
+
+concept play.game
+  gloss "take part in a game or sport"
+  class activity
+  en verb play
+  ru verb играть prefer:impf perf:сыграть gov:в+acc
+  object-class game sport
+
+concept play.music
+  gloss "perform on a musical instrument"
+  class activity
+  en verb play
+  ru verb играть prefer:impf perf:сыграть gov:на+prep
+  object-class instrument
+
+concept eat
+  class consumption
+  en verb eat ate eaten
+  ru verb есть perf:съесть pres:ем,ешь,ест,едим,едите,едят past:ел,ела perf-pres:съем,съешь,съест,съедим,съедите,съедят perf-past:съел,съела imp:ешь
+
+concept drink
+  class consumption
+  en verb drink drank drunk
+  ru verb пить perf:выпить pres:пью,пьёшь past:пил,пила perf-pres:выпью,выпьешь perf-imp:выпей imp:пей
+
+concept sleep
+  class state
+  en verb sleep slept slept
+  ru verb спать pres:сплю,спишь
+
+concept buy
+  class commerce
+  en verb buy bought bought
+  ru verb покупать perf:купить perf-pres:куплю,купишь
+
+concept sell
+  class commerce
+  en verb sell sold sold
+  ru verb продавать perf:продать pres:продаю,продаёшь perf-pres:продам,продашь,продаст,продадим,продадите,продадут perf-imp:продай rec:dat
+
+concept give
+  class transfer
+  en verb give gave given
+  ru verb давать perf:дать pres:даю,даёшь perf-pres:дам,дашь,даст,дадим,дадите,дадут perf-past:дал,дала perf-imp:дай imp:давай rec:dat
+
+concept take
+  class transfer
+  en verb take took taken
+  ru verb брать perf:взять pres:беру,берёшь past:брал,брала perf-pres:возьму,возьмёшь perf-past:взял,взяла
+
+concept open
+  class action
+  en verb open
+  ru verb открывать perf:открыть perf-pres:открою,откроешь
+
+concept close
+  class action
+  en verb close
+  ru verb закрывать perf:закрыть perf-pres:закрою,закроешь
+
+concept help
+  class action
+  en verb help
+  ru verb помогать perf:помочь perf-pres:помогу,поможешь,поможет,поможем,поможете,помогут perf-past:помог,помогла perf-imp:помоги gov:dat
+
+concept wait
+  class state
+  en verb wait
+  en takes for
+  ru verb ждать perf:подождать pres:жду,ждёшь past:ждал,ждала perf-pres:подожду,подождёшь
+
+concept find
+  class action
+  en verb find found found
+  ru verb находить perf:найти pres:нахожу,находишь perf-pres:найду,найдёшь perf-past:нашёл,нашла
+
+concept lose
+  class action
+  en verb lose lost lost
+  ru verb терять perf:потерять
+
+concept make
+  class action
+  en verb make made made
+  ru verb делать perf:сделать
+
+concept do
+  class action
+  en verb do did done
+  ru verb делать perf:сделать
+
+concept build
+  class action
+  en verb build built built
+  ru verb строить perf:построить
+
+concept start
+  class aspectual
+  en verb start
+  en verb begin began begun
+  ru verb начинать perf:начать perf-pres:начну,начнёшь perf-past:начал,начала
+
+concept finish
+  class aspectual
+  en verb finish
+  ru verb заканчивать perf:закончить
+
+concept call
+  class communication
+  en verb call
+  ru verb звонить perf:позвонить gov:dat
+
+concept ask
+  class communication
+  en verb ask
+  ru verb спрашивать perf:спросить perf-pres:спрошу,спросишь
+
+concept answering
+  class communication
+  en verb answer
+  ru verb отвечать perf:ответить perf-pres:отвечу,ответишь perf-imp:ответь gov:на+acc
+
+concept send
+  class transfer
+  en verb send sent sent
+  ru verb отправлять perf:отправить perf-imp:отправь perf-pp:отправленный rec:dat
+
+concept get
+  class transfer
+  en verb get got got
+  en verb receive
+  ru verb получать perf:получить
+
+concept pay
+  class commerce
+  en verb pay paid paid
+  en takes for
+  ru verb платить perf:заплатить pres:плачу,платишь gov.for:за+acc gov@person:dat
+
+concept book.reserve
+  gloss "arrange to have a seat or room"
+  class commerce
+  en verb book
+  ru verb бронировать perf:забронировать
+  cues table hotel room ticket tickets flight seat restaurant online
+
+concept cook
+  class action
+  en verb cook
+  ru verb готовить perf:приготовить pres:готовлю,готовишь imp:готовь perf-imp:приготовь
+
+concept swim
+  class motion
+  en verb swim swam swum
+  ru verb плавать perf:поплавать
+
+concept sit
+  class state
+  en verb sit sat sat
+  ru verb сидеть pres:сижу,сидишь
+
+concept stand
+  class state
+  en verb stand stood stood
+  ru verb стоять pres:стою,стоишь
+
+concept travel
+  class motion
+  en verb travel travelled travelled
+  ru verb путешествовать
+
+concept use
+  class action
+  en verb use
+  ru verb использовать
+
+concept try
+  class aspectual
+  en verb try
+  ru verb пытаться perf:попытаться
+
+concept show
+  class communication
+  en verb show showed shown
+  ru verb показывать perf:показать perf-pres:покажу,покажешь rec:dat
+
+concept meet
+  class social
+  en verb meet met met
+  ru verb встречать perf:встретить perf-pres:встречу,встретишь perf-imp:встреть refl-intr
+
+concept leave
+  class motion
+  en verb leave left left
+  ru verb уходить perf:уйти pres:ухожу,уходишь perf-pres:уйду,уйдёшь perf-past:ушёл,ушла
+
+concept stay
+  class state
+  en verb stay
+  ru verb оставаться perf:остаться pres:остаюсь,остаёшься perf-pres:останусь,останешься perf-imp:останься imp:оставайся
+
+concept fall
+  class motion
+  en verb fall fell fallen
+  ru verb падать perf:упасть perf-pres:упаду,упадёшь perf-past:упал,упала perf-imp:упади
+
+concept translate
+  class communication
+  en verb translate
+  ru verb переводить perf:перевести pres:перевожу,переводишь perf-pres:переведу,переведёшь perf-past:перевёл,перевела
+
+concept explain
+  class communication
+  en verb explain
+  ru verb объяснять perf:объяснить rec:dat
+
+concept change
+  class action
+  en verb change
+  ru verb менять perf:изменить
+
+concept sing
+  class art
+  en verb sing sang sung
+  ru verb петь perf:спеть pres:пою,поёшь perf-pres:спою,споёшь imp:пой
+
+concept dance
+  class art
+  en verb dance
+  ru verb танцевать
+
+concept draw
+  class art
+  en verb draw drew drawn
+  ru verb рисовать perf:нарисовать
+
+concept grow
+  class change
+  en verb grow grew grown
+  ru verb расти pres:расту,растёшь past:рос,росла
+
+concept raining
+  class weather
+  en verb rain
+  ru verb идти perf:пойти pres:иду,идёшь past:шёл,шла perf-pres:пойду,пойдёшь perf-past:пошёл,пошла subj:rain
+
+concept deposit
+  class finance
+  en verb deposit
+  ru verb вносить perf:внести pres:вношу,вносишь perf-pres:внесу,внесёшь perf-past:внёс,внесла
+
+concept save
+  class finance
+  en verb save
+  ru verb копить perf:накопить pres:коплю,копишь
+
+concept put
+  gloss "place something somewhere"
+  class placement
+  en verb put put put
+  ru verb класть perf:положить pres:кладу,кладёшь past:клал,клала perf-imp:положи motion
+
+concept bring
+  class transfer
+  en verb bring brought brought
+  ru verb приносить perf:принести pres:приношу,приносишь perf-pres:принесу,принесёшь perf-past:принёс,принесла rec:dat motion
+
+concept visit
+  class social
+  en verb visit
+  ru verb посещать perf:посетить perf-pres:посещу,посетишь
+
+concept invite
+  class social
+  en verb invite
+  ru verb приглашать perf:пригласить perf-pres:приглашу,пригласишь
+
+concept return
+  class motion
+  en verb return
+  en verb come+back
+  ru verb возвращаться perf:вернуться perf-pres:вернусь,вернёшься motion
+
+concept arrive
+  class motion
+  en verb arrive
+  ru verb приезжать perf:приехать perf-pres:приеду,приедешь perf-imp:приезжай motion
+
+concept believe
+  class cognition
+  en verb believe
+  ru verb верить perf:поверить gov:dat prefer:impf
+
+concept feel
+  class perception
+  en verb feel felt felt
+  ru verb чувствовать perf:почувствовать prefer:impf
+
+concept need
+  class desire
+  en verb need
+  ru verb нуждаться gov:в+prep dat-pred:нужен
+
+concept click
+  class action
+  en verb click
+  en takes on
+  ru verb щёлкать perf:щёлкнуть perf-pres:щёлкну,щёлкнешь perf-imp:щёлкни gov:по+dat gov@device:ins
+
+concept run.execute
+  gloss "start a program or command"
+  class computing
+  en verb run ran run
+  ru verb запускать perf:запустить perf-pres:запущу,запустишь perf-imp:запусти
+  object-class program code file
+  cues code command script program test tests npm terminal file server app
+
+concept keep
+  class action
+  en verb keep kept kept
+  ru verb сохранять perf:сохранить pres:сохраняю,сохраняешь perf-pres:сохраню,сохранишь

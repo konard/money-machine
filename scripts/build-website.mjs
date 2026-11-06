@@ -12,9 +12,15 @@
  * The handwritten website/index.html, app.js and styles.css are left alone.
  */
 
-import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm, realpath } from 'node:fs/promises';
 import { join } from 'node:path';
 import { marked } from 'marked';
+import { fileURLToPath } from 'node:url';
+import {
+  buildRussianWebsite,
+  languageSwitch,
+  localizeUI,
+} from './site-russian.mjs';
 
 const REPO = 'https://github.com/konard/money-machine';
 
@@ -39,7 +45,15 @@ const esc = (s) =>
  * @param {string} [opts.description]
  * @returns {string}
  */
-export function layout({ title, body, root, description }) {
+export function layout({
+  title,
+  body,
+  root,
+  description,
+  lang = 'en',
+  path = 'index.html',
+  ui = {},
+}) {
   const nav = [
     ['index.html', 'Catalog'],
     ['plans/index.html', 'Ranked list'],
@@ -50,10 +64,12 @@ export function layout({ title, body, root, description }) {
     ['docs/platform-rules.html', 'Platform rules'],
     ['docs/roadmap.html', 'Roadmap'],
   ]
-    .map(([href, label]) => `<a href="${root}${href}">${label}</a>`)
+    .map(
+      ([href, label]) => `<a href="${root}${href}">${ui[label] || label}</a>`
+    )
     .join('');
-  return `<!doctype html>
-<html lang="en">
+  const html = `<!doctype html>
+<html lang="${lang}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -65,7 +81,7 @@ export function layout({ title, body, root, description }) {
     <header class="topbar">
       <div class="wrap">
         <a class="brand" href="${root}index.html">Money Machine</a>
-        <nav class="nav">${nav}<a href="${REPO}">GitHub</a></nav>
+        <nav class="nav">${nav}<a href="${REPO}">GitHub</a>${languageSwitch(lang, root, path)}</nav>
       </div>
     </header>
     <main class="wrap doc">
@@ -82,6 +98,7 @@ ${body}
   </body>
 </html>
 `;
+  return lang === 'ru' ? localizeUI(html, ui) : html;
 }
 
 /**
@@ -99,7 +116,7 @@ function relink(md, rules) {
 }
 
 /** Link rewrite rules keyed by the source document. */
-const LINK_RULES = {
+export const LINK_RULES = {
   index: [
     [
       '../legal/reference-countries.md',
@@ -139,6 +156,55 @@ const LINK_RULES = {
   platformRules: [],
 };
 
+export const DOC_SOURCES = [
+  [
+    'docs/methodology.md',
+    'methodology.html',
+    'Scoring methodology',
+    'methodology',
+    '../',
+  ],
+  ['docs/plans/roadmap.md', 'roadmap.html', 'Roadmap', 'roadmap', '../'],
+  [
+    'docs/research/platform-rules.md',
+    'platform-rules.html',
+    'Platform rules',
+    'platformRules',
+    '../',
+  ],
+  [
+    'docs/legal/reference-countries.md',
+    'legal/reference-countries.html',
+    'Reference countries',
+    'legal',
+    '../../',
+  ],
+  [
+    'docs/legal/excluded-activities.md',
+    'legal/excluded-activities.html',
+    'Excluded activities',
+    'legal',
+    '../../',
+  ],
+];
+
+DOC_SOURCES.push(
+  [
+    'docs/legal/incorporation-costs.md',
+    'legal/incorporation-costs.html',
+    'Incorporation costs',
+    'legal',
+    '../../',
+  ],
+  [
+    'docs/legal/remote-incorporation-options.md',
+    'legal/remote-incorporation-options.html',
+    'Remote incorporation options',
+    'legal',
+    '../../',
+  ]
+);
+
 /**
  * Build every generated page.
  * @param {object} args
@@ -153,7 +219,16 @@ export async function buildWebsite({
   indexMarkdown,
   renderStrategy,
   hasIncorporation = false,
+  lang = process.argv.find((arg) => arg.startsWith('--lang='))?.slice(7) ||
+    process.env.SITE_LANG ||
+    'en',
 }) {
+  if (lang === 'ru') {
+    return buildRussianWebsite(root);
+  }
+  if (lang !== 'en') {
+    throw new Error(`Unsupported site language: ${lang}`);
+  }
   const site = join(root, 'website');
   const plans = join(site, 'plans');
   const docs = join(site, 'docs');
@@ -162,9 +237,10 @@ export async function buildWebsite({
   await mkdir(plans, { recursive: true });
   await mkdir(join(docs, 'legal'), { recursive: true });
 
-  const page = (title, md, rules, rel, description) =>
+  const page = (title, md, rules, rel, description, path) =>
     layout({
       title,
+      path,
       root: rel,
       description,
       body: marked.parse(relink(md, rules)),
@@ -177,7 +253,8 @@ export async function buildWebsite({
       indexMarkdown,
       LINK_RULES.index,
       '../',
-      `${strategies.length} legal ways to get paid online, ranked by priority score.`
+      `${strategies.length} legal ways to get paid online, ranked by priority score.`,
+      'plans/index.html'
     )
   );
 
@@ -185,62 +262,68 @@ export async function buildWebsite({
     const md = renderStrategy(s);
     await writeFile(
       join(plans, `${s.id}.html`),
-      page(s.name, md, LINK_RULES.strategy, '../', s.summary)
+      page(
+        s.name,
+        md,
+        LINK_RULES.strategy,
+        '../',
+        s.summary,
+        `plans/${s.id}.html`
+      )
     );
   }
 
-  const docSources = [
-    [
-      'docs/methodology.md',
-      'methodology.html',
-      'Scoring methodology',
-      'methodology',
-      '../',
-    ],
-    ['docs/plans/roadmap.md', 'roadmap.html', 'Roadmap', 'roadmap', '../'],
-    [
-      'docs/research/platform-rules.md',
-      'platform-rules.html',
-      'Platform rules',
-      'platformRules',
-      '../',
-    ],
-    [
-      'docs/legal/reference-countries.md',
-      'legal/reference-countries.html',
-      'Reference countries',
-      'legal',
-      '../../',
-    ],
-    [
-      'docs/legal/excluded-activities.md',
-      'legal/excluded-activities.html',
-      'Excluded activities',
-      'legal',
-      '../../',
-    ],
-  ];
-  if (hasIncorporation) {
-    docSources.push([
-      'docs/legal/incorporation-costs.md',
-      'legal/incorporation-costs.html',
-      'Incorporation costs',
-      'legal',
-      '../../',
-    ]);
-  }
-  docSources.push([
-    'docs/legal/remote-incorporation-options.md',
-    'legal/remote-incorporation-options.html',
-    'Remote incorporation options',
-    'legal',
-    '../../',
-  ]);
+  const docSources = DOC_SOURCES.filter(
+    ([src]) => hasIncorporation || src !== 'docs/legal/incorporation-costs.md'
+  );
   for (const [src, out, title, ruleKey, rel] of docSources) {
     const md = await readFile(join(root, src), 'utf-8');
     await writeFile(
       join(docs, out),
-      page(title, md, LINK_RULES[ruleKey], rel, title)
+      page(title, md, LINK_RULES[ruleKey], rel, title, `docs/${out}`)
     );
+  }
+}
+
+if (
+  process.argv[1] &&
+  (await realpath(process.argv[1]).catch(() => null)) ===
+    fileURLToPath(import.meta.url)
+) {
+  const root = fileURLToPath(new URL('../', import.meta.url));
+  const lang =
+    process.argv.find((arg) => arg.startsWith('--lang='))?.slice(7) ||
+    process.env.SITE_LANG ||
+    'en';
+  if (lang === 'ru') {
+    await buildWebsite({ root, lang });
+  } else {
+    const { strategies } = JSON.parse(
+      await readFile(join(root, 'website/strategies.json'), 'utf8')
+    );
+    const markdown = new Map(
+      await Promise.all(
+        strategies.map(async (s) => [
+          s.id,
+          await readFile(join(root, `docs/business-plans/${s.id}.md`), 'utf8'),
+        ])
+      )
+    );
+    await buildWebsite({
+      root,
+      lang,
+      strategies,
+      hasIncorporation: await readFile(
+        join(root, 'docs/legal/incorporation-costs.md')
+      ).then(
+        () => true,
+        () => false
+      ),
+      indexMarkdown: await readFile(
+        join(root, 'docs/business-plans/README.md'),
+        'utf8'
+      ),
+      renderStrategy: (s) => markdown.get(s.id),
+    });
   }
 }

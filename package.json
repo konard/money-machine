@@ -5,6 +5,9 @@
   "type": "module",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "bin": {
+    "formal-ai": "formal-ai/bin/formal-ai.mjs"
+  },
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -26,7 +29,12 @@
     "changeset:status": "changeset status --since=origin/main",
     "build:catalog": "node scripts/build-catalog.mjs",
     "website": "npm run build:catalog && npx --yes serve website",
-    "check:catalog": "node scripts/build-catalog.mjs && git diff --quiet -- data/strategies.json docs/business-plans docs/legal/incorporation-costs.md || (echo \"Catalog out of date: run npm run build:catalog and commit\" && exit 1)"
+    "check:catalog": "node scripts/build-catalog.mjs && git diff --quiet -- data/strategies.json docs/business-plans docs/legal/incorporation-costs.md || (echo \"Catalog out of date: run npm run build:catalog and commit\" && exit 1)",
+    "formal-ai": "node formal-ai/bin/formal-ai.mjs",
+    "formal-ai:site": "node formal-ai/scripts/translate-site.mjs",
+    "website:ru": "node scripts/build-website.mjs --lang=ru",
+    "formal-ai:evaluate": "node formal-ai/scripts/evaluate.mjs",
+    "formal-ai:record": "node formal-ai/scripts/record-fixtures.mjs"
   },
   "keywords": [
     "money",

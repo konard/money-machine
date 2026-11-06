@@ -1,0 +1,246 @@
+{
+  "seed": 48173,
+  "count": 30,
+  "sample": [
+    {
+      "source": "docs/business-plans/freelancer-com-contests.md",
+      "english": "final edits and handover files",
+      "before": "Окончательные редакции и дела передачи",
+      "after": "Окончательные редакции и дела передачи",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "strategies.json#music-curator-paid-reviews",
+      "english": "Per-review rates are unpublished.",
+      "before": "Тарифы за пересмотр неопубликованные.",
+      "after": "Тарифы за пересмотр неопубликованные.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "strategies.json#domain-lease-to-own",
+      "english": "Eligible Buy-It-Now prices $495 to $5M.",
+      "before": "Buy-It-Now оценивает $495 в $5 млн.",
+      "after": "Buy-It-Now оценивает $495 в $5 млн.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/ai-stock-imagery-adobe-freepik.md",
+      "english": "Adobe Stock and Freepik accept generative-AI submissions if they are labeled as AI, contain no real people/brands/artist names, and meet quality rules.",
+      "before": "Adobe Stock и Freepik принимают предложения generative-AI, если они будут повешены ярлыки как AI, не содержат никаких настоящих персонажей/марки или имена художника и познакомьтесь с правилом качества.",
+      "after": "Adobe Stock и Freepik принимают предложения generative-AI, если они будут повешены ярлыки как AI, не содержат никаких настоящих персонажей/марки или имена художника и познакомьтесь с правилами качества.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/music-transcription-gigs.md",
+      "english": "**Rank #85 · Tier B · Priority score 54/100 · Category: Services & freelancing**",
+      "before": "Ранжируйте, 85, B, счёт 54/100 Priority, категория в проекте Викимедиа: службы, фрилансить",
+      "after": "Ранжируйте, 85, B, счёт 54/100 Priority, категория в проекте Викимедиа: службы, фрилансить",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/game-server-hosting-reseller.md",
+      "english": "Rent capacity from a provider that allows resale, install the open-source Pterodactyl panel and a billing system (Paymenter/WHMCS), and sell monthly managed servers per game to friend groups and communities.",
+      "before": "Рваная способность от провайдера, который позволяет перепродаже, установите группу с открытым источником Птеродактиль, и посылать счёт системе (Paymenter/WHMCS) и продайте ежемесячные управлянные серверы за игру, чтобы зафрендить группы и колонии [a].",
+      "after": "Рваная способность от провайдера, который позволяет перепродаже, установите группу с открытым источником Птеродактиль, и посылать счёт системе (Paymenter/WHMCS) и продайте ежемесячные управлянные серверы за игру, чтобы зафрендить группы и колонии [a].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "docs/business-plans/wcag-accessibility-audit-remediation.md",
+      "english": "Scanners find part of the issues; you add keyboard/screen-reader testing, write the report with LLM help, and fix code or tag PDFs.",
+      "before": "Сканеры находят частично выпусков; вы добавляете клавиатуру или тестирование, напишите репортаж с помощью БЯМ и почините кодекс или PDFs [screen-reader].",
+      "after": "Сканеры находят частично выпусков; вы добавляете клавиатуру или тестирование с экранным считывающим устройством, напишите репортаж с помощью БЯМ и почините кодекс или PDFs.",
+      "beforeComplete": false,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/teachers-pay-teachers.md",
+      "english": "Expect the first payment after 14–120 d.",
+      "before": "Ожидайте первую плату после 14–120 сут.",
+      "after": "Ожидайте первую плату после 14–120 сут.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "strategies.json#study-notes-stuvia",
+      "english": "Selling your own notes is legal; some universities prohibit selling notes from their lectures.",
+      "before": "Продавать ваши собственные заметки юридическо; несколько университетов запрещают продавать заметки из их лекций.",
+      "after": "Продавать ваши собственные заметки юридическо; несколько университетов запрещают продавать заметки из их лекций.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/tutoring-marketplaces.md",
+      "english": "Month 1-2: first trial lessons and regular students; expected $100-$300",
+      "before": "Месяц 1–2: первые пробные уроки и обычные студенты; $100–$300 [expected]",
+      "after": "Месяц 1–2: первые пробные уроки и обычные студенты; $100–$300 [expected]",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "**Company.** Private Company Limited by Shares (Ltd): government fee $49, typical all-in $300, minimum capital $0, annual compliance about $700, about 5 days, online: yes, 100% foreign ownership: yes, local director required: yes.",
+      "before": "**Компания.** Private Company Limited Shares (Ltd): гонорар $49 правительства, $300, минимальный капитал $0, ежегодный комплаенс, примерно 5 суток, онлайновый: поддакивайте, иностранное владение 100%: поддакивайте, локальный директор, потребованный: поддакивайте [typical all-in $700].",
+      "after": "**Компания.** Private Company Limited Shares (Ltd): гонорар $49 правительства, $300, минимальный капитал $0, ежегодный комплаенс, примерно 5 дней, онлайновый: поддакивайте, иностранное владение 100%: поддакивайте, локальный директор, потребованный: поддакивайте [typical all-in about $700].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "docs/business-plans/video-podcast-sponsorship-marketplaces.md",
+      "english": "Per campaign (no threshold on most)",
+      "before": "За кампанию (никакой порог)",
+      "after": "За кампанию (без порога на большинстве)",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/photo-presets-luts.md",
+      "english": "Edit the JSON, not this file._",
+      "before": "Отредактируйте JSON, а не это дело.",
+      "after": "Отредактируйте JSON, а не это дело.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/google-opinion-rewards.md",
+      "english": "The survey landing page mentions 'Google Play or PayPal credit'; PayPal is the iOS reward, but the help centre no longer documents iOS availability or a cash-out minimum (historically $2).",
+      "before": "Google Play или кредитоспособность PayPal; PayPal — награда iOS, но центр помощи или минимум с денежным аутом ($2) [' no longer documents iOS availability].",
+      "after": "Google Play или кредитоспособность PayPal; PayPal — награда iOS, но центр помощи или минимум с аутом наличных (исторически $2) [' no longer documents iOS availability].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "**Sole proprietor.** Registration: before earning (Register a business name with CAC before trading; individuals' first NGN 800k a year is tax-free under the Nigeria Tax Act 2025).",
+      "before": "**Единоличник.** Регистрация: прежде чем зарабатывать, зарегистрируйте имя занятия с Университет штата Колорадо до торговли; NGN [800k a year is tax-free under the Nigeria Tax Act 2025].",
+      "after": "**Единоличник.** Регистрация: прежде чем зарабатывать (зарегистрируйте имя занятия с Университет штата Колорадо до торговли); NGN [800k a year is tax-free under the Nigeria Tax Act 2025].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "docs/business-plans/oss-funding-opencollective-polar-thanksdev.md",
+      "english": "Apply to a fiscal host",
+      "before": "Обращайтесь к финансовому хозяину",
+      "after": "Обращайтесь к финансовому хозяину",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "**Foreign currency.** Capital controls: none.",
+      "before": "**Валюта.** Границы [none].",
+      "after": "**Валюта.** Контроли за движением капитала [none].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "docs/business-plans/kolabtree-science-freelance.md",
+      "english": "Payoneer is the only payout method; payout needs a USD 49.99 minimum balance.",
+      "before": "Payoneer — единственный метод выплаты; выплата нуждается в минимальном балансе USD 49.99.",
+      "after": "Payoneer — единственный метод выплаты; выплата нуждается в минимальном балансе USD 49.99.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/envato-code-themes.md",
+      "english": "$50 (SWIFT higher)",
+      "before": "$50, SWIFT [higher]",
+      "after": "$50 (SWIFT более высокий)",
+      "beforeComplete": false,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/rent-parking-storage-space.md",
+      "english": "Most people who try this earn around **$0–$100 per month** in the first year; the high figure of $600 is a ceiling for a focused solo operator, not a typical outcome.",
+      "before": "Большинство людей, которые судят это, зарабатывают примерно $0–$100 в месяц в первом годе; высокая фигура $600 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.",
+      "after": "Большинство людей, которые судят это, зарабатывают примерно $0–$100 в месяц в первом годе; высокая фигура $600 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "strategies.json#seo-blog-display-ads",
+      "english": "Raptive and Mediavine pay thousands of independent publishers; SEJ reported Raptive's cut to 25k views to admit smaller sites.",
+      "before": "Raptive и платные тысячи Mediavine независимых издателей; у SEJ, сообщённого, есть моток в 25 тыс. просмотров.",
+      "after": "Raptive и платные тысячи Mediavine независимых издателей; у SEJ, сообщённого, есть моток в 25 тыс. просмотров.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/online-course-marketplaces.md",
+      "english": "Self-hosting keeps more per sale but needs your own audience: Thinkific has a free plan, Payhip's free plan charges 5%, Teachable has no free plan (from $39/mo + 7.5%).",
+      "before": "Веб-хостинг хранит больше за продажу, но веб-хостинг нуждается в вашей собственной публике: у Thinkific есть свободный план, свободный план Payhip заряжает 5%, у Teachable нет свободного плана ().",
+      "after": "Веб-хостинг хранит больше за продажу, но веб-хостинг нуждается в вашей собственной публике: у Thinkific есть свободный план, свободный план Payhip заряжает 5%, у Teachable нет свободного плана (от $39 за момент и 7,5%).",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "ICT companies may qualify for reduced rates or exemptions under investment incentives.",
+      "before": "Компании ICT могут квалифицироваться для уменьшенных пропорций или льгот под поощрениями инвестиции.",
+      "after": "Компании ICT могут квалифицироваться для уменьшенных пропорций или льгот под поощрениями инвестиции.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/research/platform-rules.md",
+      "english": "Earnings are void after 6 months without sharing or payouts, and earnings above the threshold expire after 24 months.",
+      "before": "Заработок пуст после 6 месяцев без раздела или выплат, и заработок, после того как 24 месяца [the threshold expire].",
+      "after": "Заработок пуст после 6 месяцев без раздела или выплат, и заработок над порогом, после того как 24 месяца [expire].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "docs/business-plans/README.md",
+      "english": "**#205** [Live cohort-based courses on Maven](./cohort-courses-maven.md) — Teach a multi-week live course to a cohort of paying students; Maven provides storefront, payments and discovery. _(score 41, tier C)_",
+      "before": "[Live cohort-based courses on Maven](./cohort-courses-maven.md), Teach; Maven обеспечивает, платы и открытие [a multi-week live course to a cohort of paying students storefront]. Счёт 41, C",
+      "after": "[Live cohort-based courses on Maven](./cohort-courses-maven.md), Teach; Maven обеспечивает, платы и открытие [a multi-week live course to a cohort of paying students storefront]. Счёт 41, C",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "strategies.json#pay-per-lead-landing-pages",
+      "english": "Insurance/legal lead referral needs a licence in some US states and EU countries",
+      "before": "Страхование или юридическое главное направление нуждается в лицензии в некоторых государствах США и странах Эгейский университет",
+      "after": "Страхование или юридическое главное направление нуждается в лицензии в некоторых государствах США и странах Эгейский университет",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/data-cleaning-conversion-gigs.md",
+      "english": "on demand after clearance",
+      "before": "На спросе после распродажи",
+      "after": "На спросе после распродажи",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/pod-board-games-game-crafter.md",
+      "english": "Ordering one physical copy of your game (required before publishing to the shop, then a 10-day wait)",
+      "before": "Заказывать одну физическую копию из вашей игры, центральная часть, ожидание дня [required a 10]",
+      "after": "Заказывать одну физическую копию из вашей игры (, прежде чем публиковать в магазин центральная часть), ожидание дня [required a 10]",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "source": "strategies.json#oss-funding-opencollective-polar-thanksdev",
+      "english": "Polar pays out via Stripe Connect Express (Stripe payout fees apply); Open Collective hosts may charge a host fee (e.g. ~10%); thanks.dev requires maintainer registration.",
+      "before": "Polar выплачивает через Stripe Connect Express (гонорары выплаты Stripe применяются); хозяева Open Collective могут взимать гонорар хозяина (e.g, ≈10%); thanks.dev требует регистрацию мейнтейнера.",
+      "after": "Polar выплачивает через Stripe Connect Express (гонорары выплаты Stripe применяются); хозяева Open Collective могут взимать гонорар хозяина (например ≈10%); thanks.dev требует регистрацию мейнтейнера.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "source": "docs/business-plans/generalist-rlhf-ai-training.md",
+      "english": "Outlier's official site says contributors are paid weekly in 50 countries.",
+      "before": "Официальные голоса сайта Outlier, которым благодетелям платят раз в неделю в 50 странах.",
+      "after": "Официальные голоса сайта Outlier, которым благодетелям платят раз в неделю в 50 странах.",
+      "beforeComplete": true,
+      "afterComplete": true
+    }
+  ]
+}

@@ -1,0 +1,531 @@
+[
+  {
+    "id": 1,
+    "english": "Productized data cleaning, PDF-to-Excel conversion and data-entry gigs",
+    "before": "Данные Productized, превращение PDF-to-Excel и гички с вводом данных [cleaning]",
+    "after": "Данные Productized, превращение PDF-to-Excel и гички с вводом данных [cleaning]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["cleaning"],
+    "notes": ["untranslated: \"cleaning\""],
+    "cause": "Nonfinite and nominal noun-phrase attachment",
+    "detail": "Compound gerund cleaning versus action"
+  },
+  {
+    "id": 2,
+    "english": "Rank #17 · Tier A · Priority score 64/100 · Category: Services & freelancing",
+    "before": "Вонючо, 17, A, счёт 64/100 Priority, Category: службы [freelancing]",
+    "after": "Вонючо, 17, A, счёт 64/100 Priority, Category: службы [freelancing]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["freelancing"],
+    "unparsed": ["freelancing"],
+    "notes": ["untranslated: \"freelancing\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "freelancing"
+  },
+  {
+    "id": 3,
+    "english": "Fixed-price gigs that clean, dedupe, reformat or extract data from client files, done mostly by scripts and LLMs with a human check.",
+    "before": "Халтуры с фиксированной ценой, которые чистят, или данные экстракта из файлов клиента, оригиналами и LLMs с человеческим шахом [dedupe reformat done mostly].",
+    "after": "Халтуры с фиксированной ценой, которые чистят, или данные экстракта из файлов клиента, оригиналами и LLMs с человеческим шахом [dedupe reformat done mostly].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["dedupe", "reformat"],
+    "unparsed": ["dedupe", "reformat", "done", "mostly"],
+    "notes": ["untranslated: \"dedupe reformat done mostly\""],
+    "cause": "Passive participles / reduced relatives",
+    "detail": "Comma reduced passive done mostly; dedupe/reformat also missing"
+  },
+  {
+    "id": 10,
+    "english": "Ongoing effort (1 = none)",
+    "before": "Происходящее в настоящее время усилие (1) [none]",
+    "after": "Происходящее в настоящее время усилие (1) [none]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["none"],
+    "unparsed": ["none"],
+    "notes": ["untranslated: \"none\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "none in an equation"
+  },
+  {
+    "id": 15,
+    "english": "Capital required",
+    "before": "[Capital required]",
+    "after": "Капитал, потребованный",
+    "beforeComplete": false,
+    "afterComplete": true,
+    "unknown": [],
+    "unparsed": ["Capital", "required"],
+    "notes": ["untranslated: \"Capital required\""],
+    "cause": "Passive participles / reduced relatives",
+    "detail": "Nominal head followed by required"
+  },
+  {
+    "id": 17,
+    "english": "7–90 d",
+    "before": "7–90 [d]",
+    "after": "7–90 [d]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["d"],
+    "unparsed": ["d"],
+    "notes": ["untranslated: \"d\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "d unit abbreviation"
+  },
+  {
+    "id": 22,
+    "english": "Expect the first payment after 7–90 d.",
+    "before": "Ожидайте первую плату после 7–90 [d].",
+    "after": "Ожидайте первую плату после 7–90 [d].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["d"],
+    "unparsed": ["d"],
+    "notes": ["imperative addressed with вы", "untranslated: \"d\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "d unit abbreviation"
+  },
+  {
+    "id": 24,
+    "english": "List fixed-scope gigs: PDF/scan to Excel, CSV cleanup, CRM dedupe, sheet merges.",
+    "before": "Гички с фиксированным областем видимости списока: PDF, разглядывайте в Excel, уборка CSV, CRM, слияния листа [dedupe].",
+    "after": "Гички с фиксированным областем видимости списока: PDF, разглядывайте в Excel, уборка CSV, CRM, слияния листа [dedupe].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["dedupe"],
+    "unparsed": ["dedupe"],
+    "notes": ["imperative addressed with вы", "untranslated: \"dedupe\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "dedupe"
+  },
+  {
+    "id": 26,
+    "english": "A pipeline (OCR, pandas, LLM extraction) does most of each order; you spot-check and deliver.",
+    "before": "Конвейер (OCR, панды, выдержка LLM); вы и освобождайте [does most of each order spot-check].",
+    "after": "Конвейер (OCR, панды, выдержка LLM); вы и освобождайте [does most of each order spot-check].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["spot-check"],
+    "unparsed": ["does", "most", "of", "each", "order", "spot-check"],
+    "notes": [
+      "\"you\" rendered as polite вы (use --you=ty to switch)",
+      "imperative addressed with вы",
+      "untranslated: \"does most of each order spot-check\""
+    ],
+    "cause": "Auxiliary / modal construction",
+    "detail": "Lexical does; spot-check also missing"
+  },
+  {
+    "id": 27,
+    "english": "Repeat buyers send monthly batches.",
+    "before": "Повторите покупатели [send monthly batches].",
+    "after": "Повторите покупатели [send monthly batches].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["send", "monthly", "batches"],
+    "notes": [
+      "повторить: single completed action requested",
+      "imperative addressed with вы",
+      "untranslated: \"send monthly batches\""
+    ],
+    "cause": "Nonfinite and nominal noun-phrase attachment",
+    "detail": "Nominal modifier versus imperative verb"
+  },
+  {
+    "id": 42,
+    "english": "spreadsheet formulas and pivoting; basic Python or Power Query (AI coding assistants cover most of it); careful QA of extracted numbers",
+    "before": "Детские питания электронного таблицы и вертеться; основной питон или Power Query (ассистенты кодировки AI закрывают больше всего её); QA [wikt:extract:verb:1] числ",
+    "after": "Детские питания электронного таблицы и вертеться; основной питон или Power Query (ассистенты кодировки AI закрывают больше всего её); QA числ, которые извлекают",
+    "beforeComplete": false,
+    "afterComplete": true,
+    "unknown": [],
+    "unparsed": [],
+    "notes": ["no Russian participle for wikt:extract:verb:1"],
+    "cause": "Passive participles / reduced relatives",
+    "detail": "No Russian long participle for extracted"
+  },
+  {
+    "id": 46,
+    "english": "Fiverr seller account + ID verification; Upwork freelancer account + ID verification (proposals cost Connects, ~$0.15 each); PayPal or Payoneer linked to a bank account",
+    "before": "Счёт продавеца Fiverr и проверка ID; независимый счёт Upwork и проверка ID (предложения стоят Connects), ≈$0,15; PayPal или Payoneer связали в банковский счёт [each]",
+    "after": "Счёт продавеца Fiverr и проверка ID; независимый счёт Upwork и проверка ID (предложения стоят Connects), ≈$0,15; PayPal или Payoneer связали в банковский счёт [each]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["each"],
+    "notes": [
+      "English verb form is both present and past; chose present from the surrounding text",
+      "связать: completed action",
+      "untranslated: \"each\""
+    ],
+    "cause": "Quantifier / degree ellipsis",
+    "detail": "Postposed each after a price"
+  },
+  {
+    "id": 57,
+    "english": "Estimate from typical Fiverr data-entry/PDF-to-Excel package tiers ($10 basic to $100-$200 bulk); fee = Fiverr 20%; cost = AI/OCR credits.",
+    "before": "Оценивайте из Fiverr, ярусы пакета PDF-to-Excel ($10 учебного лагеря в $100–$200 большего частя); нанимайте на работу, Fiverr; стойте, AI/OCR зачисляет [data-entry 20%].",
+    "after": "Оценивайте из Fiverr, ярусы пакета PDF-to-Excel ($10 учебного лагеря в $100–$200 большего частя); нанимайте на работу, Fiverr; стойте, AI/OCR зачисляет [data-entry 20%].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["data-entry", "20%"],
+    "notes": [
+      "imperative addressed with вы",
+      "untranslated: \"data-entry 20%\""
+    ],
+    "cause": "List, heading, equation or measured-label format",
+    "detail": "Equation values and measured labels; data-entry also unresolved"
+  },
+  {
+    "id": 58,
+    "english": "Fiverr (20%) and Upwork (variable 0-15% since 2025) fee figures are estimated: their official fee pages were bot-blocked when checked in Nov 2026.",
+    "before": "Fiverr (20%) и Upwork, которого количества гонорара оцениваются, (переменная 0–15% с 2025): их официальные страницы гонорара были, когда их официальные страницы гонорара зарегистрировались в ноябре 2026 г. [bot-blocked].",
+    "after": "Fiverr (20%) и Upwork, которого количества гонорара оцениваются, (переменная 0–15% с 2025): их официальные страницы гонорара были, когда их официальные страницы гонорара зарегистрировались в ноябре 2026 г. [bot-blocked].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["bot-blocked"],
+    "unparsed": ["bot-blocked"],
+    "notes": [
+      "зарегистрироваться: completed action",
+      "untranslated: \"bot-blocked\""
+    ],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "bot-blocked"
+  },
+  {
+    "id": 59,
+    "english": "ChatGPT Plus (~$20/mo) and Canva Pro (~$15/mo) prices are estimated: their pricing pages were bot-blocked.",
+    "before": "ChatGPT Plus (≈$20 за момент силы) и Canva Pro, которого цены оцениваются, (≈$15 за момент силы): их страницы оценки были [bot-blocked].",
+    "after": "ChatGPT Plus (≈$20 за момент силы) и Canva Pro, которого цены оцениваются, (≈$15 за момент силы): их страницы оценки были [bot-blocked].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["bot-blocked"],
+    "unparsed": ["bot-blocked"],
+    "notes": ["untranslated: \"bot-blocked\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "bot-blocked"
+  },
+  {
+    "id": 66,
+    "english": "Months to recover startup cash",
+    "before": "Месяцы [to recover startup cash]",
+    "after": "Месяцы для того, чтобы возвращать наличные стартапа",
+    "beforeComplete": false,
+    "afterComplete": true,
+    "unknown": [],
+    "unparsed": ["to", "recover", "startup", "cash"],
+    "notes": ["untranslated: \"to recover startup cash\""],
+    "cause": "Nonfinite and nominal noun-phrase attachment",
+    "detail": "Purpose infinitive after a nominal heading"
+  },
+  {
+    "id": 68,
+    "english": "Months include ramp-up to the first order.",
+    "before": "Месяцы включают [ramp-up to the first order].",
+    "after": "Месяцы включают [ramp-up to the first order].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["ramp-up"],
+    "unparsed": ["ramp-up", "to", "the", "first", "order"],
+    "notes": ["untranslated: \"ramp-up to the first order\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "ramp-up"
+  },
+  {
+    "id": 77,
+    "english": "headwind",
+    "before": "[headwind]",
+    "after": "[headwind]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["headwind"],
+    "unparsed": ["headwind"],
+    "notes": ["untranslated: \"headwind\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "headwind"
+  },
+  {
+    "id": 80,
+    "english": "Chance of real net profit within 12 months (≥ $100/month where the plan can pay that much)",
+    "before": "Возможность действительного чистого прибыля в пределах 12 месяцев ($100 в месяц), где план может заплатить [much]",
+    "after": "Возможность действительного чистого прибыля в пределах 12 месяцев ($100 в месяц), где план может заплатить [much]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["much"],
+    "notes": ["заплатить: one completed action", "untranslated: \"much\""],
+    "cause": "Quantifier / degree ellipsis",
+    "detail": "that much after pay"
+  },
+  {
+    "id": 82,
+    "english": "Thousands of low-cost sellers (many in South Asia) compete at $5-$15, and since 2024-2025 many buyers do simple conversions themselves with ChatGPT or Excel Copilot.",
+    "before": "Тысячи низких продавецев (South Asia) соревнуются по $5–$15, и с 2024–2025 много покупателей или Excel Copilot [do simple conversions themselves with ChatGPT].",
+    "after": "Тысячи низких продавецев (South Asia) соревнуются по $5–$15, и с 2024–2025 много покупателей или Excel Copilot [do simple conversions themselves with ChatGPT].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": [
+      "do",
+      "simple",
+      "conversions",
+      "themselves",
+      "with",
+      "ChatGPT"
+    ],
+    "notes": [
+      "untranslated: \"do simple conversions themselves with ChatGPT\""
+    ],
+    "cause": "Auxiliary / modal construction",
+    "detail": "Lexical do and reflexive emphasis"
+  },
+  {
+    "id": 83,
+    "english": "Winners specialize (messy scanned invoices, CRM migrations, recurring monthly batches) and win repeat B2B buyers.",
+    "before": "Победители (беспорядочные сканированные инвойсы), миграции CRM, периодические ежемесячные партии и побеждайте [specialize repeat B2B buyers].",
+    "after": "Победители (беспорядочные сканированные инвойсы), миграции CRM, периодические ежемесячные партии и побеждайте [specialize repeat B2B buyers].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["specialize"],
+    "unparsed": ["specialize", "repeat", "B2B", "buyers"],
+    "notes": [
+      "imperative addressed with вы",
+      "untranslated: \"specialize repeat B2B buyers\""
+    ],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "specialize; repeat noun-phrase boundary"
+  },
+  {
+    "id": 84,
+    "english": "The median starter nets under $100/month by month 12; failure modes are zero visibility for new gigs and underpricing.",
+    "before": "Стартер медианы зарабатывает менее $100 в месяц месяцем 12; режимы провала — 0 видимостей для новых гичек [underpricing].",
+    "after": "Стартер медианы зарабатывает менее $100 в месяц месяцем 12; режимы провала — 0 видимостей для новых гичек [underpricing].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["underpricing"],
+    "unparsed": ["underpricing"],
+    "notes": ["untranslated: \"underpricing\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "underpricing"
+  },
+  {
+    "id": 86,
+    "english": "Start with a $10-$20 basic tier capped by row/page count to collect the first 10 reviews, then reprice per 1,000 rows/pages and push monthly batch packages at $100+.",
+    "before": "Начинайте с $10–$20 базового яруса, [wikt:cap:verb:4], за 1 000 тяг к поясу/страницы и ежемесячные пакеты партии толчока собака $100+ [the first 10 reviews then reprice].",
+    "after": "Начинайте с $10–$20 базового яруса, который счёт тяги к поясу/страницы превосходит коллекционировать, за 1 000 тяг к поясу/страницы и ежемесячные пакеты партии толчока собака $100+ [the first 10 reviews then reprice].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["reprice"],
+    "unparsed": ["the", "first", "10", "reviews", "then", "reprice"],
+    "notes": [
+      "no Russian participle for wikt:cap:verb:4",
+      "imperative addressed with вы",
+      "untranslated: \"the first 10 reviews then reprice\""
+    ],
+    "cause": "Passive participles / reduced relatives",
+    "detail": "No Russian long participle for capped; reprice also missing"
+  },
+  {
+    "id": 89,
+    "english": "Month 1-2: first 5-15 small orders at $10-$30, expected $50-$200 gross",
+    "before": "Месяц 1–2: первый передача, $50–$200 серьёзный [5-15 small orders at $10-$30 expected]",
+    "after": "Месяц 1–2: первый передача, $50–$200 серьёзный [5-15 small orders at $10-$30 expected]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["5-15", "small", "orders", "at", "$10-$30", "expected"],
+    "notes": ["untranslated: \"5-15 small orders at $10-$30 expected\""],
+    "cause": "Passive participles / reduced relatives",
+    "detail": "expected amount and quantified ordinal NP"
+  },
+  {
+    "id": 91,
+    "english": "Month 6-12: convert repeat buyers to monthly retainers; target 10-20 orders/month",
+    "before": "Месяц 6–12: конвертируйте; нацелитесь на 10–20 порядоков/месяцы [repeat buyers to monthly retainers]",
+    "after": "Месяц 6–12: конвертируйте; нацелитесь на 10–20 порядоков/месяцы [repeat buyers to monthly retainers]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["repeat", "buyers", "to", "monthly", "retainers"],
+    "notes": [
+      "imperative addressed with вы",
+      "нацелиться: single completed action requested",
+      "untranslated: \"repeat buyers to monthly retainers\""
+    ],
+    "cause": "Nonfinite and nominal noun-phrase attachment",
+    "detail": "Nominal modifier repeat inside an object"
+  },
+  {
+    "id": 97,
+    "english": "Fiverr $1 PayPal / $20 Payoneer bank",
+    "before": "Fiverr, $20 банка Payoneer [$1 PayPal]",
+    "after": "Fiverr, $20 банка Payoneer [$1 PayPal]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["$1", "PayPal"],
+    "notes": ["untranslated: \"$1 PayPal\""],
+    "cause": "List, heading, equation or measured-label format",
+    "detail": "Money and platform labels"
+  },
+  {
+    "id": 104,
+    "english": "Upwork: variable 0-15% freelancer fee (2025 change).",
+    "before": "Upwork: переменная (2025 сдач) [0-15% freelancer fee].",
+    "after": "Upwork: переменная (2025 сдач) [0-15% freelancer fee].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": ["0-15%", "freelancer", "fee"],
+    "notes": ["untranslated: \"0-15% freelancer fee\""],
+    "cause": "List, heading, equation or measured-label format",
+    "detail": "Percentage before a compound nominal fee"
+  },
+  {
+    "id": 105,
+    "english": "Not re-confirmed Nov 2026: Fiverr/Upwork help pages block automated checks.",
+    "before": "Ноябрь 2026 г.: страницы помощи Fiverr/Upwork блокируют автоматизированные шахи [Not re-confirmed].",
+    "after": "Ноябрь 2026 г.: страницы помощи Fiverr/Upwork блокируют автоматизированные шахи [Not re-confirmed].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["re-confirmed"],
+    "unparsed": ["Not", "re-confirmed"],
+    "notes": ["untranslated: \"Not re-confirmed\""],
+    "cause": "Passive participles / reduced relatives",
+    "detail": "Negative subjectless participle; re-confirmed missing"
+  },
+  {
+    "id": 115,
+    "english": "templated order replies and delivery messages",
+    "before": "Привестийте в порядок ответы и сообщения родыа [templated]",
+    "after": "Привестийте в порядок ответы и сообщения родыа [templated]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["templated"],
+    "unparsed": ["templated"],
+    "notes": [
+      "привести в порядок: single completed action requested",
+      "imperative addressed with вы",
+      "untranslated: \"templated\""
+    ],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "templated"
+  },
+  {
+    "id": 122,
+    "english": "Legal everywhere; taxable.",
+    "before": "Везде [Legal taxable].",
+    "after": "Везде [Legal taxable].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["taxable"],
+    "unparsed": ["Legal", "taxable"],
+    "notes": ["untranslated: \"Legal taxable\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "taxable; adjective ellipsis"
+  },
+  {
+    "id": 125,
+    "english": "tax reporting; platform ID check; Fiverr AI standards / Upwork no-misrepresentation; data-processing care for personal data",
+    "before": "Истощите отчитываться; галочка ID платформы; стандарты Fiverr AI, Upwork; забота с обработкой данных для личного данныя [no-misrepresentation]",
+    "after": "Истощите отчитываться; галочка ID платформы; стандарты Fiverr AI, Upwork; забота с обработкой данных для личного данныя [no-misrepresentation]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["no-misrepresentation"],
+    "unparsed": ["no-misrepresentation"],
+    "notes": [
+      "истощить: single completed action requested",
+      "imperative addressed with вы",
+      "untranslated: \"no-misrepresentation\""
+    ],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "no-misrepresentation"
+  },
+  {
+    "id": 127,
+    "english": "Fiverr/Upwork pay out almost everywhere via Payoneer; PayPal receiving missing in some (e.g. Bangladesh).",
+    "before": "Fiverr/Upwork; PayPal (например, Bangladesh) [pay out almost everywhere via Payoneer receiving missing in some].",
+    "after": "Fiverr/Upwork; PayPal (например, Bangladesh) [pay out almost everywhere via Payoneer receiving missing in some].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": [],
+    "unparsed": [
+      "pay out",
+      "almost everywhere",
+      "via",
+      "Payoneer",
+      "receiving",
+      "missing",
+      "in",
+      "some"
+    ],
+    "notes": [
+      "untranslated: \"pay out almost everywhere via Payoneer receiving missing in some\""
+    ],
+    "cause": "Multiword expression / quoted complement",
+    "detail": "Phrasal pay out and reduced receiving missing clause"
+  },
+  {
+    "id": 131,
+    "english": "data-privacy liability",
+    "before": "Обязательство [data-privacy]",
+    "after": "Обязательство [data-privacy]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["data-privacy"],
+    "unparsed": ["data-privacy"],
+    "notes": ["untranslated: \"data-privacy\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "data-privacy"
+  },
+  {
+    "id": 132,
+    "english": "Evidence that people get paid",
+    "before": "Доказывайте, что населите мерзавец, [wikt:pay:verb:1]",
+    "after": "Доказывайте, что населите мерзавец, который платят",
+    "beforeComplete": false,
+    "afterComplete": true,
+    "unknown": [],
+    "unparsed": [],
+    "notes": [
+      "imperative addressed with вы",
+      "населить: single completed action requested",
+      "no Russian participle for wikt:pay:verb:1"
+    ],
+    "cause": "Passive participles / reduced relatives",
+    "detail": "No Russian long participle for paid; get-passive parsing"
+  },
+  {
+    "id": 133,
+    "english": "Data entry/conversion are large Fiverr/Upwork categories; Fiverr permits AI in all categories if output is refined per client.",
+    "before": "Ввод данных/превращение — Fiverr/Upwork; Fiverr позволяет AI во всех, если производство утончённое за клиент [categories categories].",
+    "after": "Ввод данных/превращение — Fiverr/Upwork; Fiverr позволяет AI во всех, если производство утончённое за клиент [categories categories].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["categories", "categories"],
+    "unparsed": ["categories", "categories"],
+    "notes": ["untranslated: \"categories categories\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "categories"
+  },
+  {
+    "id": 135,
+    "english": "Tags: freelance, productized, data, beginner",
+    "before": "Клички: фрилансер, данные, дебютант [productized]",
+    "after": "Клички: фрилансер, данные, дебютант [productized]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "unknown": ["productized"],
+    "unparsed": ["productized"],
+    "notes": ["untranslated: \"productized\""],
+    "cause": "Missing word, inflection or required part of speech",
+    "detail": "productized"
+  }
+]

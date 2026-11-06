@@ -12,3 +12,11 @@ website/strategies.json
 website/plans/
 website/docs/
 docs/legal/incorporation-costs.md
+
+# Recorded public API snapshots stay compact JSON.
+tests/formal-ai/fixtures/public/
+tests/formal-ai/fixtures/public-expected.json
+
+# Generated Russian translation memory and website
+formal-ai/.site-ru/
+website/ru/

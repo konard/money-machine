@@ -1,0 +1,798 @@
+{
+  "seed": 20261104,
+  "poolSize": 162,
+  "urls": [
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=1",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=2",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=3",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=4",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=5",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=6",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=7",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=8",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=9",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=10",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=11",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=12",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=13",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=14",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=15",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=16",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=17",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=18",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=19",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=20",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=21",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=22",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=23",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=24",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=25",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=26",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=27",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=28",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=29",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=30",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=31",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=32",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=33",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=34",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=35",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=36",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=37",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=38",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=39",
+    "https://tatoeba.org/en/api_v0/search?from=eng&to=rus&query=&sort=created&page=40"
+  ],
+  "fetchedAt": "2026-11-03T19:06:33.245Z",
+  "sample": [
+    {
+      "id": 14085617,
+      "text": "I didn't know how you would take it.",
+      "refs": {
+        "7764324": "Я не знал, как ты к этому отнесёшься.",
+        "7764325": "Я не знал, как вы к этому отнесётесь."
+      }
+    },
+    {
+      "id": 14084138,
+      "text": "Tom didn't say anything else, although it was clear he still had something to say.",
+      "refs": {
+        "14084136": "Больше Том не сказал ничего, хотя ясно было, что ему ещё есть что сказать."
+      }
+    },
+    {
+      "id": 14081780,
+      "text": "Mary earns more than I do.",
+      "refs": {
+        "14081937": "Мэри зарабатывает больше меня.",
+        "14081938": "Мэри зарабатывает больше, чем я."
+      }
+    },
+    {
+      "id": 14093787,
+      "text": "No one knows if Tom's telling the truth.",
+      "refs": {
+        "14093793": "Никто не знает, говорит ли Том правду."
+      }
+    },
+    {
+      "id": 14085083,
+      "text": "Don't you think you're drunk a little early?",
+      "refs": {
+        "14085085": "Ты не рановато напился?",
+        "14085086": "Вы не рановато напились?",
+        "14085087": "Тебе не кажется, что ты рановато напился?",
+        "14085088": "Вам не кажется, что вы рановато напились?"
+      }
+    },
+    {
+      "id": 14097239,
+      "text": "They're planing to invite them to the wedding.",
+      "refs": {
+        "14097245": "Они планируют пригласить их на свадьбу."
+      }
+    },
+    {
+      "id": 14081779,
+      "text": "Mary earns more than me.",
+      "refs": {
+        "14081937": "Мэри зарабатывает больше меня.",
+        "14081938": "Мэри зарабатывает больше, чем я."
+      }
+    },
+    {
+      "id": 14080831,
+      "text": "Few people know it.",
+      "refs": {
+        "5587446": "Мало кто об этом знает."
+      }
+    },
+    {
+      "id": 14089767,
+      "text": "I like tall men.",
+      "refs": {
+        "14089888": "Мне нравятся высокие мужчины.",
+        "14089890": "Я люблю высоких мужчин."
+      }
+    },
+    {
+      "id": 14085623,
+      "text": "She told him about her childhood.",
+      "refs": {
+        "11945275": "Она рассказала ему о своей молодости."
+      }
+    },
+    {
+      "id": 14087669,
+      "text": "We met in France",
+      "refs": {
+        "14087671": "Мы познакомились во Франции."
+      }
+    },
+    {
+      "id": 14080908,
+      "text": "Who chose the present for Tom?",
+      "refs": {
+        "14080910": "Кто выбирал Тому подарок?"
+      }
+    },
+    {
+      "id": 14087507,
+      "text": "I don't want you to fly to Boston.",
+      "refs": {
+        "12662182": "Я не хочу, чтобы ты летела в Бостон.",
+        "14087680": "Я не хочу, чтобы ты летел в Бостон.",
+        "14087681": "Я не хочу, чтобы вы летели в Бостон."
+      }
+    },
+    {
+      "id": 14081130,
+      "text": "As your European customers, we are watching you.",
+      "refs": {
+        "14081411": "Мы, твои европейские клиенты, следим за тобой."
+      }
+    },
+    {
+      "id": 14082963,
+      "text": "The rent for this room is 50 dollars per week.",
+      "refs": {
+        "14083011": "Арендная плата за эту комнату — пятьдесят долларов в неделю."
+      }
+    },
+    {
+      "id": 14080848,
+      "text": "I often look at the sky.",
+      "refs": {
+        "14080862": "Я часто смотрю на небо."
+      }
+    },
+    {
+      "id": 14080745,
+      "text": "Did you see the baby?",
+      "refs": {
+        "14080866": "Ты видел малыша?",
+        "14080867": "Вы видели малыша?",
+        "14080868": "Ты видел ребёнка?",
+        "14080869": "Вы видели ребёнка?"
+      }
+    },
+    {
+      "id": 14091485,
+      "text": "When the snow melts, you can see the road again.",
+      "refs": {
+        "14091505": "Когда снег тает, снова видна дорога."
+      }
+    },
+    {
+      "id": 14082750,
+      "text": "Slaves were traded and sold like livestock.",
+      "refs": {
+        "14082644": "Рабов меняли и продавали как скот."
+      }
+    },
+    {
+      "id": 14081253,
+      "text": "The meeting takes place on the ground floor.",
+      "refs": {
+        "14081488": "Собрание проходит на первом этаже."
+      }
+    },
+    {
+      "id": 14082713,
+      "text": "Slaves were severely punished for even the slightest fault.",
+      "refs": {
+        "14082645": "Рабов жестоко наказывали за малейшую провинность."
+      }
+    },
+    {
+      "id": 14094937,
+      "text": "What don't you eat?",
+      "refs": {
+        "10974398": "Чего вы не едите?",
+        "10974407": "Чего ты не ешь?"
+      }
+    },
+    {
+      "id": 14087594,
+      "text": "We played crazy golf.",
+      "refs": {
+        "14089479": "Мы играли в мини-гольф."
+      }
+    },
+    {
+      "id": 14079638,
+      "text": "Something's happening over there.",
+      "refs": {
+        "6384546": "Там что-то происходит."
+      }
+    },
+    {
+      "id": 14085618,
+      "text": "I have a toothache. I need to make a dentist appointment.",
+      "refs": {
+        "4971394": "У меня зуб болит. Нужно записаться к стоматологу."
+      }
+    },
+    {
+      "id": 14089023,
+      "text": "She wants to become a mother.",
+      "refs": {
+        "14095249": "Она хочет стать матерью."
+      }
+    },
+    {
+      "id": 14085613,
+      "text": "My father is busy right now.",
+      "refs": {
+        "5179848": "Сейчас мой отец занят.",
+        "6862417": "Отец сейчас занят."
+      }
+    },
+    {
+      "id": 14095155,
+      "text": "Unfortunately, I don't have an admission ticket.",
+      "refs": {
+        "14095141": "К сожалению, у меня нет входного билета."
+      }
+    },
+    {
+      "id": 14097401,
+      "text": "Tom doesn't help his parents.",
+      "refs": {
+        "14097485": "Том не помогает родителям."
+      }
+    },
+    {
+      "id": 14085609,
+      "text": "I know Tom well enough to understand that he's not as innocent as everyone says.",
+      "refs": {
+        "14085599": "Я достаточно хорошо знаю Тома, чтобы понимать, что он не такой уж невинный агнец, как все говорят."
+      }
+    },
+    {
+      "id": 14096330,
+      "text": "\"I wish humans also hibernated.\" \"Come on, we spend half our lifetime sleeping as it is.\"",
+      "refs": {
+        "14096276": "«Вот бы люди тоже впадали в спячку зимой!» — «Да ну, и так полжизни спим»."
+      }
+    },
+    {
+      "id": 14082571,
+      "text": "For that reason, she lost her job.",
+      "refs": {
+        "14082554": "По этой причине она потеряла работу."
+      }
+    },
+    {
+      "id": 14080433,
+      "text": "How can I make the letters bigger? They are too small. I can barely read the text.",
+      "refs": {
+        "14080593": "Как можно увеличить буквы? Они слишком мелкие, я едва могу разобрать текст."
+      }
+    },
+    {
+      "id": 14083015,
+      "text": "Our following stops are Pasila, Tikkurila, Riihimäki, and Hämeenlinna.",
+      "refs": {
+        "14083024": "Следующие остановки — Пасила, Тиккурила, Рийхимяки и Хямеэнлинна."
+      }
+    },
+    {
+      "id": 14081782,
+      "text": "What did this voice say to you?",
+      "refs": {
+        "14081520": "Что сказал тебе этот голос?"
+      }
+    },
+    {
+      "id": 14085622,
+      "text": "Will you shut the door when you leave?",
+      "refs": {
+        "12404261": "Запрёшь дверь, когда будешь уходить?"
+      }
+    },
+    {
+      "id": 14085625,
+      "text": "Do you have a least favorite word?",
+      "refs": {
+        "14085628": "У тебя есть самая нелюбимая еда?",
+        "14085629": "У тебя есть какая-нибудь самая нелюбимая еда?"
+      }
+    },
+    {
+      "id": 14089748,
+      "text": "I used to like this town.",
+      "refs": {
+        "14089874": "Мне когда-то нравился этот город.",
+        "14089875": "Мне раньше нравился этот город."
+      }
+    },
+    {
+      "id": 14088980,
+      "text": "Thanks to your long blond hair, I notice you from a distance.",
+      "refs": {
+        "2035378": "Благодаря твоим длинным светлым волосам я замечаю тебя издалека."
+      }
+    },
+    {
+      "id": 14079511,
+      "text": "It's hard to know where stupidity ends and malice begins with these people.",
+      "refs": {
+        "14081432": "С этими людьми трудно понять, где у них заканчивается идиотизм и начинается злой умысел."
+      }
+    },
+    {
+      "id": 14080753,
+      "text": "You know the truth.",
+      "refs": {
+        "14080169": "Ты знаешь правду.",
+        "14080870": "Вы знаете правду."
+      }
+    },
+    {
+      "id": 14094914,
+      "text": "They won't be harmed.",
+      "refs": {
+        "14095248": "Им не причинят вреда."
+      }
+    },
+    {
+      "id": 14079740,
+      "text": "She speaks English with a strong German accent.",
+      "refs": {
+        "14079736": "Она говорит по-английски с сильным немецким акцентом."
+      }
+    },
+    {
+      "id": 14085641,
+      "text": "I no longer expect anything from anyone.",
+      "refs": {
+        "14085644": "Я уже ни от кого ничего не жду."
+      }
+    },
+    {
+      "id": 14085619,
+      "text": "Sometimes the fisherman comes back empty-handed.",
+      "refs": {
+        "2572705": "Иногда рыбак возвращается с пустыми руками."
+      }
+    },
+    {
+      "id": 14086368,
+      "text": "The streets have become empty.",
+      "refs": {
+        "8227684": "Улицы опустели."
+      }
+    },
+    {
+      "id": 14082678,
+      "text": "I miss this a lot.",
+      "refs": {
+        "6859654": "Мне этого очень не хватает.",
+        "14082674": "Я очень по этому скучаю."
+      }
+    },
+    {
+      "id": 14095148,
+      "text": "Unfortunately, I don't have a driver's license.",
+      "refs": {
+        "14095146": "К сожалению, у меня нет прав.",
+        "14095147": "К сожалению, у меня нет водительских прав."
+      }
+    },
+    {
+      "id": 14081915,
+      "text": "Help Tom when you can.",
+      "refs": {
+        "14081917": "Помоги Тому, когда сможешь.",
+        "14081919": "Помогите Тому, когда сможете."
+      }
+    },
+    {
+      "id": 14085614,
+      "text": "My dad is busy right now.",
+      "refs": {
+        "5179848": "Сейчас мой отец занят.",
+        "6862417": "Отец сейчас занят."
+      }
+    },
+    {
+      "id": 14085933,
+      "text": "I am going to have to kill you.",
+      "refs": {
+        "14085937": "Мне придётся тебя убить.",
+        "14085938": "Мне придётся вас убить."
+      }
+    },
+    {
+      "id": 14089750,
+      "text": "You never have money at the end of the month.",
+      "refs": {
+        "14089877": "У тебя никогда не бывает денег в конце месяца.",
+        "14089878": "У вас никогда не бывает денег в конце месяца.",
+        "14089879": "У тебя вечно нет денег в конце месяца.",
+        "14089880": "У вас вечно нет денег в конце месяца."
+      }
+    },
+    {
+      "id": 14094976,
+      "text": "I needed to be there on time.",
+      "refs": {
+        "14095053": "Мне нужно было быть там вовремя."
+      }
+    },
+    {
+      "id": 14082768,
+      "text": "Slaves were not considered human beings.",
+      "refs": {
+        "14082642": "Рабов не считали за людей."
+      }
+    },
+    {
+      "id": 14081628,
+      "text": "We don't need you guys.",
+      "refs": {
+        "2250550": "Вы нам не нужны."
+      }
+    },
+    {
+      "id": 14089533,
+      "text": "If you feel pain, you are alive. If you feel other people's pain, you are a human being.",
+      "refs": {
+        "14089537": "Если ты чувствуешь боль, ты живой. Если ты чувствуешь чужую боль, ты человек.",
+        "14089538": "Если ты чувствуешь боль — ты жив. Если ты чувствуешь чужую боль — ты человек."
+      }
+    },
+    {
+      "id": 14086930,
+      "text": "The Crusaders were losers.",
+      "refs": {
+        "14089490": "Крестоносцы были неудачниками.",
+        "14089491": "Крестоносцы были лузерами."
+      }
+    },
+    {
+      "id": 14081778,
+      "text": "I don't think I can help with that.",
+      "refs": {
+        "14081939": "Не думаю, что могу с этим помочь."
+      }
+    },
+    {
+      "id": 14079636,
+      "text": "Who's the guy swimming over there?",
+      "refs": {
+        "14079641": "Что за парень там плывёт?",
+        "14079642": "Что за чувак там плавает?"
+      }
+    },
+    {
+      "id": 14096359,
+      "text": "I wouldn't like that too if I were her.",
+      "refs": {
+        "14096357": "Мне бы на её месте такое тоже не понравилось."
+      }
+    },
+    {
+      "id": 14087435,
+      "text": "Your house is here and mine, there.",
+      "refs": {
+        "13260648": "Твой дом здесь, а мой там.",
+        "14087752": "Ваш дом здесь, а мой там."
+      }
+    },
+    {
+      "id": 14080853,
+      "text": "I can't help you, but I know who can.",
+      "refs": {
+        "14080860": "Я не могу тебе помочь, но знаю, кто может.",
+        "14080861": "Я не могу вам помочь, но знаю, кто может."
+      }
+    },
+    {
+      "id": 14096355,
+      "text": "Are you recognising the voice?",
+      "refs": {
+        "14096344": "Узнаёшь голос?"
+      }
+    },
+    {
+      "id": 14083748,
+      "text": "Man is a brother to man.",
+      "refs": {
+        "14083806": "Человек человеку брат."
+      }
+    },
+    {
+      "id": 14082956,
+      "text": "I need some hot chocolate.",
+      "refs": {
+        "4870284": "Мне нужен горячий шоколад.",
+        "14083059": "Мне нужно немного горячего шоколада."
+      }
+    },
+    {
+      "id": 14080407,
+      "text": "He has many dogs.",
+      "refs": {
+        "14080392": "У него много собак."
+      }
+    },
+    {
+      "id": 14080740,
+      "text": "Has Tom always been like this?",
+      "refs": {
+        "14080865": "Том всегда таким был?"
+      }
+    },
+    {
+      "id": 14085621,
+      "text": "Tom says he's really hungry.",
+      "refs": {
+        "13384387": "Том говорит, что он очень голодный."
+      }
+    },
+    {
+      "id": 14087748,
+      "text": "When Maryia arrived at the bus stop, the bus had already left.",
+      "refs": {
+        "14087742": "Когда Мэри дошла до остановки, автобус уже ушёл.",
+        "14087754": "Когда Мэри пришла на остановку, автобус уже ушёл."
+      }
+    },
+    {
+      "id": 14090355,
+      "text": "The post office is across from the bank.",
+      "refs": {
+        "14092488": "Почта напротив банка."
+      }
+    },
+    {
+      "id": 14080324,
+      "text": "The building is for sale.",
+      "refs": {
+        "14080170": "Здание выставлено на продажу."
+      }
+    },
+    {
+      "id": 14085616,
+      "text": "I didn't know what you would think of this.",
+      "refs": {
+        "7764324": "Я не знал, как ты к этому отнесёшься.",
+        "7764325": "Я не знал, как вы к этому отнесётесь."
+      }
+    },
+    {
+      "id": 14089923,
+      "text": "I'm tired of this life.",
+      "refs": {
+        "2652022": "Я устала от этой жизни."
+      }
+    },
+    {
+      "id": 14087465,
+      "text": "This sentence needs no commas.",
+      "refs": {
+        "14087667": "Запятые в этом предложении не нужны."
+      }
+    },
+    {
+      "id": 14083035,
+      "text": "I left earlier so as not to meet Tom.",
+      "refs": {
+        "14083038": "Я ушёл пораньше, чтобы не встретиться с Томом.",
+        "14083039": "Я вышел пораньше, чтобы не встретиться с Томом."
+      }
+    },
+    {
+      "id": 14092193,
+      "text": "The snowman's heart has melted.",
+      "refs": {
+        "14092196": "Сердце снеговика растаяло."
+      }
+    },
+    {
+      "id": 14095507,
+      "text": "The color red isn't in anymore.",
+      "refs": {
+        "14095295": "Красный цвет уже не в моде."
+      }
+    },
+    {
+      "id": 14094909,
+      "text": "When you can, help others.",
+      "refs": {
+        "14095054": "Помогай другим, когда можешь.",
+        "14095055": "Помогайте другим, когда можете.",
+        "14095056": "Когда можешь, помогай другим.",
+        "14095060": "Когда можете, помогайте другим."
+      }
+    },
+    {
+      "id": 14092324,
+      "text": "At first, everything seemed fairly simple.",
+      "refs": {
+        "14092394": "Поначалу всё казалось довольно простым."
+      }
+    },
+    {
+      "id": 14084842,
+      "text": "I knew it, but forgot it.",
+      "refs": {
+        "14084844": "Я знал, но забыл."
+      }
+    },
+    {
+      "id": 14089753,
+      "text": "I like his hands.",
+      "refs": {
+        "14089873": "Мне нравятся его руки."
+      }
+    },
+    {
+      "id": 14087110,
+      "text": "He had big eyes.",
+      "refs": {
+        "14087103": "У него были большие глаза."
+      }
+    },
+    {
+      "id": 14080188,
+      "text": "I'm sorry I offended you.",
+      "refs": {
+        "2117985": "Прости, что я тебя обидел.",
+        "14097168": "Прости за то, что я тебя обидел.",
+        "14097169": "Простите за то, что я вас обидел.",
+        "14097178": "Простите, что я вас обидел.",
+        "14097182": "Прости, что обидел.",
+        "14097183": "Простите, что обидел."
+      }
+    },
+    {
+      "id": 14081076,
+      "text": "Tom is a cat, and Jerry is a mouse.",
+      "refs": {
+        "14081100": "Том — кот, а Джерри — мышь."
+      }
+    },
+    {
+      "id": 14089758,
+      "text": "She likes expensive clothes.",
+      "refs": {
+        "14089872": "Она любит дорогую одежду."
+      }
+    },
+    {
+      "id": 14085626,
+      "text": "Did she have glasses or not?",
+      "refs": {
+        "10322094": "Она была в очках или без?"
+      }
+    },
+    {
+      "id": 14082786,
+      "text": "The slaves did the dirtiest and hardest work.",
+      "refs": {
+        "14082633": "Рабы выполняли самую грязную и тяжёлую работу."
+      }
+    },
+    {
+      "id": 14090651,
+      "text": "Tom's decision changed everything.",
+      "refs": {
+        "14090655": "Решение Тома всё изменило."
+      }
+    },
+    {
+      "id": 14089194,
+      "text": "You won't learn it from Tom.",
+      "refs": {
+        "14089201": "От Тома вы это не узнаете.",
+        "14089203": "От Тома ты это не узнаешь.",
+        "14089204": "От Тома вы об этом не узнаете.",
+        "14089205": "От Тома ты об этом не узнаешь.",
+        "14089206": "У Тома вы этому не научитесь.",
+        "14089207": "У Тома ты этому не научишься."
+      }
+    },
+    {
+      "id": 14096318,
+      "text": "At first, I knew no word of German.",
+      "refs": {
+        "14096232": "Поначалу я ни слова не знал по-немецки."
+      }
+    },
+    {
+      "id": 14089208,
+      "text": "Tom bought Maria food.",
+      "refs": {
+        "14089209": "Том купил Мэри еду."
+      }
+    },
+    {
+      "id": 14089997,
+      "text": "All these words are synonyms.",
+      "refs": {
+        "14090309": "Все эти слова — синонимы."
+      }
+    },
+    {
+      "id": 14094989,
+      "text": "At the beginning, I knew no word in German.",
+      "refs": {
+        "14096232": "Поначалу я ни слова не знал по-немецки."
+      }
+    },
+    {
+      "id": 14085650,
+      "text": "He learned to rely on himself.",
+      "refs": {
+        "14085654": "Он научился полагаться на себя."
+      }
+    },
+    {
+      "id": 14081801,
+      "text": "We were there. You guys weren't.",
+      "refs": {
+        "10544949": "Мы там были, а вы нет."
+      }
+    },
+    {
+      "id": 14081775,
+      "text": "Tom brought Mary food.",
+      "refs": {
+        "14081575": "Том принёс Мэри еду."
+      }
+    },
+    {
+      "id": 14085624,
+      "text": "Are there any words that you dislike?",
+      "refs": {
+        "10864835": "У вас есть нелюбимые слова?",
+        "10864836": "У тебя есть нелюбимые слова?"
+      }
+    },
+    {
+      "id": 14096336,
+      "text": "It won't hurt – like a mosquito's sting.",
+      "refs": {
+        "14096327": "Больно не будет. Как комарик укусит."
+      }
+    },
+    {
+      "id": 14082998,
+      "text": "Dear customer, there are unfortunately no appointments available this week.",
+      "refs": {
+        "14083020": "Уважаемый клиент, к сожалению, на этой неделе свободных мест для записи нет."
+      }
+    },
+    {
+      "id": 14079410,
+      "text": "Hippos kill more people every year than lions and sharks combined.",
+      "refs": {
+        "14079690": "Каждый год бегемоты убивают больше людей, чем львы и акулы вместе взятые."
+      }
+    }
+  ],
+  "attribution": "Tatoeba contributors; CC BY 2.0 FR. Sentence IDs link to originals and contributor attribution at https://tatoeba.org/en/sentences/show/ID"
+}

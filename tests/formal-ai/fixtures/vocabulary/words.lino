@@ -1,0 +1,554 @@
+# Adjectives, adverbs, names and fixed phrases.
+#
+#   en adj <base>                     ru adj <masc-nom> [short:<masc>] [pred:short]
+#   en adv <word|multi+word>          ru adv <word> [neg] (needs "не" on the verb)
+#   en name <Name>                    ru noun … (names decline like nouns)
+#   en phrase <words…>                ru phrase "<translation>"
+
+concept big
+  en adj big
+  en adj large
+  ru adj большой
+
+concept small
+  en adj small
+  en adj little
+  ru adj маленький
+
+concept good
+  en adj good
+  ru adj хороший
+
+concept bad
+  en adj bad
+  ru adj плохой
+
+concept new
+  en adj new
+  ru adj новый
+
+concept old
+  en adj old
+  ru adj старый
+
+concept young
+  en adj young
+  ru adj молодой
+
+concept beautiful
+  en adj beautiful
+  en adj pretty
+  ru adj красивый
+
+concept long
+  en adj long
+  ru adj длинный
+
+concept short
+  en adj short
+  ru adj короткий
+
+concept tall
+  en adj tall
+  en adj high
+  ru adj высокий
+
+concept low
+  en adj low
+  ru adj низкий
+
+concept hot.weather
+  gloss "having a high air temperature"
+  en adj hot
+  ru adj жаркий
+  cues day weather summer sun today july afternoon climate country
+
+concept hot.object
+  gloss "having a high temperature (of things)"
+  en adj hot
+  ru adj горячий
+  cues tea coffee water soup food drink milk bath shower stove
+
+concept cold
+  en adj cold
+  ru adj холодный
+
+concept warm
+  en adj warm
+  ru adj тёплый
+
+concept happy
+  en adj happy
+  ru adj счастливый short:счастлив pred:short
+
+concept sad
+  en adj sad
+  ru adj грустный
+
+concept red
+  en adj red
+  ru adj красный
+
+concept blue
+  en adj blue
+  ru adj синий
+
+concept green
+  en adj green
+  ru adj зелёный
+
+concept white
+  en adj white
+  ru adj белый
+
+concept black
+  en adj black
+  ru adj чёрный
+
+concept yellow
+  en adj yellow
+  ru adj жёлтый
+
+concept important
+  en adj important
+  ru adj важный
+
+concept interesting
+  en adj interesting
+  ru adj интересный
+
+concept easy
+  en adj easy
+  ru adj лёгкий
+
+concept difficult
+  en adj difficult
+  en adj hard
+  ru adj трудный
+
+concept right.correct
+  gloss "correct, true"
+  en adj right
+  en adj correct
+  ru adj правильный
+  cues answer wrong correct decision choice way thing question
+
+concept right.side
+  gloss "on the side of the right hand"
+  en adj right
+  ru adj правый
+  cues hand left side turn arm leg eye foot corner
+
+concept left
+  en adj left
+  ru adj левый
+
+concept free
+  en adj free
+  ru adj свободный short:свободен pred:short
+
+concept busy
+  en adj busy
+  ru adj занятой short:занят pred:short
+
+concept ready
+  en adj ready
+  ru adj готовый pred:short
+
+concept sure
+  en adj sure
+  ru adj уверенный short:уверен pred:short
+
+concept glad
+  en adj glad
+  ru adj радостный short:рад pred:short
+
+concept tired
+  en adj tired
+  ru adj усталый
+
+concept full
+  en adj full
+  ru adj полный
+
+concept empty
+  en adj empty
+  ru adj пустой
+
+concept cheap
+  en adj cheap
+  ru adj дешёвый
+
+concept technical
+  en adj technical
+  ru adj технический
+
+concept expensive
+  en adj expensive
+  ru adj дорогой
+
+concept fast
+  en adj fast
+  en adj quick
+  ru adj быстрый
+
+concept slow
+  en adj slow
+  ru adj медленный
+
+concept quiet
+  en adj quiet
+  ru adj тихий
+
+concept loud
+  en adj loud
+  ru adj громкий
+
+concept clean
+  en adj clean
+  ru adj чистый
+
+concept dirty
+  en adj dirty
+  ru adj грязный
+
+concept rich
+  en adj rich
+  ru adj богатый
+
+concept poor
+  en adj poor
+  ru adj бедный
+
+concept strong
+  en adj strong
+  ru adj сильный
+
+concept weak
+  en adj weak
+  ru adj слабый
+
+concept light.weight
+  gloss "not heavy"
+  en adj light
+  ru adj лёгкий
+  cues heavy bag box weight carry carried kilogram
+
+concept light.colour
+  gloss "pale, bright in colour"
+  en adj light
+  ru adj светлый
+  cues colour color dark blue green room hair grey
+
+concept dark
+  en adj dark
+  ru adj тёмный
+
+concept heavy
+  en adj heavy
+  ru adj тяжёлый
+
+concept russian
+  en adj Russian
+  ru adj русский
+
+concept english
+  en adj English
+  ru adj английский
+
+concept favourite
+  en adj favourite
+  en adj favorite
+  ru adj любимый
+
+concept main
+  en adj main
+  ru adj главный
+
+concept first
+  en adj first
+  ru adj первый
+
+concept last
+  gloss "coming after all others; final"
+  en adj last
+  ru adj последний
+
+concept last.previous
+  gloss "immediately before the present one"
+  en adj last
+  ru adj прошлый
+  cues (week month year time night weekend summer winter autumn spring monday tuesday wednesday thursday friday saturday sunday january february march april may june july august september october november december)
+
+concept next
+  en adj next
+  ru adj следующий
+
+concept often
+  en adv often
+  ru adv часто
+
+concept always
+  en adv always
+  ru adv всегда
+
+concept never
+  en adv never
+  ru adv никогда neg
+
+concept sometimes
+  en adv sometimes
+  ru adv иногда
+
+concept usually
+  en adv usually
+  ru adv обычно
+
+concept today
+  en adv today
+  ru adv сегодня
+
+concept tomorrow
+  en adv tomorrow
+  ru adv завтра
+
+concept yesterday
+  en adv yesterday
+  ru adv вчера
+
+concept now
+  en adv now
+  ru adv сейчас
+
+concept here
+  en adv here
+  ru adv здесь to:сюда
+
+concept there
+  en adv there
+  ru adv там to:туда
+
+concept home.adv
+  en adv home
+  ru adv дома to:домой
+
+concept very
+  syntax degree
+  en adv very
+  ru adv очень
+
+concept too
+  gloss "excessively (before an adjective or adverb)"
+  syntax degree
+  en adv too
+  ru adv слишком
+
+concept also
+  syntax clause
+  en adv also
+  en adv too
+  ru adv тоже
+
+concept already
+  en adv already
+  ru adv уже
+
+concept still
+  en adv still
+  ru adv всё+ещё
+
+concept again
+  en adv again
+  ru adv снова
+
+concept well
+  en adv well
+  ru adv хорошо
+
+concept badly
+  en adv badly
+  ru adv плохо
+
+concept quickly
+  en adv quickly
+  en adv fast
+  ru adv быстро
+
+concept slowly
+  en adv slowly
+  ru adv медленно
+
+concept together
+  en adv together
+  ru adv вместе
+
+concept soon
+  en adv soon
+  ru adv скоро
+
+concept later
+  en adv later
+  ru adv позже
+
+concept early
+  en adv early
+  ru adv рано
+
+concept late
+  en adv late
+  ru adv поздно
+
+concept really
+  en adv really
+  ru adv действительно
+
+concept only
+  en adv only
+  en adv just
+  ru adv только
+
+concept a-lot
+  en adv a+lot
+  en adv much
+  ru adv много
+
+concept please
+  en adv please
+  ru adv пожалуйста
+
+concept john
+  grounded-in Q4925477
+  en name John
+  ru noun Джон m anim
+
+concept mary
+  grounded-in Q734578
+  en name Mary
+  ru noun Мэри f anim indecl
+
+concept anna
+  grounded-in Q666578
+  en name Anna
+  ru noun Анна f anim
+
+concept peter
+  en name Peter
+  ru noun Пётр m anim stem:Петр end
+
+concept moscow
+  grounded-in Q649
+  en name Moscow
+  ru noun Москва f
+  form sg.acc Москву
+
+concept london
+  grounded-in Q84
+  en name London
+  ru noun Лондон m
+
+concept paris
+  grounded-in Q90
+  en name Paris
+  ru noun Париж m end
+
+concept russia
+  grounded-in Q159
+  en name Russia
+  ru noun Россия f
+
+concept england
+  grounded-in Q21
+  en name England
+  ru noun Англия f
+
+concept hello
+  en phrase hello
+  en phrase hi
+  ru phrase Здравствуйте
+
+concept thanks
+  en phrase thank you
+  en phrase thanks
+  ru phrase Спасибо
+
+concept thanks.much
+  en phrase thank you very much
+  en phrase thanks a lot
+  en phrase many thanks
+  ru phrase "Большое спасибо"
+
+concept good-morning
+  en phrase good morning
+  ru phrase "Доброе утро"
+
+concept good-evening
+  en phrase good evening
+  ru phrase "Добрый вечер"
+
+concept good-night
+  en phrase good night
+  ru phrase "Спокойной ночи"
+
+concept goodbye
+  en phrase goodbye
+  en phrase bye
+  ru phrase "До свидания"
+
+concept how-are-you
+  en phrase how are you
+  ru phrase "Как дела"
+
+concept sorry
+  en phrase sorry
+  en phrase i am sorry
+  en phrase excuse me
+  ru phrase Извините
+
+concept yes
+  en phrase yes
+  ru phrase Да
+
+concept no
+  en phrase no
+  ru phrase Нет
+
+concept of-course
+  en phrase of course
+  ru phrase Конечно
+
+concept welcome
+  en phrase you are welcome
+  ru phrase Пожалуйста
+
+concept nice-to-meet-you
+  en phrase nice to meet you
+  ru phrase "Приятно познакомиться"
+
+concept good-luck
+  en phrase good luck
+  ru phrase Удачи
+
+concept happy-birthday
+  en phrase happy birthday
+  ru phrase "С днём рождения"
+
+concept once
+  en adv once
+  ru adv однажды
+
+concept twice
+  en adv twice
+  ru adv дважды
+
+concept unchanged
+  en adv unchanged
+  ru adv без+изменений
+
+concept then
+  en adv then
+  ru adv тогда
+
+concept then-former
+  gloss "existing at that time"
+  en adj then
+  ru adj тогдашний

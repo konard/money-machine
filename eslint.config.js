@@ -22,6 +22,10 @@ export default [
         __filename: 'readonly',
         // Node.js 18+ globals
         fetch: 'readonly',
+        URL: 'readonly',
+        URLSearchParams: 'readonly',
+        AbortSignal: 'readonly',
+        setTimeout: 'readonly',
         // Runtime-specific globals
         Bun: 'readonly',
         Deno: 'readonly',
@@ -78,6 +82,8 @@ export default [
       'dist/**',
       '*.min.js',
       '.eslintcache',
+      'formal-ai/.site-ru/**',
+      'website/ru/**',
     ],
   },
 ];

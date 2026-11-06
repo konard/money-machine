@@ -1,0 +1,279 @@
+{
+  "seed": 777,
+  "count": 30,
+  "comparison": "Frozen source copies with the task rules disabled/enabled; concurrent edits held constant.",
+  "beforeComplete": 23,
+  "afterComplete": 24,
+  "sentences": [
+    {
+      "index": 1,
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "PayPal requires India balances to be withdrawn automatically to a bank, while Payoneer, Wise and Skydo all work.",
+      "before": "PayPal требует India, пока Payoneer, Wise и Skydo, над которым все работают [balances to be withdrawn automatically to a bank].",
+      "after": "PayPal требует, чтобы балансы Индии были сняты автоматически в банк, тогда как Payoneer, Wise и Skydo все работают.",
+      "beforeComplete": false,
+      "afterComplete": true
+    },
+    {
+      "index": 2,
+      "source": "strategies.json#workplace-app-marketplaces",
+      "english": "Join Atlassian Marketplace or Figma seller program",
+      "before": "Вступите Atlassian Marketplace или программу продавца Figma",
+      "after": "Вступите в Atlassian Marketplace или программу продавцов Figma",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 3,
+      "source": "docs/business-plans/poe-bot-creator.md",
+      "english": "Month 6-12: port the winner to other channels; $5-$300/month",
+      "before": "Месяц 6–12: портируйте победителя в другие каналы; $5–$300 в месяц",
+      "after": "Месяц 6–12: портируйте победителя в другие каналы; $5–$300 в месяц",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 4,
+      "source": "docs/business-plans/licensed-data-api-feeds.md",
+      "english": "The chance of receiving at least one real payout within six months is rated **3/10**.",
+      "before": "Возможность получать не менее одной настоящей выплаты в пределах шести месяцев оценена 3/10.",
+      "after": "Возможность получать не менее одной настоящей выплаты в пределах шести месяцев оценена 3/10.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 5,
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "Udyam registration is free and optional).",
+      "before": "Регистрация Udyam свободна и необязательна.",
+      "after": "Регистрация Udyam свободна и необязательна.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 6,
+      "source": "strategies.json#kolabtree-science-freelance",
+      "english": "AI-assisted literature search and summary",
+      "before": "Поиск литературы AI-assisted и резюме",
+      "after": "Поиск литературы AI-assisted и резюме",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 7,
+      "source": "docs/business-plans/workplace-app-marketplaces.md",
+      "english": "Median net at month 12 set to $40 to match the 10% profit likelihood.",
+      "before": "Медиана чиста в месяце 12, установленном в $40.",
+      "after": "Медиана чиста в месяце 12, установленном в $40.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 8,
+      "source": "docs/business-plans/tiktok-shop-affiliate.md",
+      "english": "bank transfer via TikTok Shop creator wallet",
+      "before": "Денежный перевод через бумажник создателя TikTok Shop",
+      "after": "Денежный перевод через бумажник создателя TikTok Shop",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 9,
+      "source": "docs/business-plans/soundcloud-audiomack-monetization.md",
+      "english": "SoundCloud pays fan-powered royalties (based on each listener's actual listening time and the ad/subscription revenue they generate) on tracks monetized through a paid Artist or Artist Pro subscription; there is no minimum-stream requirement and approval takes about 5 business days.",
+      "before": "Зарплаты SoundCloud, реальный сезон слушания и доход рекламы/подписки, который они порождают, дорожки монетизируются через Artist или подписку шлюхи Artist; есть никакая необходимость с минимальным ручьём и компенсации одобрения [fan-powered royalties based on on].",
+      "after": "Зарплаты SoundCloud, реальный сезон слушания и доход рекламы/подписки, который они порождают, дорожки монетизируются через Artist или подписку шлюхи Artist; есть никакая необходимость с минимальным ручьём и компенсации одобрения [fan-powered royalties based on on].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "index": 10,
+      "source": "docs/research/platform-rules.md",
+      "english": "Teachable and Thinkific are own-site course tools.",
+      "before": "Понятливо, и Thinkific — инструменты с собственным сайтом курса.",
+      "after": "Teachable, и Thinkific — инструменты с собственным сайтом курса.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 11,
+      "source": "docs/business-plans/esports-coaching-metafy.md",
+      "english": "Country list not verified.",
+      "before": "Список страны не проверен.",
+      "after": "Список страны не проверен.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 12,
+      "source": "strategies.json#expert-calls-and-paid-qa",
+      "english": "Expert networks recruit globally but demand favors industry experience; JustAnswer accepts experts in many countries after verification.",
+      "before": "Экспертные сети вербуют всемирно, но экспертные сети требуют услугам опыт промышленности; JustAnswer принимает экспертов во многих странах после проверки.",
+      "after": "Экспертные сети вербуют всемирно, но экспертные сети требуют услугам опыт промышленности; JustAnswer принимает экспертов во многих странах после проверки.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 13,
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "**Company.** SRL semplificata (SRLS) / SRL: government fee $700, typical all-in $2,300, minimum capital $1, annual compliance about $3,500, about 7 days, online: yes, 100% foreign ownership: yes, local director required: no. A notarial deed is required (no notary fee for SRLS, but registration tax, stamps and chamber fees come to about EUR 600).",
+      "before": "**Компания.** SRL, SRLS, SRL: гонорар $700 правительства, $2 300, минимальный капитал $1, ежегодный комплаенс, примерно 7 дней, онлайновый: поддакивайте, иностранное владение 100%: поддакивайте, локальный директор, потребованный: нотариальный акт необходим, без гонорара нотариуса для SRLS, но налог регистрации, печати и гонорары комнаты становятся 600 в евро [semplificata typical all-in about $3,500 no].",
+      "after": "**Компания.** SRL semplificata (SRLS) / SRL: гонорар $700 правительства, $2 300, минимальный капитал $1, ежегодный комплаенс, примерно 7 дней, онлайновый: поддакивайте, иностранное владение 100%: поддакивайте, локальный директор, потребованный: нотариальный акт необходим, без гонорара нотариуса для SRLS, но налог регистрации, печати и гонорары комнаты приходят в EUR 600 [typical all-in about $3,500 no].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "index": 14,
+      "source": "strategies.json#discord-premium-ai-bot",
+      "english": "Discord pays out via Stripe after a monetization eligibility review.",
+      "before": "Discord выплачивает через Stripe после обозрения пригодности монетизации.",
+      "after": "Discord выплачивает через Stripe после обозрения пригодности монетизации.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 15,
+      "source": "docs/business-plans/shopify-dropshipping.md",
+      "english": "Most beginners burn their ad budget on product tests and quit.",
+      "before": "Большинство дебютантов жгут их бюджет рекламы на тестах продукта, и большинство дебютантов бросают.",
+      "after": "Большинство дебютантов жгут их бюджет рекламы на тестах продукта, и большинство дебютантов бросают.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 16,
+      "source": "docs/business-plans/amazon-associates-comparison-site.md",
+      "english": "Generate product data via PA-API (unlocked after sales) and keep price/availability fresh",
+      "before": "Образуйте данные продукта через PA-API, после того как продажи и храните цену/наличие [unlocked fresh]",
+      "after": "Образуйте данные продукта через PA-API, после того как продажи и храните цену/наличие [unlocked fresh]",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "index": 17,
+      "source": "docs/business-plans/ai-dubbing-localization-service.md",
+      "english": "Median net at month 12 set to $60 to match the 25% profit likelihood.",
+      "before": "Медиана чиста в месяце 12, установленном в $60.",
+      "after": "Медиана чиста в месяце 12, установленном в $60.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 18,
+      "source": "docs/research/legal-framework.md",
+      "english": "Separate business and personal finances",
+      "before": "Отдельное дело и финансы домашних хозяйств",
+      "after": "Отдельное дело и финансы домашних хозяйств",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 19,
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "**Foreign currency.** Capital controls: reporting only.",
+      "before": "**Валюта.** Контроли за движением капитала: докладывать только.",
+      "after": "**Валюта.** Контроли за движением капитала: докладывать только.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 20,
+      "source": "docs/business-plans/smb-ppc-ads-management.md",
+      "english": "Expect the first payment after 14–90 d.",
+      "before": "Ожидайте первую плату после 14–90 сут.",
+      "after": "Ожидайте первую плату после 14–90 сут.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 21,
+      "source": "docs/business-plans/bandcamp-direct-sales.md",
+      "english": "Bandcamp Fridays (Bandcamp waives its share) continue through 2026; the remaining dates are Nov 6 and Dec 4, 2026.",
+      "before": "Пятницы Bandcamp (Bandcamp отказывается его долю) продолжаются через 2026; остальные сроки — Nov, 2026.",
+      "after": "Пятницы Bandcamp (Bandcamp отказывается его долю) продолжаются через 2026; остальные сроки — Nov, 2026.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 22,
+      "source": "docs/business-plans/minecraft-marketplace-partner-content.md",
+      "english": "Expect the first payment after 30–365 d.",
+      "before": "Ожидайте первую плату после 30–365 сут.",
+      "after": "Ожидайте первую плату после 30–365 сут.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 23,
+      "source": "docs/legal/incorporation-costs.md",
+      "english": "Cost $0, annual $900, about 3 days, online: yes.",
+      "before": "Расходы $0, ежегодно $900, очевидный 3 дня, онлайновый: да.",
+      "after": "Расходы $0, ежегодно $900, очевидный 3 дня, онлайновый: да.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 24,
+      "source": "docs/business-plans/remote-usability-testing.md",
+      "english": "Userlytics recruits more broadly.",
+      "before": "Userlytics вербует более широко.",
+      "after": "Userlytics вербует более широко.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 25,
+      "source": "docs/business-plans/3d-models-game-assets.md",
+      "english": "report income for tax; W-8BEN/tax interview; AI-content disclosure on Fab; license compliance for third-party content",
+      "before": "Сообщите доход для налога; ватт, EN, истощите интервью; раскрытие AI-content на Фабрис Морван; лицензируйте согласие для содержания с третьим лицо",
+      "after": "Сообщите доход для налога; интервью W-8BEN/налога; раскрытие AI-content на Fab; лицензируйте согласие для содержания с третьим лицо",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 26,
+      "source": "docs/business-plans/retail-audit-task-apps.md",
+      "english": "one account per person; genuine, on-location submissions (GPS verified)",
+      "before": "Один счёт за человека, подачи (GPS, проверенный,) [genuine on-location]",
+      "after": "Один счёт за человека, подачи (GPS, проверенный,) [genuine on-location]",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "index": 27,
+      "source": "docs/business-plans/etsy-digital-printables-svg.md",
+      "english": "List with SEO",
+      "before": "Список с поисковая оптимизация",
+      "after": "Список с поисковая оптимизация",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 28,
+      "source": "strategies.json#lora-model-creator-incentives",
+      "english": "Platform reachable in most countries; withdrawals go to a bank account entered at withdrawal time, but the list of supported payout countries is not published (unverified).",
+      "before": "Перрон доступен в большинстве стран; снятия проходят в банковский счёт, въеханный во времени снятия, но список поддержанных стран выплаты не опубликован [unverified].",
+      "after": "Перрон доступен в большинстве стран; снятия проходят в банковский счёт, въеханный во времени снятия, но список поддержанных стран выплаты не опубликован [unverified].",
+      "beforeComplete": false,
+      "afterComplete": false
+    },
+    {
+      "index": 29,
+      "source": "docs/research/platform-rules.md",
+      "english": "**Human**: store and payment KYC, ad budget decisions, disputes and chargebacks.",
+      "before": "Человек: магазин, Знай своего клиента, бюджетные решения рекламы, споры и чарджбеки.",
+      "after": "Человек: магазин, Знай своего клиента, бюджетные решения рекламы, споры и чарджбеки.",
+      "beforeComplete": true,
+      "afterComplete": true
+    },
+    {
+      "index": 30,
+      "source": "docs/business-plans/overwolf-in-game-apps.md",
+      "english": "Use AI coding agents to build and maintain the app and game-event handling",
+      "before": "Используйте агентов кодировки AI собрать и поддержите подъезд, и обработка [game-event]",
+      "after": "Используйте агентов кодировки ИИ собрать и поддержите подъезд, и обработка [game-event]",
+      "beforeComplete": false,
+      "afterComplete": false
+    }
+  ]
+}
