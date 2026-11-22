@@ -439,6 +439,25 @@ export function governmentFit(entry, sense) {
 
 /** Apply meaning-specific evidence while completing aspect partners. */
 export function governmentResolver({ russian, ruPages, government, lexicon }) {
+  const framesBySense = new WeakMap();
+  const frameFor = (word, sense) => {
+    let frames = framesBySense.get(sense);
+    if (!frames) {
+      frames = new Map();
+      framesBySense.set(sense, frames);
+    }
+    if (!frames.has(word)) {
+      frames.set(
+        word,
+        verbGovernment(ruPages.get(word), government.get(word), sense)
+      );
+    }
+    const frame = frames.get(word);
+    // finish() adds marker mappings to the selected entry.
+    return frame.markerGovernment
+      ? { ...frame, markerGovernment: { ...frame.markerGovernment } }
+      : frame;
+  };
   // Aspect partners share the selected meaning's argument frame.
   const finish = (ru, sense) => {
     // Explicit aspect alternatives in this translation table belong to this
@@ -456,14 +475,8 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
         ? russian(ru.partner, 'verb')
         : null;
     const frame = {
-      ...(partner
-        ? verbGovernment(
-            ruPages.get(partner.lemma),
-            government.get(partner.lemma),
-            sense
-          )
-        : {}),
-      ...verbGovernment(ruPages.get(ru.lemma), government.get(ru.lemma), sense),
+      ...(partner ? frameFor(partner.lemma, sense) : {}),
+      ...frameFor(ru.lemma, sense),
     };
     if (ru.aspect === 'perf' && partner) {
       Object.assign(ru, {
@@ -499,11 +512,7 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
 
     // Supplement a known reading's accusative fallback when its very same
     // Russian lexeme has an attested argument frame for this English sense.
-    const evidence = verbGovernment(
-      ruPages.get(ru.lemma),
-      government.get(ru.lemma),
-      sense
-    );
+    const evidence = frameFor(ru.lemma, sense);
     for (const knownId of lexicon.lookup('verb', sense.lemma)) {
       const known = lexicon.get(knownId)?.ru;
       if (
@@ -528,10 +537,7 @@ export function governmentResolver({ russian, ruPages, government, lexicon }) {
         return null;
       }
       if (entry.pos === 'verb') {
-        Object.assign(
-          entry,
-          verbGovernment(ruPages.get(c.word), government.get(c.word), sense)
-        );
+        Object.assign(entry, frameFor(c.word, sense));
       }
       const mismatch =
         entry.pos === 'verb' &&

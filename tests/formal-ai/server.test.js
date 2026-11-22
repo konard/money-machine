@@ -10,6 +10,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { startServer } from '../../formal-ai/src/server/server.mjs';
 import {
   parseRequest,
@@ -225,7 +226,9 @@ test('CLI offline flag works before positional text', { skip }, () => {
   const result = spawnSync(
     process.execPath,
     [
-      new URL('../../formal-ai/bin/formal-ai.mjs', import.meta.url).pathname,
+      fileURLToPath(
+        new URL('../../formal-ai/bin/formal-ai.mjs', import.meta.url)
+      ),
       'translate',
       '--offline',
       'I read a book.',

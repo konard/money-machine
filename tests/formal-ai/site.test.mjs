@@ -224,7 +224,7 @@ test('site run rejects missing catalog input instead of producing an empty mirro
   );
 });
 
-test('real offline worker resets Node flags and continues after a lookup failure', async (t) => {
+test('real offline worker starts from an eval process and continues after a lookup failure', async (t) => {
   const { root, put } = await fixture(t);
   const source = '# 123\n\n```js\nconst x = "$&";\n```\n';
   await put('docs/business-plans/example.md', source);
@@ -237,7 +237,9 @@ test('real offline worker resets Node flags and continues after a lookup failure
   const code = `import { translateSite } from ${JSON.stringify(module)}; await translateSite({ root: ${JSON.stringify(root)}, only: 'docs/business-plans/*.md', timeout: 5000, log: () => {} });`;
   await promisify(execFile)(
     process.execPath,
-    ['--input-type=module', '--eval', code],
+    process.versions.deno
+      ? ['eval', code]
+      : ['--input-type=module', '--eval', code],
     {
       timeout: 15000,
       env: {
@@ -364,10 +366,14 @@ test('Russian build renders a tiny mirror with correct links, code and app ident
     JSON.stringify(mirrorCatalog)
   );
   await rm(join(root, 'website/strategies.json'));
+  await put(
+    'package.json',
+    JSON.stringify({ dependencies: { marked: '^15.0.12' } })
+  );
   await symlink(
     fileURLToPath(new URL('../../node_modules/', import.meta.url)),
     join(root, 'node_modules'),
-    'dir'
+    'junction'
   );
   await promisify(execFile)(
     process.execPath,

@@ -9,7 +9,7 @@
  * request, each retry and failure), so a slow run can be told from a stuck
  * one; results go to stdout one item at a time.
  *
- * Sources: every prose field of website/strategies.json and the markdown
+ * Sources: every prose field of data/strategies.json and the markdown
  * under docs/ that the site pages are built from. The same seed gives the
  * same sample, so a reviewed sample can be re-run after a fix. Each
  * sentence is read back from the Russian (src/russian/read-back.mjs) and
@@ -70,7 +70,7 @@ function prose(value, out = []) {
 /** Pages: one per strategy and one per markdown file. */
 export function pages() {
   const data = JSON.parse(
-    readFileSync(join(ROOT, 'website', 'strategies.json'), 'utf8')
+    readFileSync(join(ROOT, 'data', 'strategies.json'), 'utf8')
   );
   const strategies = Array.isArray(data) ? data : data.strategies;
   return [

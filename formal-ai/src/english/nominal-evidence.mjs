@@ -129,11 +129,9 @@ function nominalStart(tokens, lexicon) {
   ) {
     return false;
   }
-  if (!(
-    nounFirst(first, lexicon) ||
-    has(first, 'propn') ||
-    has(first, 'adj')
-  )) {
+  if (
+    !(nounFirst(first, lexicon) || has(first, 'propn') || has(first, 'adj'))
+  ) {
     return false;
   }
   // Plural subjects followed by base verbs are ordinary statements ("Costs vary").

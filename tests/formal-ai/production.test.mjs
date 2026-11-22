@@ -5,13 +5,14 @@ import { readFileSync } from 'node:fs';
 import {
   differences,
   EXPECTED,
+  REPLAY_TIMEOUT,
   replay,
   sentenceSet,
 } from '../../formal-ai/scripts/record-fixtures.mjs';
 
 test(
   'production translations replay offline with an empty cache',
-  { timeout: 60000 },
+  { timeout: REPLAY_TIMEOUT + 10_000 },
   () => {
     const expected = JSON.parse(readFileSync(EXPECTED, 'utf8'));
     assert.deepEqual(

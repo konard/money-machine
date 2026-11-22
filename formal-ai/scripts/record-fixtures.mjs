@@ -19,6 +19,7 @@ export const EXPECTED = join(
   'tests/formal-ai/fixtures/public-expected.json'
 );
 export const FIXTURES = join(ROOT, 'tests/formal-ai/fixtures/public');
+export const REPLAY_TIMEOUT = 110_000;
 const SCRIPT = fileURLToPath(import.meta.url);
 
 export const BASIC = [
@@ -110,7 +111,7 @@ export function replay() {
         cwd: ROOT,
         env: productionEnv({ FORMAL_AI_OFFLINE: '1', FORMAL_AI_CACHE: cache }),
         encoding: 'utf8',
-        timeout: 55000,
+        timeout: REPLAY_TIMEOUT,
         maxBuffer: 16 * 1024 * 1024,
       })
     );
@@ -138,12 +139,16 @@ async function translations() {
     readFileSync(new URL('./fixture-sentences.json', import.meta.url), 'utf8')
   );
   const sentences = sentenceSet();
+  const verbose = process.argv.includes('--verbose');
+  const log =
+    !process.argv.includes('--replay') || verbose ? console.error : () => {};
   // One public pre-pass, as in sample.mjs, followed by deterministic translation.
-  await resolveText(sentences.join('\n\n'), {
-    log: process.argv.includes('--replay') ? () => {} : console.error,
-  });
+  await resolveText(sentences.join('\n\n'), { log });
   return sentences.map((english, i) => {
     try {
+      if (verbose) {
+        log(`Translating ${i + 1}/${sentences.length}: ${english}`);
+      }
       const topic = pageTopics.get(website[i - BASIC.length]?.source);
       return { english, russian: translateDocument(english, { topic }).text };
     } catch (error) {

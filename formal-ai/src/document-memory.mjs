@@ -93,7 +93,7 @@ export class DocumentMemory {
     }
     const b = this.postings.get(root(cue)) || [];
     let both = 0;
-    for (let i = 0, j = 0; i < a.length && j < b.length;) {
+    for (let i = 0, j = 0; i < a.length && j < b.length; ) {
       if (a[i] === b[j]) {
         both += 1;
         i += 1;
