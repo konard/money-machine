@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { loadLexicon, Lexicon } from '../../formal-ai/src/lexicon.mjs';
 import { formalize } from '../../formal-ai/src/formalize.mjs';
+import { generateEnglish } from '../../formal-ai/src/english/generate.mjs';
 import { naturalizeRussian } from '../../formal-ai/src/russian/naturalize.mjs';
 import {
   analyzeRussian,
@@ -147,6 +148,13 @@ test('a genitive noun phrase modifies the preceding locative noun', () => {
   const ambiguous = parse('Я увидел в доме друга.').statements[0];
   assert.equal(ambiguous.modifiers[0].entity.of, undefined);
   assert.equal(ambiguous.objects[0].concept, 'friend');
+});
+
+test('English generation retains an object whose Russian gender is ambiguous', () => {
+  const analysis = parse('Я вижу его.');
+  const [object] = analysis.statements[0].objects;
+  assert.equal(object.pronoun.gender, 'masculine neuter');
+  assert.equal(generateEnglish(analysis, lexicon), 'I see him.');
 });
 
 test('articles are never inferred; only explicit words fix definiteness', () => {

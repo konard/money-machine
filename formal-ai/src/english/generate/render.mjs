@@ -103,13 +103,14 @@ export class EnglishRenderer {
 
   pronoun(p, role) {
     const table = role === 'possessive' ? POSSESSIVES : PRONOUNS;
+    const possibleGenders = p.gender?.split(' ') || [undefined];
     const text = find(
       table,
       (v) =>
         v.person === p.person &&
         (number(v.number) === p.number ||
           (v.person === 2 && v.number === 'sg|pl')) &&
-        (v.person !== 3 || gender(v.gender) === p.gender) &&
+        (v.person !== 3 || possibleGenders.includes(gender(v.gender))) &&
         (role === 'possessive' ||
           (p.reflexive
             ? v.case === 'refl'
