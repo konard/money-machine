@@ -1,7 +1,7 @@
 import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { loadLexicon, Lexicon } from '../../formal-ai/src/lexicon.mjs';
 import { formalize } from '../../formal-ai/src/formalize.mjs';
 import { naturalizeRussian } from '../../formal-ai/src/russian/naturalize.mjs';
@@ -12,10 +12,74 @@ import {
   tokenizeRussian,
 } from '../../formal-ai/src/russian/analyze/index.mjs';
 import { compareRussianMeta } from '../../formal-ai/src/russian/analyze/compare.mjs';
+import { viaRussian } from '../../formal-ai/src/russian/analyze/english-round-trip.mjs';
+import {
+  translateSentence,
+  TranslationContext,
+} from '../../formal-ai/src/translate.mjs';
 
 const lexicon = loadLexicon({ fresh: true });
 const index = analyzerIndex(lexicon);
 const parse = (text) => analyzeRussian(text, lexicon, { index });
+
+test('English is regenerated from only the Russian analysis, with link losses reported', () => {
+  const context = new TranslationContext({ lexicon });
+  const translated = translateSentence('I read a book.', context);
+  const trip = viaRussian(
+    { ...translated, source: 'A different source.' },
+    lexicon,
+    { index }
+  );
+  assert.equal(trip.russian, 'Я прочитал книгу.');
+  assert.equal(trip.english, 'I read a book.');
+  assert.equal(trip.complete, true);
+  assert.deepEqual(trip.differences, []);
+  assert.equal(trip.exact, false);
+  assert.ok(
+    trip.russianComparison.ranges.some(({ kind }) => kind === 'definiteness')
+  );
+  const definite = viaRussian(
+    translateSentence('I read the book.', new TranslationContext({ lexicon })),
+    lexicon,
+    { index }
+  );
+  assert.equal(definite.russian, trip.russian);
+  assert.deepEqual(definite.russianMeta, trip.russianMeta);
+  assert.equal(definite.english, trip.english);
+  assert.ok(definite.differences.some(({ kind }) => kind === 'definiteness'));
+
+  const differentRussian = viaRussian(
+    { ...translated, text: 'Я прочитала письмо.' },
+    lexicon,
+    { index }
+  );
+  assert.equal(differentRussian.english, 'I read a letter.');
+  assert.ok(
+    differentRussian.differences.some(({ kind }) => kind === 'concept')
+  );
+});
+
+test('full round-trip CLI reports exact and incomplete results and honors strict mode', () => {
+  const result = spawnSync(
+    process.execPath,
+    [
+      'formal-ai/bin/formal-ai.mjs',
+      'roundtrip',
+      '--via-russian',
+      '--offline',
+      '--strict',
+      '--json',
+      'Hello! I quux.',
+    ],
+    { encoding: 'utf8' }
+  );
+  assert.equal(result.status, 2, result.stderr);
+  const [hello, unknown] = JSON.parse(result.stdout);
+  assert.equal(hello.english, 'Hello!');
+  assert.equal(hello.exact, true);
+  assert.equal(unknown.complete, false);
+  assert.equal(unknown.exact, false);
+});
 
 test('Russian clauses round-trip exactly with complete independent parses', () => {
   for (const text of [

@@ -7,6 +7,7 @@
  *   formal-ai formalize "We sat on the bank."     show the meta-language links
  *   formal-ai parse-ru "Я читаю книгу."          analyse Russian; --roundtrip compares links
  *   formal-ai roundtrip "I read a book."          regenerate English + compare links
+ *   formal-ai roundtrip --via-russian "I read a book."  regenerate English from Russian
  *   formal-ai explain "We sat on the bank."       show sense choices + notes
  *   formal-ai serve [--port 8765]                 OpenAI/Anthropic-compatible
  *   formal-ai with claude|codex|agent "…"         run a coding agent on it
@@ -43,7 +44,9 @@ function parseArgs(argv) {
       const [key, inline] = a.slice(2).split('=');
       if (inline !== undefined) {
         args[key] = inline;
-      } else if (key === 'offline' || key === 'roundtrip') {
+      } else if (
+        ['offline', 'roundtrip', 'via-russian', 'strict', 'json'].includes(key)
+      ) {
         args[key] = true;
       } else if (argv[i + 1] && !argv[i + 1].startsWith('--')) {
         args[key] = argv[i + 1];
@@ -190,14 +193,51 @@ async function main() {
     }
     case 'roundtrip': {
       const text = await readInput(args);
-      await resolveForTranslation(text, options(args));
+      const settings = options(args);
+      await resolveForTranslation(text, settings);
+      const lexicon = loadLexicon();
+      if (args['via-russian']) {
+        const { viaRussian } =
+          await import('../src/russian/analyze/english-round-trip.mjs');
+        const { analyzerIndex } =
+          await import('../src/russian/analyze/index.mjs');
+        const translated = translateDocument(text, { ...settings, lexicon });
+        const index = analyzerIndex(lexicon);
+        const results = translated.sentences.map((sentence) =>
+          viaRussian(sentence, lexicon, {
+            ...settings,
+            index,
+            memory: {
+              methods: settings.methods,
+              explicitContext: args.context,
+            },
+          })
+        );
+        if (args.json) {
+          process.stdout.write(`${JSON.stringify(results, null, 2)}\n`);
+        } else {
+          for (const result of results) {
+            const status = !result.complete
+              ? 'Incomplete round trip.'
+              : result.exact
+                ? 'Exact meta links.'
+                : 'Meta links differ. Use --json for details.';
+            process.stdout.write(
+              `${result.source}\n${result.russian}\n${result.english ?? '(English unavailable)'}\n${status}\n`
+            );
+          }
+        }
+        if (args.strict && (!results.length || results.some((r) => !r.exact))) {
+          process.exitCode = 2;
+        }
+        return;
+      }
       const { englishRoundTrip } =
         await import('../src/english/round-trip.mjs');
-      const lexicon = loadLexicon();
       for (const sentence of splitSentences(text.replace(/\s+/g, ' '))) {
         const result = englishRoundTrip(sentence, lexicon, {
           memory: {
-            methods: options(args).methods,
+            methods: settings.methods,
             explicitContext: args.context,
           },
         });

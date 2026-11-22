@@ -14,10 +14,10 @@ try {
   const { loadLexicon } = await import('../src/lexicon.mjs');
   const { resolveText } = await import('../src/resolve.mjs');
   const { translateDocument } = await import('../src/document.mjs');
-  const { analyzeRussian, analyzerIndex, russianRoundTrip } =
+  const { analyzerIndex, russianRoundTrip } =
     await import('../src/russian/analyze/index.mjs');
-  const { compareRussianMeta } =
-    await import('../src/russian/analyze/compare.mjs');
+  const { viaRussian } =
+    await import('../src/russian/analyze/english-round-trip.mjs');
   const { naturalizeRussian } = await import('../src/russian/naturalize.mjs');
   const baselinePath = process.argv[process.argv.indexOf('--baseline') + 1];
   const baseline = process.argv.includes('--baseline')
@@ -28,7 +28,6 @@ try {
       )
     : null;
   const { pages } = await import('./sample.mjs');
-  const { fixtureFetch } = await import('./evaluate.mjs');
   const sources = JSON.parse(
     readFileSync(new URL('./fixture-sentences.json', import.meta.url), 'utf8')
   );
@@ -37,7 +36,6 @@ try {
   const lexicon = loadLexicon({ fresh: true });
   await resolveText(sentences.join('\n\n'), {
     lexicon,
-    fetchImpl: fixtureFetch(),
   });
   const index = analyzerIndex(lexicon);
   const counts = {};
@@ -49,6 +47,9 @@ try {
   let complete = 0;
   let ruExact = 0;
   let ruComplete = 0;
+  let returnComplete = 0;
+  let returnExact = 0;
+  let returnSameLinks = 0;
   const regression = { inputs: 0, sentences: 0, changed: [] };
   sentences.forEach((source, i) => {
     const translated = translateDocument(source, {
@@ -70,8 +71,9 @@ try {
       if (!s.formal || !s.complete) {
         continue;
       }
-      const parsed = analyzeRussian(s.text, lexicon, { index });
-      const comparison = compareRussianMeta(s.formal, parsed);
+      const cycle = viaRussian(s, lexicon, { index });
+      const parsed = cycle.russianMeta;
+      const comparison = cycle.russianComparison;
       const full = !parsed.unknown.length && !parsed.leftover.length;
       const trip = russianRoundTrip(s.text, lexicon, { index });
       exact += Number(comparison.exact && full);
@@ -79,9 +81,18 @@ try {
       complete += Number(full);
       ruExact += Number(trip.exact && trip.complete);
       ruComplete += Number(trip.complete);
+      returnComplete += Number(cycle.complete);
+      returnExact += Number(cycle.exact);
+      returnSameLinks += Number(cycle.complete && !cycle.differences.length);
       rows.push({
         english: s.source,
         russian: s.text,
+        regeneratedEnglish: cycle.english,
+        englishComparison: {
+          complete: cycle.complete,
+          differences: cycle.differences,
+          exact: cycle.exact,
+        },
         full,
         comparison,
         trip: { exact: trip.exact, complete: trip.complete },
@@ -118,6 +129,7 @@ try {
     `- Source links compatible with grammatical ranges, with a complete Russian parse: ${share(compatible)}.`,
     `- Complete Russian parses: ${share(complete)}.`,
     `- RU → meta → RU → meta, exact links and complete parses: ${share(ruExact)}; both parses complete: ${share(ruComplete)}.`,
+    `- EN → meta → RU → meta → EN → meta, all parses complete: ${share(returnComplete)}; matching English endpoint links: ${share(returnSameLinks)}; exact links at every stage: ${share(returnExact)}.`,
     ...(baseline
       ? [
           `- Generator regression check against the supplied baseline, on identical source meta: ${regression.inputs} seeded website inputs, ${regression.sentences} parsed sentences; ${regression.changed.length} changed Russian outputs. This also checks incomplete translations; no new vocabulary lookups are made for the sample.`,

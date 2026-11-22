@@ -37,6 +37,19 @@ node formal-ai/bin/formal-ai.mjs ground           # re-verify grounded-in ids
 
 `npm run formal-ai -- <command>` does the same.
 
+```sh
+formal-ai roundtrip --via-russian --json "I read a book."
+formal-ai roundtrip --via-russian --offline --strict "Hello!"
+formal-ai roundtrip --via-russian --strict --file notes.md
+```
+
+The round trip analyzes the Russian translation independently and generates English
+from the recovered links. JSON includes the Russian analysis, the links recovered
+from the generated English, and the differences at each step. `--strict` exits
+with status 2 if a sentence is incomplete or any meta links differ. Russian can
+leave English distinctions such as definiteness open, so the generated English
+can match the source text even when some links differ.
+
 Translation entry points first resolve vocabulary from Wiktionary/Wikidata
 (cached in `~/.cache/formal-ai`). Lookup progress and failures go to stderr;
 translation continues if a lookup fails. Add `--offline` to `translate`,
@@ -192,8 +205,8 @@ Known gaps:
 
 ### Recorded production data
 
-`node --test --test-timeout=60000 tests/formal-ai/production.test.mjs` checks
-70 fixed sentences against `fixtures/public-expected.json` using production
+`node --test tests/formal-ai/production.test.mjs` checks
+the fixed corpus against `fixtures/public-expected.json` using production
 `data/overrides`, recorded public API responses, offline mode and an empty
 temporary cache. The child process isolates the production lexicon from the
 hand vocabulary used by other tests. These snapshots preserve current output,

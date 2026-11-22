@@ -107,8 +107,9 @@ export class EnglishRenderer {
       table,
       (v) =>
         v.person === p.person &&
-        number(v.number) === p.number &&
-        gender(v.gender) === p.gender &&
+        (number(v.number) === p.number ||
+          (v.person === 2 && v.number === 'sg|pl')) &&
+        (v.person !== 3 || gender(v.gender) === p.gender) &&
         (role === 'possessive' ||
           (p.reflexive
             ? v.case === 'refl'
@@ -242,7 +243,18 @@ export class EnglishRenderer {
     if (!det && e.definiteness === 'definite') {
       det = 'the';
     }
-    if (!det && e.definiteness === 'indefinite' && e.quantity === undefined) {
+    const concept = this.lexicon.get(e.concept);
+    const bareCountNoun =
+      e.definiteness === 'definite indefinite' &&
+      e.number === 'singular' &&
+      !e.calendar &&
+      concept?.en?.some((entry) => entry.pos === 'noun') &&
+      !concept.labels?.includes('uncountable');
+    if (
+      !det &&
+      (e.definiteness === 'indefinite' || bareCountNoun) &&
+      e.quantity === undefined
+    ) {
       det =
         e.number === 'plural'
           ? 'some'
@@ -484,12 +496,13 @@ export class EnglishRenderer {
       chain = ['be', this.word(s.predicate, 'verb', 'participle')];
       aux = true;
     }
-    if (s.aspect?.includes('progressive')) {
+    const aspect = s.aspect?.startsWith('simple ') ? 'simple' : s.aspect;
+    if (aspect?.includes('progressive')) {
       chain[0] = chain[0] === 'be' ? 'being' : inflect(entry, 'ing');
       chain.unshift('be');
       aux = true;
     }
-    if (s.aspect?.includes('perfect')) {
+    if (aspect?.includes('perfect')) {
       chain[0] =
         chain[0] === 'be'
           ? 'been'
