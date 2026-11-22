@@ -288,7 +288,7 @@ export async function buildWebsite({
 if (
   process.argv[1] &&
   (await realpath(process.argv[1]).catch(() => null)) ===
-    fileURLToPath(import.meta.url)
+    (await realpath(fileURLToPath(import.meta.url)))
 ) {
   const root = fileURLToPath(new URL('../', import.meta.url));
   const lang =

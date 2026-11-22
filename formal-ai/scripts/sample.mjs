@@ -19,7 +19,7 @@
  */
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { splitSentences, translateDocument } from '../src/document.mjs';
 import { resolveText } from '../src/resolve.mjs';
@@ -79,8 +79,8 @@ export function pages() {
       text: prose(s).join('\n\n'),
     })),
     ...markdownFiles(join(ROOT, 'docs')).map((path) => ({
-      source: relative(ROOT, path),
-      text: readFileSync(path, 'utf8'),
+      source: relative(ROOT, path).split(sep).join('/'),
+      text: readFileSync(path, 'utf8').replace(/\r\n/g, '\n'),
     })),
   ].map((p) => ({ ...p, page: p.text }));
 }

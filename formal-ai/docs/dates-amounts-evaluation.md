@@ -206,7 +206,7 @@ After: Продавать ваши собственные используемы
 
 15. `docs/business-plans/public-data-scraping-service.md`
 
-EN: _Generated from `data/strategies/micro-tasks.json` by `npm run build:catalog`.
+EN: \_Generated from `data/strategies/micro-tasks.json` by `npm run build:catalog`.
 
 Before: Порождено из `data/strategies/micro-tasks.json` `npm run build:catalog`.
 
