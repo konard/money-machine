@@ -138,11 +138,36 @@ export function prepositional(tokens, start, ctx, entry = {}) {
         },
       ];
     })
-    .sort((a, b) => b.score - a.score);
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        Number(Boolean(a.requiresOn)) - Number(Boolean(b.requiresOn))
+    );
   if (!found.length) {
     return null;
   }
   const best = found[0];
+  const np = best.np;
+  // A case-syncretic tail can be a separate clause argument. Attach a
+  // genitive after a locative only when those argument parses fail.
+  if (best.case === 'prep' && np.readings.some((r) => r.pos === 'noun')) {
+    const dependent = nounPhrase(tokens, np.end, ctx, 'gen');
+    const argumentCases = ['nom', entry.government?.case || 'acc'];
+    if (entry.recipient) {
+      argumentCases.push(entry.recipient);
+    }
+    if (entry.experiencer || entry.datPredicate) {
+      argumentCases.push('dat');
+    }
+    if (
+      dependent?.readings.some((r) => r.pos === 'noun') &&
+      !argumentCases.some((kase) => nounPhrase(tokens, np.end, ctx, kase))
+    ) {
+      np.entity.of = dependent.entity;
+      np.consumed.push(...dependent.consumed);
+      np.end = dependent.end;
+    }
+  }
   const negation =
     tokens[start - 1]?.lower === 'не' && !ctx.used.has(tokens[start - 1])
       ? tokens[start - 1]

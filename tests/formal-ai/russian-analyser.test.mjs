@@ -132,6 +132,23 @@ test('Russian clauses round-trip exactly with complete independent parses', () =
   }
 });
 
+test('a genitive noun phrase modifies the preceding locative noun', () => {
+  const analysis = parse('Мы сидели на берегу новой реки.');
+  const statement = analysis.statements[0];
+  const [location] = statement.modifiers;
+  assert.deepEqual(analysis.leftover, []);
+  assert.equal(statement.objects, undefined);
+  assert.equal(location.relation, 'rel.on');
+  assert.ok(location.relationRange.includes('rel.in'));
+  assert.equal(location.entity.concept, 'bank.river');
+  assert.equal(location.entity.of.concept, 'river');
+  assert.equal(location.entity.of.properties[0].concept, 'new');
+
+  const ambiguous = parse('Я увидел в доме друга.').statements[0];
+  assert.equal(ambiguous.modifiers[0].entity.of, undefined);
+  assert.equal(ambiguous.objects[0].concept, 'friend');
+});
+
 test('articles are never inferred; only explicit words fix definiteness', () => {
   assert.equal(
     parse('Я читаю книгу.').statements[0].objects[0].definiteness,
