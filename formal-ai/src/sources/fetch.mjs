@@ -142,7 +142,8 @@ export async function getJson(
     return value;
   }
   // offline, only the network is out of reach: a stand-in fetch still runs
-  if (process.env.FORMAL_AI_OFFLINE && fetchImpl === globalThis.fetch) {
+  const offline = Boolean(process.env.FORMAL_AI_OFFLINE);
+  if (offline && fetchImpl === globalThis.fetch) {
     throw Object.assign(
       new Error(`offline: no recorded response for ${url} ${body}`.trim()),
       { fatal: true, offline: true }
@@ -151,7 +152,9 @@ export async function getJson(
   let lastError;
   for (let attempt = 0; attempt < 6; attempt += 1) {
     try {
-      await throttle(url);
+      if (!offline) {
+        await throttle(url);
+      }
       network.requests += 1;
       networkLog?.({ event: 'request', url, attempt, ...network });
       const response = await fetchImpl(url, {
