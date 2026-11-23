@@ -104,8 +104,7 @@ Object.assign(
 try {
   const { loadLexicon } = await import('../formal-ai/src/lexicon.mjs');
   const { resolveText } = await import('../formal-ai/src/resolve.mjs');
-  const { translateSentence, TranslationContext } =
-    await import('../formal-ai/src/translate.mjs');
+  const { translateDocument } = await import('../formal-ai/src/document.mjs');
   const { generateEnglish } =
     await import('../formal-ai/src/english/generate.mjs');
   const { analyzerIndex } =
@@ -137,24 +136,28 @@ try {
     const upstreamTrip = roundTrip(text, 'en', 'ru');
     totals.upstreamSentences += Number(upstreamTrip.survives);
     totals.upstreamTerms += upstreamTrip.survivingTerms;
-    const translated = translateSentence(
-      text,
-      new TranslationContext({ lexicon })
+    const translated = translateDocument(text, { lexicon });
+    const cycles = translated.sentences.map((sentence) =>
+      viaRussian(sentence, lexicon, { index })
     );
-    const local = viaRussian(translated, lexicon, { index });
-    const english =
-      local.english ||
-      (local.russianMeta?.statements.length &&
-        generateEnglish(local.russianMeta, lexicon));
+    const complete =
+      cycles.length > 0 && cycles.every((cycle) => cycle.complete);
+    const english = cycles
+      .map(
+        (cycle) =>
+          cycle.english ||
+          (cycle.russianMeta?.statements.length &&
+            generateEnglish(cycle.russianMeta, lexicon))
+      )
+      .filter(Boolean)
+      .join(' ');
     if (english) {
-      const scored = score(original, local.russian, english);
+      const scored = score(original, translated.text, english);
       totals.localSentences += Number(scored.survives);
       totals.localTerms += scored.terms;
-      totals.completeLocalSurvivors += Number(
-        local.complete && scored.survives
-      );
+      totals.completeLocalSurvivors += Number(complete && scored.survives);
     }
-    totals.completeLocalCycles += Number(local.complete);
+    totals.completeLocalCycles += Number(complete);
   }
   process.stdout.write(`${JSON.stringify(totals, null, 2)}\n`);
 } finally {
