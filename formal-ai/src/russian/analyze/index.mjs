@@ -3,7 +3,7 @@ import { tokenizeRussian } from './tokenizer.mjs';
 import { analyzerIndex, readings } from './morphology.mjs';
 import { parseClause } from './clause.mjs';
 import { CONJUNCTIONS } from '../words.mjs';
-import { has } from './phrase.mjs';
+import { has, nounPhrase } from './phrase.mjs';
 import { naturalizeRussian } from '../naturalize.mjs';
 import { compareMeta } from '../../english/round-trip.mjs';
 import { indexRussianNames } from '../read-back.mjs';
@@ -26,7 +26,7 @@ const zeroPredicate = (tokens) => {
     tokens.some(
       (t, i) =>
         i > subject &&
-        (has(t, (r) => r.pos === 'adj') ||
+        (has(t, (r) => r.pos === 'adj' || (r.owner && r.case === 'nom')) ||
           (t.text === '—' && i < tokens.length - 1))
     )
   );
@@ -75,6 +75,15 @@ function clauses(tokens, ctx, options = {}) {
       cuts.push({ at: i, separator: ';', length: 1 });
       continue;
     }
+    if (
+      tokens[i].text === ',' &&
+      tokens[i + 2]?.readings.some((r) => r.owner && r.case === 'nom') &&
+      zeroPredicate(tokens.slice(i + 1, i + 3)) &&
+      tokens.slice(0, i).some(finite)
+    ) {
+      cuts.push({ at: i, separator: ',', length: 1 });
+      continue;
+    }
     const match = conjunctions.find(([, v]) =>
       v.text.split(' ').every((w, j) => tokens[i + j]?.lower === w)
     );
@@ -91,11 +100,16 @@ function clauses(tokens, ctx, options = {}) {
       continue;
     }
     const rightVerb = tokens.findIndex((t, j) => j >= i + length && finite(t));
-    const hasSubject = tokens
-      .slice(i + length, rightVerb < 0 ? tokens.length : rightVerb)
-      .some((t) =>
+    const subjectPrefix = tokens.slice(
+      i + length,
+      rightVerb < 0 ? tokens.length : rightVerb
+    );
+    const hasSubject =
+      subjectPrefix.some((t) =>
         has(t, (r) => (r.pos === 'noun' || r.pronoun) && r.case === 'nom')
-      );
+      ) ||
+      (has(subjectPrefix[0], (r) => r.determiner) &&
+        nounPhrase(subjectPrefix, 0, ctx, 'nom', { coordination: false }));
     if (
       hasSubject ||
       finite(tokens[i + length]) ||
@@ -121,6 +135,20 @@ function clauses(tokens, ctx, options = {}) {
       }
       if (!separator && !s.subject && result.at(-1)?.subject) {
         s.subject = { ...result.at(-1).subject, implicit: true };
+      }
+      if (
+        s.type === 'statement' &&
+        cut.link === 'conj.which' &&
+        !s.objects?.length
+      ) {
+        const candidates = s.candidates?.filter((id) =>
+          ctx.lexicon.get(id)?.frames?.includes('that')
+        );
+        if (candidates?.length) {
+          [s.predicate] = candidates;
+          s.candidates = candidates;
+          cut.link = 'conj.that';
+        }
       }
       result.push(s);
     }

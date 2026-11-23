@@ -380,6 +380,95 @@ test('unknown input and empty parses cannot be complete round trips', () => {
   assert.ok(result.leftover.includes('абракадабрю'));
 });
 
+test('reads inflected compound nouns and their fixed words as one entity', () => {
+  const custom = new Lexicon();
+  custom.add({
+    id: 'fixture.exchange',
+    en: [],
+    classes: [],
+    ru: {
+      pos: 'noun',
+      lemma: 'быстрый обмен письмами',
+      gender: 'm',
+      compound: { adjectives: ['быстрый'], head: 'обмен', tail: 'письмами' },
+    },
+  });
+  const parsed = analyzeRussian('Без быстрого обмена письмами.', custom);
+  assert.deepEqual(parsed.leftover, []);
+  assert.equal(
+    parsed.statements[0].modifiers[0].entity.concept,
+    'fixture.exchange'
+  );
+  custom.add({
+    id: 'fixture.oversight',
+    en: [],
+    classes: [],
+    ru: {
+      pos: 'noun',
+      lemma: 'контроль за движением',
+      gender: 'm',
+      compound: { adjectives: [], head: 'контроль', tail: 'за движением' },
+    },
+  });
+  const fragment = analyzeRussian('Контроль за движением.', custom);
+  assert.deepEqual(fragment.leftover, []);
+  assert.equal(fragment.statements[0].entity.concept, 'fixture.oversight');
+});
+
+test('recovers a dictionary action noun as a verbal entity', () => {
+  const custom = new Lexicon();
+  custom.add({
+    id: 'fixture.check',
+    en: [],
+    classes: [],
+    ru: {
+      pos: 'verb',
+      lemma: 'проверять',
+      aspect: 'impf',
+      actionNoun: { pos: 'noun', lemma: 'проверка', gender: 'f' },
+    },
+  });
+  const parsed = analyzeRussian('Без проверки.', custom);
+  assert.deepEqual(parsed.leftover, []);
+  assert.equal(
+    parsed.statements[0].modifiers[0].entity.action.predicate,
+    'fixture.check'
+  );
+});
+
+test('uses an experiencer construction when the alternate infinitive verb is absent', () => {
+  const custom = new Lexicon();
+  custom.add({
+    id: 'fixture.like',
+    en: [],
+    classes: [],
+    ru: { pos: 'verb', lemma: 'нравиться', aspect: 'impf', experiencer: true },
+  });
+  custom.add({
+    id: 'fixture.read',
+    en: [],
+    classes: [],
+    ru: { pos: 'verb', lemma: 'читать', aspect: 'impf' },
+  });
+  const formal = {
+    punctuation: '.',
+    statements: [
+      {
+        type: 'statement',
+        frame: 'event',
+        tense: 'present',
+        predicate: 'fixture.like',
+        subject: {
+          pronoun: { person: 1, number: 'singular' },
+          number: 'singular',
+        },
+        complementClause: { predicate: 'fixture.read' },
+      },
+    ],
+  };
+  assert.equal(naturalizeRussian(formal, custom).text, 'Мне нравится читать.');
+});
+
 test('tokenizer preserves offsets, hyphenated indefinite words and ё normalization', () => {
   const tokens = tokenizeRussian('Её что-то?');
   assert.deepEqual(

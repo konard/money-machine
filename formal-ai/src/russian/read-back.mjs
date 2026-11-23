@@ -14,6 +14,7 @@
 import {
   CASES,
   nounParadigm,
+  declineNoun,
   verbForms,
   declineAdjective,
 } from './morphology.mjs';
@@ -79,7 +80,30 @@ const safe = (fn) => {
   }
 };
 
-function indexNoun(index, id, entry) {
+function indexNoun(index, id, entry, features = {}) {
+  if (entry.compound) {
+    for (const number of entry.pluraliaTantum ? ['pl'] : ['sg', 'pl']) {
+      for (const kase of CASES) {
+        const form = safe(() => declineNoun(entry, kase, number));
+        if (!form) {
+          continue;
+        }
+        const [head, ...fixed] = form.split(' ');
+        push(index, head, {
+          concept: id,
+          pos: 'noun',
+          number,
+          case: kase,
+          gender: number === 'pl' ? undefined : entry.gender,
+          fixed,
+        });
+        fixed.forEach((word) =>
+          push(index, word, { concept: id, pos: 'part' })
+        );
+      }
+    }
+    return;
+  }
   const cells = safe(() => nounParadigm(entry)) || {};
   if (entry.locative) {
     push(index, entry.locative, {
@@ -99,6 +123,7 @@ function indexNoun(index, id, entry) {
         number,
         case: kase,
         gender: number === 'pl' ? undefined : entry.gender,
+        ...features,
       });
     }
   }
@@ -256,6 +281,9 @@ export function russianFormIndex(lexicon) {
         indexAdjective(index, id, first);
       }
     } else if (ru.pos === 'verb') {
+      if (ru.actionNoun && !ru.actionNoun.tail) {
+        indexNoun(index, id, ru.actionNoun, { action: true });
+      }
       if (ru.datPredicate) {
         for (const gender of [...GENDERS, 'pl']) {
           const number = gender === 'pl' ? 'pl' : 'sg';

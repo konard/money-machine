@@ -98,6 +98,14 @@ export function prepositional(tokens, start, ctx, entry = {}) {
       priority: 1,
     },
     {
+      relation: 'rel.for',
+      preposition: RELATIONS['rel.on'].place[0],
+      case: 'acc',
+      requiresTime: true,
+      requiresQuantity: true,
+      priority: 1,
+    },
+    {
       relation: 'rel.in',
       preposition: RELATIONS['rel.on'].place[0],
       case: 'prep',
@@ -168,6 +176,9 @@ export function prepositional(tokens, start, ctx, entry = {}) {
       if (spec.requiresQuantity && np.entity.quantity === undefined) {
         return [];
       }
+      if (spec.requiresTime && !timeNounConcept(concept)) {
+        return [];
+      }
       const fit =
         (spec.variant === 'person' && person) ||
         (spec.variant === 'time' && classes.includes('time')) ||
@@ -185,6 +196,7 @@ export function prepositional(tokens, start, ctx, entry = {}) {
     .sort(
       (a, b) =>
         b.score - a.score ||
+        b.np.end - a.np.end ||
         Number(Boolean(a.requiresOn)) - Number(Boolean(b.requiresOn))
     );
   if (!found.length) {
@@ -192,6 +204,7 @@ export function prepositional(tokens, start, ctx, entry = {}) {
   }
   const best = found[0];
   const np = best.np;
+  const end = np.end;
   // A case-syncretic tail can be a separate clause argument. Attach a
   // genitive only when those argument parses fail.
   const argumentCases = ['nom', entry.government?.case || 'acc'];
@@ -209,7 +222,7 @@ export function prepositional(tokens, start, ctx, entry = {}) {
   const alternatives = [
     ...new Set(
       found
-        .filter((f) => f.score === best.score && !f.object)
+        .filter((f) => f.score === best.score && f.np.end === end && !f.object)
         .map((f) => f.relation)
     ),
   ];

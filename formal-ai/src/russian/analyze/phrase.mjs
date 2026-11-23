@@ -10,6 +10,12 @@ const unique = (values) => [...new Set(values)];
 const properName = (token, kase) =>
   /^\p{Lu}/u.test(token.text) &&
   token.readings.find((r) => r.name && (!r.case || r.case === kase));
+const matchingTail = (reading, tokens, start, ctx) =>
+  (reading.fixed || []).every(
+    (word, j) =>
+      tokens[start + j + 1]?.lower === lower(word) &&
+      !ctx.used.has(tokens[start + j + 1])
+  );
 
 export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
   let i = start;
@@ -46,9 +52,7 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
         ['adj', 'participle'].includes(r.pos) &&
         !r.short &&
         r.case === kase &&
-        (r.fixed || []).every(
-          (word, j) => tokens[i + j + 1]?.lower === lower(word)
-        )
+        matchingTail(r, tokens, i, ctx)
     );
     if (q) {
       quantity = q.quantity;
@@ -68,7 +72,10 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
     ) {
       owner = p.owner;
       i += 1;
-    } else if (adj.length && !has(t, (r) => r.pos === 'noun')) {
+    } else if (
+      adj.length &&
+      !has(t, (r) => r.pos === 'noun' && matchingTail(r, tokens, i, ctx))
+    ) {
       const ids = unique(adj.map((r) => r.concept).filter(Boolean));
       properties.push({
         concept: ids[0],
@@ -130,10 +137,17 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
           : 'gen'
         : kase;
   let rs = head.readings.filter(
-    (r) => content(r) && (!r.case || r.case === headCase)
+    (r) =>
+      content(r) &&
+      (!r.case || r.case === headCase) &&
+      matchingTail(r, tokens, i, ctx)
   );
   if (options.person && options.person !== 3) {
     rs = rs.filter((r) => r.pronoun && r.person === options.person);
+  }
+  const tailLength = Math.max(0, ...rs.map((r) => r.fixed?.length || 0));
+  if (tailLength) {
+    rs = rs.filter((r) => r.fixed?.length === tailLength);
   }
   if (options.number && quantity === undefined) {
     const agreed = rs.filter((r) => !r.number || r.number === options.number);
@@ -149,7 +163,8 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
   }
   let e;
   const name = properName(head, headCase);
-  const r = name && rs.includes(name) ? name : rs[0];
+  const r =
+    name && rs.includes(name) ? name : rs.find((x) => !x.action) || rs[0];
   if (r?.pos === 'relative') {
     e = {
       relativePronoun: true,
@@ -187,9 +202,19 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
       : r.pro === 'this'
         ? { demonstrative: 'this', number: 'singular' }
         : { concept: r.pro, number: 'singular' };
+  } else if (r?.action) {
+    e = {
+      action: {
+        predicate: r.concept,
+        candidates: unique(rs.map((x) => x.concept)),
+        objects: [],
+        modifiers: [],
+      },
+      number: numberName(r.number),
+    };
   } else if (r?.concept) {
     const ids = unique(
-      rs.filter((x) => x.pos === 'noun').map((x) => x.concept)
+      rs.filter((x) => x.pos === 'noun' && !x.action).map((x) => x.concept)
     );
     e = {
       concept: r.concept,
@@ -258,7 +283,7 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
   if (negative) {
     e.polarity = 'negative';
   }
-  i += 1;
+  i += 1 + tailLength;
   const consumed = tokens.slice(start, i);
   if (
     options.coordination !== false &&
@@ -300,7 +325,19 @@ export function attachGenitive(tokens, np, ctx, argumentCases) {
     ) {
       break;
     }
-    entity.of = dependent.entity;
+    if (entity.action) {
+      const government = ctx.lexicon.get(entity.action.predicate)?.ru
+        ?.government;
+      if (
+        government?.preposition ||
+        (government && !['gen', 'acc'].includes(government.case))
+      ) {
+        break;
+      }
+      entity.action.objects.push(dependent.entity);
+    } else {
+      entity.of = dependent.entity;
+    }
     np.consumed.push(...dependent.consumed);
     np.end = dependent.end;
     entity = dependent.entity;

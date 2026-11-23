@@ -233,22 +233,22 @@ export function parseClause(tokens, ctx, options = {}) {
   // are not nominative subjects. Possession is the special у + gen frame.
   const pps = [];
   const calendar = [];
-  const fixedAdjectives = new Set();
+  const fixedPhrases = new Set();
   tokens.forEach((t, i) => {
     const r = t.readings.find(
       (r) =>
-        ['adj', 'participle'].includes(r.pos) &&
+        ['adj', 'participle', 'noun'].includes(r.pos) &&
         r.fixed?.length &&
         r.fixed.every((w, j) => tokens[i + j + 1]?.lower === lower(w))
     );
     if (r) {
       tokens
         .slice(i, i + r.fixed.length + 1)
-        .forEach((token) => fixedAdjectives.add(token));
+        .forEach((token) => fixedPhrases.add(token));
     }
   });
   for (const { token, i } of unused(tokens, ctx)) {
-    if (ctx.used.has(token) || fixedAdjectives.has(token)) {
+    if (ctx.used.has(token) || fixedPhrases.has(token)) {
       continue;
     }
     const date = calendarModifier(tokens, i, ctx);
@@ -369,11 +369,18 @@ export function parseClause(tokens, ctx, options = {}) {
             )
           );
           if (objectState) {
+            s.candidates = s.candidates.filter((id) =>
+              statesObject([id], ctx.lexicon)
+            );
             const { kind: _kind, ...objectProperty } = value;
             objects.at(-1).state = objectProperty;
           } else {
+            s.candidates = s.candidates.filter((id) =>
+              linksAdjective([id], ctx.lexicon)
+            );
             s.complement = value;
           }
+          s.predicate = s.candidates[0];
           consume(ctx, [state.token]);
         }
       }
@@ -523,6 +530,9 @@ export function parseClause(tokens, ctx, options = {}) {
   }
   if (mods.length) {
     s.modifiers = mods;
+  }
+  if (!verb && copulaAt < 0 && !s.subject && !s.complement && mods.length) {
+    return { type: 'fragment', modifiers: mods };
   }
   if (!verb && copulaAt < 0 && s.subject && !s.complement && !mods.length) {
     return { type: 'fragment', entity: s.subject, modifiers: [] };

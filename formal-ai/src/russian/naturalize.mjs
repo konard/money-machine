@@ -494,8 +494,10 @@ function renderEvent(s, ctx) {
   if (entry.transitive && (s.objects || []).length) {
     entry = entry.transitive;
   }
-  if (entry.experiencer && s.complementClause) {
-    entry = lexEntry(ctx, 'love').ru;
+  const love =
+    entry.experiencer && s.complementClause && lexEntry(ctx, 'love')?.ru;
+  if (love?.pos === 'verb') {
+    entry = love;
     ctx.notes.add('"like to" + verb rendered with любить');
   }
   if (s.voice === 'passive' && s.subject?.determiner === 'det.no') {
@@ -565,11 +567,11 @@ function renderEvent(s, ctx) {
     words.push(...mods.after);
     return words.filter(Boolean).join(' ');
   }
-  if (entry.experiencer && objects.length) {
+  if (entry.experiencer && (objects.length || s.complementClause)) {
     subjectText =
       s.question?.slot === 'subject' ? '' : renderEntity(s.subject, 'dat', ctx);
     const theme = objects[0];
-    agreement = features(theme, ctx);
+    agreement = theme ? features(theme, ctx) : { number: 'sg', gender: 'n' };
     agreement.person = 3;
     words.push(subjectText);
     words.push(...mods.before);
@@ -578,7 +580,12 @@ function renderEvent(s, ctx) {
     }
     words.push(verbGroup(entry, s, agreement, ctx));
     // the theme is the Russian subject: её работа, not своя работа
-    words.push(renderEntity(theme, 'nom', { ...ctx, isSubject: true }));
+    if (theme) {
+      words.push(renderEntity(theme, 'nom', { ...ctx, isSubject: true }));
+    }
+    if (s.complementClause) {
+      words.push(...infinitiveClause(s.complementClause, s, ctx));
+    }
     objects = objects.slice(1);
     words.push(...renderObjects(objects, entry, ctx), ...mods.after);
     return words.filter(Boolean).join(' ');
