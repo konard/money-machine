@@ -1,0 +1,62 @@
+# Words whose public translation (Wiktionary/Wikidata) is accepted although
+# it differs from the reference vocabulary: a synonym as good, or a word
+# whose senses are told apart by context. scripts/overrides.mjs writes no
+# override for them.
+noun doctor
+noun letter
+noun loan
+noun card
+noun business
+noun file
+noun day
+noun plant
+noun story
+noun glass
+noun ball
+noun countryside
+noun cinema
+noun january
+noun february
+noun march
+noun april
+noun may
+noun june
+noun july
+noun august
+noun september
+noun october
+noun november
+noun december
+verb tell
+verb drive
+verb fly
+verb walk
+verb study
+verb learn
+verb call
+verb send
+verb get
+verb leave
+verb change
+verb arrive
+verb keep
+verb save
+adj pretty
+adj hot
+adj right
+adj glad
+adj russian
+adv home
+adv too
+adv still
+adv again
+adv much
+name Mary
+name Anna
+name Peter
+name England
+phrase hello
+phrase hi
+phrase bye
+phrase sorry
+phrase you are welcome

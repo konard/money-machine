@@ -1,0 +1,282 @@
+{
+  "date": "2026-11-04",
+  "method": "Isolated before/after source snapshots with identical non-task code and cached public responses. Sample harness pages/paragraphs/sentences, filtered to sentences containing \" to \", LCG shuffle seed 1104, first 30.",
+  "public_source": "https://en.wiktionary.org/wiki/Appendix:English_catenative_verbs",
+  "inventory_lemmas": 80,
+  "sample_summary": {
+    "sentences": 30,
+    "unchanged": 28,
+    "changed": 2,
+    "review": "Both changed sample outputs improve the construction; no observed regressions. Many pre-existing lexical and clause errors remain."
+  },
+  "remaining_problems": [
+    "need selects Russian нуждаться and keeps its inappropriate government even though its English infinitive is parsed correctly.",
+    "go to work is a prepositional phrase but its Russian goal/preposition still needs work.",
+    "listen to music retains an inappropriate Russian preposition.",
+    "Capitalized Sellers remains unresolved; join and scam translations and coordinated purpose punctuation remain imperfect.",
+    "Absence from the public catenative inventory is a fallback negative, not a proof that all senses reject infinitives."
+  ],
+  "requested_examples": [
+    {
+      "english": "What you need to start",
+      "before": "В чём вы нуждаетесь в начало",
+      "after": "В чём вы нуждаетесь начать"
+    },
+    {
+      "english": "I try to help.",
+      "before": "Я пытаюсь в помощь.",
+      "after": "Я пытаюсь помогать."
+    },
+    {
+      "english": "Pay to join and treat it as a scam.",
+      "before": "Платно соединить и отнеситесь к нему как афера.",
+      "after": "Платите, чтобы соединять и отнеситесь к нему как афера."
+    },
+    {
+      "english": "I am happy to help.",
+      "before": "Я счастлив в помощь.",
+      "after": "Я счастлив помогать."
+    },
+    {
+      "english": "We need to pay taxes.",
+      "before": "Мы нуждаемся заплатить налоги.",
+      "after": "Мы нуждаемся заплатить налоги."
+    },
+    {
+      "english": "They decided to sell the car.",
+      "before": "Они решили продать машину.",
+      "after": "Они решили продать машину."
+    },
+    {
+      "english": "I go to work.",
+      "before": "Я посещаю работать.",
+      "after": "Я иду в работу."
+    },
+    {
+      "english": "They listen to music.",
+      "before": "Они слушают в музыку.",
+      "after": "Они слушают в музыку."
+    },
+    {
+      "english": "Members pay to join.",
+      "before": "Члены окупаются вступить.",
+      "after": "Члены платят, чтобы вступать."
+    },
+    {
+      "english": "Sellers try to find buyers.",
+      "before": "Попытка Sellers [to find buyers].",
+      "after": "Попытка Sellers [to find buyers]."
+    }
+  ],
+  "website_sample": [
+    {
+      "english": "You build a library/tool businesses want to embed (PDF, charting, sync engine, CLI), release it under AGPL/GPL and offer a commercial license that removes copyleft obligations, sold with license keys.",
+      "before": "Вы строите предприятия библиотеки/инструмента, PDF, синхронизируйте двигатель, CLI, отпустите его под AGPL/GPL и предложите торговую лицензию, которая устраняет, ключи лицензии [want to embed charting copyleft obligations sold with].",
+      "after": "Вы строите предприятия библиотеки/инструмента, PDF, синхронизируйте двигатель, CLI, отпустите его под AGPL/GPL и предложите торговую лицензию, которая устраняет, ключи лицензии [want to embed charting copyleft obligations sold with].",
+      "source": "docs/business-plans/dual-license-open-source.md"
+    },
+    {
+      "english": "Median net at month 12 set to $40 to match the 12% profit likelihood (most new apps stay under $100/month).",
+      "before": "Медианный чистый месяц собаки, большинство новых приложений остаются менее $100 в месяц [12 set to $40 to match the 12% profit likelihood].",
+      "after": "Медианный чистый месяц собаки, большинство новых приложений остаются менее $100 в месяц [12 set to $40 to match the 12% profit likelihood].",
+      "source": "docs/business-plans/shopify-apps.md"
+    },
+    {
+      "english": "Withdraw to bank",
+      "before": "Снимайте в банк",
+      "after": "Снимайте в банк",
+      "source": "docs/business-plans/retail-audit-task-apps.md"
+    },
+    {
+      "english": "Anyone can join any Amazon store; direct deposit only to supported banks per store, otherwise gift card/check.",
+      "before": "Кто-нибудь может соединить магазин Amazon; режиссируйте депозит только в поддержанные банки за магазин, подарочный сертификат/чек.",
+      "after": "Кто-нибудь может соединить магазин Amazon; режиссируйте депозит только в поддержанные банки за магазин, подарочный сертификат/чек.",
+      "source": "docs/business-plans/amazon-associates-comparison-site.md"
+    },
+    {
+      "english": "Banks still pay to acquire primary-account customers, so offers persist, but only residents of a few countries (US, UK, CA, DE) with a payroll deposit can play.",
+      "before": "Банки успокаивают зарплаты, чтобы добывать клиентов с первичным счётом, поэтому банки предлагают, но единственные дипломатические представители нескольких стран (Нас, UK, Канада, DE) с расчётным листом вносят [persist can play].",
+      "after": "Банки успокаивают зарплаты, чтобы добывать клиентов с первичным счётом, поэтому банки предлагают, но единственные дипломатические представители нескольких стран (Нас, UK, Канада, DE) с расчётным листом вносят [persist can play].",
+      "source": "docs/business-plans/bank-account-signup-bonuses.md"
+    },
+    {
+      "english": "**Modularity**: Easy to add new strategies",
+      "before": "Модульность: добавьте стратегии вновь [Easy to]",
+      "after": "Модульность: добавьте стратегии вновь [Easy to]",
+      "source": "docs/architecture.md"
+    },
+    {
+      "english": "Both reward genuinely helpful, human contributions; automated or AI-spam posting violates rules and gets accounts banned, so automation is limited to research.",
+      "before": "Оба награждают, человеческие вклады или реклама AI-spam нарушает правила, и реклама AI-spam достаёт счета, запрещённые, поэтому автоматизация ограничена в исследование [genuinely helpful automated].",
+      "after": "Оба награждают, человеческие вклады или реклама AI-spam нарушает правила, и реклама AI-spam достаёт счета, запрещённые, поэтому автоматизация ограничена в исследование [genuinely helpful automated].",
+      "source": "docs/business-plans/community-contributor-programs.md"
+    },
+    {
+      "english": "No pricing; use the cheapest Artist tier only once plays justify it and route listeners to higher-value channels (Bandcamp, merch, live).",
+      "before": "Без оценки; польза, которую самый дешёвый единственный ребёнок Artist яруса выступает один раз, и слушатели маршрута в каналы с высокой длительностью (Bandcamp, товар, живые) [justify it].",
+      "after": "Без оценки; польза, которую самый дешёвый единственный ребёнок Artist яруса выступает один раз, и слушатели маршрута в каналы с высокой длительностью (Bandcamp, товар, живые) [justify it].",
+      "source": "docs/business-plans/soundcloud-audiomack-monetization.md"
+    },
+    {
+      "english": "Offer a discounted first lesson and 4-lesson package near $35-40, then move to $45-60 once you have reviews; bring existing students in to pay only 5%.",
+      "before": "Предлагайте, и 4, дайте урок пакету рядом с $35–40, тогда двиньте вам в $45–60 один раз; принесите существовать студентами [a discounted first lesson have reviews in to pay only 5%].",
+      "after": "Предлагайте, и 4, дайте урок пакету рядом с $35–40, тогда двиньте вам в $45–60 один раз; принесите существовать студентами [a discounted first lesson have reviews in to pay only 5%].",
+      "source": "docs/business-plans/lessonface-music-arts-lessons.md"
+    },
+    {
+      "english": "Month 3-6: clip highlights to Shorts/TikTok; first $50 payout",
+      "before": "Месяц 3–6: постригите основные моменты в Shorts/TikTok; первая передача [$50 payout]",
+      "after": "Месяц 3–6: постригите основные моменты в Shorts/TikTok; первая передача [$50 payout]",
+      "source": "docs/business-plans/live-streaming-twitch-kick.md"
+    },
+    {
+      "english": "Brazil (Programa de Afiliados Termos e Condições): balance paid monthly within 60 days of system approval; the minimum payout is set by Shopee from time to time and shown in the affiliate dashboard (no fixed amount published); companies must issue a Nota Fiscal.",
+      "before": "Brazil, Programa: оцените платный ежемесячник в пределах 60 дней из одобрения системы; минимальная выплата кладётся Shopee время от времени и примите приборную панель (никакое фиксированное количество, опубликованное,); компании должны принять Nota Fiscal [de Afiliados Termos e Condições shown in the].",
+      "after": "Brazil, Programa: оцените платный ежемесячник в пределах 60 дней из одобрения системы; минимальная выплата кладётся Shopee время от времени и примите приборную панель (никакое фиксированное количество, опубликованное,); компании должны принять Nota Fiscal [de Afiliados Termos e Condições shown in the].",
+      "source": "strategies.json#shopee-affiliate-sea-brazil"
+    },
+    {
+      "english": "Premium Seller memberships closed to new sign-ups on 1 October 2026.",
+      "before": "Членства страхового взноса Seller закрыли [to new sign-ups on 1 October 2026].",
+      "after": "Членства страхового взноса Seller закрыли [to new sign-ups on 1 October 2026].",
+      "source": "strategies.json#teachers-pay-teachers"
+    },
+    {
+      "english": "Companies pay crowdtesting vendors to test releases on many real devices.",
+      "before": "Компании платят [crowdtesting vendors to test releases on many real devices].",
+      "after": "Компании платят [crowdtesting vendors to test releases on many real devices].",
+      "source": "docs/business-plans/crowdtesting-bug-hunts.md"
+    },
+    {
+      "english": "Repeat non-disclosure can lead to removal or YPP suspension.",
+      "before": "Свинец в золотое приостановление удаления YPP [Repeat non-disclosure can].",
+      "after": "Свинец в золотое приостановление удаления YPP [Repeat non-disclosure can].",
+      "source": "docs/research/platform-rules.md"
+    },
+    {
+      "english": "**Time to first dollar**: 1-3 months",
+      "before": "Сезон в первый доллар: 1–3 месяцев",
+      "after": "Сезон в первый доллар: 1–3 месяцев",
+      "source": "docs/research/zero-capital-strategies.md"
+    },
+    {
+      "english": "Official help ('Redeem rewards'): credit is applied to your Google payment profile, spent in the Play Store, and each credit expires one year after it is earned, so Android rewards never reach a bank.",
+      "before": "Официальная помощь, награды Redeem: кредит прикладной в ваш профиль Google платы, кредит тратил в Play Store, и каждый кредит истекает один год, после того как он заработан, поэтому награды Android никогда не доходят банк [' '].",
+      "after": "Официальная помощь, награды Redeem: кредит прикладной в ваш профиль Google платы, кредит тратил в Play Store, и каждый кредит истекает один год, после того как он заработан, поэтому награды Android никогда не доходят банк [' '].",
+      "source": "strategies.json#google-opinion-rewards"
+    },
+    {
+      "english": "Months include ramp-up to the first order.",
+      "before": "Месяцы включают [ramp-up to the first order].",
+      "after": "Месяцы включают [ramp-up to the first order].",
+      "source": "docs/business-plans/ai-automation-agency.md"
+    },
+    {
+      "english": "Weekly payout to Wise/PayPal -> bank",
+      "before": "Еженедельная выплата в Wise/PayPal, банк",
+      "after": "Еженедельная выплата в Wise/PayPal, банк",
+      "source": "strategies.json#rent-gpu-vast-ai"
+    },
+    {
+      "english": "Publish a concrete budget (e.g. $500/month = 2 days of maintenance) and offer company tiers with logo placement; switch to paid support or license keys on Polar once demand is proven.",
+      "before": "Опубликуйте бетонный бюджет (e.g, $500, 2 дня из содержания) и предложите ярусы компании с размещением логотипа; поменяйтесь ключи в платную золотую лицензию поддержки на Polar один раз [demand is proven].",
+      "after": "Опубликуйте бетонный бюджет (e.g, $500, 2 дня из содержания) и предложите ярусы компании с размещением логотипа; поменяйтесь ключи в платную золотую лицензию поддержки на Polar один раз [demand is proven].",
+      "source": "docs/business-plans/oss-funding-opencollective-polar-thanksdev.md"
+    },
+    {
+      "english": "Apply to network or build Upwork profile",
+      "before": "Применяйтесь в золотой профиль сети сборки Upwork",
+      "after": "Обращайтесь к золотому профилю сети сборки Upwork",
+      "source": "docs/business-plans/virtual-assistant-bookkeeping.md"
+    },
+    {
+      "english": "Convert to retainer",
+      "before": "Новообращённый к слуге",
+      "after": "Новообращённый к слуге",
+      "source": "docs/business-plans/newsletter-social-content-retainer.md"
+    },
+    {
+      "english": "Unconfirmed: the method BountyJobs uses to pay agencies and whether it deducts any share of the Bounty Award (neither the recruiter FAQ nor the terms state it).",
+      "before": "Неподтверждённый: BountyJobs имеет обыкновение заплатить действия, удерживает ли оно долю Bounty Award, FAQ [nor the terms state it].",
+      "after": "Неподтверждённый: BountyJobs употребляет, чтобы платить действия, удерживает ли оно долю Bounty Award, FAQ [nor the terms state it].",
+      "source": "docs/business-plans/split-fee-recruiting-marketplaces.md"
+    },
+    {
+      "english": "Group 2 covers services to individuals and single-tax payers only.",
+      "before": "Группа, которую 2 укрытия обслуживает в индивидуумов и плательщиков с одинарным налогом но.",
+      "after": "Группа, которую 2 укрытия обслуживает в индивидуумов и плательщиков с одинарным налогом но.",
+      "source": "docs/legal/incorporation-costs.md"
+    },
+    {
+      "english": "Services supplied to foreign businesses are generally zero-rated or outside the scope of VAT.",
+      "before": "Обслуживающие программы, поставленные к иностранным предприятиям, вообще или обслуживающие программы, поставленные к иностранным предприятиям, отлучают масштаб НДС [zero-rated].",
+      "after": "Обслуживающие программы, поставленные к иностранным предприятиям, вообще или обслуживающие программы, поставленные к иностранным предприятиям, отлучают масштаб НДС [zero-rated].",
+      "source": "docs/legal/incorporation-costs.md"
+    },
+    {
+      "english": "Short paid surveys and sponsored search results paid to PayPal with no minimum balance, so the first cent is withdrawable the same day.",
+      "before": "Закорачивайте платные топографические съёмки и спонсированные гиперссылки, заплаченные в PayPal с никаким минимальным балансом, поэтому первое столетие [withdrawable the same day].",
+      "after": "Закорачивайте платные топографические съёмки и спонсированные гиперссылки, заплаченные в PayPal с никаким минимальным балансом, поэтому первое столетие [withdrawable the same day].",
+      "source": "strategies.json#qmee-surveys-no-minimum-cashout"
+    },
+    {
+      "english": "Indonesia (official affiliate help, read in a browser Nov 2026): commission is paid weekly by ShopeePay and bank transfer to the registered account; daily reports issued Mon-Wed are paid on Wednesday of the following week and Thu-Sun reports on Friday of the following week; no minimum is stated; a valid bank account and NPWP are required.",
+      "before": "Индонезия, официальное лицо, прочитайте 2026 в Nov: комиссия платится раз в неделю ShopeePay и денежным переводом в зарегистрированный счёт; ежедневные репортажи, выделенные, платные в среду следующей недели, и с четверга по воскресенье сообщает в пятницу следующей недели; минимум не утверждается; действительный банковский счёт, и идентификационный номер налогоплательщика необходим [affiliate help].",
+      "after": "Индонезия, официальное лицо, прочитайте 2026 в Nov: комиссия платится раз в неделю ShopeePay и денежным переводом в зарегистрированный счёт; ежедневные репортажи, выделенные, платные в среду следующей недели, и с четверга по воскресенье сообщает в пятницу следующей недели; минимум не утверждается; действительный банковский счёт, и идентификационный номер налогоплательщика необходим [affiliate help].",
+      "source": "docs/business-plans/shopee-affiliate-sea-brazil.md"
+    },
+    {
+      "english": "This is recovery of money already owed, not income, and nothing may be owed to you.",
+      "before": "Это оживление наличных уже, а не доход, и ничего может быться должным вам [owed].",
+      "after": "Это оживление наличных уже, а не доход, и ничего может быться должным вам [owed].",
+      "source": "docs/business-plans/recover-money-you-are-owed.md"
+    },
+    {
+      "english": "bonus credited to the new bank account",
+      "before": "Премия, зачисленная в новый банковский счёт",
+      "after": "Премия, зачисленная в новый банковский счёт",
+      "source": "docs/business-plans/bank-account-signup-bonuses.md"
+    },
+    {
+      "english": "No pricing control; route clicks to higher-commission merchants (LTK, Awin home brands) instead of Amazon once traffic exists.",
+      "before": "Без власти оценки; щёлканья маршрута к торговцам с высокой комиссией (LTK, жилые марки Awin) Amazon заключают сделку один раз [exists].",
+      "after": "Без власти оценки; щёлканья маршрута к торговцам с высокой комиссией (LTK, жилые марки Awin) Amazon заключают сделку один раз [exists].",
+      "source": "docs/business-plans/pinterest-affiliate-pinning.md"
+    },
+    {
+      "english": "Month 3-6: scale to 1,000+ assets with an agent pipeline; $10-$40/month",
+      "before": "Месяц 3–6: масштабируйте в 1000, активы с трубопроводом агента; $10–$40 в месяц",
+      "after": "Месяц 3–6: масштабируйте в 1000, активы с трубопроводом агента; $10–$40 в месяц",
+      "source": "docs/business-plans/ai-stock-imagery-adobe-freepik.md"
+    }
+  ],
+  "files": {
+    "sources": [
+      "formal-ai/src/sources/infinitive-frames.mjs",
+      "formal-ai/src/sources/verb-frames.mjs",
+      "formal-ai/src/sources/compact.mjs",
+      "formal-ai/src/sources/sense-data.mjs",
+      "formal-ai/src/resolve.mjs"
+    ],
+    "grammar": [
+      "formal-ai/src/english/infinitive.mjs",
+      "formal-ai/src/english/clause.mjs",
+      "formal-ai/src/english/parser.mjs",
+      "formal-ai/src/english/imperative-start.mjs",
+      "formal-ai/src/senses.mjs"
+    ],
+    "tests": [
+      "tests/formal-ai/infinitive-frames.test.mjs",
+      "tests/formal-ai/fixtures/public-expected.json",
+      "tests/formal-ai/fixtures/public/ (raw API responses and regenerated dictionary compaction)"
+    ]
+  },
+  "validation": {
+    "full_tests": "node --test --test-timeout=60000 tests/: 380 passed, 0 failed",
+    "lint": "npx eslint formal-ai tests: passed",
+    "format": "npx prettier --write on task files: passed",
+    "file_size": "npm run check:file-size: passed",
+    "public_replay": "76 cached-live/offline translations identical with an empty replay cache",
+    "commit": "No commit made by this task."
+  }
+}

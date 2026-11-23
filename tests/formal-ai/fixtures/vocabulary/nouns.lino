@@ -1,0 +1,1300 @@
+# Noun concepts: one concept per meaning, grounded in Wikidata where the
+# grounding was checked (`npm run formal-ai -- ground` fills and verifies it).
+#
+#   concept <id>              one link per exact meaning
+#     gloss "<definition>"    what separates it from its neighbours
+#     class <classes>         semantic classes used for sense selection
+#     en noun <lemma> [plural]
+#     ru noun <lemma> <m|f|n> [anim] [end] [plt] [indecl] [pl:a|pl:ja]
+#        [stem:<stem>] [loc:<locative-2>] [at:на] [when:<instrumental>]
+#     form <slot> <surface>   explicit paradigm cell, e.g. `form pl.gen людей`
+#     cues <words>            nearby words that point to this meaning
+
+concept person
+  gloss "human being"
+  class person
+  en noun person people
+  ru noun человек m anim
+  form pl.nom люди
+  form pl.gen людей
+  form pl.dat людям
+  form pl.ins людьми
+  form pl.prep людях
+
+concept man
+  grounded-in Q8441
+  gloss "adult male human"
+  class person
+  en noun man men
+  ru noun мужчина m anim
+
+concept woman
+  grounded-in Q467
+  gloss "adult female human"
+  class person
+  en noun woman women
+  ru noun женщина f anim
+
+concept child
+  grounded-in Q7569
+  gloss "young human"
+  class person
+  en noun child children
+  ru noun ребёнок m anim stem:ребёнк
+  form pl.nom дети
+  form pl.gen детей
+  form pl.dat детям
+  form pl.ins детьми
+  form pl.prep детях
+
+concept boy
+  grounded-in Q3010
+  class person
+  en noun boy
+  ru noun мальчик m anim
+
+concept girl
+  grounded-in Q3031
+  class person
+  en noun girl
+  ru noun девочка f anim
+
+concept friend
+  grounded-in Q17297777
+  class person
+  en noun friend
+  ru noun друг m anim
+  form pl.nom друзья
+  form pl.gen друзей
+  form pl.dat друзьям
+  form pl.ins друзьями
+  form pl.prep друзьях
+
+concept mother
+  grounded-in Q7560
+  class person family
+  en noun mother
+  ru noun мать f anim
+  form sg.gen матери
+  form sg.dat матери
+  form sg.ins матерью
+  form sg.prep матери
+  form pl.nom матери
+  form pl.gen матерей
+  form pl.dat матерям
+  form pl.ins матерями
+  form pl.prep матерях
+
+concept mom
+  class person family
+  en noun mom
+  en noun mum
+  ru noun мама f anim
+
+concept father
+  grounded-in Q7565
+  class person family
+  en noun father
+  ru noun отец m anim stem:отц end
+
+concept dad
+  class person family
+  en noun dad
+  ru noun папа m anim
+
+concept brother
+  grounded-in Q10861465
+  class person family
+  en noun brother
+  ru noun брат m anim pl:ja
+
+concept sister
+  grounded-in Q595094
+  class person family
+  en noun sister
+  ru noun сестра f anim
+  form pl.nom сёстры
+  form pl.gen сестёр
+  form pl.dat сёстрам
+  form pl.ins сёстрами
+  form pl.prep сёстрах
+
+concept family
+  grounded-in Q8436
+  class group family
+  en noun family
+  ru noun семья f
+  form pl.gen семей
+
+concept teacher
+  grounded-in Q37226
+  class person profession
+  en noun teacher
+  ru noun учитель m anim pl:a
+
+concept student
+  grounded-in Q315247
+  class person
+  en noun student
+  ru noun студент m anim
+
+concept doctor
+  grounded-in Q39631
+  class person profession
+  en noun doctor
+  ru noun врач m anim end
+
+concept manager
+  grounded-in Q2462658
+  class person profession
+  en noun manager
+  ru noun менеджер m anim
+
+concept name
+  en noun name
+  ru noun имя n
+
+concept dog
+  grounded-in Q144
+  class animal
+  en noun dog
+  ru noun собака f anim
+
+concept cat
+  grounded-in Q146
+  class animal
+  en noun cat
+  ru noun кошка f anim
+
+concept bird
+  grounded-in Q5113
+  class animal
+  en noun bird
+  ru noun птица f anim
+
+concept fish
+  grounded-in Q152
+  class animal food
+  en noun fish fish
+  ru noun рыба f anim
+
+concept horse
+  class animal
+  en noun horse
+  ru noun лошадь f anim
+  form pl.ins лошадьми
+
+concept mouse.animal
+  grounded-in Q2751034
+  gloss "small rodent"
+  class animal
+  en noun mouse mice
+  ru noun мышь f anim
+  form pl.ins мышами
+  cues cat cheese hole rodent tail field grey small
+
+concept mouse.device
+  gloss "computer pointing device"
+  class device
+  en noun mouse mice
+  ru noun мышь f
+  form pl.ins мышами
+  cues computer click button keyboard screen cursor wireless laptop usb
+
+concept house
+  grounded-in Q3947
+  class building place
+  en noun house
+  ru noun дом m pl:a
+
+concept home
+  gloss "the place where one lives"
+  class place
+  en noun home
+  ru noun дом m pl:a
+
+concept city
+  grounded-in Q515
+  class place settlement
+  en noun city cities
+  ru noun город m pl:a
+
+concept town
+  class place settlement
+  en noun town
+  ru noun город m pl:a
+
+concept village
+  class place settlement
+  en noun village
+  ru noun деревня f
+  form pl.gen деревень
+
+concept country
+  grounded-in Q6256
+  class place
+  en noun country countries
+  ru noun страна f
+
+concept street
+  grounded-in Q79007
+  class place
+  en noun street
+  ru noun улица f at:на
+
+concept school
+  grounded-in Q3914
+  class place building
+  en noun school
+  ru noun школа f
+
+concept university
+  grounded-in Q3918
+  class place building
+  en noun university universities
+  ru noun университет m
+
+concept office
+  grounded-in Q182060
+  class place building
+  en noun office
+  ru noun офис m
+
+concept work
+  wikidata-exclude Q42213 # physics: energy transferred by a force
+  gloss "a job or workplace"
+  class place activity
+  en noun work
+  en noun job
+  ru noun работа f at:на
+
+concept shop
+  grounded-in Q213441
+  class place building
+  en noun shop
+  en noun store
+  ru noun магазин m
+
+concept park
+  grounded-in Q22698
+  class place
+  en noun park
+  ru noun парк m
+
+concept garden
+  grounded-in Q1107656
+  class place
+  en noun garden
+  ru noun сад m loc:саду
+
+concept room
+  grounded-in Q180516
+  class place
+  en noun room
+  ru noun комната f
+
+concept kitchen
+  grounded-in Q43164
+  class place
+  en noun kitchen
+  ru noun кухня f at:на
+  form pl.gen кухонь
+
+concept window
+  class object
+  en noun window
+  ru noun окно n
+
+concept door
+  grounded-in Q36794
+  class object
+  en noun door
+  ru noun дверь f
+
+concept table.furniture
+  grounded-in Q14748
+  gloss "piece of furniture with a flat top"
+  class furniture object
+  en noun table
+  ru noun стол m end
+  cues chair kitchen sit dinner lunch eat plate cup wooden lamp put restaurant
+
+concept table.data
+  grounded-in Q278425
+  gloss "data arranged in rows and columns"
+  class document
+  en noun table
+  ru noun таблица f
+  cues data row column rows columns cell spreadsheet database figure report numbers sql
+
+concept chair
+  grounded-in Q15026
+  class furniture object
+  en noun chair
+  ru noun стул m pl:ja
+
+concept bed
+  grounded-in Q42177
+  class furniture object
+  en noun bed
+  ru noun кровать f
+
+concept car
+  class vehicle
+  en noun car
+  ru noun машина f
+
+concept bus
+  grounded-in Q5638
+  class vehicle
+  en noun bus buses
+  ru noun автобус m
+
+concept train
+  class vehicle
+  en noun train
+  ru noun поезд m pl:a
+
+concept plane
+  grounded-in Q197
+  class vehicle
+  en noun plane
+  ru noun самолёт m
+
+concept road
+  grounded-in Q34442
+  class place
+  en noun road
+  ru noun дорога f
+
+concept river
+  grounded-in Q4022
+  class place nature water
+  en noun river
+  ru noun река f
+  form sg.acc реку
+
+concept lake
+  class place nature water
+  en noun lake
+  ru noun озеро n
+  form pl.nom озёра
+  form pl.gen озёр
+  form pl.dat озёрам
+  form pl.ins озёрами
+  form pl.prep озёрах
+
+concept sea
+  grounded-in Q165
+  class place nature water
+  en noun sea
+  ru noun море n
+
+concept water
+  grounded-in Q283
+  class substance drink
+  en noun water
+  ru noun вода f
+  form sg.acc воду
+
+concept food
+  class food
+  en noun food
+  ru noun еда f
+
+concept bread
+  grounded-in Q7802
+  class food
+  en noun bread
+  ru noun хлеб m
+
+concept milk
+  grounded-in Q8495
+  class food drink
+  en noun milk
+  ru noun молоко n
+
+concept tea
+  grounded-in Q6097
+  class drink
+  en noun tea
+  ru noun чай m
+
+concept coffee
+  class drink
+  en noun coffee
+  ru noun кофе m indecl
+
+concept apple
+  grounded-in Q89
+  class food fruit
+  en noun apple
+  ru noun яблоко n
+  form pl.nom яблоки
+  form pl.gen яблок
+  form pl.dat яблокам
+  form pl.ins яблоками
+  form pl.prep яблоках
+
+concept book.text
+  grounded-in Q571
+  gloss "written work bound as a volume"
+  class document object
+  en noun book
+  ru noun книга f
+  cues read write author page pages library chapter novel story writer shelf
+
+concept letter.message
+  grounded-in Q133492
+  gloss "written message sent to someone"
+  class document
+  en noun letter
+  ru noun письмо n
+  form pl.gen писем
+  cues send sent write wrote mail post envelope receive received reply dear
+
+concept letter.character
+  gloss "character of an alphabet"
+  class symbol
+  en noun letter
+  ru noun буква f
+  cues alphabet word capital spell spelling vowel consonant first last english russian
+
+concept word
+  grounded-in Q8171
+  class symbol
+  en noun word
+  ru noun слово n
+
+concept language
+  grounded-in Q34770
+  class abstract
+  en noun language
+  ru noun язык m end
+
+concept text
+  grounded-in Q234460
+  class document
+  en noun text
+  ru noun текст m
+
+concept sentence
+  grounded-in Q41796
+  class document
+  en noun sentence
+  ru noun предложение n
+
+concept question
+  grounded-in Q189756
+  class abstract
+  en noun question
+  ru noun вопрос m
+
+concept answer
+  grounded-in Q1920566
+  class abstract
+  en noun answer
+  ru noun ответ m
+
+concept money
+  grounded-in Q1368
+  class finance
+  en noun money money
+  ru noun деньги f plt
+  form pl.nom деньги
+  form pl.gen денег
+  form pl.dat деньгам
+  form pl.acc деньги
+  form pl.ins деньгами
+  form pl.prep деньгах
+
+concept bank.finance
+  grounded-in Q22687
+  gloss "financial institution that accepts deposits"
+  class organization place finance
+  en noun bank
+  ru noun банк m
+  cues money account loan deposit cash credit interest pay salary card branch withdraw manager mortgage
+
+concept bank.river
+  grounded-in Q468756
+  gloss "sloping land beside a body of water"
+  class place nature
+  en noun bank
+  ru noun берег m pl:a loc:берегу at:на
+  cues river lake stream water fish fishing swim boat grass sat grassy muddy flowers
+
+concept account.bank
+  gloss "record of money held at a bank"
+  class finance
+  en noun account
+  ru noun счёт m pl:a stem:счёт
+  form sg.gen счёта
+  form sg.dat счёту
+  form sg.ins счётом
+  form sg.prep счёте
+  form pl.nom счета
+  form pl.gen счетов
+  form pl.dat счетам
+  form pl.ins счетами
+  form pl.prep счетах
+  cues bank money deposit balance open opened transfer savings
+
+concept loan
+  class finance
+  en noun loan
+  ru noun кредит m
+
+concept card
+  class finance object
+  en noun card
+  ru noun карта f
+
+concept price
+  grounded-in Q160151
+  class finance
+  en noun price
+  ru noun цена f
+  form sg.acc цену
+
+concept company
+  grounded-in Q783794
+  class organization
+  en noun company companies
+  ru noun компания f
+  cues business employees work market clients products
+
+concept business
+  grounded-in Q4830453
+  class organization activity
+  en noun business
+  ru noun бизнес m
+
+concept project
+  grounded-in Q170584
+  class activity
+  en noun project
+  ru noun проект m
+
+concept team
+  grounded-in Q327245
+  class group
+  en noun team
+  ru noun команда f
+
+concept computer
+  grounded-in Q68
+  class device
+  en noun computer
+  ru noun компьютер m
+
+concept phone
+  grounded-in Q11035
+  class device
+  en noun phone
+  en noun telephone
+  ru noun телефон m
+
+concept key.lock
+  grounded-in Q132041
+  gloss "device that opens a lock"
+  class object
+  en noun key
+  ru noun ключ m end
+  cues door lock open opened car house pocket lost keys
+
+concept key.keyboard
+  gloss "button on a keyboard"
+  class device
+  en noun key
+  ru noun клавиша f
+  cues keyboard press pressed type enter shift computer escape
+
+concept program
+  class software
+  en noun program
+  en noun programme
+  ru noun программа f
+
+concept file
+  grounded-in Q82753
+  class software document
+  en noun file
+  ru noun файл m
+
+concept music
+  grounded-in Q638
+  class art
+  en noun music
+  ru noun музыка f
+
+concept game
+  grounded-in Q11410
+  class game
+  en noun game
+  ru noun игра f end
+
+concept football
+  grounded-in Q2736
+  class game sport
+  en noun football
+  en noun soccer
+  ru noun футбол m
+
+concept tennis
+  grounded-in Q847
+  class game sport
+  en noun tennis
+  ru noun теннис m
+
+concept chess
+  grounded-in Q718
+  class game
+  en noun chess
+  ru noun шахматы m plt
+  form pl.nom шахматы
+  form pl.gen шахмат
+  form pl.dat шахматам
+  form pl.acc шахматы
+  form pl.ins шахматами
+  form pl.prep шахматах
+
+concept guitar
+  grounded-in Q6607
+  class instrument
+  en noun guitar
+  ru noun гитара f
+
+concept piano
+  class instrument
+  en noun piano
+  ru noun пианино n indecl
+
+concept violin
+  grounded-in Q8355
+  class instrument
+  en noun violin
+  ru noun скрипка f
+
+concept film
+  grounded-in Q11424
+  class art
+  en noun film
+  en noun movie
+  ru noun фильм m
+
+concept picture
+  class art object
+  en noun picture
+  en noun painting
+  ru noun картина f
+
+concept time
+  grounded-in Q11471
+  class time abstract
+  en noun time
+  ru noun время n
+
+concept day
+  grounded-in Q52643
+  class time
+  en noun day
+  ru noun день m stem:дн end when:днём
+
+concept night
+  grounded-in Q575
+  class time
+  en noun night
+  ru noun ночь f when:ночью
+
+concept morning
+  class time
+  en noun morning
+  ru noun утро n when:утром
+
+concept evening
+  grounded-in Q7725
+  class time
+  en noun evening
+  ru noun вечер m pl:a when:вечером
+
+concept week
+  grounded-in Q23387
+  class time
+  en noun week
+  ru noun неделя f at:на
+
+concept month
+  grounded-in Q5151
+  class time
+  en noun month
+  ru noun месяц m
+
+concept year
+  class time
+  en noun year
+  ru noun год m loc:году
+  form pl.gen лет
+
+concept hour
+  grounded-in Q25235
+  class time
+  en noun hour
+  ru noun час m loc:часу end
+
+concept minute
+  grounded-in Q7727
+  class time
+  en noun minute
+  ru noun минута f
+
+concept summer
+  grounded-in Q1313
+  class time season
+  en noun summer
+  ru noun лето n when:летом
+
+concept winter
+  class time season
+  en noun winter
+  ru noun зима f when:зимой
+  form sg.acc зиму
+
+concept spring.season
+  gloss "season between winter and summer"
+  class time season
+  en noun spring
+  ru noun весна f when:весной
+  cues summer winter autumn flowers warm season april march may last next every
+
+concept spring.water
+  grounded-in Q124714
+  gloss "natural source of water"
+  class place nature water
+  en noun spring
+  ru noun родник m end
+  cues water drink mountain cold fresh hot forest flows
+
+concept autumn
+  class time season
+  en noun autumn
+  ru noun осень f when:осенью
+
+concept weather
+  grounded-in Q11663
+  class nature
+  en noun weather
+  ru noun погода f
+
+concept rain
+  grounded-in Q7925
+  class nature
+  en noun rain
+  ru noun дождь m end
+
+concept sun
+  class nature
+  en noun sun
+  ru noun солнце n
+
+concept tree
+  grounded-in Q10884
+  class plant nature
+  en noun tree
+  ru noun дерево n
+  form pl.nom деревья
+  form pl.gen деревьев
+  form pl.dat деревьям
+  form pl.ins деревьями
+  form pl.prep деревьях
+
+concept flower
+  grounded-in Q506
+  class plant
+  en noun flower
+  ru noun цветок m stem:цветк end
+  form pl.nom цветы
+  form pl.gen цветов
+  form pl.dat цветам
+  form pl.ins цветами
+  form pl.prep цветах
+
+concept plant.organism
+  grounded-in Q756
+  gloss "living organism such as a tree or flower"
+  class plant nature
+  en noun plant
+  ru noun растение n
+  cues water grow grows green leaves garden flower pot sun watered soil
+
+concept plant.factory
+  gloss "industrial facility"
+  class building organization
+  en noun plant
+  ru noun завод m at:на
+  cues power nuclear workers factory steel car produce produces built industrial chemical
+
+concept forest
+  grounded-in Q4421
+  class place nature
+  en noun forest
+  ru noun лес m pl:a loc:лесу
+
+concept mountain
+  class place nature
+  en noun mountain
+  ru noun гора f
+  form sg.acc гору
+
+concept sky
+  class nature
+  en noun sky
+  ru noun небо n
+
+concept world
+  class place abstract
+  en noun world
+  ru noun мир m
+
+concept life
+  grounded-in Q3
+  class abstract
+  en noun life lives
+  ru noun жизнь f
+
+concept problem
+  grounded-in Q621184
+  class abstract
+  en noun problem
+  ru noun проблема f
+
+concept idea
+  grounded-in Q131841
+  class abstract
+  en noun idea
+  ru noun идея f
+
+concept story
+  class document
+  en noun story stories
+  ru noun история f
+
+concept news
+  grounded-in Q38926
+  class information
+  en noun news news
+  ru noun новости f plt
+  form pl.gen новостей
+  form pl.dat новостям
+  form pl.ins новостями
+  form pl.prep новостях
+
+concept information
+  grounded-in Q11028
+  class information
+  en noun information information
+  ru noun информация f
+
+concept light.illumination
+  grounded-in Q9128
+  gloss "visible radiation; a lamp"
+  class nature
+  en noun light
+  ru noun свет m
+  cues turn switch lamp bright dark sun room on off
+
+concept glass.vessel
+  gloss "drinking vessel"
+  class object
+  en noun glass glasses
+  ru noun стакан m
+  cues water milk juice drink drank pour poured full empty wine
+
+concept glass.material
+  gloss "transparent material"
+  class substance
+  en noun glass glass
+  ru noun стекло n
+  form pl.gen стёкол
+  cues made window broken bottle transparent sand
+
+concept ball
+  grounded-in Q18545
+  class object game
+  en noun ball
+  ru noun мяч m end
+
+concept match.game
+  gloss "sports contest"
+  class event sport
+  en noun match matches
+  ru noun матч m
+  cues football tennis team won lost play played watch score final
+
+concept match.fire
+  grounded-in Q37507
+  gloss "small stick for making fire"
+  class object
+  en noun match matches
+  ru noun спичка f
+  cues fire light lit candle box burn cigarette
+
+concept head
+  grounded-in Q23640
+  class body
+  en noun head
+  ru noun голова f
+  form sg.acc голову
+
+concept hand
+  class body
+  en noun hand
+  ru noun рука f
+  form sg.acc руку
+
+concept eye
+  grounded-in Q7364
+  class body
+  en noun eye
+  ru noun глаз m
+  form pl.nom глаза
+  form pl.gen глаз
+
+concept heart
+  grounded-in Q1072
+  class body
+  en noun heart
+  ru noun сердце n
+
+concept window.software
+  gloss "rectangular area of a screen"
+  class software
+  en noun window
+  ru noun окно n
+  cues click screen browser tab close open application app dialog
+
+concept russian-language
+  gloss "the Russian language"
+  class language
+  en noun Russian
+  ru noun язык m end adj:русский adv:по-русски
+
+concept english-language
+  gloss "the English language"
+  class language
+  en noun English
+  ru noun язык m end adj:английский adv:по-английски
+
+concept cinema
+  class place building art
+  en noun cinema
+  en noun movies
+  ru noun кино n indecl
+
+concept theatre
+  grounded-in Q11635
+  class place building art
+  en noun theatre
+  en noun theater
+  ru noun театр m
+
+concept concert
+  grounded-in Q182832
+  class event art
+  en noun concert
+  ru noun концерт m at:на
+
+concept restaurant
+  grounded-in Q11707
+  class place building
+  en noun restaurant
+  ru noun ресторан m
+
+concept hotel
+  grounded-in Q27686
+  class place building
+  en noun hotel
+  ru noun гостиница f
+
+concept ticket
+  grounded-in Q551800
+  class object
+  en noun ticket
+  ru noun билет m
+
+concept breakfast
+  grounded-in Q80973
+  class food meal
+  en noun breakfast
+  ru noun завтрак m
+
+concept lunch
+  grounded-in Q12896105
+  class food meal
+  en noun lunch
+  ru noun обед m
+
+concept dinner
+  grounded-in Q568285
+  class food meal
+  en noun dinner
+  ru noun ужин m
+
+concept airport
+  grounded-in Q1248784
+  class place building
+  en noun airport
+  ru noun аэропорт m loc:аэропорту
+
+concept station
+  class place building
+  en noun station
+  ru noun вокзал m at:на
+
+concept library
+  grounded-in Q7075
+  class place building
+  en noun library libraries
+  ru noun библиотека f
+
+concept hospital
+  grounded-in Q16917
+  class place building
+  en noun hospital
+  ru noun больница f
+
+concept market
+  grounded-in Q330284
+  class place
+  en noun market
+  ru noun рынок m stem:рынк at:на
+
+concept beach
+  grounded-in Q40080
+  class place nature
+  en noun beach beaches
+  ru noun пляж m end at:на
+
+concept homework
+  grounded-in Q753877
+  class activity document
+  en noun homework homework
+  ru noun домашнее+задание n
+
+concept email
+  class document
+  en noun email
+  en noun e-mail
+  ru noun письмо n
+  form pl.gen писем
+
+concept country.rural
+  gloss "rural area outside towns"
+  class place
+  en noun countryside
+  ru noun деревня f
+  form pl.gen деревень
+
+concept assistance
+  wikidata-exclude Q1643184 # biology: cooperation between organisms
+  gloss "assistance given to someone"
+  class abstract
+  en noun help
+  ru noun помощь f
+
+concept pen
+  grounded-in Q165447
+  gloss "a writing instrument using ink"
+  class object tool
+  en noun pen
+  ru noun ручка f
+
+concept shelf
+  grounded-in Q45242859
+  gloss "a flat board fixed to a wall for holding things"
+  class furniture surface
+  en noun shelf shelves
+  ru noun полка f
+
+# Days of the week: "on Monday" → в понедельник (в + accusative)
+concept monday
+  grounded-in Q105
+  class time weekday
+  en noun monday
+  ru noun понедельник m
+
+concept tuesday
+  grounded-in Q127
+  class time weekday
+  en noun tuesday
+  ru noun вторник m
+
+concept wednesday
+  grounded-in Q128
+  class time weekday
+  en noun wednesday
+  ru noun среда f
+
+concept thursday
+  grounded-in Q129
+  class time weekday
+  en noun thursday
+  ru noun четверг m
+
+concept friday
+  grounded-in Q130
+  class time weekday
+  en noun friday
+  ru noun пятница f
+
+concept saturday
+  grounded-in Q131
+  class time weekday
+  en noun saturday
+  ru noun суббота f
+
+concept sunday
+  grounded-in Q132
+  class time weekday
+  en noun sunday
+  ru noun воскресенье n
+
+# Months: "in May" → в мае (в + prepositional)
+concept january
+  class time month
+  en noun january
+  ru noun январь m end
+
+concept february
+  class time month
+  en noun february
+  ru noun февраль m end
+
+concept march
+  class time month
+  en noun march
+  ru noun март m
+
+concept april
+  class time month
+  en noun april
+  ru noun апрель m
+
+concept may
+  class time month
+  en noun may
+  ru noun май m
+
+concept june
+  class time month
+  en noun june
+  ru noun июнь m
+
+concept july
+  class time month
+  en noun july
+  ru noun июль m
+
+concept august
+  class time month
+  en noun august
+  ru noun август m
+
+concept september
+  class time month
+  en noun september
+  ru noun сентябрь m end
+
+concept october
+  class time month
+  en noun october
+  ru noun октябрь m end
+
+concept november
+  class time month
+  en noun november
+  ru noun ноябрь m end
+
+concept december
+  class time month
+  en noun december
+  ru noun декабрь m end
+
+concept page
+  grounded-in Q1069725
+  gloss "one side of a sheet of paper in a book"
+  class part text
+  en noun page
+  ru noun страница f
+
+concept cheese
+  gloss "food made from pressed milk curds"
+  class food
+  en noun cheese
+  ru noun сыр m
+
+concept button
+  gloss "a control pressed to operate a device or program"
+  class interface part
+  en noun button
+  ru noun кнопка f
+  cues click press screen mouse
+
+concept link.web
+  gloss "a reference that opens another page or document"
+  class interface
+  en noun link
+  ru noun ссылка f
+  cues click page website open follow
+
+concept paragraph
+  gloss "a distinct section of a piece of writing"
+  class text part
+  en noun paragraph
+  ru noun абзац m end
+
+concept box
+  gloss "a container with flat sides"
+  class container object
+  en noun box boxes
+  ru noun коробка f
+
+concept note
+  gloss "a short written record"
+  class text document
+  en noun note
+  ru noun заметка f
+
+concept tool
+  gloss "a device or program used to do a task"
+  class object software
+  en noun tool
+  ru noun инструмент m
+
+concept document
+  gloss "a written or electronic record"
+  class text document
+  en noun document
+  ru noun документ m
+
+concept code
+  gloss "instructions of a computer program"
+  class text software
+  en noun code
+  ru noun код m
+
+concept block
+  gloss "a separate section of text or code"
+  class text
+  en noun block
+  ru noun блок m
+
+concept spending
+  gloss "money spent"
+  en noun spending
+  ru noun расход m
+
+concept writing-table
+  gloss "a desk for writing at"
+  en noun writing+table
+  ru noun конторка f

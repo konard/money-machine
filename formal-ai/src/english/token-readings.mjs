@@ -1,0 +1,101 @@
+/** Token readings and semantic heads shared by English phrase parsing. */
+export const has = (token, pos) => token?.readings.some((r) => r.pos === pos);
+export const reading = (token, pos) =>
+  token?.readings.find((r) => r.pos === pos);
+export const isPunct = (token) => token?.kind === 'punct';
+
+export const head = (token, r) => ({
+  token: token.index,
+  text: token.text,
+  lemma: r.lemma,
+  pos: r.pos,
+  candidates: r.concepts,
+  concept: r.concepts.length === 1 ? r.concepts[0] : null,
+  // "faster": a comparative adverb compares by itself
+  ...(r.pos === 'adv' &&
+    r.features?.degree === 'comparative' && { comparison: 'greater' }),
+});
+
+/** Can this token start a noun phrase? */
+export function startsNP(token) {
+  return (
+    [
+      'det',
+      'poss',
+      'num',
+      'pron',
+      'noun',
+      'name',
+      'propn',
+      'adj',
+      'indef',
+    ].some((p) => has(token, p)) ||
+    // "the 5th and 20th": a numeric ordinal names a day
+    token?.kind === 'ordinal' ||
+    Boolean(gerundReading(token) || participleReading(token))
+  );
+}
+
+/** Morphology, rather than a list of verbs, identifies nonfinite heads. */
+export function gerundReading(token) {
+  return token?.readings.find(
+    (r) => r.pos === 'verb' && r.features.form === 'ing'
+  );
+}
+export function participleReading(token) {
+  return token?.readings.find(
+    (r) => r.pos === 'verb' && /pp/.test(r.features.form || '')
+  );
+}
+
+/** Is a noun phrase a person (who can be asked or helped to do things)? */
+export function personLike(np, lexicon) {
+  if (np.pronoun) {
+    return !(np.pronoun.person === 3 && np.pronoun.gender === 'n');
+  }
+  // a name is more often a company or a product than a person here
+  if (np.coord) {
+    return np.items?.some((x) => personLike(x, lexicon));
+  }
+  const concept = lexicon?.get(np.head?.concept || np.head?.candidates?.[0]);
+  return Boolean(
+    concept &&
+    (concept.classes?.some((c) => /person|human|animate/.test(c)) ||
+      concept.ru?.animate ||
+      /\b(person|people|someone|who|one that)\b/.test(concept.gloss || ''))
+  );
+}
+
+/** "spending you would make": a noun, then a clause with its own subject. */
+export function contactRelativeAhead(c) {
+  const [t, subject, verb] = [c.peek, c.at(1), c.at(2)];
+  return (
+    has(t, 'noun') &&
+    has(subject, 'pron') &&
+    !['me', 'him', 'us', 'them', 'it', 'her'].includes(subject.lower) &&
+    (['modal', 'be', 'have', 'do'].some((p) => has(verb, p)) ||
+      verb?.readings?.some(
+        (r) => r.pos === 'verb' && r.features?.form === 'past'
+      ))
+  );
+}
+
+/** "Stripe direct …": a bare base form cannot be the verb of a singular noun. */
+export function baseAfterSingular(t, r) {
+  return (
+    r.features.number !== 'pl' &&
+    t.readings.every((x) => x.pos !== 'verb' || x.features.form === 'base')
+  );
+}
+
+/** Is the noun-or-verb token at the cursor more likely a finite verb? */
+export function verbLikely(c) {
+  const after = c.at(1);
+  return (
+    !after ||
+    startsNP(after) ||
+    isPunct(after) ||
+    has(after, 'prep') ||
+    has(after, 'adv')
+  );
+}

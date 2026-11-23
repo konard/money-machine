@@ -1,0 +1,416 @@
+{
+  "comparison": "Same resolved public vocabulary, context methods disabled versus enabled. Concrete examples also include the general grammar and capitalization fixes.",
+  "concrete": [
+    {
+      "source": "The bank charges a fee.",
+      "before": "Банковские комиссии [a fee].",
+      "after": "Банк взимает гонорар."
+    },
+    {
+      "source": "We sat on the river bank.",
+      "before": "Мы сели на береге.",
+      "after": "Мы сели на береге."
+    },
+    {
+      "source": "The free plan",
+      "before": "Свободный план",
+      "after": "Бесплатный план",
+      "context": "commerce"
+    },
+    {
+      "source": "Mercury is a planet.",
+      "before": "Mercury — планета.",
+      "after": "Меркурий — планета."
+    },
+    {
+      "source": "Mercury is a metal.",
+      "before": "Mercury — металл.",
+      "after": "Ртуть — металл."
+    }
+  ],
+  "recordedWebsiteSample": [
+    {
+      "source": "strategies.json#etsy-digital-printables-svg",
+      "en": "Buyers come from Etsy search.",
+      "before": "Покупатели приходят из поиска Etsy.",
+      "after": "Покупатели приходят из поиска Etsy."
+    },
+    {
+      "source": "strategies.json#academic-research-studies",
+      "en": "Researchers post studies with a set reward.",
+      "before": "Исследователи помещают сообщение исследования с установленным вознаграждением.",
+      "after": "Исследователи помещают сообщение исследования с установленным вознаграждением."
+    },
+    {
+      "source": "strategies.json#direct-ad-space-dev-sites",
+      "en": "Advertisers pay to reach developers without tracking.",
+      "before": "Рекламодатели платят, чтобы доходить разработчикам без отслеживания.",
+      "after": "Рекламодатели платят, чтобы доходить разработчикам без отслеживания."
+    },
+    {
+      "source": "strategies.json#songwriter-publishing-royalties",
+      "en": "Money that would otherwise go unclaimed flows to you.",
+      "before": "Деньги, которые оставили бы невостребованные течения иначе вам.",
+      "after": "Деньги, которые оставили бы невостребованные течения иначе вам."
+    },
+    {
+      "source": "strategies.json#licensed-data-api-feeds",
+      "en": "Direct Stripe billing avoids the marketplace cut.",
+      "before": "Режиссируйте Stripe [billing avoids the marketplace cut].",
+      "after": "Режиссируйте Stripe [billing avoids the marketplace cut]."
+    },
+    {
+      "source": "strategies.json#patreon-memberships",
+      "en": "Patrons are existing followers of your free work who pay to support you.",
+      "before": "Покровители существуют подписчиками вашей бесплатной работы, которые платят вам в поддержку.",
+      "after": "Покровители существуют подписчиками вашей бесплатной работы, которые платят вам в поддержку."
+    },
+    {
+      "source": "strategies.json#cambly-on-demand-conversation",
+      "en": "Cambly connects English learners to tutors for on-demand or scheduled conversation calls.",
+      "before": "Cambly связывает учеников English репетиторам или Cambly спланировал звонки разговора [for on-demand].",
+      "after": "Cambly связывает учеников English репетиторам или Cambly спланировал звонки разговора [for on-demand]."
+    },
+    {
+      "source": "strategies.json#craft-design-subscription-marketplaces",
+      "en": "Unlike Etsy you pay no listing fees and the marketplace brings its own traffic.",
+      "before": "Etsy, и рынок приносит его собственную торговлю [you pay no listing fees].",
+      "after": "Etsy, и рынок приносит его собственную торговлю [you pay no listing fees]."
+    },
+    {
+      "source": "strategies.json#data-cleaning-conversion-gigs",
+      "en": "Small businesses pay because the work is tedious.",
+      "before": "Малые бизнесы платят, потому что работа нудна.",
+      "after": "Малые бизнесы платят, потому что работа нудна."
+    },
+    {
+      "source": "strategies.json#oss-funding-opencollective-polar-thanksdev",
+      "en": "Fiscal host handles some compliance.",
+      "before": "Финансовый хозяин управляет некоторым согласием.",
+      "after": "Финансовый хозяин управляет некоторым согласием."
+    },
+    {
+      "source": "strategies.json#amazon-influencer-shoppable-videos",
+      "en": "Income comes from a growing video library without needing your own traffic.",
+      "before": "Доход приходит из библиотеки видео биологического роста без того, чтобы нуждаться в вашем собственном движении.",
+      "after": "Доход приходит из библиотеки видео биологического роста без того, чтобы нуждаться в вашем собственном движении."
+    },
+    {
+      "source": "strategies.json#shopify-apps",
+      "en": "Billing runs through Shopify, which pays partners twice monthly via Hyperwallet.",
+      "before": "Посылать счёт бегам через Shopify, зарплаты [which partners twice monthly via Hyperwallet].",
+      "after": "Посылать счёт бегам через Shopify, зарплаты [which partners twice monthly via Hyperwallet]."
+    },
+    {
+      "source": "strategies.json#agency-assigned-tutoring-contractor",
+      "en": "You don't market yourself or set prices.",
+      "before": "Вы не продаёте себе или кладёте цены.",
+      "after": "Вы не продаёте себе или кладёте цены."
+    },
+    {
+      "source": "strategies.json#curated-publisher-video-courses",
+      "en": "LinkedIn Learning's instructor page says only 'earn extra income'.",
+      "before": "Страница инструктора LinkedIn Learning говорит единственному ребёнку ['earn extra income '].",
+      "after": "Страница инструктора LinkedIn Learning говорит единственному ребёнку ['earn extra income ']."
+    },
+    {
+      "source": "strategies.json#earnkaro-india-deal-sharing",
+      "en": "No spam messaging.",
+      "before": "Без мгновенного обмена сообщениями спама.",
+      "after": "Без мгновенного обмена сообщениями спама."
+    },
+    {
+      "source": "docs/business-plans/interactive-fiction-choice-of-games.md",
+      "en": "Long development times mean many writers see no income in the first year.",
+      "before": "Длинные месяцы развития значат много писателей [see no income in the first year].",
+      "after": "Длинные месяцы развития значат много писателей [see no income in the first year]."
+    },
+    {
+      "source": "docs/business-plans/bandcamp-direct-sales.md",
+      "en": "Physical merch adds shipping.",
+      "before": "Физический товар добавляет отправку.",
+      "after": "Физический товар добавляет отправку."
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "en": "Payoneer and Wise withdrawals to local nostro accounts are possible.",
+      "before": "Payoneer и снятия Wise в локальные основания nostro возможны.",
+      "after": "Payoneer и снятия Wise в локальные основания nostro возможны."
+    },
+    {
+      "source": "docs/business-plans/google-opinion-rewards.md",
+      "en": "Requires sharing location history for many surveys.",
+      "before": "Требует делиться прошлое положения для многих опросов.",
+      "after": "Требует делиться прошлое положения для многих опросов."
+    },
+    {
+      "source": "docs/business-plans/online-mystery-shopping.md",
+      "en": "Never pay to join, and treat any 'deposit this cheque' request as a scam.",
+      "before": "Никогда не платите, чтобы соединять и лечите, как афера [any 'deposit this cheque ' request].",
+      "after": "Никогда не платите, чтобы соединять и лечите, как афера [any 'deposit this cheque ' request]."
+    },
+    {
+      "source": "docs/business-plans/video-repurposing-thumbnail-agency.md",
+      "en": "Months include ramp-up to the first order.",
+      "before": "Месяцы включают [ramp-up to the first order].",
+      "after": "Месяцы включают [ramp-up to the first order]."
+    },
+    {
+      "source": "docs/business-plans/github-sponsors.md",
+      "en": "Income tracks adoption, so it is slow and concentrated in popular maintainers.",
+      "before": "Доход отслеживает усыновление, поэтому оно медленно и концентрированно в популярных мейнтейнерах.",
+      "after": "Доход отслеживает усыновление, поэтому оно медленно и концентрированно в популярных мейнтейнерах."
+    },
+    {
+      "source": "docs/business-plans/curated-publisher-video-courses.md",
+      "en": "That's different from self-publishing on Udemy or Skillshare.",
+      "before": "Это отлично или Skillshare [from self-publishing on Udemy].",
+      "after": "Это отлично или Skillshare [from self-publishing on Udemy]."
+    },
+    {
+      "source": "docs/business-plans/expert-ai-training.md",
+      "en": "Neither homepage names the payout method, so confirm it in your contract.",
+      "before": "Также не стартовая страница называет метод выплаты, поэтому подтвердите его в своём контракте.",
+      "after": "Также не стартовая страница называет метод выплаты, поэтому подтвердите его в своём контракте."
+    },
+    {
+      "source": "docs/business-plans/sell-datasets.md",
+      "en": "Do not resell personal data.",
+      "before": "Не перепродавайте личные данные.",
+      "after": "Не перепродавайте личные данные."
+    },
+    {
+      "source": "docs/business-plans/paid-online-juror.md",
+      "en": "Some sites also exclude people working in law or insurance.",
+      "before": "Несколько сайтов тоже исключают людей или страхование [working in law].",
+      "after": "Несколько сайтов тоже исключают лиц или страхование [working in law]."
+    },
+    {
+      "source": "docs/business-plans/twitch-extensions-bits.md",
+      "en": "Must check the isBitsEnabled flag and follow Twitch Extension guidelines and review.",
+      "before": "Проверьте флаг isBitsEnabled и директивы Twitch Extension фолловинга и делайте обзор [Must].",
+      "after": "Проверьте флаг isBitsEnabled и директивы Twitch Extension фолловинга и делайте обзор [Must]."
+    },
+    {
+      "source": "docs/business-plans/robo-advisor-index-dividends.md",
+      "en": "First dividend arrives at next quarterly distribution.",
+      "before": "Первый дивиденд доходит в следующем квартальном распределении.",
+      "after": "Первый дивиденд доходит в следующем квартальном распределении."
+    },
+    {
+      "source": "docs/business-plans/patent-technical-illustration.md",
+      "en": "Firms pay per sheet and repeat.",
+      "before": "Фирмы платят за лист, и фирмы повторяют.",
+      "after": "Фирмы платят за лист, и фирмы повторяют."
+    },
+    {
+      "source": "docs/business-plans/generalist-rlhf-ai-training.md",
+      "en": "Each project limits which countries it accepts.",
+      "before": "Каждые пределы проекта [which countries it accepts].",
+      "after": "Каждые пределы проекта [which countries it accepts]."
+    },
+    {
+      "sample": 30,
+      "changed": 1
+    }
+  ],
+  "websiteSeed8173": [
+    {
+      "source": "docs/business-plans/amazon-associates-comparison-site.md",
+      "en": "Most people who try this earn around **$0–$30 per month** in the first year; the high figure of $3,000 is a ceiling for a focused solo operator, not a typical outcome.",
+      "before": "Большинство людей, которые стараются это, зарабатывают примерно $0–$30 в месяц в первом годе; высокое количество $3 000 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход.",
+      "after": "Большинство людей, которые стараются это, зарабатывают примерно $0–$30 в месяц в первом годе; высокое количество $3 000 — потолок для целеустремлённого самостоятельного оператора, а не типичный исход."
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "en": "Foreign sellers of electronic services to Icelandic consumers must register above ISK 2M.",
+      "before": "Иностранные продавцы электронных полезностей к потребителям исландский язык должны зарегистрироваться более 2 млн.",
+      "after": "Иностранные продавцы электронных полезностей к потребителям исландский язык должны зарегистрироваться более 2 млн."
+    },
+    {
+      "source": "docs/research/platform-rules.md",
+      "en": "**TELUS Digital AI Community and RWS TrainAI** (`search-and-ai-rating`): monthly invoice by bank or Payoneer (estimated).",
+      "before": "AI Community и RWS TrainAI (`search-and-ai-rating`): ежемесячный инвойс банком или Payoneer [estimated].",
+      "after": "AI Community и RWS TrainAI (`search-and-ai-rating`): ежемесячный инвойс банком или Payoneer [estimated]."
+    },
+    {
+      "source": "docs/business-plans/transcription-subtitles-human-qa.md",
+      "en": "client glossary collection",
+      "before": "Коллекция глоссария клиентов",
+      "after": "Коллекция глоссария клиентов"
+    },
+    {
+      "source": "docs/business-plans/virtual-assistant-bookkeeping.md",
+      "en": "interviews and background check",
+      "before": "Интервьюирует, и проверка кандидатов",
+      "after": "Интервьюирует, и проверка кандидатов"
+    },
+    {
+      "source": "strategies.json#transcription-subtitles-human-qa",
+      "en": "Fiverr $1 PayPal / $20 Payoneer bank",
+      "before": "Fiverr, $20 банка Payoneer [$1 PayPal]",
+      "after": "Fiverr, $20 банка Payoneer [$1 PayPal]"
+    },
+    {
+      "source": "strategies.json#saas-recurring-affiliate-tutorials",
+      "en": "Viewers who sign up through your link generate commissions.",
+      "before": "Программы просмотра, которые подписываются через вашу ссылку, порождают комиссии.",
+      "after": "Программы просмотра, которые подписываются через вашу ссылку, порождают комиссии."
+    },
+    {
+      "source": "docs/business-plans/photo-presets-luts.md",
+      "en": "Legal everywhere; use only images you own for previews.",
+      "before": "Везде; используйте единственные образы, которым вы владеете для предварительных просмотров [Legal].",
+      "after": "Везде; используйте единственные изображения, которым вы владеете для предварительных просмотров [Legal]."
+    },
+    {
+      "source": "strategies.json#ttrpg-supplements-dmsguild-drivethrurpg",
+      "en": "PayPal on the 1st of the month -> bank",
+      "before": "PayPal на 1 государстве из месяца, банк",
+      "after": "PayPal на 1 государстве из месяца, банк"
+    },
+    {
+      "source": "strategies.json#data-cleaning-conversion-gigs",
+      "en": "Upwork: variable 0-15% freelancer fee (2025 change).",
+      "before": "Upwork: переменная (2025 сдач) [0-15% freelancer fee].",
+      "after": "Upwork: переменная (2025 сдач) [0-15% freelancer fee]."
+    },
+    {
+      "source": "docs/business-plans/real-estate-virtual-staging.md",
+      "en": "Win photographers with batch pricing",
+      "before": "Добейтесь фотографов с оценкой партии",
+      "after": "Добейтесь фотографов с оценкой партии"
+    },
+    {
+      "source": "docs/business-plans/meta-facebook-instagram-content-monetization.md",
+      "en": "Check Business Suite > Monetization.",
+      "before": "Проверьте Business Suite, монетизация.",
+      "after": "Проверьте Business Suite, монетизация."
+    },
+    {
+      "source": "strategies.json#workplace-app-marketplaces",
+      "en": "Zoom App Marketplace takes 15% but monetization is US-only.",
+      "before": "Zoom App Marketplace берёт 15%, но монетизация — US-only.",
+      "after": "Zoom App Marketplace берёт 15%, но монетизация — US-only."
+    },
+    {
+      "source": "docs/business-plans/README.md",
+      "en": "**#170** [Online and phone mystery shopping (MSPA-member firms)](./online-mystery-shopping.md) — Evaluate a company's website, chat, email or phone customer service as a covert customer and file a structured report. _(score 46, tier C)_",
+      "before": "[Online and phone mystery shopping (MSPA-member firms)](./online-mystery-shopping.md), вычислите веб-сайт, чат, письмо или обслуживанего клиента телефона как клиент маскировки и запомните структурированный репортаж. (счёт 46), Си",
+      "after": "[Online and phone mystery shopping (MSPA-member firms)](./online-mystery-shopping.md), вычислите веб-сайт, чат, письмо или обслуживанего клиента телефона как клиент маскировки и запомните структурированный репортаж. (счёт 46), Си"
+    },
+    {
+      "source": "docs/business-plans/receipt-and-shopping-data-apps.md",
+      "en": "Edit the JSON, not this file._",
+      "before": "Отредактируйте JSON, а не это дело.",
+      "after": "Правьте JSON, а не этот файл."
+    },
+    {
+      "source": "docs/business-plans/cashback-portals.md",
+      "en": "No fixed cost; first payout waits for 30-90 day merchant confirmation and quarterly payout cycles.",
+      "before": "Без постоянных затрат; первая выплата ожидает 30–90 подтверждений торговца суток и квартальные циклы выплаты.",
+      "after": "Без постоянных затрат; первая выплата ожидает 30–90 подтверждений торговца суток и квартальные циклы выплаты."
+    },
+    {
+      "source": "docs/business-plans/cohort-courses-maven.md",
+      "en": "Email sequences for waitlist conversion",
+      "before": "Последовательности письма для превращения списка очерёдности",
+      "after": "Последовательности письма для превращения списка очерёдности"
+    },
+    {
+      "source": "docs/business-plans/apify-actors-mcp-tools.md",
+      "en": "Payout to PayPal/Wise/bank",
+      "before": "Выплата в PayPal/Wise, банк",
+      "after": "Выплата в PayPal/Wise, банк"
+    },
+    {
+      "source": "docs/legal/incorporation-costs.md",
+      "en": "An annual Superintendencia contribution and accountant are required.",
+      "before": "Годовой взнос Superintendencia, и бухгалтер необходим.",
+      "after": "Годовой взнос Superintendencia, и бухгалтер необходим."
+    },
+    {
+      "source": "strategies.json#ai-training-footage-licensing",
+      "en": "Legal if you own copyright and have releases; check that footage doesn't include others' likenesses or copyrighted music.",
+      "before": "Юридическо, если вы завладеете авторское право и у вас есть релизы; ругайте, что отснятый материал не включает других или отснятый материал обеспечил авторское право музыку [' likenesses].",
+      "after": "Юридическо, если вы завладеете авторское право и у вас есть релизы; ругайте, что отснятый материал не включает других или отснятый материал обеспечил авторское право музыку [' likenesses]."
+    },
+    {
+      "source": "docs/business-plans/paid-browser-extensions.md",
+      "en": "Fixed cost = recurringMonthlyUsd only (startup cash not amortised).",
+      "before": "Постоянные затраты, recurringMonthlyUsd единственен (наличные стартапа не погашали).",
+      "after": "Постоянные затраты, recurringMonthlyUsd единственен (наличные стартапа не погашали)."
+    },
+    {
+      "source": "docs/business-plans/amazon-associates-comparison-site.md",
+      "en": "Month 3-6: build internal links and refresh posts that rank on page 2; expect $10-50/month",
+      "before": "Месяц 3–6: постройте внутренние ссылки и обновите станции, которые ранжируют на странице 2; ожидайте $10–50 в месяц",
+      "after": "Месяц 3–6: постройте внутренние ссылки и обновите станции, которые ранжируют на странице 2; ожидайте $10–50 в месяц"
+    },
+    {
+      "source": "docs/business-plans/website-in-a-day.md",
+      "en": "scripted deploy to static hosting",
+      "before": "Развёртывайте в статический хостинг [scripted]",
+      "after": "Устанавливайте в статический хостинг [scripted]"
+    },
+    {
+      "source": "strategies.json#micro-saas-merchant-of-record",
+      "en": "Automated billing/dunning via MoR",
+      "before": "Посылать счёт или через MoR [Automated dunning]",
+      "after": "Посылать счёт или через MoR [Automated dunning]"
+    },
+    {
+      "source": "docs/research/zero-capital-strategies.md",
+      "en": "**Legal considerations**: Platform ToS, deliver promised quality",
+      "before": "Законные рассмотрения: ToS, доставьте пообещанную надёжность",
+      "after": "Законные рассмотрения: ToS, доставьте пообещанную надёжность"
+    },
+    {
+      "source": "strategies.json#transcription-subtitles-human-qa",
+      "en": "Upwork ACH/local bank",
+      "before": "Upwork ACH, местный банк",
+      "after": "Upwork ACH, местный банк"
+    },
+    {
+      "source": "docs/business-plans/cambly-on-demand-conversation.md",
+      "en": "Cambly connects English learners to tutors for on-demand or scheduled conversation calls.",
+      "before": "Cambly связывает учеников English репетиторам или Cambly спланировал звонки разговора [for on-demand].",
+      "after": "Cambly связывает учеников English репетиторам или Cambly спланировал звонки разговора [for on-demand]."
+    },
+    {
+      "source": "docs/business-plans/curated-publisher-video-courses.md",
+      "en": "Pitch and audition to make a course that the platform produces and distributes.",
+      "before": "Тон и прослушивание, что производства обуви на платформе [distributes].",
+      "after": "Тон и прослушивание, что производства обуви на платформе [distributes]."
+    },
+    {
+      "source": "docs/business-plans/cambly-on-demand-conversation.md",
+      "en": "Cambly's official tutor page lists $0.17/min and $0.20/min (Kids) and weekly direct-deposit pay. paymentProbability lowered 6->5 because the same page says new-tutor intake is currently limited.",
+      "before": "Официальная страница репетитора Cambly вносит в список $0,17 за минуту и $0,20 за зарплаты минуты и еженедельные зарплаты с прямым депозитом, paymentProbability снизил 6, 5, потому что одинаковая страница говорит воздухозаборник с новым репетитором [is currently limited].",
+      "after": "Официальная страница репетитора Cambly вносит в список $0,17 за минуту и $0,20 за зарплаты минуты и еженедельные зарплаты с прямым депозитом, paymentProbability снизил 6, 5, потому что одинаковая страница говорит воздухозаборник с новым репетитором [is currently limited]."
+    },
+    {
+      "source": "docs/business-plans/README.md",
+      "en": "**#4** [Passive bandwidth sharing (Honeygain, Pawns.app)](./bandwidth-sharing.md) — Run an app that resells your spare internet bandwidth as a residential proxy network and pays per GB shared (Honeygain: $20 cash-out minimum; Pawns.app: from $5). _(score 79, tier S)_",
+      "before": "[Passive bandwidth sharing (Honeygain, Pawns.app)](./bandwidth-sharing.md), запустите приложение, которое перепродаёт вашу скупую пропускную способность интернета как жилая сеть представителя, и зарплаты за Великобританию шарили (Honeygain): $20 минимума с аутом наличных; Pawns.app: $5 [from]. (счёт 79), Стефан",
+      "after": "[Passive bandwidth sharing (Honeygain, Pawns.app)](./bandwidth-sharing.md), запустите приложение, которое перепродаёт вашу скупую пропускную способность интернета как жилая сеть представителя, и зарплаты за Великобританию шарили (Honeygain): $20 минимума с аутом наличных; Pawns.app: $5 [from]. (счёт 79), Стефан"
+    },
+    {
+      "sample": 30,
+      "changed": 3
+    }
+  ],
+  "remainingProblems": [
+    "fee selects гонорар instead of the more suitable плата in the bank example.",
+    "The software deploy sense selects устанавливать; развёртывать would be more natural.",
+    "Existing incomplete parses and unknown words remain in the website sample."
+  ],
+  "validation": {
+    "tests": 508,
+    "passing": 508,
+    "eslintErrors": 0,
+    "eslintWarnings": 1,
+    "fileSizeCheck": "pass",
+    "methodsFileEditedByThisTask": false
+  }
+}

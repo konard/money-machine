@@ -1,0 +1,289 @@
+{
+  "command": "node formal-ai/scripts/sample.mjs sentence 40 73519",
+  "seed": 73519,
+  "initialComplete": 25,
+  "finalComplete": 25,
+  "isolatedComparison": "40/40 outputs unchanged when removing only this task's rules from the concurrent working tree",
+  "sentences": [
+    {
+      "source": "docs/business-plans/newsletter-sponsorships-ad-network.md",
+      "english": "Month 1-3: grow to 500-1,000 subs via cross-promos; expect $0",
+      "before": "Месяц 1–3: растите в 500–1 000 подписок; ожидайте $0 [via cross-promos]",
+      "isolatedBefore": "Месяц 1–3: растите в 500–1 000 подписок; ожидайте $0 [via cross-promos]",
+      "after": "Месяц 1–3: растите в 500–1 000 подписок; ожидайте $0 [via cross-promos]"
+    },
+    {
+      "source": "docs/business-plans/website-themes-templates.md",
+      "english": "Design QA and responsive testing",
+      "before": "Разработайте добротная статья, и тестирование [responsive]",
+      "isolatedBefore": "Разработайте добротная статья, и тестирование [responsive]",
+      "after": "Разработайте добротная статья, и тестирование [responsive]"
+    },
+    {
+      "source": "docs/business-plans/video-repurposing-thumbnail-agency.md",
+      "english": "Fiverr help center (checked in a browser Nov 2026): freelancers earn 80% of the purchase amount including extras and tips (20% fee); earnings become withdrawable 14 days after the order completes (shorter for Top Rated, Seller Plus and Pro; Early Payout skips clearance for a 1% fee).",
+      "before": "Центр помощи Fiverr, Nov: фрилансеры зарабатывают 80% количества купленной вещи включая экстренные выпуски и чаевые (гонорар 20%); заработок, после того как заказ завершает, Top, оценённый, Seller Plus и Pro; выплата Early улизнёт пространство для гонорара 1% [checked in 2026 become withdrawable 14 days shorter for].",
+      "isolatedBefore": "Центр помощи Fiverr, Nov: фрилансеры зарабатывают 80% количества купленной вещи включая экстренные выпуски и чаевые (гонорар 20%); заработок, после того как заказ завершает, Top, оценённый, Seller Plus и Pro; выплата Early улизнёт пространство для гонорара 1% [checked in 2026 become withdrawable 14 days shorter for].",
+      "after": "Центр помощи Fiverr, Nov: фрилансеры зарабатывают 80% количества купленной вещи включая экстренные выпуски и чаевые (гонорар 20%); заработок, после того как заказ завершает, Top, оценённый, Seller Plus и Pro; выплата Early улизнёт пространство для гонорара 1% [checked in 2026 become withdrawable 14 days shorter for]."
+    },
+    {
+      "source": "docs/business-plans/technical-writing-api-docs.md",
+      "english": "Estimate from Upwork technical-writing contracts and agency rates ($150-$1,500 per article); fee ~10% Upwork blended with 0% Contra/direct.",
+      "before": "Оценивайте из пишущих вооружённый пикап контрактов Upwork и ставок агентства ($150–$1 500); наймите на работу Upwork, размешанного с Contra, прямой.",
+      "isolatedBefore": "Оценивайте из пишущих вооружённый пикап контрактов Upwork и ставок агентства ($150–$1 500); наймите на работу Upwork, размешанного с Contra, прямой.",
+      "after": "Оценивайте из пишущих вооружённый пикап контрактов Upwork и ставок агентства ($150–$1 500); наймите на работу Upwork, размешанного с Contra, прямой."
+    },
+    {
+      "source": "strategies.json#paid-survey-panels",
+      "english": "Swagbucks (help centre): PayPal cash arrives in 2–5 business days; the first PayPal redemption needs matching names and a confirmed bank on PayPal; the SB minimum was not stated on the pages checked.",
+      "before": "Swagbucks (центр помощи): наличные PayPal доходят через 2–5 рабочих дней; первый выкуп PayPal нуждается в том, чтобы соответствовать именам и закоренелому банку на PayPal; минимум АНТ-40 не был заявлен на страницах, проверенных.",
+      "isolatedBefore": "Swagbucks (центр помощи): наличные PayPal доходят через 2–5 рабочих дней; первый выкуп PayPal нуждается в том, чтобы соответствовать именам и закоренелому банку на PayPal; минимум АНТ-40 не был заявлен на страницах, проверенных.",
+      "after": "Swagbucks (центр помощи): наличные PayPal доходят через 2–5 рабочих дней; первый выкуп PayPal нуждается в том, чтобы соответствовать именам и закоренелому банку на PayPal; минимум АНТ-40 не был заявлен на страницах, проверенных."
+    },
+    {
+      "source": "docs/business-plans/independent-online-tutoring-practice.md",
+      "english": "rolling (2-7 days)",
+      "before": "Качение",
+      "isolatedBefore": "Качение",
+      "after": "Качение"
+    },
+    {
+      "source": "strategies.json#vrchat-avatar-assets-creator-economy",
+      "english": "Tilia approves most VRChat payouts in 1-2 business days, and PayPal charges about 1.5%.",
+      "before": "Tilia утверждает выплаты VRChat больше всего через 1–2 рабочих дней, и PayPal заряжает примерно 1,5%.",
+      "isolatedBefore": "Tilia утверждает выплаты VRChat больше всего через 1–2 рабочих дней, и PayPal заряжает примерно 1,5%.",
+      "after": "Tilia утверждает выплаты VRChat больше всего через 1–2 рабочих дней, и PayPal заряжает примерно 1,5%."
+    },
+    {
+      "source": "docs/business-plans/google-opinion-rewards.md",
+      "english": "Survey frequency depends on your location history and shopping",
+      "before": "Частота топографической съёмки зависит на вашей истории положения и покупке",
+      "isolatedBefore": "Частота топографической съёмки зависит на вашей истории положения и покупке",
+      "after": "Частота топографической съёмки зависит на вашей истории положения и покупке"
+    },
+    {
+      "source": "docs/business-plans/academic-research-studies.md",
+      "english": "MTurk's closure on 2026-09-30 moved both requesters and workers onto Prolific and Connect, so studies fill within minutes and waitlists are longer.",
+      "before": "Окончание MTurk на 2026–09, 30 двинуло обоих, и работники на Prolific и Connect, поэтому обучение, и списки очерёдности более длинные [requesters fill within minutes].",
+      "isolatedBefore": "Окончание MTurk на 2026–09, 30 двинуло обоих, и работники на Prolific и Connect, поэтому обучение, и списки очерёдности более длинные [requesters fill within minutes].",
+      "after": "Окончание MTurk на 2026–09, 30 двинуло обоих, и работники на Prolific и Connect, поэтому обучение, и списки очерёдности более длинные [requesters fill within minutes]."
+    },
+    {
+      "source": "docs/business-plans/ai-assistant-store-revenue.md",
+      "english": "Prompt-bot creators set their own per-message price on Poe; low single-digit dollars per 1,000 messages is typical for prompt bots (estimate, rates not published).",
+      "before": "Создатели с быстрым ботом клали собственную цену за сообщение там на По; низкие доллары с единственной цифрой за 1 000 сообщений типичны для быстрых ботов (оценивайте, пропорции не публиковали).",
+      "isolatedBefore": "Создатели с быстрым ботом клали собственную цену за сообщение там на По; низкие доллары с единственной цифрой за 1 000 сообщений типичны для быстрых ботов (оценивайте, пропорции не публиковали).",
+      "after": "Создатели с быстрым ботом клали собственную цену за сообщение там на По; низкие доллары с единственной цифрой за 1 000 сообщений типичны для быстрых ботов (оценивайте, пропорции не публиковали)."
+    },
+    {
+      "source": "docs/research/platform-rules.md",
+      "english": "**Canva Creators** (`canva-templates`): per-use royalty pool; $10 minimum ($25 by wire), monthly via Trolley.",
+      "before": "Создатели Canva (`canva-templates`): пул за употребление царственности; $10 минимума ($25), ежемесячник через Trolley.",
+      "isolatedBefore": "Создатели Canva (`canva-templates`): пул за употребление царственности; $10 минимума ($25), ежемесячник через Trolley.",
+      "after": "Создатели Canva (`canva-templates`): пул за употребление царственности; $10 минимума ($25), ежемесячник через Trolley."
+    },
+    {
+      "source": "strategies.json#minecraft-server-tebex-store",
+      "english": "Payments settle after 14 days by default; then PayPal takes 1-2 working days, bank transfer up to 7 days, wire 5-10 working days (GBP 12 per wire).",
+      "before": "Платы селятся после 14 суток по умолчанию; PayPal занимает 1–2 рабочих дней, денежный перевод, проволока, GBP [up to 7 days 5-10 working days 12 per wire].",
+      "isolatedBefore": "Платы селятся после 14 суток по умолчанию; PayPal занимает 1–2 рабочих дней, денежный перевод, проволока, GBP [up to 7 days 5-10 working days 12 per wire].",
+      "after": "Платы селятся после 14 суток по умолчанию; PayPal занимает 1–2 рабочих дней, денежный перевод, проволока, GBP [up to 7 days 5-10 working days 12 per wire]."
+    },
+    {
+      "source": "docs/business-plans/remote-contract-support-work.md",
+      "english": "Avoid vendors that charge certification fees (Arise requires a business entity and fees).",
+      "before": "Избегите продавцов, которых сертификация цены нанимает на работу, вставайте, и гонорары [requires a business entity].",
+      "isolatedBefore": "Избегите продавцов, которых сертификация цены нанимает на работу, вставайте, и гонорары [requires a business entity].",
+      "after": "Избегите продавцов, которых сертификация цены нанимает на работу, вставайте, и гонорары [requires a business entity]."
+    },
+    {
+      "source": "docs/business-plans/stl-miniature-subscriptions.md",
+      "english": "Thangs Memberships charges a 14% platform fee (+Stripe fees); Printables Clubs launched with a 10% fee and Stripe payments (tiers $3-100); MyMiniFactory Tribes earnings are withdrawn via PayPal on the 14th/28th.",
+      "before": "Вещи, и гонорары Stripe; клубы Printables, запущенные с гонораром 10% и платами Stripe, $3–100; племена MyMiniFactory, которые заработок снят через PayPal на 14, 28 [Memberships charges a 14% platform fee tiers th th].",
+      "isolatedBefore": "Вещи, гонорары Stripe; клубы Printables, запущенные с гонораром 10% и платами Stripe, $3–100; племена MyMiniFactory, которые заработок снят через PayPal на 14, 28 [Memberships charges a 14% platform fee tiers th th].",
+      "after": "Вещи, гонорары Stripe; клубы Printables, запущенные с гонораром 10% и платами Stripe, $3–100; племена MyMiniFactory, которые заработок снят через PayPal на 14, 28 [Memberships charges a 14% platform fee tiers th th]."
+    },
+    {
+      "source": "strategies.json#rent-gpu-vast-ai",
+      "english": "Automated driver/host updates",
+      "before": "Автоматизированные обновления драйвера/хозяина",
+      "isolatedBefore": "Автоматизированные обновления драйвера/хозяина",
+      "after": "Автоматизированные обновления драйвера/хозяина"
+    },
+    {
+      "source": "strategies.json#workplace-app-marketplaces",
+      "english": "AI agent builds Forge/Figma plugin code",
+      "before": "Агент ИИ строит код плагина Forge/Figma",
+      "isolatedBefore": "Агент ИИ строит код плагина Forge/Figma",
+      "after": "Агент ИИ строит код плагина Forge/Figma"
+    },
+    {
+      "source": "docs/business-plans/canva-templates.md",
+      "english": "No fixed monthly cost on the free tiers, so break-even is the first sale; months shown are the typical ramp to the first sale.",
+      "before": "Фиксированный ежемесячник не стоил на вольном стиле, поэтому точка нулевой прибыли — первая продажа; месяцы, показанные, — типичный съезд в первую продажу [tiers].",
+      "isolatedBefore": "Фиксированный ежемесячник не стоил на вольном стиле, поэтому точка нулевой прибыли — первая продажа; месяцы, показанные, — типичный съезд в первую продажу [tiers].",
+      "after": "Фиксированный ежемесячник не стоил на вольном стиле, поэтому точка нулевой прибыли — первая продажа; месяцы, показанные, — типичный съезд в первую продажу [tiers]."
+    },
+    {
+      "source": "docs/research/legal-framework.md",
+      "english": "Regular compliance reviews",
+      "before": "Регулярные проверки комплаенса",
+      "isolatedBefore": "Регулярные проверки комплаенса",
+      "after": "Регулярные проверки комплаенса"
+    },
+    {
+      "source": "docs/research/platform-rules.md",
+      "english": "Atom (marketplace) and NameBio (sales comps) are listed in the catalog without fee figures.",
+      "before": "Атом (рынок), и NameBio (компиляции рынковедения) внесён в список в каталоге без фигур гонорара.",
+      "isolatedBefore": "Атом (рынок), и NameBio (компиляции рынковедения) внесён в список в каталоге без фигур гонорара.",
+      "after": "Атом (рынок), и NameBio (компиляции рынковедения) внесён в список в каталоге без фигур гонорара."
+    },
+    {
+      "source": "docs/business-plans/web-serial-to-kindle-plus-page-reads.md",
+      "english": "Patreon 10% platform fee verified (processing extra).",
+      "before": "Patreon, которого гонорар перрона 10% удостоверил, обрабатывать особенно.",
+      "isolatedBefore": "Patreon, которого гонорар перрона 10% удостоверил, обрабатывать особенно.",
+      "after": "Patreon, которого гонорар перрона 10% удостоверил, обрабатывать особенно."
+    },
+    {
+      "source": "docs/research/legal-framework.md",
+      "english": "Breach notification procedures",
+      "before": "Процедуры уведомления бреши",
+      "isolatedBefore": "Процедуры уведомления бреши",
+      "after": "Процедуры уведомления бреши"
+    },
+    {
+      "source": "strategies.json#rent-parking-storage-space",
+      "english": "Neighbor: renter is charged at the start of each rental period and the host payout is sent via Stripe at the end, arriving in 2-3 business days; Neighbor deducts a 4.9% + $0.30 processing fee per host payout.",
+      "before": "Neighbor: проститут взимается в начале каждого урока аренды, и выплата множества послана через Stripe в энде, доходить через 2–3 рабочих дней; Neighbor удерживает 4,9% и $0,30 гонорара обработки за выплату множества.",
+      "isolatedBefore": "Neighbor: проститут взимается в начале каждого урока аренды, и выплата множества послана через Stripe в энде, доходить через 2–3 рабочих дней; Neighbor удерживает 4,9% и $0,30 гонорара обработки за выплату множества.",
+      "after": "Neighbor: проститут взимается в начале каждого урока аренды, и выплата множества послана через Stripe в энде, доходить через 2–3 рабочих дней; Neighbor удерживает 4,9% и $0,30 гонорара обработки за выплату множества."
+    },
+    {
+      "source": "docs/business-plans/receipt-and-shopping-data-apps.md",
+      "english": "Avoid gift-card-only apps (Fetch) if you want money in a bank.",
+      "before": "Отменяйте, призрак, если вы будете хотеть наличные в банке [gift-card-only apps].",
+      "isolatedBefore": "Отменяйте, призрак, если вы будете хотеть наличные в банке [gift-card-only apps].",
+      "after": "Отменяйте, призрак, если вы будете хотеть наличные в банке [gift-card-only apps]."
+    },
+    {
+      "source": "strategies.json#local-business-chatbot-setup",
+      "english": "Leads come from local networking, Upwork and compliant outreach.",
+      "before": "Потенциальные клиенты приходят из местного сетевого подхода в маркетинге, Upwork и послушной пропагандистской деятельности.",
+      "isolatedBefore": "Потенциальные клиенты приходят из местного сетевого подхода в маркетинге, Upwork и послушной пропагандистской деятельности.",
+      "after": "Потенциальные клиенты приходят из местного сетевого подхода в маркетинге, Upwork и послушной пропагандистской деятельности."
+    },
+    {
+      "source": "strategies.json#lessonface-music-arts-lessons",
+      "english": "Teaching is legal everywhere; a background check applies.",
+      "before": "Учение юридическое везде; проверка кандидатов применяется.",
+      "isolatedBefore": "Учение юридическое везде; проверка кандидатов применяется.",
+      "after": "Учение юридическое везде; проверка кандидатов применяется."
+    },
+    {
+      "source": "strategies.json#shopify-apps",
+      "english": "Merchants pay monthly subscriptions or usage fees for apps that solve store problems (SEO, upsells, inventory, reviews import, AI product descriptions).",
+      "before": "Торговцы уделяют ежемесячные подписки или гонорары использования для мобильного приложения, что торговцы решают проблемы магазина, поисковая оптимизация, инвентаризируйте, пересмотры импортируют, описания продукта ИИ [upsells].",
+      "isolatedBefore": "Торговцы уделяют ежемесячные подписки или гонорары использования для мобильного приложения, что торговцы решают проблемы магазина, поисковая оптимизация, инвентаризируйте, пересмотры импортируют, описания продукта ИИ [upsells].",
+      "after": "Торговцы уделяют ежемесячные подписки или гонорары использования для мобильного приложения, что торговцы решают проблемы магазина, поисковая оптимизация, инвентаризируйте, пересмотры импортируют, описания продукта ИИ [upsells]."
+    },
+    {
+      "source": "docs/business-plans/kdp-ebooks-low-content.md",
+      "english": "AI caused a flood of low-quality books, prompting Amazon's AI disclosure rule and 3-titles-per-day cap; low-content books (journals, puzzles) are near-commodity.",
+      "before": "ИИ причинил наводнение некачественных книг, подстрекать Amazon — правило раскрытия ИИ и 3, колпачок с названием за день; книги с низким содержанием (дневники, загадки) с близким товаром.",
+      "isolatedBefore": "ИИ причинил наводнение некачественных книг, подстрекать Amazon — правило раскрытия ИИ и 3, колпачок с названием за день; книги с низким содержанием (дневники, загадки) с близким товаром.",
+      "after": "ИИ причинил наводнение некачественных книг, подстрекать Amazon — правило раскрытия ИИ и 3, колпачок с названием за день; книги с низким содержанием (дневники, загадки) с близким товаром."
+    },
+    {
+      "source": "docs/research/platform-rules.md",
+      "english": "**CAN-SPAM (US)**: accurate \"From\" information, clear subject lines, the message identified as an ad, a physical address, and opt-outs honoured within 10 days.",
+      "before": "CAN-SPAM (US): From, информация, свободные дорожки темы, сообщение, идентифицированное как реклама, физический адрес, и в пределах 10 суток [accurate opt-outs honoured].",
+      "isolatedBefore": "CAN-SPAM (US): From, информация, свободные дорожки темы, сообщение, идентифицированное как реклама, физический адрес, и в пределах 10 суток [accurate opt-outs honoured].",
+      "after": "CAN-SPAM (US): From, информация, свободные дорожки темы, сообщение, идентифицированное как реклама, физический адрес, и в пределах 10 суток [accurate opt-outs honoured]."
+    },
+    {
+      "source": "strategies.json#virtual-assistant-bookkeeping",
+      "english": "bank-feed categorization rules",
+      "before": "Нанятое на работу банком правило категоризации",
+      "isolatedBefore": "Нанятое на работу банком правило категоризации",
+      "after": "Нанятое на работу банком правило категоризации"
+    },
+    {
+      "source": "docs/business-plans/technical-writing-api-docs.md",
+      "english": "**Rank #103 · Tier B · Priority score 53/100 · Category: Services & freelancing**",
+      "before": "Rank, 103, Tier B, счёт 53/100 Priority, категория в проекте Викимедиа: службы, фрилансить",
+      "isolatedBefore": "Rank, 103, Tier B, счёт 53/100 Priority, категория в проекте Викимедиа: службы, фрилансить",
+      "after": "Rank, 103, Tier B, счёт 53/100 Priority, категория в проекте Викимедиа: службы, фрилансить"
+    },
+    {
+      "source": "docs/business-plans/canva-templates.md",
+      "english": "Month 0: build 3 bundles, apply to Canva Creators (cost $0)",
+      "before": "Месяц 0: постройте 3 пачки, обращайтесь к создателям Canva (расходы $0)",
+      "isolatedBefore": "Месяц 0: постройте 3 пачки, обращайтесь к создателям Canva (расходы $0)",
+      "after": "Месяц 0: постройте 3 пачки, обращайтесь к создателям Canva (расходы $0)"
+    },
+    {
+      "source": "docs/business-plans/kolabtree-science-freelance.md",
+      "english": "Posted project budgets typically $200-5,000 (estimated).",
+      "before": "Приколотые бюджеты проекта [$200-5,000 estimated].",
+      "isolatedBefore": "Приколотые бюджеты проекта [$200-5,000 estimated].",
+      "after": "Приколотые бюджеты проекта [$200-5,000 estimated]."
+    },
+    {
+      "source": "strategies.json#jumia-kol-affiliate",
+      "english": "Monthly bank payout",
+      "before": "Ежемесячная выплата банка",
+      "isolatedBefore": "Ежемесячная выплата банка",
+      "after": "Ежемесячная выплата банка"
+    },
+    {
+      "source": "docs/business-plans/inkitt-galatea-revenue-share.md",
+      "english": "Galatea homepage publishes no author rates; Inkitt pages are bot-blocked.",
+      "before": "Домашняя страница Галатеи не публикует никакого автора; страницы Inkitt блокированные ботом [rates].",
+      "isolatedBefore": "Домашняя страница Галатеи не публикует никакого автора; страницы Inkitt блокированные ботом [rates].",
+      "after": "Домашняя страница Галатеи не публикует никакого автора; страницы Inkitt блокированные ботом [rates]."
+    },
+    {
+      "source": "docs/business-plans/design-brand-kit-image-gigs.md",
+      "english": "PayPal -> bank, Payoneer -> bank, Upwork ACH/local bank",
+      "before": "PayPal, банк, Payoneer, банк, Upwork ACH, местный банк",
+      "isolatedBefore": "PayPal, банк, Payoneer, банк, Upwork ACH, местный банк",
+      "after": "PayPal, банк, Payoneer, банк, Upwork ACH, местный банк"
+    },
+    {
+      "source": "strategies.json#newsletter-sponsorships-ad-network",
+      "english": "Auto-insert ad network slots",
+      "before": "Щели сети рекламы Auto-insert",
+      "isolatedBefore": "Щели сети рекламы Auto-insert",
+      "after": "Щели сети рекламы Auto-insert"
+    },
+    {
+      "source": "docs/business-plans/wordpress-freemium-plugins.md",
+      "english": "**Rank #81 · Tier B · Priority score 55/100 · Category: Software & developer monetization**",
+      "before": "Ранг, 81, Tier B, счёт 55/100 Priority, категория в проекте Викимедиа: программное обеспечение, монетизация программиста",
+      "isolatedBefore": "Ранг, 81, Tier B, счёт 55/100 Priority, категория в проекте Викимедиа: программное обеспечение, монетизация программиста",
+      "after": "Ранг, 81, Tier B, счёт 55/100 Priority, категория в проекте Викимедиа: программное обеспечение, монетизация программиста"
+    },
+    {
+      "source": "strategies.json#ai-prompts-promptbase",
+      "english": "weekly or monthly (Stripe); daily (Zoneless); early payout fee $3.99",
+      "before": "Ежемесячник (Stripe); ежедневная газета (Zoneless); гонорар $3,99 выплаты [weekly or]",
+      "isolatedBefore": "Ежемесячник (Stripe); ежедневная газета (Zoneless); гонорар $3,99 выплаты [weekly or]",
+      "after": "Ежемесячник (Stripe); ежедневная газета (Zoneless); гонорар $3,99 выплаты [weekly or]"
+    },
+    {
+      "source": "docs/business-plans/overwolf-in-game-apps.md",
+      "english": "Dependent on Overwolf's ad stack and policies",
+      "before": "Иждивенец на стопке рекламы и политиках",
+      "isolatedBefore": "Иждивенец на стопке рекламы и политиках",
+      "after": "Иждивенец на стопке рекламы и политиках"
+    },
+    {
+      "source": "docs/legal/reference-countries.md",
+      "english": "**India**: the Promotion and Regulation of Online Gaming Act 2025 bans online real-money games nationwide.",
+      "before": "India: Promotion и Regulation Online Gaming Act [2025 bans online real-money games nationwide].",
+      "isolatedBefore": "India: Promotion и Regulation Online Gaming Act [2025 bans online real-money games nationwide].",
+      "after": "India: Promotion и Regulation Online Gaming Act [2025 bans online real-money games nationwide]."
+    }
+  ]
+}

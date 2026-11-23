@@ -1,0 +1,272 @@
+[
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/cambly-on-demand-conversation.md",
+    "english": "_Generated from `data/strategies/community.json` by `npm run build:catalog`.",
+    "before": "Порождено из `data/strategies/community.json` `npm run build:catalog`.",
+    "after": "Порождено из `data/strategies/community.json` `npm run build:catalog`.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/sewing-quilting-pdf-patterns.md",
+    "english": "Pattern testers and sew-along posts drive launches; one pattern sells for years.",
+    "before": "Балдахины узора, и столбы ведут запуски; один узор продаёт для годов [sew-along].",
+    "after": "Балдахины узора, и столбы ведут запуски; один узор продаёт для годов [sew-along].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#minecraft-server-tebex-store",
+    "english": "Community building and moderation",
+    "before": "Строительство сообщества [moderation]",
+    "after": "Строительство сообщества [moderation]",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#data-cleaning-conversion-gigs",
+    "english": "client communication on scope",
+    "before": "Сообщение клиента на области видимости",
+    "after": "Сообщение клиента на области видимости",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/research/platform-rules.md",
+    "english": "**Rules**: label sponsored content.",
+    "before": "Правила: наклейте ярлыки спонсированное содержание.",
+    "after": "Правила: наклейте ярлыки спонсированное содержание.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/shopify-apps.md",
+    "english": "Merchants install and subscribe",
+    "before": "Торговецы помещают, и торговецы записываются",
+    "after": "Торговецы помещают, и торговецы записываются",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/music-streaming-distribution.md",
+    "english": "Recovery assumes ~$3/month net at month 6.",
+    "before": "Оживление занимает ≈$3 в чистый месяц в месяце 6.",
+    "after": "Оживление занимает ≈$3 в месяц нетто в месяце 6.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/legal/remote-incorporation-options.md",
+    "english": "Rule of thumb: a foreign company does **not** change where you pay tax.",
+    "before": "Практическое правило: иностранная компания не изменяется, где вы платите налог.",
+    "after": "Практическое правило: иностранная компания не изменяется, где вы платите налог.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#direct-ad-space-dev-sites",
+    "english": "Sell ad space on your developer site/newsletter (EthicalAds, BuySellAds, direct sponsors)",
+    "before": "Продайте пространство рекламы на своём сайте программиста (EthicalAds, BuySellAds, прямые поручители)/информационном бюллетене",
+    "after": "Продайте пространство рекламы на своём сайте программиста (EthicalAds, BuySellAds, прямые поручители)/информационном бюллетене",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/content-mill-writing.md",
+    "english": "Textbroker US pays per word by quality rating (3 stars 1.1¢, 4 stars 1.6¢, 5 stars 5.5¢; DirectOrders from 2.2¢) with payouts processed twice a week; Verblio pays per accepted piece and lets writers invoice weekly.",
+    "before": "Textbroker US платит за слово классификацией качества, 3 звёздочки, 4 звёздочки, 5 звёздочек; DirectOrders от 2.2, выплаты обработали неделю дважды; Verblio платит за принятую фигуру и дайте писателей [1.1 1.6 5.5 with invoice weekly].",
+    "after": "Textbroker US платит за слово классификацией качества, 3 звёздочки, 4 звёздочки, 5 звёздочек; DirectOrders от 2.2, выплаты обработали неделю дважды; Verblio платит за принятую фигуру и дайте писателей [1.1 1.6 5.5 with invoice weekly].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#virtual-assistant-bookkeeping",
+    "english": "OnlineJobs.ph targets Filipino workers.",
+    "before": "OnlineJobs.ph направляет рабочии Filipino.",
+    "after": "OnlineJobs.ph направляет рабочии Filipino.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/newsletter-ad-network-boosts.md",
+    "english": "Content can be AI-assisted curation, but advertisers drop low-engagement lists.",
+    "before": "Содержание может быть AI-assisted, но рекламодатели выбрасывают списки с низкой помолвкой [curation].",
+    "after": "Содержание может быть AI-assisted, но рекламодатели выбрасывают списки с низкой помолвкой [curation].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/superprof-lead-gen-tutoring.md",
+    "english": "Edit the JSON, not this file._",
+    "before": "Измените JSON, а не это дело.",
+    "after": "Измените JSON, а не это дело.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#minecraft-mod-rewards-curseforge-modrinth",
+    "english": "Mojang's EULA bars selling mods, so ad-share is the sanctioned route.",
+    "before": "Mojang — EULA, поэтому Mojang — применённый санкции путь [selling mods ad-share].",
+    "after": "Mojang — EULA, поэтому Mojang — применённый санкции путь [selling mods ad-share].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#video-podcast-sponsorship-marketplaces",
+    "english": "This is distinct from affiliate links: payment is guaranteed per delivered placement rather than per sale.",
+    "before": "Это отдельно: плата гарантируется за освобождённое размещение [from affiliate links rather than per sale].",
+    "after": "Это отдельно: плата гарантируется за освобождённое размещение [from affiliate links rather than per sale].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/digital-downloads-gumroad-payhip.md",
+    "english": "Lemon Squeezy transition toward Stripe Managed Payments",
+    "before": "Маленький переход лимона к платам Stripe Managed",
+    "after": "Маленький переход лимона к платам Stripe Managed",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/agency-assigned-tutoring-contractor.md",
+    "english": "_Generated from `data/strategies/teaching.json` by `npm run build:catalog`.",
+    "before": "Порождено из `data/strategies/teaching.json` `npm run build:catalog`.",
+    "after": "Порождено из `data/strategies/teaching.json` `npm run build:catalog`.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/licensed-data-api-feeds.md",
+    "english": "List on RapidAPI (PayPal-only payouts at the end of the month after the charge, flat 25% fee) or sell directly with Stripe-metered billing.",
+    "before": "Слушайте на RapidAPI, выплаты PayPal-only в конеце месяца после заряда, квартира или продайте посылать счёт прямо с Stripe-metered [25% fee].",
+    "after": "Слушайте на RapidAPI, выплаты PayPal-only в конеце месяца после заряда, квартира или продайте посылать счёт прямо с Stripe-metered [25% fee].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#pod-marketplaces-redbubble-teepublic-merch",
+    "english": "Redbubble help center confirms the $10 threshold from July 1, 2026, monthly payment by the 15th and account-fee rules; TeePublic help center confirms monthly PayPal/Payoneer payouts on the 15th.",
+    "before": "Центр помощи Redbubble подтверждает $10 порога с июля 1, 2026, ежемесячная плата 15, и правила; центр помощи TeePublic подтверждает ежемесячные выплаты PayPal/Payoneer на 15 [th account-fee th].",
+    "after": "Центр помощи Redbubble подтверждает $10 порога с июля 1, 2026, ежемесячная плата 15, и правила; центр помощи TeePublic подтверждает ежемесячные выплаты PayPal/Payoneer на 15 [th account-fee th].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#affiliate-network-programmatic-seo",
+    "english": "Legal everywhere in the reference set; Google spam policies (scaled content abuse) are a ranking risk, not a legal one.",
+    "before": "Связь, положенная; политики спама Google (чешуйчатое злоупотребление содержания) — риск ранжирования, а не один [Legal everywhere in a legal].",
+    "after": "Связь, положенная; политики спама Google (чешуйчатое злоупотребление содержания) — риск ранжирования, а не один [Legal everywhere in a legal].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#rent-storage-storj-node",
+    "english": "Unpaid balances roll over to the next month. zkSync payouts ended 1 Sep 2026.",
+    "before": "Балансы Unpaid катаются, выплаты zkSync окончили Sep 2026 [over to the next month].",
+    "after": "Балансы Unpaid катаются, выплаты zkSync окончили Sep 2026 [over to the next month].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/public-data-scraping-service.md",
+    "english": "Pick a compliant data source",
+    "before": "Соберите послушный источник данных",
+    "after": "Соберите послушный источник данных",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/README.md",
+    "english": "**#185** [Dropshipping store (Shopify + AliExpress/CJ/print-on-demand)](./shopify-dropshipping.md) — Run an online store where a supplier ships products directly to customers; you handle marketing and customer service. _(score 45, tier C)_",
+    "before": "[Dropshipping store (Shopify + AliExpress/CJ/print-on-demand)](./shopify-dropshipping.md), руководите онлайновым магазином, где поставщик отправляет продукты прямо клиентам; вы управляете маркетингом и обслуживаним клиентом. Счёт 45, C",
+    "after": "[Dropshipping store (Shopify + AliExpress/CJ/print-on-demand)](./shopify-dropshipping.md), руководите онлайновым магазином, где поставщик отправляет продукты прямо клиентам; вы управляете маркетингом и обслуживаним клиентом. Счёт 45, C",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "strategies.json#x-original-content-rewards",
+    "english": "Premium purchase + ID verification",
+    "before": "Купленная вещь страхового взноса и проверка ID",
+    "after": "Купленная вещь страхового взноса и проверка ID",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/remote-session-mixing-mastering.md",
+    "english": "PayPal -> bank, Payoneer -> bank",
+    "before": "PayPal, банк, Payoneer, банк",
+    "after": "PayPal, банк, Payoneer, банк",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/research/platform-rules.md",
+    "english": "The first payout needs $100 and a manual eligibility review; later payouts need $25.",
+    "before": "Первая выплата нуждается в $100 и ручном коробке передач; позже выплаты нуждаются в $25 [eligibility review].",
+    "after": "Первая выплата нуждается в $100 и ручном коробке передач; позже выплаты нуждаются в $25 [eligibility review].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/vrchat-avatar-assets-creator-economy.md",
+    "english": "Customer support for import issues",
+    "before": "Служба поддержки клиентов для вопросов импорта",
+    "after": "Служба поддержки клиентов для вопросов импорта",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/minecraft-marketplace-partner-content.md",
+    "english": "No cash outlay; first contract usually comes after a portfolio of 3-5 pieces.",
+    "before": "Без денежных расходов; первый контракт обычно приходит после портфеля ценных бумаг 3–5 кусков.",
+    "after": "Без денежных расходов; первый контракт обычно приходит после портфеля ценных бумаг 3–5 кусков.",
+    "completeBefore": true,
+    "completeAfter": true
+  },
+  {
+    "seed": 71824,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "Progressive CIT 25-35%.",
+    "before": "CIT [25-35%].",
+    "after": "CIT [25-35%].",
+    "completeBefore": false,
+    "completeAfter": false
+  },
+  {
+    "seed": 71824,
+    "source": "docs/business-plans/twitch-extensions-bits.md",
+    "english": "Must check the isBitsEnabled flag and follow Twitch Extension guidelines and review.",
+    "before": "Проверьте флаг isBitsEnabled, директивы Twitch Extension подписки и пересмотр [Must].",
+    "after": "Проверьте флаг isBitsEnabled, директивы Twitch Extension подписки и пересмотр [Must].",
+    "completeBefore": false,
+    "completeAfter": false
+  }
+]

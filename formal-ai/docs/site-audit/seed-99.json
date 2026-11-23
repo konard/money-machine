@@ -1,0 +1,306 @@
+[
+  {
+    "id": 1,
+    "source": "strategies.json#fintech-referral-bonuses",
+    "english": "countries where a given app is not licensed",
+    "before": "Страны, где данное приложение не [licensed]",
+    "after": "Страны, где данное приложение не [licensed]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Missing word / inflection",
+    "detail": "licensed"
+  },
+  {
+    "id": 2,
+    "source": "docs/business-plans/game-playtesting.md",
+    "english": "Complete post-test surveys",
+    "before": "Завершайте [post-test surveys]",
+    "after": "Завершайте [post-test surveys]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Missing word / inflection",
+    "detail": "post-test"
+  },
+  {
+    "id": 3,
+    "source": "docs/business-plans/ai-automation-agency.md",
+    "english": "client credential handover",
+    "before": "Передача мандата клиента",
+    "after": "Передача мандата клиента",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 4,
+    "source": "strategies.json#cross-stitch-embroidery-files",
+    "english": "Creative Fabrica: PayPal none ($0.50 fee under $10), Payoneer $100, bank $100 (+$20 fee); LoveCrafts none stated; Payhip none (instant)",
+    "before": "Creative Fabrica: PayPal ($0,50 гонорара менее $10), Payoneer, банк $100 ($20 гонорара); LoveCrafts; Payhip (мгновение) [none $100 none stated none]",
+    "after": "Creative Fabrica: PayPal ($0,50 гонорара менее $10), Payoneer, банк $100 ($20 гонорара); LoveCrafts; Payhip (мгновение) [none $100 none stated none]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "List / measured-label format",
+    "detail": "none/stated and platform amount labels"
+  },
+  {
+    "id": 5,
+    "source": "strategies.json#apify-actors-mcp-tools",
+    "english": "GDPR when touching personal data",
+    "before": "GDPR, когда личное данные [touching]",
+    "after": "GDPR, когда личное данные [touching]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Nonfinite / nominal attachment",
+    "detail": "Subjectless when + gerund clause"
+  },
+  {
+    "id": 6,
+    "source": "docs/business-plans/README.md",
+    "english": "Maps are built in Dungeondraft/Wonderdraft from reusable asset packs. _(score 47, tier C)_",
+    "before": "Словари строятся в Dungeondraft/Wonderdraft из многоразовых стай актива. (счёт 47), C",
+    "after": "Словари строятся в Dungeondraft/Wonderdraft из многоразовых стай актива. (счёт 47), C",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 7,
+    "source": "strategies.json#stock-media-contributor",
+    "english": "Shutterstock's no-AI rule confirmed on its contributor FAQ; payout minimums and Adobe/Pond5 policies not re-verified (help pages block automated fetching).",
+    "before": "Shutterstock — правило no-AI, [wikt:confirm:verb:4]; минимумы выплаты и политики Adobe/Pond5 (помочьите страницам, которые блок автоматизировал) [re-verified fetching].",
+    "after": "Shutterstock — правило no-AI, которое подтверждают на FAQ; минимумы выплаты и политики Adobe/Pond5 (помочьите страницам, которые блок автоматизировал) [re-verified fetching].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Passive participles / reduced relatives",
+    "detail": "Missing confirm participle; re-verified/fetching also unresolved"
+  },
+  {
+    "id": 8,
+    "source": "docs/business-plans/photo-presets-luts.md",
+    "english": "Per platform: Payhip $0 (instant), Etsy $0 weekly, Creative Market $20, Gumroad $100",
+    "before": "За перрон: Payhip (мгновение), Etsy, Market, Gumroad [$0 $0 weekly $20 $100]",
+    "after": "За перрон: Payhip (мгновение), Etsy, Market, Gumroad [$0 $0 weekly $20 $100]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "List / measured-label format",
+    "detail": "Repeated platform amount labels"
+  },
+  {
+    "id": 9,
+    "source": "docs/business-plans/micro-saas-merchant-of-record.md",
+    "english": "Fees ~5% + 50c (Paddle/Lemon Squeezy) or 5% + 50c on Polar's Starter plan (lower on its paid plans).",
+    "before": "Нанимает на работу ≈5% и 50 (Squeezy) или 5% и 50 (снижайтесь на его платных планах) [c c on Polar 's Starter plan].",
+    "after": "Нанимает на работу ≈5% и 50 (Squeezy) или 5% и 50 (снижайтесь на его платных планах) [c c on Polar 's Starter plan].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Possessive / measured-label format",
+    "detail": "c unit abbreviation; nested named-plan possessive"
+  },
+  {
+    "id": 10,
+    "source": "docs/business-plans/vtt-assets-roll20-marketplace.md",
+    "english": "Roll20: PayPal (required) -> bank, Foundry Marketplace: unverified, Own store via Stripe/PayPal or Patreon",
+    "before": "Roll20: PayPal (банк), Foundry Marketplace, завладейте магазин через Stripe/PayPal или Patreon [required unverified]",
+    "after": "Roll20: PayPal (банк), Foundry Marketplace, завладейте магазин через Stripe/PayPal или Patreon [required unverified]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Passive participles / reduced relatives",
+    "detail": "Parenthetical required and unverified fragments"
+  },
+  {
+    "id": 11,
+    "source": "strategies.json#domain-lease-to-own",
+    "english": "Afternic's official help center and Lease-to-Own page document commission tiers and payout methods; DomainNameWire documented Dan.com's 2024 migration of LTO to Afternic.",
+    "before": "Официальный центр помощи, ярусы комиссии документа страницы Lease-to-Own и методы выплаты; DomainNameWire, документированный, — 2024 миграции из LTO в Afternic.",
+    "after": "Официальный центр помощи, ярусы комиссии документа страницы Lease-to-Own и методы выплаты; DomainNameWire, документированный, — 2024 миграции из LTO в Afternic.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 12,
+    "source": "strategies.json#stl-miniature-subscriptions",
+    "english": "Sculpting each month's set (ZBrush/Blender) - heavy manual art work",
+    "before": "Sculpting, которого у каждого месяца есть, задал (ZBrush/Blender), тяжёлая ручная работа искусства",
+    "after": "Sculpting, которого у каждого месяца есть, задал (ZBrush/Blender), тяжёлая ручная работа искусства",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 13,
+    "source": "strategies.json#smb-ppc-ads-management",
+    "english": "client onboarding and account access",
+    "before": "Клиент и отчитайтесь доступ [onboarding]",
+    "after": "Клиент и отчитайтесь доступ [onboarding]",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Nonfinite / nominal attachment",
+    "detail": "Nominal onboarding inside a coordinated compound"
+  },
+  {
+    "id": 14,
+    "source": "docs/business-plans/rent-gpu-vast-ai.md",
+    "english": "Edit the JSON, not this file._",
+    "before": "Правите JSON, а не этот файл.",
+    "after": "Правите JSON, а не этот файл.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 15,
+    "source": "docs/business-plans/website-in-a-day.md",
+    "english": "Startup cash = domain for your own portfolio.",
+    "before": "Наличные стартапа, владение для вашего собственного портфолио.",
+    "after": "Наличные стартапа, владение для вашего собственного портфолио.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 16,
+    "source": "docs/research/platform-rules.md",
+    "english": "One account per person, with an ID check",
+    "before": "Один счёт за персонаж, с галочкой ID",
+    "after": "Один счёт за персонаж, с галочкой ID",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 17,
+    "source": "docs/business-plans/README.md",
+    "english": "**#146** [Website templates and themes: Framer, Webflow, Shopify Theme Store](./website-themes-templates.md) — Sell website templates on no-code marketplaces where buyers are site builders, plus referral revenue when they upgrade. _(score 49, tier C)_",
+    "before": "[Website templates and themes: Framer, Webflow, Shopify Theme Store](./website-themes-templates.md), продайте шаблоны веб-сайта, где покупатели — строители местоположения, положительный доход направления, когда они обновят [on no-code marketplaces]. (счёт 49), C",
+    "after": "[Website templates and themes: Framer, Webflow, Shopify Theme Store](./website-themes-templates.md), продайте шаблоны веб-сайта, где покупатели — строители местоположения, положительный доход направления, когда они обновят [on no-code marketplaces]. (счёт 49), C",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Missing word / inflection",
+    "detail": "no-code / marketplaces attachment"
+  },
+  {
+    "id": 18,
+    "source": "docs/business-plans/indie-games-steam-itch.md",
+    "english": "The chance of receiving at least one real payout within six months is rated **3/10**.",
+    "before": "Возможность получать не менее одной недвижимой выплаты в пределах шести месяцев оценивается 3/10.",
+    "after": "Возможность получать не менее одной недвижимой выплаты в пределах шести месяцев оценивается 3/10.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 19,
+    "source": "docs/business-plans/sheet-music-arrangeme.md",
+    "english": "_Generated from `data/strategies/music-audio.json` by `npm run build:catalog`.",
+    "before": "Порождалось из `data/strategies/music-audio.json` `npm run build:catalog`.",
+    "after": "Порождалось из `data/strategies/music-audio.json` `npm run build:catalog`.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 20,
+    "source": "docs/business-plans/music-curator-paid-reviews.md",
+    "english": "Fake playlist followers lead to bans",
+    "before": "Фальшивые подписчики списока воспроизведения руководят в запреты",
+    "after": "Фальшивые подписчики списока воспроизведения руководят в запреты",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 21,
+    "source": "docs/business-plans/rent-car-turo.md",
+    "english": "Works best in cities/airports with tourist demand.",
+    "before": "Работы побеждают в городах или спрос туриста [airports with].",
+    "after": "Работы побеждают в городах или спрос туриста [airports with].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Missing word / inflection",
+    "detail": "airports; noun/adverb ambiguity in Works best"
+  },
+  {
+    "id": 22,
+    "source": "docs/business-plans/ai-stock-imagery-adobe-freepik.md",
+    "english": "Keyword and label as AI",
+    "before": "Keyword и ярлык как AI",
+    "after": "Keyword и ярлык как AI",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 23,
+    "source": "docs/legal/incorporation-costs.md",
+    "english": "URSB charges UGX 35,000 for name reservation and UGX 105,000 to incorporate (nominal capital up to UGX 5M; 1.5% above), plus document filing fees and stamp duty on share capital.",
+    "before": "URSB загружает UGX 35,000 для имени, и UGX 105,000 (номинальный капитал); 1,5%, положительные гонорары опилки документа и долг штампа на капитале акции [reservation to incorporate up to UGX 5M].",
+    "after": "URSB загружает UGX 35,000 для имени, и UGX 105,000 (номинальный капитал); 1,5%, положительные гонорары опилки документа и долг штампа на капитале акции [reservation to incorporate up to UGX 5M].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "List / measured-label format",
+    "detail": "Currency units, purpose infinitive and bound amount"
+  },
+  {
+    "id": 24,
+    "source": "docs/business-plans/saas-recurring-affiliate-tutorials.md",
+    "english": "Notion is closed to new affiliates, a reminder that programs change.",
+    "before": "Notion закрытый, напоминание, которое программы изменяются [to new affiliates].",
+    "after": "Notion закрытый, напоминание, которое программы изменяются [to new affiliates].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Missing word / inflection",
+    "detail": "affiliates lacks the required nominal reading"
+  },
+  {
+    "id": 25,
+    "source": "docs/business-plans/sheet-music-arrangeme.md",
+    "english": "Exclusivity rules on copyrighted arrangements",
+    "before": "Правила Exclusivity на [wikt:copyright:verb:1] аранжировках",
+    "after": "Правила Exclusivity на аранжировках, которые обеспечивают авторское право",
+    "beforeComplete": false,
+    "afterComplete": true,
+    "cause": "Passive participles / reduced relatives",
+    "detail": "No Russian long participle for copyrighted"
+  },
+  {
+    "id": 26,
+    "source": "docs/business-plans/cohort-courses-maven.md",
+    "english": "Verifier: median month-12 net lowered from $700 to $0 because only ~12% of starters fill a paid cohort in their first year; Maven 10% + Stripe confirmed.",
+    "before": "Verifier: месяц медианы, 12 прибылей снизилось от $700 в $0, потому что единственный ребёнок ≈12%; Maven, и Stripe подтверждал [of starters fill a paid cohort in their first year 10%].",
+    "after": "Verifier: месяц медианы, 12 прибылей снизилось от $700 в $0, потому что единственный ребёнок ≈12%; Maven, и Stripe подтверждал [of starters fill a paid cohort in their first year 10%].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Quantifier / degree ellipsis",
+    "detail": "only + percentage partitive and monetary fact labels"
+  },
+  {
+    "id": 27,
+    "source": "strategies.json#tiktok-creator-rewards",
+    "english": "Payout method verification",
+    "before": "Проверка метода выплаты",
+    "after": "Проверка метода выплаты",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 28,
+    "source": "docs/business-plans/paid-survey-panels.md",
+    "english": "_Generated from `data/strategies/small-sure-wins.json` by `npm run build:catalog`.",
+    "before": "Порождалось из `data/strategies/small-sure-wins.json` `npm run build:catalog`.",
+    "after": "Порождалось из `data/strategies/small-sure-wins.json` `npm run build:catalog`.",
+    "beforeComplete": true,
+    "afterComplete": true
+  },
+  {
+    "id": 29,
+    "source": "strategies.json#shopify-dropshipping",
+    "english": "You build a Shopify (or WooCommerce) store, import products from AliExpress, CJ Dropshipping, Zendrop or print-on-demand suppliers like Printful, and drive traffic with paid ads, TikTok or SEO.",
+    "before": "Вы строите Shopify или WooCommerce, храните, импортируйте продукты из AliExpress, CJ Dropshipping, Zendrop или поставите лайк Printful и повестийте движение, TikTok или SEO [print-on-demand suppliers with paid ads].",
+    "after": "Вы строите Shopify или WooCommerce, храните, импортируйте продукты из AliExpress, CJ Dropshipping, Zendrop или поставите лайк Printful и повестийте движение, TikTok или SEO [print-on-demand suppliers with paid ads].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Missing word / inflection",
+    "detail": "print-on-demand/suppliers; ads and coordination"
+  },
+  {
+    "id": 30,
+    "source": "docs/business-plans/newsletter-sponsorships-ad-network.md",
+    "english": "beehiiv pays Ad Network earnings on the 20th for the previous month's placements (reports ~96h after send); PayPal/Wise not supported.",
+    "before": "Зарплаты (репортажи), после того как посылайте; PayPal/Wise не поддерживал [beehiiv Ad Network earnings on the 20 th for the previous month 's placements ~96 h].",
+    "after": "Зарплаты (репортажи), после того как посылайте; PayPal/Wise не поддерживал [beehiiv Ad Network earnings on the 20 th for the previous month 's placements ~96 h].",
+    "beforeComplete": false,
+    "afterComplete": false,
+    "cause": "Name / identifier",
+    "detail": "beehiiv plus ordinal, duration and possessive labels"
+  }
+]

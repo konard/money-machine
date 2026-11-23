@@ -1,0 +1,216 @@
+{
+  "seed": 48173,
+  "population": "recorded website regression sentences",
+  "sentences": [
+    {
+      "english": "Billing runs through Shopify, which pays partners twice monthly via Hyperwallet.",
+      "source": "strategies.json#shopify-apps",
+      "before": "Посылать счёт бегам через Shopify, зарплаты [which partners twice monthly via Hyperwallet].",
+      "after": "Посылать счёт бегам через Shopify, зарплаты [which partners twice monthly via Hyperwallet].",
+      "changed": false
+    },
+    {
+      "english": "Must check the isBitsEnabled flag and follow Twitch Extension guidelines and review.",
+      "source": "docs/business-plans/twitch-extensions-bits.md",
+      "before": "Проверьте флаг isBitsEnabled и директивы Twitch Extension фолловинга и делайте обзор [Must].",
+      "after": "Проверьте флаг isBitsEnabled и директивы Twitch Extension фолловинга и делайте обзор [Must].",
+      "changed": false
+    },
+    {
+      "english": "No spam messaging.",
+      "source": "strategies.json#earnkaro-india-deal-sharing",
+      "before": "Без мгновенного обмена сообщениями спама.",
+      "after": "Без мгновенного обмена сообщениями спама.",
+      "changed": false
+    },
+    {
+      "english": "Months include ramp-up to the first order.",
+      "source": "docs/business-plans/video-repurposing-thumbnail-agency.md",
+      "before": "Месяцы включают [ramp-up to the first order].",
+      "after": "Месяцы включают [ramp-up to the first order].",
+      "changed": false
+    },
+    {
+      "english": "Long development times mean many writers see no income in the first year.",
+      "source": "docs/business-plans/interactive-fiction-choice-of-games.md",
+      "before": "Длинные месяцы развития значат много писателей [see no income in the first year].",
+      "after": "Длинные месяцы развития значат много писателей [see no income in the first year].",
+      "changed": false
+    },
+    {
+      "english": "Fiscal host handles some compliance.",
+      "source": "strategies.json#oss-funding-opencollective-polar-thanksdev",
+      "before": "Финансовый хозяин управляет некоторым согласием.",
+      "after": "Финансовый хозяин управляет некоторым согласием.",
+      "changed": false
+    },
+    {
+      "english": "You don't market yourself or set prices.",
+      "source": "strategies.json#agency-assigned-tutoring-contractor",
+      "before": "Вы не продаёте себе или кладёте цены.",
+      "after": "Вы не продаёте себе или кладёте цены.",
+      "changed": false
+    },
+    {
+      "english": "Direct Stripe billing avoids the marketplace cut.",
+      "source": "strategies.json#licensed-data-api-feeds",
+      "before": "Режиссируйте Stripe [billing avoids the marketplace cut].",
+      "after": "Режиссируйте Stripe [billing avoids the marketplace cut].",
+      "changed": false
+    },
+    {
+      "english": "Cambly connects English learners to tutors for on-demand or scheduled conversation calls.",
+      "source": "strategies.json#cambly-on-demand-conversation",
+      "before": "Cambly связывает учеников English репетиторам или Cambly спланировал звонки разговора [for on-demand].",
+      "after": "Cambly связывает учеников English репетиторам или Cambly спланировал звонки разговора [for on-demand].",
+      "changed": false
+    },
+    {
+      "english": "Never pay to join, and treat any 'deposit this cheque' request as a scam.",
+      "source": "docs/business-plans/online-mystery-shopping.md",
+      "before": "Никогда не платите, чтобы соединять и лечите, как афера [any 'deposit this cheque ' request].",
+      "after": "Никогда не платите, чтобы соединять и лечите, как афера [any 'deposit this cheque ' request].",
+      "changed": false
+    },
+    {
+      "english": "Patrons are existing followers of your free work who pay to support you.",
+      "source": "strategies.json#patreon-memberships",
+      "before": "Покровители существуют подписчиками вашей бесплатной работы, которые платят вам в поддержку.",
+      "after": "Покровители существуют подписчиками вашего бесплатного труда, которые платят вам в поддержку.",
+      "changed": true
+    },
+    {
+      "english": "Buyers come from Etsy search.",
+      "source": "strategies.json#etsy-digital-printables-svg",
+      "before": "Покупатели приходят из поиска Etsy.",
+      "after": "Покупатели приходят из поиска Etsy.",
+      "changed": false
+    },
+    {
+      "english": "Each project limits which countries it accepts.",
+      "source": "docs/business-plans/generalist-rlhf-ai-training.md",
+      "before": "Каждые пределы проекта [which countries it accepts].",
+      "after": "Каждые пределы проекта [which countries it accepts].",
+      "changed": false
+    },
+    {
+      "english": "Small businesses pay because the work is tedious.",
+      "source": "strategies.json#data-cleaning-conversion-gigs",
+      "before": "Малые бизнесы платят, потому что работа нудна.",
+      "after": "Малые бизнесы платят, потому что работа нудна.",
+      "changed": false
+    },
+    {
+      "english": "That's different from self-publishing on Udemy or Skillshare.",
+      "source": "docs/business-plans/curated-publisher-video-courses.md",
+      "before": "Это отлично или Skillshare [from self-publishing on Udemy].",
+      "after": "Это отлично или Skillshare [from self-publishing on Udemy].",
+      "changed": false
+    },
+    {
+      "english": "Firms pay per sheet and repeat.",
+      "source": "docs/business-plans/patent-technical-illustration.md",
+      "before": "Фирмы платят за лист, и фирмы повторяют.",
+      "after": "Фирмы платят за лист, и фирмы повторяют.",
+      "changed": false
+    },
+    {
+      "english": "LinkedIn Learning's instructor page says only 'earn extra income'.",
+      "source": "strategies.json#curated-publisher-video-courses",
+      "before": "Страница инструктора LinkedIn Learning говорит единственному ребёнку ['earn extra income '].",
+      "after": "Страница инструктора LinkedIn Learning говорит единственному ребёнку ['earn extra income '].",
+      "changed": false
+    },
+    {
+      "english": "Payoneer and Wise withdrawals to local nostro accounts are possible.",
+      "source": "docs/legal/incorporation-costs.md",
+      "before": "Payoneer и снятия Wise в локальные счета nostro возможны.",
+      "after": "Payoneer и снятия Wise в локальные счета nostro возможны.",
+      "changed": false
+    },
+    {
+      "english": "Money that would otherwise go unclaimed flows to you.",
+      "source": "strategies.json#songwriter-publishing-royalties",
+      "before": "Деньги, которые оставили бы невостребованные течения иначе вам.",
+      "after": "Деньги, которые оставили бы невостребованные течения иначе вам.",
+      "changed": false
+    },
+    {
+      "english": "Do not resell personal data.",
+      "source": "docs/business-plans/sell-datasets.md",
+      "before": "Не перепродавайте личные данные.",
+      "after": "Не перепродавайте личные данные.",
+      "changed": false
+    },
+    {
+      "english": "Some sites also exclude people working in law or insurance.",
+      "source": "docs/business-plans/paid-online-juror.md",
+      "before": "Несколько сайтов тоже исключают людей или страхование [working in law].",
+      "after": "Несколько сайтов тоже исключают людей или страхование [working in law].",
+      "changed": false
+    },
+    {
+      "english": "Requires sharing location history for many surveys.",
+      "source": "docs/business-plans/google-opinion-rewards.md",
+      "before": "Требует делить историю положения для многих топографических съёмок.",
+      "after": "Требует делить историю положения для многих топографических съёмок.",
+      "changed": false
+    },
+    {
+      "english": "Income comes from a growing video library without needing your own traffic.",
+      "source": "strategies.json#amazon-influencer-shoppable-videos",
+      "before": "Доход приходит из библиотеки видео биологического роста без того, чтобы нуждаться в вашем собственном движении.",
+      "after": "Доход приходит из библиотеки видео биологического роста без того, чтобы нуждаться в вашем собственном движении.",
+      "changed": false
+    },
+    {
+      "english": "Physical merch adds shipping.",
+      "source": "docs/business-plans/bandcamp-direct-sales.md",
+      "before": "Физический товар добавляет перевозку.",
+      "after": "Физический товар добавляет перевозку.",
+      "changed": false
+    },
+    {
+      "english": "Advertisers pay to reach developers without tracking.",
+      "source": "strategies.json#direct-ad-space-dev-sites",
+      "before": "Рекламодатели платят, чтобы доходить программистам без следопытства.",
+      "after": "Рекламодатели платят, чтобы доходить программистам без следопытства.",
+      "changed": false
+    },
+    {
+      "english": "Researchers post studies with a set reward.",
+      "source": "strategies.json#academic-research-studies",
+      "before": "Исследователи помещают сообщение исследования с установленной наградой.",
+      "after": "Исследователи помещают сообщение исследования с установленным вознаграждением.",
+      "changed": true
+    },
+    {
+      "english": "Neither homepage names the payout method, so confirm it in your contract.",
+      "source": "docs/business-plans/expert-ai-training.md",
+      "before": "Также не домашняя страница называет метод выплаты, поэтому подтвердите его в своём контракте.",
+      "after": "Также не домашняя страница называет метод выплаты, поэтому подтвердите его в своём контракте.",
+      "changed": false
+    },
+    {
+      "english": "Unlike Etsy you pay no listing fees and the marketplace brings its own traffic.",
+      "source": "strategies.json#craft-design-subscription-marketplaces",
+      "before": "Etsy, и рынок приносит его собственное движение [you pay no listing fees].",
+      "after": "Etsy, и рынок приносит его собственное движение [you pay no listing fees].",
+      "changed": false
+    },
+    {
+      "english": "Income tracks adoption, so it is slow and concentrated in popular maintainers.",
+      "source": "docs/business-plans/github-sponsors.md",
+      "before": "Доход отслеживает усыновление, поэтому оно медленно и концентрированно в народных мейнтейнерах.",
+      "after": "Доход отслеживает усыновление, поэтому оно медленно и концентрированно в народных мейнтейнерах.",
+      "changed": false
+    },
+    {
+      "english": "First dividend arrives at next quarterly distribution.",
+      "source": "docs/business-plans/robo-advisor-index-dividends.md",
+      "before": "Первый дивиденд доходит в следующем квартальном распространении.",
+      "after": "Первый дивиденд доходит в следующем квартальном распределении.",
+      "changed": true
+    }
+  ]
+}

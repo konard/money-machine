@@ -1,0 +1,342 @@
+[
+  {
+    "text": "Buyers come from Etsy search.",
+    "source": "strategies.json#etsy-digital-printables-svg"
+  },
+  {
+    "text": "Researchers post studies with a set reward.",
+    "source": "strategies.json#academic-research-studies"
+  },
+  {
+    "text": "Advertisers pay to reach developers without tracking.",
+    "source": "strategies.json#direct-ad-space-dev-sites"
+  },
+  {
+    "text": "Money that would otherwise go unclaimed flows to you.",
+    "source": "strategies.json#songwriter-publishing-royalties"
+  },
+  {
+    "text": "Direct Stripe billing avoids the marketplace cut.",
+    "source": "strategies.json#licensed-data-api-feeds"
+  },
+  {
+    "text": "Patrons are existing followers of your free work who pay to support you.",
+    "source": "strategies.json#patreon-memberships"
+  },
+  {
+    "text": "Cambly connects English learners to tutors for on-demand or scheduled conversation calls.",
+    "source": "strategies.json#cambly-on-demand-conversation"
+  },
+  {
+    "text": "Unlike Etsy you pay no listing fees and the marketplace brings its own traffic.",
+    "source": "strategies.json#craft-design-subscription-marketplaces"
+  },
+  {
+    "text": "Small businesses pay because the work is tedious.",
+    "source": "strategies.json#data-cleaning-conversion-gigs"
+  },
+  {
+    "text": "Fiscal host handles some compliance.",
+    "source": "strategies.json#oss-funding-opencollective-polar-thanksdev"
+  },
+  {
+    "text": "Income comes from a growing video library without needing your own traffic.",
+    "source": "strategies.json#amazon-influencer-shoppable-videos"
+  },
+  {
+    "text": "Billing runs through Shopify, which pays partners twice monthly via Hyperwallet.",
+    "source": "strategies.json#shopify-apps"
+  },
+  {
+    "text": "You don't market yourself or set prices.",
+    "source": "strategies.json#agency-assigned-tutoring-contractor"
+  },
+  {
+    "text": "LinkedIn Learning's instructor page says only 'earn extra income'.",
+    "source": "strategies.json#curated-publisher-video-courses"
+  },
+  {
+    "text": "No spam messaging.",
+    "source": "strategies.json#earnkaro-india-deal-sharing"
+  },
+  {
+    "text": "Long development times mean many writers see no income in the first year.",
+    "source": "docs/business-plans/interactive-fiction-choice-of-games.md"
+  },
+  {
+    "text": "Physical merch adds shipping.",
+    "source": "docs/business-plans/bandcamp-direct-sales.md"
+  },
+  {
+    "text": "Payoneer and Wise withdrawals to local nostro accounts are possible.",
+    "source": "docs/legal/incorporation-costs.md"
+  },
+  {
+    "text": "Requires sharing location history for many surveys.",
+    "source": "docs/business-plans/google-opinion-rewards.md"
+  },
+  {
+    "text": "Never pay to join, and treat any 'deposit this cheque' request as a scam.",
+    "source": "docs/business-plans/online-mystery-shopping.md"
+  },
+  {
+    "text": "Months include ramp-up to the first order.",
+    "source": "docs/business-plans/video-repurposing-thumbnail-agency.md"
+  },
+  {
+    "text": "Income tracks adoption, so it is slow and concentrated in popular maintainers.",
+    "source": "docs/business-plans/github-sponsors.md"
+  },
+  {
+    "text": "That's different from self-publishing on Udemy or Skillshare.",
+    "source": "docs/business-plans/curated-publisher-video-courses.md"
+  },
+  {
+    "text": "Neither homepage names the payout method, so confirm it in your contract.",
+    "source": "docs/business-plans/expert-ai-training.md"
+  },
+  {
+    "text": "Do not resell personal data.",
+    "source": "docs/business-plans/sell-datasets.md"
+  },
+  {
+    "text": "Some sites also exclude people working in law or insurance.",
+    "source": "docs/business-plans/paid-online-juror.md"
+  },
+  {
+    "text": "Must check the isBitsEnabled flag and follow Twitch Extension guidelines and review.",
+    "source": "docs/business-plans/twitch-extensions-bits.md"
+  },
+  {
+    "text": "First dividend arrives at next quarterly distribution.",
+    "source": "docs/business-plans/robo-advisor-index-dividends.md"
+  },
+  {
+    "text": "Firms pay per sheet and repeat.",
+    "source": "docs/business-plans/patent-technical-illustration.md"
+  },
+  {
+    "text": "Each project limits which countries it accepts.",
+    "source": "docs/business-plans/generalist-rlhf-ai-training.md"
+  },
+  {
+    "text": "Invitations depend on your device, country and demographics.",
+    "source": "strategies.json#game-playtesting"
+  },
+  {
+    "text": "NativeCamp's tutor FAQ (read in a browser Nov 2026) says pay depends on your tutor rank, shown only after you sign the contract, and the payment method is set by country and told to you once hired.",
+    "source": "docs/business-plans/esl-company-tutoring.md"
+  },
+  {
+    "text": "**Rank #185 · Tier C · Priority score 45/100 · Category: Marketplaces & e-commerce**",
+    "source": "docs/business-plans/shopify-dropshipping.md"
+  },
+  {
+    "text": "_Confidence: estimated; last checked 2026-11-03._",
+    "source": "docs/legal/incorporation-costs.md"
+  },
+  {
+    "text": "_Confidence: verified; last checked 2026-11-03._",
+    "source": "docs/legal/incorporation-costs.md"
+  },
+  {
+    "text": "Edit the JSON, not this file.",
+    "source": "docs/business-plans/shopify-dropshipping.md"
+  },
+  {
+    "text": "Content & media",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Education & tutoring",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Legal everywhere.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Start a 30-day free trial.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Ongoing effort (1 = none)",
+    "source": "docs/business-plans/qmee-surveys-no-minimum-cashout.md"
+  },
+  {
+    "text": "PayPal payouts carry a 2% fee (max $20).",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Not published for the new program",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Capital controls: none",
+    "source": "docs/legal/incorporation-costs.md"
+  },
+  {
+    "text": "Respect template and font licenses; add privacy/cookie notices where required.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Students (often reimbursed by employers) pay $200-$2,000 per seat.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "60-day royalty hold matching the refund window.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Buyers are new businesses and online sellers wanting fast, consistent assets.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Avoid gift-card-only apps (Fetch) if you want money in a bank.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Writing and selling original text is legal in all reference countries; royalties are taxable.",
+    "source": "website/strategies.json"
+  },
+  {
+    "text": "Gengo pays on the 5th and 20th.",
+    "source": "docs"
+  },
+  {
+    "text": "Payouts arrive on the 15th of each month.",
+    "source": "docs"
+  },
+  {
+    "text": "It processes at the start of each month and lands by the 15th.",
+    "source": "docs"
+  },
+  {
+    "text": "Sales are paid 20 days after sale.",
+    "source": "docs"
+  },
+  {
+    "text": "Vinted pays about 2 days after delivery.",
+    "source": "docs"
+  },
+  {
+    "text": "A fixed bonus is credited to the new account 30-120 days after the requirements are met.",
+    "source": "docs"
+  },
+  {
+    "text": "Submit it 2 weeks before launch.",
+    "source": "docs"
+  },
+  {
+    "text": "The choice is yours.",
+    "source": "docs"
+  },
+  {
+    "text": "The decision was ours.",
+    "source": "docs"
+  },
+  {
+    "text": "AI helps prepare briefings and research, the answers are yours.",
+    "source": "docs"
+  },
+  {
+    "text": "Gengo pays on the 5th and 20th after a request made at least 7 days earlier.",
+    "source": "docs"
+  },
+  {
+    "text": "It arrived 2 days later.",
+    "source": "docs"
+  },
+  {
+    "text": "It works faster.",
+    "source": "docs"
+  },
+  {
+    "text": "Pay at least 30 days before the deadline.",
+    "source": "docs"
+  },
+  {
+    "text": "Legal across the set; ad income taxable.",
+    "source": "docs/business-plans/meta-facebook-instagram-content-monetization.md"
+  },
+  {
+    "text": "The license only addresses US law, so verify public-domain status in each sales country (life+50 or life+70).",
+    "source": "docs/research/platform-rules.md"
+  },
+  {
+    "text": "AI agent triages issues, drafts fixes and release notes to keep repos active",
+    "source": "strategies.json#github-sponsors"
+  },
+  {
+    "text": "report income for tax; written voice-clone consent; client content rights; data processing agreement for EU clients",
+    "source": "docs/business-plans/ai-dubbing-localization-service.md"
+  },
+  {
+    "text": "Keep your account active.",
+    "source": "docs"
+  },
+  {
+    "text": "Leave the field empty.",
+    "source": "docs"
+  },
+  {
+    "text": "We did the work.",
+    "source": "docs"
+  },
+  {
+    "text": "Does the plan work?",
+    "source": "docs"
+  },
+  {
+    "text": "Agents help you reproduce bugs.",
+    "source": "docs"
+  },
+  {
+    "text": "The platform lets you sell items.",
+    "source": "docs"
+  },
+  {
+    "text": "Make the agent write tests.",
+    "source": "docs"
+  },
+  {
+    "text": "You stay accountable.",
+    "source": "docs"
+  },
+  {
+    "text": "Prices stay low.",
+    "source": "docs"
+  },
+  {
+    "text": "The site says pay depends on your rank.",
+    "source": "docs"
+  },
+  {
+    "text": "Win and hand over files",
+    "source": "session regression"
+  },
+  {
+    "text": "Rates have fallen with machine translation",
+    "source": "session regression"
+  },
+  {
+    "text": "Launch Ghost site with free newsletter ($10 + $29/mo)",
+    "source": "session regression"
+  },
+  {
+    "text": "The fee is 30% unless a tax treaty applies.",
+    "source": "session regression"
+  },
+  {
+    "text": "AdSense pays on the 21st of the month once the balance meets the threshold.",
+    "source": "session regression"
+  },
+  {
+    "text": "No account sharing or playing on the account, which breaks most game ToS.",
+    "source": "session regression"
+  },
+  {
+    "text": "Use a platform of free tools, paid plans and trials.",
+    "source": "session regression"
+  }
+]

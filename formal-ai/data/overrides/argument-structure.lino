@@ -1,0 +1,10 @@
+# Last-resort correction: English Wiktionary's отвечать / ответить pages
+# have no +obj annotations. Russian Wiktionary's актанты on отвечать names
+# dat./ins./acc. but omits на + acc. for the question being answered.
+# https://en.wiktionary.org/wiki/отвечать
+# https://ru.wiktionary.org/wiki/отвечать
+concept answer
+  gloss "respond to a question or a person"
+  class communication
+  en verb answer
+  ru verb отвечать perf:ответить gov:на+acc gov@person:dat
