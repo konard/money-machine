@@ -150,6 +150,52 @@ test('a genitive noun phrase modifies the preceding locative noun', () => {
   assert.equal(ambiguous.objects[0].concept, 'friend');
 });
 
+test('standalone Russian possessives keep their owners on the return leg', () => {
+  const result = parse('Книга ваша.');
+  assert.deepEqual(result.leftover, []);
+  assert.deepEqual(result.statements[0].complement.entity.pronoun, {
+    person: 2,
+    number: 'singular plural',
+    independent: true,
+  });
+  assert.match(generateEnglish(result, lexicon), /is yours\.$/);
+});
+
+test('unambiguous genitive dependents attach to subjects and objects', () => {
+  const subject = parse('Книга новой школы хорошая.');
+  const object = parse('Я читаю письмо новой школы.');
+  assert.deepEqual(subject.leftover, []);
+  assert.deepEqual(object.leftover, []);
+  assert.equal(subject.statements[0].subject.of.concept, 'school');
+  assert.equal(object.statements[0].objects[0].of.concept, 'school');
+});
+
+test('Russian calendar dates preserve days, months and deadline relations', () => {
+  for (const [russian, english] of [
+    [
+      'Я читаю книгу 5-го числа каждого месяца.',
+      'I read a book on the 5th of every month.',
+    ],
+    ['Я читаю книгу к 15-му числу.', 'I read a book by the 15th.'],
+    [
+      'Я читаю книгу 5-го числа и 20-го числа.',
+      'I read a book on the 5th and the 20th.',
+    ],
+    ['Я прочитал книгу 3 ноября 2026 г.', 'I read a book 3 November 2026.'],
+  ]) {
+    const analysis = parse(russian);
+    assert.deepEqual(analysis.leftover, [], russian);
+    assert.equal(generateEnglish(analysis, lexicon), english);
+  }
+});
+
+test('Russian past forms followed by бы recover conditional modality', () => {
+  const result = parse('Я прочитал бы книгу.');
+  assert.deepEqual(result.leftover, []);
+  assert.equal(result.statements[0].modality, 'modal.would');
+  assert.equal(generateEnglish(result, lexicon), 'I would read a book.');
+});
+
 test('English generation retains an object whose Russian gender is ambiguous', () => {
   const analysis = parse('Я вижу его.');
   const [object] = analysis.statements[0].objects;

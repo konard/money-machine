@@ -277,3 +277,18 @@ export function takeNP(tokens, start, ctx, kase, options) {
   }
   return np;
 }
+
+export function attachGenitive(tokens, np, ctx, argumentCases) {
+  if (!np?.readings.some((r) => r.pos === 'noun')) {
+    return;
+  }
+  const dependent = nounPhrase(tokens, np.end, ctx, 'gen');
+  if (
+    dependent?.readings.some((r) => r.pos === 'noun') &&
+    !argumentCases.some((kase) => nounPhrase(tokens, np.end, ctx, kase))
+  ) {
+    np.entity.of = dependent.entity;
+    np.consumed.push(...dependent.consumed);
+    np.end = dependent.end;
+  }
+}

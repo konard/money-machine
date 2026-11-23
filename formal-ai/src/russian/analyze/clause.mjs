@@ -1,12 +1,22 @@
 /** Recover clause roles from agreement and case, independently of source meta. */
-import { has, takeNP } from './phrase.mjs';
+import { attachGenitive, has, takeNP } from './phrase.mjs';
 import { numberName, genderName } from './morphology.mjs';
 import { prepositional } from './relations.mjs';
 import { QUESTION_ADVERBS } from '../words.mjs';
 import { lower } from './tokenizer.mjs';
 import { modalGroup } from './nonfinite.mjs';
+import { calendarModifier } from './calendar.mjs';
+import {
+  linksAdjective,
+  statesObject,
+} from '../../english/object-complement.mjs';
 
 const finite = (r) => r.pos === 'verb' && (r.tense || r.mood === 'imperative');
+const concepts = (readings) => [...new Set(readings.map((r) => r.concept))];
+const property = (readings) => {
+  const candidates = concepts(readings);
+  return { kind: 'property', concept: candidates[0], candidates };
+};
 const unused = (tokens, ctx) =>
   tokens
     .map((token, i) => ({ token, i }))
@@ -20,7 +30,7 @@ function attach(np) {
   }
   return np?.entity;
 }
-function findNP(tokens, ctx, kase, options = {}) {
+function findNP(tokens, ctx, kase, options = {}, argumentCases = []) {
   const candidates = unused(tokens, ctx);
   if (options.subject) {
     candidates.sort(
@@ -33,6 +43,10 @@ function findNP(tokens, ctx, kase, options = {}) {
     const np = takeNP(tokens, i, ctx, kase, options);
     if (np) {
       attach(np);
+      if (argumentCases.length) {
+        attachGenitive(tokens, np, ctx, argumentCases);
+        consume(ctx, np.consumed);
+      }
       return np;
     }
   }
@@ -142,6 +156,13 @@ export function parseClause(tokens, ctx, options = {}) {
     if (verb.voice) {
       s.voice = verb.voice;
     }
+    const finiteAt = copula && verb.voice === 'passive' ? copulaAt : at;
+    if (s.tense === 'past' && tokens[finiteAt + 1]?.lower === 'бы') {
+      s.modality = 'modal.would';
+      s.tense = 'present';
+      s.aspect = 'simple';
+      consume(ctx, [tokens[finiteAt + 1]]);
+    }
     consume(ctx, [tokens[at]]);
     consume(ctx, tokens.slice(at + 1, at + 1 + (verb.fixed?.length || 0)));
     if (modal && tokens[modal.at - 1]?.lower === 'не') {
@@ -211,6 +232,7 @@ export function parseClause(tokens, ctx, options = {}) {
   // Mark PPs before looking for nominatives: indeclinable names in a PP
   // are not nominative subjects. Possession is the special у + gen frame.
   const pps = [];
+  const calendar = [];
   const fixedAdjectives = new Set();
   tokens.forEach((t, i) => {
     const r = t.readings.find(
@@ -227,6 +249,13 @@ export function parseClause(tokens, ctx, options = {}) {
   });
   for (const { token, i } of unused(tokens, ctx)) {
     if (ctx.used.has(token) || fixedAdjectives.has(token)) {
+      continue;
+    }
+    const date = calendarModifier(tokens, i, ctx);
+    if (date) {
+      const { end, ...modifier } = date;
+      consume(ctx, tokens.slice(i, end));
+      calendar.push(modifier);
       continue;
     }
     const pp = prepositional(tokens, i, ctx, entry);
@@ -258,13 +287,21 @@ export function parseClause(tokens, ctx, options = {}) {
     const subject =
       (s.mood === 'imperative' && !expressedSubject) || options.nonfinite
         ? null
-        : findNP(tokens, ctx, subjectCase, {
-            subject: true,
-            person: verb?.person,
-            number: verb?.number,
-            gender: verb?.gender,
-            antecedent: options.antecedent,
-          });
+        : findNP(
+            tokens,
+            ctx,
+            subjectCase,
+            {
+              subject: true,
+              person: verb?.person,
+              number: verb?.number,
+              gender: verb?.gender,
+              antecedent: options.antecedent,
+            },
+            ['nom', entry.government?.case || 'acc', entry.recipient].filter(
+              Boolean
+            )
+          );
     s.subject = subject?.entity || null;
     if (verb?.gender && s.subject?.pronoun && s.subject.number === 'singular') {
       s.subject.pronoun.gender = genderName(verb.gender);
@@ -300,7 +337,7 @@ export function parseClause(tokens, ctx, options = {}) {
       }
       if (!gov.preposition || entry?.experiencer) {
         let np;
-        while ((np = findNP(tokens, ctx, objectCase))) {
+        while ((np = findNP(tokens, ctx, objectCase, {}, [objectCase]))) {
           objects.push(np.entity);
         }
       }
@@ -316,25 +353,57 @@ export function parseClause(tokens, ctx, options = {}) {
         }
         s.objects = objects;
       }
+      const objectState =
+        objects.length && statesObject(s.candidates, ctx.lexicon);
+      const subjectState = linksAdjective(s.candidates, ctx.lexicon);
+      if (objectState || subjectState) {
+        const state = unused(tokens, ctx).find(
+          ({ token, i }) =>
+            i > at && has(token, (r) => r.pos === 'adj' && r.case === 'ins')
+        );
+        if (state) {
+          const value = property(
+            state.token.readings.filter(
+              (r) => r.pos === 'adj' && r.case === 'ins'
+            )
+          );
+          if (objectState) {
+            const { kind: _kind, ...objectProperty } = value;
+            objects.at(-1).state = objectProperty;
+          } else {
+            s.complement = value;
+          }
+          consume(ctx, [state.token]);
+        }
+      }
     } else {
-      const property = unused(tokens, ctx).find(({ token }) =>
+      const possessive = (r) =>
+        r.owner &&
+        !r.owner.reflexive &&
+        (r.case === undefined || r.case === (copulaAt >= 0 ? 'ins' : 'nom'));
+      const standalonePossessive =
+        s.subject &&
+        unused(tokens, ctx).find(({ token }) => has(token, possessive));
+      const adjective = unused(tokens, ctx).find(({ token }) =>
         has(token, (r) => r.pos === 'adj')
       );
-      if (property) {
-        const r = property.token.readings.find((r) => r.pos === 'adj');
+      if (standalonePossessive) {
+        const { owner } = standalonePossessive.token.readings.find(possessive);
+        const number =
+          owner.person === 2 && owner.number === 'plural'
+            ? 'singular plural'
+            : owner.number;
         s.complement = {
-          kind: 'property',
-          concept: r.concept,
-          candidates: [
-            ...new Set(
-              property.token.readings
-                .filter((x) => x.pos === 'adj')
-                .map((x) => x.concept)
-            ),
-          ],
+          kind: 'entity',
+          entity: { pronoun: { ...owner, number, independent: true }, number },
         };
-        consume(ctx, [property.token]);
-        let next = property.i + 1;
+        consume(ctx, [standalonePossessive.token]);
+      } else if (adjective) {
+        s.complement = property(
+          adjective.token.readings.filter((r) => r.pos === 'adj')
+        );
+        consume(ctx, [adjective.token]);
+        let next = adjective.i + 1;
         while (
           ['и', 'или'].includes(tokens[next]?.lower) &&
           !ctx.used.has(tokens[next])
@@ -361,9 +430,9 @@ export function parseClause(tokens, ctx, options = {}) {
           consume(ctx, tokens.slice(next, next + 2));
           next += 2;
         }
-        if (tokens[property.i - 1]?.lower === 'не') {
+        if (tokens[adjective.i - 1]?.lower === 'не') {
           s.polarity = 'negative';
-          consume(ctx, [tokens[property.i - 1]]);
+          consume(ctx, [tokens[adjective.i - 1]]);
         }
       } else if (pps.length && s.subject && copulaAt >= 0 && pps[0].at === 0) {
         s.frame = 'existence';
@@ -384,10 +453,14 @@ export function parseClause(tokens, ctx, options = {}) {
       }
     }
   }
-  const mods = pps.filter((p) => !p.object).map((p) => p.modifier);
+  const mods = [
+    ...pps.filter((p) => !p.object).map((p) => p.modifier),
+    ...calendar,
+  ];
   // Negation is local: an adjective's не never changes verb polarity.
   for (const { token, i } of unused(tokens, ctx)) {
-    const adv = token.readings.find((r) => r.pos === 'adv');
+    const adverbs = token.readings.filter((r) => r.pos === 'adv');
+    const adv = adverbs[0];
     const temporal = token.readings.find((r) => r.temporal);
     const q = token.readings.find((r) => r.question);
     if (temporal) {
@@ -414,6 +487,10 @@ export function parseClause(tokens, ctx, options = {}) {
       mods.push({
         kind: 'adverb',
         concept: adv.concept,
+        candidates: concepts(
+          adverbs.filter((r) => r.comparison === adv.comparison)
+        ),
+        ...(adv.comparison ? { comparison: adv.comparison } : {}),
         ...(i < at ? { position: 'preverbal' } : {}),
       });
       consume(ctx, [token]);

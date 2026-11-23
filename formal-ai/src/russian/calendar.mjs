@@ -17,6 +17,16 @@ const ORDINAL_ENDINGS = {
 export const isCalendarDay = (e) =>
   Boolean(e?.calendar?.day || e?.items?.every((x) => x.calendar?.day));
 
+/** Read the digit and case-marked noun used by renderCalendar. */
+export function readOrdinalDay(ordinal, noun, kase) {
+  const day = /^([1-9]|[12]\d|3[01])-[а-я]+$/.exec(ordinal)?.[1];
+  return day &&
+    ordinal === `${day}-${ORDINAL_ENDINGS[kase]}` &&
+    noun === declineNoun(DAY_OF_MONTH, kase)
+    ? day
+    : undefined;
+}
+
 export function renderCalendar(e, kase, ctx, renderEntity) {
   const { calendar, ...month } = e;
   if (calendar.ordinal) {

@@ -1,7 +1,7 @@
 /** Invert shared relation/government tables, including multiword prepositions. */
 import { RELATIONS } from '../words.mjs';
 import { lower } from './tokenizer.mjs';
-import { nounPhrase } from './phrase.mjs';
+import { attachGenitive, nounPhrase } from './phrase.mjs';
 const canonical = (word) =>
   ({ во: 'в', со: 'с', ко: 'к', об: 'о', обо: 'о' })[word] || word;
 const matches = (tokens, start, prep) =>
@@ -150,8 +150,7 @@ export function prepositional(tokens, start, ctx, entry = {}) {
   const np = best.np;
   // A case-syncretic tail can be a separate clause argument. Attach a
   // genitive after a locative only when those argument parses fail.
-  if (best.case === 'prep' && np.readings.some((r) => r.pos === 'noun')) {
-    const dependent = nounPhrase(tokens, np.end, ctx, 'gen');
+  if (best.case === 'prep') {
     const argumentCases = ['nom', entry.government?.case || 'acc'];
     if (entry.recipient) {
       argumentCases.push(entry.recipient);
@@ -159,14 +158,7 @@ export function prepositional(tokens, start, ctx, entry = {}) {
     if (entry.experiencer || entry.datPredicate) {
       argumentCases.push('dat');
     }
-    if (
-      dependent?.readings.some((r) => r.pos === 'noun') &&
-      !argumentCases.some((kase) => nounPhrase(tokens, np.end, ctx, kase))
-    ) {
-      np.entity.of = dependent.entity;
-      np.consumed.push(...dependent.consumed);
-      np.end = dependent.end;
-    }
+    attachGenitive(tokens, np, ctx, argumentCases);
   }
   const negation =
     tokens[start - 1]?.lower === 'не' && !ctx.used.has(tokens[start - 1])

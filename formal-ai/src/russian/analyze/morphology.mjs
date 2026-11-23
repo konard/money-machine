@@ -13,6 +13,7 @@ import {
 } from '../words.mjs';
 import { lower } from './tokenizer.mjs';
 import { periodicAdverb } from '../periodic-adverb.mjs';
+import { degreeForm } from '../degree.mjs';
 
 export const numberName = (n) => ({ sg: 'singular', pl: 'plural' })[n];
 export const genderName = (g) =>
@@ -43,7 +44,12 @@ export function analyzerIndex(lexicon) {
       add(concept.ru.when, { temporal: true, concept: id });
     }
     if (concept.ru?.pos === 'adv') {
-      add(periodicAdverb(concept, lexicon)?.lemma, { pos: 'adv', concept: id });
+      const adverb = periodicAdverb(concept, lexicon);
+      add(adverb.lemma, { pos: 'adv', concept: id });
+      const comparative = degreeForm(adverb, 'greater', {});
+      if (!comparative.includes(' ') && comparative !== adverb.lemma) {
+        add(comparative, { pos: 'adv', concept: id, comparison: 'greater' });
+      }
     }
   }
   for (const [id, forms] of Object.entries(DEMONSTRATIVE)) {
