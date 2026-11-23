@@ -163,6 +163,7 @@ async function translateJob({
     sentences: sentences.length,
     complete: sentences.length - incomplete.length,
     evidenceMisses: results[0]?.evidenceMisses || 0,
+    lookupBudgetMisses: results[0]?.lookupBudgetMisses || 0,
     translated: sentences.filter(
       (s) => s.source !== s.text && /\p{Script=Cyrillic}/u.test(s.text)
     ).length,
@@ -189,6 +190,8 @@ export async function translateSite({
   ...opts
 } = {}) {
   const settings = { ...options([]), ...opts };
+  const networkDeadline =
+    Number(process.env.FORMAL_AI_NETWORK_DEADLINE) || Infinity;
   const output = join(root, 'formal-ai/.site-ru');
   await mkdir(output, { recursive: true });
   const mode = settings.repository ? 'repository' : 'site';
@@ -201,6 +204,7 @@ export async function translateSite({
       process.env.FORMAL_AI_FIXTURE_VERSION,
       process.env.FORMAL_AI_SPARSE_FIXTURES,
       process.env.FORMAL_AI_SOURCES,
+      process.env.FORMAL_AI_CACHE_ONLY_SOURCES,
       process.env.FORMAL_AI_DATA,
     ])
   );
@@ -323,7 +327,9 @@ export async function translateSite({
           save: (key, result) => {
             if (
               process.env.FORMAL_AI_OFFLINE ||
-              (!result.resolutionError && !result.evidenceMisses)
+              (!result.resolutionError &&
+                !result.evidenceMisses &&
+                Date.now() < networkDeadline)
             ) {
               return writeJson(entryPath(key), result);
             }
@@ -380,6 +386,7 @@ export async function translateSite({
       complete: a.complete + (d.complete || 0),
       translated: a.translated + (d.translated || 0),
       evidenceMisses: a.evidenceMisses + (d.evidenceMisses || 0),
+      lookupBudgetMisses: a.lookupBudgetMisses + (d.lookupBudgetMisses || 0),
       failed: a.failed + Number(Boolean(d.error)),
       resolutionWarnings:
         a.resolutionWarnings + Number(Boolean(d.resolutionError)),
@@ -389,6 +396,7 @@ export async function translateSite({
       complete: 0,
       translated: 0,
       evidenceMisses: 0,
+      lookupBudgetMisses: 0,
       failed: 0,
       resolutionWarnings: 0,
     }
@@ -397,6 +405,7 @@ export async function translateSite({
     version,
     scope: mode,
     sourceEvidence: process.env.FORMAL_AI_OFFLINE ? 'recorded' : 'live',
+    cachedOnlySources: process.env.FORMAL_AI_CACHE_ONLY_SOURCES || '',
     selected: selected.length,
     available: jobs.length,
     uiTranslation: 'Fixed UI strings only: handwritten formal-ai/ui-ru.json',

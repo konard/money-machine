@@ -12,6 +12,7 @@ process.on('message', async ({ texts, markupLabels }) => {
     let resolutionError;
     let resolutionSentence;
     const initialMisses = network.failures;
+    const initialBudgetMisses = network.budgetMisses;
     const topic = (markupLabels ? texts.map(documentProse) : texts).join(
       '\n\n'
     );
@@ -59,6 +60,8 @@ process.on('message', async ({ texts, markupLabels }) => {
     }
     if (results.length) {
       results[0].evidenceMisses = network.failures - initialMisses;
+      results[0].lookupBudgetMisses =
+        network.budgetMisses - initialBudgetMisses;
     }
     process.send({ results });
   } catch (error) {

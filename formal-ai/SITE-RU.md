@@ -27,8 +27,11 @@ Only the build on `main` deploys them.
 A normal local run uses the translator's public dictionary sources and
 `~/.cache/formal-ai` response cache. The publishing build on `main` starts with
 repository-recorded responses and looks up new vocabulary in live public
-dictionaries. Pull requests build with recorded responses. To reproduce the
-pull request build locally:
+dictionaries. It uses cached Russian Wikipedia usage counts and allows eight
+minutes for new dictionary requests. When a lookup cannot finish within that
+window, the translator continues with cached and recorded evidence. The report
+counts those lookups in `lookupBudgetMisses`. Pull requests build with recorded
+responses. To reproduce the pull request build locally:
 
 ```sh
 FORMAL_AI_OFFLINE=1 \

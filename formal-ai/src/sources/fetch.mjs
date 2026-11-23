@@ -11,7 +11,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { compactResponse } from './compact.mjs';
-import { bucketEnabled } from './registry.mjs';
+import { bucketEnabled, parseSources, sourceOf } from './registry.mjs';
 
 export const USER_AGENT =
   'formal-ai-translator/0.1 (https://github.com/konard/money-machine)';
@@ -35,7 +35,12 @@ const memory = new Map();
  * shows that it is working and where it waits.
  */
 let networkLog = null;
-export const network = { requests: 0, retries: 0, failures: 0 };
+export const network = {
+  requests: 0,
+  retries: 0,
+  failures: 0,
+  budgetMisses: 0,
+};
 export function setNetworkLog(fn) {
   networkLog = fn;
 }
@@ -141,6 +146,11 @@ export async function getJson(
     memory.set(memoryKey, value);
     return value;
   }
+  const empty = () => (jsonLines ? [] : {});
+  const cacheOnly = parseSources(process.env.FORMAL_AI_CACHE_ONLY_SOURCES);
+  if (cacheOnly[sourceOf(bucket)] === true) {
+    return empty();
+  }
   // offline, only the network is out of reach: a stand-in fetch still runs
   const offline = Boolean(process.env.FORMAL_AI_OFFLINE);
   if (offline && fetchImpl === globalThis.fetch) {
@@ -148,18 +158,32 @@ export async function getJson(
     // Leave the miss uncached so a later online run can still resolve it.
     if (process.env.FORMAL_AI_SPARSE_FIXTURES) {
       network.failures += 1;
-      return jsonLines ? [] : {};
+      return empty();
     }
     throw Object.assign(
       new Error(`offline: no recorded response for ${url} ${body}`.trim()),
       { fatal: true, offline: true }
     );
   }
+  const deadline = Number(process.env.FORMAL_AI_NETWORK_DEADLINE) || Infinity;
+  const remaining = () => deadline - Date.now();
+  const expired = () => {
+    network.failures += 1;
+    network.budgetMisses += 1;
+    return empty();
+  };
   let lastError;
   for (let attempt = 0; attempt < 6; attempt += 1) {
+    if (remaining() <= 0) {
+      return expired();
+    }
     try {
       if (!offline) {
         await throttle(url);
+      }
+      const timeout = Math.min(60000, remaining());
+      if (timeout <= 0) {
+        return expired();
       }
       network.requests += 1;
       networkLog?.({ event: 'request', url, attempt, ...network });
@@ -172,7 +196,7 @@ export async function getJson(
             : {}),
         },
         body: form ? body : undefined,
-        signal: AbortSignal.timeout(60000),
+        signal: AbortSignal.timeout(timeout),
       });
       if (response.status === 429 || response.status >= 500) {
         const wait = Number(response.headers?.get?.('retry-after')) || 0;
@@ -207,6 +231,9 @@ export async function getJson(
         break;
       }
       const wait = Math.max(error.wait || 0, 2000 * 2 ** attempt);
+      if (wait >= remaining()) {
+        return expired();
+      }
       network.retries += 1;
       networkLog?.({ event: 'retry', url, attempt, wait, error, ...network });
       await sleep(wait);

@@ -12,7 +12,11 @@ import {
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
-import { getJson, USER_AGENT } from '../../formal-ai/src/sources/fetch.mjs';
+import {
+  getJson,
+  network,
+  USER_AGENT,
+} from '../../formal-ai/src/sources/fetch.mjs';
 import {
   compactResponse,
   compactWikitext,
@@ -100,6 +104,8 @@ test('record compact fixtures on network, disk and memory hits; never overwrite'
     'FORMAL_AI_FIXTURES',
     'FORMAL_AI_RECORD',
     'FORMAL_AI_OFFLINE',
+    'FORMAL_AI_CACHE_ONLY_SOURCES',
+    'FORMAL_AI_NETWORK_DEADLINE',
   ];
   const saved = Object.fromEntries(
     names.map((name) => [name, process.env[name]])
@@ -165,6 +171,30 @@ test('record compact fixtures on network, disk and memory hits; never overwrite'
   await assert.rejects(getJson('https://example.invalid/missing'), {
     offline: true,
   });
+  const budgetMisses = network.budgetMisses;
+  const url = 'https://example.invalid/network';
+  const options = { bucket: 'wiktionary', fetchImpl };
+  process.env.FORMAL_AI_CACHE_ONLY_SOURCES = 'en.wiktionary';
+  assert.deepEqual(await getJson(url, options), { existing: true });
+  assert.deepEqual(await getJson(`${url}/other`, options), {});
+  assert.equal(network.budgetMisses, budgetMisses);
+  delete process.env.FORMAL_AI_CACHE_ONLY_SOURCES;
+  process.env.FORMAL_AI_NETWORK_DEADLINE = String(Date.now() - 1);
+  assert.deepEqual(await getJson(url, options), { existing: true });
+  assert.deepEqual(await getJson(`${url}/other`, options), {});
+  assert.equal(network.budgetMisses, budgetMisses + 1);
+  assert.equal(calls, 2);
+
+  process.env.FORMAL_AI_NETWORK_DEADLINE = String(Date.now() + 30000);
+  assert.deepEqual(
+    await getJson(`${url}/rate-limited`, {
+      ...options,
+      fetchImpl: () =>
+        Promise.resolve({ status: 429, headers: { get: () => '90' } }),
+    }),
+    {}
+  );
+  assert.equal(network.budgetMisses, budgetMisses + 2);
 });
 
 test('other public buckets retain all consumer data and input stays unchanged', () => {

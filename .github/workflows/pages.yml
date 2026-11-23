@@ -51,8 +51,12 @@ jobs:
           FORMAL_AI_SPARSE_FIXTURES: ${{ github.event_name == 'pull_request' && '1' || '' }}
           FORMAL_AI_FIXTURES: tests/formal-ai/fixtures/public
           FORMAL_AI_CACHE: ${{ runner.temp }}/formal-ai-public
+          FORMAL_AI_CACHE_ONLY_SOURCES: ${{ github.event_name != 'pull_request' && 'ru.wikipedia' || '' }}
         run: |
           export FORMAL_AI_FIXTURE_VERSION="$(git rev-parse HEAD:tests/formal-ai/fixtures/public)"
+          if [ -z "$FORMAL_AI_OFFLINE" ]; then
+            export FORMAL_AI_NETWORK_DEADLINE="$(( ($(date +%s) + 480) * 1000 ))"
+          fi
           npm run formal-ai:repository
 
       - name: Verify complete build and actual Russian output
