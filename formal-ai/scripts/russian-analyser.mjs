@@ -105,8 +105,15 @@ try {
         rangeCounts[d.kind] = (rangeCounts[d.kind] || 0) + 1;
       });
       if (!comparison.compatible || !full) {
+        const diagnostics = comparison.problems.map(
+          (d) =>
+            `${d.path}: ${JSON.stringify(d.before)} → ${JSON.stringify(d.after)}`
+        );
+        if (parsed.leftover.length) {
+          diagnostics.push(`unparsed: ${parsed.leftover.join(' ')}`);
+        }
         failures.push(
-          `- ${s.source}\n  - ${s.text}\n  - ${comparison.problems.map((d) => `${d.path}: ${JSON.stringify(d.before)} → ${JSON.stringify(d.after)}`).join('; ') || 'No link differences'}${parsed.leftover.length ? `; unparsed: ${parsed.leftover.join(' ')}` : ''}`
+          `- ${s.source}\n  - ${s.text}\n\n    \`\`\`text\n    ${diagnostics.join('; ') || 'No link differences'}\n    \`\`\``
         );
       }
     }
