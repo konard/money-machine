@@ -10,6 +10,7 @@ import {
   translateDocument,
   splitSentences,
 } from '../../formal-ai/src/document.mjs';
+import { TranslationContext } from '../../formal-ai/src/translate.mjs';
 
 test('sentences split without breaking abbreviations', () => {
   assert.deepEqual(splitSentences('Mr. Smith lives here. He is a doctor!'), [
@@ -57,6 +58,26 @@ test('a paragraph keeps its context: "it" refers back across sentences', () => {
     translateDocument('I put the key on the table. It is in the kitchen.').text,
     'Я положил ключ на стол. Он на кухне.'
   );
+});
+
+test('structured fields can reuse topic evidence with fresh discourse', () => {
+  const first = 'I put the key on the table. It is in the kitchen.';
+  const second = 'It is in the kitchen.';
+  const topic = `${first}\n\n${second}`;
+  const context = new TranslationContext({ topic });
+
+  assert.match(
+    translateDocument(first, { topic, context }).text,
+    /Он на кухне/
+  );
+  const { topic: index, contextRanking } = context.memory;
+  context.resetDiscourse();
+  assert.equal(
+    translateDocument(second, { topic, context }).text,
+    translateDocument(second, { topic }).text
+  );
+  assert.equal(context.memory.topic, index);
+  assert.equal(context.memory.contextRanking, contextRanking);
 });
 
 test('repository markup translates link labels and image descriptions', () => {

@@ -4,6 +4,7 @@ import { documentProse, translateDocument } from '../src/document.mjs';
 import { parseSentence } from '../src/english/clause.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
 import { network } from '../src/sources/fetch.mjs';
+import { TranslationContext } from '../src/translate.mjs';
 
 process.on('message', async ({ texts, markupLabels }) => {
   try {
@@ -46,6 +47,7 @@ process.on('message', async ({ texts, markupLabels }) => {
         }
       }
     }
+    const context = new TranslationContext({ topic, markupLabels });
     const results = texts.map((text, i) => {
       process.send({
         phase: 'translate',
@@ -53,7 +55,8 @@ process.on('message', async ({ texts, markupLabels }) => {
         characters: text.length,
         source: text.slice(0, 240),
       });
-      return translateDocument(text, { topic, markupLabels });
+      context.resetDiscourse();
+      return translateDocument(text, { topic, context });
     });
     if (resolutionError && results.length) {
       Object.assign(results[0], { resolutionError, resolutionSentence });

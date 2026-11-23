@@ -43,6 +43,13 @@ export class TranslationContext {
     this.memory.optionContext = options.optionContext;
     this.discourse = { referents: [] };
   }
+
+  /** Start an independent field of the same document. */
+  resetDiscourse() {
+    this.memory.weights.clear();
+    this.memory.referents.length = 0;
+    this.discourse = { referents: [] };
+  }
 }
 
 /**
