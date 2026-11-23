@@ -6,6 +6,7 @@ import './setup.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  documentProse,
   translateDocument,
   splitSentences,
 } from '../../formal-ai/src/document.mjs';
@@ -67,6 +68,23 @@ test('repository markup translates link labels and image descriptions', () => {
     /^\[Кошка спит\]\(https:\/\/example\.com\/\(cat\)_photo\)/
   );
   assert.match(text, /!\[Кошка спит\]\(cat_photo\.png\)$/);
+});
+
+test('repository vocabulary lookup uses prose and labels outside protected markup', () => {
+  const source = [
+    '---',
+    'title: Technical metadata',
+    '---',
+    '[reference]: https://example.com/ignored',
+    'Read [the book](https://example.com/(book)_photo).',
+    '',
+    '```text',
+    'machine-only diagnostic',
+    '```',
+    '',
+    'Run `npm test`.',
+  ].join('\n');
+  assert.equal(documentProse(source), 'Read the book.\n\nRun  .');
 });
 
 test('long fences and Markdown reference definitions survive translation', () => {

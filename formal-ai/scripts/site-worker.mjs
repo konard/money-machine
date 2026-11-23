@@ -1,17 +1,20 @@
 /** Isolate network timeouts and synchronous parser failures from the site run. */
 import { resolveText } from '../src/resolve.mjs';
-import { translateDocument } from '../src/document.mjs';
+import { documentProse, translateDocument } from '../src/document.mjs';
 import { parseSentence } from '../src/english/clause.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
 import { network } from '../src/sources/fetch.mjs';
 
-process.on('message', async ({ texts, topic, markupLabels }) => {
+process.on('message', async ({ texts, markupLabels }) => {
   try {
     process.send({ phase: 'resolve' });
     let requests = 0;
     let resolutionError;
     let resolutionSentence;
     const initialMisses = network.failures;
+    const topic = (markupLabels ? texts.map(documentProse) : texts).join(
+      '\n\n'
+    );
     try {
       await resolveText(topic, {
         log: (message) => process.send({ phase: String(message) }),

@@ -99,7 +99,7 @@ function worker(texts, timeout, log, markupLabels) {
         )
       )
     );
-    child.send({ texts, topic: texts.join('\n\n'), markupLabels });
+    child.send({ texts, markupLabels });
   });
 }
 

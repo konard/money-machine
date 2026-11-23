@@ -120,6 +120,22 @@ const INLINE_LINK = /^(!?\[)([^\]]*)(\]\((?:[^()]|\([^()]*\))*\))$/;
 const PROTECTED =
   /`[^`]*`|!?\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)|https?:\/\/\S+|<[^>]+>/g;
 
+/** Text to use for dictionary lookup and topic evidence in a Markdown build. */
+export function documentProse(text) {
+  return splitBlocks(text)
+    .filter((block) => block.kind === 'prose')
+    .map((block) =>
+      block.text
+        .split('\n')
+        .filter((line) => !REFERENCE_DEFINITION.test(line))
+        .map((line) =>
+          line.replace(PROTECTED, (span) => INLINE_LINK.exec(span)?.[2] || ' ')
+        )
+        .join('\n')
+    )
+    .join('\n\n');
+}
+
 /**
  * Translate one line of prose, keeping its markdown prefix and protected
  * spans (inline code, links, URLs, HTML) unchanged.
