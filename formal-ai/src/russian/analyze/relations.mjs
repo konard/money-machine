@@ -1,5 +1,5 @@
 /** Invert shared relation/government tables, including multiword prepositions. */
-import { RELATIONS } from '../words.mjs';
+import { NEAR, OFFSET_BOUNDS, RELATIONS } from '../words.mjs';
 import { lower } from './tokenizer.mjs';
 import { attachGenitive, nounPhrase } from './phrase.mjs';
 const canonical = (word) =>
@@ -9,6 +9,51 @@ const matches = (tokens, start, prep) =>
     .split(' ')
     .filter(Boolean)
     .every((word, j) => canonical(tokens[start + j]?.lower) === lower(word));
+
+const timeOffsets = [
+  ['rel.after', 'после'],
+  ['rel.before', 'до'],
+  ['rel.by', null],
+];
+const timeBounds = Object.entries({ ...OFFSET_BOUNDS, ...NEAR });
+
+export function timeOffset(tokens, start, ctx) {
+  const bound = timeBounds.find(([, words]) => matches(tokens, start, words));
+  const at = start + (bound ? bound[1].split(' ').length : 0);
+  for (const [relation, anchor] of timeOffsets) {
+    const [preposition, kase] = RELATIONS[relation].offset;
+    if (!matches(tokens, at, preposition)) {
+      continue;
+    }
+    const span = nounPhrase(tokens, at + 1, ctx, kase, { coordination: false });
+    const next = tokens[span?.end];
+    if (
+      span?.entity.quantity === undefined ||
+      !span.readings.some((r) =>
+        ctx.lexicon.get(r.concept)?.classes?.includes('time')
+      ) ||
+      (anchor
+        ? next?.lower !== anchor
+        : !next?.readings.some((r) => r.pos === 'adv' && r.comparison))
+    ) {
+      continue;
+    }
+    const consumed = tokens.slice(start, span.end);
+    if (!consumed.some((token) => ctx.used.has(token))) {
+      return {
+        modifier: {
+          kind: 'relation',
+          relation,
+          entity: { ...span.entity, ...(bound ? { bound: bound[0] } : {}) },
+          offset: true,
+        },
+        consumed,
+      };
+    }
+  }
+  return null;
+}
+
 export function prepositional(tokens, start, ctx, entry = {}) {
   const specs = [];
   for (const [marker, gov] of Object.entries(entry.markerGovernment || {})) {

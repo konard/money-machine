@@ -196,6 +196,18 @@ test('Russian past forms followed by бы recover conditional modality', () => {
   assert.equal(generateEnglish(result, lexicon), 'I would read a book.');
 });
 
+test('Russian time offsets preserve bounds, units, and the following relation', () => {
+  const sentence = parse('Я читаю книгу не менее чем за 2 дня до работы.');
+  assert.deepEqual(sentence.leftover, []);
+  const [offset, anchor] = sentence.statements[0].modifiers;
+  assert.equal(offset.relation, 'rel.before');
+  assert.equal(offset.offset, true);
+  assert.equal(offset.entity.quantity, 2);
+  assert.equal(offset.entity.bound, 'lower');
+  assert.equal(anchor.relation, 'rel.before');
+  assert.match(generateEnglish(sentence, lexicon), /at least 2 days before /);
+});
+
 test('English generation retains an object whose Russian gender is ambiguous', () => {
   const analysis = parse('Я вижу его.');
   const [object] = analysis.statements[0].objects;

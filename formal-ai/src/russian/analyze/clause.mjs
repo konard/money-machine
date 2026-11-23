@@ -1,7 +1,7 @@
 /** Recover clause roles from agreement and case, independently of source meta. */
 import { attachGenitive, has, takeNP } from './phrase.mjs';
 import { numberName, genderName } from './morphology.mjs';
-import { prepositional } from './relations.mjs';
+import { prepositional, timeOffset } from './relations.mjs';
 import { QUESTION_ADVERBS } from '../words.mjs';
 import { lower } from './tokenizer.mjs';
 import { modalGroup } from './nonfinite.mjs';
@@ -258,7 +258,8 @@ export function parseClause(tokens, ctx, options = {}) {
       calendar.push(modifier);
       continue;
     }
-    const pp = prepositional(tokens, i, ctx, entry);
+    const pp =
+      timeOffset(tokens, i, ctx) || prepositional(tokens, i, ctx, entry);
     if (pp) {
       consume(ctx, pp.consumed);
       pps.push({ ...pp, at: i });
