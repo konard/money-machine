@@ -106,7 +106,9 @@ export function splitBlocks(text) {
 const LINE_PREFIX =
   /^(\s*(?:#{1,6}\s+|>\s*|[-*+]\s+(?:\[[ xX]\]\s+)?|\d+[.)]\s+)?)(.*)$/;
 const REFERENCE_DEFINITION = /^\s{0,3}\[[^\]]+\]:\s*\S/;
-const PROTECTED = /(`[^`]*`|https?:\/\/\S+|\[[^\]]*\]\([^)]*\)|<[^>]+>)/g;
+const INLINE_LINK = /^(!?\[)([^\]]*)(\]\((?:[^()]|\([^()]*\))*\))$/;
+const PROTECTED =
+  /`[^`]*`|!?\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)|https?:\/\/\S+|<[^>]+>/g;
 
 /**
  * Translate one line of prose, keeping its markdown prefix and protected
@@ -161,31 +163,30 @@ function translateProse(text, context, report) {
       })
       .join('');
   }
-  // inline emphasis is dropped: its span rarely maps onto Russian words
-  text = text.replace(EMPHASIS, '');
-  // protected spans become opaque name-like tokens so the sentence around
-  // them is parsed as one sentence, then they are put back unchanged
+  // Protected spans become opaque tokens while parsing the surrounding prose.
   const spans = [];
-  const masked = text.replace(PROTECTED, (span) => {
-    spans.push(span);
-    return placeholder(spans.length - 1, span.startsWith('`'));
-  });
+  const masked = text
+    .replace(PROTECTED, (span) => {
+      const link = context.options.markupLabels && INLINE_LINK.exec(span);
+      spans.push(
+        link
+          ? link[1] + translateProse(link[2], context, report) + link[3]
+          : span
+      );
+      return placeholder(spans.length - 1, span.startsWith('`'));
+    })
+    .replace(EMPHASIS, '');
+  const restore = (value) =>
+    value.replace(/Xp[ch]([a-j]+)Q/g, (_, code) => spans[fromLetters(code)]);
   if (!/[A-Za-z]/.test(masked.replace(/Xp[ch][a-j]+Q/g, ''))) {
-    return text;
+    return restore(masked);
   }
   const lead = /^\s*/.exec(masked)[0];
   const trail = /\s*$/.exec(masked)[0];
   const translated = splitSentences(masked.trim())
     .map((s) => translateOne(s, context, report))
     .join(' ');
-  return (
-    lead +
-    translated.replace(
-      /Xp[ch]([a-j]+)Q/g,
-      (_, code) => spans[fromLetters(code)]
-    ) +
-    trail
-  );
+  return lead + restore(translated) + trail;
 }
 
 /** Letters-only token (digits would split it): 12 → "Xphbc" + "Q". */

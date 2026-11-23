@@ -53,7 +53,7 @@ export function options(argv) {
 
 let activeWorker;
 let activeWorkerVersion;
-function worker(texts, timeout, log) {
+function worker(texts, timeout, log, markupLabels) {
   return new Promise((resolve, reject) => {
     const child =
       activeWorker ||
@@ -99,7 +99,7 @@ function worker(texts, timeout, log) {
         )
       )
     );
-    child.send({ texts, topic: texts.join('\n\n') });
+    child.send({ texts, topic: texts.join('\n\n'), markupLabels });
   });
 }
 
@@ -127,7 +127,9 @@ async function translateJob({
   const fields =
     value === undefined ? null : proseFields(value, [], [], localizeNames);
   const inputs = fields ? fields.map((f) => f.text) : [text];
-  const results = inputs.length ? await translate(inputs, timeout, log) : [];
+  const results = inputs.length
+    ? await translate(inputs, timeout, log, localizeNames)
+    : [];
   const sentences = results.flatMap((r) => r.sentences);
   const incomplete = sentences.filter(
     (s) =>

@@ -5,7 +5,7 @@ import { parseSentence } from '../src/english/clause.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
 import { network } from '../src/sources/fetch.mjs';
 
-process.on('message', async ({ texts, topic }) => {
+process.on('message', async ({ texts, topic, markupLabels }) => {
   try {
     process.send({ phase: 'resolve' });
     let requests = 0;
@@ -44,7 +44,7 @@ process.on('message', async ({ texts, topic }) => {
     }
     const results = texts.map((text, i) => {
       process.send({ phase: 'translate', field: i, source: text });
-      return translateDocument(text, { topic });
+      return translateDocument(text, { topic, markupLabels });
     });
     if (resolutionError && results.length) {
       Object.assign(results[0], { resolutionError, resolutionSentence });

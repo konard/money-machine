@@ -58,6 +58,17 @@ test('a paragraph keeps its context: "it" refers back across sentences', () => {
   );
 });
 
+test('repository markup translates link labels and image descriptions', () => {
+  const source =
+    '[The cat sleeps](https://example.com/(cat)_photo)\n\n![The cat sleeps](cat_photo.png)';
+  const { text } = translateDocument(source, { markupLabels: true });
+  assert.match(
+    text,
+    /^\[Кошка спит\]\(https:\/\/example\.com\/\(cat\)_photo\)/
+  );
+  assert.match(text, /!\[Кошка спит\]\(cat_photo\.png\)$/);
+});
+
 test('long fences and Markdown reference definitions survive translation', () => {
   const fenced = '````markdown\n```\nThe cat sleeps.\n```\n````';
   const definition = '[book]: https://example.com/book "The book"';
