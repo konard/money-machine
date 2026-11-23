@@ -31,11 +31,17 @@ test('topic stems align royalties/royalty and sales/sale without treating a word
   assert.ok(memory.topicWeight('sale', 'royalties') > 0);
   assert.equal(memory.topicWeight('sale', 'sales'), 0);
   assert.equal(memory.topicWeight('tracks', 'track'), 0);
+  assert.equal(memory.mentions('royalty', 'royalties'), false);
+  assert.equal(memory.mentions('royalty'), true);
   memory.setField('royalties payment. royalty payment. royalties payment.');
   assert.equal(
     memory.fieldWeight('payment', 'royalty'),
     memory.fieldWeight('payment', 'royalties')
   );
+  memory.setTopic('Long tying strings.');
+  assert.equal(memory.mentions('ties'), true);
+  assert.equal(memory.mentions('royalty'), false);
+  assert.equal(memory.topicWeight('sale', 'royalties'), 0);
 });
 
 test('a missing translation inherits a sibling payment sense, retaining its definition', () => {

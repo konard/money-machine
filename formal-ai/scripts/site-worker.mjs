@@ -43,7 +43,12 @@ process.on('message', async ({ texts, topic, markupLabels }) => {
       }
     }
     const results = texts.map((text, i) => {
-      process.send({ phase: 'translate', field: i, source: text });
+      process.send({
+        phase: 'translate',
+        field: i,
+        characters: text.length,
+        source: text.slice(0, 240),
+      });
       return translateDocument(text, { topic, markupLabels });
     });
     if (resolutionError && results.length) {

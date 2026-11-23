@@ -32,7 +32,7 @@ export class DocumentMemory {
    * "government" often, which says nothing about "capital".
    */
   setTopic(text) {
-    this.topic = text
+    const sentences = text
       .toLowerCase()
       .split(/[.!?;,:()\n]+/)
       .map((s) => {
@@ -46,6 +46,17 @@ export class DocumentMemory {
         return set;
       })
       .filter((s) => s.size > 1);
+    this.topic = postings(sentences);
+    this.topicFamilies = new Map();
+    for (const word of this.topic.keys()) {
+      // Stemming may reduce a queried word to fewer than five letters.
+      for (let length = 2; length <= Math.min(5, word.length); length += 1) {
+        const family = word.slice(0, length);
+        const words = this.topicFamilies.get(family) || new Set();
+        words.add(word);
+        this.topicFamilies.set(family, words);
+      }
+    }
     this.cooccur = new Map();
     this.own = familyCounts(text);
     if (!this.families) {
@@ -60,21 +71,13 @@ export class DocumentMemory {
   setField(text) {
     const { families, size, sentences } = familyCounts(text);
     this.families = families;
-    this.postings = new Map();
+    // Co-occurrence needs whole stems: "author" is different from "authority".
+    this.postings = postings(
+      sentences.map((words) => new Set(words.map(stem)))
+    );
     this.lifts = new Map();
     this.fieldSize = size;
     this.fieldOfOwn = false;
-    for (const [id, words] of sentences.entries()) {
-      // co-occurrence needs whole stems: "author" is not "authority"
-      for (const root of new Set(words.map(stem))) {
-        const list = this.postings.get(root);
-        if (list) {
-          list.push(id);
-        } else {
-          this.postings.set(root, [id]);
-        }
-      }
-    }
   }
   /**
    * How much more often a cue's family appears in the field's sentences
@@ -92,18 +95,7 @@ export class DocumentMemory {
       return this.lifts.get(key);
     }
     const b = this.postings.get(root(cue)) || [];
-    let both = 0;
-    for (let i = 0, j = 0; i < a.length && j < b.length; ) {
-      if (a[i] === b[j]) {
-        both += 1;
-        i += 1;
-        j += 1;
-      } else if (a[i] < b[j]) {
-        i += 1;
-      } else {
-        j += 1;
-      }
-    }
+    const both = intersectionSize(a, b);
     // a few shared sentences are chance: count one deviation less
     const lift =
       (both - Math.sqrt(both)) / a.length / (b.length / this.fieldSize);
@@ -148,11 +140,11 @@ export class DocumentMemory {
       .split(/[^a-z]+/)
       .filter((w) => w.length > 3)
       .map((w) => stem(w).slice(0, 5));
-    return roots.some((root) =>
-      this.topic?.some((s) =>
-        [...s].some((w) => w !== stem(excluding) && w.startsWith(root))
-      )
-    );
+    const excluded = stem(excluding);
+    return roots.some((root) => {
+      const words = this.topicFamilies?.get(root);
+      return Boolean(words && (words.size > 1 || !words.has(excluded)));
+    });
   }
   topicWeight(cue, word) {
     if (!this.topic || !word) {
@@ -167,7 +159,7 @@ export class DocumentMemory {
     if (!this.cooccur.has(key)) {
       this.cooccur.set(
         key,
-        this.topic.filter((s) => s.has(a) && s.has(b)).length
+        intersectionSize(this.topic.get(a) || [], this.topic.get(b) || [])
       );
     }
     const n = this.cooccur.get(key);
@@ -178,6 +170,35 @@ export class DocumentMemory {
     this.referents.unshift(referent);
     this.referents.length = Math.min(this.referents.length, 8);
   }
+}
+
+/** Index each stem by the ordered sentence IDs where it occurs. */
+function postings(sentences) {
+  const index = new Map();
+  for (const [id, words] of sentences.entries()) {
+    for (const word of words) {
+      const ids = index.get(word) || [];
+      ids.push(id);
+      index.set(word, ids);
+    }
+  }
+  return index;
+}
+
+function intersectionSize(a, b) {
+  let count = 0;
+  for (let i = 0, j = 0; i < a.length && j < b.length; ) {
+    if (a[i] === b[j]) {
+      count += 1;
+      i += 1;
+      j += 1;
+    } else if (a[i] < b[j]) {
+      i += 1;
+    } else {
+      j += 1;
+    }
+  }
+  return count;
 }
 
 /** Sentences of a text, with how many of them use each word family. */
