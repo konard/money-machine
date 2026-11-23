@@ -208,14 +208,16 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
       definiteness: det?.definiteness || 'definite indefinite',
     };
   } else if (
-    (/^\p{Lu}|^[A-Za-z]/u.test(head.text) || /^[$€£]\d/.test(head.text)) &&
+    (/^\p{Lu}|^[A-Za-z]/u.test(head.text) ||
+      /^[$€£]\d|^\d+(?:[.,]\d+)?%$/.test(head.text)) &&
     !head.readings.length &&
     !options.person
   ) {
+    const surface = head.text.replace(/^(\d+),(\d+%)$/, '$1.$2');
     e = {
       concept: null,
-      untranslated: head.text,
-      name: head.text,
+      untranslated: surface,
+      name: surface,
       number: 'singular',
     };
   } else if (quantity !== undefined) {
@@ -288,16 +290,20 @@ export function takeNP(tokens, start, ctx, kase, options) {
 }
 
 export function attachGenitive(tokens, np, ctx, argumentCases) {
-  if (!np?.readings.some((r) => r.pos === 'noun')) {
-    return;
-  }
-  const dependent = nounPhrase(tokens, np.end, ctx, 'gen');
-  if (
-    dependent?.readings.some((r) => r.pos === 'noun') &&
-    !argumentCases.some((kase) => nounPhrase(tokens, np.end, ctx, kase))
-  ) {
-    np.entity.of = dependent.entity;
+  let entity = np?.entity;
+  let readings = np?.readings;
+  while (readings?.some((r) => r.pos === 'noun')) {
+    const dependent = nounPhrase(tokens, np.end, ctx, 'gen');
+    if (
+      !dependent?.readings.some((r) => r.pos === 'noun') ||
+      argumentCases.some((kase) => nounPhrase(tokens, np.end, ctx, kase))
+    ) {
+      break;
+    }
+    entity.of = dependent.entity;
     np.consumed.push(...dependent.consumed);
     np.end = dependent.end;
+    entity = dependent.entity;
+    readings = dependent.readings;
   }
 }

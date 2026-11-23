@@ -298,6 +298,7 @@ export function russianFormIndex(lexicon) {
             pos: 'adj',
             short: true,
             number: gender === 'pl' ? 'pl' : 'sg',
+            gender: gender === 'pl' ? undefined : gender,
           });
         }
       }

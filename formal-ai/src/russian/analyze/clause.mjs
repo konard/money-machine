@@ -400,9 +400,21 @@ export function parseClause(tokens, ctx, options = {}) {
         };
         consume(ctx, [standalonePossessive.token]);
       } else if (adjective) {
-        s.complement = property(
-          adjective.token.readings.filter((r) => r.pos === 'adj')
+        const adjectiveReadings = adjective.token.readings.filter(
+          (r) => r.pos === 'adj'
         );
+        // Neuter short adjectives can be independent impersonal predicates.
+        if (
+          !s.subject &&
+          adjectiveReadings.some((r) => r.short && r.gender === 'n')
+        ) {
+          s.subject = {
+            pronoun: { person: 3, number: 'singular', gender: 'neuter' },
+            number: 'singular',
+            implicit: true,
+          };
+        }
+        s.complement = property(adjectiveReadings);
         consume(ctx, [adjective.token]);
         let next = adjective.i + 1;
         while (

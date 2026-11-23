@@ -558,6 +558,16 @@ export class EnglishRenderer {
       imperative || subject?.implicit || sharedSubject
         ? ''
         : this.entity(subject, 'subject');
+    if (
+      subject?.implicit &&
+      !sharedSubject &&
+      !s.link &&
+      s.frame === 'copula' &&
+      s.complement?.kind === 'property' &&
+      subject.pronoun?.gender === 'neuter'
+    ) {
+      subj = this.entity(subject, 'subject');
+    }
     if (s.frame === 'existence') {
       subj = 'there';
     }
@@ -579,11 +589,11 @@ export class EnglishRenderer {
     // Note-style passives omit both subject and finite copula ("Billed
     // monthly"). Adding "is" would turn that note into an inverted clause.
     const reduced =
-      subject?.implicit &&
+      (!subject || subject.implicit) &&
       !s.link &&
       !imperative &&
       s.voice === 'passive' &&
-      s.aspect === 'simple' &&
+      aspect === 'simple' &&
       s.tense === 'present' &&
       !s.modality;
     let first = chain.shift();

@@ -2,7 +2,9 @@
 export const lower = (text) => text.toLowerCase().replace(/ё/g, 'е');
 export function tokenizeRussian(text) {
   return [
-    ...text.matchAll(/[$€£]?[\p{L}\d]+(?:[.,'’-][\p{L}\d]+)*|[^\s]/gu),
+    ...text.matchAll(
+      /\d+(?:[.,]\d+)?%|[$€£]?[\p{L}\d]+(?:[.,'’-][\p{L}\d]+)*|[^\s]/gu
+    ),
   ].map((match) => ({
     text: match[0],
     lower: lower(match[0]),

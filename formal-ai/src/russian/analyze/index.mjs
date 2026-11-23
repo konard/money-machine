@@ -12,14 +12,23 @@ export { tokenizeRussian } from './tokenizer.mjs';
 
 const punctuation = (t) => /^[,;:.!?—–()-]$/.test(t.text);
 const finite = (t) =>
-  has(t, (r) => r.pos === 'verb' && (r.tense || r.mood === 'imperative'));
+  has(
+    t,
+    (r) =>
+      r.copula || (r.pos === 'verb' && (r.tense || r.mood === 'imperative'))
+  );
 const zeroPredicate = (tokens) => {
   const subject = tokens.findIndex((t) =>
     has(t, (r) => (r.pronoun || r.pos === 'noun') && r.case === 'nom')
   );
   return (
     subject >= 0 &&
-    tokens.some((t, i) => i > subject && has(t, (r) => r.pos === 'adj'))
+    tokens.some(
+      (t, i) =>
+        i > subject &&
+        (has(t, (r) => r.pos === 'adj') ||
+          (t.text === '—' && i < tokens.length - 1))
+    )
   );
 };
 

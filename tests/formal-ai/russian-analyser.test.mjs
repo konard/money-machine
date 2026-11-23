@@ -150,6 +150,40 @@ test('a genitive noun phrase modifies the preceding locative noun', () => {
   assert.equal(ambiguous.objects[0].concept, 'friend');
 });
 
+test('unambiguous genitive chains also attach to instrumental noun phrases', () => {
+  const analysis = parse('Мы сидели рядом с берегом новой реки новой страны.');
+  assert.deepEqual(analysis.leftover, []);
+  const bank = analysis.statements[0].modifiers[0].entity;
+  assert.equal(bank.concept, 'bank.river');
+  assert.equal(bank.of.concept, 'river');
+  assert.equal(bank.of.of.concept, 'country');
+});
+
+test('English restores an impersonal subject and renders a reduced passive', () => {
+  const adjective = parse('Свободно.');
+  assert.deepEqual(adjective.leftover, []);
+  assert.equal(adjective.statements[0].subject.pronoun.gender, 'neuter');
+  assert.equal(generateEnglish(adjective, lexicon), 'It is free.');
+
+  const passive = parse('Не пишется.');
+  assert.deepEqual(passive.leftover, []);
+  assert.equal(passive.statements[0].voice, 'passive');
+  assert.equal(generateEnglish(passive, lexicon), 'Not written.');
+});
+
+test('a percentage complement can precede a conditional clause', () => {
+  const analysis = parse('Цена — 30,5%, если ты платишь.');
+  assert.deepEqual(analysis.leftover, []);
+  const [main, condition] = analysis.statements;
+  assert.equal(main.frame, 'copula');
+  assert.equal(main.complement.entity.name, '30.5%');
+  assert.equal(condition.link, 'conj.if');
+  assert.equal(
+    generateEnglish(analysis, lexicon),
+    'A price is 30.5% if you pay.'
+  );
+});
+
 test('standalone Russian possessives keep their owners on the return leg', () => {
   const result = parse('Книга ваша.');
   assert.deepEqual(result.leftover, []);
