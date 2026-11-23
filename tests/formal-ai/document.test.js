@@ -78,6 +78,12 @@ test('long fences and Markdown reference definitions survive translation', () =>
   assert.equal(result.text, `${fenced}\n\n${definition}\nКошка спит.`);
 });
 
+test('Markdown front matter remains valid in translated changesets', () => {
+  const frontMatter = "---\n'money-machine': minor\n---";
+  const source = `${frontMatter}\n\nThe cat sleeps.`;
+  assert.equal(translateDocument(source).text, `${frontMatter}\n\nКошка спит.`);
+});
+
 test('a bold run-in heading with a period is read like a heading', () => {
   assert.equal(
     translateDocument('**Book.** Never buy books.').text,

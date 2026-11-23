@@ -64,6 +64,16 @@ export function splitSentences(text) {
 export function splitBlocks(text) {
   const lines = text.split(/\r?\n/);
   const blocks = [];
+  const frontMatterEnd =
+    lines[0] === '---' && /^(?:[\w.-]+|'[^']+'|"[^"]+"):\s/.test(lines[1] || '')
+      ? lines.findIndex((line, i) => i > 1 && line === '---')
+      : -1;
+  if (frontMatterEnd > 0) {
+    blocks.push({
+      kind: 'code',
+      text: lines.splice(0, frontMatterEnd + 1).join('\n'),
+    });
+  }
   let buffer = [];
   let fence;
   const flush = () => {
