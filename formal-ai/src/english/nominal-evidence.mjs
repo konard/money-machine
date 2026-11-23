@@ -118,7 +118,15 @@ function nominalStart(tokens, lexicon) {
     return false;
   }
   if (compound.length < 2) {
-    return !has(first, 'verb');
+    // "Sources:" names a section. The competing inflected verb would
+    // need a subject or an object to support a note like "Sources data."
+    return (
+      !has(first, 'verb') ||
+      (reading(first, 'noun')?.features.number === 'pl' &&
+        !first.readings.some(
+          (r) => r.pos === 'verb' && r.features.form === 'base'
+        ))
+    );
   }
   if (
     compound.some((t) =>

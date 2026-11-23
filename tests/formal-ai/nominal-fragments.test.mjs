@@ -90,6 +90,8 @@ test('dictionary noun-first compounds win complete fragment ties, including sibl
     'verification + tax reporting',
     'Support load',
     'WhatsApp spam bans',
+    'Bans',
+    'Bans:',
     '100+ outreach contacts',
   ]) {
     const parsed = parseSentence(text, lexicon);
@@ -104,6 +106,10 @@ test('dictionary noun-first compounds win complete fragment ties, including sibl
     parseSentence('Track bank account verification', lexicon).clauses.some(
       (c) => c.mood === 'imperative'
     )
+  );
+  assert.equal(
+    parseSentence('Bans spam.', lexicon).clauses[0].mood,
+    'declarative'
   );
   assert.equal(
     analyze('life+50', lexicon).some((t) =>
