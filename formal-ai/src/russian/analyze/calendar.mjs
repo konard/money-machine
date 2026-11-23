@@ -11,11 +11,15 @@ function dayOfMonth(tokens, start, ctx, kase) {
     return null;
   }
   const of = nounPhrase(tokens, start + 2, ctx, 'gen');
-  const hasMonth = of?.readings.some(
-    (r) =>
-      r.concept === 'month' ||
-      ctx.lexicon.get(r.concept)?.classes?.includes('month')
-  );
+  const hasMonth = of?.readings.some((r) => {
+    const concept = ctx.lexicon.get(r.concept);
+    return (
+      concept?.classes?.includes('month') ||
+      concept?.en?.some(
+        (en) => en.pos === 'noun' && en.words?.join(' ') === 'month'
+      )
+    );
+  });
   return {
     entity: {
       number: 'singular',

@@ -7,6 +7,9 @@ export const has = (token, test) => token?.readings.some(test);
 export const content = (r) =>
   r.pos === 'noun' || r.pronoun || r.name || r.pro || r.pos === 'relative';
 const unique = (values) => [...new Set(values)];
+const properName = (token, kase) =>
+  /^\p{Lu}/u.test(token.text) &&
+  token.readings.find((r) => r.name && (!r.case || r.case === kase));
 
 export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
   let i = start;
@@ -51,7 +54,12 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
       quantity = q.quantity;
       digits = /^\d/.test(t.text);
       i += 1;
-    } else if (d && !has(t, (r) => r.pronoun || r.pos === 'relative')) {
+    } else if (
+      d &&
+      !has(t, (r) => r.pronoun || r.pos === 'relative') &&
+      (!properName(t, kase) ||
+        has(tokens[i + 1], (r) => r.pos === 'noun' && r.case === kase))
+    ) {
       det = d;
       i += 1;
     } else if (
@@ -140,7 +148,8 @@ export function nounPhrase(tokens, start, ctx, kase = 'nom', options = {}) {
     }
   }
   let e;
-  const r = rs[0];
+  const name = properName(head, headCase);
+  const r = name && rs.includes(name) ? name : rs[0];
   if (r?.pos === 'relative') {
     e = {
       relativePronoun: true,

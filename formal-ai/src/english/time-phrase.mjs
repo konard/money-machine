@@ -11,6 +11,10 @@ const timeNoun = (lemma, ids = []) =>
   TIME_NOUNS.test(String(lemma || '').toLowerCase()) ||
   ids.some((id) => TIME_NOUNS.test(id) || TIME_NOUNS.test(id.split(':')[1]));
 
+export const timeNounConcept = (concept) =>
+  concept?.classes?.includes('time') ||
+  concept?.en?.some((en) => en.pos === 'noun' && timeNoun(en.words?.join(' ')));
+
 export function timeAhead(c) {
   const t = c.at(1);
   const r = t && reading(t, 'noun');

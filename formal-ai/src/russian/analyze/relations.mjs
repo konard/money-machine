@@ -2,6 +2,7 @@
 import { NEAR, OFFSET_BOUNDS, RELATIONS } from '../words.mjs';
 import { lower } from './tokenizer.mjs';
 import { attachGenitive, nounPhrase } from './phrase.mjs';
+import { timeNounConcept } from '../../english/time-phrase.mjs';
 const canonical = (word) =>
   ({ во: 'в', со: 'с', ко: 'к', об: 'о', обо: 'о' })[word] || word;
 const matches = (tokens, start, prep) =>
@@ -29,9 +30,7 @@ export function timeOffset(tokens, start, ctx) {
     const next = tokens[span?.end];
     if (
       span?.entity.quantity === undefined ||
-      !span.readings.some((r) =>
-        ctx.lexicon.get(r.concept)?.classes?.includes('time')
-      ) ||
+      !span.readings.some((r) => timeNounConcept(ctx.lexicon.get(r.concept))) ||
       (anchor
         ? next?.lower !== anchor
         : !next?.readings.some((r) => r.pos === 'adv' && r.comparison))

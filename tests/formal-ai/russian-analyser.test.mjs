@@ -208,6 +208,31 @@ test('Russian time offsets preserve bounds, units, and the following relation', 
   assert.match(generateEnglish(sentence, lexicon), /at least 2 days before /);
 });
 
+test('registered capitalized Russian names take precedence over matching common forms', () => {
+  const vocabulary = loadLexicon({ fresh: true });
+  vocabulary.setNameLabel('Tom', 'Том');
+  vocabulary.setNameEntry('Tom', {
+    pos: 'noun',
+    lemma: 'Том',
+    gender: 'm',
+    animate: true,
+  });
+  const result = analyzeRussian('Я помогаю Тому.', vocabulary);
+  assert.deepEqual(result.leftover, []);
+  assert.equal(result.statements[0].objects[0].name, 'Tom');
+  assert.equal(generateEnglish(result, vocabulary), 'I help Tom.');
+});
+
+test('a semicolon starts a separate Russian statement', () => {
+  const result = parse('Я читаю книгу; она пишет письмо.');
+  assert.deepEqual(result.leftover, []);
+  assert.equal(result.statements[1].separator, ';');
+  assert.equal(
+    generateEnglish(result, lexicon),
+    'I read a book; she writes a letter.'
+  );
+});
+
 test('English generation retains an object whose Russian gender is ambiguous', () => {
   const analysis = parse('Я вижу его.');
   const [object] = analysis.statements[0].objects;

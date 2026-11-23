@@ -31,7 +31,7 @@ function clauses(tokens, ctx, options = {}) {
       continue;
     }
     const begin = tokens[i - 1]?.text === ',' ? i - 1 : i;
-    let end = tokens.findIndex((t, j) => j > i && t.text === ',');
+    let end = tokens.findIndex((t, j) => j > i && [',', ';'].includes(t.text));
     if (end < 0) {
       end = tokens.length;
     }
@@ -54,7 +54,7 @@ function clauses(tokens, ctx, options = {}) {
     if (number) {
       antecedent.relativeNumber = number;
     }
-    tokens.splice(begin, Math.min(tokens.length - begin, end - begin + 1));
+    tokens.splice(begin, end - begin + Number(tokens[end]?.text === ','));
     i = begin;
   }
   const cuts = [];
@@ -62,6 +62,10 @@ function clauses(tokens, ctx, options = {}) {
     (a, b) => b[1].text.length - a[1].text.length
   );
   for (let i = 0; i < tokens.length; i += 1) {
+    if (tokens[i].text === ';') {
+      cuts.push({ at: i, separator: ';', length: 1 });
+      continue;
+    }
     const match = conjunctions.find(([, v]) =>
       v.text.split(' ').every((w, j) => tokens[i + j]?.lower === w)
     );
@@ -95,6 +99,7 @@ function clauses(tokens, ctx, options = {}) {
   const result = [];
   let start = 0;
   let link;
+  let separator;
   for (const cut of [...cuts, { at: tokens.length }]) {
     const chunk = tokens.slice(start, cut.at).filter((t) => !punctuation(t));
     if (chunk.length) {
@@ -102,7 +107,10 @@ function clauses(tokens, ctx, options = {}) {
       if (link) {
         s.link = link;
       }
-      if (!s.subject && result.at(-1)?.subject) {
+      if (separator) {
+        s.separator = separator;
+      }
+      if (!separator && !s.subject && result.at(-1)?.subject) {
         s.subject = { ...result.at(-1).subject, implicit: true };
       }
       result.push(s);
@@ -112,6 +120,7 @@ function clauses(tokens, ctx, options = {}) {
       .forEach((t) => ctx.used.add(t));
     start = cut.at + (cut.length || 0);
     link = cut.link;
+    separator = cut.separator;
   }
   return result;
 }

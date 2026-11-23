@@ -250,6 +250,9 @@ export class EnglishRenderer {
       e.number === 'singular' &&
       !e.calendar &&
       concept?.en?.some((entry) => entry.pos === 'noun') &&
+      !concept.classes?.some(
+        (value) => value === 'weekday' || value === 'month'
+      ) &&
       !concept.labels?.includes('uncountable');
     if (
       !det &&
