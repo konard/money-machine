@@ -57,7 +57,7 @@ process.on('message', async ({ texts, markupLabels }) => {
     if (resolutionError && results.length) {
       Object.assign(results[0], { resolutionError, resolutionSentence });
     }
-    if (results.length && process.env.FORMAL_AI_SPARSE_FIXTURES) {
+    if (results.length) {
       results[0].evidenceMisses = network.failures - initialMisses;
     }
     process.send({ results });

@@ -25,9 +25,10 @@ Only the build on `main` deploys them.
 ## Evidence and reports
 
 A normal local run uses the translator's public dictionary sources and
-`~/.cache/formal-ai` response cache. The Pages build uses repository-recorded
-dictionary responses, so changes can be built without depending on the live
-services. To reproduce the Pages build locally:
+`~/.cache/formal-ai` response cache. The publishing build on `main` starts with
+repository-recorded responses and looks up new vocabulary in live public
+dictionaries. Pull requests build with recorded responses. To reproduce the
+pull request build locally:
 
 ```sh
 FORMAL_AI_OFFLINE=1 \
@@ -40,7 +41,7 @@ The mirror is written under `formal-ai/.site-ru/` with source paths intact.
 JSON keys, IDs, source URLs, enum values, and numbers are preserved. In
 repository mode, reader-facing catalog names and titles are also translated.
 The report counts selected jobs, units containing generated Russian,
-completed units, missing offline dictionary requests, and failed documents.
+completed units, unavailable dictionary responses, and failed documents.
 An incomplete unit can still contain Russian alongside bracketed English.
 Completion in this report measures available translations and parser
 coverage. Independent round-trip quality is measured separately by

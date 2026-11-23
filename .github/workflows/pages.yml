@@ -37,10 +37,18 @@ jobs:
           key: russian-translation-v1-${{ github.sha }}
           restore-keys: russian-translation-v1-
 
+      - name: Restore public dictionary responses
+        if: github.event_name != 'pull_request'
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/formal-ai-public
+          key: russian-dictionaries-v1-${{ github.sha }}
+          restore-keys: russian-dictionaries-v1-
+
       - name: Translate repository and build both websites
         env:
-          FORMAL_AI_OFFLINE: '1'
-          FORMAL_AI_SPARSE_FIXTURES: '1'
+          FORMAL_AI_OFFLINE: ${{ github.event_name == 'pull_request' && '1' || '' }}
+          FORMAL_AI_SPARSE_FIXTURES: ${{ github.event_name == 'pull_request' && '1' || '' }}
           FORMAL_AI_FIXTURES: tests/formal-ai/fixtures/public
           FORMAL_AI_CACHE: ${{ runner.temp }}/formal-ai-public
         run: |

@@ -321,7 +321,10 @@ export async function translateSite({
           version: `${documentVersion}\0${format(job)}`,
           load: (key) => readJson(entryPath(key), null),
           save: (key, result) => {
-            if (!result.resolutionError || process.env.FORMAL_AI_OFFLINE) {
+            if (
+              process.env.FORMAL_AI_OFFLINE ||
+              (!result.resolutionError && !result.evidenceMisses)
+            ) {
               return writeJson(entryPath(key), result);
             }
           },
@@ -393,6 +396,7 @@ export async function translateSite({
   const report = {
     version,
     scope: mode,
+    sourceEvidence: process.env.FORMAL_AI_OFFLINE ? 'recorded' : 'live',
     selected: selected.length,
     available: jobs.length,
     uiTranslation: 'Fixed UI strings only: handwritten formal-ai/ui-ru.json',
