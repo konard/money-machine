@@ -13,6 +13,7 @@ import {
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DOC_SOURCES } from '../../scripts/build-website.mjs';
+import { repositorySources } from './repository-sources.mjs';
 import {
   matchesGlob,
   proseFields,
@@ -30,8 +31,8 @@ export function options(argv) {
   const out = { force: false, only: '**', limit: Infinity, timeout: 600000 };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
-    if (arg === '--force') {
-      out.force = true;
+    if (['--force', '--repository'].includes(arg)) {
+      out[arg.slice(2)] = true;
     } else if (['--only', '--limit', '--timeout'].includes(arg)) {
       const value = argv[++i];
       if (!value) {
@@ -102,6 +103,83 @@ function worker(texts, timeout, log) {
   });
 }
 
+async function translateJob({
+  job,
+  text,
+  type,
+  localizeNames,
+  timeout,
+  translate,
+  log,
+}) {
+  const jsonl = type === 'jsonl';
+  const value = job.path
+    ? job.value
+    : jsonl
+      ? text
+          .trim()
+          .split(/\r?\n/)
+          .filter((line) => line.trim())
+          .map((line) => JSON.parse(line))
+      : type === 'json'
+        ? JSON.parse(text)
+        : undefined;
+  const fields =
+    value === undefined ? null : proseFields(value, [], [], localizeNames);
+  const inputs = fields ? fields.map((f) => f.text) : [text];
+  const results = inputs.length ? await translate(inputs, timeout, log) : [];
+  const sentences = results.flatMap((r) => r.sentences);
+  const incomplete = sentences.filter(
+    (s) =>
+      !s.complete ||
+      /\[[^\]]+\]/.test(s.text.replace(/\[[^\]]*\]\([^)]*\)/g, ''))
+  );
+  const translatedValue =
+    fields &&
+    reassemble(
+      value,
+      fields,
+      results.map((r) => r.text)
+    );
+  return {
+    ...(results[0]?.resolutionError
+      ? {
+          resolutionError: results[0].resolutionError,
+          resolutionSentence: results[0].resolutionSentence,
+        }
+      : {}),
+    ...(job.path
+      ? { value: translatedValue }
+      : {
+          text: jsonl
+            ? translatedValue.map((row) => JSON.stringify(row)).join('\n') +
+              (translatedValue.length ? '\n' : '')
+            : fields
+              ? `${JSON.stringify(translatedValue, null, 2)}\n`
+              : results[0].text,
+        }),
+    sentences: sentences.length,
+    complete: sentences.length - incomplete.length,
+    evidenceMisses: results[0]?.evidenceMisses || 0,
+    translated: sentences.filter(
+      (s) => s.source !== s.text && /\p{Script=Cyrillic}/u.test(s.text)
+    ).length,
+    review: sentences
+      .map((s) => ({
+        source: s.source,
+        text: s.text,
+        complete: s.complete,
+      }))
+      .sort((a, b) => sha1(a.source).localeCompare(sha1(b.source)))
+      .slice(0, 30),
+    incomplete: incomplete.map((s) => ({
+      source: s.source,
+      text: s.text,
+      notes: s.notes,
+    })),
+  };
+}
+
 export async function translateSite({
   root = ROOT,
   translate = worker,
@@ -111,19 +189,37 @@ export async function translateSite({
   const settings = { ...options([]), ...opts };
   const output = join(root, 'formal-ai/.site-ru');
   await mkdir(output, { recursive: true });
-  // Bump the format version when field selection/reassembly changes.
-  let version = `site-2:${await translatorHash(join(root, 'formal-ai/src'))}`;
-  const memoryPath = join(output, 'memory.json');
-  const savedMemory = await readJson(memoryPath);
-  const memory = Object.fromEntries(
-    Object.entries(savedMemory).map(([key, entry]) => [
-      entry.key || key,
-      { source: entry.source || key, result: entry.result },
+  const mode = settings.repository ? 'repository' : 'site';
+  const evidence = sha1(
+    JSON.stringify([
+      'site-3',
+      mode,
+      process.env.FORMAL_AI_OFFLINE,
+      process.env.FORMAL_AI_FIXTURES,
+      process.env.FORMAL_AI_FIXTURE_VERSION,
+      process.env.FORMAL_AI_SPARSE_FIXTURES,
+      process.env.FORMAL_AI_SOURCES,
+      process.env.FORMAL_AI_DATA,
     ])
   );
-  const catalog = JSON.parse(
-    await readFile(join(root, 'website/strategies.json'), 'utf8')
+  const getVersion = async () =>
+    `${evidence}:${await translatorHash(join(root, 'formal-ai/src'))}:${await translatorHash(
+      process.env.FORMAL_AI_DATA || join(root, 'formal-ai/data/overrides')
+    ).catch((error) => {
+      if (error.code === 'ENOENT') {
+        return '';
+      }
+      throw error;
+    })}`;
+  const format = (job) =>
+    job.path ? 'catalog' : /\.(jsonl?)$/.exec(job.source)?.[1] || 'text';
+  const entryPath = (key) => join(output, 'memory', `${key}.json`);
+  let version = await getVersion();
+  const catalogText = await readFile(
+    join(root, 'website/strategies.json'),
+    'utf8'
   );
+  const catalog = JSON.parse(catalogText);
   if (!Array.isArray(catalog.strategies)) {
     throw new Error(
       'Expected website/strategies.json with strategies[]; run npm run build:catalog first.'
@@ -142,6 +238,20 @@ export async function translateSite({
     )
   ).sort((a, b) => a.size - b.size || a.source.localeCompare(b.source));
   jobs.push(...DOC_SOURCES.map(([source]) => ({ source })));
+  let catalogAlias = false;
+  if (settings.repository) {
+    const existing = new Set(jobs.map((job) => job.source));
+    for (const source of await repositorySources(root)) {
+      if (
+        source === 'data/strategies.json' &&
+        (await readFile(join(root, source), 'utf8')) === catalogText
+      ) {
+        catalogAlias = true;
+      } else if (!existing.has(source)) {
+        jobs.push({ source });
+      }
+    }
+  }
   // Each strategy is one resolution document; preserve top-level metadata/shortlists too.
   for (const [key, value] of Object.entries(catalog)) {
     if (key === 'strategies') {
@@ -152,7 +262,9 @@ export async function translateSite({
           path: [key, i],
         })
       );
-    } else if (proseFields({ [key]: value }).length) {
+    } else if (
+      proseFields({ [key]: value }, [], [], settings.repository).length
+    ) {
       jobs.push({
         source: `strategies.json#${key}`,
         value: { [key]: value },
@@ -169,9 +281,13 @@ export async function translateSite({
     }
   };
   for (const job of jobs.filter((job) => job.path)) {
-    const cached = memory[sha1(`${version}\0${JSON.stringify(job.value)}`)];
-    if (cached?.result.value) {
-      restore(job, cached.result.value);
+    const cached = await readJson(
+      entryPath(
+        sha1(`${version}\0${format(job)}\0${JSON.stringify(job.value)}`)
+      )
+    );
+    if (cached.value) {
+      restore(job, cached.value);
     }
   }
   const selected = jobs
@@ -179,125 +295,104 @@ export async function translateSite({
     .slice(0, settings.limit);
   const documents = [];
   const started = Date.now();
-  for (const [i, job] of selected.entries()) {
-    const documentStarted = Date.now();
-    let documentVersion = version;
-    const label = `[${i + 1}/${selected.length}] ${job.source}`;
-    log(`${label}: starting`);
-    try {
-      documentVersion = `site-2:${await translatorHash(join(root, 'formal-ai/src'))}`;
-      version = documentVersion;
-      if (translate === worker) {
-        if (activeWorker && activeWorkerVersion !== documentVersion) {
-          activeWorker.kill();
-          activeWorker = null;
+  try {
+    for (const [i, job] of selected.entries()) {
+      const documentStarted = Date.now();
+      let documentVersion = version;
+      const label = `[${i + 1}/${selected.length}] ${job.source}`;
+      log(`${label}: starting`);
+      try {
+        documentVersion = await getVersion();
+        version = documentVersion;
+        if (translate === worker) {
+          if (activeWorker && activeWorkerVersion !== documentVersion) {
+            activeWorker.kill();
+            activeWorker = null;
+          }
+          activeWorkerVersion = documentVersion;
         }
-        activeWorkerVersion = documentVersion;
+        const text = job.path
+          ? JSON.stringify(job.value)
+          : await readFile(join(root, job.source), 'utf8');
+        const result = await translateCached({
+          text,
+          version: `${documentVersion}\0${format(job)}`,
+          load: (key) => readJson(entryPath(key), null),
+          save: (key, result) => {
+            if (!result.resolutionError || process.env.FORMAL_AI_OFFLINE) {
+              return writeJson(entryPath(key), result);
+            }
+          },
+          force: settings.force,
+          translate: () =>
+            translateJob({
+              job,
+              text,
+              type: format(job),
+              localizeNames: settings.repository,
+              timeout: settings.timeout,
+              translate,
+              log: (phase) => log(`${label}: ${phase}`),
+            }),
+        });
+        if (job.path) {
+          restore(job, result.value);
+        } else {
+          const target = join(output, job.source);
+          await mkdir(dirname(target), { recursive: true });
+          await writeFile(target, result.text);
+        }
+        const { text: _text, value: _value, ...entry } = result;
+        documents.push({
+          source: job.source,
+          ...entry,
+          translatorVersion: documentVersion,
+          translationSeconds: entry.seconds,
+          seconds: (Date.now() - documentStarted) / 1000,
+        });
+        log(
+          `${label}: ${result.cached ? 'cached' : `${result.seconds.toFixed(2)}s`} ${result.complete}/${result.sentences} complete`
+        );
+      } catch (error) {
+        documents.push({
+          source: job.source,
+          error: error.message,
+          translatorVersion: documentVersion,
+          seconds: (Date.now() - documentStarted) / 1000,
+        });
+        log(`${label}: FAILED ${error.message}`);
       }
-      const text = job.path
-        ? JSON.stringify(job.value)
-        : await readFile(join(root, job.source), 'utf8');
-      const result = await translateCached({
-        source: job.source,
-        text,
-        version: documentVersion,
-        memory,
-        force: settings.force,
-        translate: async () => {
-          const fields = job.path ? proseFields(job.value) : null;
-          const results = await translate(
-            fields ? fields.map((f) => f.text) : [text],
-            settings.timeout,
-            (phase) => log(`${label}: ${phase}`)
-          );
-          const sentences = results.flatMap((r) => r.sentences);
-          const incomplete = sentences.filter(
-            (s) =>
-              !s.complete ||
-              /\[[^\]]+\]/.test(s.text.replace(/\[[^\]]*\]\([^)]*\)/g, ''))
-          );
-          return {
-            ...(results[0]?.resolutionError
-              ? {
-                  resolutionError: results[0].resolutionError,
-                  resolutionSentence: results[0].resolutionSentence,
-                }
-              : {}),
-            ...(fields
-              ? {
-                  value: reassemble(
-                    job.value,
-                    fields,
-                    results.map((r) => r.text)
-                  ),
-                }
-              : { text: results[0].text }),
-            sentences: sentences.length,
-            complete: sentences.length - incomplete.length,
-            review: sentences
-              .map((s) => ({
-                source: s.source,
-                text: s.text,
-                complete: s.complete,
-              }))
-              .sort((a, b) => sha1(a.source).localeCompare(sha1(b.source)))
-              .slice(0, 30),
-            incomplete: incomplete.map((s) => ({
-              source: s.source,
-              text: s.text,
-              notes: s.notes,
-            })),
-          };
-        },
-      });
-      if (job.path) {
-        restore(job, result.value);
-        await writeJson(join(output, 'strategies.json'), translatedCatalog);
-      } else {
-        const target = join(output, job.source);
-        await mkdir(dirname(target), { recursive: true });
-        await writeFile(target, result.text);
-      }
-      await writeJson(memoryPath, memory);
-      const { text: _text, value: _value, ...entry } = result;
-      documents.push({
-        source: job.source,
-        ...entry,
-        translatorVersion: documentVersion,
-        translationSeconds: entry.seconds,
-        seconds: (Date.now() - documentStarted) / 1000,
-      });
-      log(
-        `${label}: ${result.cached ? 'cached' : `${result.seconds.toFixed(2)}s`} ${result.complete}/${result.sentences} complete`
-      );
-    } catch (error) {
-      documents.push({
-        source: job.source,
-        error: error.message,
-        translatorVersion: documentVersion,
-        seconds: (Date.now() - documentStarted) / 1000,
-      });
-      log(`${label}: FAILED ${error.message}`);
     }
-    await writeJson(join(output, 'report.json'), {
-      version,
-      uiTranslation: 'Fixed UI strings only: handwritten formal-ai/ui-ru.json',
-      seconds: (Date.now() - started) / 1000,
-      documents,
-    });
+  } finally {
+    if (translate === worker && activeWorker) {
+      activeWorker.kill();
+      activeWorker = null;
+    }
   }
   const total = documents.reduce(
     (a, d) => ({
       sentences: a.sentences + (d.sentences || 0),
       complete: a.complete + (d.complete || 0),
+      translated: a.translated + (d.translated || 0),
+      evidenceMisses: a.evidenceMisses + (d.evidenceMisses || 0),
       failed: a.failed + Number(Boolean(d.error)),
       resolutionWarnings:
         a.resolutionWarnings + Number(Boolean(d.resolutionError)),
     }),
-    { sentences: 0, complete: 0, failed: 0, resolutionWarnings: 0 }
+    {
+      sentences: 0,
+      complete: 0,
+      translated: 0,
+      evidenceMisses: 0,
+      failed: 0,
+      resolutionWarnings: 0,
+    }
   );
   const report = {
     version,
+    scope: mode,
+    selected: selected.length,
+    available: jobs.length,
     uiTranslation: 'Fixed UI strings only: handwritten formal-ai/ui-ru.json',
     seconds: (Date.now() - started) / 1000,
     ...total,
@@ -305,11 +400,10 @@ export async function translateSite({
     documents,
   };
   await writeJson(join(output, 'strategies.json'), translatedCatalog);
-  await writeJson(join(output, 'report.json'), report);
-  if (translate === worker && activeWorker) {
-    activeWorker.kill();
-    activeWorker = null;
+  if (catalogAlias && selected.length === jobs.length && !total.failed) {
+    await writeJson(join(output, 'data/strategies.json'), translatedCatalog);
   }
+  await writeJson(join(output, 'report.json'), report);
   log(
     `Overall: ${total.complete}/${total.sentences} sentences complete (${(report.completion * 100).toFixed(1)}%); ${total.failed} failed documents; ${total.resolutionWarnings} lookup warnings; ${report.seconds.toFixed(2)}s`
   );
@@ -321,8 +415,17 @@ if (
   (await realpath(process.argv[1]).catch(() => null)) ===
     fileURLToPath(import.meta.url)
 ) {
-  translateSite(options(process.argv.slice(2))).catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
-  });
+  translateSite(options(process.argv.slice(2)))
+    .then((report) => {
+      if (
+        report.failed ||
+        (report.selected === report.available && !report.translated)
+      ) {
+        process.exitCode = 1;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      process.exitCode = 1;
+    });
 }

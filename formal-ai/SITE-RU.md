@@ -1,57 +1,70 @@
-# Russian website mirror
+# Russian repository content and website
 
-Generate the English catalog first, then translate and render:
+Run the complete pipeline from the repository root:
+
+```sh
+npm ci
+npm run formal-ai:repository
+```
+
+The pipeline builds the English catalog, translates repository prose with
+Formal AI, and renders the Russian catalog and Pages site. It discovers
+Markdown documentation at the root, in `.changeset/`, under `docs/`,
+`formal-ai/` and `examples/`. It also discovers text documents and structured
+research under `formal-ai/docs/`, and JSON under `data/`. The generated
+catalog and business plans are translated along with the source documents.
+Code, fixture inputs, lockfiles, and automation logs are outside the prose
+inventory. Existing localized layout labels are in `formal-ai/ui-ru.json`.
+
+The Pages workflow runs this pipeline on pull requests and pushes to `main`.
+The `russian-repository` GitHub Actions artifact contains the translated
+documents and data, including content outside the Pages navigation, and
+`report.json`. The Pages artifact contains both English and Russian sites.
+Only the build on `main` deploys them.
+
+## Evidence and reports
+
+A normal local run uses the translator's public dictionary sources and
+`~/.cache/formal-ai` response cache. The Pages build uses repository-recorded
+dictionary responses, so changes can be built without depending on the live
+services. To reproduce the Pages build locally:
+
+```sh
+FORMAL_AI_OFFLINE=1 \
+FORMAL_AI_SPARSE_FIXTURES=1 \
+FORMAL_AI_FIXTURES=tests/formal-ai/fixtures/public \
+npm run formal-ai:repository
+```
+
+The mirror is written under `formal-ai/.site-ru/` with source paths intact.
+JSON keys, IDs, source URLs, enum values, and numbers are preserved. In
+repository mode, reader-facing catalog names and titles are also translated.
+The report counts selected jobs, units containing generated Russian,
+completed units, missing offline dictionary requests, and failed documents.
+An incomplete unit can still contain Russian alongside bracketed English.
+Completion in this report measures available translations and parser
+coverage. Independent round-trip quality is measured separately by
+`node formal-ai/scripts/russian-analyser.mjs`.
+
+Memory files under `formal-ai/.site-ru/memory/` are keyed by input, format,
+translator version, and evidence mode. A repeat run can reconstruct the
+mirror from memory. Failed jobs and live lookup errors are retried. The
+report covers the current invocation, and filtered runs restore earlier
+cached catalog entries. Each job records its translator version.
+
+## Targeted runs
 
 ```sh
 npm run build:catalog
-npm run formal-ai:site
+npm run formal-ai:site -- --only 'docs/business-plans/*.md' --limit 21
+npm run formal-ai:site -- --repository --only 'docs/research/**'
+npm run formal-ai:site -- --force --only 'strategies.json*'
 npm run website:ru
 ```
 
-The translator calls `resolveText` once per document and `translateDocument`
-for markdown or each selected JSON prose field. Public dictionary requests use
-the translator's existing User-Agent and `~/.cache/formal-ai` cache. No prose
-translations are supplied by this pipeline. The only handwritten translations
-are fixed layout and app labels in `ui-ru.json`.
-
-Output, memory, timings, incomplete sentences and errors are under
-`formal-ai/.site-ru/`. Paths mirror the repository, for example
-`formal-ai/.site-ru/docs/business-plans/example.md`. `strategies.json` preserves
-all keys, arrays, IDs, names, URLs and numeric values; prose selection follows
-the sample harness's whitespace heuristic and also includes `businessPlan`.
-Single-word enum values, platform names, tags and source links stay unchanged.
-
-```sh
-npm run formal-ai:site -- --only 'docs/business-plans/*.md' --limit 21
-npm run formal-ai:site -- --only 'strategies.json*'
-npm run formal-ai:site -- --force --timeout 600000
-SITE_LANG=ru node scripts/build-website.mjs
-```
-
-`--only` supports `*`, `**` and `?`. `--limit` counts matching documents, including
-the ranked index and cached documents. `--timeout` is a per-document limit in
-milliseconds (default 600000); a worker timeout records the document and last
-translation field, then continues. A shared worker retains the resolved public
-lexicon between documents. Sentence failures recorded by `translateDocument`
-remain visible in the report, including the source sentence and bracketed
-leftovers.
-
-Lookup errors are recorded as `resolutionError` with `resolutionSentence` when
-the parser exception can be reproduced. The worker still translates using the
-available vocabulary and sentence guards. These partial results remain cached;
-use `--force` to retry lookup warnings with unchanged translator source.
-
-Memory entries use SHA-1 of the source text, translator source hash and pipeline
-format version. Repeating a run restores outputs without dictionary
-lookups; changed sources or translator code invalidate their translations.
-Failed documents are retried. Reports describe the current invocation; filtered
-runs preserve earlier translated JSON documents in the mirror.
-The translator hash is checked before each document; a changed hash restarts
-the worker. Each report entry records its `translatorVersion`.
-
-The Russian renderer reads only the mirror and handwritten website assets,
-writing `website/ru/`. A trial run can render the available pages;
-`website/ru/build-report.json` identifies missing supporting documents and a
-partial build. Complete the translation run before publishing the mirror:
-links to documents outside a trial subset will otherwise point to missing pages.
-Both output directories are gitignored.
+`--only` accepts `*`, `**` and `?`. `--limit` counts matching jobs, including
+cache hits. `--timeout` sets the per-job worker limit in milliseconds.
+The default is 600,000. Worker failures record the last phase and the script
+continues through the remaining jobs, then exits nonzero. Output is
+gitignored. A targeted run can create a partial site, documented in
+`website/ru/build-report.json`.

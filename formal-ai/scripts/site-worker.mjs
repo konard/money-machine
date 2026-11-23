@@ -3,6 +3,7 @@ import { resolveText } from '../src/resolve.mjs';
 import { translateDocument } from '../src/document.mjs';
 import { parseSentence } from '../src/english/clause.mjs';
 import { loadLexicon } from '../src/lexicon.mjs';
+import { network } from '../src/sources/fetch.mjs';
 
 process.on('message', async ({ texts, topic }) => {
   try {
@@ -10,6 +11,7 @@ process.on('message', async ({ texts, topic }) => {
     let requests = 0;
     let resolutionError;
     let resolutionSentence;
+    const initialMisses = network.failures;
     try {
       await resolveText(topic, {
         log: (message) => process.send({ phase: String(message) }),
@@ -46,6 +48,9 @@ process.on('message', async ({ texts, topic }) => {
     });
     if (resolutionError && results.length) {
       Object.assign(results[0], { resolutionError, resolutionSentence });
+    }
+    if (results.length && process.env.FORMAL_AI_SPARSE_FIXTURES) {
+      results[0].evidenceMisses = network.failures - initialMisses;
     }
     process.send({ results });
   } catch (error) {

@@ -144,6 +144,12 @@ export async function getJson(
   // offline, only the network is out of reach: a stand-in fetch still runs
   const offline = Boolean(process.env.FORMAL_AI_OFFLINE);
   if (offline && fetchImpl === globalThis.fetch) {
+    // Repository builds use the recorded evidence they have for new prose.
+    // Leave the miss uncached so a later online run can still resolve it.
+    if (process.env.FORMAL_AI_SPARSE_FIXTURES) {
+      network.failures += 1;
+      return jsonLines ? [] : {};
+    }
     throw Object.assign(
       new Error(`offline: no recorded response for ${url} ${body}`.trim()),
       { fatal: true, offline: true }

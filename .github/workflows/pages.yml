@@ -4,33 +4,21 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'website/**'
-      - 'data/**'
-      - 'docs/**'
-      - 'scripts/build-catalog.mjs'
-      - 'scripts/build-website.mjs'
-      - 'scripts/render-business-plan.mjs'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/pages.yml'
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
+    name: Build English and Russian content
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -42,19 +30,72 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build catalog and website
-        run: npm run build:catalog
+      - name: Restore translation memory
+        uses: actions/cache@v4
+        with:
+          path: formal-ai/.site-ru/memory
+          key: russian-translation-v1-${{ github.sha }}
+          restore-keys: russian-translation-v1-
+
+      - name: Translate repository and build both websites
+        env:
+          FORMAL_AI_OFFLINE: '1'
+          FORMAL_AI_SPARSE_FIXTURES: '1'
+          FORMAL_AI_FIXTURES: tests/formal-ai/fixtures/public
+          FORMAL_AI_CACHE: ${{ runner.temp }}/formal-ai-public
+        run: |
+          export FORMAL_AI_FIXTURE_VERSION="$(git rev-parse HEAD:tests/formal-ai/fixtures/public)"
+          npm run formal-ai:repository
+
+      - name: Verify complete build and actual Russian output
+        run: |
+          node --input-type=module - <<'JS'
+          import { readFileSync } from 'node:fs';
+          const read = (path) => JSON.parse(readFileSync(path, 'utf8'));
+          const translation = read('formal-ai/.site-ru/report.json');
+          const website = read('website/ru/build-report.json');
+          const catalog = read('website/ru/strategies.json');
+          if (translation.scope !== 'repository' || translation.selected !== translation.available ||
+              translation.failed || !translation.translated || website.partial ||
+              !catalog.strategies.some(({ summary }) => /\p{Script=Cyrillic}/u.test(summary))) {
+            throw new Error('Repository translation or Russian Pages build is incomplete.');
+          }
+          console.log(`${translation.selected} jobs. ${translation.translated}/${translation.sentences} units contain generated Russian.`);
+          JS
 
       - name: Run tests against the fresh build
+        if: github.event_name != 'pull_request'
         run: npm test
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - name: Upload Russian repository content and translation report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: russian-repository
+          path: |
+            formal-ai/.site-ru/
+            !formal-ai/.site-ru/memory/
+          include-hidden-files: true
+          if-no-files-found: error
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
           path: website
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Deploy
         id: deployment

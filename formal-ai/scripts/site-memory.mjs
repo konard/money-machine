@@ -40,22 +40,33 @@ const KEEP = new Set([
 ]);
 
 /** Sample harness prose selection, including nested business-plan prose. */
-export function proseFields(value, path = [], out = []) {
+export function proseFields(value, path = [], out = [], localizeNames = false) {
   if (typeof value === 'string') {
-    if (/\s/.test(value) && /[a-z]/.test(value) && !/^https?:/.test(value)) {
+    const display =
+      localizeNames && ['name', 'title', 'categoryLabel'].includes(path.at(-1));
+    if (
+      (display || /\s/.test(value)) &&
+      /[a-z]/i.test(value) &&
+      !/^https?:/.test(value)
+    ) {
       out.push({ path, text: value });
     }
   } else if (Array.isArray(value)) {
-    value.forEach((v, i) => proseFields(v, [...path, i], out));
+    value.forEach((v, i) => proseFields(v, [...path, i], out, localizeNames));
   } else if (value && typeof value === 'object') {
     Object.entries(value)
-      .filter(([key]) => !KEEP.has(key))
-      .forEach(([key, v]) => proseFields(v, [...path, key], out));
+      .filter(([key]) => !KEEP.has(key) || (localizeNames && key === 'name'))
+      .forEach(([key, v]) =>
+        proseFields(v, [...path, key], out, localizeNames)
+      );
   }
   return out;
 }
 
 export function reassemble(value, fields, translations) {
+  if (fields.length === 1 && !fields[0].path.length) {
+    return translations[0];
+  }
   const copy = structuredClone(value);
   fields.forEach(({ path }, i) => {
     let parent = copy;
@@ -118,18 +129,23 @@ export async function translateCached({
   text,
   version,
   memory,
+  load = (key) => memory[key]?.result,
+  save = (key, result) => {
+    memory[key] = { source, result };
+  },
   force,
   translate,
 }) {
   const key = sha1(`${version}\0${text}`);
-  if (!force && memory[key]) {
-    return { ...memory[key].result, cached: true };
+  const cached = !force && (await load(key));
+  if (cached) {
+    return { ...cached, cached: true };
   }
   const started = performance.now();
   const result = {
     ...(await translate()),
     seconds: (performance.now() - started) / 1000,
   };
-  memory[key] = { source, result };
+  await save(key, result);
   return { ...result, cached: false };
 }

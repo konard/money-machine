@@ -52,7 +52,7 @@ scripts/build-catalog.mjs         ← regenerates everything from data/strategie
 
 ## Website
 
-The site at <https://konard.github.io/money-machine/> is **built and published by GitHub Actions** (`.github/workflows/pages.yml`) on every push to `main`. The workflow installs dependencies, runs `npm run build:catalog`, runs the tests, and deploys the `website/` folder. Generated site files (`website/plans/`, `website/docs/`, `website/strategies.json`) are not committed; only the JSON sources and the handwritten shell (`index.html`, `app.js`, `styles.css`) are.
+The site at <https://konard.github.io/money-machine/> is **built and published by GitHub Actions** (`.github/workflows/pages.yml`) on every push to `main`. The build generates the English and Russian sites, then deploys the `website/` folder after tests pass. Pull requests also generate a Russian repository artifact with translated documentation, catalog data, and a translation report. To run the same pipeline locally, see [Russian repository content and website](formal-ai/SITE-RU.md).
 
 The site has: a filterable, sortable catalog with "start here" shortlists and filters for startup cash and automation; one page per plan with scores, realistic expectations, resources and business plan (startup needs, unit economics, break-even, market conditions, pricing, path to profit), payout path, full cycle, automation plan, manual steps, legality, risks, evidence and sources; and rendered copies of the methodology, reference countries, excluded activities, incorporation costs by country, remote incorporation options, platform rules and roadmap.
 

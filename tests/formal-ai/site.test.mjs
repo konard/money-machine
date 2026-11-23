@@ -224,6 +224,58 @@ test('site run rejects missing catalog input instead of producing an empty mirro
   );
 });
 
+test('repository runs translate off-site documentation and structured prose', async (t) => {
+  const { root, put } = await fixture(t);
+  const sources = {
+    'README.md': 'The source document.',
+    'docs/nested/research.md': 'The source research.',
+    'formal-ai/docs/sample.jsonl':
+      '{"id":"source-id","title":"The source sample."}\n',
+    'data/example.json':
+      '{"id":"source-id","name":"The source name.","count":42}',
+  };
+  for (const [path, text] of Object.entries(sources)) {
+    await put(path, text);
+  }
+  const catalog = await readFile(join(root, 'website/strategies.json'), 'utf8');
+  await put('data/strategies.json', catalog);
+  const report = await translateSite({
+    root,
+    repository: true,
+    log: () => {},
+    translate: (texts) =>
+      texts.map((source) => ({
+        text: 'Русский перевод.',
+        sentences: [{ source, text: 'Русский перевод.', complete: true }],
+      })),
+  });
+  const read = (path) =>
+    readFile(join(root, 'formal-ai/.site-ru', path), 'utf8');
+  assert.equal(report.scope, 'repository');
+  assert.equal(report.selected, report.available);
+  assert.equal(report.failed, 0);
+  assert.ok(report.translated > 0);
+  assert.equal(await read('README.md'), 'Русский перевод.');
+  assert.equal(await read('docs/nested/research.md'), 'Русский перевод.');
+  assert.deepEqual(JSON.parse(await read('data/example.json')), {
+    id: 'source-id',
+    name: 'Русский перевод.',
+    count: 42,
+  });
+  assert.deepEqual(JSON.parse(await read('formal-ai/docs/sample.jsonl')), {
+    id: 'source-id',
+    title: 'Русский перевод.',
+  });
+  assert.equal(
+    await read('data/strategies.json'),
+    await read('strategies.json')
+  );
+  assert.equal(
+    JSON.parse(await read('strategies.json')).strategies[0].name,
+    'Русский перевод.'
+  );
+});
+
 test('real offline worker starts from an eval process and continues after a lookup failure', async (t) => {
   const { root, put } = await fixture(t);
   const source = '# 123\n\n```js\nconst x = "$&";\n```\n';
