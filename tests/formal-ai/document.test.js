@@ -58,6 +58,15 @@ test('a paragraph keeps its context: "it" refers back across sentences', () => {
   );
 });
 
+test('long fences and Markdown reference definitions survive translation', () => {
+  const fenced = '````markdown\n```\nThe cat sleeps.\n```\n````';
+  const definition = '[book]: https://example.com/book "The book"';
+  const result = translateDocument(
+    `${fenced}\n\n${definition}\nThe cat sleeps.`
+  );
+  assert.equal(result.text, `${fenced}\n\n${definition}\nКошка спит.`);
+});
+
 test('a bold run-in heading with a period is read like a heading', () => {
   assert.equal(
     translateDocument('**Book.** Never buy books.').text,

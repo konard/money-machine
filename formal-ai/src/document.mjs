@@ -65,7 +65,7 @@ export function splitBlocks(text) {
   const lines = text.split(/\r?\n/);
   const blocks = [];
   let buffer = [];
-  let fence = null;
+  let fence;
   const flush = () => {
     if (buffer.length) {
       blocks.push({ kind: 'prose', text: buffer.join('\n') });
@@ -73,11 +73,16 @@ export function splitBlocks(text) {
     }
   };
   for (const line of lines) {
-    const f = /^\s*(```|~~~)/.exec(line);
+    const f = /^\s*(`{3,}|~{3,})(.*)$/.exec(line);
     if (fence) {
       blocks[blocks.length - 1].text += `\n${line}`;
-      if (f && f[1] === fence) {
-        fence = null;
+      if (
+        f &&
+        f[1][0] === fence[0] &&
+        f[1].length >= fence.length &&
+        !f[2].trim()
+      ) {
+        fence = undefined;
       }
       continue;
     }
@@ -100,6 +105,7 @@ export function splitBlocks(text) {
 
 const LINE_PREFIX =
   /^(\s*(?:#{1,6}\s+|>\s*|[-*+]\s+(?:\[[ xX]\]\s+)?|\d+[.)]\s+)?)(.*)$/;
+const REFERENCE_DEFINITION = /^\s{0,3}\[[^\]]+\]:\s*\S/;
 const PROTECTED = /(`[^`]*`|https?:\/\/\S+|\[[^\]]*\]\([^)]*\)|<[^>]+>)/g;
 
 /**
@@ -107,6 +113,9 @@ const PROTECTED = /(`[^`]*`|https?:\/\/\S+|\[[^\]]*\]\([^)]*\)|<[^>]+>)/g;
  * spans (inline code, links, URLs, HTML) unchanged.
  */
 function translateLine(line, context, report) {
+  if (REFERENCE_DEFINITION.test(line)) {
+    return line;
+  }
   if (/^\s*(?:\||#{1,6}\s|[-*+]\s|\d+[.)]\s)/.test(line)) {
     context = {
       ...context,
@@ -300,7 +309,10 @@ export function translateDocument(text, options = {}) {
     // a paragraph wrapped over several lines is one unit of prose
     const lines = block.text.split('\n');
     const structured = lines.some(
-      (l) => LINE_PREFIX.exec(l)[1].trim() || /^\s*\|/.test(l)
+      (l) =>
+        LINE_PREFIX.exec(l)[1].trim() ||
+        /^\s*\|/.test(l) ||
+        REFERENCE_DEFINITION.test(l)
     );
     const fragmentLines =
       lines.length > 1 &&
