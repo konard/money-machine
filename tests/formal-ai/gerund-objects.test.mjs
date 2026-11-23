@@ -76,3 +76,10 @@ test('a verb that takes no gerund has a noun object, not a gerund phrase', async
   const enjoy = parseSentence('Enjoy onboarding tests.', lexicon);
   assert.ok(enjoy.clauses[0].objects[0].action, 'enjoy takes a gerund');
 });
+
+test('a compound with a final gerund noun parses at the end of input', async () => {
+  const lexicon = await fixture();
+  const parsed = parseSentence('Pass a test onboarding', lexicon);
+  assert.deepEqual(parsed.leftover, []);
+  assert.equal(parsed.clauses[0].objects[0].head.lemma, 'onboarding');
+});

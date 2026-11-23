@@ -96,6 +96,9 @@ export function adjectiveBeforeCount(c) {
 
 /** A plural noun ending a phrase: no head for a singular determiner. */
 export function pluralOnly(t, next) {
+  if (!t) {
+    return false;
+  }
   const nouns = t.readings.filter((r) => r.pos === 'noun');
   return (
     nouns.length > 0 &&
